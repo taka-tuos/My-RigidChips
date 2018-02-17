@@ -1,0 +1,196 @@
+// [RCD] 
+Val
+{
+	ANG_AMP_A(default=22, min=-360, max=360)
+	ANG_AMP_C(default=-20, min=-360, max=360)
+	ANG_BRK(default=12)
+	ANG_JCK_BB_1(default=-119, min=-180, max=180)
+	ANG_JCK_BB_2(default=-20, min=-180, max=180)
+	ANG_JCK_CORE(default=0, min=-20, max=20)
+	ANG_JCK_HED(default=60, max=100)
+	ANG_JCK_LEG_L_A(default=70, min=45, max=180)
+	ANG_JCK_LEG_L_B(default=20, max=180)
+	ANG_JCK_LEG_L_C(default=0, min=-60, max=60)
+	ANG_JCK_LEG_R_A(default=70, min=45, max=180)
+	ANG_JCK_LEG_R_B(default=20, max=180)
+	ANG_JCK_LEG_R_C(default=0, min=-60, max=60)
+	ANG_JCK_SHL(default=40, max=180)
+	CLR_BRM_1(default=#804000)
+	CLR_BRM_2(default=#E0B401)
+	CLR_JCK_1(default=#000000)
+	CLR_JCK_2(default=#FFCAB3)
+	CLR_PLAYER(default=#FF8000, step=16777215)
+	DMP_AMP_A(default=0.5)
+	DMP_AMP_C(default=0.5)
+	EFT_JCK_1(default=#000000)
+	OPANTU(default=#FFFFFF)
+	SPR_AMP_A(default=0.54)
+	SPR_AMP_C(default=0.12)
+	SPR_JCK_1(default=0.2)
+	SPR_JCK_2(default=0.7)
+	VAL_P(default=0, min=-20, max=20, step=1)
+	VAL_R(default=0, min=-20, max=20, step=1)
+}
+Key
+{
+}
+Body
+{
+	Core(color=CLR_PLAYER) {
+		S:Frame(color=CLR_BRM_1) {
+			S:TrimF(angle=22.5, color=CLR_BRM_1) {
+				S:Frame(angle=ANG_AMP_A, spring=SPR_AMP_A, damper=DMP_AMP_A, color=CLR_BRM_2) {
+					S:Chip(angle=ANG_AMP_C, spring=SPR_AMP_C, damper=DMP_AMP_C, color=CLR_BRM_2) { }
+				}
+				S:Frame(angle=-ANG_AMP_A, spring=SPR_AMP_A, damper=DMP_AMP_A, color=CLR_BRM_2) {
+					S:Chip(angle=-ANG_AMP_C, spring=SPR_AMP_C, damper=DMP_AMP_C, color=CLR_BRM_2) { }
+				}
+			}
+			S:TrimF(angle=-22.5, color=CLR_BRM_1) {
+				S:Frame(angle=ANG_AMP_A, spring=SPR_AMP_A, damper=DMP_AMP_A, color=CLR_BRM_2) {
+					S:Chip(angle=ANG_AMP_C, spring=SPR_AMP_C, damper=DMP_AMP_C, color=CLR_BRM_2) { }
+				}
+				S:Frame(angle=-ANG_AMP_A, spring=SPR_AMP_A, damper=DMP_AMP_A, color=CLR_BRM_2) {
+					S:Chip(angle=-ANG_AMP_C, spring=SPR_AMP_C, damper=DMP_AMP_C, color=CLR_BRM_2) { }
+				}
+			}
+			S:TrimF(angle=67.5, color=CLR_BRM_1) {
+				S:Frame(angle=ANG_AMP_A, spring=SPR_AMP_A, damper=DMP_AMP_A, color=CLR_BRM_2) {
+					S:Chip(angle=ANG_AMP_C, spring=SPR_AMP_C, damper=DMP_AMP_C, color=CLR_BRM_2) { }
+				}
+				S:Frame(angle=-ANG_AMP_A, spring=SPR_AMP_A, damper=DMP_AMP_A, color=CLR_BRM_2) {
+					S:Chip(angle=-ANG_AMP_C, spring=SPR_AMP_C, damper=DMP_AMP_C, color=CLR_BRM_2) { }
+				}
+			}
+			S:TrimF(angle=-67.5, color=CLR_BRM_1) {
+				S:Frame(angle=ANG_AMP_A, spring=SPR_AMP_A, damper=DMP_AMP_A, color=CLR_BRM_2) {
+					S:Chip(angle=ANG_AMP_C, spring=SPR_AMP_C, damper=DMP_AMP_C, color=CLR_BRM_2) { }
+				}
+				S:Frame(angle=-ANG_AMP_A, spring=SPR_AMP_A, damper=DMP_AMP_A, color=CLR_BRM_2) {
+					S:Chip(angle=-ANG_AMP_C, spring=SPR_AMP_C, damper=DMP_AMP_C, color=CLR_BRM_2) { }
+				}
+			}
+			S:Chip(angle=ANG_BRK, color=CLR_BRM_2) { }
+			S:Chip(angle=-ANG_BRK, color=CLR_BRM_2) { }
+			S:Frame() {
+				S:Frame() {
+					S:Frame() {
+						S:Frame() {
+							S:Weight(option=4) { }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+--‚«[‚±‚ñ
+local INPUT_KEY_ENG = 13
+local INPUT_KEY_BRAKE_U = 5
+local INPUT_KEY_BRAKE_D = 8
+local INPUT_KEY_PITCH_U = 1
+local INPUT_KEY_PITCH_D = 0
+local INPUT_KEY_ROLL_R = 2
+local INPUT_KEY_ROLL_L = 3
+
+local INPUT_ANALOG_PITCH = 1
+local INPUT_ANALOG_PITCH_S = 1	--(1 or -1)
+local INPUT_ANALOG_ROLL = 0
+local INPUT_ANALOG_ROLL_S = 1
+local INPUT_ANALOG_BRAKE = 3
+local INPUT_ANALOG_BRAKE_S = 1
+
+
+local limit = function(val,min,max) return (val>max and max)or(val<min and min)or val end
+local analogFilter
+do
+	local analog = _G._ANALOG
+	analogFilter = function(t,k,n0)
+		k = (type(k)=="number" and (k * 1000/(1000-t)) ) or (1000/(1000-t))
+		return function(n)
+			local v = analog(n or n0)
+			if v>=0 then
+				return (v< t and 0 ) or (v-t)*k
+			else
+				return (v>-t and 0 ) or (v+t)*k
+			end
+		end
+	end
+end
+local function prayerMyIndex(players,myID)
+	myID = myID or _PLAYERMYID()
+	for i=0,players or _PLAYERS() do
+		if _PLAYERID(i) == myID then return i end
+	end
+end
+
+----------------------------------------------------------------------------------
+
+local brake = 0
+--local s = nil
+
+local function broom()
+	brake = limit(brake + (_KEY(INPUT_KEY_BRAKE_D)-_KEY(INPUT_KEY_BRAKE_U)) + _ANALOG(INPUT_ANALOG_BRAKE)*INPUT_ANALOG_BRAKE_S ,0,20)
+	ANG_BRK = 12+brake
+
+	if _KEYUP(INPUT_KEY_ENG)~=0 then
+		if s then s=nil else s=1 end
+	end
+
+	if s then
+		s = s*-1
+		ANG_AMP_A = 22*s
+		ANG_AMP_C =-ANG_AMP_A*3.5
+	else
+		ANG_AMP_A=22
+		ANG_AMP_C=-20-brake
+	end
+
+end
+-----------------------------------------
+
+local function jockey()
+
+	VAL_P = VAL_P + (_KEY(INPUT_KEY_PITCH_D) - _KEY(INPUT_KEY_PITCH_U))*0.6
+	VAL_R = VAL_R + (_KEY(INPUT_KEY_ROLL_R) - _KEY(INPUT_KEY_ROLL_L))*0.25
+	local p = VAL_P + _ANALOG(INPUT_ANALOG_PITCH)*INPUT_ANALOG_PITCH_S*20
+	local r1,r2 = math.max(0,p)*1.5 , _ANALOG(INPUT_ANALOG_ROLL)*INPUT_ANALOG_ROLL_S*10
+
+	ANG_JCK_CORE = -p
+	ANG_JCK_LEG_R_B = 20+p
+	ANG_JCK_LEG_L_B = 20+p
+
+	ANG_JCK_LEG_R_A = 70+r1
+	ANG_JCK_LEG_L_A = ANG_JCK_LEG_R_A
+	ANG_JCK_LEG_R_C = VAL_R+r1+r2
+	ANG_JCK_LEG_L_C = VAL_R-r1+r2
+
+	ANG_JCK_SHL = 40+p*0.5
+	
+	if _Y(JCK_CORE)<0 or _KEYUP(16)~=0 then _SPLIT(JCK_CORE) end
+end
+
+----------------------------------------------------------------------------------
+_ANALOG = analogFilter(140,1/1000)
+
+function OnInit() end
+function OnReset()end
+
+function OnFrame()
+	out(0,"FPS:",_FPS())
+	out(1,"G: ‹ó‚ð”ò‚Ô S/X:‘¬“x’²®")
+	jockey()
+	broom()
+	
+	local players=_PLAYERS()-1
+	if players > 0 then
+		local i = prayerMyIndex(players)
+		if i then CLR_PLAYER = _PLAYERCOLOR(i) end
+	end
+end
+----------------------------------------------------------------------------------
+
+HAITENAI = 16763571
+}

@@ -1,0 +1,532 @@
+// [RCD] 
+Val
+{
+	G0(default=0, max=16777216, step=16777216)
+	G1(default=0, max=16777216, step=16777216)
+	G10(default=0, max=16777216, step=16777216)
+	G11(default=0, max=16777216, step=16777216)
+	G12(default=0, max=16777216, step=16777216)
+	G13(default=0, max=16777216, step=16777216)
+	G14(default=0, max=16777216, step=16777216)
+	G15(default=0, max=16777216, step=16777216)
+	G16(default=0, max=16777216, step=16777216)
+	G17(default=0, max=16777216, step=16777216)
+	G18(default=0, max=16777216, step=16777216)
+	G19(default=0, max=16777216, step=16777216)
+	G2(default=0, max=16777216, step=16777216)
+	G3(default=0, max=16777216, step=16777216)
+	G4(default=0, max=16777216, step=16777216)
+	G5(default=0, max=16777216, step=16777216)
+	G6(default=0, max=16777216, step=16777216)
+	G7(default=0, max=16777216, step=16777216)
+	G8(default=0, max=16777216, step=16777216)
+	G9(default=0, max=16777216, step=16777216)
+	GJ(default=0, max=16777216, step=16777216)
+	HR(default=0, min=-3600, max=3600)
+	HV(default=0, min=-3600, max=3600)
+	V0(default=0, max=90)
+	V1(default=0, max=90)
+	V10(default=0, max=90)
+	V11(default=0, max=90)
+	V12(default=0, max=90)
+	V13(default=0, max=90)
+	V14(default=0, max=90)
+	V15(default=0, max=90)
+	V16(default=0, max=90)
+	V17(default=0, max=90)
+	V18(default=0, max=90)
+	V19(default=0, max=90)
+	V2(default=0, max=90)
+	V3(default=0, max=90)
+	V4(default=0, max=90)
+	V5(default=0, max=90)
+	V6(default=0, max=90)
+	V7(default=0, max=90)
+	V8(default=0, max=90)
+	V9(default=0, max=90)
+	WA(default=0, min=-90, max=90)
+	WB(default=0, min=-16777216, max=16777216)
+	WL(default=0, min=-16777216, max=16777216)
+	WR(default=0, min=-16777216, max=16777216)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Weight() {
+			N:Weight(angle=0, spring=1, damper=1) {
+				N:Frame(angle=V10, spring=1, damper=1) {
+					N:Arm(option=195000, power=G10, angle=-V10, name=A10, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V11, spring=1, damper=1) {
+					N:Arm(option=195000, power=G11, angle=-V11, name=A11, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V12, spring=1, damper=1) {
+					N:Arm(option=195000, power=G12, angle=-V12, name=A12, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V13, spring=1, damper=1) {
+					N:Arm(option=195000, power=G13, angle=-V13, name=A13, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V14, spring=1, damper=1) {
+					N:Arm(option=195000, power=G14, angle=-V14, name=A14, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V15, spring=1, damper=1) {
+					N:Arm(option=195000, power=G15, angle=-V15, name=A15, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V16, spring=1, damper=1) {
+					N:Arm(option=195000, power=G16, angle=-V16, name=A16, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V17, spring=1, damper=1) {
+					N:Arm(option=195000, power=G17, angle=-V17, name=A17, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V18, spring=1, damper=1) {
+					N:Arm(option=195000, power=G18, angle=-V18, name=A18, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V19, spring=1, damper=1) {
+					N:Arm(option=195000, power=G19, angle=-V19, name=A19, spring=1, damper=1) { }
+				}
+				S:Weight(angle=90, spring=1, damper=1) {
+					S:Weight(angle=90, spring=1, damper=1) {
+						S:Frame(angle=V10, spring=1, damper=1) {
+							S:Arm(option=195000, power=G10, angle=-V10, name=A10, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V11, spring=1, damper=1) {
+							S:Arm(option=195000, power=G11, angle=-V11, name=A11, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V12, spring=1, damper=1) {
+							S:Arm(option=195000, power=G12, angle=-V12, name=A12, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V13, spring=1, damper=1) {
+							S:Arm(option=195000, power=G13, angle=-V13, name=A13, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V14, spring=1, damper=1) {
+							S:Arm(option=195000, power=G14, angle=-V14, name=A14, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V15, spring=1, damper=1) {
+							S:Arm(option=195000, power=G15, angle=-V15, name=A15, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V16, spring=1, damper=1) {
+							S:Arm(option=195000, power=G16, angle=-V16, name=A16, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V17, spring=1, damper=1) {
+							S:Arm(option=195000, power=G17, angle=-V17, name=A17, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V18, spring=1, damper=1) {
+							S:Arm(option=195000, power=G18, angle=-V18, name=A18, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V19, spring=1, damper=1) {
+							S:Arm(option=195000, power=G19, angle=-V19, name=A19, spring=1, damper=1) { }
+						}
+					}
+					S:Weight(angle=90, spring=1, damper=1, name=CRE) {
+						S:Frame(angle=V0, spring=1, damper=1) {
+							S:Arm(option=195000, power=G0, angle=-V0, name=A0, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V1, spring=1, damper=1) {
+							S:Arm(option=195000, power=G1, angle=-V1, name=A1, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V2, spring=1, damper=1) {
+							S:Arm(option=195000, power=G2, angle=-V2, name=A2, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V3, spring=1, damper=1) {
+							S:Arm(option=195000, power=G3, angle=-V3, name=A3, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V4, spring=1, damper=1) {
+							S:Arm(option=195000, power=G4, angle=-V4, name=A4, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V5, spring=1, damper=1) {
+							S:Arm(option=195000, power=G5, angle=-V5, name=A5, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V6, spring=1, damper=1) {
+							S:Arm(option=195000, power=G6, angle=-V6, name=A6, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V7, spring=1, damper=1) {
+							S:Arm(option=195000, power=G7, angle=-V7, name=A7, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V8, spring=1, damper=1) {
+							S:Arm(option=195000, power=G8, angle=-V8, name=A8, spring=1, damper=1) { }
+						}
+						S:Frame(angle=V9, spring=1, damper=1) {
+							S:Arm(option=195000, power=G9, angle=-V9, name=A9, spring=1, damper=1) { }
+						}
+						N:Weight(angle=90) { }
+					}
+					E:Weight(angle=90, spring=1, damper=1) {
+						E:Frame(angle=V10, spring=1, damper=1) {
+							E:Arm(option=195000, power=G10, angle=-V10, name=A10, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V11, spring=1, damper=1) {
+							E:Arm(option=195000, power=G11, angle=-V11, name=A11, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V12, spring=1, damper=1) {
+							E:Arm(option=195000, power=G12, angle=-V12, name=A12, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V13, spring=1, damper=1) {
+							E:Arm(option=195000, power=G13, angle=-V13, name=A13, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V14, spring=1, damper=1) {
+							E:Arm(option=195000, power=G14, angle=-V14, name=A14, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V15, spring=1, damper=1) {
+							E:Arm(option=195000, power=G15, angle=-V15, name=A15, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V16, spring=1, damper=1) {
+							E:Arm(option=195000, power=G16, angle=-V16, name=A16, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V17, spring=1, damper=1) {
+							E:Arm(option=195000, power=G17, angle=-V17, name=A17, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V18, spring=1, damper=1) {
+							E:Arm(option=195000, power=G18, angle=-V18, name=A18, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V19, spring=1, damper=1) {
+							E:Arm(option=195000, power=G19, angle=-V19, name=A19, spring=1, damper=1) { }
+						}
+					}
+					W:Weight(angle=90, spring=1, damper=1) {
+						W:Frame(angle=V10, spring=1, damper=1) {
+							W:Arm(option=195000, power=G10, angle=-V10, name=A10, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V11, spring=1, damper=1) {
+							W:Arm(option=195000, power=G11, angle=-V11, name=A11, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V12, spring=1, damper=1) {
+							W:Arm(option=195000, power=G12, angle=-V12, name=A12, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V13, spring=1, damper=1) {
+							W:Arm(option=195000, power=G13, angle=-V13, name=A13, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V14, spring=1, damper=1) {
+							W:Arm(option=195000, power=G14, angle=-V14, name=A14, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V15, spring=1, damper=1) {
+							W:Arm(option=195000, power=G15, angle=-V15, name=A15, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V16, spring=1, damper=1) {
+							W:Arm(option=195000, power=G16, angle=-V16, name=A16, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V17, spring=1, damper=1) {
+							W:Arm(option=195000, power=G17, angle=-V17, name=A17, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V18, spring=1, damper=1) {
+							W:Arm(option=195000, power=G18, angle=-V18, name=A18, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V19, spring=1, damper=1) {
+							W:Arm(option=195000, power=G19, angle=-V19, name=A19, spring=1, damper=1) { }
+						}
+					}
+					W:Weight(angle=90, spring=1, damper=1, name=CRE) {
+						W:Frame(angle=V0, spring=1, damper=1) {
+							W:Arm(option=195000, power=G0, angle=-V0, name=A0, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V1, spring=1, damper=1) {
+							W:Arm(option=195000, power=G1, angle=-V1, name=A1, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V2, spring=1, damper=1) {
+							W:Arm(option=195000, power=G2, angle=-V2, name=A2, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V3, spring=1, damper=1) {
+							W:Arm(option=195000, power=G3, angle=-V3, name=A3, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V4, spring=1, damper=1) {
+							W:Arm(option=195000, power=G4, angle=-V4, name=A4, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V5, spring=1, damper=1) {
+							W:Arm(option=195000, power=G5, angle=-V5, name=A5, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V6, spring=1, damper=1) {
+							W:Arm(option=195000, power=G6, angle=-V6, name=A6, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V7, spring=1, damper=1) {
+							W:Arm(option=195000, power=G7, angle=-V7, name=A7, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V8, spring=1, damper=1) {
+							W:Arm(option=195000, power=G8, angle=-V8, name=A8, spring=1, damper=1) { }
+						}
+						W:Frame(angle=V9, spring=1, damper=1) {
+							W:Arm(option=195000, power=G9, angle=-V9, name=A9, spring=1, damper=1) { }
+						}
+						E:Weight(angle=90) { }
+					}
+					E:Weight(angle=90, spring=1, damper=1, name=CRE) {
+						E:Frame(angle=V0, spring=1, damper=1) {
+							E:Arm(option=195000, power=G0, angle=-V0, name=A0, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V1, spring=1, damper=1) {
+							E:Arm(option=195000, power=G1, angle=-V1, name=A1, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V2, spring=1, damper=1) {
+							E:Arm(option=195000, power=G2, angle=-V2, name=A2, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V3, spring=1, damper=1) {
+							E:Arm(option=195000, power=G3, angle=-V3, name=A3, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V4, spring=1, damper=1) {
+							E:Arm(option=195000, power=G4, angle=-V4, name=A4, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V5, spring=1, damper=1) {
+							E:Arm(option=195000, power=G5, angle=-V5, name=A5, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V6, spring=1, damper=1) {
+							E:Arm(option=195000, power=G6, angle=-V6, name=A6, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V7, spring=1, damper=1) {
+							E:Arm(option=195000, power=G7, angle=-V7, name=A7, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V8, spring=1, damper=1) {
+							E:Arm(option=195000, power=G8, angle=-V8, name=A8, spring=1, damper=1) { }
+						}
+						E:Frame(angle=V9, spring=1, damper=1) {
+							E:Arm(option=195000, power=G9, angle=-V9, name=A9, spring=1, damper=1) { }
+						}
+						W:Weight(angle=90) { }
+					}
+				}
+			}
+			N:Weight(angle=0, spring=1, damper=1, name=CRE) {
+				N:Frame(angle=V0, spring=1, damper=1) {
+					N:Arm(option=195000, power=G0, angle=-V0, name=A0, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V1, spring=1, damper=1) {
+					N:Arm(option=195000, power=G1, angle=-V1, name=A1, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V2, spring=1, damper=1) {
+					N:Arm(option=195000, power=G2, angle=-V2, name=A2, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V3, spring=1, damper=1) {
+					N:Arm(option=195000, power=G3, angle=-V3, name=A3, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V4, spring=1, damper=1) {
+					N:Arm(option=195000, power=G4, angle=-V4, name=A4, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V5, spring=1, damper=1) {
+					N:Arm(option=195000, power=G5, angle=-V5, name=A5, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V6, spring=1, damper=1) {
+					N:Arm(option=195000, power=G6, angle=-V6, name=A6, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V7, spring=1, damper=1) {
+					N:Arm(option=195000, power=G7, angle=-V7, name=A7, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V8, spring=1, damper=1) {
+					N:Arm(option=195000, power=G8, angle=-V8, name=A8, spring=1, damper=1) { }
+				}
+				N:Frame(angle=V9, spring=1, damper=1) {
+					N:Arm(option=195000, power=G9, angle=-V9, name=A9, spring=1, damper=1) { }
+				}
+				S:Weight(angle=90) { }
+			}
+		}
+		S:Frame(angle=-150) {
+			S:Jet(angle=-120, power=-GJ) { }
+		}
+		S:Weight(angle=-HV) {
+			N:Rudder(angle=HR) {
+				E:Weight(angle=65, option=0) {
+					E:Weight(angle=-45, option=0) {
+						E:Weight(angle=-20, name=JPR) {
+							S:Weight() {
+								S:Weight() {
+									S:Weight() {
+										S:Weight(angle=20) { }
+										E:Weight(angle=20) { }
+										W:Weight(angle=20) { }
+										E:Wheel(angle=WA, power=WR, brake=WB) { }
+									}
+								}
+							}
+							N:Weight() {
+								N:Weight() {
+									W:Weight(angle=20) { }
+									E:Weight(angle=20) { }
+									N:Weight(angle=20) { }
+									E:Wheel(angle=WA, power=WR, brake=WB) { }
+								}
+							}
+							W:Weight(angle=-90) {
+								S:Weight() {
+									S:Weight() {
+										S:Weight() { }
+									}
+								}
+							}
+						}
+					}
+				}
+				W:Weight(angle=65, option=0) {
+					W:Weight(angle=-45, option=0) {
+						W:Weight(angle=-20, name=JPL) {
+							N:Weight() {
+								N:Weight() {
+									E:Weight(angle=20) { }
+									W:Weight(angle=20) { }
+									N:Weight(angle=20) { }
+									W:Wheel(angle=WA, power=-WL, brake=WB) { }
+								}
+							}
+							S:Weight() {
+								S:Weight() {
+									S:Weight() {
+										S:Weight(angle=20) { }
+										E:Weight(angle=20) { }
+										W:Weight(angle=20) { }
+										W:Wheel(angle=WA, power=-WL, brake=WB) { }
+									}
+								}
+							}
+							E:Weight(angle=-90) {
+								S:Weight() {
+									S:Weight() {
+										S:Weight() { }
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Weight(angle=65, option=0) {
+					S:Weight(angle=-45, option=8) {
+						W:Weight(option=0) { }
+						E:Weight(option=0) { }
+						S:Weight(angle=-20) {
+							W:Weight() { }
+							E:Weight() { }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+function _RAMIEL3D(ex,ey,ez,llen)
+	_MOVE3D(ex, ey + llen * 1.41421356, ez)
+	_LINE3D(ex + llen, ey, ez - llen)
+	_MOVE3D(ex, ey + llen * 1.41421356, ez)
+	_LINE3D(ex - llen, ey, ez - llen)
+	_MOVE3D(ex, ey + llen * 1.41421356, ez)
+	_LINE3D(ex + llen, ey, ez + llen)
+	_MOVE3D(ex, ey + llen * 1.41421356, ez)
+	_LINE3D(ex - llen, ey, ez + llen)
+	
+	_MOVE3D(ex, ey - llen * 1.41421356, ez)
+	_LINE3D(ex + llen, ey, ez - llen)
+	_MOVE3D(ex, ey - llen * 1.41421356, ez)
+	_LINE3D(ex - llen, ey, ez - llen)
+	_MOVE3D(ex, ey - llen * 1.41421356, ez)
+	_LINE3D(ex + llen, ey, ez + llen)
+	_MOVE3D(ex, ey - llen * 1.41421356, ez)
+	_LINE3D(ex - llen, ey, ez + llen)
+	
+	_MOVE3D(ex - llen, ey, ez + llen)
+	_LINE3D(ex - llen, ey, ez - llen)
+	_MOVE3D(ex + llen, ey, ez + llen)
+	_LINE3D(ex + llen, ey, ez - llen)
+	_MOVE3D(ex - llen, ey, ez - llen)
+	_LINE3D(ex + llen, ey, ez - llen)
+	_MOVE3D(ex - llen, ey, ez + llen)
+	_LINE3D(ex + llen, ey, ez + llen)
+end
+
+function _R2D(px,py,pr)
+	return px * math.cos(pr) - py * math.sin(pr), px * math.sin(pr) - py * math.cos(pr)
+end
+
+_tn=60
+
+_tv={0,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn}
+
+_v=0
+
+_tx=0
+_ty=46
+_tz=0
+
+_md=0
+
+_wa=0
+
+function OnFrame()
+	_MOVE3D(_X(CRE),_Y(CRE),_Z(CRE))
+	_LINE3D(_X(CRE)-_ZX(CRE)*300,_Y(CRE)-_ZY(CRE)*300,_Z(CRE)-_ZZ(CRE)*300)
+	
+	local i
+	
+	for i=0,300,25 do
+		_RAMIEL3D(_X(CRE)-_ZX(CRE)*i,_Y(CRE)-_ZY(CRE)*i,_Z(CRE)-_ZZ(CRE)*i,0.3)
+	end
+	
+	out(1,string.format('%.1f%%',_E(_G['A'.._v])/200000*100))
+	
+	if _KEY(4) == 1 and _E(_G['A'.._v]) == _OPTION(_G['A'.._v]) and _G['V'.._v] == 0 then
+		_G['G'.._v]=_OPTION(_G['A'.._v])
+		GJ=_OPTION(_G['A'.._v])
+		_v=math.mod(_v+1,20)
+		_tv={_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn}
+		_tv[_v+1]=0
+	end
+	
+	if _md == 0 then
+		out(0,"Normal speed mode.")
+	else
+		out(0,"Low speed mode.")
+	end
+	
+	for i=0,19 do
+		_G['V'..i]=_LINER(_G['V'..i],_tv[i+1],_tn/2)
+	end
+	
+	if _KEYDOWN(5) == 1 then
+		if _md == 0 then _md = 1
+		else _md = 0 end
+	end
+	
+	if _KEYDOWN(14) == 1 then
+		if _wa == 0 then _wa = 50
+		else _wa = 0 end
+	end
+	
+	out(2,_FPS())
+
+	WA=_LINER(WA,_wa,5)
+	
+	WL=_LINER(WL,(_KEY(9)-_KEY(7)+_KEY(15)-_KEY(8))*20000,5000)
+	WR=_LINER(WR,(_KEY(7)-_KEY(9)+_KEY(15)-_KEY(8))*20000,5000)
+
+	if WL == 0 and WR == 0 then
+		WB = 500
+	else
+		WB = 0
+	end
+	
+	if _KEY(0) == 1 then
+		HV = HV + (0.5 - 0.375 * _md)
+	end
+	
+	if _KEY(1) == 1 then
+		HV = HV - (0.5 - 0.375 * _md)
+	end
+	
+	if _KEY(2) == 1 then
+		HR = HR + (0.5 - 0.375 * _md)
+	end
+	
+	if _KEY(3) == 1 then
+		HR = HR - (0.5 - 0.375 * _md)
+	end
+end
+}

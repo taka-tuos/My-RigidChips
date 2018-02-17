@@ -1,0 +1,58 @@
+// [RCD] 
+Val
+{
+	BRAKE(default=0, max=32, step=16)
+	ENGINE(default=0, min=-8192, max=32768, step=1024)
+	HANDLE(default=0, min=-24, max=24, step=8)
+}
+Key
+{
+	0:ENGINE(step=1024)
+	1:ENGINE(step=-1024)
+	2:HANDLE(step=-8)
+	3:HANDLE(step=8)
+	4:BRAKE(step=8)
+}
+Body
+{
+	Core() {
+		N:Frame(angle=-35) {
+			N:Chip(angle=35) {
+				N:Chip(angle=35) {
+					E:Chip() { }
+					W:Chip() { }
+				}
+				W:Frame() {
+					W:RudderF(angle=HANDLE, option=1) {
+						E:RLW(angle=90, power=ENGINE, brake=BRAKE, effect=3) { }
+					}
+				}
+				E:Frame() {
+					E:RudderF(angle=HANDLE, option=1) {
+						W:RLW(angle=90, power=-ENGINE, brake=BRAKE, effect=3) { }
+					}
+				}
+			}
+			E:Frame(option=4) { }
+			W:Frame(option=4) { }
+		}
+		S:Frame(angle=-35) {
+			S:Chip(angle=35) {
+				W:Frame() {
+					W:RLW(angle=90, power=-ENGINE, brake=BRAKE, effect=3) { }
+				}
+				E:Frame() {
+					E:RLW(angle=90, power=ENGINE, brake=BRAKE, effect=3) { }
+				}
+				S:Chip(angle=-35) {
+					E:Chip() { }
+					W:Chip() { }
+				}
+			}
+			W:Frame() { }
+			E:Frame() { }
+		}
+		E:Chip() { }
+		W:Chip() { }
+	}
+}

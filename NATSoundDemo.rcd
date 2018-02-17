@@ -1,0 +1,65 @@
+Val
+{
+}
+Key
+{
+}
+Body {
+	Core(){
+		
+	}
+}
+Lua
+{
+loadlib("NATSound.dll", "Load")();
+SinSound = LoadSinSound(2, 440);
+BeepSound = LoadBeepSound(.1, 1000);
+NoiseSound = LoadWhiteNoiseSound(5);
+WaveSound = LoadSound("material/sample/gun.wav");
+MP3Sound = LoadSound("material/sample/mecha.mp3");
+IDTable = {SinSound, BeepSound, NoiseSound, WaveSound,MP3Sound};
+IDPos = 1;
+CurrentID = IDTable[IDPos];
+function main()
+	if _KEYDOWN(4) > 0 then
+		SetLoop(CurrentID, 1);
+		Play(CurrentID);
+	elseif _KEYDOWN(5) > 0 then
+		Pause(CurrentID);
+	elseif _KEYDOWN(7) > 0 then
+		SetPlaySpeed(CurrentID, 0.5);
+	elseif _KEYDOWN(8) > 0 then
+		SetPlaySpeed(CurrentID, 1);
+	elseif _KEYDOWN(9) > 0 then
+		SetPlaySpeed(CurrentID, 2);
+	end
+	if IsValidID(CurrentID) == 1 then
+		SetVolume(CurrentID,GetVolume(CurrentID) + (_KEY(0)-_KEY(1))*10);
+		SetPan(CurrentID,GetPan(CurrentID) + (_KEY(2)-_KEY(3))*-10);
+		out(6, string.format("Playing #%d(\"%s\")", CurrentID, GetWaveFileName(CurrentID)));
+		out(7, string.format("PlaySpeed = x%.1f", GetPlaySpeed(CurrentID)));
+		out(8, string.format("Volume = %.2f[db]", GetVolume(CurrentID)/100));
+		out(9, string.format("Pan = %d", GetPan(CurrentID)));		
+	end
+	IDPos = IDPos + (_KEYDOWN(15)-_KEYDOWN(14));
+	if IDPos == 0 then
+		IDPos = table.getn(IDTable);
+	elseif IDPos > table.getn(IDTable) then
+		IDPos = 1;
+	end
+	CurrentID = IDTable[IDPos];
+	
+	out(0, "[z] play [x] pause [asd] change speed");
+	out(1, "[q] prev slot [w] next slot");	
+	out(2, "arrow pan/volume");
+	out(3, string.format("%d[KiB] memory used", GetMemorySize()));
+	out(4, string.format("version = %.2f", NATSOUND_VERSION));
+	local line = 11;
+	for i = 0, 32 do
+		if IsValidID(i) == 1 then
+			out(line, string.format("#%d = \"%s\"", i, GetWaveFileName(i)));
+			line = line + 1;
+		end
+	end
+end
+}

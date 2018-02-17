@@ -1,0 +1,165 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=1000000)
+	P(default=0, min=-1000000, max=1000000)
+	S1(default=0, min=-90, max=90)
+	S2(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Chip(angle=0, option=16) {
+			N:Chip() {
+				W:Frame() {
+					W:Chip(angle=-90) {
+						S:Wheel(angle=-S1, power=P, brake=B, option=1, effect=4) { }
+					}
+					N:Chip(angle=-160) {
+						N:Chip(angle=5) { }
+					}
+					S:Chip(angle=-15) { }
+				}
+				E:Frame() {
+					E:Chip(angle=-90) {
+						S:Wheel(angle=S2, power=-P, brake=B, option=1, effect=4) { }
+					}
+					N:Chip(angle=-160) {
+						N:Chip(angle=5) { }
+					}
+					S:Chip(angle=-15) { }
+				}
+				W:Chip(angle=-90) {
+					W:Chip(angle=90) {
+						S:Chip(angle=-20) {
+							E:Chip(angle=5) { }
+						}
+					}
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+				E:Chip(angle=-90) {
+					E:Chip(angle=90) {
+						S:Chip(angle=-20) {
+							W:Chip(angle=5) { }
+						}
+					}
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+			}
+		}
+		S:Chip(option=4) {
+			E:Cowl() {
+				E:Cowl(angle=-90) { }
+			}
+			W:Cowl() {
+				W:Cowl(angle=-90) { }
+			}
+			S:Chip(option=4) {
+				S:Chip() {
+					S:Chip() {
+						W:Cowl(angle=0) {
+							W:Cowl(angle=-90) {
+								W:Cowl() { }
+							}
+						}
+						E:Cowl() {
+							E:Cowl(angle=-90) {
+								E:Cowl() { }
+							}
+						}
+					}
+					E:Chip(angle=-90) {
+						E:Chip(angle=90) {
+							S:Chip(angle=-20) {
+								W:Chip(angle=5) { }
+							}
+						}
+						N:Chip() { }
+					}
+					W:Chip(angle=-90) {
+						W:Chip(angle=90) {
+							S:Chip(angle=-20) {
+								E:Chip(angle=5) { }
+							}
+						}
+						N:Chip() { }
+					}
+				}
+				E:Frame() {
+					E:Chip(angle=-90) {
+						S:Wheel(power=-P, brake=B, option=1, effect=4) { }
+					}
+				}
+				W:Frame() {
+					W:Chip(angle=-90) {
+						S:Wheel(power=P, brake=B, option=1, effect=4) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function mvval(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+T=0.6*3
+W=0.6*4
+
+S=0
+
+function OnFrame()
+	out(1,"X",_X()," Y",_Y()," Z",_Z())
+	out(0,_WEIGHT()," kg")
+	out(2,_VEL(0)*3.6)
+	out(3,_FPS())
+	_ZOOM(60)
+	out(4,_VERSION)
+
+	P=mvval(P,32000*_KEY(0)+12500*-_KEY(1),3000)  --ÊßÜ°@MAX10k
+	B=mvval(B,100*_KEY(4),50)                      --ÌÞÚ°·@–³§ŒÀ
+	S=mvval(S,30*-_KEY(3)+30*_KEY(2),4)            --½Ã±ØÝ¸Þ@-30`+30
+	
+	RO=W/math.tan(math.rad(math.abs(S)))
+	
+	S1=math.rad(S)
+	S2=math.rad(S)
+	
+	if S>0 then
+		S2=math.atan(W/RO)
+		S1=math.atan(W/(RO-T))
+	end
+	
+	if S<0 then
+		S1=-math.atan(W/RO)
+		S2=-math.atan(W/(RO-T))
+	end
+	
+	S1=math.deg(S1)
+	S2=math.deg(S2)
+end
+}

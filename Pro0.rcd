@@ -1,0 +1,64 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=300, step=100)
+	P(default=0, min=-4000, max=5000, step=2500)
+	S(default=0, min=-24, max=24, step=8)
+}
+Key
+{
+	0:P(step=1000)
+	1:P(step=-1000)
+	2:S(step=-8)
+	3:S(step=8)
+	4:B(step=100)
+}
+Body
+{
+	Core() {
+		E:Frame() {
+			N:Frame(angle=-20, spring=0.1) {
+				N:RudderF(angle=S) {
+					W:Frame(angle=90.00000000000000000000000000000000000000000000000000000000000000005, option=1) { }
+					N:Frame(angle=-160) {
+						E:Wheel(angle=-90, power=-P, brake=B, effect=4) { }
+					}
+					W:Frame(angle=90, option=1) {
+						E:Rudder(angle=90) { }
+					}
+				}
+			}
+			S:Frame(angle=-20, spring=0.1) {
+				E:Wheel(angle=90, power=P, brake=B, effect=4) { }
+			}
+		}
+		N:Chip() { }
+		W:Frame() {
+			N:Frame(angle=-20, spring=0.1) {
+				N:RudderF(angle=S) {
+					E:Frame(angle=90.00000000000000000000000000000000000000000000000000000000000000005, option=1) { }
+					N:Frame(angle=-160) {
+						W:Wheel(angle=-90, power=P, brake=B, effect=4) { }
+					}
+					E:Frame(angle=90, option=1) {
+						W:Rudder(angle=-90) { }
+					}
+				}
+			}
+			S:Frame(angle=-20, spring=0.1) {
+				W:Wheel(angle=90, power=-P, brake=B, effect=4) { }
+			}
+		}
+		S:Trim(angle=-90, option=1) {
+			N:Rudder(angle=-10) { }
+		}
+		N:Frame(angle=-35) {
+			N:Chip(angle=45) {
+				E:Cowl(option=5) { }
+				W:Cowl(option=5) { }
+			}
+		}
+		S:Chip(angle=-15) { }
+		S:Frame() { }
+	}
+}

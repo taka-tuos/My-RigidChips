@@ -1,0 +1,22 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() { }
+}
+Lua
+{fn = 0
+
+function OnFrame()
+	f = io.open("write.txt", "w")
+	if fn < 60 then
+		f:write(string.format("%f %f %f",_X(3),_Y(3),_Z(3)))
+	end
+	f:flush()
+	fn = fn + 1
+end}

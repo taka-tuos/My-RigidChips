@@ -1,0 +1,110 @@
+// [RCD] 
+Val
+{
+	BRAKE(default=0, max=64, step=8)
+	ENGINE(default=0, min=-1250, max=25000, step=500)
+	HANDLE(default=0, min=-24, max=24, step=4)
+	JET(default=0, min=-10000, max=60000, step=10000)
+}
+Key
+{
+	0:ENGINE(step=1000)
+	1:ENGINE(step=-100)
+	2:HANDLE(step=-4)
+	3:HANDLE(step=4)
+	4:BRAKE(step=8)
+	14:JET(step=1000)
+}
+Body
+{
+	Core() {
+		E:Chip() {
+			W:Cowl(angle=20) {
+				W:Cowl(angle=-110) {
+					N:Cowl(option=4) {
+						W:Cowl(option=4, color=#000000) { }
+					}
+					S:Cowl(option=3) {
+						W:Cowl(option=3, color=#000000) { }
+					}
+					W:Cowl(color=#000000) {
+						W:Cowl(angle=-90) {
+							S:Cowl(angle=-45, color=#000000) { }
+							N:Cowl(angle=-45, color=#000000) { }
+						}
+					}
+				}
+			}
+			S:Chip(angle=-45, spring=0.6) {
+				S:Frame(angle=160) {
+					E:Wheel(angle=-90, power=-ENGINE, option=0, effect=2) { }
+					S:Chip(angle=-135) { }
+				}
+				S:Cowl(angle=45) {
+					S:Cowl(angle=90) { }
+				}
+			}
+			N:Chip(angle=20) {
+				N:Frame(angle=-20, option=1) {
+					N:Chip(angle=-160) { }
+				}
+			}
+			N:Frame(angle=-45) {
+				N:Frame(angle=160, damper=0.4) {
+					E:Frame(angle=90, option=1) {
+						W:Wheel(angle=-HANDLE, power=ENGINE, effect=2) { }
+					}
+				}
+				N:Cowl(angle=60) {
+					N:Cowl(angle=40) { }
+				}
+			}
+			W:Frame(angle=-100) {
+				N:Chip(angle=-HANDLE) { }
+			}
+		}
+		E:Cowl(angle=20) {
+			E:Cowl(angle=-110) {
+				S:Cowl(option=4) {
+					E:Cowl(option=4, color=#000000) { }
+				}
+				N:Cowl(option=3) {
+					E:Cowl(option=3, color=#000000) { }
+				}
+				E:Cowl(color=#000000) {
+					E:Cowl(angle=-90) {
+						S:Cowl(angle=-45, color=#000000) { }
+						N:Cowl(angle=-45, color=#000000) { }
+					}
+				}
+			}
+		}
+		S:Chip(angle=-45, spring=0.6) {
+			S:Frame(angle=160) {
+				W:Wheel(angle=-90, power=ENGINE, effect=2) { }
+				S:Chip(angle=-135) { }
+			}
+			S:Cowl(angle=45) {
+				S:Cowl(angle=90) { }
+			}
+		}
+		N:Chip(angle=20) {
+			N:Frame(angle=-20, option=1) {
+				N:Chip(angle=-160) { }
+			}
+		}
+		N:Frame(angle=-45) {
+			N:Cowl(angle=60) {
+				N:Cowl(angle=40) { }
+			}
+			N:Frame(angle=160, spring=0.4) {
+				W:Frame(angle=90, option=1) {
+					E:Wheel(angle=HANDLE, power=-ENGINE, effect=2) { }
+				}
+			}
+		}
+		E:Frame(angle=-100) {
+			N:Chip(angle=HANDLE) { }
+		}
+	}
+}

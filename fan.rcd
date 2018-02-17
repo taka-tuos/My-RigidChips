@@ -1,0 +1,177 @@
+// [RCD] 
+Val
+{
+	VAR(default=0, max=262144, step=65536)
+}
+Key
+{
+	0:VAR(step=65536)
+}
+Body
+{
+	Core(color=#202020) {
+		N:Frame(angle=-90) {
+			N:RLW(angle=-90, power=VAR, option=2, color=#202020, effect=4) {
+				S:RudderF(angle=-90, option=1) {
+					S:RudderF(angle=90, option=1) {
+						S:Trim(angle=55, color=#202020) {
+							N:Chip(color=#202020) { }
+						}
+					}
+					W:RudderF(angle=55, option=1) {
+						W:Trim(angle=55, color=#202020) {
+							E:Chip(color=#202020) { }
+						}
+					}
+				}
+				N:RudderF(angle=-90, option=1) {
+					N:RudderF(angle=90, option=1) {
+						N:Trim(angle=55, color=#202020) {
+							S:Chip(color=#202020) { }
+						}
+					}
+					E:RudderF(angle=55, option=1) {
+						E:Trim(angle=55, color=#202020) {
+							W:Chip(color=#202020) { }
+						}
+					}
+				}
+				W:RudderF(angle=-90, option=1) {
+					W:RudderF(angle=90, option=1) {
+						W:Trim(angle=55, color=#202020) {
+							E:Chip(color=#202020) { }
+						}
+					}
+					N:RudderF(angle=55, option=1) {
+						N:Trim(angle=55, color=#202020) {
+							S:Chip(color=#202020) { }
+						}
+					}
+				}
+				E:RudderF(angle=-90, option=1) {
+					E:RudderF(angle=90, option=1) {
+						E:Trim(angle=55, color=#202020) {
+							W:Chip(color=#202020) { }
+						}
+					}
+					S:RudderF(angle=55, option=1) {
+						S:Trim(angle=55, color=#202020) {
+							N:Chip(color=#202020) { }
+						}
+					}
+				}
+			}
+		}
+		E:Chip(color=#202020) {
+			E:Chip(color=#202020) {
+				E:Cowl(angle=-90, color=#202020) {
+					N:Cowl(color=#202020) {
+						N:Cowl(color=#202020) {
+							E:Cowl(color=#202020) {
+								S:Cowl(color=#202020) { }
+							}
+						}
+					}
+					S:Cowl(color=#202020) {
+						S:Cowl(color=#202020) {
+							E:Cowl(color=#202020) {
+								N:Cowl(color=#202020) { }
+							}
+						}
+					}
+					E:Cowl(color=#202020) {
+						E:Cowl(angle=-90, color=#202020) {
+							E:Cowl(color=#202020) {
+								E:Cowl(option=3, color=#0080FF) { }
+							}
+						}
+					}
+				}
+			}
+		}
+		S:Chip(color=#202020) {
+			S:Chip(color=#202020) {
+				S:Cowl(angle=-90, color=#202020) {
+					E:Cowl(color=#202020) {
+						E:Cowl(color=#202020) {
+							S:Cowl(color=#202020) {
+								W:Cowl(color=#202020) { }
+								S:Cowl(angle=-90, option=4, color=#202020) { }
+							}
+							N:Cowl(angle=-90, option=3, color=#202020) { }
+						}
+					}
+					W:Cowl(color=#202020) {
+						W:Cowl(color=#202020) {
+							S:Cowl(color=#202020) {
+								E:Cowl(color=#202020) { }
+								S:Cowl(angle=-90, option=3, color=#202020) { }
+							}
+						}
+					}
+					S:Cowl(color=#202020) {
+						S:Cowl(angle=-90, color=#202020) {
+							S:Cowl(color=#202020) { }
+						}
+					}
+				}
+			}
+		}
+		W:Chip(color=#202020) {
+			W:Chip(color=#202020) {
+				W:Cowl(angle=-90, color=#202020) {
+					S:Cowl(color=#202020) {
+						S:Cowl(color=#202020) {
+							E:Cowl(angle=-90, option=3, color=#202020) { }
+							W:Cowl(color=#202020) {
+								N:Cowl(color=#202020) { }
+							}
+						}
+					}
+					N:Cowl(color=#202020) {
+						N:Cowl(color=#202020) {
+							W:Cowl(color=#202020) {
+								S:Cowl(color=#202020) { }
+								W:Cowl(angle=-90, option=3, color=#202020) { }
+							}
+						}
+					}
+					W:Cowl(color=#202020) {
+						W:Cowl(angle=-90, color=#202020) {
+							W:Cowl(color=#202020) { }
+						}
+					}
+				}
+			}
+		}
+		N:Chip(color=#202020) {
+			N:Chip(color=#202020) {
+				N:Cowl(angle=-90, color=#202020) {
+					W:Cowl(color=#202020) {
+						W:Cowl(color=#202020) {
+							S:Cowl(angle=-90, option=3, color=#202020) { }
+							N:Cowl(color=#202020) {
+								E:Cowl(color=#202020) { }
+							}
+						}
+					}
+					E:Cowl(color=#202020) {
+						E:Cowl(color=#202020) {
+							N:Cowl(color=#202020) {
+								W:Cowl(color=#202020) { }
+							}
+							S:Cowl(angle=-90, option=4, color=#202020) { }
+						}
+					}
+					N:Cowl(color=#202020) {
+						N:Cowl(angle=-90, color=#202020) {
+							N:Cowl(color=#202020) {
+								N:Cowl(option=4) { }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

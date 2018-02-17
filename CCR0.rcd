@@ -1,0 +1,201 @@
+// [RCD] 
+Val
+{
+	BR(default=4194304, min=4194304, max=16711680, step=2097152)
+	BRAKE(default=0, max=200, step=50)
+	ENGINE(default=0, min=-9000, max=15000, step=4000)
+	HANDLE(default=-180, min=-210, max=-150, step=4)
+}
+Key
+{
+	0:ENGINE(step=2048)
+	1:ENGINE(step=-2048)
+	2:HANDLE(step=4)
+	3:HANDLE(step=-4)
+	4:BRAKE(step=64)
+}
+Body
+{
+	Core() {
+		N:Frame(angle=160, option=1) {
+			N:Frame(angle=-160, option=1) {
+				N:Frame(angle=90, option=1) {
+					N:Weight(angle=-90, color=#404040) {
+						S:Chip(color=#404040) {
+							S:Chip(color=#404040) {
+								W:Chip(angle=-89, color=#404040) {
+									S:Chip(color=#404040) { }
+								}
+								E:Chip(angle=-89, color=#404040) {
+									S:Chip(color=#404040) { }
+								}
+								S:Frame(angle=-90) { }
+								S:Chip(angle=0, color=#404040) {
+									W:Chip(angle=-70, color=#404040) {
+										S:Chip(color=#404040) { }
+									}
+									E:Chip(angle=-70, color=#404040) {
+										S:Chip(color=#404040) { }
+									}
+									W:RudderF(angle=0) {
+										W:Wheel(angle=-90, power=ENGINE, brake=BRAKE, option=1, effect=4) { }
+										N:Chip(angle=-160, color=#404040) { }
+									}
+									E:RudderF(angle=0) {
+										N:Chip(angle=-160, color=#404040) { }
+										E:Wheel(angle=-90, power=-ENGINE, brake=BRAKE, option=1, effect=4) { }
+									}
+									S:Cowl(color=0) {
+										E:Cowl(color=0) {
+											E:Cowl(angle=-90, color=#FFFFFF) {
+												E:Cowl(color=0) {
+													E:Cowl(angle=-90, color=0) {
+														E:Cowl(color=0) { }
+													}
+												}
+											}
+										}
+										W:Cowl(color=0) {
+											W:Cowl(angle=-90, color=#FFFFFF) {
+												W:Cowl(color=0) {
+													W:Cowl(angle=-90, color=0) {
+														W:Cowl(color=0) { }
+													}
+												}
+											}
+										}
+									}
+								}
+								W:Cowl(color=#000000) { }
+								E:Cowl(color=#000000) { }
+							}
+							W:Cowl(angle=-170) {
+								W:Cowl(angle=60) {
+									W:Cowl(angle=-70, color=#FFFFFF) {
+										N:Cowl(color=#FFFFFF) { }
+										S:Cowl(color=#FFFFFF) { }
+										W:Cowl(angle=-90, option=3, color=#FF8000) {
+											S:Cowl(color=#FFFFFF) { }
+											N:Cowl(angle=0, color=#FFFFFF) { }
+											W:Cowl(angle=-75, color=#000000) {
+												S:Cowl(color=#000000) { }
+												N:Cowl(color=#000000) { }
+												E:Cowl(angle=-100) {
+													E:Cowl(angle=-2.5, color=#000000, effect=#70FB) {
+														S:Cowl(angle=-30, option=3, color=#FFFFFF) { }
+														N:Cowl(angle=-30, option=4, color=#FFFFFF) { }
+														E:Cowl(angle=-62.85, color=#FFFFFF) {
+															N:Cowl(angle=-50, option=0, color=#000000, effect=#70FB) {
+																N:Cowl(angle=45, color=#FFFFFF) {
+																	N:Cowl(angle=-10, color=#FFFFFF) {
+																		N:Cowl(angle=-30, color=#FFFFFF) {
+																			W:Cowl(option=4, color=#FFFF00) { }
+																		}
+																	}
+																}
+															}
+															S:Cowl(angle=-50, color=#000000) {
+																S:Cowl(angle=50, color=#FFFFFF) {
+																	S:Cowl(color=#FFFFFF) {
+																		S:Cowl(angle=-60, color=#FFFFFF) {
+																			S:Cowl(angle=-100, color=#000000) { }
+																			W:Cowl(angle=-50, option=3, color=BR, effect=#0FFB) { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+											W:Cowl(angle=180, option=4, color=#0000FF) { }
+										}
+									}
+								}
+							}
+							E:Cowl(angle=-170) {
+								E:Cowl(angle=60) {
+									E:Cowl(angle=-70, color=#FFFFFF) {
+										N:Cowl(color=#FFFFFF) { }
+										S:Cowl(color=#FFFFFF) { }
+										E:Cowl(angle=-90, option=3, color=#FF8000) {
+											N:Cowl(color=#FFFFFF) { }
+											S:Cowl(color=#FFFFFF) { }
+											E:Cowl(angle=-75, color=#000000) {
+												N:Cowl(color=#000000) { }
+												S:Cowl(color=#000000) { }
+												W:Cowl(angle=-100) {
+													W:Cowl(angle=-2.5, color=#000000, effect=#70FB) {
+														S:Cowl(angle=-30, option=4, color=#FFFFFF) { }
+														N:Cowl(angle=-30, option=3, color=#FFFFFF) { }
+														W:Cowl(angle=-62.5, color=#0000FF) {
+															N:Cowl(angle=-50, color=#000000, effect=#70FB) {
+																N:Cowl(angle=45, color=#0000FF) {
+																	N:Cowl(angle=-10, color=#0000FF) {
+																		N:Cowl(angle=-30, color=#0000FF) {
+																			E:Cowl(option=3, color=#FFFF00) { }
+																		}
+																	}
+																}
+															}
+															S:Cowl(angle=-50, color=#000000) {
+																S:Cowl(angle=50, color=#0000FF) {
+																	S:Cowl(color=#0000FF) {
+																		S:Cowl(angle=-60, option=3, color=#FF8000) {
+																			E:Cowl(angle=-50, option=4, color=BR, effect=#0FFB) { }
+																			S:Cowl(angle=180, option=4, color=#0000FF) { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+											E:Cowl(angle=180, option=4, color=#0000FF) { }
+										}
+									}
+								}
+							}
+							W:Cowl(color=#000000) { }
+							E:Cowl(color=#000000) { }
+						}
+						N:Weight(angle=0, color=#404040) {
+							W:RudderF(angle=0) {
+								W:RudderF(angle=-HANDLE, option=0) {
+									E:Wheel(angle=-90, power=ENGINE, brake=BRAKE, option=1, effect=4) { }
+									W:Chip(angle=-89, color=#404040) {
+										N:Chip(color=#404040) { }
+									}
+								}
+								N:Chip(angle=-160, color=#404040) { }
+							}
+							E:RudderF(angle=0) {
+								E:RudderF(angle=-HANDLE) {
+									W:Wheel(angle=-90, power=-ENGINE, brake=BRAKE, option=1, effect=4) { }
+									E:Chip(angle=-89, color=#404040) {
+										N:Chip(color=#404040) { }
+									}
+								}
+								N:Chip(angle=-160, color=#404040) { }
+							}
+							N:Cowl(color=0) {
+								E:Cowl(color=0) {
+									E:Cowl(angle=-90, option=3, color=#FFFFFF) { }
+								}
+								W:Cowl(color=0) {
+									W:Cowl(angle=-90, option=4, color=#FFFFFF) { }
+								}
+							}
+						}
+						S:Cowl(angle=-45, color=#404040) {
+							S:Cowl(angle=-30, option=5, color=#404040) { }
+						}
+						W:Cowl(color=#000000) { }
+						E:Cowl(color=#000000) { }
+					}
+				}
+			}
+		}
+	}
+}

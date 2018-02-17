@@ -1,0 +1,208 @@
+// [RCD] plane
+Val
+{
+	BRAKE(default=0, max=100, step=100)
+	JET(default=0, min=-35000, max=35000, step=2000)
+	L(default=0, min=-10, max=20, step=8)
+	R(default=0, min=-10, max=20, step=8)
+}
+Key
+{
+	0:L(step=-0.5), R(step=-0.5)
+	1:L(step=0.5), R(step=0.5)
+	2:L(step=0.5)
+	3:R(step=0.5)
+	4:Jet(step=100000)
+	5:Brake(step=10)
+	7:Jet(step=-1000)
+}
+Body
+{
+	Core() {
+		N:Frame(angle=-30) {
+			N:Jet(angle=120, power=Jet, color=#ffff) { }
+		}
+		W:Chip(angle=0) {
+			W:Trim(angle=-R) {
+				W:Chip(angle=0) {
+					W:Chip(angle=0, color=#ff) {
+						W:Chip() {
+							W:Chip() {
+								W:Chip() {
+									W:Chip(angle=-45) {
+										S:Chip() {
+											S:Chip() {
+												S:Chip() { }
+											}
+										}
+									}
+									S:Chip() {
+										S:Chip() {
+											S:Chip() { }
+										}
+									}
+								}
+								S:Chip() {
+									S:Chip() {
+										S:Chip() { }
+									}
+								}
+							}
+							S:Chip() {
+								S:Chip() {
+									S:Chip() { }
+								}
+							}
+						}
+						S:Chip() {
+							S:Chip() {
+								S:Chip() { }
+							}
+						}
+					}
+					S:Chip() {
+						S:Chip() {
+							S:Chip() { }
+							W:RLW(angle=90, power=-Jet, brake=Brake) { }
+						}
+					}
+				}
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+					W:RLW(angle=90, power=-Jet, brake=Brake) { }
+				}
+			}
+			W:RLW(angle=90, power=-Jet, brake=Brake) { }
+		}
+		E:Chip(angle=0) {
+			E:Trim(angle=L) {
+				E:Chip(angle=0) {
+					E:Chip(angle=0, color=#ff) {
+						E:Chip() {
+							E:Chip() {
+								E:Chip() {
+									E:Chip(angle=-45) {
+										S:Chip() {
+											S:Chip() {
+												S:Chip() { }
+											}
+										}
+									}
+									S:Chip() {
+										S:Chip() {
+											S:Chip() { }
+										}
+									}
+								}
+								S:Chip() {
+									S:Chip() {
+										S:Chip() { }
+									}
+								}
+							}
+							S:Chip() {
+								S:Chip() {
+									S:Chip() { }
+								}
+							}
+						}
+						S:Chip() {
+							S:Chip() {
+								S:Chip() { }
+							}
+						}
+					}
+					S:Chip() {
+						S:Chip() {
+							S:Chip() { }
+							E:RLW(angle=90, power=Jet, brake=Brake) { }
+						}
+					}
+				}
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+					E:RLW(angle=90, power=Jet, brake=Brake) { }
+				}
+			}
+			E:RLW(angle=90, power=Jet, brake=Brake) { }
+		}
+		S:Chip() {
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						W:Chip(angle=-45) {
+							S:Chip() {
+								S:Chip() { }
+							}
+							W:Chip(angle=-45) {
+								S:Chip() {
+									S:Chip() { }
+								}
+								N:Chip() { }
+							}
+						}
+						E:Chip(angle=-45) {
+							S:Chip() {
+								S:Chip() { }
+							}
+							E:Chip(angle=-45) {
+								S:Chip() {
+									S:Chip() { }
+								}
+								N:Chip() { }
+							}
+						}
+						E:Chip() {
+							E:Chip() {
+								S:Chip() {
+									S:Chip() { }
+								}
+							}
+							S:Chip() {
+								S:Chip() {
+									E:RLW(angle=90, power=Jet, brake=Brake) { }
+								}
+								E:RLW(angle=90, power=Jet, brake=Brake) { }
+							}
+							E:RLW(angle=90, power=Jet, brake=Brake) { }
+						}
+						W:Chip() {
+							W:Chip() {
+								S:Chip() {
+									S:Chip() { }
+								}
+							}
+							S:Chip() {
+								S:Chip() {
+									W:RLW(angle=90, power=-Jet, brake=Brake) { }
+								}
+								W:RLW(angle=90, power=-Jet, brake=Brake) { }
+							}
+							W:RLW(angle=90, power=-Jet, brake=Brake) { }
+						}
+						S:Weight(option=1) {
+							S:Weight() { }
+						}
+					}
+				}
+				W:Weight() { }
+				E:Weight() { }
+			}
+		}
+	}
+}
+Script
+{
+	print 0,"Welcome to Rigid-Chips World."
+	print 1,"  FPS=",_FPS(),"  Chips=",_CHIPS(),"  Weight=",_WEIGHT()
+	print 2,"  Width=",_WIDTH(),"  Height=",_HEIGHT()
+	print 3,"  Faces=",_FACE()
+	print 4,"  Vel=",_VEL()
+	print 5,"  R=",_RED(32,32)
+	print 6,"  G=",_GREEN(32,32)
+	print 7,"  B=",_BLUE(32,32)
+}

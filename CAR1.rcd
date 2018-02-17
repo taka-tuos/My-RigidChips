@@ -1,0 +1,67 @@
+// [RCD] 
+Val
+{
+	ELON(default=0, min=-12, max=12, step=4)
+	ENGINE(default=0, max=307200, step=65536)
+	EVTR(default=0, min=-16, max=16, step=4)
+	GUN1(default=0, max=409600, step=65536)
+	GUN2(default=0, max=65536, step=65536)
+	GUN3(default=0, max=65536, step=65536)
+	GUN4(default=0, max=65536, step=65536)
+}
+Key
+{
+	0:EVTR(step=4)
+	1:EVTR(step=-4)
+	2:ELON(step=4)
+	3:ELON(step=-4)
+	4:ENGINE(step=65536)
+}
+Body
+{
+	Core() {
+		S:Weight(option=1) {
+			S:Frame() {
+				S:Frame() {
+					S:Frame() {
+						S:Frame() {
+							S:Frame() {
+								E:Trim(angle=EVTR) { }
+								W:Trim(angle=-EVTR) { }
+							}
+							N:TrimF(angle=-90, option=1) {
+								S:Rudder(angle=-90) {
+									W:Chip() { }
+								}
+							}
+						}
+					}
+				}
+			}
+			W:Trim(angle=ELON) {
+				W:Chip() {
+					W:Chip() {
+						S:Chip() {
+							W:Cowl(option=3) { }
+						}
+						W:Cowl() { }
+					}
+					S:Chip() { }
+				}
+				S:Chip() { }
+			}
+			E:Trim(angle=ELON) {
+				E:Chip() {
+					E:Chip() {
+						S:Chip() {
+							E:Cowl(option=4) { }
+						}
+						E:Cowl() { }
+					}
+					S:Chip() { }
+				}
+				S:Chip() { }
+			}
+		}
+	}
+}

@@ -1,0 +1,262 @@
+// [RCD] 
+Val
+{
+	BRAKE(default=0, max=512, step=512)
+	G1(default=0, max=16777216, step=16777216)
+	G2(default=0, max=16777216, step=16777216)
+	G3(default=0, max=16777216, step=16777216)
+	G4(default=0, max=16777216, step=16777216)
+	GJ(default=0, max=16777216, step=16777216)
+	LT(default=0, min=-32768, max=32768, step=16384)
+	RT(default=0, min=-32768, max=32768, step=16384)
+	V1(default=0, max=90)
+	V2(default=0, max=90)
+	V3(default=0, max=90)
+	V4(default=0, max=90)
+}
+Key
+{
+	0:LT(step=256), RT(step=256)
+	1:RT(step=-256), LT(step=-256)
+	2:LT(step=256), RT(step=-256)
+	3:RT(step=256), LT(step=-256)
+	6:BRAKE(step=262144)
+}
+Body
+{
+	Core() {
+		W:Weight(angle=-130) {
+			W:Weight(angle=-50) {
+				W:Wheel(angle=-90, power=-LT, brake=BRAKE, effect=4) { }
+			}
+		}
+		E:Weight(angle=-130) {
+			E:Weight(angle=-50) {
+				E:Wheel(angle=-90, power=RT, brake=BRAKE, effect=4) { }
+			}
+		}
+		N:Chip(option=0) {
+			E:Weight(angle=-130) {
+				E:Weight(angle=-50) {
+					E:Wheel(angle=-90, power=RT, brake=BRAKE, effect=4) { }
+				}
+			}
+			W:Weight(angle=-130) {
+				W:Weight(angle=-50) {
+					W:Wheel(angle=-90, power=-LT, brake=BRAKE, effect=4) { }
+				}
+			}
+		}
+		S:Chip(option=0) {
+			E:Weight(angle=-130) {
+				E:Weight(angle=-50) {
+					E:Wheel(angle=-90, power=RT, brake=BRAKE, effect=4) { }
+				}
+			}
+			W:Weight(angle=-130) {
+				W:Weight(angle=-50) {
+					W:Wheel(angle=-90, power=-LT, brake=BRAKE, effect=4) { }
+				}
+			}
+			N:Weight(angle=-90) {
+				N:Frame(angle=25) {
+					N:Frame(angle=-180) {
+						S:Weight(angle=115, name=D1) {
+							N:Arm(angle=V1, power=G1, option=3200000, name=A1) { }
+							N:Arm(angle=V2, power=G2, option=3200000, name=A2) { }
+							N:Arm(angle=V3, power=G3, option=3200000, name=A3) { }
+							N:Arm(angle=V4, power=G4, option=3200000, name=A4) { }
+							N:Cowl() {
+								N:Cowl() { }
+							}
+							N:Frame(angle=-150) {
+								N:Jet(angle=-120, power=GJ) { }
+							}
+						}
+					}
+				}
+				N:Jet(angle=45, power=200, option=2) { }
+				N:Weight(angle=-90, option=2) {
+					W:Weight(angle=90, option=2) { }
+					E:Weight(angle=90, option=2) { }
+					N:Weight(angle=90, option=2) { }
+				}
+				N:Weight(angle=90, option=2) {
+					W:Weight(angle=-90, option=2) { }
+					E:Weight(angle=-90, option=2) { }
+				}
+			}
+			S:Chip(option=0) {
+				W:Weight(angle=-130) {
+					W:Weight(angle=-50) {
+						W:Wheel(angle=-90, power=-LT, brake=BRAKE, effect=4) { }
+					}
+				}
+				E:Weight(angle=-130) {
+					E:Weight(angle=-50) {
+						E:Wheel(angle=-90, power=RT, brake=BRAKE, effect=4) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{ArmScope = {};
+ArmScope.ColorSet = {}
+ArmScope.ColorSet.lineColor = 65535;
+ArmScope.ColorSet.guideColorOdd = 255 * 65536;
+ArmScope.ColorSet.guideColorEven = 255 * (65536 + 256)
+
+function ArmScope.draw(chipid,length,guide,count,size,span,disableLine)
+	local function nilfunc() end
+	
+	if chipid == nil then chipid = 0 end
+	if length == nil then length = 1000 end
+	if guide == nil then guide = nilfunc end
+	if count == nil then count = 5 end
+	if size == nil then size = 1 end
+	if span == nil then span = length / count end
+
+	--変数x,y,zにチップの座標取得。	
+	local x = _X(chipid)
+	local y = _Y(chipid)
+	local z = _Z(chipid)
+	
+	--変数zx,zy,zzにチップのZ軸ベクトル、変数xx,xy,xzにX軸、変数yx,yy,yzにY軸ベクトルを格納。
+	local zx = _ZX(chipid)
+	local zy = _ZY(chipid)
+	local zz = _ZZ(chipid)
+
+	local xx = _XX(chipid)
+	local xy = _XY(chipid)
+	local xz = _XZ(chipid)
+	
+	local yx = _YX(chipid)
+	local yy = _YY(chipid)
+	local yz = _YZ(chipid)
+
+	local dir = _DIR(chipid)
+	
+	local zx0;
+	local zy0;
+	local zz0;
+	
+	if dir == 1 then -- W
+		xx, zx = zx, xx;
+		xy, zy = zy, xy;
+		xz, zz = zz, xz;
+	elseif dir == 2 then -- S
+		zx = -zx;
+		zy = -zy;
+		zz = -zz;
+	elseif dir == 3 then -- E
+		xx, zx = zx, -xx;
+		xy, zy = zy, -xy;
+		xz, zz = zz, -xz;
+	end
+
+	zx0 = zx;
+	zy0 = zy;
+	zz0 = zz;
+
+	xx = xx * size;
+	xy = xy * size;
+	xz = xz * size;
+	yx = yx * size;
+	yy = yy * size;
+	yz = yz * size;
+	zx = zx * size;
+	zy = zy * size;
+	zz = zz * size;
+--	射軸をライン描画
+	if disableLine == nil then
+		_SETCOLOR(ArmScope.ColorSet.lineColor);
+		_MOVE3D(x,y,z);
+		_LINE3D(x + zx0*length,y + zy0*length,z + zz0*length);
+	end
+
+
+	local color = {ArmScope.ColorSet.guideColorOdd, ArmScope.ColorSet.guideColorEven};
+	local colorindex = 1;
+
+-- 引数として渡すためのクロージャ
+	local function moveFunc(xxx, yyy, zzz)
+		local xxxx = x + xx * xxx + yx * yyy + zx * zzz;
+		local yyyy = y + xy * xxx + yy * yyy + zy * zzz;
+		local zzzz = z + xz * xxx + yz * yyy + zz * zzz;
+		_MOVE3D(xxxx, yyyy, zzzz);
+	end
+	
+	local function lineFunc(xxx, yyy, zzz)
+		local xxxx = x + xx * xxx + yx * yyy + zx * zzz;
+		local yyyy = y + xy * xxx + yy * yyy + zy * zzz;
+		local zzzz = z + xz * xxx + yz * yyy + zz * zzz;
+		_LINE3D(xxxx, yyyy, zzzz);
+	end
+	
+	for i = 1, count do
+
+		--基準座標を射線方向にオフセット
+		x = x + zx0 * span
+		y = y + zy0 * span
+		z = z + zz0 * span
+		
+		--ガイドの描画
+		_SETCOLOR(color[colorindex]);
+		guide(i, moveFunc, lineFunc);
+		
+		colorindex = 3 - colorindex;		
+	end	
+end
+
+function ArmScope.Box(i, move, line)
+	move( 1, 1,0)
+	line(-1, 1,0)
+	line(-1,-1,0)
+	line( 1,-1,0)
+	line( 1, 1,0)
+end
+
+function ArmScope.Cross(i, move, line)
+	move(2, 0, 0)
+	line(-2, 0, 0)
+	move(0, 2, 0)
+	line(0, -2, 0)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+_tv={0,90,90,90}
+
+_v=0
+
+function OnFrame()
+	ArmScope.draw(D1,-300,ArmScope.Cross,5,1)
+	
+	local i
+	
+	for i=1,4 do
+		_G['V'..i]=_LINER(_G['V'..i],_tv[i],90/80)
+	end
+	
+	out(1,string.format('%.1f%%',_E(_G['A'.._v+1])/1600000*100))
+	
+	if _KEYDOWN(4) == 1 and _E(_G['A'.._v+1]) == 3200000 and _G['V'.._v+1] == 0 then
+		_G['G'.._v+1]=3200000
+		GJ=GJ+3200000
+		_v=math.mod(_v+1,4)
+		_tv={90,90,90,90}
+		_tv[_v+1]=0
+	end
+end
+}

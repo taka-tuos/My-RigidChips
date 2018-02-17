@@ -1,0 +1,184 @@
+// [RCD] 
+Val
+{
+	BRAKE(default=0, max=192, step=64)
+	ENGINE(default=0, min=-8192, max=65536, step=8192)
+	HANDLE(default=-180, min=-196, max=-164, step=4)
+}
+Key
+{
+	0:ENGINE(step=2048)
+	1:ENGINE(step=-2048)
+	2:HANDLE(step=4)
+	3:HANDLE(step=-4)
+	4:BRAKE(step=64)
+}
+Body
+{
+	Core() {
+		S:Cowl(angle=-45) {
+			S:Cowl(angle=-30, option=5) { }
+		}
+		E:Cowl() { }
+		W:Cowl() { }
+		S:Weight() {
+			S:Chip() {
+				W:Chip(angle=-90) {
+					S:Chip() {
+						S:Cowl() {
+							W:Cowl(option=4) { }
+						}
+					}
+					W:Cowl(angle=-30) {
+						S:Cowl(angle=-35, option=4) { }
+					}
+				}
+				E:Chip(angle=-90) {
+					S:Chip() {
+						S:Cowl() {
+							E:Cowl(option=3) { }
+						}
+					}
+					E:Cowl(angle=-30) {
+						S:Cowl(angle=-35, option=3) { }
+					}
+				}
+				S:Frame(angle=-90) { }
+				S:Chip(angle=0) {
+					S:Cowl() {
+						S:Cowl(angle=-90) {
+							S:Cowl(angle=-90) {
+								S:Cowl(angle=0) {
+									S:Cowl() {
+										E:Cowl(option=3) {
+											S:Cowl() {
+												S:Cowl() {
+													S:Cowl(option=3) { }
+													E:Cowl(angle=-90) { }
+													W:Cowl(angle=-90) { }
+												}
+												E:Cowl(angle=-90) {
+													N:Cowl(angle=-45) { }
+												}
+												W:Cowl(angle=-90) { }
+											}
+										}
+										W:Cowl(option=4) {
+											S:Cowl() {
+												S:Cowl() {
+													S:Cowl(option=4) {
+														E:Cowl() {
+															S:Cowl(angle=-10) {
+																S:Cowl(angle=-10) {
+																	S:Cowl(angle=-10) { }
+																	E:Cowl(angle=-90, option=4) { }
+																	W:Cowl(angle=-90, option=3) { }
+																}
+															}
+														}
+													}
+													W:Cowl(angle=-90) { }
+													E:Cowl(angle=-90) { }
+												}
+												W:Cowl(angle=-90) {
+													N:Cowl(angle=-45) { }
+												}
+												E:Cowl(angle=-90) { }
+											}
+										}
+									}
+									N:Cowl(angle=90, effect=#F0FB) {
+										N:Cowl(angle=-90) {
+											W:Cowl() {
+												W:Cowl(angle=-90) {
+													W:Cowl() { }
+												}
+											}
+											E:Cowl() {
+												E:Cowl(angle=-90) {
+													S:Cowl(option=4) { }
+													E:Cowl() { }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					W:Chip(angle=-70) {
+						S:Chip() { }
+					}
+					E:Chip(angle=-70) {
+						S:Chip() { }
+					}
+				}
+				S:RudderF(angle=-45) {
+					S:RudderF(angle=-45) {
+						E:Chip(angle=-160) { }
+						S:Wheel(angle=-90, power=-ENGINE, brake=BRAKE, option=1, effect=5) { }
+					}
+				}
+				S:RudderF(angle=45) {
+					S:RudderF(angle=45) {
+						S:Wheel(angle=-90, power=ENGINE, brake=BRAKE, option=1, effect=5) { }
+						W:Chip(angle=-160) { }
+					}
+				}
+			}
+			E:Cowl() {
+				S:Cowl(option=3) { }
+			}
+			W:Cowl() {
+				S:Cowl(option=4) { }
+			}
+		}
+		N:Weight() {
+			N:Weight() {
+				N:Cowl() {
+					N:Cowl() {
+						E:Cowl() {
+							E:Cowl(angle=-90, option=3) { }
+						}
+						W:Cowl() {
+							W:Cowl(angle=-90, option=4) { }
+						}
+					}
+				}
+			}
+			E:Cowl(option=3) { }
+			W:Cowl(option=4) { }
+			N:RudderF(angle=-45) {
+				N:RudderF(angle=-45) {
+					N:RudderF(angle=-HANDLE, option=0) {
+						S:Wheel(angle=-90, power=ENGINE, brake=BRAKE, option=1, effect=5) { }
+						N:Chip(angle=-90) {
+							E:Chip() { }
+						}
+					}
+					E:Chip(angle=-160) { }
+				}
+			}
+			N:RudderF(angle=45) {
+				N:RudderF(angle=45) {
+					N:RudderF(angle=-HANDLE) {
+						S:Wheel(angle=-90, power=-ENGINE, brake=BRAKE, option=1, effect=5) { }
+						N:Chip(angle=-90) {
+							W:Chip() { }
+						}
+					}
+					W:Chip(angle=-160) { }
+				}
+			}
+		}
+		N:Cowl(angle=-90) { }
+	}
+}
+Script
+{	MTSC = _VEL() * 3.6
+	print 0,"T-TECH F3 TypeB rev.0"
+	print 1,_FPS(),"fps ",_WEIGHT(),"kg"
+	print 2,_VEL(),"m/s ",MTSC,"km/h"
+	
+	
+	}

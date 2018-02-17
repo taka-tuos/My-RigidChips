@@ -1,0 +1,1154 @@
+// [RCD] 
+Val
+{
+	BRAKE(default=0, max=200, step=100)
+	BRKLNP(default=2097152, min=2097152, max=16711680, step=16711680)
+	ENGINE(default=0, min=-5000, max=5000, step=2000)
+	HANDLE(default=-180, min=-205, max=-155, step=4)
+	POPUP(default=0, min=-15, max=0)
+	X00Y01(default=0, max=16777216)
+	X00Y02(default=0, max=16777216)
+	X00Y03(default=0, max=16777216)
+	X00Y04(default=0, max=16777216)
+	X00Y05(default=0, max=16777216)
+	X00Y06(default=0, max=16777216)
+	X00Y07(default=0, max=16777216)
+	X00Y08(default=0, max=16777216)
+	X00Y09(default=0, max=16777216)
+	X00Y10(default=0, max=16777216)
+	X00Y11(default=0, max=16777216)
+	X00Y12(default=0, max=16777216)
+	X00Y13(default=0, max=16777216)
+	X00Y14(default=0, max=16777216)
+	X00Y15(default=0, max=16777216)
+	X01Y01(default=0, max=16777216)
+	X01Y02(default=0, max=16777216)
+	X01Y03(default=0, max=16777216)
+	X01Y04(default=0, max=16777216)
+	X01Y05(default=0, max=16777216)
+	X01Y06(default=0, max=16777216)
+	X01Y07(default=0, max=16777216)
+	X01Y08(default=0, max=16777216)
+	X01Y09(default=0, max=16777216)
+	X01Y10(default=0, max=16777216)
+	X01Y11(default=0, max=16777216)
+	X01Y12(default=0, max=16777216)
+	X01Y13(default=0, max=16777216)
+	X01Y14(default=0, max=16777216)
+	X01Y15(default=0, max=16777216)
+	X02Y01(default=0, max=16777216)
+	X02Y02(default=0, max=16777216)
+	X02Y03(default=0, max=16777216)
+	X02Y04(default=0, max=16777216)
+	X02Y05(default=0, max=16777216)
+	X02Y06(default=0, max=16777216)
+	X02Y07(default=0, max=16777216)
+	X02Y08(default=0, max=16777216)
+	X02Y09(default=0, max=16777216)
+	X02Y10(default=0, max=16777216)
+	X02Y11(default=0, max=16777216)
+	X02Y12(default=0, max=16777216)
+	X02Y13(default=0, max=16777216)
+	X02Y14(default=0, max=16777216)
+	X02Y15(default=0, max=16777216)
+	X03Y01(default=0, max=16777216)
+	X03Y02(default=0, max=16777216)
+	X03Y03(default=0, max=16777216)
+	X03Y04(default=0, max=16777216)
+	X03Y05(default=0, max=16777216)
+	X03Y06(default=0, max=16777216)
+	X03Y07(default=0, max=16777216)
+	X03Y08(default=0, max=16777216)
+	X03Y09(default=0, max=16777216)
+	X03Y10(default=0, max=16777216)
+	X03Y11(default=0, max=16777216)
+	X03Y12(default=0, max=16777216)
+	X03Y13(default=0, max=16777216)
+	X03Y14(default=0, max=16777216)
+	X03Y15(default=0, max=16777216)
+	X04Y01(default=0, max=16777216)
+	X04Y02(default=0, max=16777216)
+	X04Y03(default=0, max=16777216)
+	X04Y04(default=0, max=16777216)
+	X04Y05(default=0, max=16777216)
+	X04Y06(default=0, max=16777216)
+	X04Y07(default=0, max=16777216)
+	X04Y08(default=0, max=16777216)
+	X04Y09(default=0, max=16777216)
+	X04Y10(default=0, max=16777216)
+	X04Y11(default=0, max=16777216)
+	X04Y12(default=0, max=16777216)
+	X04Y13(default=0, max=16777216)
+	X04Y14(default=0, max=16777216)
+	X04Y15(default=0, max=16777216)
+	X05Y01(default=0, max=16777216)
+	X05Y02(default=0, max=16777216)
+	X05Y03(default=0, max=16777216)
+	X05Y04(default=0, max=16777216)
+	X05Y05(default=0, max=16777216)
+	X05Y06(default=0, max=16777216)
+	X05Y07(default=0, max=16777216)
+	X05Y08(default=0, max=16777216)
+	X05Y09(default=0, max=16777216)
+	X05Y10(default=0, max=16777216)
+	X05Y11(default=0, max=16777216)
+	X05Y12(default=0, max=16777216)
+	X05Y13(default=0, max=16777216)
+	X05Y14(default=0, max=16777216)
+	X05Y15(default=0, max=16777216)
+	X06Y01(default=0, max=16777216)
+	X06Y02(default=0, max=16777216)
+	X06Y03(default=0, max=16777216)
+	X06Y04(default=0, max=16777216)
+	X06Y05(default=0, max=16777216)
+	X06Y06(default=0, max=16777216)
+	X06Y07(default=0, max=16777216)
+	X06Y08(default=0, max=16777216)
+	X06Y09(default=0, max=16777216)
+	X06Y10(default=0, max=16777216)
+	X06Y11(default=0, max=16777216)
+	X06Y12(default=0, max=16777216)
+	X06Y13(default=0, max=16777216)
+	X06Y14(default=0, max=16777216)
+	X06Y15(default=0, max=16777216)
+	X07Y01(default=0, max=16777216)
+	X07Y02(default=0, max=16777216)
+	X07Y03(default=0, max=16777216)
+	X07Y04(default=0, max=16777216)
+	X07Y05(default=0, max=16777216)
+	X07Y06(default=0, max=16777216)
+	X07Y07(default=0, max=16777216)
+	X07Y08(default=0, max=16777216)
+	X07Y09(default=0, max=16777216)
+	X07Y10(default=0, max=16777216)
+	X07Y11(default=0, max=16777216)
+	X07Y12(default=0, max=16777216)
+	X07Y13(default=0, max=16777216)
+	X07Y14(default=0, max=16777216)
+	X07Y15(default=0, max=16777216)
+	X08Y01(default=0, max=16777216)
+	X08Y02(default=0, max=16777216)
+	X08Y03(default=0, max=16777216)
+	X08Y04(default=0, max=16777216)
+	X08Y05(default=0, max=16777216)
+	X08Y06(default=0, max=16777216)
+	X08Y07(default=0, max=16777216)
+	X08Y08(default=0, max=16777216)
+	X08Y09(default=0, max=16777216)
+	X08Y10(default=0, max=16777216)
+	X08Y11(default=0, max=16777216)
+	X08Y12(default=0, max=16777216)
+	X08Y13(default=0, max=16777216)
+	X08Y14(default=0, max=16777216)
+	X08Y15(default=0, max=16777216)
+	X09Y01(default=0, max=16777216)
+	X09Y02(default=0, max=16777216)
+	X09Y03(default=0, max=16777216)
+	X09Y04(default=0, max=16777216)
+	X09Y05(default=0, max=16777216)
+	X09Y06(default=0, max=16777216)
+	X09Y07(default=0, max=16777216)
+	X09Y08(default=0, max=16777216)
+	X09Y09(default=0, max=16777216)
+	X09Y10(default=0, max=16777216)
+	X09Y11(default=0, max=16777216)
+	X09Y12(default=0, max=16777216)
+	X09Y13(default=0, max=16777216)
+	X09Y14(default=0, max=16777216)
+	X09Y15(default=0, max=16777216)
+	X10Y01(default=0, max=16777216)
+	X10Y02(default=0, max=16777216)
+	X10Y03(default=0, max=16777216)
+	X10Y04(default=0, max=16777216)
+	X10Y05(default=0, max=16777216)
+	X10Y06(default=0, max=16777216)
+	X10Y07(default=0, max=16777216)
+	X10Y08(default=0, max=16777216)
+	X10Y09(default=0, max=16777216)
+	X10Y10(default=0, max=16777216)
+	X10Y11(default=0, max=16777216)
+	X10Y12(default=0, max=16777216)
+	X10Y13(default=0, max=16777216)
+	X10Y14(default=0, max=16777216)
+	X10Y15(default=0, max=16777216)
+	X11Y01(default=0, max=16777216)
+	X11Y02(default=0, max=16777216)
+	X11Y03(default=0, max=16777216)
+	X11Y04(default=0, max=16777216)
+	X11Y05(default=0, max=16777216)
+	X11Y06(default=0, max=16777216)
+	X11Y07(default=0, max=16777216)
+	X11Y08(default=0, max=16777216)
+	X11Y09(default=0, max=16777216)
+	X11Y10(default=0, max=16777216)
+	X11Y11(default=0, max=16777216)
+	X11Y12(default=0, max=16777216)
+	X11Y13(default=0, max=16777216)
+	X11Y14(default=0, max=16777216)
+	X11Y15(default=0, max=16777216)
+	X12Y01(default=0, max=16777216)
+	X12Y02(default=0, max=16777216)
+	X12Y03(default=0, max=16777216)
+	X12Y04(default=0, max=16777216)
+	X12Y05(default=0, max=16777216)
+	X12Y06(default=0, max=16777216)
+	X12Y07(default=0, max=16777216)
+	X12Y08(default=0, max=16777216)
+	X12Y09(default=0, max=16777216)
+	X12Y10(default=0, max=16777216)
+	X12Y11(default=0, max=16777216)
+	X12Y12(default=0, max=16777216)
+	X12Y13(default=0, max=16777216)
+	X12Y14(default=0, max=16777216)
+	X12Y15(default=0, max=16777216)
+	X13Y01(default=0, max=16777216)
+	X13Y02(default=0, max=16777216)
+	X13Y03(default=0, max=16777216)
+	X13Y04(default=0, max=16777216)
+	X13Y05(default=0, max=16777216)
+	X13Y06(default=0, max=16777216)
+	X13Y07(default=0, max=16777216)
+	X13Y08(default=0, max=16777216)
+	X13Y09(default=0, max=16777216)
+	X13Y10(default=0, max=16777216)
+	X13Y11(default=0, max=16777216)
+	X13Y12(default=0, max=16777216)
+	X13Y13(default=0, max=16777216)
+	X13Y14(default=0, max=16777216)
+	X13Y15(default=0, max=16777216)
+	X14Y01(default=0, max=16777216)
+	X14Y02(default=0, max=16777216)
+	X14Y03(default=0, max=16777216)
+	X14Y04(default=0, max=16777216)
+	X14Y05(default=0, max=16777216)
+	X14Y06(default=0, max=16777216)
+	X14Y07(default=0, max=16777216)
+	X14Y08(default=0, max=16777216)
+	X14Y09(default=0, max=16777216)
+	X14Y10(default=0, max=16777216)
+	X14Y11(default=0, max=16777216)
+	X14Y12(default=0, max=16777216)
+	X14Y13(default=0, max=16777216)
+	X14Y14(default=0, max=16777216)
+	X14Y15(default=0, max=16777216)
+	X15Y01(default=0, max=16777216)
+	X15Y02(default=0, max=16777216)
+	X15Y03(default=0, max=16777216)
+	X15Y04(default=0, max=16777216)
+	X15Y05(default=0, max=16777216)
+	X15Y06(default=0, max=16777216)
+	X15Y07(default=0, max=16777216)
+	X15Y08(default=0, max=16777216)
+	X15Y09(default=0, max=16777216)
+	X15Y10(default=0, max=16777216)
+	X15Y11(default=0, max=16777216)
+	X15Y12(default=0, max=16777216)
+	X15Y13(default=0, max=16777216)
+	X15Y14(default=0, max=16777216)
+	X15Y15(default=0, max=16777216)
+}
+Key
+{
+	0:ENGINE(step=2000)
+	1:ENGINE(step=-2000)
+	2:HANDLE(step=4)
+	3:HANDLE(step=-4)
+	4:BRAKE(step=64), BRKLNP(step=16711680)
+	5:Brake(step=10)
+	7:Jet(step=-1000)
+}
+Body
+{
+	Core() {
+		N:Chip(name=CRT) {
+			W:Cowl(angle=-60) {
+				W:Cowl(angle=60) {
+					E:Cowl() {
+						E:Cowl() {
+							E:Cowl() {
+								E:Cowl() {
+									E:Cowl() {
+										E:Cowl() {
+											E:Cowl() {
+												E:Cowl() {
+													E:Cowl() {
+														E:Cowl(angle=-90) {
+															E:Cowl() {
+																E:Cowl() {
+																	E:Cowl() {
+																		E:Cowl() {
+																			E:Cowl() {
+																				E:Cowl() {
+																					E:Cowl() {
+																						E:Cowl() {
+																							E:Cowl() {
+																								E:Cowl() {
+																									E:Cowl() {
+																										E:Cowl() {
+																											E:Cowl() {
+																												E:Cowl() {
+																													S:Cowl(angle=-90, color=X00Y01) {
+																														S:Cowl(color=X01Y01) {
+																															S:Cowl(color=X02Y01) {
+																																S:Cowl(color=X03Y01) {
+																																	S:Cowl(color=X04Y01) {
+																																		S:Cowl(color=X05Y01) {
+																																			S:Cowl(color=X06Y01) {
+																																				S:Cowl(color=X07Y01) {
+																																					S:Cowl(color=X08Y01) {
+																																						S:Cowl(color=X09Y01) {
+																																							S:Cowl(color=X10Y01) {
+																																								S:Cowl(color=X11Y01) {
+																																									S:Cowl(color=X12Y01) {
+																																										S:Cowl(color=X13Y01) {
+																																											S:Cowl(color=X14Y01) {
+																																												S:Cowl(color=X15Y01) { }
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																													E:Cowl(angle=-90) {
+																														E:Cowl() {
+																															E:Cowl() {
+																																E:Cowl() {
+																																	E:Cowl() {
+																																		E:Cowl() {
+																																			E:Cowl() {
+																																				E:Cowl() {
+																																					E:Cowl() {
+																																						E:Cowl() {
+																																							E:Cowl() {
+																																								E:Cowl() {
+																																									E:Cowl() {
+																																										E:Cowl() {
+																																											E:Cowl() {
+																																												E:Cowl() {
+																																													E:Cowl(angle=-90) {
+																																														E:Cowl() {
+																																															E:Cowl() {
+																																																E:Cowl() {
+																																																	E:Cowl() {
+																																																		E:Cowl() {
+																																																			E:Cowl() {
+																																																				E:Cowl() {
+																																																					E:Cowl() {
+																																																						E:Cowl() {
+																																																							E:Cowl() {
+																																																								E:Cowl() {
+																																																									E:Cowl() {
+																																																										E:Cowl() {
+																																																											E:Cowl() { }
+																																																										}
+																																																									}
+																																																								}
+																																																							}
+																																																						}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																												S:Cowl(angle=-90, color=X00Y02) {
+																													S:Cowl(color=X01Y02) {
+																														S:Cowl(color=X02Y02) {
+																															S:Cowl(color=X03Y02) {
+																																S:Cowl(color=X04Y02) {
+																																	S:Cowl(color=X05Y02) {
+																																		S:Cowl(color=X06Y02) {
+																																			S:Cowl(color=X07Y02) {
+																																				S:Cowl(color=X08Y02) {
+																																					S:Cowl(color=X09Y02) {
+																																						S:Cowl(color=X10Y02) {
+																																							S:Cowl(color=X11Y02) {
+																																								S:Cowl(color=X12Y02) {
+																																									S:Cowl(color=X13Y02) {
+																																										S:Cowl(color=X14Y02) {
+																																											S:Cowl(color=X15Y02) { }
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																											S:Cowl(angle=-90, color=X00Y03) {
+																												S:Cowl(color=X01Y03) {
+																													S:Cowl(color=X02Y03) {
+																														S:Cowl(color=X03Y03) {
+																															S:Cowl(color=X04Y03) {
+																																S:Cowl(color=X05Y03) {
+																																	S:Cowl(color=X06Y03) {
+																																		S:Cowl(color=X07Y03) {
+																																			S:Cowl(color=X08Y03) {
+																																				S:Cowl(color=X09Y03) {
+																																					S:Cowl(color=X10Y03) {
+																																						S:Cowl(color=X11Y03) {
+																																							S:Cowl(color=X12Y03) {
+																																								S:Cowl(color=X13Y03) {
+																																									S:Cowl(color=X14Y03) {
+																																										S:Cowl(color=X15Y03) { }
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																										S:Cowl(angle=-90, color=X00Y04) {
+																											S:Cowl(color=X01Y04) {
+																												S:Cowl(color=X02Y04) {
+																													S:Cowl(color=X03Y04) {
+																														S:Cowl(color=X04Y04) {
+																															S:Cowl(color=X05Y04) {
+																																S:Cowl(color=X06Y04) {
+																																	S:Cowl(color=X07Y04) {
+																																		S:Cowl(color=X08Y04) {
+																																			S:Cowl(color=X09Y04) {
+																																				S:Cowl(color=X10Y04) {
+																																					S:Cowl(color=X11Y04) {
+																																						S:Cowl(color=X12Y04) {
+																																							S:Cowl(color=X13Y04) {
+																																								S:Cowl(color=X14Y04) {
+																																									S:Cowl(color=X15Y04) { }
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																									S:Cowl(angle=-90, color=X00Y05) {
+																										S:Cowl(color=X01Y05) {
+																											S:Cowl(color=X02Y05) {
+																												S:Cowl(color=X03Y05) {
+																													S:Cowl(color=X04Y05) {
+																														S:Cowl(color=X05Y05) {
+																															S:Cowl(color=X06Y05) {
+																																S:Cowl(color=X07Y05) {
+																																	S:Cowl(color=X08Y05) {
+																																		S:Cowl(color=X09Y05) {
+																																			S:Cowl(color=X10Y05) {
+																																				S:Cowl(color=X11Y05) {
+																																					S:Cowl(color=X12Y05) {
+																																						S:Cowl(color=X13Y05) {
+																																							S:Cowl(color=X14Y05) {
+																																								S:Cowl(color=X15Y05) { }
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																								S:Cowl(angle=-90, color=X00Y06) {
+																									S:Cowl(color=X01Y06) {
+																										S:Cowl(color=X02Y06) {
+																											S:Cowl(color=X03Y06) {
+																												S:Cowl(color=X04Y06) {
+																													S:Cowl(color=X05Y06) {
+																														S:Cowl(color=X06Y06) {
+																															S:Cowl(color=X07Y06) {
+																																S:Cowl(color=X08Y06) {
+																																	S:Cowl(color=X09Y06) {
+																																		S:Cowl(color=X10Y06) {
+																																			S:Cowl(color=X11Y06) {
+																																				S:Cowl(color=X12Y06) {
+																																					S:Cowl(color=X13Y06) {
+																																						S:Cowl(color=X14Y06) {
+																																							S:Cowl(color=X15Y06) { }
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																							S:Cowl(angle=-90, color=X00Y07) {
+																								S:Cowl(color=X01Y07) {
+																									S:Cowl(color=X02Y07) {
+																										S:Cowl(color=X03Y07) {
+																											S:Cowl(color=X04Y07) {
+																												S:Cowl(color=X05Y07) {
+																													S:Cowl(color=X06Y07) {
+																														S:Cowl(color=X07Y07) {
+																															S:Cowl(color=X08Y07) {
+																																S:Cowl(color=X09Y07) {
+																																	S:Cowl(color=X10Y07) {
+																																		S:Cowl(color=X11Y07) {
+																																			S:Cowl(color=X12Y07) {
+																																				S:Cowl(color=X13Y07) {
+																																					S:Cowl(color=X14Y07) {
+																																						S:Cowl(color=X15Y07) { }
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																						S:Cowl(angle=-90, color=X00Y08) {
+																							S:Cowl(color=X01Y08) {
+																								S:Cowl(color=X02Y08) {
+																									S:Cowl(color=X03Y08) {
+																										S:Cowl(color=X04Y08) {
+																											S:Cowl(color=X05Y08) {
+																												S:Cowl(color=X06Y08) {
+																													S:Cowl(color=X07Y08) {
+																														S:Cowl(color=X08Y08) {
+																															S:Cowl(color=X09Y08) {
+																																S:Cowl(color=X10Y08) {
+																																	S:Cowl(color=X11Y08) {
+																																		S:Cowl(color=X12Y08) {
+																																			S:Cowl(color=X13Y08) {
+																																				S:Cowl(color=X14Y08) {
+																																					S:Cowl(color=X15Y08) { }
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																					S:Cowl(angle=-90, color=X00Y09) {
+																						S:Cowl(color=X01Y09) {
+																							S:Cowl(color=X02Y09) {
+																								S:Cowl(color=X03Y09) {
+																									S:Cowl(color=X04Y09) {
+																										S:Cowl(color=X05Y09) {
+																											S:Cowl(color=X06Y09) {
+																												S:Cowl(color=X07Y09) {
+																													S:Cowl(color=X08Y09) {
+																														S:Cowl(color=X09Y09) {
+																															S:Cowl(color=X10Y09) {
+																																S:Cowl(color=X11Y09) {
+																																	S:Cowl(color=X12Y09) {
+																																		S:Cowl(color=X13Y09) {
+																																			S:Cowl(color=X14Y09) {
+																																				S:Cowl(color=X15Y09) { }
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																				S:Cowl(angle=-90, color=X00Y10) {
+																					S:Cowl(color=X01Y10) {
+																						S:Cowl(color=X02Y10) {
+																							S:Cowl(color=X03Y10) {
+																								S:Cowl(color=X04Y10) {
+																									S:Cowl(color=X05Y10) {
+																										S:Cowl(color=X06Y10) {
+																											S:Cowl(color=X07Y10) {
+																												S:Cowl(color=X08Y10) {
+																													S:Cowl(color=X09Y10) {
+																														S:Cowl(color=X10Y10) {
+																															S:Cowl(color=X11Y10) {
+																																S:Cowl(color=X12Y10) {
+																																	S:Cowl(color=X13Y10) {
+																																		S:Cowl(color=X14Y10) {
+																																			S:Cowl(color=X15Y10) { }
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																			S:Cowl(angle=-90, color=X00Y11) {
+																				S:Cowl(color=X01Y11) {
+																					S:Cowl(color=X02Y11) {
+																						S:Cowl(color=X03Y11) {
+																							S:Cowl(color=X04Y11) {
+																								S:Cowl(color=X05Y11) {
+																									S:Cowl(color=X06Y11) {
+																										S:Cowl(color=X07Y11) {
+																											S:Cowl(color=X08Y11) {
+																												S:Cowl(color=X09Y11) {
+																													S:Cowl(color=X10Y11) {
+																														S:Cowl(color=X11Y11) {
+																															S:Cowl(color=X12Y11) {
+																																S:Cowl(color=X13Y11) {
+																																	S:Cowl(color=X14Y11) {
+																																		S:Cowl(color=X15Y11) { }
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																		S:Cowl(angle=-90, color=X00Y12) {
+																			S:Cowl(color=X01Y12) {
+																				S:Cowl(color=X02Y12) {
+																					S:Cowl(color=X03Y12) {
+																						S:Cowl(color=X04Y12) {
+																							S:Cowl(color=X05Y12) {
+																								S:Cowl(color=X06Y12) {
+																									S:Cowl(color=X07Y12) {
+																										S:Cowl(color=X08Y12) {
+																											S:Cowl(color=X09Y12) {
+																												S:Cowl(color=X10Y12) {
+																													S:Cowl(color=X11Y12) {
+																														S:Cowl(color=X12Y12) {
+																															S:Cowl(color=X13Y12) {
+																																S:Cowl(color=X14Y12) {
+																																	S:Cowl(color=X15Y12) { }
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																	S:Cowl(angle=-90, color=X00Y13) {
+																		S:Cowl(color=X01Y13) {
+																			S:Cowl(color=X02Y13) {
+																				S:Cowl(color=X03Y13) {
+																					S:Cowl(color=X04Y13) {
+																						S:Cowl(color=X05Y13) {
+																							S:Cowl(color=X06Y13) {
+																								S:Cowl(color=X07Y13) {
+																									S:Cowl(color=X08Y13) {
+																										S:Cowl(color=X09Y13) {
+																											S:Cowl(color=X10Y13) {
+																												S:Cowl(color=X11Y13) {
+																													S:Cowl(color=X12Y13) {
+																														S:Cowl(color=X13Y13) {
+																															S:Cowl(color=X14Y13) {
+																																S:Cowl(color=X15Y13) { }
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+																S:Cowl(angle=-90, color=X00Y14) {
+																	S:Cowl(color=X01Y14) {
+																		S:Cowl(color=X02Y14) {
+																			S:Cowl(color=X03Y14) {
+																				S:Cowl(color=X04Y14) {
+																					S:Cowl(color=X05Y14) {
+																						S:Cowl(color=X06Y14) {
+																							S:Cowl(color=X07Y14) {
+																								S:Cowl(color=X08Y14) {
+																									S:Cowl(color=X09Y14) {
+																										S:Cowl(color=X10Y14) {
+																											S:Cowl(color=X11Y14) {
+																												S:Cowl(color=X12Y14) {
+																													S:Cowl(color=X13Y14) {
+																														S:Cowl(color=X14Y14) {
+																															S:Cowl(color=X15Y14) { }
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+															S:Cowl(angle=-90, color=X00Y15) {
+																S:Cowl(color=X01Y15) {
+																	S:Cowl(color=X02Y15) {
+																		S:Cowl(color=X03Y15) {
+																			S:Cowl(color=X04Y15) {
+																				S:Cowl(color=X05Y15) {
+																					S:Cowl(color=X06Y15) {
+																						S:Cowl(color=X07Y15) {
+																							S:Cowl(color=X08Y15) {
+																								S:Cowl(color=X09Y15) {
+																									S:Cowl(color=X10Y15) {
+																										S:Cowl(color=X11Y15) {
+																											S:Cowl(color=X12Y15) {
+																												S:Cowl(color=X13Y15) {
+																													S:Cowl(color=X14Y15) {
+																														S:Cowl(color=X15Y15) { }
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					W:Cowl() {
+						W:Cowl() {
+							W:Cowl() {
+								W:Cowl() {
+									W:Cowl() {
+										W:Cowl() { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			E:Frame(angle=90) {
+				E:Frame(angle=-45) {
+					E:Frame(angle=-45) {
+						S:Weight() { }
+						N:Weight() { }
+						E:Weight() { }
+					}
+				}
+			}
+			W:Frame(angle=90) {
+				W:Frame(angle=-45) {
+					W:Frame(angle=-45) {
+						W:Weight() { }
+						S:Weight() { }
+						N:Weight() { }
+					}
+				}
+			}
+		}
+		S:Frame(angle=170, option=1) {
+			S:Frame(angle=-80, option=1) {
+				S:Weight(angle=-90, option=1, color=0) {
+					S:Frame(option=1) {
+						S:Chip(color=0) {
+							E:Frame(angle=10, option=1) {
+								E:RLW(angle=-100, power=-ENGINE, brake=BRAKE, option=0, effect=3) { }
+							}
+							W:Frame(angle=10, option=1) {
+								W:RLW(angle=-100, power=ENGINE, brake=BRAKE, option=0, effect=3) { }
+							}
+							E:Cowl(angle=-90) {
+								S:Cowl(angle=92, color=BRKLNP, effect=#0FFB) {
+									E:Cowl(angle=90) {
+										E:Cowl(angle=5) {
+											S:Cowl(angle=90) { }
+										}
+									}
+								}
+							}
+							W:Cowl(angle=-90) {
+								S:Cowl(angle=92, color=BRKLNP, effect=#0FFB) {
+									W:Cowl(angle=90) {
+										W:Cowl(angle=5) {
+											S:Cowl(angle=90) { }
+										}
+									}
+								}
+							}
+							N:Cowl(angle=-90) {
+								N:Cowl(angle=80) {
+									N:Cowl(angle=-170) {
+										S:Cowl(angle=-90) { }
+										N:Cowl(angle=-15, color=0) {
+											N:Cowl(angle=-60) {
+												N:Cowl(angle=150, color=#0000FF) {
+													E:Cowl() {
+														E:Cowl(angle=95, option=3) { }
+														N:Cowl(angle=110) { }
+														S:Cowl(angle=75, color=0) { }
+													}
+													W:Cowl(angle=0) {
+														W:Cowl(angle=95, option=4) { }
+														N:Cowl(angle=110) { }
+														S:Cowl(angle=75, color=0) { }
+													}
+													S:Cowl(angle=80, color=0) { }
+													N:Cowl(angle=110, color=#0000FF) { }
+												}
+												S:Cowl(angle=-50, color=#0000FF, name=70) {
+													W:Cowl(angle=-90, color=#0000FF) { }
+													E:Cowl(angle=-90, color=#0000FF) { }
+												}
+											}
+										}
+										N:Cowl(angle=-75) {
+											N:Cowl(angle=150, option=1, color=0) {
+												N:Cowl(angle=-55, color=#0000FF) {
+													W:Cowl() {
+														N:Cowl(angle=160, effect=#F0FB) {
+															W:Cowl(angle=90) { }
+														}
+													}
+													E:Cowl() {
+														N:Cowl(angle=160, effect=#F0FB) {
+															E:Cowl(angle=90) { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							N:Frame(angle=-170) {
+								W:Chip(angle=10) { }
+								E:Chip(angle=10) { }
+							}
+							S:Cowl(angle=-90, color=BRKLNP, effect=#0FFB) { }
+						}
+					}
+					N:Frame(option=1) {
+						N:Cowl(angle=-90) {
+							N:Cowl(angle=90) {
+								N:Cowl(angle=80) {
+									N:Cowl(angle=-150, color=#0000FF) {
+										E:Cowl() {
+											E:Cowl(angle=-95, option=3) { }
+											N:Cowl(angle=-100) {
+												E:Cowl(angle=-95, option=4) { }
+											}
+										}
+										W:Cowl() {
+											W:Cowl(angle=-95, option=4) { }
+											N:Cowl(angle=-100) {
+												W:Cowl(angle=-95, option=3) { }
+											}
+										}
+										N:Cowl(angle=-100, color=#0000FF) {
+											N:Cowl(angle=-20, color=#0000FF) {
+												E:Cowl() {
+													E:Cowl(angle=-95) { }
+												}
+												W:Cowl() {
+													W:Cowl(angle=-95) { }
+												}
+											}
+										}
+									}
+								}
+								S:Cowl(angle=-40, color=0, effect=#60FB) {
+									E:Cowl(angle=25, color=0, effect=#60FB) {
+										E:Cowl(angle=60, color=0, effect=#60FB) { }
+									}
+									W:Cowl(angle=25, color=0, effect=#60FB) {
+										W:Cowl(angle=60, color=0, effect=#60FB) { }
+									}
+									S:Cowl(angle=40, color=#0000FF) {
+										W:Cowl(angle=25, color=0, effect=#60FB) {
+											W:Cowl(angle=60, color=0, effect=#60FB) { }
+										}
+										E:Cowl(angle=25, color=0, effect=#60FB) {
+											E:Cowl(angle=60, color=0, effect=#60FB) { }
+										}
+										S:Cowl(angle=20, color=0, effect=#60FB) {
+											W:Cowl(angle=25, color=0, effect=#60FB) {
+												W:Cowl(angle=60, color=0, effect=#60FB) { }
+												S:Cowl(angle=5, color=0) {
+													N:Cowl(angle=90, color=0) { }
+												}
+											}
+											E:Cowl(angle=25, color=0, effect=#60FB) {
+												E:Cowl(angle=60, color=0, effect=#60FB) { }
+												S:Cowl(angle=5, color=0) {
+													N:Cowl(angle=90, color=0) { }
+												}
+											}
+											S:Cowl(angle=5, color=0) {
+												N:Cowl(angle=90, color=0) { }
+											}
+										}
+									}
+								}
+							}
+						}
+						W:Chip(angle=-89.9995) {
+							S:Chip() {
+								S:Chip() { }
+							}
+							W:Cowl(angle=90) {
+								N:Cowl(angle=POPUP) {
+									W:Cowl(angle=95) {
+										S:Cowl(option=4) { }
+									}
+									E:Cowl(angle=90) { }
+									N:Cowl(angle=90, color=#FFFF00, effect=#0FFB) { }
+								}
+								S:Cowl(angle=-5) {
+									W:Cowl(angle=80) {
+										N:Cowl() { }
+									}
+									S:Cowl(angle=10) {
+										W:Cowl(angle=80) { }
+									}
+								}
+								W:Cowl(angle=85) { }
+							}
+						}
+						E:Chip(angle=-89.9995) {
+							S:Chip() {
+								S:Chip() { }
+							}
+							E:Cowl(angle=90) {
+								N:Cowl(angle=POPUP) {
+									W:Cowl(angle=90) { }
+									E:Cowl(angle=95) {
+										S:Cowl(option=3) { }
+									}
+									N:Cowl(angle=90, color=#FFFF00, effect=#0FFB) { }
+								}
+								S:Cowl(angle=-5) {
+									E:Cowl(angle=80) {
+										N:Cowl() { }
+									}
+									S:Cowl(angle=10) {
+										E:Cowl(angle=80) { }
+									}
+								}
+								E:Cowl(angle=85) { }
+							}
+						}
+						N:Chip() {
+							W:Frame(angle=10, option=1) {
+								W:RudderF(angle=-HANDLE, option=1) {
+									E:RLW(angle=-100, power=ENGINE, brake=BRAKE, effect=3) { }
+								}
+							}
+							E:Frame(angle=10, option=1) {
+								E:RudderF(angle=-HANDLE, option=1) {
+									W:RLW(angle=-100, power=-ENGINE, brake=BRAKE, effect=3) { }
+								}
+							}
+							N:Frame(angle=-170) {
+								E:Chip(angle=10) { }
+								W:Chip(angle=10) { }
+								N:Cowl(angle=150) { }
+							}
+							N:Cowl(angle=-65) { }
+						}
+					}
+					E:Cowl(angle=5, color=0) {
+						S:Cowl(angle=0, color=0) {
+							E:Cowl(angle=-95) { }
+						}
+						N:Cowl(angle=0, color=0) {
+							E:Cowl(angle=-95) { }
+							N:Cowl(color=0) { }
+						}
+						E:Cowl(angle=-95) { }
+					}
+					W:Cowl(angle=5, color=0) {
+						N:Cowl(color=0) {
+							W:Cowl(angle=-95) { }
+							N:Cowl(color=0) { }
+						}
+						S:Cowl(color=0) {
+							W:Cowl(angle=-95) { }
+						}
+						W:Cowl(angle=-95) { }
+					}
+					N:Cowl(color=0) {
+						N:Cowl(angle=5, color=0) {
+							N:Cowl(angle=-65, color=#0000FF) {
+								E:Cowl() {
+									E:Cowl(angle=-95, option=3) { }
+								}
+								W:Cowl() {
+									W:Cowl(angle=-95, option=4) { }
+								}
+							}
+							W:Cowl(color=0) { }
+							E:Cowl(color=0) { }
+						}
+						S:Cowl(angle=-20, color=#804040) {
+							S:Cowl(angle=-70, option=5, color=#804040) { }
+						}
+					}
+					S:Cowl(color=0) { }
+				}
+			}
+		}
+	}
+}
+Lua
+{
+
+function OnInit()
+	_ZOOM(35)
+	_SPLIT(CRT)
+end
+
+function OnFrame()
+	for x=0,15 do
+		for y=0,15 do
+			r=0
+			g=0
+			b=0
+			for my=0,3 do
+				for mx=0,3 do
+					r = r+_RED(x*4+mx,y*4+my)*16
+					g = g+_GREEN(x*4+mx,y*4+my)*16
+					b = b+_BLUE(x*4+mx,y*4+my)*16
+				end
+			end
+			
+			r=math.floor(r)
+			g=math.floor(g)
+			b=math.floor(b)
+			
+			_G[string.format("X%02dY%02d",y,x)] = r*65536+g*256+b
+		end
+	end
+end}

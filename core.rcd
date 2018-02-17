@@ -1,0 +1,13 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Weight(option=0) { }
+	}
+}

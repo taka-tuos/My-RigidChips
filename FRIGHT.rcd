@@ -1,0 +1,31 @@
+// [RCD] 
+Val
+{
+	VAR(default=0, max=13107200, step=102400)
+}
+Key
+{
+	0:VAR(step=102400)
+}
+Body
+{
+	Core() {
+		E:Chip(angle=-90) { }
+		W:Chip(angle=-90) {
+			W:RLW(angle=-90) {
+				S:Trim(angle=5) {
+					E:Jet(angle=-90, power=VAR) { }
+				}
+				N:Trim(angle=5) {
+					W:Jet(angle=-90, power=VAR) { }
+				}
+				W:Trim(angle=5) {
+					S:Jet(angle=-90, power=VAR) { }
+				}
+				E:Trim(angle=5) {
+					N:Jet(angle=-90, power=VAR) { }
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,101 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=200, step=100)
+	P(default=0, min=-2500, max=2500, step=500)
+	S(default=0, min=-20, max=20, step=4)
+}
+Key
+{
+	0:P(step=500)
+	1:P(step=-250)
+	2:S(step=4)
+	3:S(step=-4)
+	4:B(step=50)
+}
+Body
+{
+	Core() {
+		S:Frame(angle=90, option=1) {
+			S:Frame(angle=-90, option=1) {
+				N:Frame(option=1) {
+					E:Frame(angle=75, option=1) {
+						E:Frame(angle=-150, option=1) {
+							E:Frame(angle=-15, option=1) {
+								S:RudderF(angle=-160, option=1) {
+									N:Wheel(power=-P, brake=B) { }
+									S:Cowl(angle=170, option=1, effect=#F0FB) {
+										S:Cowl(angle=20, option=5) { }
+									}
+								}
+								N:RudderF(angle=160, option=1) {
+									S:Wheel(angle=-S, power=-P, brake=B) { }
+									N:Cowl(angle=170, option=1, effect=#F0FB) {
+										N:Cowl(angle=20, option=5) { }
+									}
+								}
+								E:Cowl(angle=170) { }
+							}
+						}
+					}
+					W:Frame(angle=75, option=1) {
+						W:Frame(angle=-150, option=1) {
+							W:Frame(angle=-15, option=1) {
+								N:RudderF(angle=-160, option=1) {
+									S:Wheel(angle=S, power=P, brake=B) { }
+									N:Cowl(angle=170, option=1, effect=#F0FB) {
+										N:Cowl(angle=20, option=5) { }
+									}
+								}
+								S:RudderF(angle=160, option=1) {
+									N:Wheel(power=P, brake=B) { }
+									S:Cowl(angle=170, option=1, effect=#F0FB) {
+										S:Cowl(angle=20, option=5) { }
+									}
+								}
+								W:Cowl(angle=170) { }
+							}
+						}
+					}
+					N:Cowl() {
+						N:Cowl(angle=-90) {
+							W:Cowl(angle=-60) {
+								N:Cowl(angle=-90, option=3) { }
+							}
+							E:Cowl(angle=-60) {
+								N:Cowl(angle=-90, option=4) { }
+							}
+							N:Cowl(angle=-45, color=#201020, effect=#A0FB) {
+								E:Cowl(angle=-70, option=5, color=#201020, effect=#A0FB) { }
+								N:Cowl(angle=-30, color=#201020, effect=#A0FB) {
+									N:Cowl(angle=-35) {
+										N:Cowl(angle=-45) { }
+									}
+									E:Cowl(angle=-90, option=3, color=#201020, effect=#A0FB) { }
+									W:Cowl(angle=-90, option=4, color=#201020, effect=#A0FB) { }
+								}
+								W:Cowl(angle=-70, option=5, color=#201020, effect=#A0FB) { }
+							}
+						}
+					}
+					S:Cowl() {
+						S:Cowl(angle=-90) {
+							E:Cowl(angle=-60) {
+								S:Cowl(angle=-90, option=3) { }
+							}
+							W:Cowl(angle=-60) {
+								S:Cowl(angle=-90, option=4) { }
+							}
+							S:Cowl(angle=-90, option=5) { }
+						}
+					}
+				}
+			}
+		}
+		N:Frame(angle=10) {
+			N:Frame(angle=160) {
+				N:Weight(angle=10) { }
+			}
+		}
+	}
+}

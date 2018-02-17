@@ -1,0 +1,64 @@
+// [RCD] 
+Val
+{
+	EW(default=0, min=-10000000000, max=10000000000)
+	NSW(default=0, min=-10000000000, max=10000000000)
+	WW(default=0, min=-10000000000, max=10000000000)
+	WB(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=90) {
+			S:Frame() {
+				S:Weight(angle=90, name=NSS) {
+					E:Frame(angle=60) {
+						E:Wheel(angle=-150, power=-EW, brake=WB, name=HRE) { }
+					}
+					W:Frame(angle=60) {
+						W:Wheel(angle=-150, power=WW, brake=WB, name=HRW) { }
+					}
+					N:TrimF(angle=-90, option=1) {
+						S:Frame(option=1) {
+							W:RLW(power=NSW, brake=20000) { }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+_te = 0
+_tw = 0
+
+function OnFrame()
+	NSW = _EX(NSS) * 100000 - _WX(NSS) * 10000
+	
+	EW = _LINER(EW,_te,2000)
+	WW = _LINER(WW,_tw,2000)
+	
+	_te = 0
+	_tw = 0
+	
+	if _KEY(0) == 1 then
+		_te = 5000
+		_tw = 5000
+	end
+end
+}

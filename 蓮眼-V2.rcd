@@ -1,0 +1,521 @@
+// [RCD] 
+Val
+{
+	A(default=0, max=10000000000)
+	G0(default=0, max=16777216, step=16777216)
+	G1(default=0, max=16777216, step=16777216)
+	G2(default=0, max=16777216, step=16777216)
+	G3(default=0, max=16777216, step=16777216)
+	G4(default=0, max=16777216, step=16777216)
+	G5(default=0, max=16777216, step=16777216)
+	G6(default=0, max=16777216, step=16777216)
+	G7(default=0, max=16777216, step=16777216)
+	G8(default=0, max=16777216, step=16777216)
+	G9(default=0, max=16777216, step=16777216)
+	GJ(default=0, max=16777216, step=16777216)
+	GW(default=0, min=-180, max=180)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	T(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+	V0(default=0, min=-90, max=90)
+	V1(default=0, min=-90, max=90)
+	V2(default=0, min=-90, max=90)
+	V3(default=0, min=-90, max=90)
+	V4(default=0, min=-90, max=90)
+	V5(default=0, min=-90, max=90)
+	V6(default=0, min=-90, max=90)
+	V7(default=0, min=-90, max=90)
+	V8(default=0, min=-90, max=90)
+	V9(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+		S:Trim(angle=-90) {
+			S:Chip() { }
+			S:TrimF(angle=-90) {
+				W:Frame() {
+					S:Frame(angle=150) {
+						S:Jet(angle=120, power=P) { }
+					}
+				}
+				E:Frame() {
+					S:Frame(angle=150) {
+						S:Jet(angle=120, power=P) { }
+					}
+				}
+			}
+			E:RudderF(angle=90, option=1) { }
+		}
+		S:Jet(power=GJ) { }
+		E:Chip(angle=-60, name=B1) {
+			E:Chip(angle=60) {
+				E:Trim(angle=R) {
+					S:Chip() {
+						S:Chip() {
+							E:Chip() {
+								E:Chip() { }
+							}
+						}
+						E:Chip() { }
+					}
+				}
+				E:Chip() {
+					E:Rudder(angle=30) {
+						E:Chip() {
+							E:Chip() {
+								E:Chip() {
+									E:Rudder(angle=20) {
+										E:Chip() {
+											S:Cowl(option=3) {
+												W:Cowl() {
+													S:Cowl(option=3) {
+														W:Cowl() {
+															W:Cowl() {
+																W:Cowl() {
+																	W:Cowl() { }
+																}
+															}
+														}
+													}
+													W:Cowl() {
+														W:Cowl() {
+															W:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Cowl(option=4) { }
+			}
+			E:Chip(angle=120) {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							S:Chip() { }
+						}
+					}
+				}
+			}
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+			}
+		}
+		W:Chip(angle=-60, name=B3) {
+			W:Chip(angle=60) {
+				W:Trim(angle=R) {
+					S:Chip() {
+						S:Chip() {
+							W:Chip() {
+								W:Chip() { }
+							}
+						}
+						W:Chip() { }
+					}
+				}
+				W:Chip() {
+					W:Rudder(angle=-30) {
+						W:Chip() {
+							W:Chip() {
+								W:Chip() {
+									W:Rudder(angle=-20) {
+										W:Chip() {
+											S:Cowl(option=4) {
+												E:Cowl() {
+													S:Cowl(option=4) {
+														E:Cowl() {
+															E:Cowl() {
+																E:Cowl() {
+																	E:Cowl() { }
+																}
+															}
+														}
+													}
+													E:Cowl() {
+														E:Cowl() {
+															E:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Cowl(option=3) { }
+			}
+			W:Chip(angle=120) {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							S:Chip() { }
+						}
+					}
+				}
+			}
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+			}
+		}
+		E:Chip(angle=60, option=1, name=B2) {
+			E:Chip(angle=-60) {
+				E:Trim(angle=R) {
+					S:Chip() {
+						S:Chip() {
+							E:Chip() {
+								E:Chip() { }
+							}
+						}
+						E:Chip() { }
+					}
+				}
+				E:Chip() {
+					E:Rudder(angle=30) {
+						E:Chip() {
+							E:Chip() {
+								E:Chip() {
+									E:Rudder(angle=20) {
+										E:Chip() {
+											S:Cowl(option=3) {
+												W:Cowl() {
+													S:Cowl(option=3) {
+														W:Cowl() {
+															W:Cowl() {
+																W:Cowl() {
+																	W:Cowl() { }
+																}
+															}
+														}
+													}
+													W:Cowl() {
+														W:Cowl() {
+															W:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				E:Frame(angle=-90, option=1) {
+					W:Wheel(angle=GW) { }
+				}
+			}
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+			}
+			E:Chip(angle=-120, option=1) {
+				S:Chip() {
+					S:Chip() {
+						E:Chip(angle=60) {
+							E:Trim(angle=-V) {
+								S:Chip() {
+									W:Chip() { }
+									S:Cowl(option=4) {
+										E:Cowl() {
+											N:Cowl(option=4) { }
+										}
+									}
+								}
+							}
+							N:Cowl() {
+								N:Cowl(option=4) { }
+								E:Cowl(option=3) { }
+							}
+						}
+						S:Chip() {
+							S:Chip() { }
+						}
+					}
+				}
+			}
+		}
+		W:Chip(angle=60, option=1, name=B4) {
+			W:Chip(angle=-60) {
+				W:Trim(angle=R) {
+					S:Chip() {
+						S:Chip() {
+							W:Chip() {
+								W:Chip() { }
+							}
+						}
+						W:Chip() { }
+					}
+				}
+				W:Chip() {
+					W:Rudder(angle=-30) {
+						W:Chip() {
+							W:Chip() {
+								W:Chip() {
+									W:Rudder(angle=-20) {
+										W:Chip() {
+											S:Cowl(option=4) {
+												E:Cowl() {
+													S:Cowl(option=4) {
+														E:Cowl() {
+															E:Cowl() {
+																E:Cowl() {
+																	E:Cowl() { }
+																}
+															}
+														}
+													}
+													E:Cowl() {
+														E:Cowl() {
+															E:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				W:Frame(angle=-90, option=1) {
+					E:Wheel(angle=GW) { }
+				}
+			}
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+			}
+			W:Chip(angle=-120, option=1) {
+				S:Chip() {
+					S:Chip() {
+						W:Chip(angle=60) {
+							W:Trim(angle=V) {
+								S:Chip() {
+									E:Chip() { }
+									S:Cowl(option=3) {
+										W:Cowl() {
+											N:Cowl(option=3) { }
+										}
+									}
+								}
+							}
+							N:Cowl() {
+								N:Cowl(option=3) { }
+								W:Cowl(option=4) { }
+							}
+						}
+						S:Chip() {
+							S:Chip() { }
+						}
+					}
+				}
+			}
+		}
+		S:Weight() {
+			S:Weight() {
+				W:Weight() {
+					N:Trim(angle=180) {
+						S:Chip() {
+							N:Chip(name=CRE) {
+								N:Frame(angle=V0) {
+									N:Arm(option=95000, power=G0, angle=-V0, name=A0) { }
+								}
+								N:Frame(angle=V1) {
+									N:Arm(option=95000, power=G1, angle=-V1, name=A1) { }
+								}
+								N:Frame(angle=V2) {
+									N:Arm(option=95000, power=G2, angle=-V2, name=A2) { }
+								}
+								N:Frame(angle=V3) {
+									N:Arm(option=95000, power=G3, angle=-V3, name=A3) { }
+								}
+								N:Frame(angle=V4) {
+									N:Arm(option=95000, power=G4, angle=-V4, name=A4) { }
+								}
+								N:Frame(angle=V5) {
+									N:Arm(option=95000, power=G5, angle=-V5, name=A5) { }
+								}
+								N:Frame(angle=V6) {
+									N:Arm(option=95000, power=G6, angle=-V6, name=A6) { }
+								}
+								N:Frame(angle=V7) {
+									N:Arm(option=95000, power=G7, angle=-V7, name=A7) { }
+								}
+								N:Frame(angle=V8) {
+									N:Arm(option=95000, power=G8, angle=-V8, name=A8) { }
+								}
+								N:Frame(angle=V9) {
+									N:Arm(option=95000, power=G9, angle=-V9, name=A9) { }
+								}
+							}
+						}
+					}
+				}
+				E:Weight() {
+					N:Trim(angle=180) {
+						S:Chip() {
+							N:Chip(name=CRE) {
+								N:Frame(angle=V0) {
+									N:Arm(option=95000, power=G0, angle=-V0, name=A0) { }
+								}
+								N:Frame(angle=V1) {
+									N:Arm(option=95000, power=G1, angle=-V1, name=A1) { }
+								}
+								N:Frame(angle=V2) {
+									N:Arm(option=95000, power=G2, angle=-V2, name=A2) { }
+								}
+								N:Frame(angle=V3) {
+									N:Arm(option=95000, power=G3, angle=-V3, name=A3) { }
+								}
+								N:Frame(angle=V4) {
+									N:Arm(option=95000, power=G4, angle=-V4, name=A4) { }
+								}
+								N:Frame(angle=V5) {
+									N:Arm(option=95000, power=G5, angle=-V5, name=A5) { }
+								}
+								N:Frame(angle=V6) {
+									N:Arm(option=95000, power=G6, angle=-V6, name=A6) { }
+								}
+								N:Frame(angle=V7) {
+									N:Arm(option=95000, power=G7, angle=-V7, name=A7) { }
+								}
+								N:Frame(angle=V8) {
+									N:Arm(option=95000, power=G8, angle=-V8, name=A8) { }
+								}
+								N:Frame(angle=V9) {
+									N:Arm(option=95000, power=G9, angle=-V9, name=A9) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+require("daretoku_taka/xhud.lua")
+require("daretoku_taka/libccvx2.lua")
+
+_mn = 0
+
+_prvtbl = InitPRVTable()
+
+_prvtbl.p.limit = 500000
+_prvtbl.p.step  = 250000
+
+_prvtbl.r.tgt = 360
+_prvtbl.r.kp  = 12
+_prvtbl.r.ki  = 12
+_prvtbl.r.kd  = 4
+_prvtbl.r.il  = 20
+
+_prvtbl.v.tgt = 180
+_prvtbl.v.kp  = 24
+_prvtbl.v.ki  = 32
+_prvtbl.v.kd  = 4
+_prvtbl.v.il  = 40
+
+JX_PID = XPID_new()
+JY_PID = XPID_new()
+WS_PID = XPID_new()
+RD_PID = XPID_new()
+
+_gt=0
+
+function OnFrame()
+	CCVXOnFrame(false)
+
+	ShowSplash("CCVX-12 Grand+Finale")
+	
+	--if not _inited then
+	--	InitAAM(AAM_Callback)
+	--	_inited = true
+	--end
+	
+	--if _KEYDOWN(1) == 1 then
+	--	EnableAAM()
+	--end
+	
+	--CalcNTP(1,_KEYDOWN(6)*_KEY(0),0)
+	--CalcNTP(2,_KEYDOWN(7)*_KEY(0),0)
+	
+	--_RAMIEL3D(_NPOS(_ntp[1]))
+	--_RAMIEL3D(_NPOS(_ntp[2]))
+	
+	--MoveAAM()
+	
+	local p,r,v = GetPRVAnalog(_prvtbl)
+	
+	P=p
+	R=r
+	V=v
+	
+	local dv = math.rad(-_NORMANALOG(1)*180/30)
+	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
+	
+	if _gf == 0 then dy = dy * 2 end
+	
+	JX = JX_PID:PID(dv,WX,24,16,2,40)
+	JY = JY_PID:PID(dy,WY,24,16,2,40)
+	RD = RD_PID:PID(dy,WY,24,16,2,40)
+	WS = WS_PID:PID(dy,WY,24,16,2,40)
+	
+	GW=_LINER(GW,_gt,20)
+	
+	if _KEYDOWN(6) == 1 then
+		_gt = 180 - _gt
+	end
+	
+	if _KEY(2) == 1 and _E(_G['A'.._v]) == _OPTION(_G['A'.._v]) and _G['V'.._v] == 0 then
+		_G['G'.._v]=_OPTION(_G['A'.._v])
+		GJ=_OPTION(_G['A'.._v])*4
+		_v=math.mod(_v+1,10)
+		_tv={_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn}
+		_tv[_v+1]=0
+	end
+	
+	for i=0,9 do
+		_G['V'..i]=_LINER(_G['V'..i],_tv[i+1],_tn/2)
+	end
+	
+	CheckLimit()
+	
+	XHUD.Draw()
+end
+}

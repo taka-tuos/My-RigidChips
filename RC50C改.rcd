@@ -1,0 +1,168 @@
+Val{
+	BRKE(max=200,step=200)
+	ENGN(min=-2500,max=10000,step=1000)
+	HNDL(min=-7.5,max=7.5,step=0.75)
+	HNDL2(min=-30,max=30,step=1)
+	JYRO(min=-4000000,max=4000000,step=4000000)
+}
+Key{
+	0:ENGN(step=4000)
+	1:ENGN(step=-1000)
+	2:HNDL(step=0.349999994),HNDL2(step=1.5)
+	3:HNDL(step=-0.349999994),HNDL2(step=-1.5)
+	4:BRKE(step=30)
+}
+Body{
+	Core(){
+		N:Frame(Angle=150,Option=1){
+			N:Frame(Name=JT,Angle=-150,Option=1){
+				N:Frame(Angle=-90,Option=1){}
+				N:Chip(Angle=-160){}
+				N:Trim(Angle=90){
+					S:Rudder(Angle=-20,Damper=0.3,Spring=0.1){
+						N:Cowl(Angle=20){
+							N:Cowl(Color=#FF0000,Angle=-40,Option=3){
+								S:Cowl(Color=#FF0000,Angle=-20){
+									S:Cowl(Color=#FF0000,Angle=-10){
+										E:Cowl(Color=#202020,Angle=-40,Option=4){}
+									}
+									E:Cowl(Color=#202020,Angle=-40,Option=3){}
+								}
+							}
+						}
+						N:Cowl(Angle=-20){
+							N:Cowl(Color=#FF0000,Angle=40,Option=3){
+								S:Cowl(Color=#FF0000,Angle=20){
+									S:Cowl(Color=#FF0000,Angle=10){
+										E:Cowl(Color=#202020,Angle=40,Option=4){}
+									}
+									E:Cowl(Color=#202020,Angle=40,Option=3){}
+									N:Cowl(Color=#FF5000,Angle=95,Option=1,Effect=61691){
+										N:Cowl(Color=#FF5000,Angle=-135,Option=1,Effect=61691){
+											N:Cowl(Angle=-140,Option=1){
+												N:Cowl(Color=#FF5000,Angle=165,Option=1,Effect=61691){
+													W:Cowl(Color=#202020,Angle=110,Option=4){}
+												}
+												N:Cowl(Color=#FF5000,Angle=-165,Option=1,Effect=61691){
+													W:Cowl(Color=#202020,Angle=-110,Option=4){}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						S:Wheel(Power=ENGN,Option=1,Effect=2.5){}
+					}
+				}
+				N:Trim(Angle=90){
+					S:Rudder(Angle=20,Damper=0.3,Spring=0.08){
+						N:Trim(){
+							S:RudderF(Angle=-20,Option=1){}
+							S:Chip(Angle=-HNDL2){}
+							S:TrimF(Angle=90,Option=1){}
+							N:Frame(Option=1){
+								N:Frame(Option=1){
+									S:Wheel(Angle=-HNDL,Damper=0.1,Spring=0.03,Brake=BRKE,Option=1,Effect=2){}
+								}
+							}
+						}
+					}
+				}
+			}
+			S:Cowl(Color=#FF0000,Angle=-10,Option=2){
+				N:Cowl(Color=#202020,Angle=10){
+					N:Cowl(Color=#FF0000,Angle=20){
+						W:Cowl(Color=#FF0000,Angle=-120,Option=4){
+							S:Cowl(Color=#FF0000){
+								E:Cowl(Angle=165,Option=2){}
+							}
+						}
+						E:Cowl(Color=#FF0000,Angle=-120,Option=3){
+							S:Cowl(Color=#FF0000){
+								W:Cowl(Angle=165,Option=2){}
+							}
+						}
+						N:Cowl(Color=#FF0000,Angle=150){
+							N:Cowl(Color=#202020,Angle=90,Option=5){
+								S:Cowl(Color=#202020,Angle=-105,Option=1,Effect=61691){
+									S:Cowl(Color=#202020,Angle=-150,Option=1,Effect=61691){
+										S:Cowl(Angle=145){
+											N:Cowl(Color=#536578,Angle=142){
+												N:Cowl(Angle=-105,Option=1,Effect=61691){
+													N:Cowl(Angle=-150,Option=1,Effect=61691){
+														N:Cowl(Color=#536578,Angle=-105){
+															W:Cowl(Color=#536578,Angle=75,Option=3){}
+															S:Cowl(Angle=170,Option=1,Effect=61691){
+																S:Cowl(Color=#000000,Angle=15,Option=2){}
+															}
+															E:Cowl(Color=#536578,Angle=75,Option=4){}
+														}
+													}
+												}
+											}
+											W:Cowl(Color=#536578,Angle=-90,Option=3){}
+											E:Cowl(Color=#536578,Angle=-90,Option=4){}
+										}
+									}
+								}
+							}
+							W:Cowl(Color=#FF0000,Angle=105,Option=3){}
+							E:Cowl(Color=#FF0000,Angle=105,Option=4){}
+						}
+					}
+					E:Cowl(Color=#202020,Angle=-110,Option=3){}
+					W:Cowl(Color=#202020,Angle=-110,Option=4){}
+				}
+				S:Cowl(Option=1,Effect=61691){
+					S:Cowl(Angle=-90,Option=1,Effect=61691){
+						S:Cowl(Angle=-70,Option=1,Effect=61691){
+							W:Cowl(Color=#FF0000,Angle=-85,Option=4){
+								S:Cowl(Color=#FF0000,Angle=-15,Option=3){}
+							}
+							N:Cowl(Color=#FF0000,Angle=-90){
+								W:Cowl(Color=#FF0000,Angle=-85,Option=3){}
+								E:Cowl(Color=#FF0000,Angle=-85,Option=4){}
+								N:Cowl(Color=#C0C0C0,Angle=175,Option=2){}
+								S:Cowl(Color=#FF0000,Angle=110,Option=1,Effect=61691){
+									S:Cowl(Color=#FF0000,Angle=150,Option=1,Effect=61691){
+										S:Cowl(Color=#000000,Angle=-80,Option=5,Effect=#0080FB){}
+									}
+								}
+							}
+							E:Cowl(Color=#FF0000,Angle=-85,Option=3){
+								S:Cowl(Color=#FF0000,Angle=-15,Option=4){}
+							}
+							S:Cowl(Angle=160,Option=1,Effect=61691){
+								S:Cowl(Angle=-160,Option=1,Effect=61691){
+									S:Cowl(Angle=-105,Option=1){}
+								}
+							}
+						}
+					}
+				}
+				E:Cowl(Color=#FF0000,Angle=-100,Option=2){}
+				W:Cowl(Color=#FF0000,Angle=-100,Option=2){}
+			}
+		}
+		N:RLW(Angle=90,Power=JYRO,Brake=150000){}
+	}
+}
+Lua{
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function OnFrame()
+
+	out(0,(_VEL(0) * 3.6), " kph") 
+	ez = _EZ(JT) / 3.14 * 180
+	bk = (HNDL2 * 1)
+	JYRO = ((ez+bk) / 90) * 200000 + _WZ()*3000
+
+end
+}

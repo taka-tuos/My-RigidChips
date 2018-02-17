@@ -1,0 +1,179 @@
+// [RCD] 
+Val
+{
+	ART(default=0, max=6, step=1)
+	BRAKE(default=0, max=150, step=100)
+	ENGINE(default=0, min=-5000, max=5000, step=2000)
+	L(default=0, min=-30, max=38, step=4)
+	R(default=0, min=-38, max=30, step=4)
+}
+Key
+{
+	0:ENGINE(step=8192)
+	1:ENGINE(step=-2048)
+	2:L(step=-4), R(step=-4), ART(step=1)
+	3:L(step=4), R(step=4), ART(step=1)
+	4:BRAKE(step=64)
+}
+Body
+{
+	Core() {
+		N:Weight(option=1) {
+			W:Trim(angle=10) { }
+			N:Chip(option=1) {
+				N:Cowl(color=#000000) {
+					W:Cowl(color=#000000) {
+						W:Cowl(angle=-90, option=4, color=#FF8000) { }
+					}
+					E:Cowl(color=#000000) {
+						E:Cowl(angle=-90, option=3, color=#FF8000) { }
+					}
+				}
+				N:Frame(angle=-170) {
+					E:Chip() { }
+					W:Chip() { }
+				}
+				N:Chip(angle=-160) { }
+			}
+			E:Trim(angle=-10) { }
+			W:Chip(angle=-89.99995) {
+				S:Chip() { }
+			}
+			E:Chip(angle=-89.99995) {
+				S:Chip() { }
+			}
+		}
+		W:Frame() {
+			W:Frame(angle=-91) {
+				E:Cowl(angle=-100) {
+					E:Cowl(angle=-100) {
+						E:Cowl(angle=-70, color=#FF8000) {
+							N:Cowl(color=#FF8000) { }
+							S:Cowl(color=#FF8000) { }
+							E:Cowl(angle=-90, color=#FF8000) {
+								N:Cowl(color=#FF8000) { }
+								S:Cowl(color=#FF8000) { }
+								E:Cowl(angle=-75, color=#000000) {
+									N:Cowl(color=#000000) { }
+									S:Cowl(color=#000000) { }
+									W:Cowl(angle=-100) {
+										W:Cowl(angle=-2.5, color=#000000) {
+											S:Cowl(angle=-30, option=4, color=#FF8000) { }
+											N:Cowl(angle=-30, option=3, color=#FF8000) { }
+											W:Cowl(angle=-62.5, color=#FF8000) {
+												N:Cowl(angle=-50, color=#000000) {
+													N:Cowl(angle=45, color=#FF8000) {
+														N:Cowl(angle=-10, color=#FF8000) {
+															N:Cowl(angle=-30, color=#FF8000) {
+																E:Cowl(angle=-20, option=3, color=#FFFF00) { }
+															}
+														}
+													}
+												}
+												S:Cowl(angle=-50, color=#000000) {
+													S:Cowl(angle=50, color=#FF8000) {
+														S:Cowl(color=#FF8000) {
+															S:Cowl(angle=-60, color=#FF8000) {
+																S:Cowl(angle=-100, color=#000000) { }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				N:TrimF(angle=0) {
+					N:RLW(angle=-R, power=ENGINE, brake=BRAKE, option=1, effect=4) { }
+				}
+				S:TrimF(angle=0) {
+					S:RLW(angle=-ART, power=ENGINE, brake=BRAKE, option=1, effect=4) { }
+				}
+			}
+		}
+		E:Frame() {
+			E:Frame(angle=-91) {
+				W:Cowl(angle=-100) {
+					W:Cowl(angle=-100) {
+						W:Cowl(angle=-70, color=#FF8000) {
+							N:Cowl(color=#FF8000) { }
+							S:Cowl(color=#FF8000) { }
+							W:Cowl(angle=-90, color=#FF8000) {
+								S:Cowl(color=#FF8000) { }
+								N:Cowl(angle=0, color=#FF8000) { }
+								W:Cowl(angle=-75, color=#000000) {
+									S:Cowl(color=#000000) { }
+									N:Cowl(color=#000000) { }
+									E:Cowl(angle=-100) {
+										E:Cowl(angle=-2.5, color=#000000) {
+											S:Cowl(angle=-30, option=3, color=#FF8000) { }
+											N:Cowl(angle=-30, option=4, color=#FF8000) { }
+											E:Cowl(angle=-62.85, color=#FF8000) {
+												N:Cowl(angle=-50, option=0, color=#000000) {
+													N:Cowl(angle=45, color=#FF8000) {
+														N:Cowl(angle=-10, color=#FF8000) {
+															N:Cowl(angle=-30, color=#FF8000) {
+																W:Cowl(angle=-20, option=4, color=#FFFF00) { }
+															}
+														}
+													}
+												}
+												S:Cowl(angle=-50, color=#000000) {
+													S:Cowl(angle=50, color=#FF8000) {
+														S:Cowl(color=#FF8000) {
+															S:Cowl(angle=-60, color=#FF8000) {
+																S:Cowl(angle=-100, color=#000000) { }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				S:TrimF(angle=0) {
+					S:RLW(angle=-ART, power=-ENGINE, brake=BRAKE, option=1, effect=4) { }
+				}
+				N:TrimF(angle=0) {
+					N:RLW(angle=L, power=-ENGINE, brake=BRAKE, option=1, effect=4) { }
+				}
+			}
+		}
+		S:Frame() {
+			S:Chip(color=#000000) {
+				S:Cowl(color=#000000) {
+					E:Cowl(color=#000000) {
+						E:Cowl(angle=-90, option=3, color=#FF8000) { }
+					}
+					W:Cowl(color=#000000) {
+						W:Cowl(angle=-90, option=4, color=#FF8000) { }
+					}
+				}
+				N:Chip(angle=-160) { }
+			}
+			S:Frame(angle=-12) {
+				W:Chip() { }
+				E:Chip() { }
+			}
+		}
+	}
+}
+Script
+{
+	print 0,"Welcome to Rigid-Chips World."
+	print 1,"  FPS=",_FPS(),"  Chips=",_CHIPS(),"  Weight=",_WEIGHT()
+	print 2,"  Width=",_WIDTH(),"  Height=",_HEIGHT()
+	print 3,"  Faces=",_FACE()
+	print 4,"  Vel=",_VEL()
+	print 5,"  R=",_RED(32,32)
+	print 6,"  G=",_GREEN(32,32)
+	print 7,"  B=",_BLUE(32,32)
+}

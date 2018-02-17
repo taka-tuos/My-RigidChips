@@ -1,0 +1,225 @@
+// [RCD] 
+Val
+{
+	APW(default=0, max=16777216, step=16777216)
+	BJ(default=0, min=-16777216, max=16777216, step=16777216)
+	XJ0(default=0, min=-16777216, max=16777216)
+	XJ1(default=0, min=-16777216, max=16777216)
+	YJ0(default=0, min=-16777216, max=16777216)
+	YJ1(default=0, min=-16777216, max=16777216)
+	ZJ0(default=0, min=-16777216, max=16777216)
+	ZJ1(default=0, min=-16777216, max=16777216)
+	ZRJ(default=0, min=-16777216, max=16777216)
+}
+Key
+{
+	4:APW(step=16777216)
+}
+Body
+{
+	Core() {
+		N:TrimF(angle=-90, option=1) {
+			S:Chip() {
+				S:Frame(option=1) { }
+			}
+			S:Frame(option=1) {
+				N:Jet(power=XJ0) { }
+			}
+		}
+		S:Frame(option=1, name=J1) { }
+		N:Frame(option=1, name=J0) { }
+		S:Jet(power=YJ1) { }
+		N:Jet(power=YJ0) { }
+		S:Frame(angle=-30, option=1) {
+			S:Jet(angle=120, power=ZJ0) { }
+		}
+		N:Frame(angle=-30, option=1) {
+			N:Jet(angle=120, power=-ZJ1) { }
+		}
+		S:TrimF(angle=-90, option=1) {
+			S:Frame(option=1) {
+				N:Jet(power=-XJ1) {
+					N:Chip() { }
+				}
+			}
+			S:Arm() { }
+		}
+		N:TrimF(angle=-90, option=1) {
+			N:Arm(option=128000, power=APW, name=APC) { }
+		}
+		S:Frame(option=1) { }
+		N:Frame(angle=-30, option=1) {
+			N:Jet(angle=120, power=BJ) { }
+		}
+	}
+}
+Lua
+{
+require("wakaru/wakaru_eye.lua")
+
+eye=Wakaru_Eye.new()
+
+JETPW1 = 1000
+JETPW2 = 200
+JETPW3 = 1000000
+
+function _LVAL(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+TX0 = 0
+TX1 = 0
+
+TY0 = 50
+TY1 = 50
+
+TZ0 = 0.9
+TZ1 = 0.9
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _NVEC(x,y,z)
+	len = _LEN3(x,y,z)
+	
+	if len < 0.000001 then return x,y,z end
+	
+	x = x / len
+	y = y / len
+	z = z / len
+	
+	return x,y,z
+end
+
+H = 50 + 200
+
+function _PIVAL(dt,dv)
+	return dv + (dt - dv) / 2
+end
+
+PN = 1
+
+VX = 0
+VY = 0
+VZ = 0
+
+__X = _X(0)
+__Y = _Y(0)
+__Z = _Z(0)
+
+function _M()
+	VX = (_X(0) - __X) * _BASE()
+	VY = (_Y(0) - __Y) * _BASE()
+	VZ = (_Z(0) - __Z) * _BASE()
+	
+	__X = _X(0)
+	__Y = _Y(0)
+	__Z = _Z(0)
+end
+
+function OnFrame()
+	eye:tick()
+	_M()
+	
+	if _PLAYERS() ~= 0 then PN = math.mod(PN+_KEYDOWN(0),_PLAYERS()) end
+	
+	if _PLAYERS() == 0 then v = Wector.new(0,5,-1000)
+	else v = eye:getPos(_PLAYERID(PN)) end
+	
+	ax,ay,az = _X(0),_Y(0),_Z(0)
+	bx,by,bz = v.x,v.y,v.z
+	
+	ex,ey,ez = _NVEC(bx-ax,by-ay,bz-az)
+	
+	_SETCOLOR(16711680)
+	
+	_MOVE3D(ax,ay,az)
+	_LINE3D(bx,by,bz)
+	
+	_MOVE3D(ax,ay,az)
+	_LINE3D(ax+ex,ay+ey,az+ez)
+	
+	out(2,string.format('%.4f m',_LEN3(bx-ax,by-ay,bz-az)))
+	
+	--TY0 = _LVAL(TY0,H+ey*0.6,1)
+	--TY1 = _LVAL(TY1,H-ey*0.6,1)
+	
+	--TX0 = _LVAL(TX0, ex*0.6,1)
+	--TX1 = _LVAL(TX1,-ex*0.6,1)
+	
+	out(0,string.format("%d power",_E(APC)))
+	out(1,string.format("%d ptr",PN))
+	
+	_XJ0 = -(TX0-_X(J0))*JETPW1*8-_VX(J0)*JETPW2
+	_XJ1 = -(TX1-_X(J1))*JETPW1*8-_VX(J1)*JETPW2
+	
+	if _XJ0 > JETPW3 then _XJ0 = JETPW3 end
+	if _XJ0 < -JETPW3 then _XJ0 = -JETPW3 end
+	
+	if _XJ1 > JETPW3 then _XJ1 = JETPW3 end
+	if _XJ1 < -JETPW3 then _XJ1 = -JETPW3 end
+	
+	_SETCOLOR(16777215)
+	
+	_MOVE2D(-2,0)
+	_LINE2D(2,0)
+	
+	DN = (16777216/8)
+	
+	_SETCOLOR(16711680)
+	
+	_MOVE2D(-1.9,XJ0/DN)
+	_LINE2D(-1.875,XJ0/DN)
+	
+	_MOVE2D(-1.8,XJ1/DN)
+	_LINE2D(-1.775,XJ1/DN)
+	
+	_YJ0 = (TY0-_Y(J0))*JETPW1*8-_VY(J0)*JETPW2
+	_YJ1 = (TY1-_Y(J1))*JETPW1*8-_VY(J1)*JETPW2
+	
+	if _YJ0 > JETPW3 then _YJ0 = JETPW3 end
+	if _YJ0 < -JETPW3 then _YJ0 = -JETPW3 end
+	
+	if _YJ1 > JETPW3 then _YJ1 = JETPW3 end
+	if _YJ1 < -JETPW3 then _YJ1 = -JETPW3 end
+	
+	_MOVE2D(-1.7,YJ1/DN)
+	_LINE2D(-1.675,YJ1/DN)
+	
+	_MOVE2D(-1.6,YJ1/DN)
+	_LINE2D(-1.575,YJ1/DN)
+	
+	_ZJ0 = (TZ0-_Z(J0))*JETPW1*8-_VZ(J0)*JETPW2
+	_ZJ1 = (TZ1-_Z(J1))*JETPW1*8-_VZ(J1)*JETPW2
+	
+	if _ZJ0 > JETPW3 then _ZJ0 = JETPW3 end
+	if _ZJ0 < -JETPW3 then _YJ0 = -JETPW3 end
+	
+	if _ZJ1 > JETPW3 then _ZJ1 = JETPW3 end
+	if _ZJ1 < -JETPW3 then _ZJ1 = -JETPW3 end
+	
+	XJ0 = _XX(J0)*_XJ0 + _XY(J0)*_YJ0 + _XZ(J0)*_ZJ0
+	XJ1 = _XX(J1)*_XJ1 + _XY(J1)*_YJ1 + _XZ(J1)*_ZJ1
+	
+	YJ0 = _YX(J0)*_XJ0 + _YY(J0)*_YJ0 + _YZ(J0)*_ZJ0
+	YJ1 = _YX(J1)*_XJ1 + _YY(J1)*_YJ1 + _YZ(J1)*_ZJ1
+	
+	ZJ0 = _ZX(J0)*_XJ0 + _ZY(J0)*_YJ0 + _ZZ(J0)*_ZJ0
+	ZJ1 = _ZX(J1)*_XJ1 + _ZY(J1)*_YJ1 + _ZZ(J1)*_ZJ1
+	
+	--ZRJ = (_EZ(0)/math.pi)*400000-(-_WZ(0)/math.pi)*4000
+	
+	_MOVE2D(-1.4,ZRJ/DN*4)
+	_LINE2D(-1.375,ZRJ/DN*4)
+	
+	if _E(APC) == 128000 and _KEY(4) == 1 then BJ = 128000 end
+end
+}

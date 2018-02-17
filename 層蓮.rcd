@@ -1,0 +1,316 @@
+// [RCD] 
+Val
+{
+	ENGINE(default=0, max=307200, step=102400)
+	GUN(default=0, max=8192, step=8192)
+	X(default=0, min=-10000000000, max=10000000000)
+	Y(default=0, min=-10000000000, max=10000000000)
+	Z(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+	0:YAW(step=65536)
+	1:YAW(step=-65536)
+	2:ROLL(step=-65536)
+	3:ROLL(step=65536)
+	4:ENGINE(step=102400)
+	5:GUN(step=8192)
+	14:ROLL2(step=2097152)
+	15:ROLL2(step=-2097152)
+}
+Body
+{
+	Core() {
+		S:Frame(angle=170, option=1) {
+			S:Frame(angle=-170, option=1) {
+				S:Frame(angle=90) {
+					E:Chip(angle=90) { }
+					W:Chip(angle=90) { }
+					S:Frame(angle=90) {
+						N:Frame() {
+							N:Frame() {
+								S:Frame(angle=90) {
+									S:Frame() {
+										S:Frame() {
+											S:RLW(angle=90, power=-ENGINE) {
+												E:Trim(angle=20, color=#202020) {
+													E:Chip(color=#202020) {
+														E:Chip(color=#202020) { }
+													}
+												}
+												W:Trim(angle=20, color=#202020) {
+													W:Chip(color=#202020) {
+														W:Chip(color=#202020) { }
+													}
+												}
+												N:Trim(angle=20, color=#202020) {
+													N:Chip(color=#202020) {
+														N:Chip(color=#202020) { }
+													}
+												}
+												S:Trim(angle=20, color=#202020) {
+													S:Chip(color=#202020) {
+														S:Chip(color=#202020) { }
+													}
+												}
+											}
+											S:RLW(angle=90, power=ENGINE) {
+												N:Trim(angle=-20, color=#202020) {
+													N:Chip(color=#202020) {
+														N:Chip(color=#202020) { }
+													}
+												}
+												S:Trim(angle=-20, color=#202020) {
+													S:Chip(color=#202020) {
+														S:Chip(color=#202020) { }
+													}
+												}
+												E:Trim(angle=-20, color=#202020) {
+													E:Chip(color=#202020) {
+														E:Chip(color=#202020) { }
+													}
+												}
+												W:Trim(angle=-20, color=#202020) {
+													W:Chip(color=#202020) {
+														W:Chip(color=#202020) { }
+													}
+												}
+											}
+											E:Frame(angle=90) {
+												E:Frame(angle=90) {
+													E:Frame(angle=90) { }
+												}
+											}
+										}
+										S:Frame(angle=-90) { }
+									}
+									E:Cowl(angle=-90) {
+										E:Cowl() {
+											E:Cowl(color=#202020, effect=#70FB) {
+												S:Cowl(option=3, color=#202020, effect=#70FB) { }
+											}
+											S:Cowl(option=0, color=#202020, effect=#70FB) {
+												W:Cowl(angle=45) {
+													W:Cowl(angle=-45) {
+														W:Cowl(angle=-45) {
+															S:Cowl(angle=-90, option=3) { }
+															W:Cowl(angle=45) {
+																W:Cowl() {
+																	W:Cowl() { }
+																}
+																S:Cowl(angle=-90) {
+																	W:Cowl(angle=-25) {
+																		W:Cowl(angle=-15) { }
+																	}
+																}
+															}
+														}
+														S:Cowl(angle=-90) { }
+													}
+													S:Cowl(angle=-90, option=4) { }
+												}
+											}
+										}
+									}
+									S:Frame(angle=90) {
+										E:Frame(option=1) {
+											S:Frame() {
+												E:Frame(angle=90) {
+													N:Arm(power=GUN, option=8192) { }
+													W:Frame(angle=-90) {
+														W:Frame(angle=-90) {
+															W:Frame(angle=-90) {
+																N:Arm(power=GUN, option=8192) { }
+															}
+															N:Arm(power=GUN, option=8192) { }
+														}
+														N:Arm(power=GUN, option=8192) { }
+													}
+												}
+											}
+										}
+										W:Frame(option=1) {
+											S:Frame() {
+												W:Frame(angle=90) {
+													N:Arm(power=GUN, option=8192) { }
+													E:Frame(angle=-90) {
+														E:Frame(angle=-90) {
+															E:Frame(angle=-90) {
+																N:Arm(power=GUN, option=8192) { }
+															}
+															N:Arm(power=GUN, option=8192) { }
+														}
+														N:Arm(power=GUN, option=8192) { }
+													}
+												}
+											}
+										}
+									}
+									W:Cowl(angle=-90) {
+										W:Cowl() {
+											W:Cowl(color=#202020, effect=#70FB) {
+												W:Cowl(angle=-90, color=#202020, effect=#70FB) {
+													S:Cowl(angle=-60, color=#202020, effect=#70FB) { }
+												}
+												S:Cowl(angle=0, option=4, color=#202020, effect=#70FB) { }
+											}
+											S:Cowl(color=#202020, effect=#70FB) {
+												S:Cowl(angle=-90, color=#202020, effect=#70FB) {
+													W:Cowl(angle=-45, color=#202020, effect=#70FB) { }
+												}
+												E:Cowl(angle=45) {
+													E:Cowl(angle=-45) {
+														S:Cowl(angle=-90) { }
+														E:Cowl(angle=-45) {
+															S:Cowl(angle=-90, option=4) { }
+															E:Cowl(angle=45) {
+																E:Cowl() {
+																	E:Cowl() { }
+																}
+															}
+														}
+													}
+													S:Cowl(angle=-90, option=3) { }
+												}
+											}
+										}
+									}
+								}
+								W:Chip(angle=90) {
+									N:Chip() {
+										N:Chip() { }
+									}
+									W:Chip() {
+										N:Chip() { }
+										S:Chip() { }
+									}
+									S:Chip() { }
+								}
+								E:Chip(angle=90) {
+									N:Chip() {
+										N:Chip() { }
+									}
+									E:Chip() {
+										N:Chip() { }
+										S:Chip() { }
+									}
+									S:Chip() { }
+								}
+								N:Frame() {
+									N:Frame() {
+										N:Frame() {
+											N:Cowl(angle=90) {
+												N:Cowl(angle=90) {
+													N:Cowl() { }
+													S:Cowl() { }
+												}
+											}
+											N:Cowl(angle=90) { }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			S:Cowl(angle=-80, effect=#F0FB) {
+				E:Cowl(angle=-45) {
+					N:Cowl(angle=-90, option=4) { }
+					E:Cowl(angle=-45) {
+						E:Cowl() {
+							E:Cowl() {
+								E:Cowl(angle=-45) {
+									N:Cowl(angle=-90, option=3) { }
+									E:Cowl(angle=45) {
+										E:Cowl() {
+											E:Cowl() {
+												N:Cowl() {
+													N:Cowl() {
+														W:Cowl(option=4) { }
+													}
+												}
+											}
+										}
+									}
+								}
+								N:Cowl(angle=-90) { }
+							}
+						}
+						N:Cowl(angle=-90) { }
+					}
+				}
+				W:Cowl(angle=-45) {
+					W:Cowl(angle=-45) {
+						W:Cowl() {
+							W:Cowl() {
+								W:Cowl(angle=-45) {
+									N:Cowl(angle=-90, option=4) { }
+									W:Cowl(angle=45) {
+										W:Cowl() {
+											W:Cowl() {
+												N:Cowl() {
+													N:Cowl() {
+														E:Cowl(option=3) { }
+													}
+												}
+											}
+										}
+									}
+								}
+								N:Cowl(angle=-90) { }
+							}
+						}
+						N:Cowl(angle=-90) { }
+					}
+					N:Cowl(angle=-90, option=3) { }
+				}
+			}
+		}
+		S:TrimF(angle=-90, option=1) {
+			S:Frame() {
+				N:RLW(power=X, brake=200000) { }
+			}
+			W:TrimF(angle=-90, option=1) {
+				E:RLW(power=Z, brake=200000) { }
+			}
+		}
+		S:RLW(power=Y, brake=200000) { }
+	}
+}
+Lua
+{function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+MKPH = 0
+TX,TY,TZ = 0,0,0
+
+function main()
+	if (_VEL(0) * 3.6) > MKPH then
+		MKPH = (_VEL(0) * 3.6)
+	end
+	
+	out(0, "ì¡êÌíÈçëÅ@è\å‹éÆì¡éÍÉwÉäÅ@ëwò@")
+	out(1, _VEL(0) * 3.6, "kph")
+	out(2, _WEIGHT(), "kg")
+	out(3, _FPS(), "fps")
+	out(4, "max ", MKPH, "kph")
+	if _KEY(11) == 1 then
+		fr = _BYE(DRP0)
+		fr = _BYE(DRP1)
+		fr = _BYE(DRPF0)
+		fr = _BYE(DRPF1)
+	end
+
+	X = (TX-_EX(0)) * 200000
+	Y = (TY-_EY(0)) * 200000
+	Z = (TZ-_EZ(0)) * 200000
+
+	TX = TX + math.rad(_KEY(0)-_KEY(1))
+	TY = TY + math.rad(_KEY(3)-_KEY(2))
+end}

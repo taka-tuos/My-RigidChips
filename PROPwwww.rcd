@@ -1,0 +1,57 @@
+// [RCD] 
+Val
+{
+	VAR(default=0, max=307200, step=102400)
+	VAR2(default=0, max=90)
+}
+Key
+{
+	0:VAR2(step=5)
+	1:VAR2(step=-5)
+	4:VAR(step=102400)
+}
+Body
+{
+	Core() {
+		S:Weight(angle=20, option=2) {
+			S:Weight(angle=70, option=2) { }
+			S:Trim(angle=-90) { }
+		}
+		W:Weight(angle=20, option=2) {
+			W:Weight(angle=70, option=2) { }
+			W:Trim(angle=-90) { }
+		}
+		N:Weight(angle=20, option=2) {
+			N:Weight(angle=70, option=2) { }
+			N:Trim(angle=-90) { }
+		}
+		E:Weight(angle=20, option=2) {
+			E:Weight(angle=70, option=2) { }
+			E:Trim(angle=-90) { }
+		}
+		N:Frame(angle=-90) {
+			N:RLW(angle=-90, power=VAR) {
+				N:Trim(angle=VAR2) {
+					N:Chip() {
+						N:Chip() { }
+					}
+				}
+				W:Trim(angle=VAR2) {
+					W:Chip() {
+						W:Chip() { }
+					}
+				}
+				S:Trim(angle=VAR2) {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+				E:Trim(angle=VAR2) {
+					E:Chip() {
+						E:Chip() { }
+					}
+				}
+			}
+		}
+	}
+}

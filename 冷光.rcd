@@ -1,0 +1,167 @@
+// [RCD] 
+Val
+{
+	G0(default=0, max=10000000000)
+	G1(default=0, max=10000000000)
+	G2(default=0, max=10000000000)
+	G3(default=0, max=10000000000)
+	N(default=0, min=-90, max=90)
+	P(default=0, max=10000000000)
+	R(default=0, min=-90, max=90)
+	RD(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+}
+Key
+{
+	0:V(step=-4)
+	1:V(step=4)
+	2:R(step=4)
+	3:R(step=-4)
+	4:P(step=30000)
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+		S:Frame(angle=150) {
+			S:Chip(angle=-150) {
+				N:Frame(angle=-90, option=1, spring=1, damper=1) {
+					N:Arm(angle=90, power=G0, option=50000) { }
+					E:Arm(angle=90, power=G3, option=50000) { }
+					W:Arm(angle=90, power=G2, option=50000) { }
+					S:Arm(angle=90, power=G1, option=50000) { }
+				}
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							S:Frame() {
+								S:TrimF(angle=-90, option=1) {
+									N:Rudder(angle=-90) {
+										W:Chip(angle=RD) { }
+										E:Rudder(angle=-155) {
+											E:Chip(angle=RD) { }
+										}
+									}
+								}
+								S:Chip() {
+									E:Frame(angle=-40) {
+										E:Frame(angle=40, option=1) {
+											W:Trim(angle=V) {
+												E:Chip() { }
+											}
+										}
+									}
+									W:Frame(angle=-40) {
+										W:Frame(angle=40, option=1) {
+											E:Trim(angle=-V) {
+												W:Chip() { }
+											}
+										}
+									}
+								}
+							}
+						}
+						N:RLW(angle=-90, power=P) {
+							E:Trim(angle=N) { }
+							W:Trim(angle=N) { }
+						}
+						N:RLW(angle=-90, power=-P) {
+							E:Trim(angle=-N) { }
+							W:Trim(angle=-N) { }
+						}
+					}
+					E:Frame(angle=-30) {
+						E:Frame(angle=40, option=1) {
+							W:Trim(angle=-R) {
+								E:Chip(angle=-10) {
+									E:Chip() { }
+								}
+							}
+						}
+					}
+					W:Frame(angle=-30) {
+						W:Frame(angle=40, option=1) {
+							E:Trim(angle=-R) {
+								W:Chip(angle=-10) {
+									W:Chip(angle=0) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/libccvx3.lua")
+
+_limitlist={1500,1800,2000,2200,2500,64512}
+
+_prvtbl = InitPRVTable()
+
+_prvtbl.p.limit = 360000
+_prvtbl.p.step  = 360000
+
+_prvtbl.r.tgt = 360
+_prvtbl.r.kp  = 12
+_prvtbl.r.ki  = 12
+_prvtbl.r.kd  = 4
+_prvtbl.r.il  = 20
+
+_prvtbl.v.tgt = 180
+_prvtbl.v.kp  = 32
+_prvtbl.v.ki  = 32
+_prvtbl.v.kd  = 4
+_prvtbl.v.il  = 40
+
+RD_PID = XPID_new()
+
+_ng = 0
+
+_init = false
+
+function OnFrame()
+	if not _init then
+		CCVXOnInit()
+		_init = true
+	end
+	
+	CCVXOnFrame()
+
+	ShowSplash("XU-5 ColdLights")
+	
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
+	
+	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
+	
+	--RD = RD_PID:PID(dy,WY,24,16,2,40)
+	
+	for _i=0,3 do
+		_G["G".._i] = 0
+	end
+	
+	if _KEY(7) == 1 and math.mod(_TICKS(),3) == 0 then
+		_G["G".._ng] = 10000000000
+		_ng = math.mod(_ng+1,4)
+	end
+	
+	P=p
+	R=r
+	V=v
+	
+	NK = _VEL(0) * 3.6
+	
+	N = 25 * ((NK - 200) / 200) + 55
+	
+	CheckLimit()
+	
+	XHUD.Draw()
+end
+}

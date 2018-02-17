@@ -1,0 +1,695 @@
+// [RCD] 
+Val
+{
+	B1K(default=0, max=16777216, step=16777216)
+	DRE(default=0, max=16384)
+	ELON(default=0, min=-16, max=16, step=4)
+	ENGINE(default=0, max=307200, step=65536)
+	EVTR(default=0, min=-16, max=16, step=8)
+	FLAG(default=-90, min=-90, max=0, step=9)
+	G0(default=-45, min=-45, max=-5)
+	G1(default=-55, min=-55, max=0)
+	GUN1(default=0, max=65536, step=65536)
+	GUN2(default=0, max=65536, step=65536)
+	GUN3(default=0, max=65536, step=65536)
+	GUN4(default=0, max=65536, step=65536)
+	PTCH(default=55, min=55, max=90)
+	ST37(default=0, max=16777216, step=16777216)
+	VAR(default=0, max=262144)
+}
+Key
+{
+	0:EVTR(step=8)
+	1:EVTR(step=-8)
+	2:ELON(step=8)
+	3:ELON(step=-8)
+	4:ENGINE(step=65536)
+	11:FLAG(step=9), DRE(step=131072)
+	13:ST37(step=16777216)
+	14:G1(step=5), G0(step=5)
+	15:G0(step=-5), G1(step=-5)
+}
+Body
+{
+	Core(color=#202020) {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+		S:Frame(angle=160, option=1) {
+			S:Frame(angle=20, option=1) {
+				S:Frame(angle=-90, option=1) {
+					S:Frame(angle=-90, color=#202020, spring=1, damper=1) {
+						S:Chip(color=#202020, spring=1, damper=1) {
+							S:Chip(color=#202020, spring=1, damper=1) {
+								S:Chip(color=#202020, spring=1, damper=1) {
+									W:Chip(angle=-90, color=#202020) { }
+									E:Chip(angle=-90, color=#202020) { }
+									S:Frame(color=#202020, spring=1, damper=1) {
+										S:Frame(option=1, color=#202020, spring=1, damper=1) {
+											E:Frame(angle=-170, option=1) {
+												E:Trim(angle=-EVTR, color=#202020) {
+													E:Cowl(angle=-10, option=5, color=#202020) { }
+													W:Frame(option=1) {
+														N:Rudder(angle=20, color=#202020) {
+															E:Chip(color=#202020) {
+																E:Cowl(angle=-10, option=5, color=#202020) { }
+																W:Chip(color=#202020) { }
+															}
+														}
+													}
+													W:Cowl(angle=10, color=#202020) { }
+												}
+											}
+											W:Frame(angle=-170, option=1) {
+												W:Trim(angle=EVTR, color=#202020) {
+													W:Cowl(angle=-10, option=5, color=#202020) { }
+													E:Frame(option=1) {
+														N:Rudder(angle=-20, color=#202020) {
+															W:Chip(color=#202020) {
+																W:Cowl(angle=-10, option=5, color=#202020) { }
+																E:Chip(color=#202020) { }
+															}
+														}
+													}
+													E:Cowl(angle=10, color=#202020) { }
+												}
+											}
+										}
+									}
+								}
+								S:TrimF(angle=-90, option=1, spring=1, damper=1) {
+									W:Rudder(angle=-60, color=#202020, spring=1, damper=1) {
+										S:Rudder(angle=60, color=#202020, spring=1, damper=1) {
+											S:Chip(color=#202020) {
+												W:Chip(color=#202020) { }
+											}
+											W:Rudder(angle=-40, color=#202020) { }
+										}
+										W:Chip(color=#202020) {
+											W:Cowl(option=5, color=#202020) { }
+										}
+									}
+									S:Frame(option=1) {
+										S:Wheel(effect=2) { }
+									}
+								}
+							}
+						}
+						N:Frame(color=#202020) {
+							W:Chip(angle=-90, color=#202020) {
+								N:Arm(angle=0, power=GUN4, option=50000, color=#404040) { }
+							}
+							E:Chip(angle=-90, color=#202020) {
+								N:Arm(angle=0, power=GUN2, option=50000, color=#404040) { }
+							}
+							S:Cowl(angle=5) {
+								S:Cowl(angle=-2, color=#202020) {
+									S:Cowl(angle=-4, color=#202020) {
+										S:Cowl(angle=-2, color=#202020) {
+											W:Cowl(angle=-85, color=#202020) {
+												S:Cowl(angle=-10, color=#202020) {
+													S:Cowl(color=#202020) { }
+												}
+											}
+											E:Cowl(angle=-85, color=#202020) {
+												S:Cowl(angle=-10, color=#202020) {
+													S:Cowl(color=#202020) { }
+												}
+											}
+										}
+										W:Cowl(angle=-85, color=#202020) { }
+										E:Cowl(angle=-85, color=#202020) { }
+									}
+									W:Cowl(angle=-85, color=#202020) {
+										S:Cowl(option=2, color=#FF0000) { }
+									}
+									E:Cowl(angle=-85, color=#202020) {
+										S:Cowl(option=2, color=#FF0000) { }
+									}
+								}
+								W:Cowl(angle=-85) { }
+								E:Cowl(angle=-85) { }
+							}
+							N:Frame(angle=-90, option=1) {
+								N:Arm(angle=90, power=GUN1, option=50000, color=#404040) { }
+							}
+							N:RLW(angle=-90, power=ENGINE, color=0) {
+								W:Trim(angle=PTCH, color=#202020, spring=1, damper=1) { }
+								E:Trim(angle=PTCH, color=#202020, spring=1, damper=1) { }
+							}
+							N:RLW(angle=-90, power=-ENGINE, color=0) {
+								W:Trim(angle=-PTCH, color=#202020, spring=1, damper=1) { }
+								E:Trim(angle=-PTCH, color=#202020, spring=1, damper=1) { }
+							}
+							N:Cowl(angle=-30, color=#808080) {
+								N:Cowl(angle=-120, color=#808080) {
+									W:Cowl(angle=-95, option=3, color=#808080) { }
+									E:Cowl(angle=-95, option=4, color=#808080) { }
+								}
+								E:Cowl(angle=-95, option=3, color=#808080) { }
+								W:Cowl(angle=-95, option=4, color=#808080) { }
+							}
+							S:Cowl(angle=-90, color=0) {
+								S:Cowl(angle=-90, color=#202020) {
+									N:Cowl(angle=30, color=0, effect=#50FB) {
+										N:Cowl(angle=-30, color=0, effect=#50FB) {
+											N:Cowl(angle=-7, color=#202020) {
+												N:Cowl(angle=-2, color=#202020) {
+													E:Cowl(angle=-85, color=#202020) {
+														N:Cowl(angle=-10, color=#202020) {
+															N:Cowl(color=#202020) {
+																W:Cowl(angle=-120, option=4, color=#202020) {
+																	S:Cowl(color=#202020) { }
+																}
+															}
+															W:Cowl(angle=-90, option=4, color=#202020) { }
+														}
+													}
+													W:Cowl(angle=-85, color=#202020) {
+														N:Cowl(angle=-10, color=#202020) {
+															N:Cowl(color=#202020) {
+																E:Cowl(angle=-120, option=3, color=#202020) {
+																	S:Cowl(color=#202020) { }
+																}
+															}
+															E:Cowl(angle=-90, option=3, color=#202020) { }
+														}
+													}
+												}
+												E:Cowl(angle=-85, color=#202020) { }
+												W:Cowl(angle=-85, color=#202020) { }
+											}
+											E:Cowl(angle=-85, color=0, effect=#50FB) { }
+											W:Cowl(angle=-85, color=0, effect=#50FB) { }
+										}
+										E:Cowl(angle=-85, option=4, color=0, effect=#50FB) { }
+										W:Cowl(angle=-85, option=3, color=0, effect=#50FB) { }
+									}
+								}
+							}
+							N:Arm(angle=0, power=GUN3, option=50000, color=#404040) { }
+							N:Frame(angle=-170) {
+								N:Chip(angle=-10) {
+									E:Trim(angle=ELON, color=#202020) {
+										N:Rudder(angle=15, color=#202020) {
+											W:Cowl(option=5, color=#202020) { }
+											E:Chip(color=#202020) {
+												E:Cowl(angle=0, color=#202020) {
+													E:Cowl(option=5, color=#202020) { }
+												}
+												E:Cowl(angle=2, option=2, color=#FF0000) { }
+												E:Cowl(angle=-2, option=2, color=#FF0000) { }
+											}
+										}
+										N:Cowl(angle=1, option=4, color=#202020) { }
+										E:Chip(color=#202020) {
+											E:Chip(angle=0, color=#202020) {
+												E:Cowl(option=5, color=#202020) { }
+											}
+										}
+									}
+									W:Trim(angle=ELON, color=#202020) {
+										N:Rudder(angle=-15, color=#202020) {
+											E:Cowl(option=5, color=#202020) { }
+											W:Chip(color=#202020) {
+												W:Cowl(angle=0, color=#202020) {
+													W:Cowl(option=5, color=#202020) { }
+												}
+												W:Cowl(angle=2, option=2, color=#FF0000) { }
+												W:Cowl(angle=-2, option=2, color=#FF0000) { }
+											}
+										}
+										N:Cowl(angle=1, option=3, color=#202020) { }
+										W:Chip(color=#202020) {
+											W:Chip(angle=0, color=#202020) {
+												W:Cowl(option=5, color=#202020) { }
+											}
+										}
+									}
+									E:Frame(angle=10, option=1) {
+										E:Frame(angle=G0, color=#202020) {
+											E:Wheel(angle=G1, option=0) { }
+										}
+										E:Frame(angle=-10, option=1) { }
+									}
+									W:Frame(angle=10, option=1) {
+										W:Frame(angle=G0, color=#202020) {
+											W:Wheel(angle=G1, option=0) { }
+										}
+										W:Frame(angle=-10, option=1) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+MKPH = 0
+
+dx = 0
+dy = 0
+dz = 0
+
+px = 0
+py = 0
+pz = 0
+
+loop_a = 32
+loop_b = 32
+llen = 15
+
+vec_font={
+[32]='!~ ',
+[33]='&¶B√E∆©h€Le… ',
+[34]='&∑›+◊ ',
+[35]='!´Nµ@&ªaƒ+m€ ',
+[36]='!§Kn«Õk–Da”◊d⁄N+º¬(‹ ',
+[37]='!¥b—Df‘ÿd€B`ÿ‘£n€™lÕJh ∆j√Ln∆  ',
+[38]='0£j≈g…b÷⁄d‹Gi⁄◊g”b–`Ã∆c√FhƒnÕ ',
+[39]='(∂‹Hfÿ ',
+[40]='-ºh⁄f◊e”Àf«hƒk¬ ',
+[41]='$ºf⁄h◊i”Àh«fƒc¬ ',
+[42]='!©n÷!n…)¶Ÿ ',
+[43]='"∞M)∏» ',
+[44]='(ße≈d«e…g«fƒc¡ ',
+[45]='"∞M ',
+[46]='%•f√h≈f«d≈H(ß√ ',
+[47]='!§n€ ',
+[48]='!µ…b≈e√Hk≈m…’kŸh€EbŸ`’ ',
+[49]='$£K)‹c÷ ',
+[50]='!∂bŸe€Jl⁄n◊”lŒg…`√N ',
+[51]='!ªMd—IlœmÕ«l≈i√Dbƒ`∆ ',
+[52]=',£€)º`Ã N ',
+[53]='!¶aƒc√Ikƒm«Œl–i“C`–Ø€M ',
+[54]='/πj€EbŸ`’«a≈d√Il≈m«Õlœi—D`œ ',
+[55]='!∑€NŸi—g √ ',
+[56]='!¶Œc—KnŒ∆k√C`∆%±a‘ÿd€Jmÿ‘j— ',
+[57]='!•d√Hk≈m…ÿk⁄i€Db⁄`ÿ–bŒdÕJm– ',
+[58]='&´gÕiÀg…eÀI¥Eg“i‘g÷e‘ ',
+[59]=')≤e‘g÷i‘g“’§i«ÀgÕeÀg…IgÀ ',
+[60]='0©`–n◊ ',
+[61]='"≠M≥A ',
+[62]='!©n–`◊ ',
+[63]='!µÿc€Jmÿ”j–gÃ ¶iƒg¬eƒg∆√ ',
+[64]=',£D`«ÿd‹Jnÿ«≤k’He—Àg»JnÃ ',
+[65]='!£g‹n√$¨K ',
+[66]='!£Jm≈n«Õmœi—A£‹!Il⁄mÿ’l”i— ',
+[67]='0º÷∏j‹Db⁄`÷ b≈d√Jm∆n… ',
+[68]='!ºHk⁄m◊»k≈h√@"‹ ',
+[69]='!ºN£@"‹±L ',
+[70]='!ºN"√∞K ',
+[71]='0∑l⁄i‹Eb⁄`◊»b≈e√Jn∆ŒK ',
+[72]='"£‹/√∞A ',
+[73]='$£K)‹$K ',
+[74]='!•c¬Gjƒl»‹ ',
+[75]='"£‹/a–#±n√ ',
+[76]='!£N"‹ ',
+[77]='!£b‹g…l‹n√ ',
+[78]='"£‹m√‹ ',
+[79]='!™b≈d√Ik≈m ’k⁄i‹Db⁄`’  ',
+[80]='!ºJl€nŸ”l—j–Aº√ ',
+[81]='!©÷b⁄e‹Hk⁄m÷…k≈h√Eb≈`…%Gj«n¡ ',
+[82]='!ºJl€nÿ‘l—j–A)m√N"‹ ',
+[83]='!¶b√Jm∆Ãjœb“`’Ÿc‹Jm⁄ ',
+[84]='!ºN)√ ',
+[85]='"º»b≈d√Jl≈m»‹ ',
+[86]='!ºg√n‹ ',
+[87]='!ºc√g’k√n‹ ',
+[88]='!£n‹!n√ ',
+[89]='!ºg—√±n‹ ',
+[90]='!ºM`√M ',
+[91]='.ºG¬L ',
+[92]='!ªnƒ*∞E ',
+[92]='#ºG¬B ',
+[94]='$∏g›kÿ ',
+[95]='!°N ',
+[96]='+∑h›Fh⁄ ',
+[97]='0£l∆“j’C`”.∞cŒ`À∆c√Il∆ ',
+[98]='"£‹±d’Jm—«j√Da« ',
+[99]='/µ–±j’C`—«c√Jm« ',
+[100]='/º√ßj√C`«—c’Jm— ',
+[101]='!ÆM–k”h’Eb”`–»b≈e√Hk≈m« ',
+[102]=')£◊h⁄k‹N.¥B ',
+[103]='!¢c¿Jm√’≤j’Da“ d«Jm… ',
+[104]='"£‹≤d’Jm“√ ',
+[105]='#£K)’Dªfÿh€D ',
+[106]='!£c¡Fi√k«‘H∫j◊l⁄H ',
+[107]='"£‹≠m’£cŒ ',
+[108]='#£K)‹D ',
+[109]='!£’≤b’Eg“√≤i’Ln“√ ',
+[110]='"£’±d’Jm—√ ',
+[111]='"±«b≈d√Jl≈m«—l”j’Db”a— ',
+[112]='"µ¿≤d’Ik‘m— k«i∆Da… ',
+[113]='!± b«d∆Il ~’±i’Db‘`— ',
+[114]='#£’Æd—f”i’L ',
+[115]='/≤j’Da”œdÕJm ∆j√C`∆ ',
+[116]='"µM£If∆Ÿ ',
+[117]='"µ«d√Im»µ√ ',
+[118]='!µg√n’ ',
+[119]='!µd√g—j√n’ ',
+[120]='"£m’"m√ ',
+[121]='"~d¬m’!f∆ ',
+[122]='!µM`√M ',
+[123]='.ºIfŸ–cœfŒ≈i¬L ',
+[124]=')°ﬁ ',
+[125]='#ºEhŸ–kœhŒ≈e¬B ',
+[126]='!πc‹Ei◊Kn⁄ '
+}
+
+fsize=1.0
+hv=_WIDTH()/_HEIGHT()
+hh=_HEIGHT()/_WIDTH()
+
+tsize=1/_WIDTH()*hv*fsize
+ysize=1/_HEIGHT()*hh*2*fsize
+x=0
+y=0
+vx=0
+vy=0
+
+function stroke(str)
+	local i
+	local sbyte = string.byte
+	local ld = line_draw
+	local st = str
+	
+	if st==nil then return end
+	
+	local n = string.len(st)
+	
+	for i=0,n do
+		ld(sbyte(st,i))
+	end
+end
+
+function vecstr(stir)
+	local i
+	local n = string.len(stir)
+	local sbyte = string.byte
+	local stk = stroke
+	local vf = vec_font
+	local ji
+	
+	for i=0,n do
+		ji = sbyte(stir,i)
+		stk(vf[ji])
+		vx = vx + tsize*16
+	end
+end
+
+function line_draw(a2)
+	local a = a2
+	
+	if not a then
+		return 0
+	end
+	
+	if a>32 and a<39 then
+		x=a-33
+		_MOVE2D2(x,y)
+	end
+
+	if a>39 and a<64 then
+		x=a-34
+		_MOVE2D2(x,y)
+	end
+	
+	if a>63 and a<92 then
+		x=a-64
+		_LINE2D2(x,y)
+	end
+
+	if a>93 and a<96 then
+		x=a-65
+		_LINE2D2(x,y)
+	end
+
+	if a>95 and a<126 then
+		x=(a-96)
+	end
+	
+	if a==126 then
+		y=0
+		_MOVE2D2(x,y)
+	end
+
+	if a>160 and a<192 then
+		y=a-160
+		_MOVE2D2(x,y)
+	end
+
+	if a>191 and a<224 then
+		y=a-192
+		_LINE2D2(x,y)
+	end
+
+	if a==39 or a==92 or a==93 then
+		x=0
+		y=0
+	end
+end
+
+function _MOVE2D2(q,w)
+	_MOVE2D(q*tsize+vx,w*ysize+vy)
+end
+function _LINE2D2(q,w)
+	_LINE2D(q*tsize+vx,w*ysize+vy)
+end
+
+function pointget_t(p,loop)
+	local px=_PLAYERX(p)
+	local py=_PLAYERY(p)
+	local pz=_PLAYERZ(p)
+	local i
+	
+	local sel={
+		x_min=px,
+		x_max=px,
+	
+		y_min=py,
+		y_max=py,
+	
+		z_min=pz,
+		z_max=pz
+	}
+	
+	for i=1,loop do
+		px=_PLAYERX(p)
+		
+		py=_PLAYERY(p)
+		
+		pz=_PLAYERZ(p)
+		
+		sel.x_min=math.min(px,sel.x_min)
+		sel.x_max=math.max(px,sel.x_max)
+	
+		sel.y_min=math.min(py,sel.y_min)
+		sel.y_max=math.max(py,sel.y_max)
+		
+		sel.z_min=math.min(pz,sel.z_min)
+		sel.z_max=math.max(pz,sel.z_max)
+	end
+	
+	px=(sel.x_min+sel.x_max)/2
+	py=(sel.y_min+sel.y_max)/2
+	pz=(sel.z_min+sel.z_max)/2
+	
+	return px,py,pz
+end
+
+NGUN = 1
+
+function draw_box(x,y,s)
+	--ç∂ÇÃècê¸
+	_MOVE2D(x,y)
+	_LINE2D(x,y-s)
+
+	--âEÇÃècê¸
+	_MOVE2D(x+s,y)
+	_LINE2D(x+s,y-s)
+
+	--è„ÇÃâ°ê¸
+	_MOVE2D(x,y)
+	_LINE2D(x+s,y)
+
+	--â∫ÇÃâ°ê¸
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s,y-s)
+end
+
+rdsklx={}
+rdskly={}
+
+RDCL = 64
+
+function OnInit()
+	_ZOOM(37.25)
+	for i=0,RDCL do
+		rdsklx[i] = math.cos((math.pi*2/RDCL)*i)
+		rdskly[i] = math.sin((math.pi*2/RDCL)*i)
+	end
+end
+
+do
+	local FSX=_X(FS)
+	local FSY=_Y(FS)
+	local FSZ=_Z(FS)
+	local RSX=_X(RS)
+	local RSY=_Y(RS)
+	local RSZ=_Z(RS)
+	local LSX=_X(LS)
+	local LSY=_Y(LS)
+	local LSZ=_Z(LS)
+	local TSX=_X(TS)
+	local TSY=_Y(TS)
+	local TSZ=_Z(TS)
+	
+	function MF(a)
+		local FX=_X(FS)-FSX
+		local FY=_Y(FS)-FSY
+		local FZ=_Z(FS)-FSZ
+		local RX=_X(RS)-RSX
+		local RY=_Y(RS)-RSY
+		local RZ=_Z(RS)-RSZ
+		local LX=_X(LS)-LSX
+		local LY=_Y(LS)-LSY
+		local LZ=_Z(LS)-LSZ
+		local TX=_X(TS)-TSX
+		local TY=_Y(TS)-TSY
+		local TZ=_Z(TS)-TSZ
+
+		WX=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))-(TX*_YX(TS)+TY*_YY(TS)+TZ*_YZ(TS))
+		WY=(RX*_ZX(RS)+RY*_ZY(RS)+RZ*_ZZ(RS))-(LX*_ZX(LS)+LY*_ZY(LS)+LZ*_ZZ(LS))
+		WZ=(RX*_YX(RS)+RY*_YY(RS)+RZ*_YZ(RS))-(LX*_YX(LS)+LY*_YY(LS)+LZ*_YZ(LS))
+		VEL=(FX*_ZX(FS)+FY*_ZY(FS)+FZ*_ZZ(FS))*3.6
+		VX=(FX*_XX(FS)+FY*_XY(FS)+FZ*_XZ(FS))*3.6
+
+		VY=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))*3.6
+
+		FSX=_X(FS)
+		FSY=_Y(FS)
+		FSZ=_Z(FS)
+		RSX=_X(RS)
+		RSY=_Y(RS)
+		RSZ=_Z(RS)
+		LSX=_X(LS)
+		LSY=_Y(LS)
+		LSZ=_Z(LS)
+		TSX=_X(TS)
+		TSY=_Y(TS)
+		TSZ=_Z(TS)
+	end
+end
+
+
+_RATE2=0.2
+_RATE1=1-_RATE2
+
+function OnFrame()
+	MF()
+	
+	local _R,_V=0,0
+	
+	if _KEY(2) == 0 and _KEY(3) == 0 then
+		_R=WZ*-96
+	end
+	
+	if _KEY(0) == 0 and _KEY(1) == 0 then
+		_V=WX*128
+	end
+	
+	ELON=ELON*_RATE1+_R*_RATE2
+	EVTR=EVTR*_RATE1+_V*_RATE2
+	
+	NKPH = _VEL(0) * 3.6
+	
+	if NKPH > MKPH then
+		MKPH = NKPH
+	end
+	
+	out(0,"è\å‹éÆì¡éÍêÌì¨ã@Å@ò@â‘")
+	out(1, NKPH, "kph")
+	out(2, _WEIGHT(), "kg")
+	out(3, _FPS(), "fps")
+	out(4, "max ", MKPH, "kph")
+	
+	PTCH = 25 * ((NKPH - 200) / 200) + 55
+	
+	if NGUN == 4 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN4 = 65536
+		NGUN = 1
+	elseif NGUN == 3 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN3 = 65536
+		NGUN = 4
+	elseif NGUN == 2 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN2 = 65536
+		NGUN = 3
+	elseif NGUN == 1 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN1 = 65536
+		NGUN = 2
+	end
+
+	for p = 1, _PLAYERS(), 1 do
+		if _PLAYERID(p) ~= _PLAYERMYID() and _PLAYERARMS(p) ~= 0 then
+			ex = 0
+			ey = 0
+			ez = 0
+			ex, ey, ez = pointget_t(p,200)
+
+			px = (-_X(0) - ex) / 800
+			py = (-_Z(0) - ey) / 800
+			pr = _EY(0)
+			
+			rx = px * math.cos(pr) - py * math.sin(pr)
+			ry = px * math.sin(pr) - py * math.cos(pr)
+			rx = rx * (_WIDTH() / _HEIGHT())
+
+			_SETCOLOR(16711680)
+			draw_box(rx - 0.025, ry + 0.025, 0.05)
+			vx=rx - 0.07
+			vy=ry - 0.0675
+			--vecstr(_PLAYERNAME(p))
+			
+			_MOVE3D(ex - llen, ey, ez)
+			_LINE3D(ex + llen, ey, ez)
+
+			_MOVE3D(ex, ey - llen, ez)
+			_LINE3D(ex, ey + llen, ez)
+
+			_MOVE3D(ex, ey, ez - llen)
+			_LINE3D(ex, ey, ez + llen)
+		end
+	end
+	_SETCOLOR(65280)
+	if _FPS() < 29 then
+		_SETCOLOR(16711680)
+		vx = rdsklx[0]
+		vy = rdskly[0]+0.025
+		vecstr(string.format('!WARNING!    TOO SLOW FPS %d',_FPS()))
+	end
+	vx = rdsklx[0]
+	vy = rdskly[0]-0.025
+	vecstr('800')
+	_MOVE2D(rdsklx[0],rdskly[0])
+	for i=1,RDCL do
+		_LINE2D(rdsklx[i],rdskly[i])
+	end
+	
+	_SETCOLOR(16711680)
+	_SETCOLOR(65280)
+	draw_box(-0.025, 0.025, 0.05)
+end
+}

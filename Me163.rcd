@@ -1,0 +1,107 @@
+// [RCD] 
+Val
+{
+	ELON(default=0, min=-4, max=4, step=2)
+	EOE(default=0, max=262144, step=262144)
+	EVTR(default=0, min=-12, max=12, step=2)
+	GUN(default=0, max=65536, step=65536)
+	GUN2(default=0, max=65536, step=65536)
+	JET(default=0, max=409600, step=102400)
+}
+Key
+{
+	0:EVTR(step=2)
+	1:EVTR(step=-2)
+	2:ELON(step=2)
+	3:ELON(step=-2)
+	4:JET(step=102400)
+	5:GUN(step=65536), GUN2(step=8192)
+	6:EOE(step=262144)
+}
+Body
+{
+	Core() {
+		E:Weight(angle=-90) {
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						W:Frame(angle=110) {
+							W:Frame(angle=-20, option=1) {
+								E:Trim(angle=-EVTR) {
+									S:Chip() {
+										W:Chip(angle=20) {
+											N:Chip(angle=0) { }
+										}
+									}
+								}
+							}
+							W:Chip(angle=70) {
+								S:Chip() { }
+							}
+						}
+					}
+				}
+				W:Chip(angle=110) {
+					W:Trim(angle=ELON) {
+						W:Chip(angle=-20) {
+							S:Chip() { }
+						}
+						S:Chip() {
+							E:Chip(angle=20) { }
+						}
+					}
+					N:Arm(power=GUN2, option=65536) { }
+				}
+				E:Frame(angle=110) {
+					N:Arm(power=GUN, option=65536) { }
+				}
+			}
+		}
+		S:Jet(angle=-90, power=JET) {
+			S:Cowl(angle=90) {
+				S:Cowl() {
+					S:Cowl() { }
+				}
+			}
+			S:Arm(angle=-90, power=EOE, option=262144) { }
+		}
+		W:Weight(angle=-90) {
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						E:Frame(angle=110) {
+							E:Frame(angle=-20, option=1) {
+								W:Trim(angle=EVTR) {
+									S:Chip() {
+										E:Chip(angle=20) {
+											N:Chip() { }
+										}
+									}
+								}
+							}
+							E:Chip(angle=70) {
+								S:Chip() { }
+							}
+						}
+					}
+				}
+				E:Chip(angle=110) {
+					E:Trim(angle=ELON) {
+						E:Chip(angle=-20) {
+							S:Chip() { }
+						}
+						S:Chip() {
+							W:Chip(angle=20) { }
+						}
+					}
+					N:Arm(power=GUN2, option=65536) { }
+				}
+				W:Frame(angle=110) {
+					N:Arm(power=GUN, option=65536) { }
+				}
+			}
+		}
+	}
+}
+Script
+{ print 0,_VEL(0)*3.6}

@@ -1,0 +1,73 @@
+// [RCD] 
+Val
+{
+	P(default=0, max=100000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Chip(angle=-90) {
+			S:Chip() {
+				S:RLW(angle=-90, power=P) {
+					W:Trim(angle=30) {
+						W:Chip() {
+							W:Cowl() { }
+						}
+					}
+					E:Trim(angle=30) {
+						E:Chip() {
+							E:Cowl() { }
+						}
+					}
+				}
+				S:RLW(angle=-90, power=-P) {
+					S:Trim(angle=-30) {
+						S:Chip() {
+							S:Cowl() { }
+						}
+					}
+					N:Trim(angle=-30) {
+						N:Chip() {
+							N:Cowl() { }
+						}
+					}
+				}
+			}
+			S:Frame(angle=-90) {
+				N:Trim(angle=90) {
+					N:Chip() {
+						N:Chip() {
+							W:Chip(angle=-90) { }
+							W:Chip(angle=90) { }
+							E:Chip() { }
+						}
+					}
+				}
+			}
+		}
+		E:Chip(angle=20) { }
+		W:Chip(angle=20) { }
+		S:Chip(angle=20) { }
+		N:Weight(angle=20, option=3) { }
+	}
+}
+Lua
+{
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+function OnFrame()
+	P=_LINER(P,_KEY(4)*200000,20000)
+end
+}

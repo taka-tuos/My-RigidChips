@@ -1,0 +1,259 @@
+// [RCD] 
+Val
+{
+	ANG(default=0, min=-30, max=30, step=6, disp=0)
+	BRK(default=0, max=200, step=200, disp=0)
+	POW(default=0, min=-3000, max=15000, step=300, disp=0)
+	WL(default=60, min=30, max=70, step=5, disp=0)
+	WL2(default=160, min=140, max=170, step=5, disp=0)
+	WR(default=60, min=30, max=70, step=5, disp=0)
+	WR2(default=160, min=140, max=170, step=5, disp=0)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=45) {
+			S:Frame(angle=90) {
+				S:Frame(angle=45) {
+					W:Chip() {
+						S:Chip(angle=WL2) { }
+					}
+					E:Chip() {
+						S:Chip(angle=WR2) { }
+					}
+					N:Weight(option=4) {
+						N:Chip() {
+							N:Frame(angle=150) {
+								N:Frame(angle=-150) {
+									W:Frame() {
+										W:Frame(angle=90) { }
+									}
+									E:Frame() {
+										E:Frame(angle=90) { }
+									}
+									N:Cowl() {
+										N:Cowl() {
+											E:Cowl() { }
+											W:Cowl() { }
+										}
+										S:Cowl() {
+											E:Cowl() { }
+											W:Cowl() { }
+										}
+										E:Cowl() { }
+										W:Cowl() { }
+									}
+								}
+								N:Frame(angle=-60) {
+									W:Frame() { }
+									E:Frame() { }
+								}
+							}
+							N:Chip() {
+								N:Chip() {
+									W:Chip() { }
+									E:Chip() { }
+									N:Frame(angle=150) {
+										N:Frame(angle=-150) {
+											W:Frame() {
+												W:Frame(angle=90) { }
+											}
+											E:Frame() {
+												E:Frame(angle=90) { }
+											}
+											N:Frame(angle=90) {
+												W:Frame() { }
+												E:Frame() { }
+											}
+										}
+									}
+								}
+								E:Frame(angle=-30, option=1) {
+									E:Frame(angle=120, option=1) {
+										N:Wheel(power=pow, brake=brk, option=1, effect=3) { }
+									}
+								}
+								W:Frame(angle=-30, option=1) {
+									W:Frame(angle=120, option=1) {
+										N:Wheel(angle=0, power=-pow, brake=brk, option=1, effect=3) { }
+									}
+								}
+								N:Frame(angle=150) {
+									N:Frame(angle=-150) {
+										W:Frame() {
+											W:Frame(angle=90) { }
+										}
+										E:Frame() {
+											E:Frame(angle=90) { }
+										}
+									}
+								}
+							}
+						}
+						E:Frame(angle=-30, option=1) {
+							E:Frame(angle=120, option=1) {
+								S:Wheel(angle=ang, power=pow, brake=brk, option=1, effect=2) { }
+							}
+						}
+						W:Frame(angle=-30, option=1) {
+							W:Frame(angle=120, option=1) {
+								S:Wheel(angle=-ang, power=-pow, brake=brk, option=1, effect=2) { }
+							}
+						}
+					}
+					S:Cowl(angle=60) {
+						S:Cowl(angle=50, color=#001133, effect=#DFFF) {
+							S:Cowl(color=#001133, effect=#DFFF) {
+								S:Cowl(angle=70) {
+									S:Cowl() {
+										S:Cowl(angle=90, color=#001133, effect=#CFFF) {
+											S:Cowl() {
+												S:Cowl() { }
+											}
+										}
+									}
+								}
+							}
+							N:Cowl(angle=15) {
+								W:Cowl(angle=-1, option=2, color=#FFFF80) { }
+								E:Cowl(angle=-1, option=2, color=#FFFF80) { }
+							}
+						}
+						E:Cowl() {
+							S:Cowl(angle=50, color=#001133, effect=#DFFF) {
+								S:Cowl(color=#001133, effect=#DFFF) {
+									S:Cowl(angle=70) {
+										E:Cowl(angle=85, option=3) { }
+										S:Cowl() {
+											S:Cowl(angle=90) {
+												S:Cowl() {
+													S:Cowl() { }
+													E:Cowl(angle=85) {
+														S:Cowl() {
+															W:Cowl(angle=-6) {
+																W:Cowl() {
+																	W:Cowl(effect=#FFFF) {
+																		W:Cowl(angle=90) {
+																			W:Cowl() {
+																				E:Cowl(angle=-1, option=2, color=#FF8080) { }
+																			}
+																		}
+																	}
+																}
+															}
+														}
+														N:Cowl(angle=5) { }
+													}
+												}
+											}
+										}
+									}
+								}
+								N:Cowl(angle=15) {
+									E:Cowl(angle=80, option=3) { }
+								}
+								E:Cowl(angle=85, color=#001133, effect=#DFFF) {
+									S:Cowl(color=#001133, effect=#DFFF) {
+										E:Cowl(angle=10, option=4, color=#001133, effect=#DFFF) { }
+									}
+									E:Cowl(angle=8, color=#001133, effect=#DFFF) { }
+								}
+							}
+						}
+						W:Cowl() {
+							S:Cowl(angle=50, color=#001133, effect=#DFFF) {
+								S:Cowl(color=#001133, effect=#DFFF) {
+									S:Cowl(angle=70) {
+										W:Cowl(angle=85, option=4) { }
+										S:Cowl() {
+											S:Cowl(angle=90) {
+												S:Cowl() {
+													S:Cowl() { }
+													W:Cowl(angle=85) {
+														N:Cowl(angle=5) { }
+														S:Cowl() {
+															E:Cowl(angle=-6) {
+																E:Cowl() {
+																	E:Cowl(effect=#FFFF) {
+																		E:Cowl(angle=90) {
+																			E:Cowl() {
+																				W:Cowl(angle=-1, option=2, color=#FF8080) { }
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								N:Cowl(angle=15) {
+									W:Cowl(angle=85, option=4) { }
+								}
+								W:Cowl(angle=85, color=#001133, effect=#DFFF) {
+									S:Cowl(color=#001133, effect=#DFFF) {
+										W:Cowl(angle=10, option=3, color=#001133, effect=#DFFF) { }
+									}
+									W:Cowl(angle=8, color=#001133, effect=#DFFF) { }
+								}
+							}
+						}
+						N:Cowl(angle=58) { }
+					}
+					N:Frame(angle=30) {
+						W:Chip(angle=WL) { }
+						E:Chip(angle=WR) { }
+					}
+					N:Frame(angle=30) {
+						W:Chip(angle=WL) { }
+						E:Chip(angle=WR) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+_ZOOM(40)
+function main()
+SP=math.sqrt(_VX()^2+_VY()^2+_VZ()^2)*3.6
+out(0,"FPS  :  ",_FPS(),"    SPEED  :  ",SP," kmph")
+--out(1,POW,ANG,BRK,WL,WR)
+
+if _KEY(0)>0 then
+	POW=POW+3000
+end
+if _KEY(1)>0 then
+	POW=-1500
+end
+
+if _KEY(2)>0 then
+	ANG=ANG+5
+	WL=WL-5
+	WR=WR+5
+	WL2=WL2-5
+	WR2=WR2+5
+end
+if _KEY(3)>0 then
+	ANG=ANG-5
+	WR=WR-5
+	WL=WL+5
+	WR2=WR2-5
+	WL2=WL2+5
+end
+if _KEY(4)>0 then
+	BRK=200
+end
+if _KEY(5)>0 then
+	BRK=100
+end
+end
+
+}

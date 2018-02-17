@@ -1,0 +1,70 @@
+// [RCD] 4WD
+Val
+{
+	BRAKE(default=0, max=80, step=80)
+	COWL(default=-10, min=-40, max=20, step=5)
+	COWR(default=-10, min=-40, max=20, step=5)
+	ENGINE(default=0, min=-12500, max=12500, step=2500)
+	HANDLE(default=0, min=-30, max=30, step=5)
+	HBRAKE(default=0, max=100, step=100)
+}
+Key
+{
+	0:Engine(step=-500)
+	1:Engine(step=500)
+	2:Handle(step=-5), Cowl(step=-5), Cowr(step=5)
+	3:Handle(step=5), Cowl(step=5), Cowr(step=-5)
+	5:HBrake(step=100)
+	7:Brake(step=30), HBrake(step=200)
+	8:HBrake(step=100)
+}
+Body
+{
+	Core() {
+		S:Frame(angle=-15) {
+			W:Chip(angle=-30) { }
+			E:Chip(angle=-30) { }
+		}
+		W:Frame() {
+			W:Frame(angle=-95) {
+				N:RudderF(angle=15, spring=0.08, damper=0.15) {
+					N:Frame() {
+						E:Chip(angle=-100) { }
+						N:Wheel(angle=-Handle, power=-Engine, brake=Brake) { }
+					}
+					N:Cowl(angle=10) {
+						N:Cowl(angle=COWR, option=5) { }
+					}
+				}
+				S:RudderF(angle=-40, spring=0.08, damper=0.15) {
+					S:Wheel(power=-Engine, brake=HBrake) { }
+					N:Cowl(angle=170) {
+						N:Cowl(angle=10, option=5) { }
+					}
+				}
+			}
+		}
+		E:Frame() {
+			E:Frame(angle=-95) {
+				N:RudderF(angle=-15, spring=0.08, damper=0.15) {
+					N:Frame() {
+						W:Chip(angle=-100) { }
+						N:Wheel(angle=Handle, power=Engine, brake=Brake) { }
+					}
+					N:Cowl(angle=10) {
+						N:Cowl(angle=COWL, option=5) { }
+					}
+				}
+				S:RudderF(angle=40, spring=0.08, damper=0.15) {
+					S:Wheel(power=Engine, brake=HBrake, name=TY) { }
+					N:Cowl(angle=170) {
+						N:Cowl(angle=10, option=5) { }
+					}
+				}
+			}
+		}
+	}
+}
+Script
+{
+}

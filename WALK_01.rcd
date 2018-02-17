@@ -1,0 +1,52 @@
+// [RCD] 
+Val
+{
+	COS(default=0, min=-45, max=45)
+	COS2(default=90, min=45, max=135)
+	COS3(default=-90, min=-135, max=-45)
+	SIN(default=0, min=-45, max=45)
+	SIN2(default=180, min=135, max=225)
+	SIN3(default=-90, min=-135, max=-45)
+	SIN4(default=-90, min=-135, max=-45)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:RudderF(angle=COS3) {
+			S:Frame(angle=SIN2) {
+				S:Weight(angle=SIN3) { }
+			}
+		}
+		N:RudderF(angle=COS2) {
+			S:Frame(angle=-SIN2) {
+				S:Weight(angle=SIN4) { }
+			}
+		}
+		S:Chip() {
+			S:RudderF(angle=-COS3) {
+				N:Frame(angle=-SIN2) {
+					N:Weight(angle=SIN4) { }
+				}
+			}
+			S:RudderF(angle=-COS2) {
+				N:Frame(angle=SIN2) {
+					N:Weight(angle=SIN3) { }
+				}
+			}
+		}
+	}
+}
+Lua
+{function OnFrame()
+	local x = _TICKS() / 30 * math.pi * 2
+	SIN = math.sin(x) * 10
+	COS = math.cos(x) * 10
+	SIN2 = 180 - SIN
+	SIN3 = -70 + SIN
+	SIN4 = -70 - SIN
+	COS2 = 90 + COS
+	COS3 = -90 + COS
+end}

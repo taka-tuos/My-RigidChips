@@ -1,0 +1,1067 @@
+// [RCD] 
+Val
+{
+	A(default=0, max=10000000000)
+	G1(default=0, max=1000000000000, step=1000000000000)
+	G10(default=0, max=1000000000000, step=1000000000000)
+	G11(default=0, max=1000000000000, step=1000000000000)
+	G12(default=0, max=1000000000000, step=1000000000000)
+	G13(default=0, max=1000000000000, step=1000000000000)
+	G14(default=0, max=1000000000000, step=1000000000000)
+	G15(default=0, max=1000000000000, step=1000000000000)
+	G16(default=0, max=1000000000000, step=1000000000000)
+	G17(default=0, max=1000000000000, step=1000000000000)
+	G18(default=0, max=1000000000000, step=1000000000000)
+	G19(default=0, max=1000000000000, step=1000000000000)
+	G2(default=0, max=1000000000000, step=1000000000000)
+	G20(default=0, max=1000000000000, step=1000000000000)
+	G21(default=0, max=1000000000000, step=1000000000000)
+	G22(default=0, max=1000000000000, step=1000000000000)
+	G23(default=0, max=1000000000000, step=1000000000000)
+	G24(default=0, max=1000000000000, step=1000000000000)
+	G25(default=0, max=1000000000000, step=1000000000000)
+	G26(default=0, max=1000000000000, step=1000000000000)
+	G27(default=0, max=1000000000000, step=1000000000000)
+	G28(default=0, max=1000000000000, step=1000000000000)
+	G29(default=0, max=1000000000000, step=1000000000000)
+	G3(default=0, max=1000000000000, step=1000000000000)
+	G30(default=0, max=1000000000000, step=1000000000000)
+	G31(default=0, max=1000000000000, step=1000000000000)
+	G32(default=0, max=1000000000000, step=1000000000000)
+	G4(default=0, max=1000000000000, step=1000000000000)
+	G5(default=0, max=1000000000000, step=1000000000000)
+	G6(default=0, max=1000000000000, step=1000000000000)
+	G7(default=0, max=1000000000000, step=1000000000000)
+	G8(default=0, max=1000000000000, step=1000000000000)
+	G9(default=0, max=1000000000000, step=1000000000000)
+	GJ(default=0, max=16777216, step=16777216)
+	GW(default=0, min=-180, max=180)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	T(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+	V1(default=0, min=-180, max=180)
+	V10(default=0, min=-180, max=180)
+	V11(default=0, min=-180, max=180)
+	V12(default=0, min=-180, max=180)
+	V13(default=0, min=-180, max=180)
+	V14(default=0, min=-180, max=180)
+	V15(default=0, min=-180, max=180)
+	V16(default=0, min=-180, max=180)
+	V17(default=0, min=-180, max=180)
+	V18(default=0, min=-180, max=180)
+	V19(default=0, min=-180, max=180)
+	V2(default=0, min=-180, max=180)
+	V20(default=0, min=-180, max=180)
+	V21(default=0, min=-180, max=180)
+	V22(default=0, min=-180, max=180)
+	V23(default=0, min=-180, max=180)
+	V24(default=0, min=-180, max=180)
+	V25(default=0, min=-180, max=180)
+	V26(default=0, min=-180, max=180)
+	V27(default=0, min=-180, max=180)
+	V28(default=0, min=-180, max=180)
+	V29(default=0, min=-180, max=180)
+	V3(default=0, min=-180, max=180)
+	V30(default=0, min=-180, max=180)
+	V31(default=0, min=-180, max=180)
+	V32(default=0, min=-180, max=180)
+	V4(default=0, min=-180, max=180)
+	V5(default=0, min=-180, max=180)
+	V6(default=0, min=-180, max=180)
+	V7(default=0, min=-180, max=180)
+	V8(default=0, min=-180, max=180)
+	V9(default=0, min=-180, max=180)
+	VG(default=0, min=-180, max=180)
+	W1(default=0, min=-180, max=180)
+	W10(default=0, min=-180, max=180)
+	W11(default=0, min=-180, max=180)
+	W12(default=0, min=-180, max=180)
+	W13(default=0, min=-180, max=180)
+	W14(default=0, min=-180, max=180)
+	W15(default=0, min=-180, max=180)
+	W16(default=0, min=-180, max=180)
+	W17(default=0, min=-180, max=180)
+	W18(default=0, min=-180, max=180)
+	W19(default=0, min=-180, max=180)
+	W2(default=0, min=-180, max=180)
+	W20(default=0, min=-180, max=180)
+	W21(default=0, min=-180, max=180)
+	W22(default=0, min=-180, max=180)
+	W23(default=0, min=-180, max=180)
+	W24(default=0, min=-180, max=180)
+	W25(default=0, min=-180, max=180)
+	W26(default=0, min=-180, max=180)
+	W27(default=0, min=-180, max=180)
+	W28(default=0, min=-180, max=180)
+	W29(default=0, min=-180, max=180)
+	W3(default=0, min=-180, max=180)
+	W30(default=0, min=-180, max=180)
+	W31(default=0, min=-180, max=180)
+	W32(default=0, min=-180, max=180)
+	W4(default=0, min=-180, max=180)
+	W5(default=0, min=-180, max=180)
+	W6(default=0, min=-180, max=180)
+	W7(default=0, min=-180, max=180)
+	W8(default=0, min=-180, max=180)
+	W9(default=0, min=-180, max=180)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		W:Weight(angle=60, option=1, name=B4) {
+			W:Chip(angle=-60) {
+				W:Trim(angle=-R) {
+					S:Chip() {
+						S:Chip() {
+							W:Chip() {
+								W:Chip() { }
+							}
+						}
+						W:Chip() { }
+					}
+				}
+				W:Chip() {
+					W:Rudder(angle=-30) {
+						W:Chip() {
+							W:Chip() {
+								W:Chip() {
+									W:Rudder(angle=-20) {
+										W:Chip() {
+											S:Cowl(option=4) {
+												E:Cowl() {
+													S:Cowl(option=4) {
+														E:Cowl() {
+															E:Cowl() {
+																E:Cowl() {
+																	E:Cowl() { }
+																}
+															}
+														}
+													}
+													E:Cowl() {
+														E:Cowl() {
+															E:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				W:Frame(angle=-90, option=1) {
+					E:Wheel(angle=GW) { }
+				}
+			}
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+			}
+			W:Weight(angle=-120, option=1) {
+				S:Chip() {
+					S:Chip() {
+						W:Chip(angle=60) {
+							W:Trim(angle=V) {
+								S:Chip() {
+									E:Chip() { }
+									S:Cowl(option=3) {
+										W:Cowl() {
+											N:Cowl(option=3) { }
+										}
+									}
+								}
+							}
+							N:Cowl() {
+								N:Cowl(option=3) { }
+								W:Cowl(option=4) { }
+							}
+						}
+						S:Chip() {
+							S:Chip() { }
+						}
+					}
+				}
+				S:Jet(angle=-90, power=P) { }
+			}
+		}
+		E:Weight(angle=60, option=1, name=B2) {
+			E:Chip(angle=-60) {
+				E:Trim(angle=-R) {
+					S:Chip() {
+						S:Chip() {
+							E:Chip() {
+								E:Chip() { }
+							}
+						}
+						E:Chip() { }
+					}
+				}
+				E:Chip() {
+					E:Rudder(angle=30) {
+						E:Chip() {
+							E:Chip() {
+								E:Chip() {
+									E:Rudder(angle=20) {
+										E:Chip() {
+											S:Cowl(option=3) {
+												W:Cowl() {
+													S:Cowl(option=3) {
+														W:Cowl() {
+															W:Cowl() {
+																W:Cowl() {
+																	W:Cowl() { }
+																}
+															}
+														}
+													}
+													W:Cowl() {
+														W:Cowl() {
+															W:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				E:Frame(angle=-90, option=1) {
+					W:Wheel(angle=GW) { }
+				}
+			}
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+			}
+			E:Weight(angle=-120, option=1) {
+				S:Chip() {
+					S:Chip() {
+						E:Chip(angle=60) {
+							E:Trim(angle=-V) {
+								S:Chip() {
+									W:Chip() { }
+									S:Cowl(option=4) {
+										E:Cowl() {
+											N:Cowl(option=4) { }
+										}
+									}
+								}
+							}
+							N:Cowl() {
+								N:Cowl(option=4) { }
+								E:Cowl(option=3) { }
+							}
+						}
+						S:Chip() {
+							S:Chip() { }
+						}
+					}
+				}
+				S:Jet(angle=-90, power=P) { }
+			}
+		}
+		S:Jet(power=GJ) { }
+		E:Chip(angle=-60, name=B1) {
+			E:Chip(angle=60) {
+				E:Trim(angle=-R) {
+					S:Chip() {
+						S:Chip() {
+							E:Chip() {
+								E:Chip() { }
+							}
+						}
+						E:Chip() { }
+					}
+				}
+				E:Chip() {
+					E:Rudder(angle=30) {
+						E:Chip() {
+							E:Chip() {
+								E:Chip() {
+									E:Rudder(angle=20) {
+										E:Chip() {
+											S:Cowl(option=3) {
+												W:Cowl() {
+													S:Cowl(option=3) {
+														W:Cowl() {
+															W:Cowl() {
+																W:Cowl() {
+																	W:Cowl() { }
+																}
+															}
+														}
+													}
+													W:Cowl() {
+														W:Cowl() {
+															W:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Cowl(option=4) { }
+			}
+			E:Chip(angle=120) {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							S:Chip() { }
+						}
+					}
+				}
+				S:Jet(angle=90, power=-P) { }
+			}
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+			}
+		}
+		W:Chip(angle=-60, name=B3) {
+			W:Chip(angle=60) {
+				W:Trim(angle=-R) {
+					S:Chip() {
+						S:Chip() {
+							W:Chip() {
+								W:Chip() { }
+							}
+						}
+						W:Chip() { }
+					}
+				}
+				W:Chip() {
+					W:Rudder(angle=-30) {
+						W:Chip() {
+							W:Chip() {
+								W:Chip() {
+									W:Rudder(angle=-20) {
+										W:Chip() {
+											S:Cowl(option=4) {
+												E:Cowl() {
+													S:Cowl(option=4) {
+														E:Cowl() {
+															E:Cowl() {
+																E:Cowl() {
+																	E:Cowl() { }
+																}
+															}
+														}
+													}
+													E:Cowl() {
+														E:Cowl() {
+															E:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Cowl(option=3) { }
+			}
+			W:Chip(angle=120) {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							S:Chip() { }
+						}
+					}
+				}
+				S:Jet(angle=90, power=-P) { }
+			}
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+			}
+		}
+		S:Weight() {
+			S:Frame(option=0, angle=-30, spring=1, damper=1) {
+				S:Frame(option=0, angle=-150, spring=1, damper=1) {
+					S:Frame(option=0, spring=1, damper=1) {
+						N:Frame(option=0, angle=0, spring=1, damper=1) {
+							S:Frame(angle=V1, spring=1, damper=1, option=1) {
+								S:Frame(angle=W1, spring=1, damper=1, option=1) {
+									S:Arm(angle=V1, power=G1, option=315000, name=A1, spring=1, damper=1) { }
+								}
+							}
+							S:Frame(angle=V5, spring=1, damper=1, option=1) {
+								S:Frame(angle=W5, spring=1, damper=1, option=1) {
+									S:Arm(angle=V5, power=G5, option=315000, name=A5, spring=1, damper=1) { }
+								}
+							}
+							S:Frame(angle=V9, spring=1, damper=1, option=1) {
+								S:Frame(angle=W9, spring=1, damper=1, option=1) {
+									S:Arm(angle=V9, power=G9, option=315000, name=A9, spring=1, damper=1) { }
+								}
+							}
+							S:Frame(angle=V13, spring=1, damper=1, option=1) {
+								S:Frame(angle=W13, spring=1, damper=1, option=1) {
+									S:Arm(angle=V13, power=G13, option=315000, name=A13, spring=1, damper=1) { }
+								}
+							}
+							S:Frame(angle=V17, spring=1, damper=1, option=1) {
+								S:Frame(angle=W17, spring=1, damper=1, option=1) {
+									S:Arm(angle=V17, power=G17, option=315000, name=A17, spring=1, damper=1) { }
+								}
+							}
+							S:Frame(angle=V21, spring=1, damper=1, option=1) {
+								S:Frame(angle=W21, spring=1, damper=1, option=1) {
+									S:Arm(angle=V21, power=G21, option=315000, name=A21, spring=1, damper=1) { }
+								}
+							}
+							S:Frame(angle=V25, spring=1, damper=1, option=1) {
+								S:Frame(angle=W25, spring=1, damper=1, option=1) {
+									S:Arm(angle=V25, power=G25, option=315000, name=A25, spring=1, damper=1) { }
+								}
+							}
+							S:Frame(angle=V29, spring=1, damper=1, option=1) {
+								S:Frame(angle=W29, spring=1, damper=1, option=1) {
+									S:Arm(angle=V29, power=G29, option=315000, name=A29, spring=1, damper=1) { }
+								}
+							}
+							S:Cowl(angle=-30) {
+								S:Cowl(angle=30) {
+									S:Cowl(angle=180, name=GP) { }
+								}
+							}
+							N:Frame(option=0, angle=-90, spring=1, damper=1) {
+								W:Frame(option=0, angle=-90, spring=1, damper=1) {
+									W:Frame(angle=V4, spring=1, damper=1, option=1) {
+										W:Frame(angle=W4, spring=1, damper=1, option=1) {
+											W:Arm(angle=V4, power=G4, option=315000, name=A4, spring=1, damper=1) { }
+										}
+									}
+									W:Frame(angle=V8, spring=1, damper=1, option=1) {
+										W:Frame(angle=W8, spring=1, damper=1, option=1) {
+											W:Arm(angle=V8, power=G8, option=315000, name=A8, spring=1, damper=1) { }
+										}
+									}
+									W:Frame(angle=V12, spring=1, damper=1, option=1) {
+										W:Frame(angle=W12, spring=1, damper=1, option=1) {
+											W:Arm(angle=V12, power=G12, option=315000, name=A12, spring=1, damper=1) { }
+										}
+									}
+									W:Frame(angle=V16, spring=1, damper=1, option=1) {
+										W:Frame(angle=W16, spring=1, damper=1, option=1) {
+											W:Arm(angle=V16, power=G16, option=315000, name=A16, spring=1, damper=1) { }
+										}
+									}
+									W:Frame(angle=V20, spring=1, damper=1, option=1) {
+										W:Frame(angle=W20, spring=1, damper=1, option=1) {
+											W:Arm(angle=V20, power=G20, option=315000, name=A20, spring=1, damper=1) { }
+										}
+									}
+									W:Frame(angle=V24, spring=1, damper=1, option=1) {
+										W:Frame(angle=W24, spring=1, damper=1, option=1) {
+											W:Arm(angle=V24, power=G24, option=315000, name=A24, spring=1, damper=1) { }
+										}
+									}
+									W:Frame(angle=V28, spring=1, damper=1, option=1) {
+										W:Frame(angle=W28, spring=1, damper=1, option=1) {
+											W:Arm(angle=V28, power=G28, option=315000, name=A28, spring=1, damper=1) { }
+										}
+									}
+									W:Frame(angle=V32, spring=1, damper=1, option=1) {
+										W:Frame(angle=W32, spring=1, damper=1, option=1) {
+											W:Arm(angle=V32, power=G32, option=315000, name=A32, spring=1, damper=1) { }
+										}
+									}
+								}
+								E:Frame(option=0, angle=-90, spring=1, damper=1) {
+									E:Frame(angle=V3, spring=1, damper=1, option=1) {
+										E:Frame(angle=W3, spring=1, damper=1, option=1) {
+											E:Arm(angle=V3, power=G3, option=315000, name=A3, spring=1, damper=1) { }
+										}
+									}
+									E:Frame(angle=V7, spring=1, damper=1, option=1) {
+										E:Frame(angle=W7, spring=1, damper=1, option=1) {
+											E:Arm(angle=V7, power=G7, option=315000, name=A7, spring=1, damper=1) { }
+										}
+									}
+									E:Frame(angle=V11, spring=1, damper=1, option=1) {
+										E:Frame(angle=W11, spring=1, damper=1, option=1) {
+											E:Arm(angle=V11, power=G11, option=315000, name=A11, spring=1, damper=1) { }
+										}
+									}
+									E:Frame(angle=V15, spring=1, damper=1, option=1) {
+										E:Frame(angle=W15, spring=1, damper=1, option=1) {
+											E:Arm(angle=V15, power=G15, option=315000, name=A15, spring=1, damper=1) { }
+										}
+									}
+									E:Frame(angle=V19, spring=1, damper=1, option=1) {
+										E:Frame(angle=W19, spring=1, damper=1, option=1) {
+											E:Arm(angle=V19, power=G19, option=315000, name=A19, spring=1, damper=1) { }
+										}
+									}
+									E:Frame(angle=V23, spring=1, damper=1, option=1) {
+										E:Frame(angle=W23, spring=1, damper=1, option=1) {
+											E:Arm(angle=V23, power=G23, option=315000, name=A23, spring=1, damper=1) { }
+										}
+									}
+									E:Frame(angle=V27, spring=1, damper=1, option=1) {
+										E:Frame(angle=W27, spring=1, damper=1, option=1) {
+											E:Arm(angle=V27, power=G27, option=315000, name=A27, spring=1, damper=1) { }
+										}
+									}
+									E:Frame(angle=V31, spring=1, damper=1, option=1) {
+										E:Frame(angle=W31, spring=1, damper=1, option=1) {
+											E:Arm(angle=V31, power=G31, option=315000, name=A31, spring=1, damper=1) { }
+										}
+									}
+								}
+								N:Frame(option=0, angle=-90, spring=1, damper=1) {
+									N:Frame(angle=V2, spring=1, damper=1, option=1) {
+										N:Frame(angle=W2, spring=1, damper=1, option=1) {
+											N:Arm(angle=V2, power=G2, option=315000, name=A2, spring=1, damper=1) { }
+										}
+									}
+									N:Frame(angle=V6, spring=1, damper=1, option=1) {
+										N:Frame(angle=W6, spring=1, damper=1, option=1) {
+											N:Arm(angle=V6, power=G6, option=315000, name=A6, spring=1, damper=1) { }
+										}
+									}
+									N:Frame(angle=V10, spring=1, damper=1, option=1) {
+										N:Frame(angle=W10, spring=1, damper=1, option=1) {
+											N:Arm(angle=V10, power=G10, option=315000, name=A10, spring=1, damper=1) { }
+										}
+									}
+									N:Frame(angle=V14, spring=1, damper=1, option=1) {
+										N:Frame(angle=W14, spring=1, damper=1, option=1) {
+											N:Arm(angle=V14, power=G14, option=315000, name=A14, spring=1, damper=1) { }
+										}
+									}
+									N:Frame(angle=V18, spring=1, damper=1, option=1) {
+										N:Frame(angle=W18, spring=1, damper=1, option=1) {
+											N:Arm(angle=V18, power=G18, option=315000, name=A18, spring=1, damper=1) { }
+										}
+									}
+									N:Frame(angle=V22, spring=1, damper=1, option=1) {
+										N:Frame(angle=W22, spring=1, damper=1, option=1) {
+											N:Arm(angle=V22, power=G22, option=315000, name=A22, spring=1, damper=1) { }
+										}
+									}
+									N:Frame(angle=V26, spring=1, damper=1, option=1) {
+										N:Frame(angle=W26, spring=1, damper=1, option=1) {
+											N:Arm(angle=V26, power=G26, option=315000, name=A26, spring=1, damper=1) { }
+										}
+									}
+									N:Frame(angle=V30, spring=1, damper=1, option=1) {
+										N:Frame(angle=W30, spring=1, damper=1, option=1) {
+											N:Arm(angle=V30, power=G30, option=315000, name=A30, spring=1, damper=1) { }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+do
+	local FSX=_X(FS)
+	local FSY=_Y(FS)
+	local FSZ=_Z(FS)
+	local RSX=_X(RS)
+	local RSY=_Y(RS)
+	local RSZ=_Z(RS)
+	local LSX=_X(LS)
+	local LSY=_Y(LS)
+	local LSZ=_Z(LS)
+	local TSX=_X(TS)
+	local TSY=_Y(TS)
+	local TSZ=_Z(TS)
+	
+	function MF(a)
+		local FX=_X(FS)-FSX
+		local FY=_Y(FS)-FSY
+		local FZ=_Z(FS)-FSZ
+		local RX=_X(RS)-RSX
+		local RY=_Y(RS)-RSY
+		local RZ=_Z(RS)-RSZ
+		local LX=_X(LS)-LSX
+		local LY=_Y(LS)-LSY
+		local LZ=_Z(LS)-LSZ
+		local TX=_X(TS)-TSX
+		local TY=_Y(TS)-TSY
+		local TZ=_Z(TS)-TSZ
+
+		WX=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))-(TX*_YX(TS)+TY*_YY(TS)+TZ*_YZ(TS))
+		WY=(RX*_ZX(RS)+RY*_ZY(RS)+RZ*_ZZ(RS))-(LX*_ZX(LS)+LY*_ZY(LS)+LZ*_ZZ(LS))
+		WZ=(RX*_YX(RS)+RY*_YY(RS)+RZ*_YZ(RS))-(LX*_YX(LS)+LY*_YY(LS)+LZ*_YZ(LS))
+		VEL=(FX*_ZX(FS)+FY*_ZY(FS)+FZ*_ZZ(FS))*3.6
+		VX=(FX*_XX(FS)+FY*_XY(FS)+FZ*_XZ(FS))*3.6
+
+		VY=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))*3.6
+
+		FSX=_X(FS)
+		FSY=_Y(FS)
+		FSZ=_Z(FS)
+		RSX=_X(RS)
+		RSY=_Y(RS)
+		RSZ=_Z(RS)
+		LSX=_X(LS)
+		LSY=_Y(LS)
+		LSZ=_Z(LS)
+		TSX=_X(TS)
+		TSY=_Y(TS)
+		TSZ=_Z(TS)
+	end
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+_ab=0
+
+window_info = nil
+window_radar = nil
+
+_maxvel = 0
+
+function OnInit()
+	_ZOOM(_GETVIEWZOOM())
+end
+
+_jp=400000
+_ra=10
+_va=30
+
+_md=0
+_prev=0
+
+_mel=0
+_mer=0
+
+_gt=0
+
+_tvx=-60
+
+_tv={0,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx}
+
+_v=0
+
+_vel=0
+_ovel=0
+
+_velrot=0
+
+function Rotate2D(px,py,pr)
+	return px * math.cos(pr) - py * math.sin(pr), px * math.sin(pr) + py * math.cos(pr)
+end
+
+function OnFrame()
+	MF()
+	
+	local p =_LINER(P,_KEY(4)*_jp+(_jp*_ab),_jp/10+(_jp*_ab)/10)
+	local r =_LINER(R,_KEY(3)*_ra-_KEY(2)*_ra,_ra/4)
+	local v=_LINER(V,_KEY(1)*_va-_KEY(0)*_va,_va/4)
+	
+	P=p
+	
+	GW=_LINER(GW,_gt,20)
+	
+	if _KEY(2) == 0 and _KEY(3) == 0 then
+		r=WZ*64
+	end
+	
+	if _KEY(0) == 0 and _KEY(1) == 0 then
+		v=WX*-128
+	end
+	
+	R=r
+	V=v
+	
+	T = math.max(55, 25 * ((_VEL(0) * 3.6 - 200) / 200) + 55)
+	
+	if _md == 1 then
+		_prev=_prev-(_AX(0)-math.atan2(-_VY(0),-_VZ(0)))*0.25
+		_prev=math.min(2,math.max(-2,_prev))
+		R=_EZ(0)*-10-_WZ(0)
+		V=-_AX(0)*20-_WX(0)+_prev
+		
+		R=math.min(10,math.max(-10,R))
+		V=math.min(10,math.max(-10,V))
+		
+		P = _jp
+	end
+	
+	_ab=_KEY(6)*0.2*_KEY(4)
+	
+	if _KEYDOWN(15) == 1 then
+		_md = 1 - _md
+	end
+	
+	if _KEYDOWN(14) == 1 then
+		_gt = 180 - _gt
+	end
+	
+	if _KEYDOWN(14) == 1 then
+		_SPLIT(MSL)
+		_SPLIT(MSR)
+		_mel = 1
+		_mer = 1
+	end
+	
+	if _KEY(5) == 1 and _E(_G['A'.._v+1]) >= _OPTION(_G['A'.._v+1]) and _G['V'.._v+1] == 0 then
+		_G['G'.._v+1]=_OPTION(_G['A'.._v+1])
+		_v=math.mod(_v+1,32)
+		_tv={_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx}
+		_tv[_v+1]=0
+	end
+	
+	for i=1,32 do
+		_G['V'..i]=_LINER(_G['V'..i],_tv[i],30)
+		_G['W'..i]=-_G['V'..i]*2
+	end
+	
+	--<HUD>----------------------------------------------------------------
+	
+	XGUI.SetDrawColorRGB(0,255,0)
+	
+	local r_r = 128
+	local r_s = r_r-8
+	local r_t = r_r+8
+	
+	XGUI.Move2D(16,r_r+16)
+	XGUI.Line2D(16,16)
+	XGUI.Line2D(r_r+16,16)
+	
+	local i
+	for i=180,-90,-5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_r+r_r+16,math.cos(math.rad(i))*r_r+r_r+16)
+	end
+	
+	i = 0
+	XGUI.Move2D(math.sin(math.rad(i))*r_s+r_r+16,math.cos(math.rad(i))*r_s+r_r+16)
+	
+	for i=0,360,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_s+r_r+16,math.cos(math.rad(i))*r_s+r_r+16)
+	end
+	
+	XGUI.Move2D(r_r+16,r_r+16)
+	XGUI.Line2D(math.sin(math.rad(180+_GETVIEWZOOM()/2))*r_s+r_r+16,math.cos(math.rad(180+_GETVIEWZOOM()/2))*r_s+r_r+16)
+	XGUI.Move2D(r_r+16,r_r+16)
+	XGUI.Line2D(math.sin(math.rad(180-_GETVIEWZOOM()/2))*r_s+r_r+16,math.cos(math.rad(180-_GETVIEWZOOM()/2))*r_s+r_r+16)
+	
+	
+	XGUI.Move2D(0,r_r+16)
+	
+	for i=-90,135,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_t+r_r+16,math.cos(math.rad(i))*r_t+r_r+16)
+	end
+	
+	XGUI.Line2D(math.sin(math.rad(135))*r_t+r_r+16+64,math.cos(math.rad(135))*r_t+r_r+16-40)
+	XGUI.Line2D(_WIDTH(),math.cos(math.rad(135))*r_t+r_r+16-40)
+	
+	
+	local r_u = 16
+	
+	local r_s1 = 512
+	
+	XGUI.Move2D(0,_HEIGHT()-16)
+	
+	XGUI.Line2D(_WIDTH()-r_s1-r_u*2,_HEIGHT()-16)
+	
+	for i=0,90,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_u+_WIDTH()-r_s1,math.cos(math.rad(i))*r_u+_HEIGHT()-16-r_u)
+	end
+	
+	for i=-90,-180,-5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_u+_WIDTH()-r_s1+r_u*2,math.cos(math.rad(i))*r_u+_HEIGHT()-16-r_u-72)
+	end
+	
+	XGUI.Line2D(_WIDTH(),_HEIGHT()-16-r_u*2-72)
+	
+	
+	local r_v = 48
+	
+	XGUI.Move2D(math.sin(math.rad(0))*r_v+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	
+	for i=0,360,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_v+r_v+16,math.cos(math.rad(i))*r_v+_HEIGHT()/2)
+	end
+	
+	local r_w = 16
+	
+	XGUI.Move2D(math.sin(math.rad(0))*r_w+r_v+16,math.cos(math.rad(0))*r_w+_HEIGHT()/2)
+	
+	for i=0,360,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_w+r_v+16,math.cos(math.rad(i))*r_w+_HEIGHT()/2)
+	end
+	
+	_vel = _VEL(0)
+	if _maxvel < _vel then _maxvel = _vel end
+	
+	_velrot = _velrot + (math.rad(90)*(_vel-_ovel)*30)
+	
+	_ovel = _vel
+	
+	
+	for i=-20,20,40 do
+		XGUI.Move2D(math.sin(math.rad(_velrot+i))*r_w+r_v+16,math.cos(math.rad(_velrot+i))*r_w+_HEIGHT()/2)
+		XGUI.Line2D(math.sin(math.rad(_velrot+i))*r_v+r_v+16,math.cos(math.rad(_velrot+i))*r_v+_HEIGHT()/2)
+	end
+	
+	for i=-200,-160,40 do
+		XGUI.Move2D(math.sin(math.rad(_velrot+i))*r_w+r_v+16,math.cos(math.rad(_velrot+i))*r_w+_HEIGHT()/2)
+		XGUI.Line2D(math.sin(math.rad(_velrot+i))*r_v+r_v+16,math.cos(math.rad(_velrot+i))*r_v+_HEIGHT()/2)
+	end
+
+	XGUI.Move2D(math.sin(math.rad(0))*r_v+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	XGUI.Line2D(128+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	
+	XGUI.Move2D(math.sin(math.rad(90))*r_v+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2)
+	XGUI.Line2D(128+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2)
+	
+	XGUI.Move2D(128+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	XGUI.Line2D(128+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2)
+	
+	XGUI.SetStringPosition(math.sin(math.rad(90))*r_v+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2+8)
+	
+	XGUI.SetStringSize(32)
+	
+	XGUI.DrawVectorString(string.format("% 4d",_vel*3.6))
+	
+	local r_s2 = 96
+	local r_s3 = 24
+	
+	XGUI.Move2D(_WIDTH()-r_s2-16-r_s3*2,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2+r_s3)
+	XGUI.Line2D(_WIDTH()-r_s2-16-r_s3*2,_HEIGHT()/2+r_s3)
+	XGUI.Line2D(_WIDTH()-r_s2-16-r_s3*2,_HEIGHT()/2-r_s3)
+	
+	XGUI.SetStringPosition(_WIDTH()-r_s2-16-r_s3*2+16,_HEIGHT()/2-r_s3+8)
+	
+	XGUI.DrawVectorString(string.format("% 4d",_Y(0)))
+	
+	XGUI.Move2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16,_HEIGHT()/2-r_s3+r_s2)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3+r_s2)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3)
+	
+	
+	for i=-10,10 do
+		local j = i/11
+		local k = 0.5
+		
+		if math.mod((_Y()-math.mod(_Y(),1))-i,5) == 0 then k=1 end
+		
+		XGUI.Move2D(_WIDTH()-16-r_s3*k,_HEIGHT()/2+r_s3+r_s2/2*j+math.mod(_Y(),1)*4)
+		XGUI.Line2D(_WIDTH()-16,_HEIGHT()/2+r_s3+r_s2/2*j+math.mod(_Y(),1)*4)
+	end
+	
+	local r_s5 = math.tan(math.rad(_GETVIEWZOOM()))*_HEIGHT()
+	
+	for i=-360,360,20 do
+		local k = 0.5
+		
+		if math.mod(i,40) == 0 then k = 1 end
+		
+		local ax1,ay1 = Rotate2D(-384-128*k,-r_s5*(_ZY()+(i/180)),-_EZ())
+		local ax2,ay2 = Rotate2D(-384      ,-r_s5*(_ZY()+(i/180)),-_EZ())
+		
+		local bx1,by1 = Rotate2D( 384+128*k,-r_s5*(_ZY()+(i/180)),-_EZ())
+		local bx2,by2 = Rotate2D( 384      ,-r_s5*(_ZY()+(i/180)),-_EZ())
+		
+		XGUI.Move2D(ax1+_WIDTH()/2,ay1+_HEIGHT()/2)
+		XGUI.Line2D(ax2+_WIDTH()/2,ay2+_HEIGHT()/2)
+		
+		XGUI.Move2D(bx1+_WIDTH()/2,by1+_HEIGHT()/2)
+		XGUI.Line2D(bx2+_WIDTH()/2,by2+_HEIGHT()/2)
+	end
+	
+	
+	local ax1,ay1 = Rotate2D(-384-256,0,-_EZ())
+	local ax2,ay2 = Rotate2D(-384      ,0,-_EZ())
+		
+	local bx1,by1 = Rotate2D( 384+256,0,-_EZ())
+	local bx2,by2 = Rotate2D( 384      ,0,-_EZ())
+		
+	XGUI.Move2D(ax1+_WIDTH()/2,ay1+_HEIGHT()/2)
+	XGUI.Line2D(ax2+_WIDTH()/2,ay2+_HEIGHT()/2)
+		
+	XGUI.Move2D(bx1+_WIDTH()/2,by1+_HEIGHT()/2)
+	XGUI.Line2D(bx2+_WIDTH()/2,by2+_HEIGHT()/2)
+	
+	local cx1,cy1 = -256-128,0
+	local cx2,cy2 =  256+128,0
+	
+	XGUI.SetStringSize(16)
+	
+	XGUI.SetStringPosition(cx1+_WIDTH()/2,cy1+_HEIGHT()/2)
+	XGUI.DrawVectorString(string.format("%d",math.abs(math.deg(_EX()))))
+	
+	XGUI.SetStringPosition(cx2+_WIDTH()/2,cy2+_HEIGHT()/2)
+	XGUI.DrawVectorString(string.format("%d",math.abs(math.deg(_EX()))))
+	
+	
+	for i=1,_PLAYERS()-1 do
+		local x,y,z = _NPOS(i)
+		local _wsize_hlf = r_r+16
+		
+		local x1,y1 = x-_X(0),z-_Z(0)
+		
+		local x2 = x1 * math.cos(_EY(0)) - y1 * math.sin(_EY(0))
+		local y2 = x1 * math.sin(_EY(0)) + y1 * math.cos(_EY(0))
+		
+		x2 = x2 / 600 * -r_r + _wsize_hlf
+		y2 = y2 / 600 * r_r + _wsize_hlf
+		
+		XGUI.SetStringSize(12)
+		
+		if math.sqrt(x1 * x1 + y1 * y1) < 600 and _PLAYERID(i) ~= _PLAYERMYID() then
+			if _PLAYERARMS(i) ~= 0 then XGUI.SetDrawColorRGB(255,0,0)
+			else XGUI.SetDrawColorRGB(255,255,255) end
+			XGUI.SetStringPosition(x2,y2)
+			XGUI.DrawVectorStringCenter("~")
+		end
+	end
+	
+	XGUI.SetDrawColorRGB(0,255,0)
+	
+	XGUI.SetStringPosition(24,32)
+	XGUI.DrawVectorString(string.format("% 4.4f",_FPS()))
+	
+	XGUI.Move2D(_WIDTH()/2-16,_HEIGHT()/2)
+	XGUI.Line2D(_WIDTH()/2+16,_HEIGHT()/2)
+	
+	XGUI.Move2D(_WIDTH()/2,_HEIGHT()/2)
+	XGUI.Line2D(_WIDTH()/2,_HEIGHT()/2+16)
+	
+	XGUI.SetDrawColorRGB(255,128,0)
+	
+	local r_s4 = 256
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u   ,_HEIGHT()/2-r_s4-r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u+16,_HEIGHT()/2-r_s4-r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2-r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2-r_s4+16)
+	
+	
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u   ,_HEIGHT()/2+r_s4+r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u-16,_HEIGHT()/2+r_s4+r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2+r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2+r_s4-16)
+	
+	
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u   ,_HEIGHT()/2-r_s4-r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u-16,_HEIGHT()/2-r_s4-r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2-r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2-r_s4+16)
+	
+	
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u   ,_HEIGHT()/2+r_s4+r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u+16,_HEIGHT()/2+r_s4+r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2+r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2+r_s4-16)
+	
+	
+	
+	for i=-90,-180,-5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2-r_s4)
+		XGUI.Line2D(math.sin(math.rad(  i))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(  i))*r_u+_HEIGHT()/2-r_s4)
+	end
+	
+	for i=-90,0,5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2+r_s4)
+		XGUI.Line2D(math.sin(math.rad(  i))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(  i))*r_u+_HEIGHT()/2+r_s4)
+	end
+	
+	for i=90,180,5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2-r_s4)
+		XGUI.Line2D(math.sin(math.rad(  i))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(  i))*r_u+_HEIGHT()/2-r_s4)
+	end
+	
+	for i=90,0,-5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2+r_s4)
+		XGUI.Line2D(math.sin(math.rad(  i))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(  i))*r_u+_HEIGHT()/2+r_s4)
+	end
+	
+	--</HUD>---------------------------------------------------------------
+end
+
+function _NPOS(n)
+	math.randomseed(1519)
+	local x = _PLAYERX(n)
+	math.randomseed(1519)
+	local y = _PLAYERY(n)
+	math.randomseed(1519)
+	local z = _PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	x = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+	
+	return x,y,z
+end
+}

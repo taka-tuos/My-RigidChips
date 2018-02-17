@@ -1,0 +1,97 @@
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _NVEC(x,y,z)
+	len = _LEN3(x,y,z)
+	
+	if len <= 0.00001 then return x,y,z end
+	
+	x = x / len
+	y = y / len
+	z = z / len
+	
+	return x,y,z
+end
+
+myid=0
+pnum=0
+
+function _NUKE(_PW)
+	local i
+	
+	_SETWIND(math.random(512)/128,math.random(512)/128,math.random(512)/128)
+	
+	for i=0,_CHIPS()-1 do
+		_BYE(i)
+		local _PM = _M(i) / 2
+		local x,y,z = _NVEC(_X(i),_Y(i)-_GETY(0,0),_Z(i))
+		_FORCE(i,x*_PW*_PM,y*_PW*_PM,z*_PW*_PM)
+	end
+end
+
+function _REFPLID()
+	myid=0
+	
+	while _PLAYERMYID() ~= _PLAYERID(myid) do
+		myid = myid + 1
+	end
+end
+
+function OnInit()
+	_REFPLID()
+	
+	_NUKEF = 0
+
+	_PW1 = 0
+	_PW2 = 1000
+	_PW3 = -4000
+	_PW4 = 8000
+
+	_TIM1 = 30		--–³”š•—
+	_TIM2 = 50		--ŠOŒü‚«”š•—(1)
+	_TIM3 = 30		--“àŒü‚«”š•—
+	_TIM4 = 180		--ŠOŒü‚«”š•—(2)
+end
+
+function OnFrame()
+	if _PLAYERS() ~= pnum then
+		_REFPLID()
+	end
+	
+	if _KEYDOWN(14) == 1 then 
+		_NUKEF = 1
+		
+		_SENDALL('!!NUKE!!')
+	end
+	
+	if _RECEIVE(myid) == '!!NUKE!!' then
+		_NUKEF = 1
+	end
+	
+	if _NUKEF == 1 then
+		local _PW = 0
+		
+		if _TIM1 > 0 then
+			_TIM1 = _TIM1 - 1
+			_PW = _PW1
+		end
+		
+		if _TIM1 == 0 and _TIM2 > 0 then
+			_TIM2 = _TIM2 - 1
+			_PW = _PW2
+		end
+		if _TIM2 == 0 and _TIM3 > 0 then
+			_TIM3 = _TIM3 - 1
+			_PW = _PW3
+		end
+		if _TIM3 == 0 and _TIM4 > 0 then
+			_TIM4 = _TIM4 - 1
+			_PW = _PW4
+		end
+		
+		_NUKE(_PW)
+	end
+	
+	pnum=_PLAYERS()
+end

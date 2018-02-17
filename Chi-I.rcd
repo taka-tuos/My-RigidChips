@@ -1,0 +1,400 @@
+// [RCD] 
+Val
+{
+	A(default=0, max=10000000000)
+	B(default=0, min=-10000000000, max=10000000000)
+	LT(default=0, min=-10000000000, max=10000000000)
+	RT(default=0, min=-10000000000, max=10000000000)
+	SP(default=0, max=1)
+	XH(default=0, min=-10000000000, max=10000000000)
+	YH(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=90) { }
+		S:Weight(angle=20) {
+			S:Weight(angle=140) {
+				S:Weight(angle=-160) {
+					N:Weight() {
+						S:Weight(angle=-XH) {
+							N:Weight() {
+								S:Frame(angle=90) {
+									N:TrimF(angle=-YH) {
+										S:Frame(option=1) {
+											S:Weight(angle=90) {
+												S:Weight() {
+													W:Weight() {
+														E:Frame(angle=150, spring=SP) {
+															E:Wheel(angle=120, power=-LT, brake=B, effect=2) { }
+														}
+														W:Weight(angle=90) {
+															W:Cowl(angle=90) { }
+														}
+													}
+													E:Weight() {
+														W:Frame(angle=150, spring=SP) {
+															W:Wheel(angle=120, power=RT, brake=B, effect=2) { }
+														}
+														E:Weight(angle=90) {
+															E:Cowl(angle=90) { }
+														}
+													}
+													S:Weight(angle=30) {
+														W:Weight() {
+															E:Frame(angle=150, spring=SP) {
+																E:Wheel(angle=120, power=-LT, brake=B, effect=2) { }
+															}
+														}
+														E:Weight() {
+															W:Frame(angle=150, spring=SP) {
+																W:Wheel(angle=120, power=RT, brake=B, effect=2) { }
+															}
+														}
+														S:Weight(angle=120) {
+															E:Weight() {
+																S:Weight(angle=-160) {
+																	E:Cowl(angle=-90, option=4) { }
+																}
+															}
+															W:Weight() {
+																S:Weight(angle=-160) {
+																	W:Cowl(angle=-90, option=3) { }
+																}
+															}
+															S:Cowl(angle=30) { }
+														}
+													}
+												}
+												N:Weight() {
+													N:Weight() {
+														N:Weight(angle=30) {
+															E:Weight() {
+																W:Frame(angle=150, spring=SP) {
+																	W:Wheel(angle=120, power=RT, brake=B, effect=2) { }
+																}
+															}
+															W:Weight() {
+																E:Frame(angle=150, spring=SP) {
+																	E:Wheel(angle=120, power=-LT, brake=B, effect=2) { }
+																}
+															}
+															N:Weight(angle=120) {
+																W:Weight() {
+																	N:Weight(angle=-160) {
+																		W:Cowl(angle=-90, option=4) { }
+																	}
+																}
+																E:Weight() {
+																	N:Weight(angle=-160) {
+																		E:Cowl(angle=-90, option=3) { }
+																	}
+																}
+																N:Cowl(angle=30) { }
+															}
+														}
+														W:Weight() {
+															E:Frame(angle=150, spring=SP) {
+																E:Wheel(angle=120, power=-LT, brake=B, effect=2) { }
+															}
+															W:Weight(angle=90) {
+																W:Cowl(angle=90) { }
+															}
+														}
+														E:Weight() {
+															W:Frame(angle=150, spring=SP) {
+																W:Wheel(angle=120, power=RT, brake=B, effect=2) { }
+															}
+															E:Weight(angle=90) {
+																E:Cowl(angle=90) { }
+															}
+														}
+													}
+													W:Weight() {
+														E:Frame(angle=150, spring=SP) {
+															E:Wheel(angle=120, power=-LT, brake=B, effect=2) { }
+														}
+														W:Weight(angle=90) {
+															W:Cowl(angle=90) { }
+														}
+													}
+													E:Weight() {
+														W:Frame(angle=150, spring=SP) {
+															W:Wheel(angle=120, power=RT, brake=B, effect=2) { }
+														}
+														E:Weight(angle=90) {
+															E:Cowl(angle=90) { }
+														}
+													}
+												}
+												W:Weight() {
+													E:Frame(angle=150, spring=SP) {
+														E:Wheel(angle=120, power=-LT, brake=B, effect=2) { }
+													}
+													W:Weight(angle=90) {
+														W:Cowl(angle=90) { }
+													}
+												}
+												E:Weight() {
+													W:Frame(angle=150, spring=SP) {
+														W:Wheel(angle=120, power=RT, brake=B, effect=2) { }
+													}
+													E:Weight(angle=90) {
+														E:Cowl(angle=90) { }
+													}
+												}
+											}
+										}
+										W:Weight(angle=120) { }
+										E:Weight(angle=120) { }
+									}
+									N:Weight() {
+										W:Weight(angle=60) {
+											W:Weight(angle=-150) {
+												W:Weight(angle=-30) {
+													N:Weight(angle=-80) { }
+												}
+												N:Weight(angle=-80) { }
+												E:Cowl(angle=-40) {
+													N:Cowl(angle=-80) { }
+												}
+											}
+										}
+										E:Weight(angle=60) {
+											E:Weight(angle=-150) {
+												E:Weight(angle=-30) {
+													N:Weight(angle=-80) { }
+												}
+												N:Weight(angle=-80) { }
+												W:Cowl(angle=-40) {
+													N:Cowl(angle=-80) { }
+												}
+											}
+										}
+									}
+								}
+							}
+							S:Weight(angle=-90) {
+								S:Weight(angle=-80) {
+									S:Weight(angle=-15) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Arm(power=A, option=16777216, name=D1) {
+			N:Cowl() {
+				S:Cowl() { }
+				N:Cowl() { }
+			}
+		}
+	}
+}
+Lua
+{
+ArmScope = {};
+ArmScope.ColorSet = {}
+ArmScope.ColorSet.lineColor = 65535;
+ArmScope.ColorSet.guideColorOdd = 255 * 65536;
+ArmScope.ColorSet.guideColorEven = 255 * (65536 + 256)
+
+function ArmScope.draw(chipid,length,guide,count,size,span,disableLine)
+	local function nilfunc() end
+	
+	if chipid == nil then chipid = 0 end
+	if length == nil then length = 1000 end
+	if guide == nil then guide = nilfunc end
+	if count == nil then count = 5 end
+	if size == nil then size = 1 end
+	if span == nil then span = length / count end
+
+	--変数x,y,zにチップの座標取得。	
+	local x = _X(chipid)
+	local y = _Y(chipid)
+	local z = _Z(chipid)
+	
+	--変数zx,zy,zzにチップのZ軸ベクトル、変数xx,xy,xzにX軸、変数yx,yy,yzにY軸ベクトルを格納。
+	local zx = _ZX(chipid)
+	local zy = _ZY(chipid)
+	local zz = _ZZ(chipid)
+
+	local xx = _XX(chipid)
+	local xy = _XY(chipid)
+	local xz = _XZ(chipid)
+	
+	local yx = _YX(chipid)
+	local yy = _YY(chipid)
+	local yz = _YZ(chipid)
+
+	local dir = _DIR(chipid)
+	
+	local zx0;
+	local zy0;
+	local zz0;
+	
+	if dir == 1 then -- W
+		xx, zx = zx, xx;
+		xy, zy = zy, xy;
+		xz, zz = zz, xz;
+	elseif dir == 2 then -- S
+		zx = -zx;
+		zy = -zy;
+		zz = -zz;
+	elseif dir == 3 then -- E
+		xx, zx = zx, -xx;
+		xy, zy = zy, -xy;
+		xz, zz = zz, -xz;
+	end
+
+	zx0 = zx;
+	zy0 = zy;
+	zz0 = zz;
+
+	xx = xx * size;
+	xy = xy * size;
+	xz = xz * size;
+	yx = yx * size;
+	yy = yy * size;
+	yz = yz * size;
+	zx = zx * size;
+	zy = zy * size;
+	zz = zz * size;
+--	射軸をライン描画
+	if disableLine == nil then
+		_SETCOLOR(ArmScope.ColorSet.lineColor);
+		_MOVE3D(x,y,z);
+		_LINE3D(x + zx0*length,y + zy0*length,z + zz0*length);
+	end
+
+
+	local color = {ArmScope.ColorSet.guideColorOdd, ArmScope.ColorSet.guideColorEven};
+	local colorindex = 1;
+
+-- 引数として渡すためのクロージャ
+	local function moveFunc(xxx, yyy, zzz)
+		local xxxx = x + xx * xxx + yx * yyy + zx * zzz;
+		local yyyy = y + xy * xxx + yy * yyy + zy * zzz;
+		local zzzz = z + xz * xxx + yz * yyy + zz * zzz;
+		_MOVE3D(xxxx, yyyy, zzzz);
+	end
+	
+	local function lineFunc(xxx, yyy, zzz)
+		local xxxx = x + xx * xxx + yx * yyy + zx * zzz;
+		local yyyy = y + xy * xxx + yy * yyy + zy * zzz;
+		local zzzz = z + xz * xxx + yz * yyy + zz * zzz;
+		_LINE3D(xxxx, yyyy, zzzz);
+	end
+	
+	for i = 1, count do
+
+		--基準座標を射線方向にオフセット
+		x = x + zx0 * span
+		y = y + zy0 * span
+		z = z + zz0 * span
+		
+		--ガイドの描画
+		_SETCOLOR(color[colorindex]);
+		guide(i, moveFunc, lineFunc);
+		
+		colorindex = 3 - colorindex;		
+	end	
+end
+
+function ArmScope.Box(i, move, line)
+	move( 1, 1,0)
+	line(-1, 1,0)
+	line(-1,-1,0)
+	line( 1,-1,0)
+	line( 1, 1,0)
+end
+
+function ArmScope.Cross(i, move, line)
+	move(2, 0, 0)
+	line(-2, 0, 0)
+	move(0, 2, 0)
+	line(0, -2, 0)
+end
+
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+_wp=10000
+_md=0
+
+_oml=0
+
+_omx=0
+_omy=0
+
+_oxh=0
+_oyh=0
+
+function OnFrame()
+	_ZOOM(40)
+
+	ArmScope.draw(D1,300,ArmScope.Cross,5,1)
+	
+	_ARMMAX(D1,16777216)
+	
+	if _md == 0 then
+		out(0,"Normal speed mode.")
+	else
+		out(0,"High speed mode.")
+	end
+	
+	if _oml == 1 then
+		local x = (_MX() - _WIDTH() / 2) / _WIDTH() - _omx
+		local y = (_MY() - _HEIGHT() / 2) / _HEIGHT() - _omy
+		
+		_oxh = _oxh - y * (200+_md*150)
+		_oyh = _oyh - x * (200+_md*150)
+	end
+	
+	XH = _oxh*0.2+XH*0.8
+	YH = _oyh*0.2+YH*0.8
+	
+	_oml = _ML()
+	
+	if _oml == 1 then
+		_omx = (_MX() - _WIDTH() / 2) / _WIDTH()
+		_omy = (_MY() - _HEIGHT() / 2) / _HEIGHT()
+	end
+	
+	if _KEYDOWN(5) == 1 then
+		_md = 1 - _md
+	end
+	
+	LT=_LINER(LT,_KEY(0)*_wp-_KEY(1)*_wp+_KEY(3)*_wp,_wp/4)
+	RT=_LINER(RT,_KEY(0)*_wp-_KEY(1)*_wp+_KEY(2)*_wp,_wp/4)
+	
+	B=_LINER(B,_KEY(6)*400,100)
+	
+	SP=0.4
+	
+	
+	
+	A=_MR()*10000000000
+end
+}

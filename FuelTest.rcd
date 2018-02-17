@@ -1,0 +1,41 @@
+// [RCD] 
+Val{
+  JET1(default=0,max=100,step=100)
+  JET2(default=0,max=100,step=100)
+  JET3(default=0,max=100,step=100)
+  JET4(default=0,max=100,step=100)
+}
+Key{
+}
+Body{
+  Core(){
+    S:Jet(power=JET1){}
+    E:Jet(power=JET2){}
+    N:Jet(power=JET3){}
+    W:Jet(power=JET4){}
+  }
+}
+Lua{prevFuel=_FUEL()
+t={}
+function main()
+	fuel=_FUEL()
+	out(0,_FUEL())
+	fuelUse=prevFuel-fuel
+	if fuelUse~=0 then
+		table.insert(t,fuelUse)
+	end
+	if table.getn(t)>10 then
+		table.remove(t,0)
+	end
+	for i=1,10 do
+		if t[i]~=nil then
+			out(i,t[i])
+		end
+	end
+	for i=0,3 do
+		if _KEYDOWN(i)>0 then
+			_G["JET"..(i+1)]=100
+		end
+	end	
+	prevFuel=_FUEL()
+end}

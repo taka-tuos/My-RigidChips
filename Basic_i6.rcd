@@ -1,0 +1,849 @@
+// [RCD] BasicCar
+Val{
+	AB(default=0,max=50,disp=0)
+	BRAKE(default=0,max=80,step=80)
+	COL1(default=#FFFFFF,disp=0)
+	COL1C(default=9211020,disp=0)
+	COL1EF(default=#000000,disp=0)
+	COL2(default=#0000FF,disp=0)
+	COL2C(default=140,disp=0)
+	COLMADO(default=#101010,disp=0)
+	COLMADOEF(default=#004000,disp=0)
+	DAM(default=1,min=0.1,max=1,disp=0)
+	ENGINE(default=0,min=-2500,max=2500,step=2500)
+	FLP(default=0,max=12.5,step=2.5,disp=0)
+	FV(default=0,min=-2000000,max=2000000,disp=0)
+	FXJ(default=0,min=-2000000,max=2000000,disp=0)
+	HANDLE(default=0,min=-20,max=20,step=5)
+	HBRAKE(default=0,max=100,step=100)
+	JL(default=0,min=-200000,max=550000,disp=0)
+	JP(default=0,min=-200000,max=550000,disp=0)
+	JR(default=0,min=-200000,max=550000,disp=0)
+	KAN(default=0,min=-90,max=90,disp=0)
+	NJPL(default=90,max=180,disp=0)
+	NJPR(default=90,max=180,disp=0)
+	NJYL(default=0,min=-360,max=360,disp=0)
+	NJYR(default=0,min=-360,max=360,disp=0)
+	NZPL(default=0,min=-180,max=180,disp=0)
+	NZPR(default=0,min=-180,max=180,disp=0)
+	NZYL(default=180,min=-360,max=900,disp=0)
+	NZYR(default=180,min=-360,max=900,disp=0)
+	PI(default=0,min=-90,max=90,disp=0)
+	RLV(default=0,min=-2000000,max=2000000,disp=0)
+	RO(default=0,min=-30,max=30,disp=0)
+	ROL(default=0,min=-30,max=30,disp=0)
+	ROR(default=0,min=-30,max=30,disp=0)
+	RRV(default=0,min=-2000000,max=2000000,disp=0)
+	RXJ(default=0,min=-2000000,max=2000000,disp=0)
+	SMK(default=0,max=3,disp=0)
+	SPR(default=0.1,min=0.1,max=1,disp=0)
+	TOU(default=#00F000,disp=0)
+	VKAN(default=0,min=-45,max=45,disp=0)
+	WANGF(default=120,min=120,max=180,disp=0)
+	WANGF2(default=0,min=-30,max=30,disp=0)
+	WANGR1(default=30,max=30,disp=0)
+	WANGR2(default=55,min=55,max=180,disp=0)
+	WING1(default=60,disp=0)
+	W_BRK(default=5,max=300,disp=0)
+	YO(default=0,min=-30,max=30,disp=0)
+}
+Key{
+}
+Body{
+	Core(){
+		N:Chip(){
+			N:Rudder(angle=-YO){
+				W:Frame(){
+					W:Wheel(angle=90,brake=Brake){}
+				}
+				E:Frame(){
+					E:Wheel(angle=90,brake=Brake){}
+				}
+				N:Frame(angle=140){
+					N:Jet(angle=130,power=-JP){}
+				}
+			}
+		}
+		S:Chip(angle=PI){
+			W:Frame(){
+				W:Wheel(angle=90,power=Engine,brake=HBrake){}
+			}
+			E:Frame(){
+				E:Wheel(angle=90,power=-Engine,brake=HBrake){}
+			}
+			W:Trim(angle=ROL){}
+			E:Trim(angle=ROR){}
+		}
+	}
+}
+Lua{
+require "Boot" {"hikeo/i6"}
+
+jpow=256000 --160000
+--エンジン--------------------------
+function engine(k,abmode)
+	abmode = abmode or 0
+	
+	abmode=limit(abmode,0,1)
+	
+	jin=jin or 0
+	jab=jab or 0
+	
+	jmin=jmin or -0.4
+	jmax=jmax or 1
+	
+	k_old=k_old or 0
+	em=em or 0
+	
+	--local jout=0
+	
+	jin=limit(jin + k*0.02 , jmin , jmax)
+	
+	if jin<0 then jmax=0
+	elseif jin>0 then jmin=0
+	end
+	
+	if jmax==0 and jin==0 and k==0 then
+		jmax=1
+	end
+	
+	if jmin==0 and jin==0 and k==0 then
+		jmin=-0.4
+	end
+	
+	if jin==1 and k_old==0 and k==1 then
+		em=1
+	end
+	
+	if em==1 then
+		jab=ang( jab , k*0.3*abmode , 0.02 )
+		
+		
+		if jin<1 then em=0 end
+	else
+		jab=ang( jab , 0 , 0.02 )
+	end
+	
+	local jout=jin+jab
+	
+	k_old=k
+	
+	return jout
+end
+
+setspd=0
+setspd2=1
+--spdold=0
+setspdold=0
+setspdkflg=1
+
+function eng_by_spd(k,abmode)
+	
+	
+	if setspdkflg==0 and k==0 then setspdkflg=1 end
+	
+	if setspdkflg==0 then
+		k=0
+	end
+	
+	local kk=5
+	if setspd>=500 then kk=10 end
+	
+	if limiter==1 then
+		setspd=limit(setspd+k*kk,-30,1750)
+	else
+		setspd=limit(setspd+k*kk,-505,1750)
+	end
+	
+	if setspd<-30 and Bp.core.lvz>0 then -- -40
+		back=-1
+	else
+		back=1
+	end
+	
+	if input.brake>0.8 then
+		setspd2=0.2
+	else
+		setspd2=1
+	end
+	
+	if setspdold<0 and setspd==0 and k>0 and setspdkflg==1 then
+		setspdkflg=0
+	end
+	if setspdold>0 and setspd==0 and k<0 and setspdkflg==1 then
+		setspdkflg=0
+	end
+	
+	
+	local spd=Bp.core.lvz*-3.6
+	
+	local jout=0
+	
+	local jmax=1
+	
+	if abmode==1 then jmax=1.3 end
+	
+	local v=setspd-spd
+	
+	--jout=(setspd-spd)/15 + ((setspd-spd)-spdold)*0.05
+	
+	jout=pid(0,v*setspd2,{0.02,0.035,0.009},{-0.5,0.5})
+	
+	if spd-setspd>20 and setspd>=0 then input.brake=1 end
+	
+	if setspd<50 and setspd>0 then jout=math.max(jout,0) end
+	
+	if jout<0 and abmode>=0 and limiter==1 then
+		if setspd>30 or spd > 50 then
+			jout=0
+		else
+			jout=jout/5
+		end
+	end
+	
+	if input.backturn==1 then jout=1.4 end
+	
+	if input.back==1 then setspd=-setspd end
+	
+	--if math.abs(jout)<0.01 then jout=0 end
+	if abmode==-1 then
+		jout=limit(jout,-2,2)
+	
+	elseif limiter==1 then
+		jout=limit(jout,-0.4,jmax)
+	end
+	
+	--spdold=v
+	
+	setspdold=setspd
+	
+	if dispstrlv>0 then
+		out(2,string.format(" set  %d",setspd))
+	end
+	
+	if disp2dlv>0 then
+		draw_2d_meter(2,80,limit(setspd,-100,550),0,450,tonumber("2ca9e1",16) ,tonumber("ff0000",16))
+		--draw_2d_meter(13.2,50,limit(spd,-100,550),0,450,tonumber("8b968d",16) ,tonumber("ff0000",16))
+	end
+	
+	return jout
+end
+
+set=_Y(0)+1
+
+
+
+
+
+
+
+ap2pi=0
+ap2ro=0
+ap2yo=0
+function autop2()
+	
+	local wx = Bp.core.wx
+	local wy = Bp.core.wy
+	local wz = Bp.core.wz
+	
+	local tp=1
+	
+	if limiter==1 then
+		tp=limit( 1.1-math.abs(Bp.core.lvz/170)*(1-input.flp) ,0.45,1)
+	end
+	
+	local pt=math.deg(wx)+input.pi*whei*(170*tp+input.flp*110)  *back 
+	
+	
+	local rt=math.deg(wz)+input.ro*whei*235*back
+	
+	local yt=math.deg(wy)+input.yo*whei*165+input.backturn*400
+	
+	
+	
+	if vel()<30 then tp=tp*0.70 end
+	
+	local pi=pid(1,pt,{0.22 *tp,0.04 *tp,0.02 *tp},{-8 *tp,8 *tp})*back + input.pi*(4+input.flp*2)*tp
+	
+	local ro=pid(2,rt,{0.14 *tp,0.04 *tp,0.055 *tp},{-8 *tp,8 *tp})*back + input.ro*2.5*tp
+	
+	local yo=pid(3,yt,{0.12 *tp,0.03 *tp,0.02 *tp},{-2 *tp,2 *tp})*back + input.yo*2.5*tp
+	
+	--
+	--pi=ang(pi,0,1)
+	--ro=ang(ro,0,1)
+	--yo=ang(yo,0,1)
+	--]]
+	
+	
+	--[[
+	PI=ang(PI,0,1)
+	RO=ang(RO,0,1)
+	YO=ang(YO,0,1)
+	--]]
+	
+	PI=ang(PI,pi,7)
+	
+	RO=ang(RO,ro,7)
+	
+	YO=ang(YO,yo,7)
+	
+	--[[
+	out(15,PI)
+	out(16,RO)
+	out(17,YO)
+	--]]
+	
+	
+	if disp2dlv>1 then
+		
+		--角度表示
+		local pntx,pnty=-0.6,-0.8
+		
+		_SETCOLOR(tonumber("ffffff",16))
+		_MOVE2D(pntx-0.01,pnty)
+		_LINE2D(pntx+0.01,pnty)
+		
+		_MOVE2D(pntx,pnty-0.01)
+		_LINE2D(pntx,pnty+0.01)
+		
+		
+		_SETCOLOR(tonumber("00ff00",16))
+		_MOVE2D(pntx,pnty)
+		
+		_LINE2D(pntx+math.cos(_AX())*0.1,pnty+math.sin(_AX())*0.1)
+		
+		--地形表示
+		--[[
+		
+		_SETCOLOR(tonumber("ff0000",16))
+		_MOVE2D(pntx,pnty)
+		
+		local lx,ly,lz=_X(),_Y(),_Z()
+		local zx,zz=_ZX(),_ZZ()
+		for i=0,1000,15 do --サーチ開始距離 , サーチ終了距離 , サーチ間隔
+			_LINE2D(pntx+0.002*i,pnty-(ly-math.max(0,_GETY(lx-zx*i,lz-zz*i)))*0.002)
+		end
+		--]]
+	end
+	
+
+	
+end
+
+
+ap4tgt=0
+
+function ap4(mx,my,mz,ai)
+	
+	if ai then
+		out(20,"のっとり中")
+		
+		mx,my,mz=ai[1],ai[2],ai[3]
+	else
+		if input.up==1 then
+			ap4tgt=ap4tgt+1
+			if ap4tgt==netown() then ap4tgt=ap4tgt+1 end
+		elseif input.down==1 then
+			ap4tgt=ap4tgt-1
+			if ap4tgt==netown() then ap4tgt=ap4tgt-1 end
+		end
+		
+		
+		if ap4tgt>_PLAYERS()-1 then
+			ap4tgt=0
+		elseif ap4tgt<0 then
+			ap4tgt=_PLAYERS()-1
+		end
+		
+		if input.up==1 or input.down==1 then
+			MessageLog.Add(Talk("ap4tgtc",_PLAYERNAME(ap4tgt)))
+		end
+		
+		mx,my,mz=pointget(ap4tgt,500)
+	
+	end
+	tv=Vector.new(mx,my,mz)
+	--tv=Vector.new(50,50,50)
+	cv=ChipVector(0)
+	
+	
+	tmod=tv-cv
+	
+	lv=tmod:LocalVector(0)
+	
+	--_MOVE3D(_X(),_Y(),_Z())
+	--_LINE3D(tx,ty,tz)
+	
+	--tmod=tv-cv
+	
+	
+	
+	
+	
+	--cv:LineTo(tv)
+	
+	local zlen=lv.z
+	local len=lv:Length()
+	--lv:Normalize(180)
+	
+	lv:Normalize(math.pi*0.5)
+	lv.x=math.sin(lv.x)*150
+	lv.y=math.sin(lv.y)*150
+	lv.z=math.sin(lv.z)*150
+	--out(10,tostring(lv))
+	--]]
+	--out(11,tmod.y)
+	local tmp={0,0}
+	
+	if len<20 and lv.z>10 then
+		--setspd=setspd-15
+		tmp={lv.x*5+30*sgn(lv.x),-lv.y*5-30*sgn(lv.y)}
+	elseif lv.z>0 then
+		tmp={lv.x*5+30*sgn(lv.x),-lv.y*5-30*sgn(lv.y)}
+	elseif lv.z<-140 and math.abs(tmod.y)<50 and len<200 then
+		tmp[2]=math.sin(_EZ())*150
+	end
+	
+	local llim=1
+	
+	if len<30 then llim=limit(len/40+0.3,0.4,1) end
+	
+	
+	if limiter==1 then
+		tp=limit( 1.1-math.abs(Bp.core.lvz/160)*(1-input.flp) ,0.4,1)
+	end
+	
+	
+	
+	local pt=math.deg(Bp.core.wx*1)-(lv.y+tmp[1])
+	
+	local rt=math.deg(Bp.core.wz*0.4)+(lv.x*0.8+tmp[2])
+	
+	local yt=math.deg(Bp.core.wy*0.4)+lv.x*(0.3+0.7-gmode*0.7)
+	
+	local pi=pid(1,pt*llim,{0.25 *tp,0.02 *tp,0.08 *tp},{-10 *tp,10 *tp})
+	
+	local ro=pid(2,rt*llim,{0.3 *tp,0.015 *tp,0.08 *tp},{-10 *tp,10 *tp})
+	
+	local yo=pid(3,yt*llim,{0.1 *tp,0.02 *tp,0.03 *tp},{-4 *tp,4 *tp})
+	
+	PI=ang(PI,pi,7)
+	
+	RO=ang(RO,ro,7)
+	
+	YO=ang(YO,yo,7)
+	
+	if _H()<5 and _H()>0 then
+		gmode=0
+		if math.abs(YO)>5 then
+			input.yo=sgn(YO)
+		end
+	else
+		gmode=1
+	end
+	
+	lold=lold or len
+	tvold=tvold or tv
+	zlold=zlold or zlen
+	
+	local lenv=(lold-len)*_BASE()*3.6
+	local tvv=len3d(tvold.x,tvold.y,tvold.z,tv.x,tv.y,tv.z)*_BASE()*3.6
+	local zlvv=(zlen-zlold)*_BASE()*3.6
+	
+	--out(20,zlvv,"   ",lenv)
+	if not ai then
+	
+		if len<8 then
+			setspd=ang(setspd,tvv*0.97-lenv*0.3+zlvv*0.3+5,10)
+		elseif len<40 then
+			setspd=ang(setspd,tvv*1.03-lenv*0.3-zlvv*0.3+5,10)
+		elseif len<90 then
+			setspd=ang(setspd,tvv*1.2,10)
+		elseif len>500 then
+			setspd=ang(setspd,505,10)
+		else--if len>100 then
+			setspd=ang(setspd,math.max(tvv*1.3,200),10)
+		end
+	
+	end
+	
+	if (len<20 or math.mod(_TICKS(),300)==1) and ai then
+		aiautof=true
+	end
+	--setspd=math.max(setspd,0)
+	
+	--out(11,len,"   ",lenv,"   ",tvv)
+	lold=len
+	tvold=tv
+	zlold=zlen
+end
+
+sel=0
+
+function plane()
+	FV=0
+	
+	FXJ=0
+	RXJ=0
+	
+
+	
+	if input.apset==1 then
+		apmode=math.mod(apmode+1,2)
+		MessageLog.Add(Talk("apc",apmode))
+		MessageLog.Add(Talk("ap4tgt",_PLAYERNAME(ap4tgt)))
+		setspd=math.ceil(setspd/5)*5
+	end
+	
+	
+	if apmode==1 then
+		
+		
+		ap4(mx,my,mz,aiauto)
+		
+	
+	else
+		apset=_Y()
+		
+		if input.assist==1 then
+			ap2mode=math.mod(ap2mode+1,2)
+			MessageLog.Add(Talk("assistc",ap2mode))
+		end
+		
+		if ap2mode==1 then
+			autop2()
+		else
+			
+			--ピッチ
+			PI=limit(ang(PI,input.pi*30,3),-30,30)
+			
+			RO=limit(ang(RO,input.ro*30,3),-15,15)
+			
+			YO=limit(ang(YO,input.yo*30,3),-10,10)
+			
+		end
+	end
+	
+	
+	
+	
+	if input.flp==1 then
+		FLP=FLP+2.5
+	end
+
+	
+	--set=_Y(0)+2.5
+	
+	
+end
+
+--aisatu=false
+
+function disp()
+	--常に表示するもの----------------------------------------------
+	if radarmode==1 then
+		--radar3(-1.01 ,-0.67 ,0.28 , input.radar ,radarcolor ,0.0125)
+		radar3_nyo(100 ,_HEIGHT()-100 ,80 , input.radar ,radarcolor ,4.4)
+	end
+	
+	if disp2dlv>0 then
+		draw_2d_meter(2.25,80,jet,0,1,tonumber("00ff00",16) ,tonumber("ff0000",16))
+		
+		draw_2d_meter(1.75,80,limit(_VZ(0)*-3.6,-100,550),0,450,tonumber("4040ff",16) ,tonumber("ff0000",16))
+	end
+	
+	if jet>1 then abstat="[ A/B on ]"
+	else abstat=" " end
+	
+	if dispstrlv>1 then
+		out(3,string.format(" power %d %%  %s",jet*100,abstat))
+	end
+	
+	
+	zoom=_ZOOM(70)
+	
+	if(SMK==3)then sstat="on"
+	else sstat="off" end
+	
+	
+	
+	if dispstrlv>0 then
+		gsp=-_VZ(0)*3.6*(_FPS()/_BASE())
+		out(0,string.format(" FPS : %2.1f  Chips : %d  Weight : %.1f\n %3.1f",_FPS(),_CHIPS(),_WEIGHT(),-(_VZ(0)*3.6))) 
+		out(1,string.format("             km/h  Gsp : %3.1f",gsp))
+		
+		if splitflag then
+			splitflag=false
+		elseif weight_old~=_WEIGHT() then
+			MessageLog.Add(Talk("crush"))
+		end
+		--[[
+		if _TICKS()==70 then
+			MessageLog.Add(Talk("hello"))
+		end
+		]]
+		
+		if not aisatu and MessageLog.n==0 then
+			MessageLog.Add(Talk("hello"))
+			aisatu=true
+		end
+		
+		--out(20,MessageLog.n)
+		--[[
+		if input.info==1 then
+			
+			
+			MessageLog.Add("AI : "..Daihon[AICharacter].name)
+			MessageLog.Add(Talk("vtol",vmode))
+			MessageLog.Add(Talk("vtolmode",vmode2))
+			MessageLog.Add(Talk("gear",gmode))
+			MessageLog.Add(Talk("ap",apmode))
+			MessageLog.Add(Talk("apmode",ap3mode))
+			MessageLog.Add(Talk("assist",ap2mode))
+			MessageLog.Add(Talk("engmode",engmode))
+			
+		end
+		]]
+		
+		MessageLog.Add(logincheck())
+		MessageLog.Add(fuelcheck())
+		
+		
+		MessageLog.Draw(5,15,60,5)
+	end
+	
+	--[[
+	local tmp=cowlparent(CLL)
+	out(10,_VX(tmp))
+	out(11,_VY(tmp))
+	xxyyzz(tmp)
+	if math.abs(_VY(tmp)) >5 and math.abs(_VX(tmp)) > 5 then
+		cloud(CLL,0,15,1)
+	else
+		cloud(CLL,999,15,1)
+	end
+	tmp=cowlparent(CLR)
+	if math.abs(_VY(tmp)) >5 and math.abs(_VX(tmp)) > 5 then
+		cloud(CLR,0,15,1)
+	else
+		cloud(CLR,999,15,1)
+	end
+	]]
+	
+	
+
+	
+	if disp2dlv>0 then
+		meter2d(2.25,80,jet,0,1,tonumber("00ff00",16) ,tonumber("ff0000",16))
+		
+		meter2d(1.75,80,limit(_VZ(0)*-3.6,-100,550),0,450,tonumber("4040ff",16) ,tonumber("ff0000",16))
+		
+		
+		
+		
+		
+		if type(_RANGE)=="function" then
+			local rv=Vector.new(0,-1,0):LocalVector(0)
+			local r=_RANGE(0,rv.x,rv.y,rv.z)
+			
+		--	out(12,tostring(rv))
+		--	out(13,r)
+			
+			if r>0 then
+				metarts(_Y(),-0.4,0.6,50,300,65408,_Y()-r,255)
+			else
+				metarts(_Y(),-0.4,0.6,50,300,65408,0,255)
+			end
+		elseif string.sub(_VERSION,0,3)=="orz" then
+			if _H()>0 then
+				metarts(_Y(),-0.4,0.6,50,300,65408,_Y()-_H(),255)
+			elseif _GETY(_X(),_Z())<_Y() and _GETY(_X(),_Z())>0 then
+				metarts(_Y(),-0.4,0.6,50,300,65408,_GETY(_X(),_Z()),255)
+			else
+				metarts(_Y(),-0.4,0.6,50,300,65408,0,255)
+			end
+			--local vxz=
+			local lvxz=Vector2.new(Bp.core.vx,Bp.core.vz):Length()
+			--lvxz=math.max(lvxz,30)
+			
+			prealtmeter(-0.4,0.6,50,300,lvxz*sgn(-Bp.core.lvz),Bp.core.vy-2)
+		
+		else
+			if _H()>0 then
+				metarts(_Y(),-0.4,0.6,50,300,65408,_Y()-_H(),255)
+			else
+				metarts(_Y(),-0.4,0.6,50,300,65408,0,255)
+			end
+		end
+	end
+	
+end
+
+
+function modechanges()
+	--if input.back==1 then back=-back end
+	if limiter==1 then back=1 end
+	
+	
+	if input.drawstrlv==1 then
+		dispstrlv=math.mod(dispstrlv+1,3)
+		MessageLog.Add(Talk("strmode",dispstrlv))
+	end
+	
+	if input.draw2dlv==1 then
+		disp2dlv=math.mod(disp2dlv+1,3)
+		MessageLog.Add(Talk("linemode",disp2dlv))
+	end
+	
+	
+	if input.radarmode==1 then
+		radarmode=math.mod(radarmode+1,2)
+		MessageLog.Add(Talk("radarc",radarmode))
+	end
+	
+	
+	
+	if input.engmode==1 then
+		engmode=math.mod(engmode+1,2)
+		setspd=math.floor(_VZ(0)*-0.72)*5
+		jin=jet
+		MessageLog.Add(Talk("engmodec",engmode))
+	end
+	
+	
+	
+	if input.vmode2==1 then
+		vmode2=1-vmode2
+		set=_Y(0)+1
+		MessageLog.Add(Talk("vtolmodec",vmode2))
+	end
+	
+	if engmode==0 then
+		engfunc=engine
+	else
+		engfunc=eng_by_spd
+	end
+	
+	
+end
+
+function movement()
+	
+	
+	pry=input.hovpi*40
+	prx=input.hovro*40
+	
+	local tmp=sgn(jet)
+	if tmp==0 then tmp=1.2 end
+	
+	
+	
+	local muki=tmp*sgn(setspd+1)
+	
+	PI=PI*wvel
+	RO=RO*wvel
+	YO=YO*wvel
+	FLP=FLP*wvel
+	
+	
+	
+	
+	
+	ROL=RO+FLP + pry*1.2
+	ROR=RO-FLP - pry*1.2
+end
+
+
+
+function BpSet()
+	if not BpInit then
+		Bp={
+			fvj = BasePhysic.new(FVJ),
+			rlvj = BasePhysic.new(RLVJ),
+			rrvj = BasePhysic.new(RRVJ),
+			rx = BasePhysic.new(RX),
+			core = BasePhysic.new(0)
+		}
+		BpInit=true
+	else
+		Bp.fvj:Renew()
+		Bp.rlvj:Renew()
+		Bp.rrvj:Renew()
+
+		Bp.rx:Renew()
+		Bp.core:Renew()
+	end
+end
+
+weight_old=_WEIGHT()
+
+
+back=1
+--main----------------------------------------------------------------
+function main()
+	
+	
+	BpSet()
+	
+	
+	key_input()
+	
+	modechanges()
+	
+	whei=1-limit(_Y(0)/5000-0.05,0,0.8)
+	
+	--out(15,whei)
+	wvel=1-limit(math.abs(_VZ(0))*0.00198-0.19 ,0 , 0.95)*(whei*0.65)
+	--out(16,wvel)
+	
+	
+	jet=engfunc(input.pwr,1)
+	plane()
+	JP=jet*jpow*(1-AB*0.015)
+	
+	
+	
+	
+	movement()
+	
+	disp()
+	
+	AIwill()--AIの意思による自由行動
+	
+
+	
+	weight_old=_WEIGHT()
+	
+	--[[ --TA用FPSリミッタ 
+	a=0
+	for i=1,135000 do
+		a=(a+i) or 0
+		
+	end
+	--]]
+end
+
+
+ModelName="i6"
+ModelVer=3.32
+
+--↓↓↓↓↓↓↓↓↓ここを書き換え↓↓↓↓↓↓↓↓↓
+--LUA_PATH="F:/TOOLS/RigidChips/lib/?"
+--↑↑↑↑↑↑↑↑↑ここを書き換え↑↑↑↑↑↑↑↑↑
+
+--require("hikeo/i6/i6_boot401.lua")
+
+
+if string.sub(_VERSION,0,3)=="orz" then
+	--[[
+	spirytus = {};
+	open_spirytus = loadlib("./Spirytus.DLL", "rc_OpenSpirytus");
+	open_spirytus();
+	]]
+	_SETLIMITVELOCITY(0, 10000/3.6);
+	_SETLIMITVELOCITY(1, 12000/3.6);
+end
+
+
+}

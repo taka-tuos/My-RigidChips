@@ -1,0 +1,112 @@
+// [RCD] 
+Val
+{
+	AGXP1(default=0, min=-10000000000, max=10000000000)
+	AGYP1(default=0, min=-10000000000, max=10000000000)
+	AGAP1(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:RLW(angle=180, power=AGYP1, brake=200000) { }
+		S:TrimF(angle=90, option=1) {
+			N:RLW(power=AGXP1, brake=200000) { }
+		}
+		N:Arm(power=AGAP1, option=4000000, name=AGAC1) { }
+	}
+}
+Lua
+{
+function XPID_new()
+	local obj = {
+		i = 0,
+		d = 0,
+		e_b = 0,
+
+		PID = function (self,now,tgt,kp,ki,kd,lim)
+			local e_n = now - tgt
+			local e_d = e_n - self.e_b
+			
+			local p = e_n * kp
+			
+			local i = self.i + e_n * ki
+			
+			local d = e_d * kd
+			
+			i=math.min(20,math.max(-20,i))
+			
+			self.i = i
+			
+			self.e_b = e_n
+			
+			local pid = p+i+d
+			
+			pid = math.min(lim,math.max(-lim,pid))
+			
+			return pid
+		end
+	}
+	
+	return obj
+end
+
+X_PID = XPID_new()
+Y_PID = XPID_new()
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _NORMAL3(a,b,c,d,e,f)
+	return a / _LEN3(a,b,c), b / _LEN3(a,b,c), c / _LEN3(a,b,c), d, e, f
+end
+
+function _NPOS(n)
+	math.randomseed(1519)
+	local x = _PLAYERX(n)
+	math.randomseed(1519)
+	local y = _PLAYERY(n)
+	math.randomseed(1519)
+	local z = _PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	x = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+	
+	return x,y,z
+end
+
+__agc_ntp=0
+
+function OnFrame()
+	local x,y,z=_X(),_Y(),_Z()
+	local xx,xy,xz=_XX(),_XY(),_XZ()
+	local yx,yy,yz=_YX(),_YY(),_YZ()
+	local zx,zy,zz=_ZX(),_ZY(),_ZZ()
+	local tx,ty,tz=_NPOS(__agc_ntp)
+	local vx,vy,vz=_NORMAL3(tx-x,ty-y,tz-z)
+	
+	local dx = vx-zx
+	local dy = vy-zy
+	local dz = vz-zz
+	
+	local xa = (xx * dx + xy * dy + xz * dz)
+	local ya = (yx * dx + yy * dy + yz * dz)
+	
+	AGYP1=X_PID:PID(xa,0,80000,80000,80000,1000000)
+	AGXP1=Y_PID:PID(ya,0,80000,80000,80000,1000000)
+	
+	__agc_ntp = math.mod(__agc_ntp+_KEYDOWN(1)-_KEYDOWN(0),_PLAYERS())
+	if __agc_ntp < 0 then __agc_ntp = 0 end
+	
+	out(0,string.format("%d %s",__agc_ntp,_PLAYERNAME(__agc_ntp)))
+	out(1,string.format("%d%%",_E(AGAC1)/_OPTION(AGAC1)*100))
+end
+}

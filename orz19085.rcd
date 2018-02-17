@@ -1,0 +1,143 @@
+// [RCD] 
+Val
+{
+	COL(default=#FFFFFF, max=1000000000000, disp=0)
+	HRAD(default=0, min=-180, max=180, step=2, disp=0)
+	VRAD(default=90, min=10, max=95, step=2, disp=0)
+}
+Key
+{
+	0:main(step=1000)
+	1:main(step=-1000)
+	2:handle(step=-2)
+	3:handle(step=2)
+	4:main(step=15000)
+	5:sbrake(step=120)
+	7:brake(step=30), Sbrake(step=30)
+}
+Body
+{
+	Core(color=COL) {
+		S:Frame(angle=VRAD) {
+			S:TrimF(angle=HRAD, option=1) {
+				N:Weight(angle=90) {
+					W:Frame(angle=70) {
+						W:Frame() {
+							W:Frame(angle=110) {
+								S:Chip() {
+									E:Chip() {
+									}
+								}
+								N:Chip() {
+									E:Chip() {
+									}
+								}
+								E:Weight() {
+								}
+							}
+						}
+					}
+					E:Frame(angle=70) {
+						E:Frame() {
+							E:Frame(angle=110) {
+								N:Chip() {
+									W:Chip() {
+									}
+								}
+								S:Chip() {
+									W:Chip() {
+									}
+								}
+								W:Weight() {
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{--ëäéËç¿ïWéÊìæ-------------------------------------------
+function rclib_pointget(p,loop)
+	local px=_PLAYERX(p)
+	local py=_PLAYERY(p)
+	local pz=_PLAYERZ(p)
+	
+	local sel={
+		x_min=px,
+		x_max=px,
+	
+		y_min=py,
+		y_max=py,
+	
+		z_min=pz,
+		z_max=pz
+	}
+	
+	for i=1,loop do
+	
+		px=_PLAYERX(p)
+		
+		py=_PLAYERY(p)
+		
+		pz=_PLAYERZ(p)
+		
+		sel.x_min=math.min(px,sel.x_min)
+		sel.x_max=math.max(px,sel.x_max)
+	
+		sel.y_min=math.min(py,sel.y_min)
+		sel.y_max=math.max(py,sel.y_max)
+		
+		sel.z_min=math.min(pz,sel.z_min)
+		sel.z_max=math.max(pz,sel.z_max)
+	end
+	
+	px=(sel.x_min+sel.x_max)/2
+	py=(sel.y_min+sel.y_max)/2
+	pz=(sel.z_min+sel.z_max)/2
+	
+	return px,py,pz
+end
+-------------------------------------------------------
+
+A=0
+P=0
+function main()
+ P=math.mod(P+_KEYDOWN(4),_PLAYERS())
+ A=math.mod(A+_KEYDOWN(5),2)
+
+ if P>0 then
+ 	PX,PY,PZ=rclib_pointget(P,500)
+	TX=PX-_X(core) TY=PY-_Y(core) TZ=PZ-_Z(core)Å@
+
+  if A==1 then
+   AYATAN=math.deg(_AY(core)-math.atan2(-TX,-TZ))
+
+   if AYATAN<-180 then AYATAN=AYATAN+360 end
+   if AYATAN>180 then AYATAN=AYATAN-360 end
+
+   AYATAN=math.min(15,math.max(-15,AYATAN))
+   HRAD=HRAD+AYATAN
+
+   AXATAN=math.deg(_AX(core)-math.atan2(TY,math.sqrt(TX*TX+TZ*TZ)))
+   AXATAN=math.min(15,math.max(-15,AXATAN))
+   VRAD=VRAD+AXATAN
+  end
+
+  D=_SETCOLOR(_PLAYERCOLOR(P))
+  COL=_PLAYERCOLOR(P)
+  D=_MOVE3D(_X(0),_Y(0),_Z(0))
+  D=_LINE3D(PX,PY,PZ)
+ end
+
+--ï\é¶
+
+ if _PLAYERS()==0 then out(0,"OFFLINE") end
+ if _PLAYERS()>0 then out(0,"TaragetPlayers: ",P,"/",_PLAYERS()-1,"  ",_PLAYERNAME(P)) end
+ out(2,"Z:TaragetPos X:Auto")
+ out(3,"WorldPos X: ",PX," Y: ",PY," Z: ",PZ)
+
+end
+}

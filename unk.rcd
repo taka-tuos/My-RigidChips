@@ -1,0 +1,21 @@
+// [RCD] 
+Val
+{
+	VAL(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Jet(power=VAL, option=1, name=Z) { }
+	}
+}
+Lua
+{function OnFrame()
+	if _KEYDOWN(4) ~= 0 then
+		_SPLIT(Z)
+	end
+	VAL=(_KEY(0)-_KEY(1))*1000000
+end}

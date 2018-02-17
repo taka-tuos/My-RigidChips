@@ -1,0 +1,46 @@
+function Get2D(x,y,z)
+	x = (x-_X(0))
+	y = (y-_Y(0))
+	z = (z-_Z(0))
+	
+	local fov = 1000 / (z + 1000)
+
+	return x * fov, y * fov
+end
+
+function OnFrame()
+	_SETVIEW(
+		_X(0)+_ZX(0)*-1.2,
+		_Y(0)+_ZY(0)*-1.2,
+		_Z(0)+_ZZ(0)*-1.2,
+		_X(0)+_ZX(0)*-2.4,
+		_Y(0)+_ZY(0)*-2.4,
+		_Z(0)+_ZZ(0)*-2.4
+	)
+	
+	_SETVIEWUP(
+		_YX(0),
+		_YY(0),
+		_YZ(0)
+	)
+	
+	_SETVIEWZOOM(90)
+	
+	local i
+	
+	local r = 1
+	
+	local x,y,z = _X(0),_Y(0),_Z(0)
+	
+	
+	
+	_MOVE2D(Get2D(x,y,z+math.cos(0)*r))
+	
+	for i=0,32 do
+		local rad = math.rad((360 / 32) * i)
+		local anx = math.sin(rad) * r
+		local anz = math.cos(rad) * r
+		
+		_LINE2D(Get2D(x+anx,y,z+anz))
+	end
+end

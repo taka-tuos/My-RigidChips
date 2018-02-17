@@ -1,0 +1,400 @@
+// [RCD] 
+Val
+{
+	A(default=0, min=-10000000000, max=10000000000)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Weight(angle=60, name=B4) {
+			W:Weight(angle=-60) {
+				W:Trim(angle=-R) {
+					S:Weight() {
+						S:Weight() {
+							W:Weight() {
+								W:Weight() { }
+							}
+						}
+						W:Weight() { }
+					}
+				}
+				W:Weight() {
+					W:Rudder(angle=-30) {
+						W:Weight() {
+							W:Weight() {
+								W:Weight() {
+									W:Rudder(angle=-20) {
+										W:Weight() {
+											S:Cowl(option=4) {
+												E:Cowl() {
+													S:Cowl(option=4) {
+														E:Cowl() {
+															E:Cowl() {
+																E:Cowl() {
+																	E:Cowl() { }
+																}
+															}
+														}
+													}
+													E:Cowl() {
+														E:Cowl() {
+															E:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			W:Weight(angle=-120) {
+				S:Weight() {
+					S:Weight() {
+						W:Weight(angle=60) {
+							W:Trim(angle=V) {
+								S:Weight() {
+									E:Weight() { }
+									S:Cowl(option=3) {
+										W:Cowl() {
+											N:Cowl(option=3) { }
+										}
+									}
+								}
+							}
+							N:Cowl() {
+								N:Cowl(option=3) { }
+								W:Cowl(option=4) { }
+							}
+						}
+						S:Weight() {
+							S:Weight() { }
+						}
+					}
+				}
+				N:Arm(power=A, option=50000) { }
+			}
+			S:Weight() {
+				S:Weight() {
+					S:Weight() {
+						S:Weight() { }
+					}
+				}
+			}
+		}
+		E:Weight(angle=60, name=B2) {
+			E:Weight(angle=-60) {
+				E:Trim(angle=-R) {
+					S:Weight() {
+						S:Weight() {
+							E:Weight() {
+								E:Weight() { }
+							}
+						}
+						E:Weight() { }
+					}
+				}
+				E:Weight() {
+					E:Rudder(angle=30) {
+						E:Weight() {
+							E:Weight() {
+								E:Weight() {
+									E:Rudder(angle=20) {
+										E:Weight() {
+											S:Cowl(option=3) {
+												W:Cowl() {
+													S:Cowl(option=3) {
+														W:Cowl() {
+															W:Cowl() {
+																W:Cowl() {
+																	W:Cowl() { }
+																}
+															}
+														}
+													}
+													W:Cowl() {
+														W:Cowl() {
+															W:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			E:Weight(angle=-120) {
+				S:Weight() {
+					S:Weight() {
+						E:Weight(angle=60) {
+							E:Trim(angle=-V) {
+								S:Weight() {
+									W:Weight() { }
+									S:Cowl(option=4) {
+										E:Cowl() {
+											N:Cowl(option=4) { }
+										}
+									}
+								}
+							}
+							N:Cowl() {
+								N:Cowl(option=4) { }
+								E:Cowl(option=3) { }
+							}
+						}
+						S:Weight() {
+							S:Weight() { }
+						}
+					}
+				}
+				N:Arm(power=A, option=50000) { }
+			}
+			S:Weight() {
+				S:Weight() {
+					S:Weight() {
+						S:Weight() { }
+					}
+				}
+			}
+		}
+		E:Weight(angle=-60, name=B1) {
+			E:Weight(angle=60) {
+				E:Trim(angle=-R) {
+					S:Weight() {
+						S:Weight() {
+							E:Weight() {
+								E:Weight() { }
+							}
+						}
+						E:Weight() { }
+					}
+				}
+				E:Weight() {
+					E:Rudder(angle=30) {
+						E:Weight() {
+							E:Weight() {
+								E:Weight() {
+									E:Rudder(angle=20) {
+										E:Weight() {
+											S:Cowl(option=3) {
+												W:Cowl() {
+													S:Cowl(option=3) {
+														W:Cowl() {
+															W:Cowl() {
+																W:Cowl() {
+																	W:Cowl() { }
+																}
+															}
+														}
+													}
+													W:Cowl() {
+														W:Cowl() {
+															W:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Cowl(option=4) { }
+			}
+			E:Weight(angle=120) {
+				S:Weight() {
+					S:Weight() {
+						S:Weight() {
+							S:Weight() { }
+						}
+					}
+				}
+				N:Arm(power=A, option=50000) { }
+			}
+			S:Weight() {
+				S:Weight() {
+					S:Weight() {
+						S:Weight() { }
+					}
+				}
+			}
+		}
+		W:Weight(angle=-60, name=B3) {
+			W:Weight(angle=60) {
+				W:Trim(angle=-R) {
+					S:Weight() {
+						S:Weight() {
+							W:Weight() {
+								W:Weight() { }
+							}
+						}
+						W:Weight() { }
+					}
+				}
+				W:Weight() {
+					W:Rudder(angle=-30) {
+						W:Weight() {
+							W:Weight() {
+								W:Weight() {
+									W:Rudder(angle=-20) {
+										W:Weight() {
+											S:Cowl(option=4) {
+												E:Cowl() {
+													S:Cowl(option=4) {
+														E:Cowl() {
+															E:Cowl() {
+																E:Cowl() {
+																	E:Cowl() { }
+																}
+															}
+														}
+													}
+													E:Cowl() {
+														E:Cowl() {
+															E:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Cowl(option=3) { }
+			}
+			W:Weight(angle=120) {
+				S:Weight() {
+					S:Weight() {
+						S:Weight() {
+							S:Weight() { }
+						}
+					}
+				}
+				N:Arm(power=A, option=50000) { }
+			}
+			S:Weight() {
+				S:Weight() {
+					S:Weight() {
+						S:Weight() { }
+					}
+				}
+			}
+		}
+		E:TrimF(angle=-90, option=1) {
+			N:Jet(angle=180, power=-P) { }
+		}
+		W:TrimF(angle=-90, option=1) {
+			S:Jet(angle=180, power=P) { }
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+_ab=0
+
+window_info = nil
+
+_maxvel = 0
+
+function OnInit()
+	window_info = XGUI.CreateWindow(640,200,"ã@ëÃèÛãµ",OnDraw_Window_Info,true)
+	
+	_ZOOM(_GETVIEWZOOM())
+end
+
+_jp=100000
+_ra=10
+_va=20
+
+_md=0
+_prev=0
+
+function OnFrame()
+	P=_LINER(P,_KEY(4)*_jp+(_jp*_ab),_jp/10+(_jp*_ab)/10)
+	R=_LINER(R,_KEY(3)*_ra-_KEY(2)*_ra,_ra/4)
+	V=_LINER(V,_KEY(1)*_va-_KEY(0)*_va,_va/4)
+	
+	if _md == 1 then
+		_prev=_prev-(_AX(0)-math.atan2(-_VY(0),-_VZ(0)))*0.25
+		_prev=math.min(2,math.max(-2,_prev))
+		R=_EZ(0)*-10-_WZ(0)
+		V=-_AX(0)*20-_WX(0)+_prev
+		
+		R=math.min(10,math.max(-10,R))
+		V=math.min(10,math.max(-10,V))
+		
+		P = _jp
+	end
+	
+	_ab=_KEY(6)*40*_KEY(4)
+	
+	if _KEYDOWN(15) == 1 then
+		_md = 1 - _md
+	end
+	
+	A=_KEY(5)*50000
+	
+	XGUI.RefreshWindowManager()
+	
+	_SETCOLOR(255*256)
+	
+	_MOVE2D( 0.10, 0.0)
+	_LINE2D( 0.05,-0.05)
+	_LINE2D( 0.00, 0.00)
+	_LINE2D(-0.05,-0.05)
+	_LINE2D(-0.10, 0.00)
+end
+
+function OnDraw_Window_Info(obj)
+	XGUI.WindowDrawBegin(obj)
+	XGUI.SetStringPosition(2,0)
+	local vel = _VEL(0)
+	XGUI.DrawVectorString(string.format("åªç› : %.3f km/h (%.3f MACH, %.3f m/s)",vel*3.6,vel/340,vel))
+	if _maxvel < vel then _maxvel = vel end
+	vel = _maxvel
+	XGUI.SetStringPosition(2,16)
+	XGUI.DrawVectorString(string.format("ç≈çÇ : %.3f km/h (%.3f MACH, %.3f m/s)",vel*3.6,vel/340,vel))
+	XGUI.SetStringPosition(2,48)
+	XGUI.DrawVectorString(string.format("äCî≤ %.3f m",_Y(0)))
+	XGUI.WindowDrawEnd()
+end
+}

@@ -1,0 +1,173 @@
+// [RCD] 
+Val
+{
+	MA1(default=0, max=10000000000, step=10000000000)
+	MP1(default=0, max=10000000000)
+	MX1(default=0, min=-90, max=90)
+	MY1(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Chip(angle=-90) {
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							E:Frame() {
+								E:Frame() {
+									E:Chip(name=MC1) {
+										N:Chip(angle=MY1) { }
+										N:Frame(angle=-150, option=1) {
+											N:Jet(angle=-120, power=-MP1) { }
+										}
+										S:Frame(option=1) {
+											N:Trim(angle=90) {
+												N:Chip(angle=MX1) { }
+											}
+										}
+										S:Arm(power=MA1, option=100000) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		E:Weight() {
+			E:Weight() { }
+		}
+		N:Weight() {
+			N:Weight() { }
+		}
+		W:Weight() {
+			W:Weight() { }
+		}
+		S:Weight() {
+			S:Weight() { }
+		}
+	}
+}
+Lua
+{
+math.limit = function (val,max,min)	return val>max and max or val<min and min or val	end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _NORMAL3(a,b,c)
+	return a / _LEN3(a,b,c), b / _LEN3(a,b,c), c / _LEN3(a,b,c)
+end
+
+_mn = 0
+_men = {}
+_mfunc = {}
+
+_pw = 45
+
+function EnableAAM(n,func)
+	local i
+	
+	_mn = n
+	
+	for i=1,_mn do
+		_SPLIT(_G["MC"..i])
+		_G["MP"..i] = 100000
+		_men[i] = true
+		_mfunc[i] = func
+	end
+end
+
+function MoveAAM()
+	local i
+	
+	for i=1,_mn do
+		if _men[i] then
+			local core = _G["MC"..i]
+			local mx,my,mz = _NORMAL3(_ZX(core),_ZY(core),_ZZ(core))
+			local tx,ty,tz = _NORMAL3(_mfunc[i](i))
+			
+			local dx,dy,dz = mx-tx,my-ty,mz-tz
+			
+			local cx = _WX(core) * (_pw / 40)
+			local cy = _WY(core) * (_pw / 40)
+			local cz = _WZ(core) * (_pw / 40)
+			
+ 			local jx = dx * _pw
+ 			local jy = dy * _pw
+			local jz = dz * _pw
+			
+			local xx,xy,xz = _XX(core),_XY(core),_XZ(core)
+			local yx,yy,yz = _YX(core),_YY(core),_YZ(core)
+				
+			local xa = (xx * jx + xy * jy + xz * jz)
+			local ya = (yx * jx + yy * jy + yz * jz)
+			
+			xa = math.limit(xa,45,-45)
+			ya = math.limit(ya,45,-45)
+			
+			local oxa = _G["MX"..i]
+			local oya = _G["MX"..i]
+			
+			_G["MX"..i] = -xa
+			_G["MY"..i] = ya
+			
+			if _LEN3(_mfunc[i](i)) < 5 then
+				_G["MP"..i] = 0
+				_G["MA"..i] = 10000000000
+			end
+		end
+	end
+end
+
+function _NPOS(n)
+	math.randomseed(1519)
+	local x = _PLAYERX(n)
+	math.randomseed(1519)
+	local y = _PLAYERY(n)
+	math.randomseed(1519)
+	local z = _PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	x = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+	
+	return x,y,z
+end
+
+_ntp=0
+
+function AAM_Callback(n)
+	local core = _G["MC"..n]
+	local x,y,z = _NPOS(_ntp)
+	
+	return x-_X(core),y-_Y(core),z-_Z(core)
+end
+
+function OnFrame()
+	out(0,string.format("%d %s",_ntp,_PLAYERNAME(_ntp)))
+	
+	if _KEYDOWN(4) == 1 then
+		EnableAAM(1,AAM_Callback)
+	end
+	
+	_ntp = math.mod(_ntp+_KEYDOWN(1)-_KEYDOWN(0),_PLAYERS())
+	if _ntp < 0 then _ntp = 0 end
+	
+	MoveAAM()
+end
+
+}

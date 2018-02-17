@@ -1,0 +1,4 @@
+function OnFrame()
+	out(0,_G["_GETY"])
+	out(1,_G["_RANGE"])
+end

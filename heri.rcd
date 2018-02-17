@@ -1,0 +1,139 @@
+// [RCD] 
+Val
+{
+	VAR(default=0, max=1048576, step=1024)
+}
+Key
+{
+	0:VAR(step=1024)
+}
+Body
+{
+	Core() {
+		N:Chip(angle=90) {
+			N:Chip() {
+				N:Chip(angle=-90) {
+					W:Chip() {
+						S:Weight() {
+							E:Weight() { }
+						}
+					}
+					E:Chip() { }
+				}
+			}
+			N:RLW(angle=90, power=VAR) {
+				E:Trim(angle=20) {
+					E:Chip() {
+						E:Chip() {
+							E:Chip() {
+								N:Chip() { }
+							}
+							N:Chip() { }
+						}
+						N:Chip() { }
+					}
+					N:Chip() { }
+				}
+				W:Trim(angle=20) {
+					W:Chip() {
+						W:Chip() {
+							W:Chip() {
+								S:Chip() { }
+							}
+							S:Chip() { }
+						}
+						S:Chip() { }
+					}
+					S:Chip() { }
+				}
+				N:Trim(angle=20) {
+					N:Chip() {
+						N:Chip() {
+							N:Chip() {
+								W:Chip() { }
+							}
+							W:Chip() { }
+						}
+						W:Chip() { }
+					}
+					W:Chip() { }
+				}
+				S:Trim(angle=20) {
+					S:Chip() {
+						S:Chip() {
+							S:Chip() {
+								E:Chip() { }
+							}
+							E:Chip() { }
+						}
+						E:Chip() { }
+					}
+					E:Chip() { }
+				}
+			}
+		}
+		S:Chip(angle=90) {
+			S:Chip() {
+				S:Chip(angle=-90) {
+					W:Chip() { }
+					E:Chip() {
+						N:Weight() { }
+					}
+				}
+			}
+		}
+		N:Chip(angle=-90) { }
+		S:Chip(angle=-90) {
+			S:RLW(angle=-90, power=-VAR) {
+				E:Trim(angle=-20) {
+					E:Chip() {
+						E:Chip() {
+							E:Chip() {
+								S:Chip() { }
+							}
+							S:Chip() { }
+						}
+						S:Chip() { }
+					}
+					S:Chip() { }
+				}
+				W:Trim(angle=-20) {
+					W:Chip() {
+						W:Chip() {
+							W:Chip() {
+								N:Chip() { }
+							}
+							N:Chip() { }
+						}
+						N:Chip() { }
+					}
+					N:Chip() { }
+				}
+				N:Trim(angle=-20) {
+					N:Chip() {
+						N:Chip() {
+							N:Chip() {
+								E:Chip() { }
+							}
+							E:Chip() { }
+						}
+						E:Chip() { }
+					}
+					E:Chip() { }
+				}
+				S:Trim(angle=-20) {
+					S:Chip() {
+						S:Chip() {
+							S:Chip() {
+								W:Chip() { }
+							}
+							W:Chip() { }
+						}
+						W:Chip() { }
+					}
+					W:Chip() { }
+				}
+			}
+		}
+	}
+}

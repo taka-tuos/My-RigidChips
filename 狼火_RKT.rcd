@@ -1,0 +1,380 @@
+// [RCD] 
+Val
+{
+	A1(default=0, max=1000000000000, step=1000000000000)
+	A2(default=0, max=1000000000000, step=1000000000000)
+	G1(default=0, max=65536, step=65536)
+	G2(default=0, max=65536, step=65536)
+	G3(default=0, max=65536, step=65536)
+	G4(default=0, max=65536, step=65536)
+	J(default=0, max=300000, step=35000)
+	J1(default=0, max=16777216)
+	J2(default=0, max=16777216)
+	P(default=55, min=55, max=90)
+	R(default=0, min=-12, max=12, step=4)
+	V(default=0, min=-20, max=20, step=4)
+}
+Key
+{
+	0:V(step=-4)
+	1:V(step=4)
+	2:R(step=-4)
+	3:R(step=4)
+	4:J(step=35000)
+}
+Body
+{
+	Core() {
+		N:Frame(angle=90) {
+			S:Cowl(angle=-90) {
+				S:Cowl() {
+					S:Cowl(angle=-30, option=5) { }
+					E:Cowl(angle=-90) {
+						S:Cowl(angle=-30, option=5) { }
+					}
+					W:Cowl(angle=-90) {
+						S:Cowl(angle=-30, option=5) { }
+					}
+				}
+			}
+			S:Frame(angle=-90) {
+				S:Arm(power=G4, option=50000) {
+					N:Cowl(angle=30, color=#202020, effect=#80FB) {
+						N:Cowl(angle=-30, color=#202020, effect=#80FB) {
+							N:Cowl(angle=-30, color=#202020, effect=#80FB) {
+								E:Cowl(angle=-85, color=#202020, effect=#80FB) { }
+								W:Cowl(angle=-85, color=#202020, effect=#80FB) { }
+							}
+							E:Cowl(angle=-85, color=#202020, effect=#80FB) { }
+							W:Cowl(angle=-85, color=#202020, effect=#80FB) { }
+						}
+						E:Cowl(angle=-85, color=#202020, effect=#80FB) { }
+						W:Cowl(angle=-85, color=#202020, effect=#80FB) { }
+					}
+				}
+			}
+			N:Chip(angle=-90) {
+				W:Cowl(angle=-90) { }
+				E:Cowl(angle=-90) { }
+				E:Frame(angle=-90) {
+					N:Arm(power=G1, option=50000) { }
+				}
+				W:Frame(angle=-90) {
+					N:Arm(power=G2, option=50000) { }
+				}
+				N:Arm(power=G3, option=50000) { }
+				N:Frame(angle=-180) {
+					E:Rudder(angle=-35) {
+						E:Trim(angle=-R) {
+							E:Chip() { }
+						}
+						E:Cowl(option=1, effect=#F0FB) {
+							E:Cowl(option=1, effect=#F0FB) {
+								E:Cowl() {
+									E:Cowl() {
+										N:Cowl(angle=90, option=1, effect=#F0FB) {
+											E:Cowl(angle=-168, option=1, effect=#F0FB) {
+												S:Cowl(angle=-90, option=1, effect=#F0FB) {
+													E:Cowl() {
+														E:Cowl() {
+															E:Cowl() {
+																E:Cowl() { }
+															}
+														}
+														W:Cowl() { }
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						W:Cowl() { }
+					}
+					W:Rudder(angle=35) {
+						W:Trim(angle=-R) {
+							W:Chip() { }
+						}
+						W:Cowl(option=1, effect=#F0FB) {
+							W:Cowl(option=1, effect=#F0FB) {
+								W:Cowl() {
+									W:Cowl() {
+										N:Cowl(angle=90, option=1, effect=#F0FB) {
+											W:Cowl(angle=-168, option=1, effect=#F0FB) {
+												S:Cowl(angle=-90, option=1, effect=#F0FB) {
+													W:Cowl() {
+														W:Cowl() {
+															W:Cowl() {
+																W:Cowl() { }
+															}
+														}
+														E:Cowl() { }
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						E:Cowl() { }
+					}
+				}
+				S:Chip() {
+					E:Cowl(angle=-90) { }
+					W:Cowl(angle=-90) { }
+					S:TrimF(angle=-90, option=1) {
+						W:Rudder(angle=-90) {
+							E:Chip() {
+								E:Chip() { }
+							}
+						}
+					}
+					S:Frame(name=VC) {
+						E:Cowl(angle=-90) {
+							S:Cowl() {
+								S:Cowl() {
+									S:Cowl() {
+										S:Cowl(angle=-20, option=5, color=#202020) { }
+									}
+									N:Cowl(angle=10) {
+										N:Cowl(angle=-10) {
+											N:Cowl() {
+												N:Cowl(angle=-5) {
+													W:Cowl(angle=-90) { }
+													E:Cowl(angle=-90) { }
+													N:Cowl(angle=-90, color=0) { }
+												}
+												W:Cowl(angle=-90) { }
+												E:Cowl(angle=-90) { }
+											}
+											W:Cowl(angle=-90) { }
+											E:Cowl(angle=-90) { }
+										}
+										W:Cowl(angle=-90) { }
+										E:Cowl(angle=-90) { }
+									}
+								}
+							}
+						}
+						W:Cowl(angle=-90) {
+							S:Cowl() {
+								S:Cowl() {
+									S:Cowl() {
+										S:Cowl(angle=-20, option=5, color=#202020) { }
+									}
+									N:Cowl(angle=10) {
+										N:Cowl(angle=-10) {
+											N:Cowl() {
+												N:Cowl(angle=-5) {
+													W:Cowl(angle=-90) { }
+													E:Cowl(angle=-90) { }
+													N:Cowl(angle=-90, color=0) { }
+												}
+												W:Cowl(angle=-90) { }
+												E:Cowl(angle=-90) { }
+											}
+											W:Cowl(angle=-90) { }
+											E:Cowl(angle=-90) { }
+										}
+										W:Cowl(angle=-90) { }
+										E:Cowl(angle=-90) { }
+									}
+								}
+							}
+						}
+						S:Frame(option=1) {
+							S:Frame(option=1) {
+								S:TrimF(angle=-90, option=1) {
+									S:Frame(option=1) {
+										W:Chip() {
+											W:Cowl(option=5) { }
+										}
+									}
+									W:Rudder(angle=-35) {
+										W:Chip() { }
+									}
+								}
+								S:Frame(angle=-40, option=1) {
+									S:Frame(angle=-140) {
+										N:RudderF(angle=-55, option=1) {
+											N:Trim(angle=V) {
+												S:Chip() { }
+												N:Cowl() {
+													E:Cowl(angle=-90, option=1, effect=#F0FB) {
+														N:Cowl(angle=165, option=1, effect=#F0FB) {
+															W:Cowl(angle=90) {
+																N:Cowl() {
+																	N:Cowl() { }
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										N:RudderF(angle=55, option=1) {
+											N:Trim(angle=-V) {
+												S:Chip() { }
+												N:Cowl() {
+													W:Cowl(angle=-90, option=1, effect=#F0FB) {
+														N:Cowl(angle=165, option=1, effect=#F0FB) {
+															E:Cowl(angle=90) {
+																N:Cowl() {
+																	N:Cowl() { }
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					S:Cowl() {
+						S:Cowl() {
+							S:Cowl() {
+								S:Cowl() {
+									S:Cowl(angle=-20, option=5, color=#202020) { }
+								}
+							}
+						}
+					}
+					S:RLW(angle=-90, power=J) {
+						E:Trim(angle=-P) { }
+						W:Trim(angle=-P) { }
+					}
+					S:RLW(angle=-90, power=-J) {
+						E:Trim(angle=P) { }
+						W:Trim(angle=P) { }
+					}
+					N:Frame() { }
+				}
+				N:Cowl() {
+					N:Cowl(angle=-30, option=5) { }
+				}
+			}
+		}
+		S:Cowl() {
+			S:Cowl() {
+				S:Cowl() {
+					S:Cowl() {
+						S:Cowl(angle=20, option=5, color=#202020) { }
+					}
+				}
+			}
+		}
+		W:Chip(angle=45, name=R1) {
+			S:Trim(angle=-90) {
+				N:Chip() {
+					N:Cowl(option=5) { }
+				}
+			}
+			N:Arm(angle=180, power=A1, option=1000000, name=N1) { }
+			S:Chip() { }
+			N:Cowl(option=5) { }
+			S:Frame(angle=150, option=1) {
+				S:Jet(angle=120, power=J1, effect=4) { }
+			}
+		}
+		E:Chip(angle=45, name=R2) {
+			S:Trim(angle=-90) {
+				N:Chip() {
+					N:Cowl(option=5) { }
+				}
+			}
+			N:Arm(angle=180, power=A2, option=1000000, name=N2) {
+				N:Frame(angle=-150, option=1) {
+					N:Jet(angle=-120, power=-J2, effect=4) { }
+				}
+			}
+			S:Chip() { }
+			N:Cowl(option=5) { }
+		}
+	}
+}
+Lua
+{
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _NH(n)
+	local y = _H(n)
+	if y < 0 then
+		if _Y(n) < 0 then
+			return 0
+		else
+			return 100000
+		end
+	end
+	return y
+end
+
+MK = 0
+NG = 1
+RK = 0
+
+function OnFrame()
+	NK = _VEL(0) * 3.6
+	
+	if NK > MK then
+		MK = NK
+	end
+	
+	out(0,"ëìò@ãZå§ è\òZéÆåyêÌì¨ã@ òTâŒ")
+	out(1, NK, "kph")
+	out(2, _WEIGHT(), "kg")
+	out(3, _FPS(), "fps")
+	out(4, "max ", MK, "kph")
+	
+	P = 25 * ((NK - 200) / 200) + 55
+	
+	if NG == 4 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		G4 = 65536
+		NG = 1
+	elseif NG == 3 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		G3 = 65536
+		NG = 4
+	elseif NG == 2 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		G2 = 65536
+		NG = 3
+	elseif NG == 1 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		G1 = 65536
+		NG = 2
+	end
+
+	if _KEYDOWN(6) == 1 then
+		_SPLIT(R1)
+		_SPLIT(R2)
+		J1 = 65536
+		J2 = 65536
+		RK = 1
+	end
+
+	if RK == 1 and _NH(R1) < 2 then
+			A1 = 1000000000000
+			J1 = 0
+	end
+
+	if RK == 1 and _NH(R2) < 2 then
+			A2 = 1000000000000
+			J2 = 0
+	end
+
+	if _NH(R1) < 2 and _NH(R2) < 2 then
+		RK = 0
+	end
+
+	out(5,_E(N1))
+	out(6,_E(N2))
+end	
+}

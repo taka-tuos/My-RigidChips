@@ -1,0 +1,402 @@
+// [RCD] 
+Val
+{
+	BAL(default=20000, min=8000, disp=0)
+	BAL2(default=20000, min=10000, disp=0)
+	BALB(default=20000, min=6000, disp=0)
+	BALF(default=20000, min=6000, disp=0)
+	PA(default=0, min=-20, max=20, disp=0)
+	PANG1L(default=0, min=-90, max=90, disp=0)
+	PANG1R(default=0, min=-90, max=90, disp=0)
+	PANG2L(default=60, max=180, disp=0)
+	PANG2R(default=60, max=180, disp=0)
+	PERAL(default=0, min=-1000000, max=1000000, disp=0)
+	PERAR(default=0, min=-1000000, max=1000000, disp=0)
+	PI(default=-20, min=-50, max=10, disp=0)
+	VLR(default=0, min=-100, max=100, disp=0)
+	VUD(default=0, min=-100, max=100, disp=0)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=VUD, option=1) {
+			N:RudderF(angle=VLR, option=1) {
+				S:Frame(angle=-120) {
+					S:Frame(angle=120) {
+						W:Chip(angle=90) { }
+						E:Chip(angle=90) { }
+						S:Chip() {
+							S:Chip() {
+								S:Weight(name=gs) {
+									W:Chip(angle=90) { }
+									E:Chip(angle=90) { }
+									N:Frame(angle=-120) {
+										N:Frame(angle=30) {
+											N:Frame() {
+												N:Jet(angle=-90, power=bal2, option=1, color=#FFCE0B) {
+													N:Frame() {
+														N:Jet(power=bal, option=1, color=#FC7303) {
+															N:Frame() {
+																N:Jet(power=balb, option=1, name=bb) { }
+															}
+														}
+													}
+												}
+												N:Jet(angle=90, power=bal2, option=1) {
+													N:Frame() {
+														N:Jet(power=bal, option=1) {
+															N:Frame() {
+																N:Jet(power=balf, option=1, name=bf) { }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									S:Frame(angle=120) {
+										S:Frame() {
+											S:Weight(angle=60) {
+												N:Weight() {
+													W:Chip(angle=90) { }
+													E:Chip(angle=90) { }
+													N:Weight() { }
+													W:Frame(angle=-20, spring=0.1) {
+														W:Weight(angle=20) {
+															S:Weight() { }
+															N:Weight() { }
+															W:Arm() { }
+														}
+													}
+													E:Frame(angle=-20, spring=0.1) {
+														E:Weight(angle=20) {
+															S:Weight() { }
+															N:Weight() { }
+															E:Arm() { }
+														}
+													}
+												}
+											}
+										}
+									}
+									W:Chip() {
+										W:Chip() {
+											W:Trim(angle=pa) {
+												W:Chip(angle=-45) {
+													N:Wheel(angle=90, power=peral) {
+														// W:Trim(angle=-pangl){}
+														N:Trim(angle=-pang1l) { }
+														S:Trim(angle=-pang1l) { }
+													}
+													W:Cowl(angle=90) { }
+												}
+												W:Chip(angle=45) {
+													S:Wheel(angle=-90, power=-peral) {
+														// E:Trim(angle=pangl){}
+														S:Trim(angle=pang2l) { }
+														N:Trim(angle=pang2l) { }
+													}
+													W:Cowl(angle=-90) { }
+												}
+											}
+										}
+									}
+									W:Cowl(angle=60) {
+										N:Cowl() {
+											N:Cowl() {
+												N:Cowl(option=1) {
+													N:Cowl(angle=30, option=1) { }
+												}
+											}
+										}
+										S:Cowl(color=#ffbf00) {
+											S:Cowl(color=#FC7303) {
+												S:Cowl() {
+													S:Cowl() {
+														S:Cowl(angle=92) { }
+													}
+												}
+											}
+										}
+										W:Cowl(angle=60) {
+											N:Cowl() {
+												N:Cowl() {
+													N:Cowl(option=1) {
+														N:Cowl(angle=30, option=1) { }
+													}
+													W:Cowl(angle=60, color=#808080) {
+														N:Cowl(option=1, color=#808080) {
+															N:Cowl(angle=30, option=1) { }
+														}
+													}
+												}
+											}
+											S:Cowl(color=#ffbf00) {
+												S:Cowl(color=#FC7303) {
+													W:Cowl(angle=60, color=#808080) {
+														S:Cowl(color=#808080) {
+															S:Cowl(color=#808080) {
+																S:Cowl(angle=92) { }
+															}
+														}
+													}
+													S:Cowl() {
+														S:Cowl() {
+															S:Cowl(angle=92) { }
+														}
+													}
+												}
+											}
+										}
+									}
+									E:Cowl(angle=60) {
+										S:Cowl(color=#ffbf00) {
+											S:Cowl(color=#FC7303) {
+												S:Cowl() {
+													S:Cowl() {
+														S:Cowl(angle=92) { }
+													}
+												}
+											}
+										}
+										N:Cowl() {
+											N:Cowl() {
+												N:Cowl(option=1) {
+													N:Cowl(angle=30, option=1) { }
+												}
+											}
+										}
+										E:Cowl(angle=60) {
+											S:Cowl(color=#ffbf00) {
+												S:Cowl(color=#FC7303) {
+													S:Cowl() {
+														S:Cowl() {
+															S:Cowl(angle=92) { }
+														}
+													}
+												}
+											}
+											N:Cowl() {
+												N:Cowl() {
+													N:Cowl(option=1) {
+														N:Cowl(angle=30, option=1) { }
+													}
+												}
+											}
+										}
+									}
+									E:Chip() {
+										E:Chip() {
+											E:Trim(angle=-pa) {
+												E:Chip(angle=-45) {
+													S:Wheel(angle=90, power=-perar) {
+														// E:Trim(angle=-pangr){}
+														S:Trim(angle=-pang2r) { }
+														N:Trim(angle=-pang2r) { }
+													}
+													E:Cowl(angle=90) { }
+												}
+												E:Chip(angle=45) {
+													N:Wheel(angle=-90, power=perar) {
+														// W:Trim(angle=pangr){}
+														N:Trim(angle=pang1r) { }
+														S:Trim(angle=pang1r) { }
+													}
+													E:Cowl(angle=-90) { }
+												}
+											}
+										}
+									}
+									S:Chip(color=#ffbf00) {
+										S:Chip(color=#FC7303) {
+											S:Chip() {
+												W:Chip(angle=90) { }
+												E:Chip(angle=90) { }
+												S:Chip() {
+													S:Cowl(angle=92) { }
+													W:Chip(angle=90) { }
+													E:Chip(angle=90) { }
+												}
+											}
+											S:Frame(angle=20) {
+												S:Chip(angle=pi) {
+													N:Chip(angle=180) { }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						N:Cowl(angle=30, option=1) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function ang(m,n,v)
+	if m-n<v and m-n>-v then m=n
+	elseif m<n then m=m+v
+	elseif m>n then m=m-v
+	end
+	return m
+end
+
+function graph(val,min,max,wake,mode)
+	local o=""
+	local tmp2=max-min
+	local tmp=val-min+tmp2/wake/2
+	
+	if mode==0 then
+		for i=1,wake do
+			if tmp>=tmp2/wake then o=o.."■"
+			else o=o.."□" end
+			tmp=tmp-tmp2/wake
+		end
+	elseif mode==1 then
+		o="■"
+		j=0
+		wake=wake-1
+		for i=1,wake do
+			if tmp<=tmp2/wake then break
+			else
+				o="□"..o
+				tmp=tmp-tmp2/wake
+				j=i
+			end
+		end
+		for i=1,wake-j do
+			o=o.."□"
+		end
+	end
+	
+	return o
+end
+
+set=_Y(0)
+function air()
+	if _KEY(6)==1 and vreset==0 then
+		VUD=VUD+(_KEY(0)-_KEY(1))*-3
+	else
+		if(_KEY(0)==1) then set=set-0.3 end
+		if(_KEY(1)==1) then set=set+math.max(_VY(0)/30,0.3) end
+	end
+	
+	--out(9,_VY()/30)
+	if _KEYUP(0)+_KEYUP(1)>0 then set=_Y(0)+_VY(0)*0.7 end
+	
+	jh=_Y(0)-set+0.83 --jh = 地面からの高さがエンジン出力に与える影響
+	
+	
+	--エンジン出力制御
+	
+	xx=_Y(BF)-_Y(BB)
+	--接地していて指定高度が0ならエンジン停止
+	if(_H(0)<1.0 and _H(0)>0 and set<_Y(0)) then 
+		BAL=8000
+		BAL2=10000
+		
+		BALF=6000
+		BALB=6000
+		
+		
+		if set < _Y(0)-1 then set = _Y(0)-1 end
+	else
+		BAL=30000-jh*4000
+		BAL2=BAL*1.1
+		
+		BALF=BAL*0.9+10000*(-_VY(BF)/50+xx/100)
+		BALB=BAL*0.9+10000*(-_VY(BB)/50-xx/100)
+	end
+	
+	--out(7,"Y  ",_Y(),"  set  ",set)
+end
+
+pm=0
+function ppi()
+	--入力制御   ～ 0で一時停止編 ～
+	if( _KEY(5)==0 and _KEY(8)==0 )then pm=1 end
+	if( pang==0 )then --エンジンが0のとき
+		if( pm==2 )then pm=0 end
+	end
+	
+	--0以外のとき
+	
+	if( _KEY(5)==1 and pm>=1 and pang<=58 )then
+		pang=pang+2
+		pm=2
+	end
+	if( _KEY(8)==1 and pm>=1 and pang>=-58 )then
+		pang=pang-2
+		pm=2
+	end --入力制御終わり
+end
+
+pow=2000
+pera=0
+pang=0
+yo=0
+vreset=0
+function main()
+	air()
+	ppi()
+	
+	if _KEY(4)==1 then
+		pera=pera+2
+	elseif _KEY(7)==1 then
+		pera=pera-2
+	end --エンジン入力制御終わり
+	
+	pera=math.min(math.max(pera,0),100)
+	
+	--ジェット出力の最終決定
+	PERAL=pera*pow
+	PERAR=pera*pow
+	
+	if _KEY(6)==1 and vreset==0 then
+		VLR=VLR+(_KEY(2)-_KEY(3))*3
+		if _KEYDOWN(9)==1 then
+			vreset=1
+		end
+	else
+		yo=ang(yo,(_KEY(2)-_KEY(3))*30,1)
+	end
+	
+	if vreset==1 then 
+		VLR=ang(VLR,0,4.5)
+		VUD=ang(VUD,0,4.5)
+		if VLR==0 and VUD==0 then vreset=0 end
+	end
+	
+	PANG1R=pang+yo
+	PANG1L=pang-yo
+	
+	PANG2R=90-pang/2-yo
+	PANG2L=90-pang/2+yo
+	
+	PA=-math.deg(_AX(GS))*1.2+pera/10
+	PI=math.deg(_AX(GS))*pera/10-20
+	
+	pow1=graph(-pera,40,0,4,0)
+	pow2=graph(pera,0,100,10,0)
+	
+	pangs1=graph(-pang,60,0,5,0)
+	pangs2=graph(pang,0,60,5,0)
+	
+	d=_ZOOM(80)
+	
+	out(0,string.format("  FPS : %2.1f  Chips : %d  Weight : %.1f    %3.1f km/h",_FPS(),_CHIPS(),_WEIGHT(),-(_VZ(0)*3.6))) 
+	
+	out(2,string.format("A: %s :Z   出力 %d %%",pow2,pera))
+	
+	out(4,string.format("S: %s|%s :X  角度 %dﾟ",pangs1,pangs2,pang))
+	
+	out(6,"C:視点操作 (C+D:視点リセット)")
+end
+}

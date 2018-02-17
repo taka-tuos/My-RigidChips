@@ -1,0 +1,121 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() { }
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+__xgui_drawingarea = {32,32,800,600} -- x1,y1,x2,y2
+
+function XGUI.Interp(xi,xi1,yi,yi1,x)
+	return yi + ((( yi1 - yi ) * ( x - xi )) / ( xi1 - xi ))
+end
+
+function XGUI.Move2D(x,y)
+	__xgui_movex,__xgui_movey = x,y
+end
+
+function XGUI.Line2D(x,y)
+	local ox,oy = __xgui_movex,__xgui_movey
+	local px,py = x,y
+	
+	ox = ox + __xgui_moveorginx
+	oy = oy + __xgui_moveorginy
+	
+	px = px + __xgui_moveorginx
+	py = py + __xgui_moveorginy
+	
+	local sx,sy = ox,oy
+	local tx,ty = px,py
+	
+	if not
+		(sx >= __xgui_drawingarea[1] and sy >= __xgui_drawingarea[2] and sx < __xgui_drawingarea[3] and sy < __xgui_drawingarea[4]
+		or
+		px >= __xgui_drawingarea[1] and py >= __xgui_drawingarea[2] and px < __xgui_drawingarea[3] and py < __xgui_drawingarea[4])
+	then
+		__xgui_movex,__xgui_movey = x,y
+		return
+	end
+	
+	if sx < __xgui_drawingarea[1] then
+		ox = __xgui_drawingarea[1]
+		oy = XGUI.Interp(sx,tx,sy,ty,__xgui_drawingarea[1])
+	end
+	
+	if tx < __xgui_drawingarea[1] then
+		px = __xgui_drawingarea[1]
+		py = XGUI.Interp(tx,sx,ty,sy,__xgui_drawingarea[1])
+	end
+	
+	if sy < __xgui_drawingarea[2] then
+		oy = __xgui_drawingarea[2]
+		ox = XGUI.Interp(sy,ty,sx,tx,__xgui_drawingarea[2])
+	end
+	
+	if ty < __xgui_drawingarea[2] then
+		py = __xgui_drawingarea[2]
+		px = XGUI.Interp(ty,sy,tx,sx,__xgui_drawingarea[2])
+	end
+	
+	
+	
+	if sx > __xgui_drawingarea[3] then
+		ox = __xgui_drawingarea[3]
+		oy = XGUI.Interp(sx,tx,sy,ty,__xgui_drawingarea[3])
+	end
+	
+	if tx > __xgui_drawingarea[3] then
+		px = __xgui_drawingarea[3]
+		py = XGUI.Interp(tx,sx,ty,sy,__xgui_drawingarea[3])
+	end
+	
+	if sy > __xgui_drawingarea[4] then
+		oy = __xgui_drawingarea[4]
+		ox = XGUI.Interp(sy,ty,sx,tx,__xgui_drawingarea[4])
+	end
+	
+	if ty > __xgui_drawingarea[4] then
+		py = __xgui_drawingarea[4]
+		px = XGUI.Interp(ty,sy,tx,sx,__xgui_drawingarea[4])
+	end
+	
+	local qx,qy = XGUI.GetRegularPoint(ox,oy)
+	local rx,ry = XGUI.GetRegularPoint(px,py)
+	
+	_MOVE2D(qx,qy)
+	_LINE2D(rx,ry)
+	
+	__xgui_movex,__xgui_movey = x,y
+end
+
+
+window_1 = nil
+window_2 = nil
+
+function Create()
+	window_1 = XGUI.CreateWindow(256,256,"èÓïÒ_1",OnDraw_Window1,true)
+	window_2 = XGUI.CreateWindow(256,256,"èÓïÒ_2",OnDraw_Window1,true)
+end
+
+function OnDraw_Window1(obj)
+	XGUI.WindowDrawBegin(obj)
+	XGUI.SetStringPosition(2,0)
+	XGUI.DrawVectorString(string.format("%.3f fps",_FPS()))
+	XGUI.SetStringPosition(2,16)
+	XGUI.DrawVectorString(string.format("%.3f kg",_WEIGHT()))
+	XGUI.WindowDrawEnd()
+end
+
+function OnFrame()
+	if _KEYDOWN(0) == 1 then Create() end
+	XGUI.RefreshWindowManager()
+end
+}

@@ -1,0 +1,271 @@
+// [RCD] 
+Val
+{
+	BMB(default=0, max=16777216, step=16777216)
+	ELRON(default=0, min=-4, max=4, step=2)
+	EV(default=0, min=-24, max=24, step=2)
+	GUN(default=0, max=262144, step=262144)
+	JET(default=0, min=-131072, max=409600, step=65536)
+}
+Key
+{
+	0:EV(step=-2)
+	1:EV(step=2)
+	2:ELRON(step=2)
+	3:ELRON(step=-2)
+	4:JET(step=65536)
+	5:GUN(step=262144)
+}
+Body
+{
+	Core() {
+		S:Chip() {
+			S:Chip() {
+				W:Chip(angle=90) {
+					S:Chip() {
+						S:Jet(angle=-90, power=JET, color=#FF0000) { }
+						W:Cowl(angle=-90) {
+							W:Cowl(angle=-90) { }
+							N:Cowl() {
+								N:Cowl(angle=-30) {
+									N:Cowl(angle=-120) {
+										N:Cowl(angle=-30) {
+											N:Cowl() { }
+										}
+										W:Cowl(angle=-91, option=3) { }
+									}
+									E:Cowl(angle=-91, option=3) { }
+									W:Cowl(angle=-91, option=4) { }
+								}
+								W:Cowl(angle=-90) { }
+							}
+						}
+					}
+				}
+				E:Chip(angle=90) {
+					S:Chip() {
+						S:Jet(angle=-90, power=JET, color=#FF0000) {
+							N:Jet(angle=0, power=JET, color=#FF0000) {
+								E:Cowl(angle=-90) {
+									E:Cowl() {
+										E:Cowl() {
+											E:Cowl() {
+												E:Cowl() { }
+											}
+										}
+									}
+								}
+							}
+						}
+						E:Cowl(angle=-90) {
+							E:Cowl(angle=-90) { }
+							N:Cowl() {
+								N:Cowl(angle=-30) {
+									N:Cowl(angle=-120) {
+										N:Cowl(angle=-30) {
+											N:Cowl() { }
+										}
+										E:Cowl(angle=-91, option=4) { }
+									}
+									E:Cowl(angle=-91, option=3) { }
+									E:Cowl(angle=-91, option=3) { }
+								}
+								E:Cowl(angle=-90) { }
+							}
+						}
+					}
+				}
+				S:Chip() {
+					S:Chip() {
+						E:Trim(angle=-EV) {
+							S:Chip() {
+								E:Chip() { }
+								W:Cowl(option=3) { }
+							}
+							E:Cowl(option=3) { }
+						}
+						W:Trim(angle=EV) {
+							S:Chip() {
+								W:Chip() { }
+								E:Cowl(option=4) { }
+							}
+							W:Cowl(option=4) { }
+						}
+						W:Frame(option=1) {
+							W:Chip(angle=-90) {
+								N:Cowl(option=3) { }
+							}
+						}
+						E:Frame(option=1) {
+							E:Chip(angle=-90) {
+								N:Cowl(option=4) { }
+							}
+						}
+						S:Weight() { }
+					}
+				}
+			}
+			E:Chip(angle=90) {
+				N:Chip() {
+					N:Chip() { }
+				}
+			}
+			W:Chip(angle=90) {
+				N:Chip() {
+					N:Chip() { }
+				}
+			}
+		}
+		N:Chip() {
+			N:Chip() {
+				W:Chip(angle=90) { }
+				S:Cowl(angle=-20, color=0) {
+					S:Cowl(angle=20, color=0) {
+						S:Cowl(color=0) {
+							S:Cowl(angle=20, color=0) {
+								W:Cowl(angle=91, color=0) { }
+								E:Cowl(angle=91, color=0) { }
+							}
+							W:Cowl(angle=91, color=0) { }
+							E:Cowl(angle=91, color=0) { }
+						}
+						W:Cowl(angle=91, color=0) { }
+						E:Cowl(angle=91, color=0) { }
+					}
+					W:Cowl(angle=91, color=0) { }
+					E:Cowl(angle=91, color=0) { }
+				}
+				E:Chip(angle=90) { }
+				N:Frame(angle=90) {
+					N:Weight(angle=90, option=3) {
+						S:Cowl(angle=30) {
+							E:Cowl(angle=91, option=4) { }
+							W:Cowl(angle=91, option=3) { }
+						}
+						N:Frame() {
+							S:TrimF(angle=90, option=1) {
+								N:RudderF(angle=-10, option=1) {
+									N:RudderF(angle=190, option=1) {
+										S:Chip(name=BS) {
+											N:Cowl(option=5) { }
+											S:Chip() {
+												N:Trim(angle=-90, name=BI) {
+													S:Chip() {
+														S:Cowl(option=5) { }
+														S:Arm(angle=180, power=BMB, option=16777216, name=AM) { }
+													}
+													N:Cowl(option=5) { }
+													N:Weight() { }
+													E:Rudder(angle=45) {
+														E:Chip() {
+															S:Frame(option=1) { }
+														}
+														S:Cowl() { }
+														W:Cowl() { }
+													}
+													W:Rudder(angle=-45) {
+														W:Chip() {
+															S:Frame(option=1) { }
+														}
+														S:Cowl() { }
+														E:Cowl() { }
+													}
+												}
+												S:Cowl(option=5) { }
+												S:Rudder(angle=-45) {
+													N:Rudder(angle=45) { }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				N:Cowl(angle=30) {
+					W:Cowl(angle=91, option=4) { }
+					E:Cowl(angle=91, option=3) { }
+				}
+			}
+		}
+		W:Trim(angle=-ELRON) {
+			S:Chip() {
+				W:Chip() {
+					W:Chip() {
+						W:Cowl(option=4) { }
+					}
+					S:Chip() {
+						W:Chip() {
+							S:Cowl() { }
+							W:Cowl() {
+								S:Cowl() { }
+							}
+						}
+						E:Chip() { }
+						S:Cowl(option=3) { }
+					}
+				}
+			}
+			W:Chip() {
+				W:Cowl(option=4) { }
+				N:Cowl(option=3) { }
+			}
+			N:Cowl() { }
+		}
+		E:Trim(angle=-ELRON) {
+			S:Chip() {
+				E:Chip() {
+					S:Chip() {
+						E:Chip() {
+							S:Cowl() {
+								E:Cowl() { }
+							}
+							E:Cowl() { }
+						}
+						W:Chip() { }
+						S:Cowl(option=4) { }
+					}
+					E:Chip() {
+						E:Cowl(option=3) { }
+					}
+				}
+			}
+			E:Chip() {
+				E:Cowl(option=3) { }
+				N:Cowl(option=4) { }
+			}
+			N:Cowl() { }
+		}
+	}
+}
+Script
+{	print 0,"Welcome to Rigid-Chips World."
+	print 1,"  FPS=",_FPS(),"  Chips=",_CHIPS(),"  Weight=",_WEIGHT()
+	print 2,"  Width=",_WIDTH(),"  Height=",_HEIGHT()
+	print 3,"  Faces=",_FACE()
+	print 4,"  Vel=",_VEL()
+	print 5,"  R=",_RED(32,32)
+	print 6,"  G=",_GREEN(32,32)
+	print 7,"  B=",_BLUE(32,32)
+}
+Lua
+{
+IB = 0
+function main()
+	if _KEY(6) == 1 then
+		_SPLIT(BS)
+		IB = 1
+		TJ = 131072
+	end
+	
+	if IB == 1 and _H(BI) <= 5 and _H(BI) >= 0 then
+		BMB = 16777216
+		IB = 0
+	end
+	
+	if IB == 1 and _Y(BI) <= 5 then
+		BMB = 16777216
+	end
+end
+}

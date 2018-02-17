@@ -1,0 +1,1206 @@
+// [RCD] 
+Val
+{
+	BRK(default=0, max=600, step=100, disp=0)
+	ENG1(default=0, min=-70, max=100, step=10, disp=0)
+	ENG2(default=1, min=1, max=50, disp=0)
+	HANDLE(default=0, min=-24, max=24, disp=0)
+	HANDLEL(default=180, min=150, max=210, disp=0)
+	HANDLER(default=180, min=150, max=210, disp=0)
+	IC1(default=#FFFF00, disp=0)
+	IC2(default=#CFCF00, disp=0)
+	IC3(default=#8F8F00, disp=0)
+	IC4(default=#4F4F00, disp=0)
+	IF1(default=#005FFD, disp=0)
+	IF2(default=#007FFD, disp=0)
+	IF3(default=#009FFD, disp=0)
+	IF4(default=#00BFFD, disp=0)
+	WBL1(default=0, max=2000, disp=0)
+	WBL2(default=0, max=2000, disp=0)
+	WBL3(default=0, max=2000, disp=0)
+	WBR1(default=0, max=2000, disp=0)
+	WBR2(default=0, max=2000, disp=0)
+	WBR3(default=0, max=2000, disp=0)
+	WPL1(default=0, min=-60000, max=500000, disp=0)
+	WPL2(default=0, min=-60000, max=500000, disp=0)
+	WPL3(default=0, min=-60000, max=500000, disp=0)
+	WPR1(default=0, min=-60000, max=500000, disp=0)
+	WPR2(default=0, min=-60000, max=500000, disp=0)
+	WPR3(default=0, min=-60000, max=500000, disp=0)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Frame() {
+			W:RudderF(angle=handleL) {
+				E:RLW(angle=-90, power=WPL1, brake=WBL1, option=1, effect=4, name=WL1) { }
+			}
+		}
+		E:Frame() {
+			E:RudderF(angle=handleR) {
+				W:RLW(angle=-90, power=-WPR1, brake=WBR1, option=1, effect=4, name=WR1) { }
+			}
+		}
+		E:Cowl(color=#a0a0a0, angle=-120) {
+			E:Cowl(color=#a0a0a0, angle=-150) {
+				E:Cowl(color=#a0a0a0, angle=-90) {
+					N:Cowl(color=#a0a0a0) {
+						N:Cowl(color=#a0a0a0) {
+							N:Cowl(color=#a0a0a0) {
+								N:Cowl(color=#a0a0a0, angle=-135) {
+									N:Cowl(color=#a0a0a0, angle=-45) {
+										W:Cowl(color=#a0a0a0) {
+											W:Cowl(color=#a0a0a0) { }
+										}
+										E:Cowl(color=#a0a0a0) { }
+										N:Cowl(angle=90, color=#101010) {
+											W:Cowl(color=#101010) {
+												W:Cowl(color=#101010) {
+													S:Cowl(angle=-178) {
+														S:Cowl(angle=-178, effect=#0F00) { }
+													}
+												}
+												N:Cowl(angle=-5, option=4, color=#101010) {
+													W:Cowl(color=#101010) {
+														W:Cowl(angle=-92, color=#101010) {
+															S:Cowl(color=#101010) { }
+														}
+													}
+													N:Cowl(angle=-179, color=#80FF00, effect=#0F00) { }
+												}
+											}
+											E:Cowl(color=#101010) {
+												S:Cowl(angle=-178) {
+													S:Cowl(angle=-178, effect=#0F00) { }
+												}
+											}
+											N:Cowl(angle=-5, option=3, color=#101010) {
+												E:Cowl(color=#101010) {
+													E:Cowl(angle=-92, color=#101010) {
+														S:Cowl(color=#101010) { }
+													}
+												}
+												N:Cowl(angle=-20, color=#000050, effect=#40fb) {
+													W:Cowl(color=#000050, effect=#40fb) {
+														W:Cowl(color=#000050, effect=#40fb) {
+															W:Cowl(angle=-92, color=#000050, effect=#40fb) { }
+														}
+													}
+													E:Cowl(color=#000050, effect=#40fb) {
+														E:Cowl(angle=-92, color=#000050, effect=#40fb) { }
+													}
+													N:Cowl(color=#000050, effect=#40fb) {
+														W:Cowl(color=#000050, effect=#40fb) {
+															W:Cowl(color=#000050, effect=#40fb) {
+																W:Cowl(angle=-92, color=#000050, effect=#40fb) { }
+															}
+															N:Cowl(color=#0080FF, angle=20, effect=#0F00) {
+																N:Cowl(color=#a0a0a0, angle=-85) {
+																	N:Cowl(color=#a0a0a0) {
+																		N:Cowl(color=#a0a0a0) { }
+																	}
+																}
+															}
+														}
+														E:Cowl(color=#000050, effect=#40fb) {
+															E:Cowl(angle=-92, color=#000050, effect=#40fb) { }
+														}
+														N:Cowl(angle=-65, color=#101010) {
+															W:Cowl(color=#101010) {
+																W:Cowl(color=#101010) {
+																	W:Cowl(angle=-90, color=#000050, effect=#40fb) {
+																		W:Cowl(color=#000050, effect=#40fb) {
+																			W:Cowl(color=#101010) { }
+																		}
+																		E:Cowl(color=#a0a0a0, angle=-2) { }
+																	}
+																}
+															}
+															E:Cowl(color=#101010) {
+																E:Cowl(angle=-90, color=#000050, effect=#40fb) {
+																	E:Cowl(color=#000050, effect=#40fb) {
+																		E:Cowl(color=#101010) { }
+																	}
+																	W:Cowl(color=#a0a0a0, angle=-2) { }
+																}
+															}
+															N:Cowl(color=#101010) {
+																W:Cowl(color=#101010) {
+																	W:Cowl(color=#101010) {
+																		W:Cowl(angle=-90, color=#101010) {
+																			W:Cowl(color=#101010) {
+																				W:Cowl(color=#101010) { }
+																			}
+																		}
+																	}
+																}
+																E:Cowl(color=#101010) {
+																	E:Cowl(angle=-90, color=#101010) {
+																		E:Cowl(color=#101010) {
+																			E:Cowl(color=#101010) { }
+																		}
+																	}
+																}
+																N:Cowl(angle=-90, color=#101010) {
+																	W:Cowl(color=#101010) {
+																		W:Cowl(color=#101010) { }
+																	}
+																	E:Cowl(color=#101010) { }
+																	N:Cowl(color=#101010) {
+																		W:Cowl(color=#101010) {
+																			W:Cowl(color=#101010) { }
+																		}
+																		E:Cowl(color=#101010) { }
+																		N:Cowl(color=#101010) {
+																			W:Cowl(color=#101010) {
+																				W:Cowl(color=#101010) { }
+																			}
+																			E:Cowl(color=#101010) { }
+																		}
+																	}
+																}
+															}
+														}
+														N:Cowl(color=#0080FF, angle=20, effect=#0F00) {
+															N:Cowl(color=#a0a0a0, angle=-85) {
+																N:Cowl(color=#a0a0a0) {
+																	N:Cowl(color=#a0a0a0) { }
+																}
+															}
+														}
+													}
+												}
+												S:Cowl(color=#a0a0a0, angle=-90) {
+													W:Cowl(color=#a0a0a0, angle=-75) {
+														N:Cowl(angle=-88, option=4, color=#80FF00, effect=#0F00) { }
+													}
+													W:Cowl(color=#a0a0a0, angle=-105) {
+														N:Cowl(angle=88, option=4, color=#80FF00, effect=#0F00) { }
+													}
+												}
+												N:Cowl(angle=-179, color=#80FF00, effect=#0F00) { }
+											}
+										}
+									}
+									W:Cowl(color=#a0a0a0) {
+										W:Cowl(color=#FF00FF, effect=#0F00) {
+											W:Cowl(color=#a0a0a0, angle=-90, option=3) {
+												N:Cowl(color=#a0a0a0, option=4) {
+													W:Cowl(color=#a0a0a0, option=3) { }
+												}
+											}
+										}
+									}
+									E:Cowl(color=#FF00FF, effect=#0F00) {
+										E:Cowl(color=#a0a0a0, angle=-90, option=4) {
+											N:Cowl(color=#a0a0a0, option=3) {
+												E:Cowl(color=#a0a0a0, option=4) { }
+											}
+										}
+									}
+								}
+								E:Cowl(color=#a0a0a0) { }
+								W:Cowl(color=#a0a0a0) {
+									W:Cowl(color=#a0a0a0) { }
+								}
+							}
+							W:Cowl(color=#a0a0a0) {
+								W:Cowl(color=#a0a0a0) { }
+							}
+							E:Cowl(color=#a0a0a0) { }
+						}
+					}
+					S:Cowl(color=#a0a0a0, angle=-50) {
+						S:Cowl(color=#a0a0a0, angle=-10) {
+							S:Cowl(color=#a0a0a0, angle=-30) {
+								E:Cowl(color=#a0a0a0) {
+									E:Cowl(color=#a0a0a0, angle=90) {
+										E:Cowl(color=#a0a0a0) {
+											E:Cowl(color=#a0a0a0) {
+												E:Cowl(color=#a0a0a0) {
+													E:Cowl(color=#8080FF) {
+														E:Cowl(color=#8080FF) {
+															E:Cowl(color=#8080FF) {
+																E:Cowl(color=#8080FF) {
+																	E:Cowl(color=#8080FF) {
+																		E:Cowl(color=#a0a0a0) {
+																			E:Cowl(color=#a0a0a0) {
+																				E:Cowl(color=#a0a0a0) { }
+																				N:Cowl(color=#a0a0a0, angle=90, option=1) {
+																					N:Cowl(color=#a0a0a0, angle=-150, option=1) {
+																						N:Cowl(color=#a0a0a0, angle=60) {
+																							E:Cowl(color=#a0a0a0) {
+																								E:Cowl(color=#a0a0a0, angle=90) {
+																									E:Cowl(color=#a0a0a0) { }
+																									S:Cowl(color=#a0a0a0, angle=10) {
+																										E:Cowl(color=#a0a0a0) { }
+																									}
+																								}
+																							}
+																							W:Cowl(color=#a0a0a0) { }
+																						}
+																					}
+																				}
+																			}
+																			W:Cowl(angle=-178, option=3, color=#8080FF) { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+													E:Cowl(angle=-178, option=4, color=#8080FF) { }
+												}
+												N:Cowl(color=#a0a0a0, angle=90, option=1) {
+													N:Cowl(color=#a0a0a0, angle=-150, option=1) {
+														N:Cowl(color=#a0a0a0, angle=60) {
+															E:Cowl(color=#a0a0a0) {
+																E:Cowl(color=#a0a0a0) { }
+															}
+															W:Cowl(color=#a0a0a0) {
+																W:Cowl(color=#a0a0a0) { }
+															}
+														}
+													}
+												}
+												W:Cowl(color=#a0a0a0, angle=20) {
+													W:Cowl(color=#a0a0a0) {
+														W:Cowl(color=ic1, angle=-100, effect=if1) {
+															S:Cowl(color=ic2, effect=if2) {
+																S:Cowl(color=ic3, effect=if3) {
+																	S:Cowl(color=ic4, effect=if3) { }
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								W:Cowl(color=#a0a0a0) {
+									W:Cowl(color=#a0a0a0) {
+										W:Cowl(color=#a0a0a0, angle=90) {
+											W:Cowl(color=#a0a0a0) {
+												W:Cowl(color=#a0a0a0) {
+													W:Cowl(color=#a0a0a0) {
+														W:Cowl(color=#8080FF) {
+															W:Cowl(color=#8080FF) {
+																W:Cowl(color=#8080FF) {
+																	W:Cowl(color=#8080FF) {
+																		W:Cowl(color=#8080FF) {
+																			W:Cowl(color=#a0a0a0) {
+																				W:Cowl(color=#a0a0a0) {
+																					W:Cowl(color=#a0a0a0) { }
+																					N:Cowl(color=#a0a0a0, angle=90, option=1) {
+																						N:Cowl(color=#a0a0a0, angle=-150, option=1) {
+																							N:Cowl(color=#a0a0a0, angle=60) {
+																								W:Cowl(color=#a0a0a0) {
+																									W:Cowl(color=#a0a0a0, angle=90) {
+																										W:Cowl(color=#a0a0a0) { }
+																										S:Cowl(color=#a0a0a0, angle=10) {
+																											W:Cowl(color=#a0a0a0) { }
+																										}
+																									}
+																								}
+																								E:Cowl(color=#a0a0a0) { }
+																							}
+																						}
+																					}
+																				}
+																				E:Cowl(angle=-178, option=4, color=#8080FF) { }
+																			}
+																		}
+																	}
+																}
+															}
+														}
+														W:Cowl(angle=-178, option=3, color=#8080FF) { }
+													}
+													N:Cowl(color=#a0a0a0, angle=90, option=1) {
+														N:Cowl(color=#a0a0a0, angle=-150, option=1) {
+															N:Cowl(color=#a0a0a0, angle=60) {
+																E:Cowl(color=#a0a0a0) {
+																	E:Cowl(color=#a0a0a0) { }
+																}
+																W:Cowl(color=#a0a0a0) {
+																	W:Cowl(color=#a0a0a0) { }
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								S:Cowl(color=#a0a0a0) {
+									E:Cowl(color=#a0a0a0) {
+										E:Cowl(color=#a0a0a0, angle=90) {
+											E:Cowl(color=#a0a0a0) {
+												E:Cowl(color=#a0a0a0) {
+													E:Cowl(color=#a0a0a0) {
+														E:Cowl(color=#a0a0a0) {
+															E:Cowl(color=#8080FF) {
+																E:Cowl(color=#8080FF) {
+																	E:Cowl(color=#8080FF) {
+																		E:Cowl(color=#a0a0a0) {
+																			E:Cowl(color=#a0a0a0) {
+																				E:Cowl(color=#a0a0a0) {
+																					E:Cowl(color=#a0a0a0) { }
+																				}
+																			}
+																			W:Cowl(angle=-178, option=3, color=#8080FF) { }
+																		}
+																	}
+																}
+															}
+															E:Cowl(angle=-178, option=4, color=#8080FF) { }
+														}
+													}
+												}
+											}
+											S:Cowl(color=#a0a0a0, angle=20) {
+												S:Cowl(color=#a0a0a0) {
+													S:Cowl(color=ic1, angle=-100, effect=if1) {
+														E:Cowl(color=IC2, effect=IF2) {
+															E:Cowl(color=IC3, effect=IF3) {
+																E:Cowl(color=ic4, effect=if4) {
+																	E:Cowl(color=ic1, effect=if1) {
+																		E:Cowl(color=IC2, effect=IF2) {
+																			E:Cowl(color=IC3, effect=IF3) {
+																				E:Cowl(color=ic4, effect=if4) {
+																					E:Cowl(color=ic1, effect=if1) {
+																						E:Cowl(color=IC2, effect=IF2) {
+																							E:Cowl(color=IC3, effect=IF3) {
+																								E:Cowl(color=ic4, effect=if4) { }
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									W:Cowl(color=#a0a0a0) {
+										W:Cowl(color=#a0a0a0) {
+											W:Cowl(color=#a0a0a0, angle=90) {
+												W:Cowl(color=#a0a0a0) {
+													W:Cowl(color=#a0a0a0) {
+														W:Cowl(color=#a0a0a0) {
+															W:Cowl(color=#a0a0a0) {
+																W:Cowl(color=#8080FF) {
+																	W:Cowl(color=#8080FF) {
+																		W:Cowl(color=#8080FF) {
+																			W:Cowl(color=#a0a0a0) {
+																				W:Cowl(color=#a0a0a0) {
+																					W:Cowl(color=#a0a0a0) {
+																						W:Cowl(color=#a0a0a0) { }
+																					}
+																				}
+																				E:Cowl(angle=-178, option=4, color=#8080FF) { }
+																			}
+																		}
+																	}
+																}
+																W:Cowl(angle=-178, option=3, color=#8080FF) { }
+															}
+														}
+													}
+												}
+												S:Cowl(color=#a0a0a0, angle=20) {
+													S:Cowl(color=#a0a0a0) {
+														S:Cowl(color=ic1, angle=-100, effect=if1) {
+															W:Cowl(color=IC2, effect=IF2) {
+																W:Cowl(color=IC3, effect=IF3) {
+																	W:Cowl(color=ic4, effect=if4) {
+																		W:Cowl(color=ic1, effect=if1) {
+																			W:Cowl(color=IC2, effect=IF2) {
+																				W:Cowl(color=IC3, effect=IF3) {
+																					W:Cowl(color=ic4, effect=if4) {
+																						W:Cowl(color=ic1, effect=if1) {
+																							W:Cowl(color=IC2, effect=IF2) {
+																								W:Cowl(color=IC3, effect=IF3) {
+																									W:Cowl(color=ic4, effect=if4) { }
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									S:Cowl(color=#a0a0a0) {
+										E:Cowl(color=#a0a0a0) {
+											E:Cowl(color=#a0a0a0, angle=90) {
+												E:Cowl(color=#a0a0a0) {
+													E:Cowl(color=#a0a0a0) {
+														E:Cowl(color=#a0a0a0) {
+															E:Cowl(color=#a0a0a0) {
+																E:Cowl(color=#a0a0a0) {
+																	E:Cowl() {
+																		E:Cowl(color=#a0a0a0) {
+																			E:Cowl(color=#a0a0a0) {
+																				E:Cowl(color=#a0a0a0) {
+																					E:Cowl(color=#a0a0a0) {
+																						E:Cowl(color=#a0a0a0) { }
+																					}
+																				}
+																			}
+																			W:Cowl(angle=-178, option=3) { }
+																		}
+																	}
+																	E:Cowl(angle=-178, option=4) { }
+																}
+															}
+														}
+													}
+												}
+												N:Cowl(color=#a0a0a0, angle=20) {
+													N:Cowl(color=#a0a0a0) {
+														N:Cowl(color=IC1, angle=-100, effect=IF1) {
+															E:Cowl(color=IC2, effect=IF2) {
+																E:Cowl(color=IC3, effect=IF3) {
+																	E:Cowl(color=ic4, effect=if4) {
+																		E:Cowl(color=ic1, effect=if1) {
+																			E:Cowl(color=IC2, effect=IF2) {
+																				E:Cowl(color=IC3, effect=IF3) {
+																					E:Cowl(color=ic4, effect=if4) {
+																						E:Cowl(color=ic1, effect=if1) {
+																							E:Cowl(color=IC2, effect=IF2) {
+																								E:Cowl(color=IC3, effect=IF3) {
+																									E:Cowl(color=ic4, effect=if4) { }
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										W:Cowl(color=#a0a0a0) {
+											W:Cowl(color=#a0a0a0) {
+												W:Cowl(color=#a0a0a0, angle=90) {
+													W:Cowl(color=#a0a0a0) {
+														W:Cowl(color=#a0a0a0) {
+															W:Cowl(color=#a0a0a0) {
+																W:Cowl(color=#a0a0a0) {
+																	W:Cowl(color=#a0a0a0) {
+																		W:Cowl(color=#FFFFFF) {
+																			W:Cowl(color=#a0a0a0) {
+																				W:Cowl(color=#a0a0a0) {
+																					W:Cowl(color=#a0a0a0) {
+																						W:Cowl(color=#a0a0a0) {
+																							W:Cowl(color=#a0a0a0) { }
+																						}
+																					}
+																				}
+																				E:Cowl(angle=-178, option=4) { }
+																			}
+																		}
+																		W:Cowl(angle=-178, option=3) { }
+																	}
+																}
+															}
+														}
+													}
+													N:Cowl(color=#a0a0a0, angle=20) {
+														N:Cowl(color=#a0a0a0) {
+															N:Cowl(color=ic1, angle=-100, effect=if1) {
+																W:Cowl(color=IC2, effect=IF2) {
+																	W:Cowl(color=IC3, effect=IF3) {
+																		W:Cowl(color=ic4, effect=if4) {
+																			W:Cowl(color=ic1, effect=if1) {
+																				W:Cowl(color=IC2, effect=IF2) {
+																					W:Cowl(color=IC3, effect=IF3) {
+																						W:Cowl(color=ic4, effect=if4) {
+																							W:Cowl(color=ic1, effect=if1) {
+																								W:Cowl(color=IC2, effect=IF2) {
+																									W:Cowl(color=IC3, effect=IF3) {
+																										W:Cowl(color=ic4, effect=if4) { }
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										S:Cowl(color=#a0a0a0) {
+											E:Cowl(color=#a0a0a0) {
+												E:Cowl(color=#a0a0a0, angle=90) {
+													E:Cowl(color=#a0a0a0) {
+														E:Cowl(color=#a0a0a0) {
+															E:Cowl(color=#a0a0a0) {
+																E:Cowl(color=#a0a0a0) {
+																	E:Cowl(color=#a0a0a0) {
+																		E:Cowl(color=#a0a0a0) {
+																			E:Cowl(color=#a0a0a0) {
+																				E:Cowl(color=#a0a0a0) {
+																					E:Cowl(color=#a0a0a0) {
+																						E:Cowl(color=#a0a0a0) {
+																							E:Cowl(color=#a0a0a0) { }
+																						}
+																						E:Cowl(color=#a0a0a0, angle=20) {
+																							E:Cowl(color=#a0a0a0) {
+																								E:Cowl(color=ic4, angle=-100, effect=if4) {
+																									N:Cowl(color=ic3, effect=if3) {
+																										N:Cowl(color=ic2, effect=if2) {
+																											N:Cowl(color=ic1, effect=if1) { }
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+											W:Cowl(color=#a0a0a0) {
+												W:Cowl(color=#a0a0a0) {
+													W:Cowl(color=#a0a0a0, angle=90) {
+														W:Cowl(color=#a0a0a0) {
+															W:Cowl(color=#a0a0a0) {
+																W:Cowl(color=#a0a0a0) {
+																	W:Cowl(color=#a0a0a0) {
+																		W:Cowl(color=#a0a0a0) {
+																			W:Cowl(color=#a0a0a0) {
+																				W:Cowl(color=#a0a0a0) {
+																					W:Cowl(color=#a0a0a0) {
+																						W:Cowl(color=#a0a0a0) {
+																							W:Cowl(color=#a0a0a0) {
+																								W:Cowl(color=#a0a0a0) { }
+																							}
+																							W:Cowl(color=#a0a0a0, angle=20) {
+																								W:Cowl(color=#a0a0a0) {
+																									W:Cowl(color=ic4, angle=-100, effect=if4) {
+																										N:Cowl(color=ic3, effect=if3) {
+																											N:Cowl(color=ic2, effect=if2) {
+																												N:Cowl(color=ic1, effect=if1) { }
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+																E:Cowl(color=#a0a0a0, angle=20) {
+																	E:Cowl(color=#a0a0a0) {
+																		E:Cowl(color=ic4, angle=-100, effect=if4) {
+																			N:Cowl(color=ic3, effect=if3) {
+																				N:Cowl(color=ic2, effect=if2) {
+																					N:Cowl(color=ic1, effect=if1) { }
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+											S:Cowl(color=#a0a0a0, angle=90) {
+												E:Cowl(color=#a0a0a0) {
+													N:Cowl(color=#a0a0a0) {
+														N:Cowl(color=#a0a0a0) {
+															N:Cowl(color=#a0a0a0) {
+																N:Cowl(color=#a0a0a0) {
+																	N:Cowl(color=#FF0000, angle=135, effect=#0F00) {
+																		N:Cowl(color=#a0a0a0, angle=20) {
+																			W:Cowl(color=#a0a0a0, angle=90, option=5) { }
+																		}
+																		E:Cowl(color=#a0a0a0, angle=90, option=4) {
+																			N:Cowl(color=#a0a0a0) {
+																				E:Cowl(color=#a0a0a0, option=4) {
+																					N:Cowl(color=#a0a0a0) {
+																						E:Cowl(color=#a0a0a0, option=4) { }
+																					}
+																				}
+																			}
+																		}
+																		W:Cowl(color=#a0a0a0, angle=90, option=3) { }
+																	}
+																}
+															}
+														}
+													}
+												}
+												W:Cowl(color=#a0a0a0) {
+													W:Cowl(color=#a0a0a0) {
+														N:Cowl(color=#a0a0a0) {
+															N:Cowl(color=#a0a0a0) {
+																N:Cowl(color=#a0a0a0) {
+																	N:Cowl(color=#a0a0a0) {
+																		N:Cowl(color=#FF0000, angle=135, effect=#0F00) {
+																			N:Cowl(color=#a0a0a0, angle=20) {
+																				E:Cowl(color=#a0a0a0, angle=90, option=5) { }
+																			}
+																			W:Cowl(color=#a0a0a0, angle=90, option=3) {
+																				N:Cowl(color=#a0a0a0) {
+																					W:Cowl(color=#a0a0a0, option=3) {
+																						N:Cowl(color=#a0a0a0) {
+																							W:Cowl(color=#a0a0a0, option=3) { }
+																						}
+																					}
+																				}
+																			}
+																			E:Cowl(color=#a0a0a0, angle=90, option=4) { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+												S:Cowl(color=#a0a0a0) {
+													E:Cowl(color=#a0a0a0) { }
+													W:Cowl(color=#a0a0a0) {
+														W:Cowl(color=#a0a0a0) { }
+													}
+													S:Cowl(color=#a0a0a0) {
+														E:Cowl(color=#a0a0a0) { }
+														W:Cowl(color=#a0a0a0) {
+															W:Cowl(color=#a0a0a0) { }
+														}
+														S:Cowl(color=#a0a0a0) {
+															E:Cowl(color=#a0a0a0) { }
+															W:Cowl(color=#a0a0a0) {
+																W:Cowl(color=#a0a0a0) { }
+															}
+															S:Cowl(color=#a0a0a0) {
+																E:Cowl(color=#a0a0a0) { }
+																W:Cowl(color=#a0a0a0) {
+																	W:Cowl(color=#a0a0a0) { }
+																}
+																S:Cowl(color=#a0a0a0) {
+																	E:Cowl(color=#a0a0a0) { }
+																	W:Cowl(color=#a0a0a0) {
+																		W:Cowl(color=#a0a0a0) { }
+																	}
+																	S:Cowl(color=#a0a0a0) {
+																		E:Cowl(color=#a0a0a0) { }
+																		W:Cowl(color=#a0a0a0) {
+																			W:Cowl(color=#a0a0a0) { }
+																		}
+																		S:Cowl(color=#a0a0a0) {
+																			E:Cowl(color=#a0a0a0) { }
+																			W:Cowl(color=#a0a0a0) {
+																				W:Cowl(color=#a0a0a0) { }
+																			}
+																			S:Cowl(color=#a0a0a0) {
+																				S:Cowl(color=#a0a0a0) {
+																					S:Cowl(color=#a0a0a0) {
+																						E:Cowl(color=#a0a0a0) { }
+																						W:Cowl(color=#a0a0a0) {
+																							W:Cowl(color=#a0a0a0) { }
+																						}
+																						S:Cowl(color=#a0a0a0) {
+																							E:Cowl(color=#a0a0a0) { }
+																							W:Cowl(color=#a0a0a0) {
+																								W:Cowl(color=#a0a0a0) { }
+																							}
+																							S:Cowl(color=#a0a0a0, angle=90) {
+																								E:Cowl(color=#a0a0a0) { }
+																								W:Cowl(color=#a0a0a0) {
+																									W:Cowl(color=#a0a0a0) { }
+																								}
+																								S:Cowl(color=#a0a0a0) {
+																									E:Cowl(color=#a0a0a0) { }
+																									W:Cowl(color=#a0a0a0) {
+																										W:Cowl(color=#a0a0a0) {
+																											S:Cowl(color=#a0a0a0, angle=20) {
+																												S:Cowl(color=#a0a0a0) {
+																													S:Cowl(color=ic1, angle=-100, effect=if1) {
+																														E:Cowl(color=ic2, effect=if2) {
+																															E:Cowl(color=ic3, effect=if3) {
+																																E:Cowl(color=ic4, effect=if4) { }
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																									S:Cowl(color=#a0a0a0) {
+																										E:Cowl(color=#a0a0a0) { }
+																										W:Cowl(color=#a0a0a0) {
+																											W:Cowl(color=#a0a0a0) {
+																												N:Cowl(color=#a0a0a0, angle=20) {
+																													N:Cowl(color=#a0a0a0) {
+																														N:Cowl(color=ic1, angle=-100, effect=if1) {
+																															E:Cowl(color=ic2, effect=if2) {
+																																E:Cowl(color=ic3, effect=if3) {
+																																	E:Cowl(color=ic4, effect=if4) { }
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																										S:Cowl(color=#a0a0a0) {
+																											E:Cowl(color=#a0a0a0) { }
+																											W:Cowl(color=#a0a0a0) {
+																												W:Cowl(color=#a0a0a0) { }
+																											}
+																											S:Cowl(color=#a0a0a0, angle=90) {
+																												E:Cowl(color=#a0a0a0) { }
+																												W:Cowl(color=#a0a0a0) {
+																													W:Cowl(color=#a0a0a0) { }
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																					E:Cowl(color=#a0a0a0) { }
+																					W:Cowl(color=#a0a0a0) {
+																						W:Cowl(color=#a0a0a0) { }
+																					}
+																				}
+																				E:Cowl(color=#a0a0a0) { }
+																				W:Cowl(color=#a0a0a0) {
+																					W:Cowl(color=#a0a0a0) { }
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Weight(angle=-150, option=3) { }
+		S:Chip() {
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							S:Chip() {
+								S:Chip() {
+									S:Trim() {
+										E:Frame() {
+											E:RLW(angle=-90, power=-WPR2, brake=WBR2, option=1, effect=4, name=WR2) { }
+										}
+										W:Frame() {
+											W:RLW(angle=-90, power=WPL2, brake=WBL2, option=1, effect=4, name=WL2) { }
+										}
+										S:Chip() {
+											S:Chip(angle=-30) {
+												S:Trim(angle=90) { }
+											}
+											S:Trim() {
+												E:Frame() {
+													E:RLW(angle=-90, power=-WPR3, brake=WBR3, option=1, effect=4, name=WR3) { }
+												}
+												W:Frame() {
+													W:RLW(angle=-90, power=WPL3, brake=WBL3, option=1, effect=4, name=WL3) { }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		E:Chip(angle=-90) { }
+		W:Chip(angle=-90) { }
+	}
+}
+Lua
+{
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+function ang(m,n,v)
+	if m-n<v and m-n>-v then m=n
+	elseif m<n then m=m+v
+	elseif m>n then m=m-v
+	end
+	return m
+end
+
+function rgb(r,g,b)
+	return math.floor(math.min(r,255)) * 65536 + math.floor(math.min(g,255)) * 256 + math.floor(math.min(b,255))
+end
+
+function spcl(d,c,b,a)
+	return math.floor(math.min(a,15)) + math.floor(math.min(b,15)) * 16 + math.floor(math.min(c,15)) * 256 + math.floor(math.min(d,15)) * 4096
+end
+
+function m_input(free)
+	if free==nil then free=0 end
+	
+	local mx=(math.min(math.max(_MX(),0),_WIDTH()))/_WIDTH()-0.5
+	local my=(math.min(math.max(_MY(),0),_HEIGHT()))/_HEIGHT()-0.5
+	
+	if math.abs(mx)<=free then mx=0
+	else mx=mx-free*(mx/math.abs(mx)) end
+	
+	if math.abs(my)<=free then my=0
+	else my=my-free*(my/math.abs(my)) end
+	
+	return mx,my
+end
+
+function graph(val,min,max,wake,mode)
+	local o=""
+	local tmp2=max-min
+	local tmp=val-min+tmp2/wake/2
+	
+	if mode==0 then
+		for i=1,wake do
+			if tmp>=tmp2/wake then o=o.."■"
+			else o=o.."□" end
+			tmp=tmp-tmp2/wake
+		end
+	elseif mode==1 then
+		o="■"
+		j=0
+		wake=wake-1
+		for i=1,wake do
+			if tmp<=tmp2/wake then break
+			else
+				o="□"..o
+				tmp=tmp-tmp2/wake
+				j=i
+			end
+		end
+		for i=1,wake-j do
+			o=o.."□"
+		end
+	end
+	
+	return o
+end
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+function handle()--ハンドル--------------------------------
+	HANDLE=HANDLE-_KEY(2)*3+_KEY(3)*3
+	if(_KEY(2)==0 and _KEY(3)==0)then HANDLE=ang(HANDLE,0,3) end
+	if(HANDLE > 0)then 
+		HANDLER = HANDLE * 1.35 + 182
+		HANDLEL = HANDLE + 178
+	else
+		HANDLER = HANDLE + 182
+		HANDLEL = HANDLE * 1.35 + 178
+	end
+	
+end
+
+function engine()--エンジン出力---------------------------------------
+	if(_KEY(0)==1 and _KEY(1)==0)then ENG1=ENG1+10 end
+	if(_KEY(1)==1 and _KEY(0)==0)then ENG1=ENG1-10 end
+	
+	if _KEY(5)==1 then tb=0.03--パワーアップ時のターボブースト係数
+	else tb=0.01 end--通常時のターボブースト係数
+	
+	ENG2=1.0+(math.abs(_VZ(0))*tb)--速度に応じて出力を調整
+	ENGINE=(ENG1*200)*ENG2
+	
+	if(HANDLE<0 and _VZ(0)<0) then		engl=ENGINE*(1-def) ; engr=ENGINE*(1+def)
+	elseif(HANDLE>0 and _VZ(0)<0) then	engr=ENGINE*(1-def) ; engl=ENGINE*(1+def)
+	else											engl=ENGINE     ; engr=ENGINE end
+	
+	--engl=ENGINE ; engr=ENGINE
+	tcs()
+	
+end
+
+	slip={}
+	tc={}
+	bc={}
+	
+
+TCSmode=1
+absmode=1
+bcset=1.90
+tcset=2.05
+autowingf=1
+autowingr=1
+fwing=12
+rwing=16
+def=0.28
+
+function tcs()
+	
+	TCSstat="○"
+	for i=1,6 do
+		if slip[i]>tcset then
+			TCSstat="●"
+			tc[i]=math.max(1.5/slip[i],0.1)
+		else
+			tc[i]=1
+		end
+	end
+	if ENG1==0 then TCSstat="○" end
+	
+	
+	WPL1=engl*tc[1]
+	WPR1=engr*tc[2]
+	WPL2=engl*tc[3]
+	WPR2=engr*tc[4]
+	WPL3=engl*tc[5]
+	WPR3=engr*tc[6]
+	
+	--out(11,WPL1+WPR1+WPL2+WPR2+WPL3+WPR3)
+	--out(7,"&  ",slip[1]," ",slip[2]," ",slip[3]," ",slip[4]," ",slip[5]," ",slip[6])
+	--out(8,"&  ",tc[1]," ",tc[2]," ",tc[3]," ",tc[4]," ",tc[5]," ",tc[6])
+--	out(9,"&  ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL))
+end
+
+function brake()
+	if _KEY(4)==1 then BRK=BRK+60 end
+	
+	if absmode==1 then
+		absstat="○"
+		if _VZ(0)<-3 then
+			for i=1,6 do
+				if slip[i]<bcset then
+					absstat="●"
+					bc[i]=math.max(slip[i]/(bcset+0.05),0.1)
+				else
+					bc[i]=1
+				end
+			end
+		else
+			bc={1,1,1,1,1,1}
+		end
+		
+		if BRK==0 then absstat="○" end
+	else
+		absstat="×"
+		bc={1,1,1,1,1,1}
+	end
+	
+	WBL1=BRK*bc[1]
+	WBR1=BRK*bc[2]
+	WBL2=BRK*bc[3]
+	WBR2=BRK*bc[4]
+	WBL3=BRK*bc[5]
+	WBR3=BRK*bc[6]
+	               
+	
+--	out(7,"&  ",slip[1]," ",slip[2]," ",slip[3]," ",slip[4])
+	--out(9,"&  ",bc[1]," ",bc[2]," ",bc[3]," ",bc[4]," ",bc[5]," ",bc[6])
+--	out(9,"&  ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL))
+end
+
+function teiti()--定地旋回----------------------------------------------
+	
+	if(_KEY(2)==1) then 
+		engl=-24000
+		engr=30000
+	elseif (_KEY(3)==1) then 
+		engl=24000
+		engr=-30000
+	else
+		engl = 0
+		engr = 0
+	end
+	
+	WPL1=engl
+	WPR1=engr
+	WPL2=engl
+	WPR2=engr
+	WPL3=engl
+	WPR3=engr
+end
+
+
+time=0
+lmode=0
+rmode=0
+lightmode=0
+
+il={
+	[1]={
+		col=rgb(255,255,0),
+		ef=spcl(5,15,15,12)
+	},
+	[2]={
+		col=rgb(207,207,0),
+		ef=spcl(7,15,15,12)
+	},
+	[3]={
+		col=rgb(143,143,0),
+		ef=spcl(9,15,15,12)
+	},
+	[4]={
+		col=rgb(79,97,0),
+		ef=spcl(11,15,15,12)
+	}
+
+}
+function gimic()
+	if _KEYDOWN(10)==1 then lmode=math.mod(lmode+1,2) end
+	if _KEYDOWN(11)==1 then rmode=math.mod(rmode+1,2) end
+	if _KEYDOWN(12)==1 then lightmode=math.mod(lightmode+1,2) end
+	
+	--テールランプ
+	if _KEY(4)==1 then
+		COLBRK=16711680
+		COLBRKF=spcl(0,15,4,15)
+	else
+		COLBRK=5570560
+		COLBRKF=spcl(0,0,15,11)
+	end
+	
+	--if lmode+rmode==0 then time=0 end
+	
+	if lmode==1 and time<12 then
+		COLL=16759552
+		COLLF=spcl(0,15,4,15)
+	else
+		COLL=10053120
+		COLLF=spcl(0,0,15,0)
+	end
+	
+	if rmode==1 and time<12 then
+		COLR=16759552
+		COLRF=spcl(0,15,4,15)
+	else
+		COLR=10053120
+		COLRF=spcl(0,0,15,0)
+	end
+	
+	time=math.mod(time+1,25)
+	
+	
+
+	
+	if lightmode==0 then
+		COLHL=rgb(120,120,120)
+		COLHLF=spcl(0,0,15,11)
+		--COLHLF2=spcl(9,0,15,11)
+	else
+		COLHL=rgb(255,255,255)
+		COLHLF=spcl(3,15,0,15)
+		--COLHLF2=spcl(9,15,0,15)
+	end
+	
+	ilt=math.max(math.ceil(time/6),1)
+	
+	--out(10,time)
+	--out(11,ilt)
+	
+	IC1=il[ilt].col
+	IC2=il[math.mod(ilt,4)+1].col
+	IC3=il[math.mod(ilt+1,4)+1].col
+	IC4=il[math.mod(ilt+2,4)+1].col
+	
+	IF1=il[ilt].ef
+	IF2=il[math.mod(ilt,4)+1].ef
+	IF3=il[math.mod(ilt+1,4)+1].ef
+	IF4=il[math.mod(ilt+2,4)+1].ef
+end
+
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+function main()
+	if _VZ(0)==0 then
+		for i=1,i<6 do
+			slip[i]=0
+		end
+	else
+		slip[1]=math.abs(_WY(WL1)/_VZ(0))--  前
+		slip[2]=math.abs(_WY(WR1)/_VZ(0))-- 1  2	
+		slip[3]=math.abs(_WY(WL2)/_VZ(0))-- 3  4	
+		slip[4]=math.abs(_WY(WR2)/_VZ(0))-- 5  6	
+		slip[5]=math.abs(_WY(WL3)/_VZ(0))--  後	
+		slip[6]=math.abs(_WY(WR3)/_VZ(0))
+	end
+	
+	
+	handle() --ステアリング
+	
+	if _KEY(6) == 1 then
+		teiti() --定地旋回
+	else
+		engine() --エンジンパワー
+	end
+	
+	gimic()
+	
+	brake()
+	
+	out(0,string.format("  FPS : %2.1f  Chips : %d  Weight : %.1f    %3.1f km/h",_FPS(),_CHIPS(),_WEIGHT(),-(_VZ(0)*3.6)))
+end
+}

@@ -1,0 +1,108 @@
+function vel(cn)
+	return math.sqrt( _VX(cn)^2 + _VY(cn)^2 + _VZ(cn)^2 )
+end
+
+function len3d(ax,ay,az,bx,by,bz)
+	return math.sqrt((ax-bx)^2+(ay-by)^2+(az-bz)^2)
+end
+
+local data={maxspd=0}
+
+function OnFrame()
+	out(0,"H:start   M:save")
+	local v=vel(0)*3.6
+	
+	if _SKEYDOWN(0) == 1 then
+		data={
+			frames=0,
+			start=true,
+			sx=_X(),sy=_Y(),sz=_Z(),
+			distance=0,
+			maxspd=0
+		}
+		--‹­§’âŽ~
+		for i=0,_CHIPS()-1 do
+			_ENERVATE(i)
+		end
+	end
+	
+	
+	
+	if data.start then
+		data.frames=data.frames+1
+		
+		data.maxspd=math.max(data.maxspd,v)
+		if v >= 500 and not data.fragspd500 then
+			data.fragspd500 = true
+			data.timespd500 = data.frames
+		elseif v >= 400 and not data.fragspd400 then
+			data.fragspd400 = true
+			data.timespd400 = data.frames
+		elseif v >= 300 and not data.fragspd300 then
+			data.fragspd300 = true
+			data.timespd300 = data.frames
+		elseif v >= 200 and not data.fragspd200 then
+			data.fragspd200 = true
+			data.timespd200 = data.frames
+		elseif v >= 100 and not data.fragspd100 then
+			data.fragspd100 = true
+			data.timespd100 = data.frames
+		end
+		
+		data.distance=data.distance+len3d(data.sx,data.sy,data.sz,_X(),_Y(),_Z())
+		
+		data.sx,data.sy,data.sz=_X(),_Y(),_Z()
+		
+		if data.distance >= 400 and not data.fragdist400 then
+			data.fragdist400 = true
+			data.timedist400 = data.frames
+		elseif data.distance >= 300 and not data.fragdist300 then
+			data.fragdist300 = true
+			data.timedist300 = data.frames
+		elseif data.distance >= 200 and not data.fragdist200 then
+			data.fragdist200 = true
+			data.timedist200 = data.frames
+		elseif data.distance >= 100 and not data.fragdist100 then
+			data.fragdist100 = true
+			data.timedist100 = data.frames
+		end
+	end
+	
+	out(1,"Max  ",data.maxspd)
+	
+	if data.fragspd100 then out(3,"0-100km/h  ",data.timespd100/30) end
+	if data.fragspd200 then out(4,"0-200km/h  ",data.timespd200/30) end
+	if data.fragspd300 then out(5,"0-300km/h  ",data.timespd300/30) end
+	if data.fragspd400 then out(6,"0-400km/h  ",data.timespd400/30) end
+	if data.fragspd500 then out(7,"0-500km/h  ",data.timespd500/30) end
+	
+	if data.fragdist100 then out(9,"0-100m  ",data.timedist100/30) end
+	if data.fragdist200 then out(10,"0-200m  ",data.timedist200/30) end
+	if data.fragdist300 then out(11,"0-300m  ",data.timedist300/30) end
+	if data.fragdist400 then out(12,"0-400m  ",data.timedist400/30) end
+	
+	
+	if _SKEYDOWN(3)==1 then
+		local fp=_FOPEN("acceleration_data.txt","w")
+		
+		if fp~=-1 then
+			if data.fragspd100 then _FPUTS(fp,string.format("0-100km/h  %.3f\n",data.timespd100/30)) end
+			if data.fragspd200 then _FPUTS(fp,string.format("0-200km/h  %.3f\n",data.timespd200/30)) end
+			if data.fragspd300 then _FPUTS(fp,string.format("0-300km/h  %.3f\n",data.timespd300/30)) end
+			if data.fragspd400 then _FPUTS(fp,string.format("0-400km/h  %.3f\n",data.timespd400/30)) end
+			if data.fragspd500 then _FPUTS(fp,string.format("0-500km/h  %.3f\n",data.timespd500/30)) end
+			
+			_FPUTS(fp,string.format("\n"))
+			
+			if data.fragdist100 then _FPUTS(fp,string.format("0-100m  %.3f\n",data.timedist100/30)) end
+			if data.fragdist200 then _FPUTS(fp,string.format("0-200m  %.3f\n",data.timedist200/30)) end
+			if data.fragdist300 then _FPUTS(fp,string.format("0-300m  %.3f\n",data.timedist300/30)) end
+			if data.fragdist400 then _FPUTS(fp,string.format("0-400m  %.3f\n",data.timedist400/30)) end
+			
+			_FPUTS(fp,string.format("\n"))
+			
+			_FPUTS(fp,string.format("Max  %.3f\n",data.maxspd))
+			_FCLOSE(fp)
+		end
+	end
+end

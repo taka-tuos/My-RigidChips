@@ -1,0 +1,92 @@
+// [RCD] 
+Val
+{
+	A0(default=-100, min=-100, max=0, step=100, disp=0)
+	A1(default=-100, min=-100, max=0, step=100, disp=0)
+	A10(default=-100, min=-100, max=0, step=100, disp=0)
+	A11(default=-100, min=-100, max=0, step=100, disp=0)
+	A2(default=-100, min=-100, max=0, step=100, disp=0)
+	A3(default=-100, min=-100, max=0, step=100, disp=0)
+	A4(default=-100, min=-100, max=0, step=100, disp=0)
+	A5(default=-100, min=-100, max=0, step=100, disp=0)
+	A6(default=-100, min=-100, max=0, step=100, disp=0)
+	A7(default=-100, min=-100, max=0, step=100, disp=0)
+	A8(default=-100, min=-100, max=0, step=100, disp=0)
+	A9(default=-100, min=-100, max=0, step=100, disp=0)
+	AE0(default=0, max=800001, step=800001, disp=0)
+	AE1(default=0, max=800001, step=800001, disp=0)
+	AE10(default=0, max=800001, step=800001, disp=0)
+	AE11(default=0, max=800001, step=800001, disp=0)
+	AE2(default=0, max=800001, step=800001, disp=0)
+	AE3(default=0, max=800001, step=800001, disp=0)
+	AE4(default=0, max=800001, step=800001, disp=0)
+	AE5(default=0, max=800001, step=800001, disp=0)
+	AE6(default=0, max=800001, step=800001, disp=0)
+	AE7(default=0, max=800001, step=800001, disp=0)
+	AE8(default=0, max=800001, step=800001, disp=0)
+	AE9(default=0, max=800001, step=800001, disp=0)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Weight(angle=180) {
+			S:Arm(angle=A0, option=50000, power=AE0) { }
+			S:Arm(angle=A1, option=50000, power=AE1) { }
+			S:Arm(angle=A2, option=50000, power=AE2) { }
+			S:Arm(angle=A3, option=50000, power=AE3) { }
+			S:Arm(angle=A4, option=50000, power=AE4) { }
+			S:Arm(angle=A5, option=50000, power=AE5) { }
+		}
+		N:Weight(angle=180) {
+			S:Arm(angle=A6, option=50000, power=AE6) { }
+			S:Arm(angle=A7, option=50000, power=AE7) { }
+			S:Arm(angle=A8, option=50000, power=AE8) { }
+			S:Arm(angle=A9, option=50000, power=AE9) { }
+			S:Arm(angle=A10, option=50000, power=AE10) { }
+			S:Arm(angle=A11, option=50000, power=AE11) { }
+		}
+		W:Chip(angle=45) {
+			W:Weight() {
+				W:Weight(angle=-45) {
+					S:Weight() {
+						S:Weight() { }
+					}
+					N:Weight() {
+						N:Weight() { }
+					}
+				}
+			}
+		}
+		E:Chip(angle=45) {
+			E:Weight() {
+				E:Weight(angle=-45) {
+					S:Weight() {
+						S:Weight() { }
+					}
+					N:Weight() {
+						N:Weight() { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+A=0
+
+function main()
+
+A = math.mod(A+_KEY(4), 12)
+for i=0, 3 do
+	if A==i and _KEY(4)==1 then
+		_G["AE"..i]=(1-_KEYDOWN(4))*16777216
+		_G["A"..math.mod(i+1, 12)] = 0
+		JET = 50000*_KEY(9)
+		end
+	end
+end
+}

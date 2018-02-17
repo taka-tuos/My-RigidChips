@@ -1,0 +1,181 @@
+// [RCD] 
+Val
+{
+	MJ(default=0, max=614400)
+	SJ(default=0, max=409600)
+	XA(default=0, min=-180, max=180)
+	YA(default=0, min=-180, max=180)
+	ZA(default=0, min=-180, max=180)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Frame(angle=-120, option=1) {
+			N:Chip(angle=-150) {
+				S:Cowl() {
+					S:Cowl(option=5) { }
+				}
+				N:Trim(angle=-90) {
+					S:Chip() {
+						S:Cowl() {
+							S:Cowl(option=5) { }
+						}
+						S:Arm() { }
+					}
+					N:Chip(name=GYRO) {
+						N:Chip() {
+							N:Chip() {
+								N:Chip() {
+									N:Frame(angle=30, option=1) {
+										N:Jet(effect=4, angle=-120, power=MJ) { }
+									}
+									N:Chip() { }
+									W:Rudder(name=S0) {
+										N:Trim(angle=-90) {
+											S:Chip() {
+												S:Weight() {
+													S:Cowl(option=5) { }
+												}
+											}
+										}
+										N:Frame(angle=30, option=1) {
+											N:Jet(effect=4, angle=-120, power=SJ) { }
+										}
+										N:Chip() { }
+										S:Weight() {
+											S:Cowl(option=5) { }
+										}
+									}
+									E:Rudder(name=S2) {
+										N:Frame(angle=30, option=1) {
+											N:Jet(effect=4, angle=-120, power=SJ) { }
+										}
+										N:Trim(angle=-90) {
+											S:Chip() {
+												S:Weight() {
+													S:Cowl(option=5) { }
+												}
+											}
+										}
+										N:Chip() { }
+										S:Weight() {
+											S:Cowl(option=5) { }
+										}
+									}
+								}
+							}
+						}
+						E:Trim(angle=RA) { }
+						W:Trim(angle=RA) { }
+					}
+					N:Chip(angle=YA) { }
+				}
+				N:Chip() {
+					N:Chip() {
+						N:Chip() {
+							N:Chip() {
+								N:Chip() {
+									N:Chip() { }
+									E:Rudder(name=S1) {
+										N:Frame(angle=30, option=1) {
+											N:Jet(effect=4, angle=-120, power=SJ) { }
+										}
+										N:Trim(angle=-90) {
+											S:Chip() {
+												S:Weight() {
+													S:Cowl(option=5) { }
+												}
+											}
+										}
+										N:Chip() { }
+										S:Weight() {
+											S:Cowl(option=5) { }
+										}
+									}
+									W:Rudder(name=S3) {
+										N:Trim(angle=-90) {
+											S:Chip() {
+												S:Weight() {
+													S:Cowl(option=5) { }
+												}
+											}
+										}
+										N:Frame(angle=30, option=1) {
+											N:Jet(effect=4, angle=-120, power=SJ) { }
+										}
+										N:Chip() { }
+										S:Weight() {
+											S:Cowl(option=5) { }
+										}
+									}
+								}
+							}
+						}
+						E:Trim(angle=RA) { }
+						W:Trim(angle=RA) { }
+					}
+					N:Chip(angle=XA) { }
+				}
+				S:Arm() { }
+			}
+			S:Frame(angle=-120, name=W) { }
+		}
+	}
+}
+Lua
+{
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+MKPH = 0
+
+function OnInit()
+	_SPLIT(1)
+end
+
+function OnFrame()
+	NKPH = _VEL(W) * 3.6
+	
+	if NKPH > MKPH then
+		MKPH = NKPH
+	end
+	
+	--XW = _EX(GYRO) * 300000
+	--YW = _EY(GYRO) * 300000
+	ZA = _EZ(GYRO)
+	
+	out(0,"‘“˜@‹ZŒ¤")
+	out(1, NKPH, "kph")
+	out(2, _WEIGHT(), "kg")
+	out(3, _FPS(), "fps")
+	out(4, "max ", MKPH, "kph")
+	out(5, _Y(W), "m")
+	
+	out(7, _VEL(S0)*3.6, "kph")
+	out(8, _VEL(S1)*3.6, "kph")
+	out(9, _VEL(S2)*3.6, "kph")
+	out(10, _VEL(S3)*3.6, "kph")
+	
+	
+	if _KEY(4) == 1 then
+		SJ = 167777216
+		MJ = 167777216
+	end
+	
+	if _KEYDOWN(15) == 1 and SJ ~= 0 then
+		SJ = 0
+		_SPLIT(S0)
+		_SPLIT(S1)
+		_SPLIT(S2)
+		_SPLIT(S3)
+	end
+end
+}

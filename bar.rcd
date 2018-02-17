@@ -1,0 +1,17 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Chip() {
+			N:Chip() {
+				N:Chip() { }
+			}
+		}
+	}
+}

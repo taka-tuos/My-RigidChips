@@ -1,0 +1,27 @@
+// [RCD] 
+Val
+{
+	VAR(default=0, max=100000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:RLW(angle=-180, power=VAR) {
+			W:Chip() { }
+			E:Chip() { }
+			S:Chip() { }
+			N:Chip() { }
+		}
+		W:Trim(angle=90) { }
+		N:Trim(angle=90) { }
+		E:Trim(angle=90) { }
+		S:Trim(angle=90) { }
+	}
+}
+Lua
+{function OnFrame()
+	VAR=1000000
+end}

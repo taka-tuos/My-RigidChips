@@ -1,0 +1,344 @@
+dmn = 0
+dmptr = {}
+bs = 8
+
+SMKN = 4
+RDCL = 16
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function pointget_t(p,loop)
+	local px=_PLAYERX(p)
+	local py=_PLAYERY(p)
+	local pz=_PLAYERZ(p)
+	local i
+	
+	local sel={
+		x_min=px,
+		x_max=px,
+	
+		y_min=py,
+		y_max=py,
+	
+		z_min=pz,
+		z_max=pz
+	}
+	
+	for i=1,loop do
+		px=_PLAYERX(p)
+		
+		py=_PLAYERY(p)
+		
+		pz=_PLAYERZ(p)
+		
+		sel.x_min=math.min(px,sel.x_min)
+		sel.x_max=math.max(px,sel.x_max)
+	
+		sel.y_min=math.min(py,sel.y_min)
+		sel.y_max=math.max(py,sel.y_max)
+		
+		sel.z_min=math.min(pz,sel.z_min)
+		sel.z_max=math.max(pz,sel.z_max)
+	end
+	
+	px=(sel.x_min+sel.x_max)/2
+	py=(sel.y_min+sel.y_max)/2
+	pz=(sel.z_min+sel.z_max)/2
+	
+	return px,py,pz
+end
+
+function box3d(ex,ey,ez,llen)
+	_MOVE3D(ex - llen, ey - llen, ez - llen)
+	_LINE3D(ex + llen, ey - llen, ez - llen)
+	_MOVE3D(ex - llen, ey + llen, ez - llen)
+	_LINE3D(ex + llen, ey + llen, ez - llen)
+	
+	_MOVE3D(ex - llen, ey - llen, ez - llen)
+	_LINE3D(ex - llen, ey + llen, ez - llen)
+	_MOVE3D(ex + llen, ey - llen, ez - llen)
+	_LINE3D(ex + llen, ey + llen, ez - llen)
+	
+	
+	_MOVE3D(ex - llen, ey - llen, ez + llen)
+	_LINE3D(ex + llen, ey - llen, ez + llen)
+	_MOVE3D(ex - llen, ey + llen, ez + llen)
+	_LINE3D(ex + llen, ey + llen, ez + llen)
+	
+	_MOVE3D(ex - llen, ey - llen, ez + llen)
+	_LINE3D(ex - llen, ey + llen, ez + llen)
+	_MOVE3D(ex + llen, ey - llen, ez + llen)
+	_LINE3D(ex + llen, ey + llen, ez + llen)
+	
+	
+	_MOVE3D(ex - llen, ey - llen, ez + llen)
+	_LINE3D(ex - llen, ey - llen, ez - llen)
+	_MOVE3D(ex - llen, ey + llen, ez + llen)
+	_LINE3D(ex - llen, ey + llen, ez - llen)
+	_MOVE3D(ex + llen, ey - llen, ez + llen)
+	_LINE3D(ex + llen, ey - llen, ez - llen)
+	_MOVE3D(ex + llen, ey + llen, ez + llen)
+	_LINE3D(ex + llen, ey + llen, ez - llen)
+end
+
+function ramiel3d(ex,ey,ez,llen)
+	_MOVE3D(math.cos((math.pi*2/RDCL))*llen+ex,math.sin((math.pi*2/RDCL))*llen+ey,ez)
+	for i=0,RDCL do
+		_LINE3D(math.cos((math.pi*2/RDCL)*i)*llen+ex,math.sin((math.pi*2/RDCL)*i)*llen+ey,ez)
+	end
+	
+	_MOVE3D(ex,math.cos((math.pi*2/RDCL))*llen+ey,math.sin((math.pi*2/RDCL))*llen+ez)
+	for i=0,RDCL do
+		_LINE3D(ex,math.cos((math.pi*2/RDCL)*i)*llen+ey,math.sin((math.pi*2/RDCL)*i)*llen+ez)
+	end
+	
+	_MOVE3D(ex,math.cos((math.pi*2/RDCL))*llen+ey,math.sin((math.pi*2/RDCL))*llen+ez)
+	for i=0,RDCL do
+		_LINE3D(math.cos((math.pi*2/RDCL)*i)*llen+ex,ey,math.sin((math.pi*2/RDCL)*i)*llen+ez)
+	end
+end
+
+function dmiso(mbx,mby,mbz,rx,ry,rz,yx,yy,yz,xm,ym,zm)
+	_SETCOLOR(16777215)
+	
+	r1x,r1y,r1z = rx-xm,ry-ym,rz-zm
+	r2x,r2y,r2z = rx+xm,ry+ym,rz+zm
+	
+	_MOVE3D(r1x+mbx,r1y+mby,r1z+mbz)
+	_LINE3D(r2x+mbx,r2y+mby,r2z+mbz)
+	
+	_MOVE3D(r1x+rx*0.2+mbx,r1y+ry*0.2+mby,r1z+rz*0.2+mbz)
+	_LINE3D(r2x+rx*0.2+mbx,r2y+ry*0.2+mby,r2z+rz*0.2+mbz)
+	
+	_MOVE3D(r1x+yx*0.2+mbx,r1y+yy*0.2+mby,r1z+yz*0.2+mbz)
+	_LINE3D(r2x+yx*0.2+mbx,r2y+yy*0.2+mby,r2z+yz*0.2+mbz)
+	
+	_MOVE3D(r1x+yx*0.2+rx*0.2+mbx,r1y+yy*0.2+ry*0.2+mby,r1z+yz*0.2+rz*0.2+mbz)
+	_LINE3D(r2x+yx*0.2+rx*0.2+mbx,r2y+yy*0.2+ry*0.2+mby,r2z+yz*0.2+rz*0.2+mbz)
+	
+	
+	_MOVE3D(r1x+mbx,r1y+mby,r1z+mbz)
+	_LINE3D(r1x+rx*0.2+mbx,r1y+ry*0.2+mby,r1z+rz*0.2+mbz)
+	
+	ex = (r1x) - (r1x+rx*0.1) + mbx
+	
+	_MOVE3D(r1x+rx*0.2+mbx,r1y+ry*0.2+mby,r1z+rz*0.2+mbz)
+	_LINE3D(r1x+yx*0.2+rx*0.2+mbx,r1y+yy*0.2+ry*0.2+mby,r1z+yz*0.2+rz*0.2+mbz)
+	
+	ey = (r1y) - (r1y+yy*0.1+ry*0.1) + mby
+	
+	_MOVE3D(r1x+mbx,r1y+mby,r1z+mbz)
+	_LINE3D(r1x+yx*0.2+mbx,r1y+yy*0.2+mby,r1z+yz*0.2+mbz)
+	
+	_MOVE3D(r1x+yx*0.2+mbx,r1y+yy*0.2+mby,r1z+yz*0.2+mbz)
+	_LINE3D(r1x+yx*0.2+rx*0.2+mbx,r1y+yy*0.2+ry*0.2+mby,r1z+yz*0.2+rz*0.2+mbz)
+	
+	
+	_MOVE3D(r2x+mbx,r2y+mby,r2z+mbz)
+	_LINE3D(r2x+rx*0.2+mbx,r2y+ry*0.2+mby,r2z+rz*0.2+mbz)
+	
+	_MOVE3D(r2x+rx*0.2+mbx,r2y+ry*0.2+mby,r2z+rz*0.2+mbz)
+	_LINE3D(r2x+yx*0.2+rx*0.2+mbx,r2y+yy*0.2+ry*0.2+mby,r2z+yz*0.2+rz*0.2+mbz)
+	
+	_MOVE3D(r2x+mbx,r2y+mby,r2z+mbz)
+	_LINE3D(r2x+yx*0.2+mbx,r2y+yy*0.2+mby,r2z+yz*0.2+mbz)
+	
+	_MOVE3D(r2x+yx*0.2+mbx,r2y+yy*0.2+mby,r2z+yz*0.2+mbz)
+	_LINE3D(r2x+yx*0.2+rx*0.2+mbx,r2y+yy*0.2+ry*0.2+mby,r2z+yz*0.2+rz*0.2+mbz)
+	
+	rx,ry,rz=-rx,-ry,-rz
+	
+	r1x,r1y,r1z = rx-xm,ry-ym,rz-zm
+	r2x,r2y,r2z = rx+xm,ry+ym,rz+zm
+
+	
+	_MOVE3D(r1x+mbx,r1y+mby,r1z+mbz)
+	_LINE3D(r2x+mbx,r2y+mby,r2z+mbz)
+	
+	_MOVE3D(r1x+rx*0.2+mbx,r1y+ry*0.2+mby,r1z+rz*0.2+mbz)
+	_LINE3D(r2x+rx*0.2+mbx,r2y+ry*0.2+mby,r2z+rz*0.2+mbz)
+	
+	_MOVE3D(r1x+yx*0.2+mbx,r1y+yy*0.2+mby,r1z+yz*0.2+mbz)
+	_LINE3D(r2x+yx*0.2+mbx,r2y+yy*0.2+mby,r2z+yz*0.2+mbz)
+	
+	_MOVE3D(r1x+yx*0.2+rx*0.2+mbx,r1y+yy*0.2+ry*0.2+mby,r1z+yz*0.2+rz*0.2+mbz)
+	_LINE3D(r2x+yx*0.2+rx*0.2+mbx,r2y+yy*0.2+ry*0.2+mby,r2z+yz*0.2+rz*0.2+mbz)
+	
+	
+	_MOVE3D(r1x+mbx,r1y+mby,r1z+mbz)
+	_LINE3D(r1x+rx*0.2+mbx,r1y+ry*0.2+mby,r1z+rz*0.2+mbz)
+	
+	_MOVE3D(r1x+rx*0.2+mbx,r1y+ry*0.2+mby,r1z+rz*0.2+mbz)
+	_LINE3D(r1x+yx*0.2+rx*0.2+mbx,r1y+yy*0.2+ry*0.2+mby,r1z+yz*0.2+rz*0.2+mbz)
+	
+	_MOVE3D(r1x+mbx,r1y+mby,r1z+mbz)
+	_LINE3D(r1x+yx*0.2+mbx,r1y+yy*0.2+mby,r1z+yz*0.2+mbz)
+	
+	_MOVE3D(r1x+yx*0.2+mbx,r1y+yy*0.2+mby,r1z+yz*0.2+mbz)
+	_LINE3D(r1x+yx*0.2+rx*0.2+mbx,r1y+yy*0.2+ry*0.2+mby,r1z+yz*0.2+rz*0.2+mbz)
+	
+	
+	_MOVE3D(r2x+mbx,r2y+mby,r2z+mbz)
+	_LINE3D(r2x+rx*0.2+mbx,r2y+ry*0.2+mby,r2z+rz*0.2+mbz)
+	
+	_MOVE3D(r2x+rx*0.2+mbx,r2y+ry*0.2+mby,r2z+rz*0.2+mbz)
+	_LINE3D(r2x+yx*0.2+rx*0.2+mbx,r2y+yy*0.2+ry*0.2+mby,r2z+yz*0.2+rz*0.2+mbz)
+	
+	_MOVE3D(r2x+mbx,r2y+mby,r2z+mbz)
+	_LINE3D(r2x+yx*0.2+mbx,r2y+yy*0.2+mby,r2z+yz*0.2+mbz)
+	
+	_MOVE3D(r2x+yx*0.2+mbx,r2y+yy*0.2+mby,r2z+yz*0.2+mbz)
+	_LINE3D(r2x+yx*0.2+rx*0.2+mbx,r2y+yy*0.2+ry*0.2+mby,r2z+yz*0.2+rz*0.2+mbz)
+end
+
+function nvec(x,y,z)
+	len = _LEN3(x,y,z)
+	
+	if len < 0.000001 then return x,y,z end
+	
+	len = 1 / len
+	x = x * len
+	y = y * len
+	z = z * len
+	
+	return x,y,z
+end
+
+function OnFrame()
+	if _KEYDOWN(6) == 1 then
+		dmptr[dmn+1] = {}
+		dmptr[dmn+1].mbx = _X(MB)
+		dmptr[dmn+1].mby = _Y(MB)
+		dmptr[dmn+1].mbz = _Z(MB)
+		dmptr[dmn+1].rx = _XX(MB)
+		dmptr[dmn+1].ry = _XY(MB)
+		dmptr[dmn+1].rz = _XZ(MB)
+		dmptr[dmn+1].yx = _YX(MB)
+		dmptr[dmn+1].yy = _YY(MB)
+		dmptr[dmn+1].yz = _YZ(MB)
+		dmptr[dmn+1].xm = _ZX(MB)
+		dmptr[dmn+1].ym = _ZY(MB)
+		dmptr[dmn+1].zm = _ZZ(MB)
+		dmptr[dmn+1].px = _ZX(MB)
+		dmptr[dmn+1].py = _ZY(MB)
+		dmptr[dmn+1].pz = _ZZ(MB)
+		dmptr[dmn+1].pbx = {}
+		dmptr[dmn+1].pby = {}
+		dmptr[dmn+1].pbz = {}
+		for i=1,SMKN do
+			dmptr[dmn+1].pbx[i] = _X(MB)
+			dmptr[dmn+1].pby[i] = _Y(MB)
+			dmptr[dmn+1].pbz[i] = _Z(MB)
+		end
+		dmptr[dmn+1].sn = 0
+		dmptr[dmn+1].sf = 1
+		dmptr[dmn+1].bs = 0
+		dmn = dmn + 1
+	end
+	
+	dmiso(_X(MB),_Y(MB),_Z(MB),_XX(MB),_XY(MB),_XZ(MB),_YX(MB),_YY(MB),_YZ(MB),_ZX(MB),_ZY(MB),_ZZ(MB))
+	
+	local n = 0
+	
+	for i=1,dmn do
+		if dmptr[i].sf == 1 then
+			dmiso(dmptr[i].mbx,dmptr[i].mby,dmptr[i].mbz,dmptr[i].rx,dmptr[i].ry,dmptr[i].rz,dmptr[i].yx,dmptr[i].yy,dmptr[i].yz,dmptr[i].xm,dmptr[i].ym,dmptr[i].zm)
+			_SETCOLOR(8421504)
+			dmptr[i].pbx[SMKN] = dmptr[i].mbx
+			dmptr[i].pby[SMKN] = dmptr[i].mby
+			dmptr[i].pbz[SMKN] = dmptr[i].mbz
+			dmptr[i].mbx = dmptr[i].mbx - dmptr[i].xm * 16
+			dmptr[i].mby = dmptr[i].mby - dmptr[i].ym * 16
+			dmptr[i].mbz = dmptr[i].mbz - dmptr[i].zm * 16
+			
+			dmptr[i].sn = dmptr[i].sn + _LEN3(dmptr[i].xm * 16 ,dmptr[i].ym * 16,dmptr[i].zm * 16)
+			
+			out(i,dmptr[i].sn)
+			
+			if dmptr[i].sn > 1024 then dmptr[i].sf = 0 end
+			n = n + 1
+			
+			for j=1,SMKN-1 do
+				vx,vy,vz = dmptr[i].rx,dmptr[i].ry,dmptr[i].rz
+				
+				_MOVE3D(dmptr[i].pbx[j]+vx*1.2,dmptr[i].pby[j]+vy*1.2,dmptr[i].pbz[j]+vz*1.2)
+				_LINE3D(dmptr[i].pbx[j+1]+vx*1.2,dmptr[i].pby[j+1]+vy*1.2,dmptr[i].pbz[j+1]+vz*1.2)
+				
+				_MOVE3D(dmptr[i].pbx[j]-vx*1.2,dmptr[i].pby[j]-vy*1.2,dmptr[i].pbz[j]-vz*1.2)
+				_LINE3D(dmptr[i].pbx[j+1]-vx*1.2,dmptr[i].pby[j+1]-vy*1.2,dmptr[i].pbz[j+1]-vz*1.2)
+			end
+			
+			for j=1,SMKN-1 do
+				dmptr[i].pbx[j] = dmptr[i].pbx[j+1]
+				dmptr[i].pby[j] = dmptr[i].pby[j+1]
+				dmptr[i].pbz[j] = dmptr[i].pbz[j+1]
+			end
+		end
+	end
+	
+	local pln = _PLAYERS()
+	local pmyid = _PLAYERMYID()
+	
+	ml = 0
+	mp = 0
+	mpx,mpy,mpz = 0,50,0
+	
+	for p = 1, pln, 1 do
+		if _PLAYERARMS(p) ~= 0 and _PLAYERID(p) ~= pmyid then
+			ex, ey, ez = pointget_t(p,100)
+			_SETCOLOR(16711680)
+			box3d(ex,ey,ez,bs)
+			l = _LEN3(ex,ey,ez)
+			if ml < l then
+				ml = l
+				mp = p
+				mpx,mpy,mpz = ex,ey,ez
+			end
+		end
+	end
+	
+	for i=1,dmn do
+		if dmptr[i].sf ~= 0 and ml ~= 0 then
+			lox = mpx - dmptr[i].mbx
+			loy = mpy - dmptr[i].mby
+			loz = mpz - dmptr[i].mbz
+			
+			vx,vy,vz = nvec(lox,loy,loz)
+			
+			nx = vx*_ZX(MB)+vy*_ZY(MB)+vz*_ZZ(MB)
+			ac = math.acos(nx / (_LEN3(vx,vy,vz) * _LEN3(_ZX(MB),_ZY(MB),_ZZ(MB))))
+			
+			if math.deg(ac) < 180-60 then
+				vx = -(dmptr[i].px * 0.9 + vx * 0.1)
+				vy = -(dmptr[i].py * 0.9 + vy * 0.1)
+				vz = -(dmptr[i].pz * 0.9 + vz * 0.1)
+				
+				dmptr[i].xm,dmptr[i].ym,dmptr[i].zm = vx,vy,vz
+				dmptr[i].yx,dmptr[i].yy,dmptr[i].yz = vx,vz,vy
+				dmptr[i].rx,dmptr[i].ry,dmptr[i].rz = vz,vy,vx
+				
+				dmptr[i].px = vx
+				dmptr[i].py = vy
+				dmptr[i].pz = vz
+				
+				if _LEN3(lox,loy,loz) < 40 then
+					if dmptr[i].bs == 0 then dmptr[i].bs = 30 end
+					dmptr[i].sf = dmptr[i].bs
+					_SETCOLOR(16711680)
+					ramiel3d(dmptr[i].mbx,dmptr[i].mby,dmptr[i].mbz,dmptr[i].bs)
+					dmptr[i].bs = dmptr[i].bs - 1
+					if dmptr[i].bs == 0 then dmptr[i].sf = 0 end
+				end
+			end
+			n = n + 1
+		end
+	end
+	
+	if n == 0 then dmn = 0 end
+end

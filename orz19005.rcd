@@ -1,0 +1,431 @@
+Val{
+	eng(min=-2500,max=50000)
+	str(min=-45,max=45)
+	RLW(min=-50000000,max=50000000)
+	K1(min=-1,max=1,step=0.200000003,disp=0)
+	brkF(max=500)
+	brkR(max=500)
+	K_eng(min=-10,max=10,step=10,disp=0)
+	k_brk(min=-10,max=10,step=10,disp=0)
+	rb(default=100000,disp=0)
+	ang_sen(default=90,min=-360,disp=0)
+	str_cowl(default=55,min=15,max=95,disp=0)
+	efct(default=61691,disp=0)
+	rider(max=61691,disp=0)
+	stand(max=61691,disp=0)
+	col1(default=128,max=16777215,disp=0)
+	col2(default=16777215,disp=0)
+	col_wheel(default=128,disp=0)
+	col3(default=2105376,disp=0)
+	hang_on(default=180,min=160,max=200,disp=0)
+	hiza_R(default=90,min=60,max=120,disp=0)
+	hiza_L(default=90,min=60,max=120,disp=0)
+	ude_R(default=80,min=60,max=120,disp=0)
+	ude_L(default=80,min=60,max=120,disp=0)
+	head(min=-45,max=45,disp=0)
+	rd(default=180,min=135,max=225,disp=0)
+	bank(min=-10,max=10)
+}
+Key{
+	0:K_eng(step=1)
+	1:K_eng(step=-1)
+	2:K1(step=-0.200000003)
+	3:K1(step=0.200000003)
+	7:k_brk(step=1)
+}
+Body{
+	Core(Color=#202020){
+		S:Frame(Color=#202020,Angle=150,Option=1){
+			S:RLW(Color=#202020,Angle=150,Power=RLW,Brake=rb){}
+		}
+		N:Frame(Color=#202020,Angle=-170){
+			W:Cowl(Color=col2,Angle=-120,Option=3){}
+			N:Cowl(Angle=90,Option=1,Effect=efct){
+				N:Cowl(Angle=165,Option=1,Effect=efct){
+					N:Cowl(Color=col2,Angle=-130,Option=2){
+						W:Cowl(Color=col3,Angle=110,Option=2){}
+						E:Cowl(Color=col3,Angle=110,Option=2){}
+					}
+				}
+			}
+			E:Cowl(Color=col2,Angle=-120,Option=4){}
+			S:TrimF(Angle=90,Damper=1,Spring=1,Option=1){
+				N:Rudder(Angle=-107,Damper=0.3,Spring=0.09){
+					N:RudderF(Name=fork,Angle=-40,Option=1){
+						W:TrimF(Name=fhub,Angle=str,Damper=0.2,Spring=0.04,Option=1){
+							W:RudderF(Angle=-140,Option=1){
+								W:Wheel(Name=WF,Color=col_wheel,Angle=180,Brake=brkF,Effect=1.5){}
+								S:Cowl(Angle=90,Option=1,Effect=efct){
+									E:Cowl(Angle=65,Option=1,Effect=efct){
+										E:Cowl(Angle=140,Option=1,Effect=efct){
+											E:Cowl(Angle=165,Option=1,Effect=efct){
+												N:Cowl(Angle=76,Option=1,Effect=efct){
+													N:Cowl(Angle=-151,Option=1,Effect=efct){
+														N:Cowl(Angle=-104,Option=1,Effect=efct){
+															W:Cowl(Angle=10,Option=1){}
+														}
+													}
+												}
+											}
+										}
+									}
+									W:Cowl(Angle=110,Option=1,Effect=efct){
+										W:Cowl(Angle=-155,Option=1,Effect=efct){
+											W:Cowl(Angle=-110,Option=1,Effect=efct){
+												N:Cowl(Angle=-85,Option=1,Effect=efct){
+													N:Cowl(Angle=173,Option=1,Effect=efct){
+														N:Cowl(Color=col1,Angle=-177,Option=3){}
+													}
+												}
+												N:Cowl(Angle=-95,Option=1,Effect=efct){
+													N:Cowl(Angle=-173,Option=1,Effect=efct){
+														N:Cowl(Color=col1,Angle=177,Option=3){}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				N:Rudder(Color=#202020,Angle=49,Damper=0.3,Spring=0.15){
+					N:Wheel(Name=WR,Color=col_wheel,Damper=1,Spring=0.3,Power=-eng,Brake=brkR,Effect=2.2){}
+					N:Cowl(Angle=-5,Option=1,Effect=efct){
+						N:Cowl(Angle=-170,Option=1,Effect=efct){
+							N:Cowl(Angle=175,Option=1,Effect=efct){
+								E:Cowl(Angle=-85,Option=1,Effect=efct){
+									N:Cowl(Angle=-115,Option=1,Effect=efct){
+										N:Cowl(Angle=-110,Option=1,Effect=efct){
+											N:Cowl(Angle=-150,Option=1,Effect=efct){
+												W:Cowl(Color=#808080,Angle=-85,Option=4){}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					N:Cowl(Angle=5,Option=1,Effect=efct){
+						N:Cowl(Angle=170,Option=1,Effect=efct){
+							N:Cowl(Angle=-175,Option=1,Effect=efct){
+								E:Cowl(Angle=85,Option=1,Effect=efct){
+									N:Cowl(Angle=115,Option=1,Effect=efct){
+										N:Cowl(Angle=110,Option=1,Effect=efct){
+											N:Cowl(Angle=150,Option=1,Effect=efct){
+												W:Cowl(Color=#808080,Angle=85,Option=4){}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					E:Cowl(Option=1,Effect=efct){
+						N:Cowl(Option=1,Effect=efct){
+							W:Cowl(Angle=-165,Option=1,Effect=efct){
+								W:Cowl(Angle=150,Option=1,Effect=efct){
+									W:Cowl(Angle=105,Option=1,Effect=efct){
+										N:Cowl(Angle=-65,Option=1,Effect=efct){
+											N:Cowl(Angle=-140,Option=1,Effect=efct){
+												N:Cowl(Angle=-35,Option=1,Effect=stand){}
+												N:Cowl(Angle=-125,Option=1,Effect=stand){}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					S:Chip(Color=#202020,Angle=rd){}
+				}
+			}
+			S:Cowl(Color=#202020,Angle=-150,Option=1,Effect=efct){
+				N:Cowl(Angle=-75,Option=1,Effect=efct,User1=1){
+					N:Cowl(Angle=140,Option=1,Effect=efct,User1=1){
+						N:Cowl(Color=#000000,Angle=-170,Effect=#0050FB,User1=1){
+							W:Cowl(Color=col2,Angle=120,Option=4){
+								S:Cowl(Color=col2,Angle=105,Option=4){}
+								E:Cowl(Color=col3,Angle=60,Option=3){}
+							}
+							E:Cowl(Color=col2,Angle=120,Option=3){
+								S:Cowl(Color=col2,Angle=105,Option=3){}
+								W:Cowl(Color=col3,Angle=60,Option=4){
+									W:Cowl(Angle=150,Option=1,Effect=efct){
+										W:Cowl(Angle=-85,Option=1,Effect=efct){
+											W:Cowl(Angle=165,Option=1,Effect=efct){
+												W:Cowl(Angle=str_cowl,Option=1,Effect=efct){
+													S:Cowl(Angle=-105,Option=1,Effect=efct){
+														S:Cowl(Angle=-150,Option=1,Effect=efct){
+															S:Cowl(Color=#808080,Angle=-15,Option=4){}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Cowl(Angle=140,Option=1,Effect=efct){
+					S:Cowl(Angle=145,Option=1,Effect=efct){
+						S:Cowl(Color=col2,Angle=-105){
+							W:Cowl(Color=col2,Angle=-105,Option=4){
+								N:Cowl(Color=col1,Angle=-5,Option=3){
+									E:Cowl(Color=#202020,Angle=-125,Option=3){}
+								}
+								S:Cowl(Color=col1,Angle=-95,Option=4){}
+								W:Cowl(Color=col1,Angle=180,Option=3){}
+							}
+							E:Cowl(Color=col2,Angle=-105,Option=3){
+								N:Cowl(Color=col1,Angle=-5,Option=4){
+									W:Cowl(Color=#202020,Angle=-125,Option=4){}
+								}
+								S:Cowl(Color=col1,Angle=-95,Option=3){}
+								E:Cowl(Color=col1,Angle=180,Option=4){}
+							}
+						}
+					}
+				}
+			}
+			N:Frame(Color=col2,Angle=-10){
+				W:Cowl(Color=col2,Angle=-150,Option=4){}
+				E:Cowl(Color=col2,Angle=-150,Option=3){}
+				N:Cowl(Color=#202020,Angle=-150,Option=5){}
+				S:RudderF(Color=#202020){
+					S:RudderF(Color=#202020,Angle=hang_on,Option=1){
+						S:RudderF(Name=HITO,Angle=-hang_on){
+							S:Cowl(Color=#202020,Angle=-175,Effect=rider){}
+							S:Cowl(Angle=-115,Option=1,Effect=efct){
+								S:Cowl(Angle=-130,Option=1,Effect=efct){
+									S:Cowl(Color=col2,Angle=-115,Option=3,Effect=rider){
+										E:Cowl(Color=#202020,Angle=-hiza_R,Option=4,Effect=rider){}
+										W:Cowl(Color=#202020,Angle=-hiza_L,Option=3,Effect=rider){}
+									}
+									S:Cowl(Color=col2,Angle=-115,Option=4,Effect=rider){}
+								}
+							}
+							N:Cowl(Color=col2,Angle=120,Option=4,Effect=rider){
+								E:Cowl(Color=col1,Angle=ude_R,Option=4,Effect=rider){}
+								W:Cowl(Color=col2,Angle=ude_L,Option=3,Effect=rider){}
+								N:Cowl(Color=col1,Angle=-180,Option=3,Effect=rider){}
+							}
+							N:Cowl(Color=#800000,Angle=130,Option=1,Effect=efct){
+								N:Cowl(Color=#800000,Angle=-5,Option=1,Effect=efct){
+									W:Cowl(Color=#800000,Angle=105,Option=1,Effect=efct){
+										W:Cowl(Color=#800000,Angle=150,Option=1,Effect=efct){
+											W:Cowl(Color=#800000,Angle=head,Option=1,Effect=efct){
+												W:Cowl(Color=#800000,Angle=-150,Option=1,Effect=efct){
+													W:Cowl(Color=#202020,Angle=-105,Option=2,Effect=rider){}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				N:Cowl(Color=col2,Angle=180){}
+			}
+		}
+	}
+}
+Lua{
+
+
+
+--require"Nero/package.lua"
+
+col=4
+machinestate=1
+ridervisible=1
+wheelkei=0.6
+crush=1
+
+function main()
+	
+	if _KEYDOWN(4)>0 and VEL(0)<3 then ridervisible=-ridervisible end
+	if _KEYDOWN(15)>0 then crush=-crush end
+
+	if machinestate<42 and ridervisible>0 then
+
+
+		if math.sqrt(_VX()^2+_VY()^2)/(VEL(0)+10)>0.45 and crush>0 then machinestate=42 end
+
+		BANK=BANK+K1*0.5
+	
+		katamuki=math.deg(-_AZ())
+
+		angle=katamuki-BANK*4.5
+
+		RLW=angle*3000 + _WZ()*3000
+
+		STR=BANK*1*math.max(0,1-((-_VZ())^1.1)*0.005)
+		STR_COWL=STR+55
+
+		tcs_r=_WY(WR)/(-3.1416*2)  * wheelkei *3.1416 - VEL(WR)
+		tcs_f=_WY(WF)/(3.1416*2)  * wheelkei *3.1416 - VEL(WF)
+
+		tcs_keisu=3000
+
+		if VEL(WR)*3.6>150 then
+			th_keisu=4000
+		else
+			th_keisu=2000 -math.max(1,(math.abs(BANK^2)*19))
+		end
+
+		ENG=math.max(0,K_ENG*th_keisu - tcs_r*tcs_keisu*_KEY(0))
+
+		if _KEY(1)>0 then ENG=K_ENG*250 end
+
+		BRKF=K_BRK*25 + tcs_f*20*_KEY(7)
+		BRKR=K_BRK*5 + (tcs_r*20 - math.abs(_VY(WR)*500) )*_KEY(7)+_KEY(8)*50
+
+		RD=180+BANK*3
+
+		RIDER=0
+		STAND=61691
+
+		HEAD=BANK*3
+
+		if math.abs(BANK)>5 then
+
+			HANG_ON=HANG_ON-limit(1,-1,HANG_ON-(BANK*2+180))	
+			HIZA_R=HIZA_R-limit(1.5,-1.5,HIZA_R-(BANK*3+90))
+			HIZA_L=HIZA_L-limit(1.5,-1.5,HIZA_L-(-BANK*3+90))
+			--if _KEY(0)>0 then K1=K1+hugou(K1)*-0.2 end
+
+			if BANK>0 then
+
+				UDE_R=UDE_R-limit(1.75,-1.75,UDE_R-(BANK*3.5+80))
+				UDE_L=UDE_L-limit(1,-1,UDE_L-(-BANK*2+80))
+
+			else
+
+				UDE_R=UDE_R-limit(1.75,-1.75,UDE_R-(BANK*2+80))
+				UDE_L=UDE_L-limit(1,-1,UDE_L-(-BANK*3.5+80))
+
+			end
+
+
+		else
+
+
+			HANG_ON=HANG_ON-limit(1.5,-1.5,HANG_ON-180)	
+			HIZA_R=HIZA_R-limit(1.5,-1.5,HIZA_R-90)
+			HIZA_L=HIZA_L-limit(1.5,-1.5,HIZA_L-90)
+			UDE_R=UDE_R-limit(1.75,-1.75,UDE_R-80)
+			UDE_L=UDE_L-limit(1.75,-1.75,UDE_L-80)
+
+		end
+
+	elseif machinestate<42 then
+		RIDER=61691
+		STAND=0
+		katamuki=math.deg(-_AZ())
+		angle=katamuki
+		RLW=angle*3000
+		BRKR=200
+		BRKF=200
+
+	else 
+		_BYE(HITO)
+		RLW=0
+		ENG=0
+		BRKR=0
+		BRKF=0
+	end
+
+
+	col=col+_KEYDOWN(14)
+
+	if math.mod(col+2,4)==0 then
+
+		COL1=tonumber("FFFFFF",16)
+		COL2=tonumber("000080",16)
+		COL3=tonumber("202020",16)
+		COL_WHEEL=tonumber("000080",16)
+
+		out(1,"[ Q ] : チームカラー選択　[ YAMABA ]")
+
+	elseif math.mod(col+1,4)==0 then
+
+		COL1=tonumber("101010",16)
+		COL2=tonumber("20FF00",16)
+		COL3=tonumber("202020",16)
+		COL_WHEEL=tonumber("202020",16)
+
+		out(1,"[ Q ] : チームカラー選択　[ KAWASEMI ]")
+
+	elseif math.mod(col,4)==0 then
+
+		COL2=tonumber("FFFFFF",16)
+		COL1=tonumber("801010",16)
+		COL3=tonumber("101080",16)
+		COL_WHEEL=tonumber("A0A000",16)
+
+		out(1,"[ Q ] : チームカラー選択　[ HENDA ]")
+
+	elseif math.mod(col+3,4)==0 then
+
+		COL3=tonumber("0080FF",16)
+		COL1=tonumber("100070",16)
+		COL2=tonumber("FFFFFF",16)
+		COL_WHEEL=tonumber("FFFFFF",16)
+
+		out(1,"[ Q ] : チームカラー選択　[ SUZURI ]")
+
+	end
+
+
+	out(0,string.format("&%03d",math.abs(_VZ()*3.6)) , " km/h")
+
+	if crush>0 then
+		out(2,"[ W ] : 転倒再現モード　ON ■□ OFF")
+	else
+		out(2,"[ W ] : 転倒再現モード　ON □■ OFF")
+	end
+
+	out(3,"[ Z ] : ライダー降車/乗車")
+
+	out(5,"左右キーで傾きを操作します。")
+
+	
+	
+
+end
+
+function limit(a,b,val)
+
+	if val>0 then return math.min(a,val)
+	elseif val<0 then return math.max(b,val)
+	else return val
+	end
+
+end
+
+v2=_VZ()
+v1=_VZ()
+
+function VEL(chip)
+
+	vel=math.sqrt(_VX(chip)^2+_VY(chip)^2+_VZ(chip)^2)
+
+	return vel
+
+end
+
+function hugou(val)
+
+	if val>=0 then return 1
+	elseif val<0 then return -1
+	end
+
+end
+
+
+}

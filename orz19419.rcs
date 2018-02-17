@@ -1,0 +1,158 @@
+--[[
+目次
+≪オフ≫
+
+
+
+≪オン≫
+SET1　AtoB
+
+
+]]
+
+
+SETTING = 1
+n = 2
+m = 1
+CH = 0.5
+KYORI = 10
+ZOOM = 45
+
+function OnFrame()
+-------------------------------------------------------------------------------------
+if _PLAYERID(n) ~=  _PLAYERMYID() then
+	math.randomseed(1519)
+	local x = _PLAYERX(n)
+	math.randomseed(1519)
+	local y = _PLAYERY(n)
+	math.randomseed(1519)
+	local z = _PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	P1X = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	P1Y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a 
+	P1Z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+elseif _PLAYERID(n) == _PLAYERMYID() then
+	P1X = _X(0)
+	P1Y = _Y(0)
+	P1Z = _Z(0)
+end
+
+if _PLAYERID(m) ~=  _PLAYERMYID() then
+	math.randomseed(1519)
+	local x = _PLAYERX(m)
+	math.randomseed(1519)
+	local y = _PLAYERY(m)
+	math.randomseed(1519)
+	local z = _PLAYERZ(m)
+	
+	local a = math.pow(_PLAYERCHIPS(m), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	P2X = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	P2Y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	P2Z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+elseif _PLAYERID(m) == _PLAYERMYID() then
+	P2X = _X(0)
+	P2Y = _Y(0)
+	P2Z = _Z(0)
+end
+
+-------------------------------------------------------------------------------------
+--AtoBカメラブロック--
+
+
+AX,BY,CZ  = P1X-P2X,P1Y-P2Y+CH,P1Z-P2Z
+
+VV = math.sqrt((AX*AX)+(BY*BY)+(CZ*CZ))+0.0000001
+
+VS = (VV + KYORI) /VV
+
+VX,VY,VZ = AX*VS+P2X,BY*VS+P2Y,CZ*VS+P2Z
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------
+--オフライン時--
+if _PLAYERS() == 0 then
+	out(0,"Off-line")
+
+--オンライン時--
+elseif _PLAYERS() > 0 then
+
+	SETTING = math.mod(SETTING+_SKEYDOWN(0),2)
+	
+	
+	if _PLAYERS() > 1 then
+--参照プレイヤー設定--
+n = n + (_KEYDOWN(12)-_KEYDOWN(10))
+m = m + (_KEYDOWN(13)-_KEYDOWN(11))
+if n < 1 then
+	n = _PLAYERS() - 1
+elseif　n > (_PLAYERS() - 1) then
+	n = 1
+end
+
+if m < 1 then
+	m = _PLAYERS() - 1
+elseif　m > (_PLAYERS() - 1) then
+	m = 1
+end
+
+--AtoBカメラ--
+		if SETTING == 1 then
+			_SETVIEW(VX,VY,VZ,P2X,P2Y,P2Z)
+			CH = CH +((_KEY(0)-_KEY(1))*0.1)
+			if _KEY(0) == 1and _KEY(1) == 1 then
+				CH = 0.5
+			end
+			
+			KYORI = KYORI+_KEY(9)-_KEY(6)
+			if _KEY(9) == 1 and _KEY(6) == 1 then
+				KYORI = 10
+			end
+
+			_SETVIEWZOOM(ZOOM)
+			ZOOM = ZOOM+((_KEY(5)-_KEY(8))*0.5)
+			if ZOOM > 99 then
+				ZOOM = 99
+			end
+
+			if ZOOM < 1 then
+				ZOOM = 1
+			end
+
+			if _KEY(5) == 1 and _KEY(8) == 1 then
+				ZOOM = 45
+			end
+
+		elseif SETTING == 0 then
+			
+
+
+			
+		end
+	end
+
+
+--オンライン時表示--
+	out(0,"On-line")
+	out(1,"視点プレイヤー ",n)
+	out(2,"参照プレイヤー ",m)
+
+
+end
+
+
+
+end

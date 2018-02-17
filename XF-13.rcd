@@ -1,0 +1,85 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Cowl() {
+			N:Cowl() {
+				N:Cowl() {
+					N:Cowl() {
+						N:Cowl() {
+							N:Cowl(option=5) {
+								N:Cowl(angle=90) {
+									E:Cowl(angle=85) {
+										E:Cowl() {
+											S:Cowl(angle=90) {
+												W:Cowl(option=5) { }
+												E:Cowl() {
+													E:Cowl() {
+														E:Cowl() {
+															E:Cowl() {
+																N:Cowl(angle=90) {
+																	E:Cowl(angle=-20) {
+																		S:Cowl(angle=90) { }
+																	}
+																}
+																E:Cowl() { }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									W:Cowl(angle=85) {
+										W:Cowl() {
+											S:Cowl(angle=90) {
+												E:Cowl(option=5) { }
+												W:Cowl() {
+													W:Cowl() {
+														W:Cowl() {
+															W:Cowl() {
+																N:Cowl(angle=90) {
+																	W:Cowl(angle=-20) {
+																		S:Cowl(angle=90) { }
+																	}
+																}
+																W:Cowl() { }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		S:Trim(angle=90) {
+			S:Chip() {
+				S:Chip() { }
+			}
+		}
+		S:Chip() {
+			E:Rudder(angle=40) {
+				E:Trim() {
+					E:Chip() { }
+				}
+			}
+			W:Rudder(angle=-40) {
+				W:Trim() {
+					W:Chip() { }
+				}
+			}
+		}
+	}
+}

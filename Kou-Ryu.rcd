@@ -1,0 +1,183 @@
+// [RCD] 
+Val
+{
+	A0(default=0, max=100000000000)
+	A1(default=0, max=100000000000)
+	A2(default=0, max=100000000000)
+	A3(default=0, max=100000000000)
+	A4(default=0, max=100000000000)
+	A5(default=0, max=100000000000)
+	A6(default=0, max=100000000000)
+	AB(default=0, min=-90, max=90)
+	G0(default=0, max=16777216, step=16777216)
+	G1(default=0, max=16777216, step=16777216)
+	G2(default=0, max=16777216, step=16777216)
+	G3(default=0, max=16777216, step=16777216)
+	G4(default=0, max=16777216, step=16777216)
+	G5(default=0, max=16777216, step=16777216)
+	G6(default=0, max=16777216, step=16777216)
+	G7(default=0, max=16777216, step=16777216)
+	G8(default=0, max=16777216, step=16777216)
+	G9(default=0, max=16777216, step=16777216)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+	V0(default=0, max=90)
+	V1(default=0, max=90)
+	V2(default=0, max=90)
+	V3(default=0, max=90)
+	V4(default=0, max=90)
+	V5(default=0, max=90)
+	V6(default=0, max=90)
+	V7(default=0, max=90)
+	V8(default=0, max=90)
+	V9(default=0, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, option=1, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, option=1, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, option=1, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, option=1, name=FS) { }
+		W:Weight(angle=90, option=2) {
+			W:Chip(angle=-90, option=1) {
+				W:Trim(angle=R) {
+					W:Chip() { }
+				}
+			}
+		}
+		E:Weight(angle=90, option=2) {
+			E:Chip(angle=-90) {
+				E:Trim(angle=R) {
+					E:Chip() { }
+				}
+			}
+		}
+		E:Chip() {
+			E:Trim(angle=R) {
+				E:Chip() { }
+			}
+		}
+		S:Jet(angle=90, power=-P) { }
+		S:Trim(angle=90) {
+			W:Rudder(angle=90) {
+				E:Trim(angle=0, spring=1, damper=1) {
+					E:Trim(spring=1, damper=1) {
+						E:Trim() {
+							E:Trim() {
+								N:Chip(angle=90) {
+									N:Trim(angle=V) { }
+								}
+								N:Chip(angle=-90) {
+									N:Trim(angle=-V) { }
+								}
+								S:Chip(angle=90) {
+									S:Trim(angle=V) { }
+								}
+								S:Chip(angle=-90) {
+									S:Trim(angle=-V) { }
+								}
+							}
+						}
+					}
+					W:Trim(angle=-90, spring=1, damper=1) {
+						E:Chip(spring=1, damper=1, name=CRE) {
+							W:Frame(angle=V0) {
+								W:Arm(option=95000, power=G0, angle=-V0, name=A0) { }
+							}
+							W:Frame(angle=V1) {
+								W:Arm(option=95000, power=G1, angle=-V1, name=A1) { }
+							}
+							W:Frame(angle=V2) {
+								W:Arm(option=95000, power=G2, angle=-V2, name=A2) { }
+							}
+							W:Frame(angle=V3) {
+								W:Arm(option=95000, power=G3, angle=-V3, name=A3) { }
+							}
+							W:Frame(angle=V4) {
+								W:Arm(option=95000, power=G4, angle=-V4, name=A4) { }
+							}
+							W:Frame(angle=V5) {
+								W:Arm(option=95000, power=G5, angle=-V5, name=A5) { }
+							}
+							W:Frame(angle=V6) {
+								W:Arm(option=95000, power=G6, angle=-V6, name=A6) { }
+							}
+							W:Frame(angle=V7) {
+								W:Arm(option=95000, power=G7, angle=-V7, name=A7) { }
+							}
+							W:Frame(angle=V8) {
+								W:Arm(option=95000, power=G8, angle=-V8, name=A8) { }
+							}
+							W:Frame(angle=V9) {
+								W:Arm(option=95000, power=G9, angle=-V9, name=A9) { }
+							}
+						}
+					}
+				}
+				E:Chip(angle=AB) { }
+				E:Chip(angle=-AB) { }
+			}
+		}
+		W:Chip() {
+			W:Trim(angle=R) {
+				W:Chip() { }
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/libccvx3.lua")
+require("daretoku_taka/libresume.lua")
+require("daretoku_taka/libgun.lua")
+require("daretoku_taka/libweapon.lua")
+
+_limitlist={1500,1800,2000,2200,2500,64512}
+
+_prvtbl = InitPRVTable()
+
+_prvtbl.p.limit = 400000
+_prvtbl.p.step  = 200000
+
+_prvtbl.r.tgt = 360
+_prvtbl.r.kp  = 8
+_prvtbl.r.ki  = 16
+_prvtbl.r.kd  = 4
+_prvtbl.r.il  = 30
+
+_prvtbl.v.tgt = 180
+_prvtbl.v.kp  = 64
+_prvtbl.v.ki  = 12
+_prvtbl.v.kd  = 4
+_prvtbl.v.il  = 60
+
+function OnInit()
+	CCVXOnInit({ Gun={func=_KEY,fire=7,op=95000,an=10,ang=60} })
+end
+
+function OnFrame()
+	CCVXOnFrame(true)
+
+	ShowSplash("Kou-Ryu")
+	
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
+	
+	P=p
+	R=r
+	V=-v
+	AB=b
+	
+	CheckLimit()
+	
+	XHUD.Draw()
+	
+	Weapon.Stat()
+end
+}

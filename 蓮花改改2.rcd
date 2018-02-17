@@ -1,0 +1,727 @@
+// [RCD] 
+Val
+{
+	DRE(default=0, max=16384)
+	ELON(default=0, min=-24, max=24, step=4)
+	ENGINE(default=0, max=307200, step=65536)
+	EVTR(default=0, min=-24, max=24, step=8)
+	FLAG(default=-90, min=-90, max=0, step=9)
+	G0(default=-45, min=-45, max=-5)
+	G1(default=-55, min=-55, max=0)
+	GUN1(default=0, max=65536, step=65536)
+	GUN2(default=0, max=65536, step=65536)
+	GUN3(default=0, max=65536, step=65536)
+	GUN4(default=0, max=65536, step=65536)
+	GUN5(default=0, max=65536, step=65536)
+	GUN6(default=0, max=65536, step=65536)
+	GUN7(default=0, max=65536, step=65536)
+	GUN8(default=0, max=65536, step=65536)
+	GUN9(default=0, max=65536, step=65536)
+	GUNA(default=0, max=65536, step=65536)
+	GUNB(default=0, max=65536, step=65536)
+	GUNC(default=0, max=65536, step=65536)
+	PTCH(default=55, min=55, max=90)
+}
+Key
+{
+	0:EVTR(step=8)
+	1:EVTR(step=-8)
+	2:ELON(step=8)
+	3:ELON(step=-8)
+	4:ENGINE(step=65536)
+	11:FLAG(step=9), DRE(step=131072)
+	14:G1(step=5), G0(step=5)
+	15:G0(step=-5), G1(step=-5)
+}
+Body
+{
+	Core(color=#202020) {
+		S:Frame(angle=160, option=1) {
+			S:Frame(angle=20, option=1) {
+				S:Frame(angle=-90, option=1) {
+					S:Frame(angle=-90, color=#202020, spring=1, damper=1) {
+						W:Chip(angle=-170, color=#202020) {
+							W:Trim(angle=ELON, color=#202020) {
+								S:Rudder(angle=15, color=#202020) {
+									E:Cowl(option=5, color=#202020) { }
+									W:Cowl(angle=-10, color=#202020) {
+										W:Cowl(angle=0, color=#202020) {
+											W:Cowl(option=5, color=#202020) { }
+										}
+										W:Cowl(angle=2, option=2, color=#FF0000) { }
+										W:Cowl(angle=-2, option=2, color=#FF0000) { }
+									}
+								}
+								S:Cowl(angle=1, option=4, color=#202020) { }
+								W:Cowl(angle=-10, color=#202020) {
+									W:Cowl(angle=0, color=#202020) {
+										W:Cowl(option=5, color=#202020) { }
+									}
+								}
+							}
+							W:Frame(option=1) {
+								W:Frame(angle=G0, color=#202020) {
+									W:Wheel(angle=G1, option=0, effect=2) { }
+								}
+							}
+						}
+						E:Chip(angle=-170, color=#202020) {
+							E:Trim(angle=ELON, color=#202020) {
+								S:Rudder(angle=-15, color=#202020) {
+									W:Cowl(option=5, color=#202020) { }
+									E:Cowl(angle=-10, color=#202020) {
+										E:Cowl(angle=0, color=#202020) {
+											E:Cowl(option=5, color=#202020) { }
+										}
+										E:Cowl(angle=2, option=2, color=#FF0000) { }
+										E:Cowl(angle=-2, option=2, color=#FF0000) { }
+									}
+								}
+								S:Cowl(angle=1, option=3, color=#202020) { }
+								E:Cowl(angle=-10, color=#202020) {
+									E:Cowl(angle=0, color=#202020) {
+										E:Cowl(option=5, color=#202020) { }
+									}
+								}
+							}
+							E:Frame(angle=0, option=1) {
+								E:Frame(angle=G0, color=#202020) {
+									E:Wheel(angle=G1, option=0, effect=2) { }
+								}
+							}
+						}
+						E:Chip(angle=-90, color=#202020) { }
+						W:Chip(angle=-90, color=#202020) { }
+						S:Chip(color=#202020, spring=1, damper=1) {
+							E:Chip(angle=-90, color=#202020) { }
+							W:Chip(angle=-90, color=#202020) { }
+							S:Chip(color=#202020, spring=1, damper=1) {
+								E:Chip(angle=-90, color=#202020) { }
+								W:Chip(angle=-90, color=#202020) { }
+								S:Chip(color=#202020, spring=1, damper=1) {
+									E:Chip(angle=-90, color=#202020) { }
+									W:Chip(angle=-90, color=#202020) { }
+									S:Chip(color=#202020, spring=1, damper=1) {
+										S:Chip(color=#202020, spring=1, damper=1) {
+											E:Frame(angle=-170, option=1) {
+												E:Trim(angle=-EVTR, color=#202020) {
+													E:Cowl(angle=-10, option=5, color=#202020) { }
+													W:Frame(option=1) {
+														N:Rudder(angle=20, color=#202020) {
+															E:Cowl(color=#202020) {
+																E:Cowl(angle=-10, option=5, color=#202020) { }
+															}
+														}
+													}
+												}
+											}
+											W:Frame(angle=-170, option=1) {
+												W:Trim(angle=EVTR, color=#202020) {
+													W:Cowl(angle=-10, option=5, color=#202020) { }
+													E:Frame(option=1) {
+														N:Rudder(angle=-20, color=#202020) {
+															W:Cowl(color=#202020) {
+																W:Cowl(angle=-10, option=5, color=#202020) { }
+															}
+														}
+													}
+												}
+											}
+											W:Cowl(angle=-90, color=#202020) {
+												N:Cowl(color=#202020) { }
+											}
+											E:Cowl(angle=-90, color=#202020) {
+												N:Cowl(color=#202020) { }
+											}
+											S:Frame(option=1) { }
+										}
+									}
+								}
+								S:TrimF(angle=-90, option=1) {
+									W:Rudder(angle=-60, color=#202020) {
+										S:Rudder(angle=60, color=#202020) {
+											N:Chip(color=#202020) {
+												N:Chip(color=#202020) {
+													N:Chip(color=#202020) { }
+												}
+											}
+											S:Chip(color=#202020) {
+												W:Chip(color=#202020) { }
+											}
+										}
+										W:Chip(color=#202020) {
+											W:Cowl(option=5, color=#202020) { }
+										}
+									}
+									S:Frame(option=1) {
+										S:Wheel(effect=2) { }
+									}
+								}
+							}
+						}
+						N:Chip(color=#202020) {
+							W:Chip(angle=-90, color=#202020) {
+								N:Arm(power=GUN2, option=50000, color=#404040, name=MGUN2) { }
+							}
+							E:Chip(angle=-90, color=#202020) {
+								N:Arm(power=GUN4, option=50000, color=#404040, name=MGUN4) { }
+							}
+							S:Cowl(angle=-90) {
+								S:Cowl(angle=-90, color=#202020) {
+									N:Cowl(angle=30, color=0, effect=#50FB) {
+										N:Cowl(angle=-30, color=0, effect=#50FB) {
+											N:Cowl(angle=-7, color=#202020) {
+												N:Cowl(angle=-2, color=#202020) {
+													N:Cowl(angle=-2, color=#202020) {
+														N:Cowl(color=#202020) {
+															N:Cowl(angle=-80, color=#202020) { }
+														}
+														E:Cowl(angle=-85, color=#202020) { }
+														W:Cowl(angle=-85, color=#202020) { }
+													}
+													E:Cowl(angle=-85, color=#202020) { }
+													W:Cowl(angle=-85, color=#202020) { }
+												}
+												E:Cowl(angle=-85, color=#202020) { }
+												W:Cowl(angle=-85, color=#202020) { }
+											}
+											E:Cowl(angle=-85, color=0, effect=#50FB) { }
+											W:Cowl(angle=-85, color=0, effect=#50FB) { }
+										}
+										E:Cowl(angle=-85, option=4, color=0, effect=#50FB) { }
+										W:Cowl(angle=-85, option=3, color=0, effect=#50FB) { }
+									}
+								}
+							}
+							S:Cowl(angle=5) {
+								S:Cowl(angle=-2, color=#202020) {
+									S:Cowl(angle=-4, color=#202020) {
+										S:Cowl(angle=-2, color=#202020) {
+											S:Cowl(angle=-2, color=#202020) {
+												S:Cowl(color=#202020) { }
+												W:Cowl(angle=-85, color=#202020) { }
+												E:Cowl(angle=-85, color=#202020) { }
+											}
+											W:Cowl(angle=-85, color=#202020) { }
+											E:Cowl(angle=-85, color=#202020) { }
+										}
+										W:Cowl(angle=-85, color=#202020) { }
+										E:Cowl(angle=-85, color=#202020) { }
+									}
+									W:Cowl(angle=-85, color=#202020) {
+										S:Cowl(option=2, color=#FF0000) { }
+									}
+									E:Cowl(angle=-85, color=#202020) {
+										S:Cowl(option=2, color=#FF0000) { }
+									}
+								}
+								W:Cowl(angle=-85) { }
+								E:Cowl(angle=-85) { }
+							}
+							N:Arm(power=GUN3, option=50000, color=#404040, name=MGUN3) { }
+							N:Frame(angle=-90, option=1) {
+								N:Arm(angle=90, power=GUN1, option=50000, color=#404040, name=MGUN1) { }
+							}
+							N:RLW(angle=-90, power=ENGINE, color=0) {
+								N:Trim(angle=PTCH, color=#202020, spring=1, damper=1) { }
+								S:Trim(angle=PTCH, color=#202020, spring=1, damper=1) { }
+							}
+							N:RLW(angle=-90, power=-ENGINE, color=0) {
+								N:Trim(angle=-PTCH, color=#202020, spring=1, damper=1) { }
+								S:Trim(angle=-PTCH, color=#202020, spring=1, damper=1) { }
+							}
+							N:Cowl(angle=-30, color=#808080) {
+								N:Cowl(angle=-120, color=#808080) { }
+								N:Cowl(angle=30, effect=#F0FB, name=SITE) { }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+MKPH = 0
+
+dx = 0
+dy = 0
+dz = 0
+
+px = 0
+py = 0
+pz = 0
+
+loop_a = 32
+loop_b = 32
+llen = 15
+
+ArmScope = {};
+ArmScope.ColorSet = {}
+ArmScope.ColorSet.lineColor = 65535;
+ArmScope.ColorSet.guideColorOdd = 255 * 65536;
+ArmScope.ColorSet.guideColorEven = 255 * (65536 + 256)
+
+function ArmScope.draw(chipid,length,guide,count,size,span,disableLine)
+	local function nilfunc() end
+	
+	if chipid == nil then chipid = 0 end
+	if length == nil then length = 1000 end
+	if guide == nil then guide = nilfunc end
+	if count == nil then count = 5 end
+	if size == nil then size = 1 end
+	if span == nil then span = length / count end
+
+	--変数x,y,zにチップの座標取得。	
+	local x = _X(chipid)
+	local y = _Y(chipid)
+	local z = _Z(chipid)
+	
+	--変数zx,zy,zzにチップのZ軸ベクトル、変数xx,xy,xzにX軸、変数yx,yy,yzにY軸ベクトルを格納。
+	local zx = _ZX(chipid)
+	local zy = _ZY(chipid)
+	local zz = _ZZ(chipid)
+
+	local xx = _XX(chipid)
+	local xy = _XY(chipid)
+	local xz = _XZ(chipid)
+	
+	local yx = _YX(chipid)
+	local yy = _YY(chipid)
+	local yz = _YZ(chipid)
+
+	local dir = _DIR(chipid)
+	
+	local zx0;
+	local zy0;
+	local zz0;
+	
+	if dir == 1 then -- W
+		xx, zx = zx, xx;
+		xy, zy = zy, xy;
+		xz, zz = zz, xz;
+	elseif dir == 2 then -- S
+		zx = -zx;
+		zy = -zy;
+		zz = -zz;
+	elseif dir == 3 then -- E
+		xx, zx = zx, -xx;
+		xy, zy = zy, -xy;
+		xz, zz = zz, -xz;
+	end
+
+	zx0 = zx;
+	zy0 = zy;
+	zz0 = zz;
+
+	xx = xx * size;
+	xy = xy * size;
+	xz = xz * size;
+	yx = yx * size;
+	yy = yy * size;
+	yz = yz * size;
+	zx = zx * size;
+	zy = zy * size;
+	zz = zz * size;
+--	射軸をライン描画
+	if disableLine == nil then
+		_SETCOLOR(ArmScope.ColorSet.lineColor);
+		_MOVE3D(x,y,z);
+		_LINE3D(x + zx0*length,y + zy0*length,z + zz0*length);
+	end
+
+
+	local color = {ArmScope.ColorSet.guideColorOdd, ArmScope.ColorSet.guideColorEven};
+	local colorindex = 1;
+
+-- 引数として渡すためのクロージャ
+	local function moveFunc(xxx, yyy, zzz)
+		local xxxx = x + xx * xxx + yx * yyy + zx * zzz;
+		local yyyy = y + xy * xxx + yy * yyy + zy * zzz;
+		local zzzz = z + xz * xxx + yz * yyy + zz * zzz;
+		_MOVE3D(xxxx, yyyy, zzzz);
+	end
+	
+	local function lineFunc(xxx, yyy, zzz)
+		local xxxx = x + xx * xxx + yx * yyy + zx * zzz;
+		local yyyy = y + xy * xxx + yy * yyy + zy * zzz;
+		local zzzz = z + xz * xxx + yz * yyy + zz * zzz;
+		_LINE3D(xxxx, yyyy, zzzz);
+	end
+	
+	for i = 1, count do
+
+		--基準座標を射線方向にオフセット
+		x = x + zx0 * span
+		y = y + zy0 * span
+		z = z + zz0 * span
+		
+		--ガイドの描画
+		_SETCOLOR(color[colorindex]);
+		guide(i, moveFunc, lineFunc);
+		
+		colorindex = 3 - colorindex;		
+	end	
+end
+
+function ArmScope.Box(i, move, line)
+	move( 1, 1,0)
+	line(-1, 1,0)
+	line(-1,-1,0)
+	line( 1,-1,0)
+	line( 1, 1,0)
+end
+
+function ArmScope.Cross(i, move, line)
+	move(2, 0, 0)
+	line(-2, 0, 0)
+	move(0, 2, 0)
+	line(0, -2, 0)
+end
+
+function draw_box(x,y,s)
+	--左の縦線
+	_MOVE2D(x,y)
+	_LINE2D(x,y-s)
+
+	--右の縦線
+	_MOVE2D(x+s,y)
+	_LINE2D(x+s,y-s)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s,y)
+
+	--下の横線
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s,y-s)
+end
+
+draw_num7={
+[0]=function(x,y,s)
+	--左の縦線
+	_MOVE2D(x,y)
+	_LINE2D(x,y-s)
+
+	--右の縦線
+	_MOVE2D(x+s/2,y)
+	_LINE2D(x+s/2,y-s)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s/2,y)
+
+	--下の横線
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s/2,y-s)
+end,
+[1]=function(x,y,s)
+	--右の縦線
+	_MOVE2D(x+s/2,y)
+	_LINE2D(x+s/2,y-s)
+end,
+[2]=function(x,y,s)
+	--左の縦線
+	_MOVE2D(x,y-s/2)
+	_LINE2D(x,y-s)
+
+	--右の縦線
+	_MOVE2D(x+s/2,y)
+	_LINE2D(x+s/2,y-s/2)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s/2,y)
+
+	--真ん中の横線
+	_MOVE2D(x,y-s/2)
+	_LINE2D(x+s/2,y-s/2)
+
+	--下の横線
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s/2,y-s)
+end,
+[3]=function(x,y,s)
+	--右の縦線
+	_MOVE2D(x+s/2,y)
+	_LINE2D(x+s/2,y-s)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s/2,y)
+
+	--真ん中の横線
+	_MOVE2D(x,y-s/2)
+	_LINE2D(x+s/2,y-s/2)
+
+	--下の横線
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s/2,y-s)
+end,
+[4]=function(x,y,s)
+	--左の縦線
+	_MOVE2D(x,y)
+	_LINE2D(x,y-s/2)
+
+	--右の縦線
+	_MOVE2D(x+s/2,y)
+	_LINE2D(x+s/2,y-s)
+
+	--真ん中の横線
+	_MOVE2D(x,y-s/2)
+	_LINE2D(x+s/2,y-s/2)
+end,
+[5]=function(x,y,s)
+	--左の縦線
+	_MOVE2D(x,y)
+	_LINE2D(x,y-s/2)
+
+	--右の縦線
+	_MOVE2D(x+s/2,y-s/2)
+	_LINE2D(x+s/2,y-s)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s/2,y)
+
+	--真ん中の横線
+	_MOVE2D(x,y-s/2)
+	_LINE2D(x+s/2,y-s/2)
+
+	--下の横線
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s/2,y-s)
+end,
+[6]=function(x,y,s)
+	--左の縦線
+	_MOVE2D(x,y)
+	_LINE2D(x,y-s)
+
+	--右の縦線
+	_MOVE2D(x+s/2,y-s/2)
+	_LINE2D(x+s/2,y-s)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s/2,y)
+
+	--真ん中の横線
+	_MOVE2D(x,y-s/2)
+	_LINE2D(x+s/2,y-s/2)
+
+	--下の横線
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s/2,y-s)
+end,
+[7]=function(x,y,s)
+	--右の縦線
+	_MOVE2D(x+s/2,y)
+	_LINE2D(x+s/2,y-s)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s/2,y)
+end,
+[8]=function(x,y,s)
+	--左の縦線
+	_MOVE2D(x,y)
+	_LINE2D(x,y-s)
+
+	--右の縦線
+	_MOVE2D(x+s/2,y)
+	_LINE2D(x+s/2,y-s)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s/2,y)
+
+	--真ん中の横線
+	_MOVE2D(x,y-s/2)
+	_LINE2D(x+s/2,y-s/2)
+
+	--下の横線
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s/2,y-s)
+end,
+[9]=function(x,y,s)
+	--左の縦線
+	_MOVE2D(x,y)
+	_LINE2D(x,y-s/2)
+
+	--右の縦線
+	_MOVE2D(x+s/2,y)
+	_LINE2D(x+s/2,y-s)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s/2,y)
+
+	--真ん中の横線
+	_MOVE2D(x,y-s/2)
+	_LINE2D(x+s/2,y-s/2)
+
+	--下の横線
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s/2,y-s)
+end,
+}
+
+
+function tapi_getppos(p)
+	local fx = 0
+	local fy = 0
+	local fz = 0
+
+	local ex = {}
+	local ey = {}
+	local ez = {}
+	
+	local fx = 0
+	local fy = 0
+	local fz = 0
+	
+	for k = 1, loop_b, 1 do
+		for i = 0, loop_a, 1 do
+			ex[i] = _PLAYERX(p)
+			ey[i] = _PLAYERY(p)
+			ez[i] = _PLAYERZ(p)
+		end
+		
+		table.sort(ex)
+		table.sort(ey)
+		table.sort(ez)
+		
+		fx = fx + ex[loop_a/2]
+		fy = fy + ey[loop_a/2]
+		fz = fz + ez[loop_a/2]
+	end
+	
+	fx = fx / loop_b
+	fy = fy / loop_b
+	fz = fz / loop_b
+	
+	return fx, fy ,fz
+end
+
+function pointget_t(p,loop)
+	local px=_PLAYERX(p)
+	local py=_PLAYERY(p)
+	local pz=_PLAYERZ(p)
+	
+	local sel={
+		x_min=px,
+		x_max=px,
+	
+		y_min=py,
+		y_max=py,
+	
+		z_min=pz,
+		z_max=pz
+	}
+	
+	for i=1,loop do
+	
+		px=_PLAYERX(p)
+		
+		py=_PLAYERY(p)
+		
+		pz=_PLAYERZ(p)
+		
+		sel.x_min=math.min(px,sel.x_min)
+		sel.x_max=math.max(px,sel.x_max)
+	
+		sel.y_min=math.min(py,sel.y_min)
+		sel.y_max=math.max(py,sel.y_max)
+		
+		sel.z_min=math.min(pz,sel.z_min)
+		sel.z_max=math.max(pz,sel.z_max)
+	end
+	
+	px=(sel.x_min+sel.x_max)/2
+	py=(sel.y_min+sel.y_max)/2
+	pz=(sel.z_min+sel.z_max)/2
+	
+	return px,py,pz
+end
+
+NGUN = 1
+
+function OnInit()
+	_ZOOM(37.25)
+end
+
+function OnFrame()
+	if (_VEL(0) * 3.6) > MKPH then
+		MKPH = (_VEL(0) * 3.6)
+	end
+	
+	out(0, "三重技研　十五式特殊戦闘機　蓮花")
+	out(1, _VEL(0) * 3.6, "kph")
+	out(2, _WEIGHT(), "kg")
+	out(3, _FPS(), "fps")
+	out(4, "max ", MKPH, "kph")
+	NKPH = (_VEL(0) * 3.6)
+	
+	NKPH = NKPH - 200
+	
+	PTCH = 55 + (NKPH / 200) * 20
+	
+	if NGUN == 4 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN4 = 65536
+		NGUN = 1
+	elseif NGUN == 3 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN3 = 65536
+		NGUN = 4
+	elseif NGUN == 2 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN2 = 65536
+		NGUN = 3
+	elseif NGUN == 1 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN1 = 65536
+		NGUN = 2
+	end
+
+	for p = 1, _PLAYERS(), 1 do
+		if _PLAYERID(p) ~= _PLAYERMYID() and _PLAYERARMS(p) ~= 0 then
+			ex = 0
+			ey = 0
+			ez = 0
+			ex, ey, ez = pointget_t(p,1024)
+
+			px = (-_X(0) - ex) / 800
+			py = (-_Z(0) - ey) / 800
+			pr = _EY(0)
+			
+			
+			rx = px * math.cos(pr) - py * math.sin(pr)
+			ry = py * math.sin(pr) - py * math.cos(pr)
+
+			_SETCOLOR(16711680)
+			draw_box(rx - 0.025, ry + 0.025, 0.05)
+			draw_num7[p](rx - 0.07, ry - 0.045, 0.05)
+			
+			_MOVE3D(ex - llen, ey, ez)
+			_LINE3D(ex + llen, ey, ez)
+
+			_MOVE3D(ex, ey - llen, ez)
+			_LINE3D(ex, ey + llen, ez)
+
+			_MOVE3D(ex, ey, ez - llen)
+			_LINE3D(ex, ey, ez + llen)
+		end
+	end
+	_SETCOLOR(16711680)
+	ArmScope.draw(SITE,300,ArmScope.Cross,5,1)
+	_SETCOLOR(65280)
+	draw_box(-0.025, 0.025, 0.05)
+	_MOVE2D(0,0)
+	_LINE2D(0,300 / 800)
+end
+}

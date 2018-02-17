@@ -1,0 +1,77 @@
+cstr = ""
+pstr = ""
+mstr = ""
+gcstr = ""
+gpstr = ""
+gpls = 0
+
+wgm = 0
+cpm = 0
+kcn = 0
+
+kca = {}
+
+gpe = { 2, 1 }
+
+function OnInit()
+	pn = 0
+	while _PLAYERMYID() ~= _PLAYERID(pn) do
+		pn = pn + 1
+	end
+	gpls = math.floor(_PLAYERCOLOR(pn) / 8388607 + 1)
+	mstr = string.format("%.2f kg  %d chips",_WEIGHT(),_CHIPS())
+	if _WEIGHT() ~= wgm or _CHIPS() ~= cpm then
+		if kca[_CHIPS() + math.floor(_WEIGHT())] == nil then kcn = 0
+		else kcn = kca[_CHIPS() + math.floor(_WEIGHT())] end
+	end
+	wgm = _WEIGHT()
+	cpm = _CHIPS()
+end
+
+function OnFrame()
+	out(0,mstr)
+	out(1,string.format("%d killed",kcn))
+	out(2,'---ローカルチャット---')
+	out(3,pstr)
+	out(4,cstr)
+	out(6,'---グローバルチャット---')
+	out(7,gpstr)
+	out(8,gcstr)
+	if wgm / 3 < wgm - _WEIGHT() then
+		_RELOAD()
+		_WARP(0,0,_GETY(0,0)+10,0)
+		kcn = kcn + 1
+		kca[cpm + math.floor(wgm)] = kcn
+	end
+	if kcn >= 5 then out(10,'警告:鹵獲済みChipsです') end
+end
+
+function OnChat()
+	str = _CHAT()
+	astr = ""
+	bstr = ""
+	
+	for i=1,string.len(str) do
+		if string.byte(str,i) == 62 then
+			astr = string.sub(str,i+1)
+			break
+		else
+			bstr = bstr..string.char(string.byte(str,i))
+		end
+	end
+	
+	if string.byte(astr,1) ~= 32 + gpls then
+		if string.byte(astr,1) ~= 32 + gpe[gpls] then
+			gcstr = astr
+			gpstr = bstr
+		end
+		return
+	else
+		cstr = ""
+		pstr = bstr
+	end
+	
+	for i=2,string.len(astr)+1 do
+		cstr = cstr..string.char(string.byte(astr,i)+gpls)
+	end
+end

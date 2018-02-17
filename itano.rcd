@@ -1,0 +1,59 @@
+// [RCD] 
+Val
+{
+	MJ(default=0, max=200000)
+	XA(default=0, min=-900000, max=900000)
+	YA(default=0, min=-900000, max=900000)
+	ZA(default=0, min=-900000, max=900000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=-90) {
+			S:Jet(angle=30, power=MJ, effect=4, name=M0) {
+				W:Frame(angle=-90) {
+					E:Chip() { }
+				}
+				S:Frame(angle=-90) {
+					N:Chip() { }
+				}
+				E:Frame(angle=-90) {
+					W:Chip() { }
+				}
+				N:Frame(angle=-90) {
+					S:Chip() { }
+					S:RLW(angle=2, power=-YA, brake=800000) { }
+				}
+				N:Cowl(angle=120) {
+					N:Cowl(angle=150, name=VC) { }
+				}
+			}
+		}
+		E:Weight() { }
+		S:Weight() { }
+		W:Weight() { }
+		N:Weight() { }
+	}
+}
+Lua
+{
+_IM = 0
+
+function OnFrame()
+	if _KEYDOWN(4) == 1 then
+		_SPLIT(M0)
+		MJ=200000
+	end
+	
+	if _KEYDOWN(5) == 1 then
+		_IM=1
+	end
+	
+	if _IM==1 then
+		
+	end
+end
+}

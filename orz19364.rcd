@@ -1,0 +1,710 @@
+// [RCD] 
+Val
+{
+	ELV(default=0, min=-15, max=15, step=1)
+	GBRK(default=0, max=300000)
+	GE_BK(default=95, min=95, max=180)
+	GE_BK1(default=150, max=270)
+	GE_BK2(default=65, max=270)
+	GE_FT(default=-50, min=-180, max=-50)
+	GUN(default=0, max=30000, step=30000)
+	GUN1(default=0, max=30000, step=30000)
+	GUN2(default=0, max=30000, step=30000)
+	JET(default=0, min=-10000, max=30000)
+	JET2(default=0, max=10000)
+	RDR(default=0, min=-5, max=5, step=1)
+	RKT(default=0, max=100000)
+	ROL(default=0, min=-10, max=10, step=1)
+}
+Key
+{
+	0:ELV(step=1)
+	1:ELV(step=-1)
+	2:ROL(step=1)
+	3:ROL(step=-1)
+	4:RDR(step=-1)
+	5:JET(step=2500)
+	6:RDR(step=1)
+	8:JET(step=-2500)
+}
+Body
+{
+	Core(color=#371C00) {
+		S:Frame(angle=135, color=#371C00) {
+			S:Frame(angle=-135, option=2) {
+				N:Frame(angle=-30) {
+					N:Cowl(angle=30, color=#004600) {
+						N:Cowl(color=#004600) {
+							N:Cowl(color=#004600) {
+								N:Cowl(angle=20, color=#004600) {
+									N:Cowl(angle=10, color=#004600) { }
+									E:Cowl(angle=89, option=3, color=#004600) { }
+									W:Cowl(angle=89, option=4, color=#004600) { }
+								}
+								E:Cowl(angle=89, color=#004600) { }
+								W:Cowl(angle=89, color=#004600) { }
+							}
+							E:Cowl(angle=89, color=#004600) { }
+							W:Cowl(angle=89, color=#004600) { }
+						}
+						S:Cowl(color=#371C00) {
+							S:Cowl(color=#371C00) {
+								E:Cowl(angle=89, color=#004600) { }
+								W:Cowl(angle=89, color=#004600) { }
+							}
+							E:Cowl(angle=89, color=#004600) { }
+							W:Cowl(angle=89, color=#004600) { }
+						}
+						E:Cowl(angle=89, color=#004600) { }
+						W:Cowl(angle=89, color=#004600) { }
+					}
+					N:Frame(angle=30) {
+						N:Frame(angle=-150, color=#008000) {
+							N:Frame(angle=-35, color=#008000) {
+								N:Frame(angle=-10, color=#008000) {
+									N:Frame(color=#008000) { }
+									W:Frame(angle=-95, color=#008000) { }
+									E:Frame(angle=-95, color=#008000) { }
+								}
+								W:Frame(angle=-95, color=#008000) { }
+								E:Frame(angle=-95, color=#008000) { }
+							}
+						}
+						N:Cowl(angle=-149, effect=#45FB) {
+							N:Cowl(angle=-35, effect=#45FB) {
+								N:Cowl(angle=-10, effect=#45FB) {
+									N:Cowl(effect=#45FB) {
+										E:Cowl(angle=-92, effect=#45FB) { }
+										W:Cowl(angle=-92, effect=#45FB) { }
+									}
+									E:Cowl(angle=-92, effect=#45FB) { }
+									W:Cowl(angle=-92, effect=#45FB) { }
+								}
+								E:Cowl(angle=-92, effect=#45FB) { }
+								W:Cowl(angle=-92, effect=#45FB) { }
+							}
+							E:Cowl(angle=-92, effect=#45FB) { }
+							W:Cowl(angle=-92, effect=#45FB) { }
+						}
+					}
+				}
+				S:Frame(angle=150, spring=1, damper=1) {
+					S:Weight(angle=-150, option=4, spring=1, damper=1) {
+						W:Chip(angle=-5, color=#008000) {
+							N:Chip(color=#008000) {
+								W:Chip(color=#008000) {
+									W:Rudder(angle=-8, color=#008000) {
+										W:Cowl(angle=5, color=#004600) {
+											W:Cowl(color=#004600) {
+												W:Cowl(option=5, color=#004600) { }
+												E:Cowl(angle=-1, option=2, color=#FF0000) { }
+											}
+										}
+									}
+									S:Chip(angle=-ROL, color=#008000) {
+										E:Chip(color=#008000) { }
+										W:Frame(angle=GE_BK1) {
+											W:Frame(angle=-170) {
+												E:Wheel(angle=GE_BK2, brake=GBRK, effect=2) { }
+											}
+										}
+									}
+									N:Jet(angle=90, power=JET) {
+										W:Cowl(angle=95, color=#969696) {
+											W:Cowl(option=5, color=#969696) { }
+											E:Cowl(angle=5, color=#969696) {
+												E:Cowl(angle=10, option=5, color=#969696) { }
+											}
+										}
+										N:Cowl(angle=95, color=#969696) {
+											N:Cowl(option=5, color=#969696) { }
+											S:Cowl(angle=5, color=#969696) {
+												S:Cowl(angle=10, option=5, color=#969696) { }
+											}
+										}
+										E:Cowl(angle=95, color=#969696) {
+											E:Cowl(option=5, color=#969696) { }
+											W:Cowl(angle=5, color=#969696) {
+												W:Cowl(angle=10, option=5, color=#969696) { }
+											}
+										}
+										S:Cowl(angle=95) {
+											S:Cowl(option=5) { }
+											N:Cowl(angle=5, color=#004600) {
+												N:Cowl(angle=10, option=5, color=#004600) { }
+											}
+										}
+										N:Frame(angle=-90) {
+											N:Jet(angle=-90, power=-JET2) { }
+										}
+									}
+								}
+							}
+							W:Chip(color=#008000) {
+								W:Rudder(angle=6, color=#008000) {
+									W:Cowl(angle=5, color=#004600) {
+										W:Cowl(color=#004600) {
+											W:Cowl(option=5, color=#004600) { }
+										}
+									}
+								}
+							}
+						}
+						E:Chip(angle=-5, color=#008000) {
+							N:Chip(color=#008000) {
+								E:Chip(color=#008000) {
+									E:Rudder(angle=8, color=#008000) {
+										E:Cowl(angle=5, color=#004600) {
+											E:Cowl(color=#004600) {
+												E:Cowl(option=5, color=#004600) { }
+												W:Cowl(angle=-1, option=2, color=#FF0000) { }
+											}
+										}
+									}
+									S:Chip(angle=ROL, color=#008000) {
+										W:Chip(color=#008000) { }
+										E:Frame(angle=GE_BK1) {
+											E:Frame(angle=-170) {
+												W:Wheel(angle=GE_BK2, brake=GBRK, effect=2) { }
+											}
+										}
+									}
+									N:Jet(angle=90, power=JET) {
+										W:Cowl(angle=95, color=#969696) {
+											W:Cowl(option=5, color=#969696) { }
+											E:Cowl(angle=5, color=#969696) {
+												E:Cowl(angle=10, option=5, color=#969696) { }
+											}
+										}
+										N:Cowl(angle=95, color=#969696) {
+											N:Cowl(option=5, color=#969696) { }
+											S:Cowl(angle=5, color=#969696) {
+												S:Cowl(angle=10, option=5, color=#969696) { }
+											}
+										}
+										E:Cowl(angle=95, color=#969696) {
+											E:Cowl(option=5, color=#969696) { }
+											W:Cowl(angle=5, color=#969696) {
+												W:Cowl(angle=10, option=5, color=#969696) { }
+											}
+										}
+										S:Cowl(angle=95) {
+											S:Cowl(option=5) { }
+											N:Cowl(angle=5, color=#004600) {
+												N:Cowl(angle=10, option=5, color=#004600) { }
+											}
+										}
+										N:Frame(angle=-90) {
+											N:Jet(angle=-90, power=-JET2) { }
+										}
+									}
+								}
+							}
+							E:Chip(color=#008000) {
+								E:Rudder(angle=-6, color=#008000) {
+									E:Cowl(angle=5, color=#004600) {
+										E:Cowl(color=#004600) {
+											E:Cowl(option=5, color=#004600) { }
+										}
+									}
+								}
+							}
+						}
+						N:Cowl(angle=20) {
+							N:Cowl(angle=-20, color=#969696) {
+								S:Cowl(color=#969696) {
+									S:Cowl(color=#969696) {
+										W:Cowl(angle=-95, color=#969696) { }
+										E:Cowl(angle=-95, color=#969696) { }
+										S:Cowl(color=#969696) {
+											S:Cowl(color=#969696) {
+												S:Cowl(angle=-7, color=#969696) {
+													W:Cowl(angle=-90, color=#004600) {
+														S:Cowl(angle=-15, color=#004600) {
+															S:Cowl(color=#004600) { }
+															E:Cowl(angle=-90, option=4, color=#969696) { }
+														}
+													}
+													E:Cowl(angle=-90, color=#004600) {
+														S:Cowl(angle=-15, color=#004600) {
+															S:Cowl(color=#004600) { }
+															W:Cowl(angle=-90, option=3, color=#969696) { }
+														}
+													}
+												}
+												W:Cowl(angle=-95, color=#969696) { }
+												E:Cowl(angle=-95, color=#969696) { }
+											}
+											E:Cowl(angle=-95, color=#969696) { }
+											W:Cowl(angle=-95, color=#969696) { }
+										}
+									}
+									W:Cowl(angle=-95, color=#969696) { }
+									E:Cowl(angle=-95, color=#969696) { }
+								}
+								N:Cowl(angle=-5, color=#969696) {
+									N:Cowl(color=#969696) {
+										N:Cowl(color=#969696) {
+											N:Cowl(angle=-10, color=#969696) {
+												W:Cowl(angle=-90, option=4, color=#004600) { }
+												E:Cowl(angle=-90, option=3, color=#004600) { }
+											}
+											E:Cowl(angle=-90, option=5, color=#004600) { }
+											W:Cowl(angle=-90, option=5, color=#004600) { }
+										}
+										E:Cowl(angle=-95, color=#969696) { }
+										W:Cowl(angle=-95, color=#969696) { }
+									}
+									E:Cowl(angle=-95, color=#969696) { }
+									W:Cowl(angle=-95, color=#969696) { }
+								}
+								W:Cowl(angle=-95, color=#969696) { }
+								E:Cowl(angle=-95, color=#969696) { }
+							}
+						}
+						N:Chip() { }
+						W:Frame(angle=-5, name=RKTP_L) {
+							S:Jet(angle=90, power=-RKT, effect=4) { }
+							N:Jet(angle=90, power=RKT, effect=1) { }
+							E:Cowl(angle=90, color=#5D5D5D) {
+								E:Cowl(angle=90, color=#5D5D5D) {
+									E:Cowl(angle=90, color=#5D5D5D) {
+										E:Cowl(angle=90, color=#5D5D5D) { }
+									}
+								}
+							}
+						}
+						E:Frame(angle=-5, name=RKTP_R) {
+							S:Jet(angle=90, power=-RKT, effect=4) { }
+							N:Jet(angle=90, power=RKT, effect=1) { }
+							W:Cowl(angle=90, color=#5D5D5D) {
+								W:Cowl(angle=90, color=#5D5D5D) {
+									W:Cowl(angle=90, color=#5D5D5D) {
+										W:Cowl(angle=90, color=#5D5D5D) { }
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Frame(angle=-30) {
+					S:Frame(angle=30, color=#004600) {
+						N:Cowl(color=#004600) {
+							S:Cowl(color=#004600) {
+								E:Cowl(angle=89, color=#004600) { }
+								W:Cowl(angle=89, color=#004600) { }
+								S:Cowl(color=#004600) {
+									S:Cowl(color=#004600) { }
+									W:Cowl(angle=89, color=#004600) {
+										S:Cowl(angle=15, color=#004600) {
+											S:Cowl(color=#004600) { }
+										}
+									}
+								}
+							}
+							E:Cowl(angle=89, color=#004600) {
+								S:Cowl(angle=-1, option=2, color=#FF0000) { }
+							}
+							W:Cowl(angle=89, color=#004600) {
+								S:Cowl(angle=-1, option=2, color=#FF0000) { }
+							}
+						}
+						S:Frame(color=#004600) {
+							S:Frame(color=#004600) {
+								S:Chip(angle=ELV, color=#008000) {
+									W:Rudder(angle=10, color=#008000) {
+										W:Cowl(option=5, color=#004600) { }
+									}
+									E:Rudder(angle=-10, color=#008000) {
+										E:Cowl(option=5, color=#004600) { }
+									}
+								}
+								W:Rudder(angle=-20, color=#008000) {
+									W:Cowl(option=5, color=#004600) { }
+								}
+								E:Rudder(angle=20, color=#008000) {
+									E:Cowl(option=5, color=#004600) { }
+								}
+							}
+							E:Cowl(angle=89, color=#004600) {
+								S:Cowl(angle=15, color=#004600) {
+									S:Cowl(color=#004600) { }
+								}
+							}
+						}
+					}
+				}
+				S:Trim(angle=90, spring=1, damper=1) {
+					N:Chip(spring=1, damper=1) {
+						N:Chip(spring=1, damper=1) {
+							N:Chip(spring=1, damper=1) {
+								N:Frame(spring=1, damper=1) {
+									N:Frame(spring=1, damper=1) {
+										N:RudderF(angle=GE_FT) {
+											N:Wheel(brake=GBRK, effect=1) { }
+										}
+									}
+								}
+							}
+						}
+						N:Frame(angle=35, color=#008000) {
+							N:Arm(angle=-35, power=GUN1, option=15000, color=#008000) { }
+						}
+						N:Frame(angle=-35, color=#008000) {
+							N:Arm(angle=35, power=GUN2, option=15000, color=#008000) { }
+						}
+					}
+					S:Chip(spring=1, damper=1) {
+						S:Frame(spring=1, damper=1) {
+							S:Frame(spring=1, damper=1) {
+								S:Frame(spring=1, damper=1) {
+									S:Chip(angle=RDR, color=#008000, spring=1, damper=1) {
+										E:Cowl(color=#004600) {
+											E:Cowl(option=5, color=#004600) { }
+										}
+									}
+									E:RudderF(angle=30) {
+										E:Cowl(option=5, color=#004600) { }
+										N:Cowl(angle=180, color=#004600) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{gbmode = 1
+gemode = 1
+t = 0
+gunf = 0
+rkt = 0
+rktct = 0
+
+
+--HUDブロック--
+function HUD()
+_SETCOLOR(tonumber("00FF00",16))
+--中心線--
+_MOVE2D(0.7*math.cos(_EZ(0)),0.7*math.sin(_EZ(0)))
+_LINE2D(0.8*math.cos(_EZ(0)),0.8*math.sin(_EZ(0)))
+
+_MOVE2D(-0.7*math.cos(_EZ(0)),-0.7*math.sin(_EZ(0)))
+_LINE2D(-0.8*math.cos(_EZ(0)),-0.8*math.sin(_EZ(0)))
+
+
+
+--脇の両線--
+_MOVE2D(math.cos(_EZ(0)+51),math.sin(_EZ(0)+51))
+_LINE2D(math.cos(_EZ(0)-51),math.sin(_EZ(0)-51))
+
+_MOVE2D(-math.cos(-_EZ(0)-51),math.sin(-_EZ(0)-51))
+_LINE2D(-math.cos(-_EZ(0)+51),math.sin(-_EZ(0)+51))
+
+--なんかメインのとこ--
+--Wのあれ--
+_MOVE2D(0,0.03)
+_LINE2D(-0.02,-0.03)
+
+_MOVE2D(0,0.03)
+_LINE2D(0.02,-0.03)
+
+_MOVE2D(0.02,-0.03)
+_LINE2D(0.04,0.03)
+
+_MOVE2D(-0.02,-0.03)
+_LINE2D(-0.04,0.03)
+
+
+--+80度--
+if math.deg(_AX(0)) > 65 and math.deg(_AX(0)) < 95 then
+_MOVE2D(4*(-_AX(0)+math.rad(80))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(80))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(80))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(80))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(80))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(80))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(80))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(80))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+--+70度--
+if math.deg(_AX(0)) > 55 and math.deg(_AX(0)) < 85 then
+_MOVE2D(4*(-_AX(0)+math.rad(70))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(70))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(70))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(70))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(70))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(70))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(70))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(70))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+--+60度--
+if math.deg(_AX(0)) > 45 and math.deg(_AX(0)) < 75 then
+_MOVE2D(4*(-_AX(0)+math.rad(60))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(60))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(60))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(60))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(60))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(60))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(60))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(60))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+--50度--
+if math.deg(_AX(0)) > 35 and math.deg(_AX(0)) < 65 then
+_MOVE2D(4*(-_AX(0)+math.rad(50))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(50))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(50))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(50))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(50))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(50))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(50))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(50))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+--40度--
+if math.deg(_AX(0)) > 25 and math.deg(_AX(0)) < 55 then
+_MOVE2D(4*(-_AX(0)+math.rad(40))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(40))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(40))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(40))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(40))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(40))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(40))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(40))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+--+30度--
+if math.deg(_AX(0)) > 15 and math.deg(_AX(0)) < 45 then
+_MOVE2D(4*(-_AX(0)+math.rad(30))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(30))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(30))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(30))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(30))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(30))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(30))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(30))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+--+20度--
+if math.deg(_AX(0)) > 5 and math.deg(_AX(0)) < 35 then
+_MOVE2D(4*(-_AX(0)+math.rad(20))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(20))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(20))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(20))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(20))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(20))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(20))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(20))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+--+10度--
+if math.deg(_AX(0)) > -5 and math.deg(_AX(0)) < 25 then
+_MOVE2D(4*(-_AX(0)+math.rad(10))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(10))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(10))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(10))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(10))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(10))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(10))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(10))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+--0度--
+if math.deg(_AX(0)) > -15 and math.deg(_AX(0)) < 15 then
+_MOVE2D(4*-_AX(0)*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*-_AX(0)*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*-_AX(0)*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*-_AX(0)*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*-_AX(0)*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*-_AX(0)*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*-_AX(0)*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*-_AX(0)*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+---10度--
+if math.deg(_AX(0)) > -25 and math.deg(_AX(0)) < 5 then
+_MOVE2D(4*(-_AX(0)+math.rad(-10))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-10))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-10))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-10))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(-10))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-10))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-10))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-10))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+---20度--
+if math.deg(_AX(0)) > -35 and math.deg(_AX(0)) < -5 then
+_MOVE2D(4*(-_AX(0)+math.rad(-20))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-20))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-20))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-20))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(-20))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-20))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-20))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-20))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+---30度--
+if math.deg(_AX(0)) > -45 and math.deg(_AX(0)) < -15 then
+_MOVE2D(4*(-_AX(0)+math.rad(-30))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-30))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-30))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-30))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(-30))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-30))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-30))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-30))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+---40度--
+if math.deg(_AX(0)) > -55 and math.deg(_AX(0)) < -25 then
+_MOVE2D(4*(-_AX(0)+math.rad(-40))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-40))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-40))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-40))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(-40))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-40))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-40))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-40))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+---50度--
+if math.deg(_AX(0)) > -65 and math.deg(_AX(0)) < -35 then
+_MOVE2D(4*(-_AX(0)+math.rad(-50))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-50))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-50))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-50))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(-50))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-50))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-50))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-50))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+---60度--
+if math.deg(_AX(0)) > -75 and math.deg(_AX(0)) < -45 then
+_MOVE2D(4*(-_AX(0)+math.rad(-60))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-60))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-60))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-60))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(-60))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-60))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-60))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-60))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+---70度--
+if math.deg(_AX(0)) > -85 and math.deg(_AX(0)) < -55 then
+_MOVE2D(4*(-_AX(0)+math.rad(-70))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-70))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-70))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-70))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(-70))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-70))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-70))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-70))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+---80度--
+if math.deg(_AX(0)) > -95 and math.deg(_AX(0)) < -65 then
+_MOVE2D(4*(-_AX(0)+math.rad(-80))*math.cos(_EZ(0)+math.rad(90))+(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-80))*math.sin(_EZ(0)+math.rad(90))+(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-80))*math.cos(_EZ(0)+math.rad(90))+(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-80))*math.sin(_EZ(0)+math.rad(90))+(0.4*math.sin(_EZ(0))))
+_MOVE2D(4*(-_AX(0)+math.rad(-80))*math.cos(_EZ(0)+math.rad(90))-(0.7*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-80))*math.sin(_EZ(0)+math.rad(90))-(0.7*math.sin(_EZ(0))))
+_LINE2D(4*(-_AX(0)+math.rad(-80))*math.cos(_EZ(0)+math.rad(90))-(0.4*math.cos(_EZ(0))),4*(-_AX(0)+math.rad(-80))*math.sin(_EZ(0)+math.rad(90))-(0.4*math.sin(_EZ(0))))
+end
+
+end
+
+
+
+
+
+
+
+
+
+function g_brk() --ギアブレーキ
+	if(_KEYDOWN(7)==1) then --とりあえずモード切替
+		if(gbmode~=1)and(GBRK==0) then
+			gbmode=1
+		elseif(gbmode==1)and(GBRK==300000) then
+			gbmode=0
+		end	
+	end
+	if((gbmode==1)and(GBRK~=300000)) then --ギアブレーキ圧
+		GBRK = GBRK + 20000 --上げる
+		gbhyouji = "加圧"
+	elseif((gbmode==0)and(GBRK~=0)) then
+		GBRK = GBRK - 20000 --下げる
+		gbhyouji = "減圧"
+	end
+	if(GBRK==300000) then
+		gbhyouji = " ■ "
+	elseif(GBRK==0) then
+		gbhyouji = "　　"
+	end
+end
+
+
+function gear()
+	if(_KEYDOWN(12)==1)and(gemode~=1) then
+		gemode = 1
+	elseif(_KEYDOWN(12)==1)and(gemode==1) then
+		gemode = 0
+	elseif(_H(0)==-100000)and(koudoge~=1) then
+		gemode = 0
+		koudoge = 1
+	elseif(_H(0)~=-100000)and(koudoge==1) then
+		koudoge =0
+	end
+	gehyouji,GE_FT = gearud(GE_FT,-50,-180,1)
+	gkhyouji,GE_BK = gearud(GE_BK,95,180,-1)
+	gk1hyouji,GE_BK1 = gearud(GE_BK1,150,170,-1)
+	gk2hyouji,GE_BK2 = gearud(GE_BK2,65,0,1)
+end
+
+function gearud(g,n,m,l)
+	local gh
+	if(gemode==1)and(g~=n) then
+		g = g - (m-n)/40
+		gh = "DOWN"
+	elseif(gemode==0)and(g~=m) then
+		g = g + (m-n)/40
+		gh = " UP "
+	elseif(g==n) then
+		gh = " ■ "
+	elseif(g==m) then
+		gh = "　　"
+	end
+	return gh,g --returnを使ってみたかっただけなので非常に見苦しい^^;
+end
+
+function gunkougo()
+	if(_KEY(9)==1)and(t==0) then
+		if(gunf==0) then
+			gunf = 1
+			GUN1 = 300000
+			t = 1
+		else
+			gunf = 0
+			GUN2 = 300000
+			t = 1
+		end
+	elseif(t~=0) then
+		t = t - 1
+	end
+	
+
+end
+
+
+function rkthojo()
+	if(_KEYDOWN(16)==1)and(rkt==0) then
+		rkt = 1
+		rktjou = "燃焼中　"
+	elseif(rkt==1)and(rktct<210) then
+		RKT = 15000
+		rktct = rktct + 1
+	elseif(rktct==210) then
+		_BYE(RKTP_L)
+		_BYE(RKTP_R)
+		rktjou = "投棄"
+	elseif(rkt==0) then
+		rktjou = "使用可能"
+	end
+end
+
+
+function bst()
+	if(JET>0) then
+	JET2 = _VZ(0) * _VZ(0) * 0.5
+	else
+	JET2 = 0
+	end
+end
+
+function hojo()
+	ROL = ROL + _WZ(0)*0.1
+	RDR = RDR + _WY(0)*0.1
+	ELV = ELV + _WX(0)*0.1
+end
+
+
+function hyouji()
+	out(0,"中島 局地戦闘機＜橘花改＞")
+	out(1,"[Ａ:ギアブレーキ:",gbhyouji,"]","　[Ｆ:ギア:前輪:",gehyouji,"後輪:",gk1hyouji,"]")
+	out(2,"[↑↓:ピッチ]","  ","[←→:ロー]","  ","[ＺＣ:ヨー]")
+	out(3,"[Ｄ:機関砲]","  ","[ＸＳ:出力上下]","  ","[Ｅ:離陸補助ロケット:",rktjou," 残り",(210-rktct)/7,"秒]")
+	out(4,"[速度:",-_VZ(0)*3.6,"km/h]")
+end
+
+--空間跳躍--
+function jump()
+local x,y,z = _X(0),_Y(0),_Z(0)
+local fireX,fireY,fireZ = -_ZX(0),-_ZY(0),-_ZZ(0)
+local range = 500
+
+if _KEYDOWN(11) == 1 then
+	_WARP(0,x+fireX*range,y+fireY*range,z+fireZ*500)
+end
+end
+
+function main()
+	g_brk()
+	hyouji()
+	gear()
+	gunkougo()
+	--hojo()
+	rkthojo()
+	bst()
+	jump()
+	HUD()
+	out(5,_FPS())
+
+
+
+end
+
+}

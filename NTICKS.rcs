@@ -1,0 +1,7 @@
+lua_randtime = 0
+rc9_randtime = 0
+
+function OnFrame()
+	lua_randtime = lua_randtime + math.mod(MTRand(),3)
+	rc9_randtime = _NTICKS()
+end

@@ -1,0 +1,70 @@
+// [RCD] 
+Val
+{
+	BRAKE(default=0, max=256, step=32)
+	ENGINE(default=0, min=-16384, max=1048576, step=2048)
+	STEERING(default=0, min=-24, max=24, step=2)
+}
+Key
+{
+	0:ENGINE(step=1024)
+	1:ENGINE(step=-1024)
+	2:STEERING(step=-4)
+	3:STEERING(step=4)
+	4:BRAKE(step=32)
+}
+Body
+{
+	Core() {
+		E:Frame() {
+			N:Frame(angle=-20) {
+				N:RudderF(angle=STEERING) {
+					W:Frame(angle=90, option=1) {
+						E:Rudder(angle=90) { }
+					}
+					N:Chip(angle=-160) {
+						E:Wheel(angle=-90, power=-ENGINE, brake=BRAKE, effect=4) { }
+					}
+				}
+			}
+			S:Frame(angle=-20) {
+				E:Wheel(angle=90, power=ENGINE, brake=BRAKE, effect=4) { }
+			}
+		}
+		N:Chip() { }
+		S:Chip() {
+			W:Trim(angle=10) { }
+			E:Trim(angle=-10) { }
+		}
+		W:Frame() {
+			N:Frame(angle=-20) {
+				N:RudderF(angle=STEERING) {
+					E:Frame(angle=90, option=1) {
+						W:Rudder(angle=-90) { }
+					}
+					N:Chip(angle=-160) {
+						W:Wheel(angle=-90, power=ENGINE, brake=BRAKE, effect=4) { }
+					}
+				}
+			}
+			S:Frame(angle=-20) {
+				W:Wheel(angle=90, power=-ENGINE, brake=BRAKE, effect=4) { }
+			}
+		}
+		S:Trim(angle=-90, option=1) {
+			N:Rudder(angle=-10) { }
+		}
+	}
+}
+Lua
+{function _LEN3(a,b,c)
+	return math.sqrt(a*a + b*b + c*c)
+end
+
+function _VEL(n)
+	return _LEN3(_VX(n),_VY(n),_VZ(n))
+end
+
+function OnFrame()
+	out(0,_VEL(0)*3.6)
+end}

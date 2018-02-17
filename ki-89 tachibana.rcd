@@ -1,0 +1,114 @@
+// [RCD] 
+Val
+{
+	ELON(default=0, min=-8, max=8, step=2)
+	ENGINE(default=0, max=204800, step=65536)
+	EVTR(default=0, min=-8, max=8, step=2)
+	GUN(default=0, max=16384, step=16384)
+}
+Key
+{
+	0:EVTR(step=2)
+	1:EVTR(step=-2)
+	2:ELON(step=2)
+	3:ELON(step=-2)
+	4:ENGINE(step=65536)
+	5:GUN(step=16384)
+}
+Body
+{
+	Core(color=#004000) {
+		W:Chip(angle=-90, color=#004000) {
+			N:Arm(angle=0, power=GUN, option=5000, color=#000000) { }
+		}
+		E:Chip(angle=-90, color=#004000) {
+			N:Arm(angle=0, power=GUN, option=5000, color=#000000) { }
+		}
+		S:Chip(color=#004000) {
+			W:Chip(angle=-90, color=#004000) { }
+			E:Chip(angle=-90, color=#004000) { }
+			E:Frame(color=#004000) {
+				E:Chip(angle=-90, color=#004000) {
+					S:Chip(color=#004000) {
+						S:Chip(color=#004000) {
+							S:Chip(color=#004000) { }
+							E:Frame(angle=-90, color=#004000) {
+								S:Chip(angle=-EVTR, color=#004000) { }
+							}
+							W:Frame(angle=-90, color=#004000) {
+								S:Chip(angle=EVTR, color=#004000) { }
+							}
+						}
+					}
+				}
+			}
+			W:Frame(color=#004000) {
+				W:Chip(angle=-90, color=#004000) {
+					S:Chip(color=#004000) {
+						S:Chip(color=#004000) {
+							S:Chip(color=#004000) { }
+							W:Frame(angle=-90, color=#004000) {
+								S:Chip(angle=-EVTR, color=#004000) { }
+							}
+							E:Frame(angle=-90, color=#004000) {
+								S:Chip(angle=EVTR, color=#004000) { }
+							}
+						}
+					}
+				}
+			}
+			S:Chip(color=#004000) {
+				E:Chip(angle=-90, color=#004000) {
+					S:Chip() { }
+				}
+				W:Chip(angle=-90, color=#004000) {
+					S:Chip() { }
+				}
+				S:Frame(option=1) {
+					S:Frame(option=1) { }
+				}
+				S:Cowl(angle=-90, option=2, color=#004000) { }
+				S:Weight() { }
+			}
+		}
+		W:Frame(angle=-170) {
+			W:Rudder(color=#004000) {
+				W:Chip(angle=-10, color=#004000) {
+					W:Chip(angle=0, color=#004000) { }
+					S:Chip(angle=-ELON, color=#004000) {
+						W:Chip(angle=0, color=#004000) { }
+						E:Chip(angle=-10, color=#004000) { }
+					}
+				}
+				E:Cowl(color=#004000) { }
+				N:Arm(angle=0, power=GUN, option=5000, color=#000000) { }
+			}
+		}
+		E:Frame(angle=-170) {
+			E:Rudder(color=#004000) {
+				E:Chip(angle=-10, color=#004000) {
+					E:Chip(angle=0, color=#004000) { }
+					S:Chip(angle=ELON, color=#004000) {
+						E:Chip(angle=0, color=#004000) { }
+						W:Chip(angle=-10, color=#004000) { }
+					}
+				}
+				W:Cowl(color=#004000) { }
+				N:Arm(angle=0, power=GUN, option=5000, color=#000000) { }
+			}
+		}
+		S:Jet(angle=-90, power=ENGINE, option=0, color=0) {
+			S:Cowl(angle=-110, color=#004000) {
+				S:Cowl(angle=-20, color=#004000) { }
+				N:Cowl(color=0) {
+					W:Cowl(angle=-92, color=0) { }
+					E:Cowl(angle=-92, color=0) { }
+					N:Cowl(angle=-20, color=0) {
+						W:Cowl(angle=-92, color=0) { }
+						E:Cowl(angle=-92, color=0) { }
+					}
+				}
+			}
+		}
+	}
+}

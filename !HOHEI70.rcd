@@ -1,0 +1,440 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=20, step=100)
+	B2(default=0, max=20, step=100)
+	P(default=0, min=-2000, max=2000, step=10000)
+	P2(default=0, min=-2000, max=2000, step=10000)
+	VAR(default=0, max=10000000, step=10000000)
+}
+Key
+{
+	0:P(step=1000), P2(step=1000)
+	2:H(step=-5), P2(step=1000), P(step=-1000)
+	3:H(step=5), P2(step=-1000), P(step=1000)
+	7:B(step=10), B2(step=10)
+	12:VAR(step=20000000)
+}
+Body
+{
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+	Core() {
+		S:Weight(angle=50, option=2) { }
+		W:RLW(angle=50, power=-P, brake=B) { }
+		E:RLW(angle=50, power=P2, brake=B2) { }
+		N:Arm(power=VAR, option=100000) { }
+	}
+}

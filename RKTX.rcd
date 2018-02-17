@@ -1,0 +1,69 @@
+// [RCD] 
+Val
+{
+	P(default=0, max=1000000000)
+	V(default=90, min=-90, max=90)
+}
+Key
+{
+	0:V(step=2)
+	1:V(step=-2)
+}
+Body
+{
+	Core() {
+		S:Chip(angle=V, name=NX) {
+			S:Weight() {
+				S:Weight(angle=90) {
+					W:Weight() {
+						W:Weight(angle=-60) {
+							W:Weight() { }
+						}
+					}
+					E:Weight() {
+						E:Weight(angle=-60) {
+							E:Weight() { }
+						}
+					}
+					S:Weight(angle=-60) {
+						S:Weight() { }
+					}
+					N:Weight() {
+						W:Weight() { }
+						E:Weight() { }
+						N:Weight(angle=-60) {
+							N:Weight() { }
+						}
+					}
+				}
+			}
+		}
+		N:Jet(angle=90, power=P) {
+			E:Chip(angle=90) { }
+			W:Chip(angle=90) { }
+			N:Chip(angle=90) { }
+		}
+	}
+}
+Lua
+{
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+_tgt = 0
+
+function OnFrame()
+	if _KEYDOWN(4) == 1 then
+		_SPLIT(NX)
+		P=10000
+		_tgt = 4000000
+	end
+	P=_LINER(P,_tgt,10000)
+end
+}

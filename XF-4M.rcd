@@ -1,0 +1,51 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:TrimF() {
+			W:Trim() {
+				W:Chip() { }
+			}
+			E:Trim() {
+				E:Chip() { }
+			}
+		}
+		S:Trim(angle=90) {
+			S:Chip() {
+				S:Chip() { }
+				S:TrimF(angle=-90) {
+					E:Trim() { }
+					W:Trim() { }
+					N:Frame(angle=-150) {
+						E:Frame() {
+							N:Jet(angle=-120) { }
+						}
+						W:Frame() {
+							N:Jet(angle=-120) { }
+						}
+					}
+				}
+			}
+		}
+		N:Cowl() {
+			N:Cowl() {
+				N:Cowl(angle=90) {
+					E:Cowl(angle=63.5) {
+						S:Cowl(angle=90) {
+							E:Cowl() {
+								E:Cowl() { }
+							}
+						}
+					}
+				}
+			}
+		}
+		E:Cowl() { }
+	}
+}

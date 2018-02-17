@@ -1,0 +1,46 @@
+// [RCD] 
+Val{
+	A(default=0,min=-18000,max=72000,step=100000)
+}
+Key{
+	0:A(step=-90000)
+	1:A(step=90000)
+	
+	2:A(step=-90000),A(step=17985)
+	3:A(step=-90000),A(step=18015)
+}
+Body{
+	Core(){
+		E:Chip(angle=-10){
+			S:Chip(angle=20){}
+			E:Trim(angle=-A){}
+		}
+		W:Chip(angle=-10){
+			S:Chip(angle=20){}
+			W:Trim(angle=-A){}
+		}
+		S:Frame(angle=40){
+			S:TrimF(angle=90,option=1){
+				N:Rudder(angle=50){
+					W:Chip(){}
+					E:Frame(){
+						E:Chip(){
+							E:Chip(){
+								S:Chip(angle=90){
+									S:Chip(angle=10){}
+									W:Chip(angle=5){}
+								}
+								S:Chip(angle=-90){
+									S:Chip(angle=-10){}
+									W:Chip(angle=-5){}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Jet(angle=85,power=A){}
+		N:Jet(){}
+	}
+}

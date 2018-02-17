@@ -1,0 +1,75 @@
+// [RCD] 
+Val
+{
+	ARS(default=0, min=-8, max=8, step=1)
+	BRAKE(default=0, max=192, step=32)
+	ENGINE(default=0, min=-8192, max=65536, step=2048)
+	HANDLE(default=0, min=-24, max=24, step=4)
+}
+Key
+{
+	0:ENGINE(step=2048)
+	1:ENGINE(step=-2048)
+	2:HANDLE(step=2), ARS(step=1)
+	3:ARS(step=-1), HANDLE(step=-2)
+}
+Body
+{
+	Core() {
+		S:Chip(angle=-20) { }
+		E:Weight() {
+			E:Chip(angle=-90) {
+				S:Chip() {
+					S:RudderF(angle=ARS) {
+						S:Wheel(power=-ENGINE, brake=BRAKE, option=1, effect=4) { }
+					}
+				}
+				N:RudderF(angle=-ARS) {
+					W:Frame(angle=-90) {
+						N:RudderF(angle=-HANDLE) {
+							E:Wheel(angle=-90, power=-ENGINE, brake=BRAKE, option=1, effect=4) { }
+						}
+						N:Chip(angle=-160) {
+							N:Chip(angle=10) { }
+						}
+					}
+				}
+			}
+			S:Chip(angle=-10) {
+				S:Chip(angle=-10) { }
+			}
+		}
+		W:Weight() {
+			W:Chip(angle=-90) {
+				S:Chip() {
+					S:RudderF(angle=ARS) {
+						S:Wheel(power=ENGINE, brake=BRAKE, option=1, effect=4) { }
+					}
+				}
+				N:RudderF(angle=-ARS) {
+					E:Frame(angle=-90) {
+						N:RudderF(angle=-HANDLE) {
+							W:Wheel(angle=-90, power=ENGINE, brake=BRAKE, option=1, effect=4) { }
+						}
+						N:Chip(angle=-160) {
+							N:Chip(angle=10) { }
+						}
+					}
+				}
+			}
+			S:Chip(angle=-10) {
+				S:Chip(angle=-10) { }
+			}
+		}
+		W:Weight(angle=-90) {
+			S:Chip() {
+				S:Chip() { }
+			}
+		}
+		E:Weight(angle=-90) {
+			S:Chip() {
+				S:Chip() { }
+			}
+		}
+	}
+}

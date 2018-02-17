@@ -1,0 +1,204 @@
+// [RCD] 
+Val
+{
+	G1(default=0, max=65536, step=65536)
+	G2(default=0, max=65536, step=65536)
+	G3(default=0, max=65536, step=65536)
+	G4(default=0, max=65536, step=65536)
+	P(default=0, max=300000, step=30000)
+	R(default=0, min=-16, max=16, step=8)
+	T(default=55, min=55, max=90)
+	V(default=0, min=-24, max=24, step=8)
+}
+Key
+{
+	0:V(step=8)
+	1:V(step=-8)
+	2:R(step=8)
+	3:R(step=-8)
+	4:P(step=30000)
+}
+Body
+{
+	Core() {
+		N:Cowl(angle=30, option=5) {
+			S:Cowl(color=#202020, effect=#80FB) {
+				S:Cowl(angle=30, color=#202020, effect=#80FB) {
+					S:Cowl(angle=30, color=#202020, effect=#80FB) {
+						S:Cowl(angle=-20) { }
+						E:Cowl(angle=91, color=#202020, effect=#80FB) { }
+						W:Cowl(angle=91, color=#202020, effect=#80FB) { }
+					}
+					E:Cowl(angle=91, color=#202020, effect=#80FB) { }
+					W:Cowl(angle=91, color=#202020, effect=#80FB) { }
+				}
+				E:Cowl(angle=91, color=#202020, effect=#80FB) { }
+				W:Cowl(angle=91, color=#202020, effect=#80FB) { }
+			}
+		}
+		N:Arm(power=G1, option=50000) { }
+		S:Frame(angle=90) {
+			S:Frame(angle=-90) {
+				S:Frame() {
+					S:Frame(option=1) {
+						S:Frame(angle=-30, option=1) {
+							S:Frame(angle=30, option=1) {
+								E:Trim(angle=V) {
+									N:Cowl(angle=-90, effect=#F0FB) {
+										E:Cowl(angle=170, effect=#F0FB) {
+											S:Cowl(angle=90) {
+												E:Cowl(option=3) { }
+											}
+										}
+									}
+									W:Cowl() { }
+								}
+								W:Trim(angle=-V) {
+									N:Cowl(angle=-90, effect=#F0FB) {
+										W:Cowl(angle=170, effect=#F0FB) {
+											S:Cowl(angle=90) {
+												W:Cowl(option=4) { }
+											}
+										}
+									}
+									E:Cowl() { }
+								}
+								N:Trim(angle=-90) {
+									S:Chip() {
+										E:Cowl(option=5) { }
+									}
+									N:Rudder(angle=150) {
+										N:Chip() { }
+									}
+								}
+							}
+						}
+					}
+				}
+				W:Cowl(angle=-90) {
+					S:Cowl() {
+						S:Cowl(angle=-5) {
+							S:Cowl(angle=-5) {
+								S:Cowl(angle=-5) { }
+								W:Cowl(angle=-150) { }
+								E:Cowl(angle=-150) { }
+							}
+							W:Cowl(angle=-150) { }
+							E:Cowl(angle=-150) { }
+						}
+					}
+				}
+				W:Trim(angle=R) {
+					W:Chip() {
+						W:Chip() {
+							S:Cowl(angle=-90, effect=#F0FB) {
+								W:Cowl(angle=170, effect=#F0FB) {
+									N:Cowl(angle=90) {
+										W:Cowl() {
+											W:Cowl() { }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				E:Trim(angle=R) {
+					E:Chip() {
+						E:Chip() {
+							S:Cowl(angle=-90, effect=#F0FB) {
+								E:Cowl(angle=170, effect=#F0FB) {
+									N:Cowl(angle=90) {
+										E:Cowl() {
+											E:Cowl() { }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				N:Frame() {
+					N:Cowl(angle=-30, option=5) { }
+					E:Cowl(angle=-90) {
+						S:Cowl() {
+							S:Cowl() {
+								S:Cowl(angle=-5) {
+									S:Cowl(angle=-5) {
+										S:Cowl(angle=-5) { }
+										E:Cowl(angle=-150) { }
+										W:Cowl(angle=-150) { }
+									}
+									E:Cowl(angle=-150) { }
+									W:Cowl(angle=-150) { }
+								}
+							}
+						}
+						N:Cowl(angle=-30, option=5) { }
+					}
+					W:Cowl(angle=-90) {
+						N:Cowl(angle=-30, option=5) { }
+					}
+					W:Frame(angle=-90) {
+						N:Arm(power=G4, option=50000) { }
+					}
+					E:Frame(angle=-90) {
+						N:Arm(power=G3, option=50000) { }
+					}
+					N:Arm(power=G2, option=50000) { }
+					N:RLW(angle=-90, power=P) {
+						E:Trim(angle=T) { }
+						W:Trim(angle=T) { }
+					}
+					N:RLW(angle=-90, power=-P) {
+						E:Trim(angle=-T) { }
+						W:Trim(angle=-T) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+MK = 0
+NG = 1
+
+function OnFrame()
+	NK = _VEL(0) * 3.6
+	
+	if NK > MK then
+		MK = NK
+	end
+	
+	out(0,"‘“˜@‹ZŒ¤ \\˜Z®ŠÈˆÕí“¬‹@ “”‰Î")
+	out(1, NK, "kph")
+	out(2, _WEIGHT(), "kg")
+	out(3, _FPS(), "fps")
+	out(4, "max ", MK, "kph")
+	
+	T = 25 * ((NK - 200) / 200) + 55
+	
+	if NG == 4 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		G4 = 65536
+		NG = 1
+	elseif NG == 3 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		G3 = 65536
+		NG = 4
+	elseif NG == 2 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		G2 = 65536
+		NG = 3
+	elseif NG == 1 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		G1 = 65536
+		NG = 2
+	end
+end
+}

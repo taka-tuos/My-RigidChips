@@ -1,0 +1,124 @@
+// [RCD] 
+Val
+{
+	ELON(default=0, min=-6, max=6, step=2)
+	EVTR(default=0, min=-6, max=6, step=2)
+	JET(default=0, max=65536, step=16384)
+}
+Key
+{
+	0:EVTR(step=2)
+	1:EVTR(step=-2)
+	2:ELON(step=2)
+	3:ELON(step=-2)
+	4:JET(step=16384)
+}
+Body
+{
+	Core() {
+		S:Frame(angle=165, option=1) {
+			S:Weight(angle=-165) {
+				N:Cowl(option=5) { }
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							E:Frame(option=1) {
+								E:Frame(option=1) { }
+							}
+							W:Frame(option=1) {
+								W:Frame(option=1) { }
+							}
+							S:Chip() {
+								S:Chip() {
+									E:Frame(option=1) {
+										E:Chip(angle=-90) {
+											N:Chip() { }
+										}
+									}
+									W:Frame(option=1) {
+										W:Chip(angle=-90) {
+											N:Chip() { }
+										}
+									}
+									E:Frame(angle=-175) {
+										E:Trim(angle=-EVTR) {
+											E:Cowl(option=5) { }
+											W:Frame() {
+												N:RudderF(angle=30) {
+													E:Cowl() {
+														E:Cowl(option=5) { }
+													}
+												}
+											}
+										}
+									}
+									W:Frame(angle=-175) {
+										W:Trim(angle=EVTR) {
+											W:Cowl(option=5) { }
+											E:Frame() {
+												N:RudderF(angle=-30) {
+													W:Cowl() {
+														W:Cowl(option=5) { }
+													}
+												}
+											}
+										}
+									}
+									S:Jet(angle=-90, power=JET) {
+										W:Cowl(angle=-90) {
+											W:Cowl() {
+												W:Cowl(option=3) { }
+											}
+										}
+										E:Cowl(angle=-90) {
+											E:Cowl() {
+												E:Cowl(option=4) { }
+											}
+										}
+										S:Cowl(angle=-90) {
+											S:Cowl() {
+												S:Cowl(angle=-45) { }
+											}
+										}
+									}
+								}
+							}
+						}
+						E:Frame(angle=-175) {
+							E:Trim(angle=ELON) {
+								E:Chip() {
+									E:Cowl(option=5) { }
+								}
+								W:Frame() {
+									N:RudderF(angle=20) {
+										E:Cowl() {
+											E:Cowl() {
+												E:Cowl(option=5) { }
+											}
+										}
+									}
+								}
+							}
+						}
+						W:Frame(angle=-175) {
+							W:Trim(angle=ELON) {
+								W:Chip() {
+									W:Cowl(option=5) { }
+								}
+								E:Frame() {
+									N:RudderF(angle=-20) {
+										W:Cowl() {
+											W:Cowl() {
+												W:Cowl(option=5) { }
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

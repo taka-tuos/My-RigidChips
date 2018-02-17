@@ -1,0 +1,272 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=200)
+	BC(default=#101010)
+	BC2(default=#404040)
+	C(default=#F7F7F7)
+	EC(default=#504B41)
+	HC(default=#FFFFFF)
+	METC(default=#FFFFFF)
+	NC(default=#FFFFFF)
+	NEK(default=0, min=-150, max=150, step=15)
+	PW(default=0, max=2500)
+	S(default=0, min=-2500, max=2500)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Jet(angle=180, power=200, option=2, color=METC) {
+			N:Frame(angle=90, option=1) {
+				S:TrimF(angle=NEK, option=1) {
+					S:Frame(angle=55, option=1) {
+						S:Frame(angle=-145) {
+							N:Frame() {
+								N:Frame() {
+									W:Frame(angle=5, option=1) {
+										W:RudderF(angle=s, option=1) {
+											E:Wheel(angle=-85, color=hc, effect=4) { }
+										}
+									}
+									E:Frame(angle=5, option=1) {
+										E:RudderF(angle=s, option=1) {
+											W:Wheel(angle=-85, color=hc, effect=4) { }
+										}
+									}
+									N:Chip(angle=-170) { }
+								}
+								N:Cowl(angle=-5) {
+									N:Cowl(option=5) {
+										N:Cowl(angle=-145, option=1, effect=c) {
+											N:Cowl(color=bc2) {
+												N:Cowl(angle=95, option=1, effect=c) {
+													N:Cowl(angle=-160, option=1, effect=c) {
+														N:Cowl(angle=-20, option=2, color=#383A3A) { }
+													}
+												}
+												S:Cowl(angle=178, option=2, color=#E7942E) {
+													W:Cowl(angle=-177, option=2, color=#0000FF) { }
+													E:Cowl(angle=-177, option=2, color=#808080) { }
+												}
+												W:Cowl(angle=-90, option=1, effect=c) {
+													S:Cowl(angle=-20, effect=c) {
+														E:Cowl(angle=-92, option=4, color=bc2) { }
+													}
+												}
+												E:Cowl(angle=-90, option=1, effect=c) {
+													S:Cowl(angle=-20, option=1, effect=c) {
+														W:Cowl(angle=-92, option=3, color=bc2) { }
+													}
+												}
+											}
+											N:Cowl(angle=180, option=1, effect=c) { }
+										}
+										W:Cowl(angle=95, option=1, effect=c) {
+											W:Cowl(angle=-175, option=1, effect=c) {
+												W:Cowl(angle=80, option=4, color=bc) {
+													E:Cowl(angle=-10, option=1, effect=c) {
+														N:Cowl(angle=-155, option=1, color=bc, effect=c) {
+															W:Cowl(angle=-15, option=3, color=bc) {
+																E:Cowl(angle=-20, option=5, color=bc) { }
+															}
+														}
+													}
+												}
+											}
+										}
+										E:Cowl(angle=95, option=1, effect=c) {
+											E:Cowl(angle=-175, option=1, effect=c) {
+												E:Cowl(angle=80, option=3, color=bc) {
+													W:Cowl(angle=-10, option=1, effect=c) {
+														N:Cowl(angle=-155, option=1, effect=c) {
+															E:Cowl(angle=-15, option=4, color=bc) {
+																W:Cowl(angle=-20, option=5, color=bc) { }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									S:Cowl(angle=-160, option=1) {
+										W:Cowl(option=1) { }
+										E:Cowl(option=1) { }
+									}
+								}
+								S:Cowl(angle=-50, option=5) {
+									N:Cowl(angle=-70, color=nc) {
+										N:Cowl(angle=30, color=nc) { }
+									}
+								}
+							}
+							S:Frame() {
+								E:Frame(angle=5, option=1) {
+									E:Wheel(angle=-95, power=-PW, brake=b, color=hc, effect=4) { }
+								}
+								W:Frame(angle=5, option=1) {
+									W:Wheel(angle=-95, power=PW, brake=b, color=hc, effect=4) { }
+								}
+								N:Chip(angle=-165) { }
+							}
+							S:Cowl(angle=-5, color=ec) {
+								E:Cowl(angle=-60, color=ec) {
+									E:Cowl(angle=-120, color=ec) {
+										E:Cowl(angle=-90, option=2, color=ec) { }
+										S:Cowl(angle=-120, option=5, color=ec) { }
+										N:Cowl(angle=-120, option=5, color=ec) { }
+										E:Cowl(angle=-70, option=1) { }
+										W:Cowl(angle=-130, option=1, effect=c) {
+											W:Cowl(angle=-140, option=5, color=ec) {
+												W:Cowl(angle=-175, option=1, effect=c) {
+													W:Cowl(angle=175, option=5, color=ec) {
+														W:Cowl(angle=-175, option=1, effect=c) {
+															W:Cowl(angle=175, option=5, color=ec) {
+																W:Cowl(angle=-175, option=1, effect=c) {
+																	W:Cowl(angle=175, option=5, color=ec) {
+																		W:Cowl(angle=-175, option=1, effect=c) {
+																			W:Cowl(angle=175, option=5, color=ec) {
+																				W:Cowl(angle=-175, option=1, effect=c) {
+																					W:Cowl(angle=175, option=5, color=ec) {
+																						W:Cowl(angle=-175, option=1, effect=c) {
+																							W:Cowl(angle=175, option=5, color=ec) { }
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+												W:Cowl(angle=175, option=1, effect=c) {
+													W:Cowl(angle=-175, option=5, color=ec) { }
+												}
+											}
+										}
+									}
+									W:Cowl(angle=-80, color=ec) {
+										W:Cowl(option=4, color=ec) { }
+									}
+								}
+							}
+							W:Cowl(option=1) {
+								N:Cowl(angle=-145, color=#514B42) {
+									N:Cowl(color=ec) { }
+								}
+							}
+							S:Cowl(angle=80, option=1, effect=c) {
+								S:Cowl(angle=-160, option=1, effect=c) {
+									S:Cowl(angle=80, color=bc2) {
+										S:Cowl(angle=-85, option=2, color=#E7942E) {
+											E:Cowl(angle=177, option=2, color=#0000FF) { }
+											W:Cowl(angle=177, option=2, color=#808080) { }
+										}
+										E:Cowl(angle=80, option=1, effect=c) {
+											E:Cowl(angle=-160, option=1, effect=c) {
+												E:Cowl(angle=80, option=3, color=bc) {
+													S:Cowl(angle=-160, option=3, color=bc) { }
+													N:Cowl(angle=-150, option=1, effect=c) {
+														N:Cowl(angle=180, option=4, color=bc) { }
+													}
+												}
+											}
+										}
+										W:Cowl(angle=80, option=1, effect=c) {
+											W:Cowl(angle=-160, option=1, effect=c) {
+												W:Cowl(angle=80, option=4, color=bc) {
+													S:Cowl(angle=-160, option=4, color=bc) { }
+													N:Cowl(angle=-150, option=1, effect=c) {
+														N:Cowl(angle=180, option=3, color=bc) { }
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							W:Cowl(angle=80, option=1, effect=c) {
+								W:Cowl(angle=-160, option=1, effect=c) {
+									W:Cowl(angle=70, color=bc) {
+										W:Cowl(angle=-160, color=bc) {
+											N:Cowl(angle=-10, option=4, color=bc2) { }
+										}
+										N:Cowl(angle=-10, option=3, color=bc) { }
+									}
+								}
+							}
+							E:Cowl(angle=80, option=1, effect=c) {
+								E:Cowl(angle=-160, option=1, effect=c) {
+									E:Cowl(angle=70, color=bc) {
+										E:Cowl(angle=-160, color=bc) {
+											N:Cowl(angle=-10, option=3, color=bc2) { }
+										}
+										N:Cowl(angle=-10, option=4, color=bc) { }
+									}
+								}
+							}
+						}
+					}
+					N:Cowl(angle=-100, option=1, effect=c) {
+						N:Cowl(angle=-150, option=1, effect=c) {
+							N:Cowl(angle=40, color=nc) {
+								E:Cowl(angle=-90, option=4, color=nc) { }
+								W:Cowl(angle=-90, option=3, color=nc) { }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function APAD(a,b)--アナログパッド
+return
+_ANALOG(0+a)/1000*b
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+function main()
+_ZOOM(80)
+--[[
+　　　　カートでレースしようぜ
+
+出力は絶対値で PW=2500までとし、自動制御は禁止
+ステアリングの最大切れ角は30度まで自動制御は禁止
+ブレーキに最大値は設けないが　同じく自動制御は禁止
+
+各変数に代入する数値はユーザーの操作に関する数値に限る
+	マシンの状態取得などを利用した自動制御を一切禁止する
+
+BodyブロックはCowl以外一切の変更を認めない
+
+カラーリングはvalブロックの変数で変えれるようにしました（一応）
+]]--
+
+
+PW=_LINER(PW,2500*_KEY(0)+1500*-_KEY(1),3000)  --ﾊﾟﾜｰ　MAX2.5k
+B=_LINER(B,100*_KEY(4),50)                      --ﾌﾞﾚｰｷ　無制限
+S=_LINER(S,30*_KEY(3)+30*-_KEY(2),4)            --ｽﾃｱﾘﾝｸﾞ　-30～+30
+--以下振り向き機能
+
+if _KEY(9)==1 then NEK=NEK+8 end
+
+if _KEY(10)==1 then NEK=NEK-8 end
+
+end}

@@ -1,0 +1,626 @@
+// [RCD] 
+Val
+{
+	B(default=0, min=-10000000000, max=10000000000)
+	G1(default=0, max=1000000000000, step=1000000000000)
+	G10(default=0, max=1000000000000, step=1000000000000)
+	G11(default=0, max=1000000000000, step=1000000000000)
+	G12(default=0, max=1000000000000, step=1000000000000)
+	G13(default=0, max=1000000000000, step=1000000000000)
+	G14(default=0, max=1000000000000, step=1000000000000)
+	G15(default=0, max=1000000000000, step=1000000000000)
+	G16(default=0, max=1000000000000, step=1000000000000)
+	G17(default=0, max=1000000000000, step=1000000000000)
+	G18(default=0, max=1000000000000, step=1000000000000)
+	G19(default=0, max=1000000000000, step=1000000000000)
+	G2(default=0, max=1000000000000, step=1000000000000)
+	G20(default=0, max=1000000000000, step=1000000000000)
+	G21(default=0, max=1000000000000, step=1000000000000)
+	G22(default=0, max=1000000000000, step=1000000000000)
+	G23(default=0, max=1000000000000, step=1000000000000)
+	G24(default=0, max=1000000000000, step=1000000000000)
+	G25(default=0, max=1000000000000, step=1000000000000)
+	G26(default=0, max=1000000000000, step=1000000000000)
+	G27(default=0, max=1000000000000, step=1000000000000)
+	G28(default=0, max=1000000000000, step=1000000000000)
+	G29(default=0, max=1000000000000, step=1000000000000)
+	G3(default=0, max=1000000000000, step=1000000000000)
+	G30(default=0, max=1000000000000, step=1000000000000)
+	G31(default=0, max=1000000000000, step=1000000000000)
+	G32(default=0, max=1000000000000, step=1000000000000)
+	G4(default=0, max=1000000000000, step=1000000000000)
+	G5(default=0, max=1000000000000, step=1000000000000)
+	G6(default=0, max=1000000000000, step=1000000000000)
+	G7(default=0, max=1000000000000, step=1000000000000)
+	G8(default=0, max=1000000000000, step=1000000000000)
+	G9(default=0, max=1000000000000, step=1000000000000)
+	HG(default=0, min=-1000000000000, max=1000000000000)
+	LT(default=0, min=-10000000000, max=10000000000)
+	RT(default=0, min=-10000000000, max=10000000000)
+	V1(default=0, min=-180, max=180)
+	V10(default=0, min=-180, max=180)
+	V11(default=0, min=-180, max=180)
+	V12(default=0, min=-180, max=180)
+	V13(default=0, min=-180, max=180)
+	V14(default=0, min=-180, max=180)
+	V15(default=0, min=-180, max=180)
+	V16(default=0, min=-180, max=180)
+	V17(default=0, min=-180, max=180)
+	V18(default=0, min=-180, max=180)
+	V19(default=0, min=-180, max=180)
+	V2(default=0, min=-180, max=180)
+	V20(default=0, min=-180, max=180)
+	V21(default=0, min=-180, max=180)
+	V22(default=0, min=-180, max=180)
+	V23(default=0, min=-180, max=180)
+	V24(default=0, min=-180, max=180)
+	V25(default=0, min=-180, max=180)
+	V26(default=0, min=-180, max=180)
+	V27(default=0, min=-180, max=180)
+	V28(default=0, min=-180, max=180)
+	V29(default=0, min=-180, max=180)
+	V3(default=0, min=-180, max=180)
+	V30(default=0, min=-180, max=180)
+	V31(default=0, min=-180, max=180)
+	V32(default=0, min=-180, max=180)
+	V4(default=0, min=-180, max=180)
+	V5(default=0, min=-180, max=180)
+	V6(default=0, min=-180, max=180)
+	V7(default=0, min=-180, max=180)
+	V8(default=0, min=-180, max=180)
+	V9(default=0, min=-180, max=180)
+	VG(default=0, min=-180, max=180)
+	W1(default=0, min=-180, max=180)
+	W10(default=0, min=-180, max=180)
+	W11(default=0, min=-180, max=180)
+	W12(default=0, min=-180, max=180)
+	W13(default=0, min=-180, max=180)
+	W14(default=0, min=-180, max=180)
+	W15(default=0, min=-180, max=180)
+	W16(default=0, min=-180, max=180)
+	W17(default=0, min=-180, max=180)
+	W18(default=0, min=-180, max=180)
+	W19(default=0, min=-180, max=180)
+	W2(default=0, min=-180, max=180)
+	W20(default=0, min=-180, max=180)
+	W21(default=0, min=-180, max=180)
+	W22(default=0, min=-180, max=180)
+	W23(default=0, min=-180, max=180)
+	W24(default=0, min=-180, max=180)
+	W25(default=0, min=-180, max=180)
+	W26(default=0, min=-180, max=180)
+	W27(default=0, min=-180, max=180)
+	W28(default=0, min=-180, max=180)
+	W29(default=0, min=-180, max=180)
+	W3(default=0, min=-180, max=180)
+	W30(default=0, min=-180, max=180)
+	W31(default=0, min=-180, max=180)
+	W32(default=0, min=-180, max=180)
+	W4(default=0, min=-180, max=180)
+	W5(default=0, min=-180, max=180)
+	W6(default=0, min=-180, max=180)
+	W7(default=0, min=-180, max=180)
+	W8(default=0, min=-180, max=180)
+	W9(default=0, min=-180, max=180)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Weight(spring=1, damper=1) {
+			S:Weight(angle=80) {
+				S:Weight(angle=-160) {
+					S:Weight(angle=-100) {
+						N:Weight(option=0, angle=-30, spring=1, damper=1) {
+							N:Weight(option=0, angle=-150, spring=1, damper=1) {
+								N:Weight(option=0) {
+									S:Weight(option=0, angle=0, spring=1, damper=1) {
+										N:Frame(angle=V1, spring=1, damper=1, option=1) {
+											N:Frame(angle=W1, spring=1, damper=1, option=1) {
+												N:Arm(angle=V1, power=G1, option=315000, name=A1, spring=1, damper=1) { }
+											}
+										}
+										N:Frame(angle=V5, spring=1, damper=1, option=1) {
+											N:Frame(angle=W5, spring=1, damper=1, option=1) {
+												N:Arm(angle=V5, power=G5, option=315000, name=A5, spring=1, damper=1) { }
+											}
+										}
+										N:Frame(angle=V9, spring=1, damper=1, option=1) {
+											N:Frame(angle=W9, spring=1, damper=1, option=1) {
+												N:Arm(angle=V9, power=G9, option=315000, name=A9, spring=1, damper=1) { }
+											}
+										}
+										N:Frame(angle=V13, spring=1, damper=1, option=1) {
+											N:Frame(angle=W13, spring=1, damper=1, option=1) {
+												N:Arm(angle=V13, power=G13, option=315000, name=A13, spring=1, damper=1) { }
+											}
+										}
+										N:Frame(angle=V17, spring=1, damper=1, option=1) {
+											N:Frame(angle=W17, spring=1, damper=1, option=1) {
+												N:Arm(angle=V17, power=G17, option=315000, name=A17, spring=1, damper=1) { }
+											}
+										}
+										N:Frame(angle=V21, spring=1, damper=1, option=1) {
+											N:Frame(angle=W21, spring=1, damper=1, option=1) {
+												N:Arm(angle=V21, power=G21, option=315000, name=A21, spring=1, damper=1) { }
+											}
+										}
+										N:Frame(angle=V25, spring=1, damper=1, option=1) {
+											N:Frame(angle=W25, spring=1, damper=1, option=1) {
+												N:Arm(angle=V25, power=G25, option=315000, name=A25, spring=1, damper=1) { }
+											}
+										}
+										N:Frame(angle=V29, spring=1, damper=1, option=1) {
+											N:Frame(angle=W29, spring=1, damper=1, option=1) {
+												N:Arm(angle=V29, power=G29, option=315000, name=A29, spring=1, damper=1) { }
+											}
+										}
+										S:Weight(option=0, angle=-90, spring=1, damper=1) {
+											S:Weight(option=0, angle=-90, spring=1, damper=1) {
+												S:Frame(angle=V2, spring=1, damper=1, option=1) {
+													S:Frame(angle=W2, spring=1, damper=1, option=1) {
+														S:Arm(angle=V2, power=G2, option=315000, name=A2, spring=1, damper=1) { }
+													}
+												}
+												S:Frame(angle=V6, spring=1, damper=1, option=1) {
+													S:Frame(angle=W6, spring=1, damper=1, option=1) {
+														S:Arm(angle=V6, power=G6, option=315000, name=A6, spring=1, damper=1) { }
+													}
+												}
+												S:Frame(angle=V10, spring=1, damper=1, option=1) {
+													S:Frame(angle=W10, spring=1, damper=1, option=1) {
+														S:Arm(angle=V10, power=G10, option=315000, name=A10, spring=1, damper=1) { }
+													}
+												}
+												S:Frame(angle=V14, spring=1, damper=1, option=1) {
+													S:Frame(angle=W14, spring=1, damper=1, option=1) {
+														S:Arm(angle=V14, power=G14, option=315000, name=A14, spring=1, damper=1) { }
+													}
+												}
+												S:Frame(angle=V18, spring=1, damper=1, option=1) {
+													S:Frame(angle=W18, spring=1, damper=1, option=1) {
+														S:Arm(angle=V18, power=G18, option=315000, name=A18, spring=1, damper=1) { }
+													}
+												}
+												S:Frame(angle=V22, spring=1, damper=1, option=1) {
+													S:Frame(angle=W22, spring=1, damper=1, option=1) {
+														S:Arm(angle=V22, power=G22, option=315000, name=A22, spring=1, damper=1) { }
+													}
+												}
+												S:Frame(angle=V26, spring=1, damper=1, option=1) {
+													S:Frame(angle=W26, spring=1, damper=1, option=1) {
+														S:Arm(angle=V26, power=G26, option=315000, name=A26, spring=1, damper=1) { }
+													}
+												}
+												S:Frame(angle=V30, spring=1, damper=1, option=1) {
+													S:Frame(angle=W30, spring=1, damper=1, option=1) {
+														S:Arm(angle=V30, power=G30, option=315000, name=A30, spring=1, damper=1) { }
+													}
+												}
+												S:Weight(option=0) {
+													S:Weight() {
+														S:Weight(angle=-90, option=0) { }
+													}
+												}
+											}
+											W:Weight(option=0, angle=-90, spring=1, damper=1) {
+												W:Frame(angle=V3, spring=1, damper=1, option=1) {
+													W:Frame(angle=W3, spring=1, damper=1, option=1) {
+														W:Arm(angle=V3, power=G3, option=315000, name=A3, spring=1, damper=1) { }
+													}
+												}
+												W:Frame(angle=V7, spring=1, damper=1, option=1) {
+													W:Frame(angle=W7, spring=1, damper=1, option=1) {
+														W:Arm(angle=V7, power=G7, option=315000, name=A7, spring=1, damper=1) { }
+													}
+												}
+												W:Frame(angle=V11, spring=1, damper=1, option=1) {
+													W:Frame(angle=W11, spring=1, damper=1, option=1) {
+														W:Arm(angle=V11, power=G11, option=315000, name=A11, spring=1, damper=1) { }
+													}
+												}
+												W:Frame(angle=V15, spring=1, damper=1, option=1) {
+													W:Frame(angle=W15, spring=1, damper=1, option=1) {
+														W:Arm(angle=V15, power=G15, option=315000, name=A15, spring=1, damper=1) { }
+													}
+												}
+												W:Frame(angle=V19, spring=1, damper=1, option=1) {
+													W:Frame(angle=W19, spring=1, damper=1, option=1) {
+														W:Arm(angle=V19, power=G19, option=315000, name=A19, spring=1, damper=1) { }
+													}
+												}
+												W:Frame(angle=V23, spring=1, damper=1, option=1) {
+													W:Frame(angle=W23, spring=1, damper=1, option=1) {
+														W:Arm(angle=V23, power=G23, option=315000, name=A23, spring=1, damper=1) { }
+													}
+												}
+												W:Frame(angle=V27, spring=1, damper=1, option=1) {
+													W:Frame(angle=W27, spring=1, damper=1, option=1) {
+														W:Arm(angle=V27, power=G27, option=315000, name=A27, spring=1, damper=1) { }
+													}
+												}
+												W:Frame(angle=V31, spring=1, damper=1, option=1) {
+													W:Frame(angle=W31, spring=1, damper=1, option=1) {
+														W:Arm(angle=V31, power=G31, option=315000, name=A31, spring=1, damper=1) { }
+													}
+												}
+												W:Weight(option=0) {
+													W:Weight(option=0) { }
+												}
+											}
+											E:Weight(option=0, angle=-90, spring=1, damper=1) {
+												E:Frame(angle=V4, spring=1, damper=1, option=1) {
+													E:Frame(angle=W4, spring=1, damper=1, option=1) {
+														E:Arm(angle=V4, power=G4, option=315000, name=A4, spring=1, damper=1) { }
+													}
+												}
+												E:Frame(angle=V8, spring=1, damper=1, option=1) {
+													E:Frame(angle=W8, spring=1, damper=1, option=1) {
+														E:Arm(angle=V8, power=G8, option=315000, name=A8, spring=1, damper=1) { }
+													}
+												}
+												E:Frame(angle=V12, spring=1, damper=1, option=1) {
+													E:Frame(angle=W12, spring=1, damper=1, option=1) {
+														E:Arm(angle=V12, power=G12, option=315000, name=A12, spring=1, damper=1) { }
+													}
+												}
+												E:Frame(angle=V16, spring=1, damper=1, option=1) {
+													E:Frame(angle=W16, spring=1, damper=1, option=1) {
+														E:Arm(angle=V16, power=G16, option=315000, name=A16, spring=1, damper=1) { }
+													}
+												}
+												E:Frame(angle=V20, spring=1, damper=1, option=1) {
+													E:Frame(angle=W20, spring=1, damper=1, option=1) {
+														E:Arm(angle=V20, power=G20, option=315000, name=A20, spring=1, damper=1) { }
+													}
+												}
+												E:Frame(angle=V24, spring=1, damper=1, option=1) {
+													E:Frame(angle=W24, spring=1, damper=1, option=1) {
+														E:Arm(angle=V24, power=G24, option=315000, name=A24, spring=1, damper=1) { }
+													}
+												}
+												E:Frame(angle=V28, spring=1, damper=1, option=1) {
+													E:Frame(angle=W28, spring=1, damper=1, option=1) {
+														E:Arm(angle=V28, power=G28, option=315000, name=A28, spring=1, damper=1) { }
+													}
+												}
+												E:Frame(angle=V32, spring=1, damper=1, option=1) {
+													E:Frame(angle=W32, spring=1, damper=1, option=1) {
+														E:Arm(angle=V32, power=G32, option=315000, name=A32, spring=1, damper=1) { }
+													}
+												}
+												E:Weight(option=0) {
+													E:Weight(option=0) { }
+												}
+											}
+										}
+										N:Cowl(angle=-30) {
+											N:Cowl(angle=30) {
+												N:Cowl(angle=180, name=GP) { }
+											}
+										}
+									}
+									N:Weight(option=0) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		S:Rudder(angle=HG) {
+			S:Weight(option=0, angle=VG, spring=1, damper=1) {
+				W:Weight(option=0) {
+					W:Weight(option=0, angle=80) { }
+					N:Weight(option=0) {
+						N:Weight(option=0) {
+							W:Weight(option=0, angle=90) {
+								N:Weight(option=0, angle=170) {
+									S:Weight(angle=-100, option=0) { }
+								}
+							}
+							W:Weight(option=0, angle=80) { }
+							N:Weight(option=0, angle=110) { }
+							E:Weight(option=0, angle=20) { }
+						}
+						W:Weight(option=0, angle=80) { }
+					}
+					S:Weight(option=0) {
+						S:Weight(option=0) {
+							W:Weight(option=0, angle=90) {
+								S:Weight(option=0, angle=170) { }
+							}
+							W:Weight(option=0, angle=80) { }
+							E:Weight(option=0, angle=30) {
+								S:Weight(option=0, angle=150) { }
+								S:Weight(option=0, angle=-150) {
+									S:Weight(option=0, angle=-45) { }
+									W:Weight(option=0, angle=-70) {
+										S:Weight(option=0, angle=-45) { }
+									}
+								}
+							}
+							S:Weight(option=0, angle=110) { }
+							S:Weight(angle=90, option=0) {
+								E:Weight(angle=20, option=0) { }
+							}
+							S:Weight(angle=80) {
+								E:Weight(angle=20, option=0) { }
+							}
+						}
+						W:Weight(option=0, angle=80) { }
+					}
+					S:Weight(option=0) {
+						S:Weight(option=0, angle=20) {
+							S:Weight(option=0, angle=120) {
+								E:Weight(option=0, angle=5) { }
+							}
+							E:Weight(option=0) { }
+						}
+					}
+					N:Weight(option=0) {
+						N:Weight(option=0, angle=20) {
+							N:Weight(option=0, angle=120) {
+								E:Weight(option=0, angle=5) { }
+							}
+						}
+					}
+				}
+				E:Weight(option=0) {
+					E:Weight(option=0, angle=80) { }
+					S:Weight(option=0) {
+						S:Weight(option=0) {
+							E:Weight(option=0, angle=90) {
+								S:Weight(option=0, angle=170) { }
+							}
+							E:Weight(option=0, angle=80) { }
+							W:Weight(option=0, angle=30) {
+								S:Weight(option=0, angle=150) { }
+								S:Weight(option=0, angle=-150) {
+									S:Weight(option=0, angle=-45) { }
+									E:Weight(option=0, angle=-70) {
+										S:Weight(option=0, angle=-45) { }
+									}
+								}
+							}
+							S:Weight(option=0, angle=110) { }
+							S:Weight(angle=90, option=0) {
+								W:Weight(angle=20, option=0) { }
+							}
+							S:Weight(angle=80, option=0) {
+								W:Weight(angle=20, option=0) { }
+							}
+						}
+						E:Weight(option=0, angle=80) { }
+					}
+					N:Weight(option=0) {
+						N:Weight(option=0) {
+							E:Weight(option=0, angle=90) {
+								N:Weight(option=0, angle=170) {
+									S:Weight(angle=-100, option=0) { }
+								}
+							}
+							E:Weight(option=0, angle=80) { }
+							N:Weight(option=0, angle=110) { }
+							W:Weight(option=0, angle=20) { }
+						}
+						E:Weight(option=0, angle=80) { }
+					}
+					N:Weight(option=0) {
+						N:Weight(option=0, angle=20) {
+							N:Weight(option=0, angle=120) {
+								W:Weight(option=0, angle=5) { }
+							}
+						}
+					}
+					S:Weight(option=0) {
+						S:Weight(option=0, angle=20) {
+							S:Weight(option=0, angle=120) {
+								W:Weight(option=0, angle=5) { }
+							}
+							W:Weight(option=0) { }
+						}
+					}
+				}
+				S:Weight(option=0) {
+					S:Weight(option=0, angle=-135) {
+						S:Weight(option=0, angle=-45) {
+							W:Weight(option=0, angle=-45) { }
+							E:Weight(option=0, angle=-45) { }
+							S:Weight(option=0, angle=-45) {
+								W:Weight(option=0, angle=-45) { }
+								E:Weight(option=0, angle=-45) { }
+							}
+						}
+						W:Weight(option=0, angle=-45) { }
+						E:Weight(option=0, angle=-45) { }
+					}
+				}
+				N:Weight(option=0) {
+					N:Weight(option=0, angle=20) { }
+				}
+				S:Weight(angle=5) {
+					S:Weight(angle=170) {
+						S:Weight(angle=5, spring=1, damper=1) {
+							E:Weight(spring=1, damper=1) {
+								E:Wheel(angle=-90, power=-RT, brake=B, effect=2, spring=1, damper=1) { }
+								W:Wheel(angle=-90, power=RT, brake=B, effect=2, spring=1, damper=1) { }
+								S:Weight(spring=1, damper=1) {
+									S:Weight(spring=1, damper=1) {
+										E:Wheel(angle=-90, power=-RT, brake=B, effect=2, spring=1, damper=1) { }
+										W:Wheel(angle=-90, power=RT, brake=B, effect=2, spring=1, damper=1) { }
+									}
+									E:Wheel(angle=-90, power=-RT, brake=B, effect=2, spring=1, damper=1) { }
+									W:Wheel(angle=-90, power=RT, brake=B, effect=2, spring=1, damper=1) { }
+								}
+								N:Weight(spring=1, damper=1) {
+									N:Weight(spring=1, damper=1) {
+										E:Wheel(angle=-90, power=-RT, brake=B, effect=2, spring=1, damper=1) { }
+										W:Wheel(angle=-90, power=RT, brake=B, effect=2, spring=1, damper=1) { }
+									}
+									E:Wheel(angle=-90, power=-RT, brake=B, effect=2, spring=1, damper=1) { }
+									W:Wheel(angle=-90, power=RT, brake=B, effect=2, spring=1, damper=1) { }
+								}
+							}
+							W:Weight(spring=1, damper=1) {
+								W:Wheel(angle=-90, power=LT, brake=B, effect=2, spring=1, damper=1) { }
+								E:Wheel(angle=-90, power=-LT, brake=B, effect=2, spring=1, damper=1) { }
+								S:Weight(spring=1, damper=1) {
+									S:Weight(spring=1, damper=1) {
+										E:Wheel(angle=-90, power=-LT, brake=B, effect=2, spring=1, damper=1) { }
+										W:Wheel(angle=-90, power=LT, brake=B, effect=2, spring=1, damper=1) { }
+									}
+									E:Wheel(angle=-90, power=-LT, brake=B, effect=2, spring=1, damper=1) { }
+									W:Wheel(angle=-90, power=LT, brake=B, effect=2, spring=1, damper=1) { }
+								}
+								N:Weight(spring=1, damper=1) {
+									N:Weight(spring=1, damper=1) {
+										E:Wheel(angle=-90, power=-LT, brake=B, effect=2, spring=1, damper=1) { }
+										W:Wheel(angle=-90, power=LT, brake=B, effect=2, spring=1, damper=1) { }
+									}
+									E:Wheel(angle=-90, power=-LT, brake=B, effect=2, spring=1, damper=1) { }
+									W:Wheel(angle=-90, power=LT, brake=B, effect=2, spring=1, damper=1) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+math.limit = function (val,max,min)	return val>max and max or val<min and min or val	end
+
+_tvx=-60
+
+_tv={0,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx}
+
+_v=0
+
+_md=1
+
+_tg=0
+
+_vtgt=0
+
+function lm_conv(x0,y0)
+	local z = 0.8
+	
+	local x = -(x0-_WIDTH()/2) / _HEIGHT()
+	local y = -(y0-_HEIGHT()/2) / _HEIGHT()
+	
+	local xx,xy,xz = _XX(_vtgt),_XY(_vtgt),_XZ(_vtgt)
+	local yx,yy,yz = _YX(_vtgt),_YY(_vtgt),_YZ(_vtgt)
+	local zx,zy,zz = _ZX(_vtgt),_ZY(_vtgt),_ZZ(_vtgt)
+	
+	local a = (xx * x + yx * y + zx * z) * 1.2 + _X(_vtgt)
+	local b = (xy * x + yy * y + zy * z) * 1.2 + _Y(_vtgt)
+	local c = (xz * x + yz * y + zz * z) * 1.2 + _Z(_vtgt)
+	
+	return a,b,c
+end
+
+function hooked_m2(x0,y0)
+	_MOVE3D(lm_conv(x0,y0))
+end
+
+function hooked_l2(x0,y0)
+	_LINE3D(lm_conv(x0,y0))
+end
+
+function XGUI.Circle(x,y,s)
+	local i
+	XGUI.Move2D(math.cos((math.pi*2/32)*0)*s+x,math.sin((math.pi*2/32)*0)*s+y)
+	for i=1,32 do
+		XGUI.Line2D(math.cos((math.pi*2/32)*i)*s+x,math.sin((math.pi*2/32)*i)*s+y)
+	end
+end
+
+function OnInit()
+	_ZOOM(60)
+	
+	XGUI.Move2D = hooked_m2
+	XGUI.Line2D = hooked_l2
+end
+
+function OnFrame()
+	local i
+	
+	--if window_info == nil then
+	--	window_info = XGUI.CreateWindow(1152,384,"計器類 R=NOW G=AVG B=MAX (スリップ率 R=FL G=FR B=RL Y=RR ペダル R=ACCEL G=BRAKE B=HBRAKE Y=HANDLE)",OnDraw_Window_Info,true)
+	--end
+	
+	--XGUI.RefreshWindowManager()
+	
+	local vx=_WIDTH()/2
+	local vy=_HEIGHT()/2
+	
+	_vtgt=GP
+	
+	XGUI.Move2D(vx-32,vy)
+	XGUI.Line2D(vx+32,vy)
+	
+	XGUI.Move2D(vx,vy-32)
+	XGUI.Line2D(vx,vy+32)
+	
+	XGUI.Circle(vx,vy,16)
+	
+	_vtgt=0
+	
+	out(1,_FPS())
+	
+	LT=_LINER(LT,(_KEY(14)-_KEY(6)-_KEY(2)+_KEY(3))*10000,10000)
+	RT=_LINER(RT,(_KEY(15)-_KEY(5)+_KEY(2)-_KEY(3))*10000,10000)
+	--B=_LINER(B,_KEY(11)*1000,500)
+	
+	if _md == 1 then
+		out(0,"Normal speed mode.")
+	else
+		out(0,"High speed mode.")
+	end
+	
+	if _KEYDOWN(7) == 1 then
+		if _md == 1 then _md = 8
+		else _md = 1 end
+	end
+	
+	if _KEYDOWN(3) == 1 then
+		if _tg == 0 then _tg = 90
+		else _tg = 0 end
+	end
+	
+	if _KEYDOWN(11) == 1 then
+		if B == 0 then B = 1000
+		else B = 0 end
+	end
+	
+	VG=math.limit(VG-_KEY(0)*0.5*_md+_KEY(1)*0.5*_md,20,-90)
+	
+	if _KEY(4) == 1 and _E(_G['A'.._v+1]) >= _OPTION(_G['A'.._v+1]) and _G['V'.._v+1] == 0 then
+		_G['G'.._v+1]=_OPTION(_G['A'.._v+1])
+		_v=math.mod(_v+1,32)
+		_tv={_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx,_tvx}
+		_tv[_v+1]=0
+	end
+	
+	for i=1,32 do
+		_G['V'..i]=_LINER(_G['V'..i],_tv[i],30)
+		_G['W'..i]=-_G['V'..i]*2
+	end
+end
+}

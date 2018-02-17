@@ -1,0 +1,65 @@
+// [RCD] 
+Val
+{
+	BRK(default=0, max=256, step=128)
+	GUN1(default=0, max=16777216, step=16777216)
+	GUN2(default=0, max=16777216, step=16777216)
+	GUN3(default=0, max=16777216, step=16777216)
+	GUN4(default=0, max=16777216, step=16777216)
+	LTIRE(default=0, min=-2048, max=4096, step=2048)
+	RTIRE(default=0, min=-2048, max=4096, step=2048)
+}
+Key
+{
+	0:LTIRE(step=2048), RTIRE(step=2048)
+	1:RTIRE(step=-2048), LTIRE(step=-2048)
+	2:RTIRE(step=2048)
+	3:LTIRE(step=2048)
+	4:GUN1(step=65536), GUN2(step=16384), GUN3(step=12288), GUN4(step=8192)
+	5:BRK(step=64)
+}
+Body
+{
+	Core() {
+		S:Chip() {
+			S:Chip() {
+				W:Chip(angle=170) {
+					W:Rudder(angle=0) {
+						E:Wheel(angle=-170, power=RTIRE, brake=BRK) { }
+					}
+				}
+				E:Chip(angle=170) {
+					E:Rudder(angle=0) {
+						W:Wheel(angle=-170, power=-LTIRE, brake=BRK) { }
+					}
+				}
+				W:Weight(angle=10) { }
+				E:Weight(angle=10) { }
+			}
+			E:Chip(angle=170) {
+				E:Rudder(angle=0) {
+					W:Wheel(angle=-170, power=-LTIRE, brake=BRK) { }
+				}
+			}
+			W:Chip(angle=170) {
+				W:Rudder(angle=0) {
+					E:Wheel(angle=-170, power=RTIRE, brake=BRK) { }
+				}
+			}
+			W:Weight(angle=10) { }
+			E:Weight(angle=10) { }
+		}
+		E:Chip(angle=170) {
+			E:Rudder(angle=0) {
+				W:Wheel(angle=-170, power=-LTIRE, brake=BRK) { }
+			}
+		}
+		W:Chip(angle=170) {
+			W:Rudder(angle=0) {
+				E:Wheel(angle=-170, power=RTIRE, brake=BRK) { }
+			}
+		}
+		W:Weight(angle=10) { }
+		E:Weight(angle=10) { }
+	}
+}

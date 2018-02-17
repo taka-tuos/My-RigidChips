@@ -1,0 +1,206 @@
+// [RCD] 
+Val
+{
+	E0(default=0, min=-90, max=90)
+	G0(default=0, max=10000000000)
+	G1(default=0, max=10000000000)
+	G2(default=0, max=10000000000)
+	G3(default=0, max=10000000000)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	T(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+	V0(default=0, min=-90, max=90)
+	V1(default=0, min=-90, max=90)
+	V2(default=0, min=-90, max=90)
+	V3(default=0, min=-90, max=90)
+	Y(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+		S:Trim(angle=90, spring=1, damper=1) {
+			S:Trim(angle=90) {
+				E:Trim(angle=-R) {
+					E:Chip() {
+						E:Chip() { }
+					}
+				}
+				W:Trim(angle=-R) {
+					W:Chip() {
+						W:Chip() { }
+					}
+				}
+				N:Frame(angle=30) {
+					N:RLW(angle=-120, power=-P) {
+						E:Trim(angle=-T) { }
+						S:Trim(angle=-T) { }
+						N:Trim(angle=-T) { }
+						W:Trim(angle=-T) { }
+					}
+				}
+			}
+			S:Trim(spring=1, damper=1) {
+				S:Trim(spring=1, damper=1) {
+					S:Trim(spring=1, damper=1) {
+						S:Trim(spring=1, damper=1) {
+							S:Chip() {
+								E:Trim() { }
+							}
+							S:TrimF(angle=90, option=1) {
+								W:Trim(angle=-V) {
+									E:Chip() { }
+								}
+								E:Trim(angle=V) {
+									W:Chip() { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+do
+	local FSX=_X(FS)
+	local FSY=_Y(FS)
+	local FSZ=_Z(FS)
+	local RSX=_X(RS)
+	local RSY=_Y(RS)
+	local RSZ=_Z(RS)
+	local LSX=_X(LS)
+	local LSY=_Y(LS)
+	local LSZ=_Z(LS)
+	local TSX=_X(TS)
+	local TSY=_Y(TS)
+	local TSZ=_Z(TS)
+	
+	function MF(a)
+		local FX=_X(FS)-FSX
+		local FY=_Y(FS)-FSY
+		local FZ=_Z(FS)-FSZ
+		local RX=_X(RS)-RSX
+		local RY=_Y(RS)-RSY
+		local RZ=_Z(RS)-RSZ
+		local LX=_X(LS)-LSX
+		local LY=_Y(LS)-LSY
+		local LZ=_Z(LS)-LSZ
+		local TX=_X(TS)-TSX
+		local TY=_Y(TS)-TSY
+		local TZ=_Z(TS)-TSZ
+
+		WX=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))-(TX*_YX(TS)+TY*_YY(TS)+TZ*_YZ(TS))
+		WY=(RX*_ZX(RS)+RY*_ZY(RS)+RZ*_ZZ(RS))-(LX*_ZX(LS)+LY*_ZY(LS)+LZ*_ZZ(LS))
+		WZ=(RX*_YX(RS)+RY*_YY(RS)+RZ*_YZ(RS))-(LX*_YX(LS)+LY*_YY(LS)+LZ*_YZ(LS))
+		VEL=(FX*_ZX(FS)+FY*_ZY(FS)+FZ*_ZZ(FS))*3.6
+		VX=(FX*_XX(FS)+FY*_XY(FS)+FZ*_XZ(FS))*3.6
+
+		VY=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))*3.6
+
+		FSX=_X(FS)
+		FSY=_Y(FS)
+		FSZ=_Z(FS)
+		RSX=_X(RS)
+		RSY=_Y(RS)
+		RSZ=_Z(RS)
+		LSX=_X(LS)
+		LSY=_Y(LS)
+		LSZ=_Z(LS)
+		TSX=_X(TS)
+		TSY=_Y(TS)
+		TSZ=_Z(TS)
+	end
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+function _LIMIT(v,a,b)
+	return math.max(a,math.min(b,v))
+end
+
+_jp=360000
+_ra=20
+_va=10
+
+_e0t=90
+
+_tn=-60
+_tv={0,_tn,_tn,_tn}
+_v=0
+
+_wxbuff=0
+_wybuff=0
+_wzbuff=0
+
+function OnFrame()
+	MF()
+	
+	P=_LINER(P,_KEY(4)*_jp,_jp/10)
+	R=_LINER(R,_KEY(3)*_ra-_KEY(2)*_ra,_ra/4)
+	V=_LINER(V,_KEY(1)*_va-_KEY(0)*_va,_va/4)
+	
+	local nk=_VEL(0)*3.6
+	
+	--T=55
+	T=math.max(25*((nk-130)/400)+55,55)
+	
+	E0=_LINER(E0,_e0t,8)
+	
+	if _KEYDOWN(15) == 1 then
+		_e0t=85-_e0t
+	end
+	
+	for i=0,3 do
+		_G['V'..i]=_LINER(_G['V'..i],_tv[i+1],math.abs(_tn/3))
+		_G['G'..i]=0
+	end
+	
+	if _KEY(5) == 1 and _E(_G['A'.._v]) == _OPTION(_G['A'.._v]) and _G['V'.._v] == 0 then
+		_G['G'.._v]=_OPTION(_G['A'.._v])
+		_v=math.mod(_v+1,4)
+		_tv={_tn,_tn,_tn,_tn}
+		_tv[_v+1]=0
+	end
+	
+	if _KEY(2) == 0 and _KEY(3) == 0 then
+		R=WZ*96+(_wzbuff-WZ)*72
+	end
+	
+	if _KEY(0) == 0 and _KEY(1) == 0 then
+		V=WX*-128+(_wxbuff-WX)*-96
+	end
+	
+	Y=WY*-384+(_wybuff-WY)*-384
+	
+	_wxbuff=WX
+	_wybuff=WY
+	_wzbuff=WZ
+end
+}

@@ -1,0 +1,107 @@
+require("cel/Science/Vector.lua")
+
+--[[
+[1] 説明文　[234]座標　[567]　向き　[8]サイズ　[9]ガイド長さ
+]]
+point={
+{string.format("湖畔沿い、ラーメン屋の裏"),1056.29, 30.79, -1.41,			0.21, 174.92, 0.03,		13,300},
+{string.format("湖畔沿い、地下水路"),338.49, 6.99, 1228.65,			0.09, -179.94, 0.03,	14,900},
+{string.format("ちょっと狭いけど\nまっすぐだから余裕よね？"),332.16, 9.23, 3168.69,			0.15, -177.17, -0.15,	20,1},
+{string.format("神社の鳥居"),1685.82, 416.99, 2394.94,		0.05, -89.02, -0.11,	13,300},
+{string.format("裏山の方"),2830.28, 693.43, 2091.33,		0.44, -43.07, 0.00,		40,1500},
+{string.format("右側道路沿い\n下りトンネル"),2953.51, 381.18, 963.06,		0.11, 90.68, -0.09,		15,900},
+{string.format("ちょっと曲がってるけど\n広めだから余裕よね？"),559.81, 28.52, 831.70,			0.29, 84.53, 0.34,		20,0},
+{string.format("湖上空、ちょっと左側"),-4.21, 59.95, 298.87,			0.05, 31.72, -0.16,		22,1500},
+{string.format("狭いトンネル"),-674.00, 42.66, -452.44,		0.10, 55.52, 0.01,		15,800},
+{string.format("実はちょっと登ってるんだよね"),-1690.33, 130.39, -1191.69,		0.07, 49.56, 0.17,		15,1},
+{string.format("真っすぐ行って左側\n高速道路トンネル"),-2552.30, 429.12, -3073.99,		0.09, -39.36, 0.08,		16,2000},
+{string.format("いい感じの左カーブ"),-773.68, 424.94, -3041.76,		0.09, -172.04, 0.18,	28,0},
+{string.format("道路の下"),-933.5, 381.9, -2103,			0,0,0,					20,-800},
+{string.format("今度は道路の上"),-1249.13, 487.33, -755.62,		6.77, 175.02, 0.62,		23,800},
+{string.format("また道路の下"),-1382.21, 405.98, 258.49,		-0.11, 166.66, -0.03,	20,800},
+{string.format("そして山の上"),-1376.13, 506.70, 772.97,		0.06, -172.90, -0.08,	28,800},
+{string.format("ホテル入口前\n駆け抜けろー！"),-1375.85, 339.56, 1588.19,		0.15, -154.98, -0.01,	11,300},
+{string.format("川を右に\n橋をくぐれー！"),176.00, 12.61, 1254.65,			0.0, -25.0, 0.0,		18,2000},
+{string.format("目の前に見える穴\n秘密基地に着陸！"),758.30, 270.11, -1353.79,		0.07, 2.18, 0.14,		26,3000},
+{string.format("機体をきちんと止めて\nゴール地点へ！"),831.27, 266.19, -1768.65,		1.13, -138.37, 0.33,	12,200},
+}
+
+
+
+function setnext(n)
+	if type(point[n])=="table" then
+		_SETRING(1,point[n][2],point[n][3],point[n][4],
+		point[n][5],point[n][6],point[n][7],point[n][8])
+		_SETRINGSTATE(1,2)
+
+		_COMPASS(point[n][2],point[n][3],point[n][4])
+	else
+		_SETRINGSTATE(1,0)
+		_COMPASS(0,-100000000,0)
+	end
+end
+
+function OnInit()
+	now=1
+	cf=nil
+	time=0
+	hitcount=0
+	setnext(1)
+	pn=table.getn(point)
+end
+
+function OnFrame()
+	
+	if now<pn+1 then
+		
+		
+		
+		if point[now][9]~=0 then
+			np=Vector.new(point[now][2],point[now][3],point[now][4])
+			np2=Vector.new(0,0,point[now][9])
+			np2:Rot3D(math.rad(point[now][5]),math.rad(point[now][6]),math.rad(point[now][7]))
+			np2=np2+np
+			
+			_SETCOLOR(16777215) --白16777215
+			
+			np:LineTo(np2)
+			
+			ChipVector(0):LineTo(np)
+		end
+		--[[
+		if _SKEYDOWN(0)==1 then
+			now=now+1
+			setnext(now)
+		end
+		--]]
+		
+		if _CHECK(1,0)==1 then
+			if now==1 then
+				cf=true
+			end
+			now=now+1
+			if now<pn+1 then
+				setnext(now)
+			end
+		end
+		
+		if cf then
+			if now<20 then
+				for i=0,_CHIPS()-1 do
+					if _TOP(i)==0 and _GETHIT(i,"LAND")==1 then
+						hitcount=hitcount+1
+						break
+					end
+				end
+			end
+			time=time+1/_BASE()
+		end
+		
+		out(0,point[now][1])
+		
+		if cf then out(5,string.format("%.2f",time)) end
+	else
+		out(0,"おつかれさまでしたー")
+		out(1,string.format("記録は\n%.2f秒\n%d回ぶつかったみたいだよ",time,hitcount))
+	end
+end

@@ -1,0 +1,52 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=200, step=100)
+	P(default=0, min=-3000, max=5000, step=1000)
+	S(default=0, min=-20, max=20, step=5)
+}
+Key
+{
+	0:P(step=1000)
+	1:P(step=-1000)
+	2:S(step=5)
+	3:S(step=-5)
+	4:B(step=100)
+}
+Body
+{
+	Core() {
+		N:Frame(angle=35) {
+			N:Frame(angle=-60, option=1) {
+				E:Frame(option=1) {
+					E:RudderF(angle=-S, option=1) {
+						W:RLW(angle=90, power=-P, effect=2) { }
+					}
+				}
+				W:Frame(option=1) {
+					W:RudderF(angle=-S, option=1) {
+						E:RLW(angle=90, power=P, effect=2) { }
+					}
+				}
+				S:Weight(angle=-20, option=1) {
+					S:Frame() {
+						S:Frame(angle=-30, option=1) {
+							W:Frame(option=1) {
+								W:RLW(angle=90, power=-P, brake=B, effect=2) { }
+							}
+							E:Frame(option=1) {
+								E:RLW(angle=90, power=P, brake=B, effect=2) { }
+							}
+							E:Trim(angle=10) { }
+							W:Trim(angle=-10) { }
+						}
+						S:Chip() { }
+					}
+					N:Chip() { }
+				}
+				E:Trim(angle=-40) { }
+				W:Trim(angle=40) { }
+			}
+		}
+	}
+}

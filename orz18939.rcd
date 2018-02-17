@@ -1,0 +1,187 @@
+Val{
+	ART(max=6,step=1)
+	BRAKE(max=128,step=64)
+	ENGINE(min=-8192,max=20000,step=2048)
+	L(min=-30,max=38,step=4)
+	R(min=-38,max=30,step=4)
+	HH(min=-15,max=15,step=3)
+}
+Key{
+	0:ENGINE(step=8192)
+	1:ENGINE(step=-2048)
+	2:L(step=-4),R(step=-4),ART(step=1),HH(step=3)
+	3:L(step=4),R(step=4),ART(step=1),HH(step=-3)
+	4:BRAKE(step=64)
+}
+Body{
+	Core(){
+		E:Weight(){
+			E:Frame(Angle=-91){
+				W:Cowl(Angle=-100){
+					W:Cowl(Angle=-100){
+						W:Cowl(Color=#FF8000,Angle=-70){
+							N:Cowl(Color=#FF8000){}
+							S:Cowl(Color=#FF8000){}
+							W:Cowl(Color=#FF8000,Angle=-90){
+								S:Cowl(Color=#FF8000){}
+								N:Cowl(Color=#FF8000){}
+								W:Cowl(Color=#000000,Angle=-75){
+									S:Cowl(Color=#000000){}
+									N:Cowl(Color=#000000){}
+									E:Cowl(Angle=-100){
+										E:Cowl(Color=#000000,Angle=-2.5){
+											S:Cowl(Color=#FF8000,Angle=-30,Option=3){}
+											N:Cowl(Color=#FF8000,Angle=-30,Option=4){}
+											E:Cowl(Color=#FF8000,Angle=-62.85){
+												N:Cowl(Color=#000000,Angle=-50){
+													N:Cowl(Color=#FF8000,Angle=45){
+														N:Cowl(Color=#FF8000,Angle=-10){
+															N:Cowl(Color=#FF8000,Angle=-30){
+																W:Cowl(Color=#FFFF00,Option=4){}
+															}
+														}
+													}
+												}
+												S:Cowl(Color=#000000,Angle=-50){
+													S:Cowl(Color=#FF8000,Angle=50){
+														S:Cowl(Color=#FF8000){
+															S:Cowl(Color=#FF8000,Angle=-60){
+																S:Cowl(Color=#000000,Angle=-100){}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				S:TrimF(){
+					S:Wheel(Angle=-ART,Power=-ENGINE,Brake=BRAKE,Option=1,Effect=4){}
+				}
+				N:TrimF(){
+					N:Wheel(Angle=L,Power=-ENGINE,Brake=BRAKE,Option=1,Effect=4){}
+				}
+			}
+		}
+		W:Weight(){
+			W:Frame(Angle=-91){
+				E:Cowl(Angle=-100){
+					E:Cowl(Angle=-100){
+						E:Cowl(Color=#FF8000,Angle=-70){
+							N:Cowl(Color=#FF8000){}
+							S:Cowl(Color=#FF8000){}
+							E:Cowl(Color=#FF8000,Angle=-90){
+								N:Cowl(Color=#FF8000){}
+								S:Cowl(Color=#FF8000){}
+								E:Cowl(Color=#000000,Angle=-75){
+									N:Cowl(Color=#000000){}
+									S:Cowl(Color=#000000){}
+									W:Cowl(Angle=-100){
+										W:Cowl(Color=#000000,Angle=-2.5){
+											S:Cowl(Color=#FF8000,Angle=-30,Option=4){}
+											N:Cowl(Color=#FF8000,Angle=-30,Option=3){}
+											W:Cowl(Color=#FF8000,Angle=-62.5){
+												N:Cowl(Color=#000000,Angle=-50){
+													N:Cowl(Color=#FF8000,Angle=45){
+														N:Cowl(Color=#FF8000,Angle=-10){
+															N:Cowl(Color=#FF8000,Angle=-30){
+																E:Cowl(Color=#FFFF00,Option=3){}
+															}
+														}
+													}
+												}
+												S:Cowl(Color=#000000,Angle=-50){
+													S:Cowl(Color=#FF8000,Angle=50){
+														S:Cowl(Color=#FF8000){
+															S:Cowl(Color=#FF8000,Angle=-60){
+																S:Cowl(Color=#000000,Angle=-100){}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				N:TrimF(){
+					N:Wheel(Angle=-R,Power=ENGINE,Brake=BRAKE,Option=1,Effect=4){}
+				}
+				S:TrimF(){
+					S:Wheel(Angle=-ART,Power=ENGINE,Brake=BRAKE,Option=1,Effect=4){}
+				}
+			}
+		}
+		N:Weight(){
+			E:Trim(Angle=-10){}
+			W:Trim(Angle=10){}
+			N:Chip(){
+				N:Cowl(Color=#000000){
+					W:Cowl(Color=#000000){
+						W:Cowl(Color=#FF8000,Angle=-90,Option=4){}
+					}
+					E:Cowl(Color=#000000){
+						E:Cowl(Color=#FF8000,Angle=-90,Option=3){}
+					}
+				}
+				N:Frame(Angle=-170){
+					E:Chip(){
+						N:Chip(Angle=10){}
+					}
+					W:Chip(){
+						N:Chip(Angle=10){}
+					}
+				}
+			}
+			S:TrimF(Angle=90,Option=1){
+				N:RudderF(Angle=90,Option=1){
+					W:Chip(Angle=-HH){}
+				}
+				S:Frame(Option=1){
+					S:Rudder(Angle=-90){}
+				}
+			}
+		}
+		S:Weight(){
+			S:Chip(Color=#000000){
+				S:Cowl(Color=#000000){
+					E:Cowl(Color=#000000){
+						E:Cowl(Color=#FF8000,Angle=-90,Option=3){}
+					}
+					W:Cowl(Color=#000000){
+						W:Cowl(Color=#FF8000,Angle=-90,Option=4){}
+					}
+				}
+			}
+			S:Frame(Angle=-8){
+				W:Chip(){
+					S:Chip(Angle=-10){}
+				}
+				E:Chip(){
+					S:Chip(Angle=-10){}
+				}
+			}
+		}
+	}
+}
+Script{
+
+
+	print 0,"Welcome to Rigid-Chips World."
+	print 1,"  FPS=",_FPS(),"  Chips=",_CHIPS(),"  Weight=",_WEIGHT()
+	print 2,"  Width=",_WIDTH(),"  Height=",_HEIGHT()
+	print 3,"  Faces=",_FACE()
+	print 4,"  Vel=",_VEL()
+	print 5,"  R=",_RED(32,32)
+	print 6,"  G=",_GREEN(32,32)
+	print 7,"  B=",_BLUE(32,32)
+	print 8,"  H=",_H()
+	if ( _H() >0.5 | _H() < 0 ) { BRAKE=BRAKE+64 ENGINE=0}
+}

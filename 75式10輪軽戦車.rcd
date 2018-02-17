@@ -1,0 +1,292 @@
+// [RCD] 
+Val
+{
+	BEAM(default=0, max=16777216, step=16777216)
+	BEAM2(default=0, max=16777216, step=16777216)
+	BEAM3(default=0, max=16777216, step=16777216)
+	BEAM4(default=0, max=16777216, step=16777216)
+	BRAKE(default=0, max=512, step=64)
+	FLAG(default=90, max=90, step=9)
+	HR(default=0, min=-180, max=180)
+	LTIRE(default=0, min=-16384, max=16384, step=16384)
+	PPH(default=20, min=20, max=1310720)
+	RTIRE(default=0, min=-16384, max=16384, step=16384)
+	SUBM(default=0, max=16777216, step=16777216)
+}
+Key
+{
+	0:LTIRE(step=1024), RTIRE(step=1024)
+	1:RTIRE(step=-1024), LTIRE(step=-1024)
+	2:LTIRE(step=1024)
+	3:RTIRE(step=1024)
+	5:BRAKE(step=512)
+	6:SUBM(step=16777216)
+	12:HR(step=2)
+	13:HR(step=-2)
+	14:FLAG(step=-9)
+}
+Body
+{
+	Core() {
+		E:Frame(angle=-140) {
+			E:Frame(angle=-35) {
+				E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+				E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+			}
+		}
+		W:Frame(angle=-140) {
+			W:Frame(angle=-35) {
+				W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+				W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+			}
+		}
+		N:Weight() {
+			E:Frame(angle=-140) {
+				E:Frame(angle=-35) {
+					E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+					E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+				}
+			}
+			W:Frame(angle=-140) {
+				W:Frame(angle=-35) {
+					W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+					W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+				}
+			}
+			N:Weight() {
+				E:Frame(angle=-140) {
+					E:Frame(angle=-35) {
+						E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+						E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+					}
+				}
+				W:Frame(angle=-140) {
+					W:Frame(angle=-35) {
+						W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+						W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+					}
+				}
+				W:Frame() {
+					W:Weight(angle=-90, option=2) {
+						W:Weight(angle=-90, option=2) { }
+					}
+				}
+				E:Frame() {
+					E:Weight(angle=-90, option=2) {
+						E:Weight(angle=-90, option=2) { }
+					}
+				}
+				N:Weight(angle=-90, option=2) {
+					E:Weight(angle=0, option=2) { }
+					W:Weight(angle=0, option=2) { }
+				}
+			}
+			W:Frame() {
+				W:Weight(angle=-90, option=2) {
+					W:Weight(angle=-90, option=2) {
+						W:Weight(angle=90, option=2) {
+							W:Frame(angle=150) {
+								N:Arm(power=SUBM, option=32768) { }
+							}
+						}
+					}
+				}
+			}
+			E:Frame() {
+				E:Weight(angle=-90, option=2) {
+					E:Weight(angle=-90, option=2) {
+						E:Weight(angle=90, option=2) {
+							E:Frame(angle=150) {
+								N:Arm(power=SUBM, option=32768) { }
+							}
+						}
+					}
+				}
+			}
+		}
+		S:Weight() {
+			E:Frame(angle=-140) {
+				E:Frame(angle=-35) {
+					E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+					E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+				}
+			}
+			W:Frame(angle=-140) {
+				W:Frame(angle=-35) {
+					W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+					W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+				}
+			}
+			S:Weight() {
+				W:Frame(angle=-140) {
+					W:Frame(angle=-35) {
+						W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+						W:Wheel(angle=-95, power=-LTIRE, brake=BRAKE, effect=2) { }
+					}
+				}
+				E:Frame(angle=-140) {
+					E:Frame(angle=-35) {
+						E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+						E:Wheel(angle=-95, power=RTIRE, brake=BRAKE, effect=2) { }
+					}
+				}
+				W:Frame() {
+					W:Weight(angle=-90, option=2) {
+						W:Weight(angle=-90, option=2) { }
+					}
+				}
+				E:Frame() {
+					E:Weight(angle=-90, option=2) {
+						E:Weight(angle=-90, option=2) { }
+					}
+				}
+				S:Weight(angle=-90, option=2) {
+					E:Weight(angle=0, option=2) { }
+					W:Weight(angle=0, option=2) { }
+					S:Weight(angle=-90, option=2) {
+						S:Weight(option=2) {
+							S:RudderF(angle=0) {
+								N:Frame(angle=160) {
+									N:Arm(angle=PPH, power=BEAM, option=262144, name=MSHOT) {
+										S:Arm(angle=90, power=BEAM4, option=262144, name=MSHOT4) { }
+										S:Arm(angle=0, power=BEAM3, option=262144, name=MSHOT3) { }
+										S:Arm(angle=-90, power=BEAM2, option=262144, name=MSHOT2) { }
+									}
+								}
+								E:Weight(angle=90, option=2) { }
+								W:Weight(angle=90, option=2) { }
+							}
+							S:Cowl(angle=90, color=#808080) {
+								S:Cowl(angle=FLAG, color=#808080) {
+									S:Cowl(angle=FLAG, color=#808080) {
+										S:Cowl(angle=FLAG, color=#808080) {
+											S:Cowl(angle=FLAG, color=#808080) {
+												S:Cowl(angle=FLAG, color=#808080) {
+													S:Cowl(angle=FLAG, color=#808080) {
+														S:Cowl(angle=FLAG, color=#808080) {
+															E:Cowl(angle=FLAG) {
+																E:Cowl(angle=FLAG) {
+																	E:Cowl(angle=FLAG) {
+																		E:Cowl(angle=FLAG) { }
+																	}
+																}
+															}
+														}
+														E:Cowl(angle=FLAG) {
+															E:Cowl(angle=FLAG) {
+																E:Cowl(angle=FLAG) {
+																	E:Cowl(angle=FLAG) { }
+																}
+															}
+														}
+													}
+													E:Cowl(angle=FLAG) {
+														E:Cowl(angle=FLAG) {
+															E:Cowl(angle=FLAG) {
+																E:Cowl(angle=FLAG) { }
+															}
+														}
+													}
+												}
+												E:Cowl(angle=FLAG) {
+													E:Cowl(angle=FLAG) {
+														E:Cowl(angle=FLAG) {
+															E:Cowl(angle=FLAG) { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			W:Frame() {
+				W:Weight(angle=-90, option=2) {
+					W:Weight(angle=-90, option=2) { }
+				}
+			}
+			E:Frame() {
+				E:Weight(angle=-90, option=2) {
+					E:Weight(angle=-90, option=2) { }
+				}
+			}
+		}
+		W:Frame() {
+			W:Weight(angle=-90, option=2) {
+				W:Weight(angle=-90, option=2) { }
+			}
+		}
+		E:Frame() {
+			E:Weight(angle=-90, option=2) {
+				E:Weight(angle=-90, option=2) { }
+			}
+		}
+	}
+}
+Script
+{print 0,"  SHOT=",_E(MSHOT)/262144*100,"%"
+print 1,"  FPS=",_FPS(),"  Chips=",_CHIPS(),"  Weight=",_WEIGHT()}
+Lua
+{NPPH = 0
+TPPH = 20
+SPPH = 20
+
+function adpph()
+	if PPH < TPPH then
+		PPH = PPH + 9
+	end
+end
+
+function main()
+	out(0,_WEIGHT())
+	if NPPH == 1 then
+		BEAM = 262144
+		NPPH = 0
+		TPPH = TPPH + 90
+		SPPH = 20 + 90
+	end
+	
+	if NPPH == 2 then
+		BEAM2 = 262144
+		NPPH = 0
+		TPPH = TPPH + 90
+		SPPH = 20 + 180
+	end
+	
+	if NPPH == 3 then
+		BEAM3 = 262144
+		NPPH = 0
+		TPPH = TPPH + 90
+		SPPH = 20 + 270
+	end
+	
+	if NPPH == 4 then
+		BEAM4 = 262144
+		NPPH = 0
+		TPPH = TPPH + 90
+		SPPH = 20
+	end
+	
+	adpph()
+	
+	if _E(MSHOT4) == 262144 and SPPH == (20 + 270) and _KEY(4) == 1 and math.mod(_TICKS(),20) == 0 then
+		NPPH = 4
+	end
+	
+	if _E(MSHOT3) == 262144 and SPPH == (20 + 180) and _KEY(4) == 1 and math.mod(_TICKS(),20) == 0 then
+		NPPH = 3
+	end
+	
+	if _E(MSHOT2) == 262144 and SPPH == (20 + 90) and _KEY(4) == 1 and math.mod(_TICKS(),20) == 0 then
+		NPPH = 2
+	end
+	
+	if _E(MSHOT) ==  262144 and SPPH == (20 + 0) and _KEY(4) == 1 and math.mod(_TICKS(),20) == 0 then
+		NPPH = 1
+	end
+end
+}

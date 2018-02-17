@@ -1,0 +1,61 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=300, step=100)
+	H(default=0, min=-32, max=32, step=4)
+	HB(default=0, max=300, step=100)
+	P(default=0, max=10000, step=5000)
+}
+Key
+{
+	0:P(step=5000)
+	1:P(step=-5000)
+	2:H(step=4)
+	3:H(step=-4)
+	4:B(step=100), HB(step=100)
+	5:HB(step=100)
+}
+Body
+{
+	Core() {
+		N:Chip() {
+			N:Rudder(angle=10) {
+				N:Rudder(angle=170) {
+					W:Frame(angle=10, option=1) {
+						W:RudderF(angle=-H, option=1) {
+							E:Wheel(angle=-80, brake=B, effect=3) { }
+						}
+					}
+				}
+			}
+			N:Rudder(angle=-10) {
+				N:Rudder(angle=-170) {
+					E:Frame(angle=10, option=1) {
+						E:RudderF(angle=-H, option=1) {
+							W:Wheel(angle=-80, brake=B, effect=3) { }
+						}
+					}
+				}
+			}
+		}
+		S:Chip() {
+			S:Rudder(angle=10) {
+				S:Rudder(angle=170) {
+					E:Frame(angle=10, option=1) {
+						E:Wheel(angle=-100, power=P, brake=HB, effect=3) { }
+					}
+				}
+			}
+			S:Rudder(angle=-10) {
+				S:Rudder(angle=-170) {
+					W:Frame(angle=10, option=1) {
+						W:Wheel(angle=-100, power=-P, brake=HB, effect=3) { }
+					}
+				}
+			}
+			N:TrimF(angle=-90, option=1) {
+				S:Rudder(angle=-90) { }
+			}
+		}
+	}
+}

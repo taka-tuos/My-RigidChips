@@ -1,0 +1,12 @@
+function OnInit()
+	_RELOAD()
+end
+
+function OnFrame()
+	if _KEYDOWN(0) == 1 then
+		A = _ADDCHIP(0,"JET","N",0)
+		_SET(A,"COLOR",16776960)
+		_SPLIT(A)
+		_FORCE(A,-_ZX(0)*800000,-_ZY(0)*800000,-_ZZ(0)*800000)
+	end
+end

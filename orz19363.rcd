@@ -1,0 +1,335 @@
+// [RCD] 
+Val
+{
+	LD(default=0, min=-99999)
+	PIT(default=0, min=-99999)
+	ROL(default=0, min=-99999)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:TrimF(angle=-ROL, option=1) {
+			N:Frame(angle=-PIT, option=1) {
+				S:Frame(angle=-90, option=1) {
+					N:TrimF(angle=LD, option=1) {
+						N:Chip(angle=90) {
+							S:Chip() {
+								S:Chip() {
+									S:Chip() { }
+									W:Chip() { }
+									E:Chip() { }
+								}
+							}
+							N:Chip() {
+								N:Chip() { }
+								W:Chip() { }
+								E:Chip() { }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{X = 60
+A = 1
+--HUDに使うやつ--
+B = 0
+
+--HUDブロック--
+function HUD()
+_SETCOLOR(tonumber("00FF00",16))
+--中心線--
+_MOVE2D(0.7*math.cos(_EZ(0)),0.7*math.sin(_EZ(0)))
+_LINE2D(0.8*math.cos(_EZ(0)),0.8*math.sin(_EZ(0)))
+
+_MOVE2D(-0.7*math.cos(_EZ(0)),-0.7*math.sin(_EZ(0)))
+_LINE2D(-0.8*math.cos(_EZ(0)),-0.8*math.sin(_EZ(0)))
+
+
+
+--脇の両線--
+_MOVE2D(math.cos(_EZ(0)+51),math.sin(_EZ(0)+51))
+_LINE2D(math.cos(_EZ(0)-51),math.sin(_EZ(0)-51))
+
+_MOVE2D(-math.cos(-_EZ(0)-51),math.sin(-_EZ(0)-51))
+_LINE2D(-math.cos(-_EZ(0)+51),math.sin(-_EZ(0)+51))
+
+--なんかメインのとこ--
+--Wのあれ--
+_MOVE2D(0,0.03)
+_LINE2D(-0.02,-0.03)
+
+_MOVE2D(0,0.03)
+_LINE2D(0.02,-0.03)
+
+_MOVE2D(0.02,-0.03)
+_LINE2D(0.04,0.03)
+
+_MOVE2D(-0.02,-0.03)
+_LINE2D(-0.04,0.03)
+
+--角度計のVal--
+
+local PS1 = 4*math.cos(_EZ(0)+math.rad(90)) --X座標　*(-_AX(0)+math.rad(x))
+local PS2 = (0.7*math.cos(_EZ(0))) --外側のX座標
+local PS3 = (0.4*math.cos(_EZ(0))) --内側のX座標
+local PS4 = 4*math.sin(_EZ(0)+math.rad(90)) --Y座標
+local PS5 = (0.7*math.sin(_EZ(0))) --外側Y座標
+local PS6 = (0.4*math.sin(_EZ(0))) -- 内側Y座標
+
+--+80度--
+if math.deg(_AX(0)) > 65 and math.deg(_AX(0)) < 95 then
+local B = (-_AX(0)+math.rad(80))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+--+70度--
+if math.deg(_AX(0)) > 55 and math.deg(_AX(0)) < 85 then
+local B = (-_AX(0)+math.rad(70))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+--+60度--
+if math.deg(_AX(0)) > 45 and math.deg(_AX(0)) < 75 then
+local B = (-_AX(0)+math.rad(60))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+--50度--
+if math.deg(_AX(0)) > 35 and math.deg(_AX(0)) < 65 then
+local B = (-_AX(0)+math.rad(50))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+--40度--
+if math.deg(_AX(0)) > 25 and math.deg(_AX(0)) < 55 then
+local B = (-_AX(0)+math.rad(40))
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+--+30度--
+if math.deg(_AX(0)) > 15 and math.deg(_AX(0)) < 45 then
+local B = (-_AX(0)+math.rad(30))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+--+20度--
+if math.deg(_AX(0)) > 5 and math.deg(_AX(0)) < 35 then
+local B = (-_AX(0)+math.rad(20))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+--+10度--
+if math.deg(_AX(0)) > -5 and math.deg(_AX(0)) < 25 then
+local B = (-_AX(0)+math.rad(10))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+--0度--
+if math.deg(_AX(0)) > -15 and math.deg(_AX(0)) < 15 then
+local B = (-_AX(0)+math.rad(0))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+---10度--
+if math.deg(_AX(0)) > -25 and math.deg(_AX(0)) < 5 then
+local B = (-_AX(0)+math.rad(-10))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+---20度--
+if math.deg(_AX(0)) > -35 and math.deg(_AX(0)) < -5 then
+local B = (-_AX(0)+math.rad(-20))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+---30度--
+if math.deg(_AX(0)) > -45 and math.deg(_AX(0)) < -15 then
+local B = (-_AX(0)+math.rad(-30))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+---40度--
+if math.deg(_AX(0)) > -55 and math.deg(_AX(0)) < -25 then
+local B = (-_AX(0)+math.rad(-40))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+---50度--
+if math.deg(_AX(0)) > -65 and math.deg(_AX(0)) < -35 then
+local B = (-_AX(0)+math.rad(-50))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+---60度--
+if math.deg(_AX(0)) > -75 and math.deg(_AX(0)) < -45 then
+local B = (-_AX(0)+math.rad(-60))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+---70度--
+if math.deg(_AX(0)) > -85 and math.deg(_AX(0)) < -55 then
+local B = (-_AX(0)+math.rad(-70))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+---80度--
+if math.deg(_AX(0)) > -95 and math.deg(_AX(0)) < -65 then
+local B = (-_AX(0)+math.rad(-80))
+
+_MOVE2D(PS1*B+PS2,PS4*B+PS5)
+_LINE2D(PS1*B+PS3,PS4*B+PS6)
+_MOVE2D(PS1*B-PS2,PS4*B-PS5)
+_LINE2D(PS1*B-PS3,PS4*B-PS6)
+end
+
+end
+
+--如意棒関数--
+function Pole()
+local X,Y,Z = _X(0),_Y(0),_Z(0)
+local FX,FY,FZ = -_ZX(0),-_ZY(0),-_ZZ(0)
+local range = 2000
+
+_MOVE3D(X,Y,Z)
+_LINE3D(X+FX*range,Y+FY*range,Z+FZ*range)
+end
+
+
+function OnFrame()
+--回転させる奴--
+if _KEY(0) == 1 then
+	PIT = PIT + 1
+elseif _KEY(1) == 1 then
+	PIT = PIT - 1
+end
+
+if _KEY(2) == 1 then
+	ROL = ROL + 1
+elseif _KEY(3) == 1 then
+	ROL = ROL - 1
+end
+
+if _KEY(4) == 1 then
+	LD = LD + 1
+elseif _KEY(6) == 1 then
+	LD = LD - 1
+end
+
+--リセット--
+if _KEY(5) == 1 then
+	if PIT < 0 then
+		PIT = PIT + 1
+	elseif PIT > 0 then
+		PIT = PIT - 1
+	end
+end
+
+if _KEY(5) == 1 then
+	if ROL < 0 then
+		ROL = ROL + 1
+	elseif ROL > 0 then
+		ROL = ROL - 1
+	end
+end
+
+if _KEY(5) == 1 then
+	if LD < 0 then
+		LD = LD + 1
+	elseif LD > 0 then
+		LD = LD - 1
+	end
+end
+
+--ズーム--
+if _KEY(12) == 1 then
+	X = X - A
+elseif _KEY(10) == 1 then
+	X = X + A
+end
+
+_ZOOM(X)
+
+
+--機体状況--
+out(0,"E系",math.deg(_EX(0))," ",math.deg(_EY(0))," ",math.deg(_EZ(0)))
+out(1,"A系",math.deg(_AX(0))," ",math.deg(_AY(0))," ",math.deg(_AZ(0)))
+out(2,"Xベクトル",_XX(0)," ",_XY(0)," ",_XZ(0))
+out(3,"Yベクトル",_YX(0)," ",_YY(0)," ",_YZ(0))
+out(4,"Zベクトル",_ZX(0)," ",_ZY(0)," ",_ZZ(0))
+out(5,"ベクトル使ったやつ",math.deg(math.asin(_XY(0)))," ",math.deg(math.asin(_YY(0)))," ",math.deg(math.asin(_ZY(0))))
+out(6,_FPS())
+
+HUD()
+Pole()
+
+end}

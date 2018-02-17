@@ -1,0 +1,593 @@
+Val{
+	al1(min=-45,max=45)
+	el1(min=-45,max=45)
+	RD1(min=-45,max=45)
+	eng1(max=100000)
+	fl1(max=90)
+	ANG1(max=30)
+	al2(min=-45,max=45)
+	el2(min=-45,max=45)
+	RD2(min=-45,max=45)
+	eng2(max=100000)
+	fl2(max=90)
+	ANG2(max=30)
+	al3(min=-45,max=45)
+	el3(min=-45,max=45)
+	RD3(min=-45,max=45)
+	eng3(max=100000)
+	fl3(max=90)
+	ANG3(max=30)
+	al4(min=-45,max=45)
+	el4(min=-45,max=45)
+	RD4(min=-45,max=45)
+	eng4(max=100000)
+	fl4(max=90)
+	ANG4(max=30)
+	al5(min=-45,max=45)
+	el5(min=-45,max=45)
+	RD5(min=-45,max=45)
+	eng5(max=100000)
+	fl5(max=90)
+	ANG5(max=30)
+	al6(min=-45,max=45)
+	el6(min=-45,max=45)
+	RD6(min=-45,max=45)
+	eng6(max=100000)
+	fl6(max=90)
+	ANG6(max=30)
+	al7(min=-45,max=45)
+	el7(min=-45,max=45)
+	RD7(min=-45,max=45)
+	eng7(max=100000)
+	fl7(max=90)
+	ANG7(max=30)
+	al8(min=-45,max=45)
+	el8(min=-45,max=45)
+	RD8(min=-45,max=45)
+	eng8(max=100000)
+	fl8(max=90)
+	ANG8(max=30)
+	al9(min=-45,max=45)
+	el9(min=-45,max=45)
+	RD9(min=-45,max=45)
+	eng9(max=100000)
+	fl9(max=90)
+	ANG9(max=30)
+	al10(min=-45,max=45)
+	el10(min=-45,max=45)
+	RD10(min=-45,max=45)
+	eng10(max=100000)
+	fl10(max=90)
+	ANG10(max=30)
+	TRIG1()
+	TRIG2()
+	TRIG4()
+	TRIG5()
+	TRIG6()
+	TRIG7()
+	TRIG8()
+	TRIG9()
+	TRIG10()
+}
+Key{
+}
+Body{
+	
+	Core(Name=P1,User1=1){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el1,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD1,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG1){
+			S:Chip(Angle=-fl1){}
+			S:Chip(Angle=fl1){}
+			N:Arm(Name=A1,Power=TRIG1,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng1){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al1){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al1){
+			}
+		}
+		
+	}
+	Core(Name=P2,User1=2){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el2,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD2,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG2){
+			S:Chip(Angle=-fl2){}
+			S:Chip(Angle=fl2){}
+			N:Arm(Name=A2,Power=TRIG2,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng2){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al2){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al2){
+			}
+		}
+	}
+	Core(Name=P3,User1=3){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el3,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD3,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG3){
+			S:Chip(Angle=-fl3){}
+			S:Chip(Angle=fl3){}
+			N:Arm(Name=A3,Power=TRIG3,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng3){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al3){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al3){
+			}
+		}
+	}
+	Core(Name=P4,User1=4){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el4,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD4,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG4){
+			S:Chip(Angle=-fl4){}
+			S:Chip(Angle=fl4){}
+			N:Arm(Name=A4,Power=TRIG4,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng4){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al4){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al4){
+			}
+		}
+	}
+	Core(Name=P5,User1=5){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el5,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD5,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG5){
+			S:Chip(Angle=-fl5){}
+			S:Chip(Angle=fl5){}
+			N:Arm(Name=A5,Power=TRIG5,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng5){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al5){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al5){
+			}
+		}
+	}
+	Core(Name=P6,User1=6){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el6,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD6,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG6){
+			S:Chip(Angle=-fl6){}
+			S:Chip(Angle=fl6){}
+			N:Arm(Name=A6,Power=TRIG6,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng6){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al6){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al6){
+			}
+		}
+	}
+	Core(Name=P7,User1=7){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el7,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD7,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG7){
+			S:Chip(Angle=-fl7){}
+			S:Chip(Angle=fl7){}
+			N:Arm(Name=A7,Power=TRIG7,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng7){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al7){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al7){
+			}
+		}
+	}
+	Core(Name=P8,User1=8){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el8,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD8,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG8){
+			S:Chip(Angle=-fl8){}
+			S:Chip(Angle=fl8){}
+			N:Arm(Name=A8,Power=TRIG8,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng8){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al8){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al8){
+			}
+		}
+	}
+	Core(Name=P9,User1=9){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el9,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD9,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG9){
+			S:Chip(Angle=-fl9){}
+			S:Chip(Angle=fl9){}
+			N:Arm(Name=A9,Power=TRIG9,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng9){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al9){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al9){
+			}
+		}
+	}
+	Core(Name=P10,User1=10){
+		S:TrimF(Angle=-90){
+			S:TrimF(){
+				S:RudderF(Angle=-el10,Option=1,Spring=0.3){
+					W:Chip(Angle=-90){}
+					W:Chip(Angle=90){}
+				}
+				S:Chip(Angle=-RD10,Spring=0.3){
+					W:Chip(){}
+				}
+			}
+		}
+		N:Weight(Option=2,Angle=-ANG10){
+			S:Chip(Angle=-fl10){}
+			S:Chip(Angle=fl10){}
+			N:Arm(Name=A10,Power=TRIG10,Option=3200000,Angle=180){}
+		}
+		N:Trim(Angle=-90){}
+		N:Frame(Angle=-150){
+			N:Jet(Angle=-120,Power=eng10){}
+		}
+		E:Rudder(Angle=30){
+			E:Trim(Angle=al10){
+			}
+		}
+		W:Rudder(Angle=-30){
+			W:Trim(Angle=al10){
+			}
+		}
+	}
+
+
+	//この下は機体追加用のコピペユニットです。先頭のコメントアウト( // )を削除し、テキストエディタ等で@を機体番号に置換してご利用ください。
+	//
+	//Core(Name=P@,User1=@){
+	//	S:TrimF(Angle=-90){
+	//		S:TrimF(){
+	//			S:RudderF(Angle=-el@,Option=1,Spring=0.3){
+	//				W:Chip(Angle=-90){}
+	//				W:Chip(Angle=90){}
+	//			}
+	//			S:Chip(Angle=-RD@,Spring=0.3){
+	//				W:Chip(){}
+	//			}
+	//		}
+	//	}
+	//	N:Weight(Option=2,Angle=-ANG@){
+	//		S:Chip(Angle=-fl@){}
+	//		S:Chip(Angle=fl@){}
+	//		N:Arm(Name=A@,Power=TRIG@,Option=3200000,Angle=180){}
+	//	}
+	//	N:Trim(Angle=-90){}
+	//	N:Frame(Angle=-150){
+	//		N:Jet(Angle=-120,Power=eng@){}
+	//	}
+	//	E:Rudder(Angle=30){
+	//		E:Trim(Angle=al@){
+	//		}
+	//	}
+	//	W:Rudder(Angle=-30){
+	//		W:Trim(Angle=al@){
+	//		}
+	//	}
+	//}
+}
+Lua{
+----410行目
+-------------------------------------------------------------------------------------
+------1--------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+--require"cel/Science/BasePhysic.lua"
+--require"Nero/package.lua"
+--core_m = BasePhysic.new(0)
+p_num=0
+for n=0,_CHIPS()-1 do
+	if _USER1(n)~= 0 then p_num=p_num+1 end
+end
+for n=1,p_num do
+	--_G["p_m"..n]=BasePhysic.new(_G["P"..n])
+	_G["tx"..n],_G["ty"..n],_G["tz"..n]=_X(_G["P"..n]),_Y(_G["P"..n]),_Z(_G["P"..n]) 
+	_G["flag"..n]=0
+	for p=0,_CHIPS()-1 do		
+		if _USER1(p)==n then _G["prnt"..n]=p end
+	end
+end
+_ZOOM(45)
+sw1=1 ----a
+sw2=-1 ----b
+sw3=1 ----c
+sw4=1 ----d
+sw5=-1 ----e
+sp1=500 
+sp2=500 
+sp3=200
+px,py,pz=0,0,0
+kei=300
+r=0
+spd=200
+fmx=_FUELMAX(P1)
+function main()
+	--[[
+	core_m:Renew()
+	for n=1,p_num do
+		_G["p_m"..n]:Renew()
+	end
+	]]
+	--------------------------------------------------------------
+	----2----------------------------------------------------------
+	---------------------------------------------------------------
+	p_left=0	
+	if _KEYDOWN(8)>0 then _SPLIT(P1) end
+	if _KEYDOWN(12)>0 then _SPLIT(A) end
+ 	if _KEYDOWN(6)>0 then sw4=-sw4 end
+	if _KEYDOWN(14)>0 then sw3=-sw3 end
+	if _KEYDOWN(10)+_KEYDOWN(11)>=2 then sw2=-sw2 end	
+	--------------------------------------------------------
+	----3---------------------------------------------------
+	--------------------------------------------------------	
+		v_limit=sp2
+		if sw4<0 then
+			r=r+(spd/3.6)/(2*3.1416*kei)*360/30 ----km/h→deg/f
+			kei=kei+_KEY(3)*5-_KEY(2)*5
+			spd=math.min(500,spd+_KEY(0)*2)
+			spd=math.max(100,spd-_KEY(1)*2)
+			kankaku=360/p_num
+			for n=1,p_num do				
+				_G["tx"..n],_G["ty"..n],_G["tz"..n]=math.cos(math.rad(r+kankaku*n))*kei,200,math.sin(math.rad(r+kankaku*n))*kei
+			end
+			out(10,"周回飛行モード")
+			out(11,"radius: ",kei," m")
+			out(12,"speed: ",spd," km/h")
+			out(13,"[↑] , [↓] : 巡航スピード調節")
+			out(14,"[←] , [→] : 周回半径調節")
+
+		else
+			v_limit=sp3
+			sp3=math.min(400,sp3+_KEY(0)*2)
+			sp3=math.max(100,sp3-_KEY(1)*2)
+			for n=1,p_num do
+				_G["lx"..n],_G["ly"..n],_G["lz"..n]=ToLocal(_G["tx"..n],_G["ty"..n],_G["tz"..n],_G["P"..n])
+				_G["kyori"..n]=math.sqrt(_G["lx"..n]^2+_G["ly"..n]^2+_G["lz"..n]^2)			
+				if _G["kyori"..n]<30 then
+					_G["seed1_"..n]=_TICKS()*156.1211*n
+					_G["seed2_"..n]=_TICKS()*145.6456*n
+					_G["seed3_"..n]=_TICKS()*179.8453*n
+					math.randomseed(_G["seed1_"..n])
+					_G["rndm1_"..n]=math.random(300)
+					math.randomseed(_G["seed2_"..n])
+					_G["rndm2_"..n]=math.random(50)
+					math.randomseed(_G["seed3_"..n])
+					_G["rndm3_"..n]=math.random(300)			
+					_G["tx"..n]=_G["rndm1_"..n]-150
+					_G["ty"..n]=math.max(100,_G["rndm2_"..n]+100)
+					_G["tz"..n]=_G["rndm3_"..n]-150
+				end
+			end
+			out(10,"ランダム飛行モード")
+			out(11,"制限速度 : ",sp3," km/h")
+			out(12,"[↑] , [↓] : 制限速度調節")
+		end	
+	-----------------------------------------------------------------------------------------------------------
+	----4------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------
+	for n=1,p_num do		
+		if _G["flag"..n]==0 then
+			if _FUELMAX(_G["P"..n])<fmx then _G["flag"..n]=1 end
+			_G["lx"..n],_G["ly"..n],_G["lz"..n]=ToLocal(_G["tx"..n],_G["ty"..n],_G["tz"..n],_G["P"..n])
+			_G["kyori"..n]=math.sqrt(_G["lx"..n]^2+_G["ly"..n]^2+_G["lz"..n]^2)
+			_G["angle_rd"..n]=math.deg(math.atan2(-_G["lx"..n],-_G["lz"..n]))*1 - _WY(_G["P"..n])*5
+			if _G["RD"..n] >_G["angle_rd"..n] then
+				_G["RD"..n]=math.max(_G["RD"..n]-5,_G["angle_rd"..n])
+			else
+				_G["RD"..n]=math.min(_G["RD"..n]+5,_G["angle_rd"..n])
+			end
+			_G["angle_el"..n]=math.deg(math.atan2(-_G["ly"..n],math.sqrt(_G["lx"..n]^2+_G["lz"..n]^2))) - _WX(_G["P"..n])*-2
+			if _G["EL"..n]>_G["angle_el"..n] then
+				_G["EL"..n]=math.max(_G["EL"..n]-5,_G["angle_el"..n])
+			else
+				_G["EL"..n]=math.min(_G["EL"..n]+5,_G["angle_el"..n])
+			end
+			_G["angle_al"..n]=_AZ(_G["P"..n])*-3-math.deg(math.atan2(-_G["lx"..n],-_G["lz"..n]))*0.2-_WZ(_G["P"..n])*-2
+			if _G["AL"..n]>_G["angle_al"..n] then
+				_G["AL"..n]=math.max(_G["AL"..n]-5,_G["angle_al"..n])
+			else
+				_G["AL"..n]=math.min(_G["AL"..n]+5,_G["angle_al"..n])
+			end
+			_G["eng_pow"..n]=(v_limit+_VZ(_G["P"..n])*3.6)*1500
+			if _G["ENG"..n]>_G["eng_pow"..n] then
+				_G["ENG"..n]=math.max(_G["ENG"..n]-10000,_G["eng_pow"..n])
+			else
+				_G["ENG"..n]=math.min(_G["ENG"..n]+10000,_G["eng_pow"..n])
+			end
+			_G["angle_fl"..n]=math.max( 0, (100-_G["kyori"..n]) ) -- + math.max( 0,  (90- (v_limit-math.abs( _VZ(_G["P"..n])*3.6 ) ) )*(0.45/(math.abs( _VZ(_G["P"..n])*3.6 )*0.005) ) )
+			if _G["FL"..n]>_G["angle_fl"..n] then
+				_G["FL"..n]=math.max(_G["FL"..n]-5,_G["angle_fl"..n])
+			else
+				_G["FL"..n]=math.min(_G["FL"..n]+5,_G["angle_fl"..n])
+			end
+			if _H(_G["P"..n])<2 and _H(_G["P"..n])>=0  then 
+				_G["ANG"..n]=_G["ANG"..n]+3
+			else
+				_G["ANG"..n]=_G["ANG"..n]-3
+			end
+		elseif _G["flag"..n]==1 then
+			_G["TRIG"..n]=3200000
+			if n<p_num then		
+				for q=_G["prnt"..n],_G["prnt"..n+1]-1 do
+					_SPLIT(q)
+				end
+			else
+				for q=_G["prnt"..n],_CHIPS()-1 do
+					_SPLIT(q)
+				end
+			end				
+			_G["flag"..n]=2
+		else
+			_G["ENG"..n]=0
+		end
+		if _G["flag"..n] ~= 2 then p_left=p_left+1 end
+	end	
+	---------------------------------------------------------------------------------------------
+	----5---------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------			
+	out(0,"自動飛び回り標的機")
+	out(1,"[ C ] : 周回飛行/ランダム飛行　切り替え")
+	out(2,"残っている飛行機の数 :    ",p_left)	
+	out(3,"FPS :    ",_FPS())	
+	
+	if p_left==0 then sw5=Relay(10,sw5) end
+	if sw5>0 then
+		out(6,"PRESS [R]")
+	end
+end
+function ToLocal(twx,twy,twz,cn)
+	local kyoriX=twx-_X(cn)
+	local kyoriY=twy-_Y(cn)
+	local kyoriZ=twz-_Z(cn)
+	local localX=kyoriX*_XX(cn)+kyoriY*_XY(cn)+kyoriZ*_XZ(cn)
+	local localY=kyoriX*_YX(cn)+kyoriY*_YY(cn)+kyoriZ*_YZ(cn)
+	local localZ=kyoriX*_ZX(cn)+kyoriY*_ZY(cn)+kyoriZ*_ZZ(cn)
+	return localX,localY,localZ
+end
+function Relay(f,v)
+	if math.mod(_TICKS(),f)==0 then v=-v end
+	return v
+end
+}

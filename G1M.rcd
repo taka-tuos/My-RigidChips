@@ -1,0 +1,127 @@
+// [RCD] 
+Val
+{
+	ELON(default=0, min=-16, max=16, step=2)
+	ENGINE(default=0, max=307200, step=65536)
+	EVTR(default=0, min=-16, max=16, step=2)
+}
+Key
+{
+	0:EVTR(step=2)
+	1:EVTR(step=-2)
+	2:ELON(step=2)
+	3:ELON(step=-2)
+	4:ENGINE(step=65536)
+}
+Body
+{
+	Core() {
+		S:Chip() {
+			S:Chip() {
+				W:Chip(angle=-90) { }
+				E:Chip(angle=-90) { }
+				S:Chip() {
+					S:Chip() {
+						E:Chip(angle=-20) {
+							E:Chip(angle=20) {
+								S:Chip(angle=EVTR) {
+									W:Chip(angle=0) { }
+								}
+							}
+							E:Chip(angle=-70) {
+								S:Chip() { }
+							}
+						}
+						W:Chip(angle=-20) {
+							W:Chip(angle=20) {
+								S:Chip(angle=EVTR) {
+									E:Chip(angle=0) { }
+								}
+							}
+							W:Chip(angle=-70) {
+								S:Chip() { }
+							}
+						}
+						S:Chip() {
+							E:Chip(angle=-90) { }
+							W:Chip(angle=-90) { }
+						}
+						E:Chip(angle=-90) { }
+						W:Chip(angle=-90) { }
+					}
+					W:Chip(angle=-90) { }
+					E:Chip(angle=-90) { }
+				}
+			}
+			W:Chip(angle=-90) { }
+			E:Chip(angle=-90) { }
+			N:Frame(angle=-90) { }
+		}
+		E:Chip(angle=-20) {
+			E:Chip(angle=20) {
+				E:Chip() {
+					E:Chip() { }
+					S:Chip(angle=ELON) {
+						W:Chip() {
+							W:Chip(angle=20) { }
+						}
+						E:Chip() { }
+					}
+				}
+			}
+		}
+		W:Chip(angle=-20) {
+			W:Chip(angle=20) {
+				W:Chip() {
+					W:Chip() { }
+					S:Chip(angle=-ELON) {
+						E:Chip() {
+							E:Chip(angle=20) { }
+						}
+						W:Chip() { }
+					}
+				}
+			}
+		}
+		W:Chip(angle=-90) { }
+		E:Chip(angle=-90) { }
+		N:Chip() {
+			W:Chip(angle=-90) {
+				N:Cowl(angle=-30, option=5) { }
+			}
+			E:Chip(angle=-90) {
+				N:Cowl(angle=-30, option=5) { }
+			}
+			N:Frame(angle=-90, option=1) {
+				N:Cowl(angle=-90) {
+					N:Cowl() {
+						N:Cowl() {
+							N:Cowl() {
+								N:Cowl() {
+									N:Cowl() {
+										N:Cowl() { }
+									}
+								}
+							}
+						}
+					}
+					N:Cowl(angle=30) {
+						N:Cowl(angle=-30) {
+							N:Cowl(angle=-30) {
+								E:Cowl(angle=-91) { }
+								W:Cowl(angle=-91) { }
+							}
+							E:Cowl(angle=-91) { }
+							W:Cowl(angle=-91) { }
+						}
+						E:Cowl(angle=-91) { }
+						W:Cowl(angle=-91) { }
+					}
+					S:Cowl(angle=-30, option=5) { }
+				}
+			}
+			N:Cowl(angle=-30, option=5) { }
+			N:Jet(angle=-90, power=-ENGINE) { }
+		}
+	}
+}

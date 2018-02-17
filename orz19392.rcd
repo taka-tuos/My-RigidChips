@@ -1,0 +1,154 @@
+// [RCD] 
+Val
+{
+	BC(default=#FFD220)
+	BFL(default=0, min=-1000000)
+	BFR(default=0, min=-1000000)
+	BRL(default=0, min=-1000000)
+	BRR(default=0, min=-1000000)
+	C(default=#00F000)
+	DMP(default=0.4, min=-1000000)
+	DNP(default=0.1, min=-1000000)
+	FL(default=0, min=-1000000)
+	FR(default=0, min=-1000000)
+	GS(default=#00A000)
+	MODE(default=0, min=-1000000)
+	NS(default=#3E3E3E)
+	RL(default=0, min=-1000000)
+	RR(default=0, min=-1000000)
+	S(default=0, min=-1000000)
+	S1(default=0, min=-1000000)
+	S2(default=0, min=-1000000)
+	SPR(default=0.4, min=-1000000)
+	TR(default=#000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=105) {
+			S:Jet(angle=90, color=ns) {
+				N:TrimF(color=ns) {
+					N:Chip(angle=18, color=0) {
+						E:Frame(angle=-10, option=1, color=1, spring=1, damper=dmp) {
+							E:RudderF(angle=-0.5, option=1) {
+								W:Wheel(angle=78, power=-RR, brake=BRR, effect=3) { }
+								W:Frame(angle=80) {
+									N:Rudder(angle=-160) { }
+								}
+							}
+						}
+						W:Frame(angle=-10, option=1, color=1, spring=1, damper=dmp) {
+							W:RudderF(angle=0.5, option=1) {
+								E:Wheel(angle=78, power=RL, brake=BRL, effect=3) { }
+								E:Frame(angle=80) {
+									N:Rudder(angle=160) { }
+								}
+							}
+						}
+					}
+				}
+				S:TrimF(option=1, color=ns) {
+					S:Chip(angle=-15, option=1) {
+						E:Frame(angle=-10, option=1, spring=spr, damper=dmp) {
+							E:RudderF(angle=S2, option=1) {
+								W:Wheel(angle=78, power=-FR, brake=BFR, effect=3) { }
+							}
+						}
+						W:Frame(angle=-10, option=1, spring=spr, damper=dmp) {
+							W:RudderF(angle=S1, option=1) {
+								E:Wheel(angle=78, power=FL, brake=BFL, effect=3) { }
+							}
+						}
+					}
+				}
+				W:Chip(angle=90) { }
+				E:Chip(angle=90) { }
+			}
+		}
+	}
+}
+Lua
+{--ƒOƒ[ƒoƒ‹•Ï”
+move=0
+handle=0
+
+
+function key()	--ƒL[Š„‚è“–‚Ä
+	move=APAD(5,1) --±¸¾Ú°À@1`‚O`-1 0’´‚Å‘Oi@0–¢–ž‚ÅÌÞÚ°·
+	handle=APAD(0,1) --ÊÝÄÞÙ 1`‚O`-1 (36‹`0‹`-36‹)
+end
+
+function ctr()
+
+	PW=limit(move*60000/4,0,60000/4)
+	S=(handle*6)*math.abs(handle*6)
+S2=S-1
+S1=S+1
+	B=limit(-move*500,0,500)
+
+	BrRLL=1-(handle*0.8)
+	BrRLR=1+(handle*0.8)
+	BrFR=1
+	if MODE==0 then
+		FL=limit(PW*BrRLL,0,60000)
+		FR=limit(PW*BrRLR,0,60000)
+		RL=limit(PW*BrRLL,0,60000)
+		RR=limit(PW*BrRLR,0,60000)
+		
+		BFL=limit(B+handle*(50-move*40),0,4000)
+		BFR=limit(B-handle*(50-move*40),0,4000)
+		BRL=limit(B+handle*(50-move*140),0,4000)
+		BRR=limit(B-handle*(50-move*140),0,4000)
+	end
+	
+	if B==0 then TR=RGB(50,0,0) 
+	else TR=RGB(255,0,0)
+	end
+end
+
+function main()
+
+	_ZOOM(60)
+	ctr()
+	outs()
+	key()
+end
+
+function outs()
+	out(0,math.abs(FL)+math.abs(FR)+math.abs(RL)+math.abs(RR))
+	out(1,_WEIGHT())
+end
+
+function RGB(r,g,b)--RGBŠÖ” 
+d = math.int(r)*256^2+math.int(g)*256+math.int(b) 
+return d
+end 
+
+function math.int(n)
+if n>0 then n=math.floor(n) else n=math.ceil(n) end
+return n
+end
+
+function APAD(a,b)
+return
+_ANALOG(0+a)/1000*b
+end
+
+function limit(x,y,z)
+ 
+if x<y then
+x=y
+end
+
+if x>z then
+x=z
+end
+
+return
+x
+ 
+end
+}

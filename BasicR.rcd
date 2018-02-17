@@ -1,0 +1,135 @@
+// [RCD] BasicCar
+Val
+{
+	B(default=0, max=2000)
+	D(default=-90, min=-180, max=-90)
+	PWFL(default=0, min=-5000, max=200000)
+	PWFR(default=0, min=-5000, max=200000)
+	PWRL(default=0, min=-5000, max=200000)
+	PWRR(default=0, min=-5000, max=200000)
+	S(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Frame() {
+			N:Frame() {
+				W:Frame() {
+					W:RudderF(angle=S, option=1) {
+						E:Wheel(angle=90, power=PWFL, brake=B, name=FLW) { }
+						E:Frame(angle=90, option=1) {
+							W:Rudder(angle=-90) { }
+						}
+					}
+					N:Chip(angle=D) { }
+				}
+				E:Frame() {
+					E:RudderF(angle=S, option=1) {
+						W:Wheel(angle=90, power=-PWFR, brake=B, name=FRW) { }
+						W:Frame(angle=90, option=1) {
+							E:Rudder(angle=90) { }
+						}
+					}
+					N:Chip(angle=D) { }
+				}
+			}
+		}
+		S:Frame() {
+			W:Frame() {
+				W:Wheel(angle=90, power=-PWRL, brake=B, name=RLW) { }
+				N:Chip(angle=D) { }
+				W:Frame(angle=90, option=1) {
+					E:Rudder(angle=90) { }
+				}
+			}
+			E:Frame() {
+				E:Wheel(angle=90, power=PWRR, brake=B, name=RRW) { }
+				N:Chip(angle=D) { }
+				E:Frame(angle=90, option=1) {
+					W:Rudder(angle=-90) { }
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LVAL(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+WL=0.9*math.pi
+
+MXPW=92000
+MXTCS=MXPW/400
+MXTCS2=MXPW/8
+
+MXB=200
+MXABS=MXB/20
+
+function r_pw(p)
+	return _LVAL(p,MXPW*_KEY(0)+5500*-_KEY(1),MXPW/10)
+end
+
+function r_tc(p,w,vz)
+	--n=w/vz
+	--TCS=(n-3.5)*MXTCS2
+	TCS=(w-vz)*MXTCS
+	if TCS>0 and _KEY(0)+_KEY(1)>0 then p=p-TCS end
+	if p<0 and TCS>0 and _KEY(1) == 0 then p=0 end
+	return p
+end
+
+function r_g(p,w,vz)
+	p=r_pw(p)
+	p=r_tc(p,w,vz)
+	return p
+end
+
+_td=30
+
+function OnFrame()
+	B=_LVAL(B,MXB*_KEY(4),50)
+	S=_LVAL(S,30*_KEY(3)+30*-_KEY(2),4)
+	
+	BL=16711680*_KEY(4)
+	
+	FLR=(_WY(FLW)*30/360)*WL*2
+	FRR=(-_WY(FRW)*30/360)*WL*2
+	RLR=(-_WY(RLW)*30/360)*WL*2
+	RRR=(_WY(RRW)*30/360)*WL*2
+	
+	WR=(FLR+FRR+RLR+RRR)/4
+	
+	PWFR=r_g(PWFR,FRR,_VEL(FRW))
+	PWFL=r_g(PWFL,FLR,_VEL(FLW))
+	PWRR=r_g(PWRR,RRR,_VEL(RRW))
+	PWRL=r_g(PWRL,RLR,_VEL(RLW))
+	
+	ABS=-(WR-_VEL(0))*MXABS
+	if ABS>0 and _KEY(4)>0 then B=B-ABS end
+	if B<0 then B=0 end
+	
+	_td = 30 + _KEY(14) * 20
+	
+	D=_LVAL(D,-180+_td,10)
+end
+}

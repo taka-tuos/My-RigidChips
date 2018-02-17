@@ -1,0 +1,128 @@
+// [RCD] 
+Val
+{
+	ELON(default=0, min=-8, max=8, step=2)
+	ENGINE(default=0, max=131072, step=2048)
+	EVTR(default=0, min=-8, max=8, step=2)
+	EVTR2(default=-1, min=-9, max=7, step=2)
+	GUN(default=0, max=16384, step=16384)
+}
+Key
+{
+	0:EVTR(step=2), EVTR2(step=2)
+	1:EVTR(step=-2), EVTR2(step=-2)
+	2:ELON(step=2)
+	3:ELON(step=-2)
+	4:ENGINE(step=2048)
+	5:GUN(step=16384)
+}
+Body
+{
+	Core(color=#004000) {
+		W:Chip(angle=-90, color=#004000) {
+			N:Chip(color=0) { }
+		}
+		E:Chip(angle=-90, color=#004000) {
+			N:Chip(color=0) { }
+		}
+		S:Chip(color=#004000) {
+			W:Chip(angle=-90, color=#004000) { }
+			E:Chip(angle=-90, color=#004000) { }
+			S:Chip(color=#004000) {
+				S:Chip(color=#004000) {
+					W:Chip(angle=-90, color=#004000) {
+						S:Chip(color=#004000) { }
+					}
+					E:Chip(angle=-90, color=#004000) {
+						S:Chip(color=#004000) { }
+					}
+					E:Frame(angle=0, color=#004000) {
+						E:Chip(angle=-90, color=#004000) {
+							S:Chip(angle=0, color=#004000) { }
+						}
+						S:Chip(angle=EVTR2) { }
+					}
+					W:Frame(angle=0, color=#004000) {
+						W:Chip(angle=-90, color=#004000) {
+							S:Chip(angle=0, color=#004000) { }
+						}
+						S:Chip(angle=EVTR2) { }
+					}
+					S:Chip(color=#004000) {
+						E:Trim(angle=EVTR, color=#004000) {
+							E:Chip(angle=-20, color=#004000) { }
+						}
+						W:Trim(angle=-EVTR, color=#004000) {
+							W:Chip(angle=-20, color=#004000) { }
+						}
+					}
+				}
+				W:Chip(angle=-90, color=#004000) { }
+				E:Chip(angle=-90, color=#004000) { }
+			}
+		}
+		N:Weight(option=1, color=0) {
+			N:Jet(angle=-90, power=-ENGINE, option=0, color=0, effect=4) {
+				N:Cowl(angle=-90, color=0) {
+					N:Cowl(angle=45, color=#404040, effect=#40FB) {
+						W:Cowl(angle=-90, option=3, color=#404040, effect=#40FB) { }
+						E:Cowl(angle=-90, option=4, color=#404040, effect=#40FB) { }
+						N:Cowl(angle=-90, color=#404040, effect=#40FB) { }
+					}
+					N:Cowl(color=#004000) {
+						N:Cowl(color=#004000) {
+							N:Cowl(color=#004000) {
+								N:Cowl(color=#004000) {
+									N:Cowl(color=#004000) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		E:Chip(angle=-20, color=#004000) {
+			E:Chip(angle=20, color=#004000) {
+				S:Chip(angle=-ELON, color=#004000) {
+					W:Chip(angle=20, color=#004000) { }
+					E:Chip(color=#004000) { }
+				}
+				E:Chip(angle=0, color=#004000) { }
+			}
+			N:Arm(angle=0, power=GUN, option=16384, color=#000000) { }
+		}
+		W:Chip(angle=-20, color=#004000) {
+			W:Chip(angle=20, color=#004000) {
+				S:Chip(angle=ELON, color=#004000) {
+					E:Chip(angle=20, color=#004000) { }
+					W:Chip(color=#004000) { }
+				}
+				W:Chip(angle=0, color=#004000) { }
+			}
+			N:Arm(angle=0, power=GUN, option=16384, color=#000000) { }
+		}
+	}
+}
+Lua
+{
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+MKPH = 0
+
+function OnFrame()
+	NKPH = math.floor(_VEL(0) * 3.6 + 0.5)
+	
+	if NKPH > MKPH then
+		MKPH = NKPH
+	end
+	
+	out(0, NKPH, "kph")
+	out(1, "max ", MKPH, "kph")
+end
+}

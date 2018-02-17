@@ -1,0 +1,267 @@
+// [RCD] 
+Val
+{
+	CRP(default=0, min=-10000000000, max=10000000000)
+	FAJ(default=0, min=-10000000000, max=10000000000)
+	FAP(default=0, min=-10000000000, max=10000000000)
+	FJX(default=0, min=-10000000000, max=10000000000)
+	FJY(default=0, min=-10000000000, max=10000000000)
+	FJZ(default=0, min=-10000000000, max=10000000000)
+	RAJ(default=0, min=-10000000000, max=10000000000)
+	RAP(default=0, min=-10000000000, max=10000000000)
+	RJX(default=0, min=-10000000000, max=10000000000)
+	RJY(default=0, min=-10000000000, max=10000000000)
+	RJZ(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Jet(power=-FJY, name=CF) { }
+		S:Jet(power=-RJY, name=CR) { }
+		N:TrimF(angle=-90, option=1) {
+			N:Arm(power=FAP, option=200000, name=FAC) {
+				S:Jet(power=-FJX) {
+					W:TrimF(angle=90, option=1) {
+						E:Jet(power=FJZ) { }
+					}
+				}
+			}
+		}
+		S:TrimF(angle=90, option=1) {
+			S:Arm(power=RAP, option=200000, name=RAC) {
+				N:Jet(power=-RJX) {
+					W:TrimF(angle=-90, option=1) {
+						E:Jet(power=-RJZ) { }
+					}
+				}
+			}
+		}
+		E:Cowl(angle=150, color=#FF7F00) {
+			E:Cowl(angle=120, color=#FF7F00) {
+				N:Cowl(angle=10, color=#1F1F1F) {
+					N:Cowl(angle=-10, option=5, color=#1F1F1F) { }
+				}
+				S:Cowl(angle=10, color=#1F1F1F) {
+					S:Cowl(angle=-10, option=5, color=#1F1F1F) { }
+				}
+			}
+		}
+		W:Cowl(angle=150, color=#FF7F00) {
+			W:Cowl(angle=120, color=#FF7F00) {
+				N:Cowl(angle=10, color=#1F1F1F) {
+					N:Cowl(angle=-10, option=5, color=#1F1F1F) { }
+				}
+				S:Cowl(angle=10, color=#1F1F1F) {
+					S:Cowl(angle=-10, option=5, color=#1F1F1F) { }
+				}
+			}
+		}
+		E:Cowl(angle=-150, color=#FF7F00) { }
+		W:Cowl(angle=-150, color=#FF7F00) { }
+		N:Frame(angle=150, option=1) {
+			N:Jet(angle=120, power=RAJ, option=0) { }
+		}
+		S:Frame(angle=150, option=1) {
+			S:Jet(angle=120, power=FAJ) { }
+		}
+		E:TrimF(angle=-90, option=1) {
+			W:RLW(power=CRP, brake=2000) { }
+		}
+		W:TrimF(angle=-90, option=1) { }
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+_pw = 100000
+
+VX = {}
+VY = {}
+VZ = {}
+
+__X = {}
+__Y = {}
+__Z = {}
+
+function _M(n)
+	VX[n] = (_X(n) - __X[n]) * _BASE()
+	VY[n] = (_Y(n) - __Y[n]) * _BASE()
+	VZ[n] = (_Z(n) - __Z[n]) * _BASE()
+	
+	__X[n] = _X(n)
+	__Y[n] = _Y(n)
+	__Z[n] = _Z(n)
+end
+
+function OnInit()
+	VX[CF] = 0
+	VY[CF] = 0
+	VZ[CF] = 0
+	
+	VX[CR] = 0
+	VY[CR] = 0
+	VZ[CR] = 0
+	
+	__X[CF] = _X(CF)
+	__Y[CF] = _Y(CF)
+	__Z[CF] = _Z(CF)
+	
+	__X[CR] = _X(CR)
+	__Y[CR] = _Y(CR)
+	__Z[CR] = _Z(CR)
+end
+
+function _NPOS_C9(n)
+	--[[
+	math.randomseed(1519)
+	local px = _PLAYERX(n)
+	math.randomseed(1519)
+	local py = _PLAYERY(n)
+	math.randomseed(1519)
+	local pz = _PLAYERZ(n)
+	
+	return px,py,pz
+	]]--
+	math.randomseed(1519)
+	local x = _PLAYERX(n)
+	math.randomseed(1519)
+	local y = _PLAYERY(n)
+	math.randomseed(1519)
+	local z = _PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	x = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+	
+	return x,y,z
+end
+
+function _RTJ(n,a,b,c)
+	local dx = _X(n) - a
+	local dy = _Y(n) - b
+	local dz = _Z(n) - c
+	
+	local mx = VX[n] * -(_pw / 4)
+	local my = VY[n] * -(_pw / 4)
+	local mz = VZ[n] * -(_pw / 4)
+	
+	local jx = dx * _pw - mx
+	local jy = dy * _pw - my
+	local jz = dz * _pw - mz
+	
+	local xx,xy,xz = _XX(n),_XY(n),_XZ(n)
+	local yx,yy,yz = _YX(n),_YY(n),_YZ(n)
+	local zx,zy,zz = _ZX(n),_ZY(n),_ZZ(n)
+	
+	local a = (xx * jx + xy * jy + xz * jz)
+	local b = (yx * jx + yy * jy + yz * jz)
+	local c = (zx * jx + zy * jy + zz * jz)
+	
+	return a,b,c
+end
+
+function _RAMIEL3D(ex,ey,ez,llen)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	
+	_MOVE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+end
+
+function _DRWLIN(n,a,b,c)
+	_SETCOLOR(255*65536)
+	_MOVE3D(_X(n),_Y(n),_Z(n))
+	_LINE3D(_X(n)+_XX(n)*a,_Y(n)+_XY(n)*a,_Z(n)+_XZ(n)*a)
+	
+	_SETCOLOR(255*256)
+	_MOVE3D(_X(n),_Y(n),_Z(n))
+	_LINE3D(_X(n)+_YX(n)*b,_Y(n)+_YY(n)*b,_Z(n)+_YZ(n)*b)
+	
+	_SETCOLOR(255)
+	_MOVE3D(_X(n),_Y(n),_Z(n))
+	_LINE3D(_X(n)+_ZX(n)*c,_Y(n)+_ZY(n)*c,_Z(n)+_ZZ(n)*c)
+end
+
+FTX,FTY,FTZ = 0,NTH,-0.6
+RTX,RTY,RTZ = 0,NTH,0.6
+
+NTX,NTY,NTZ = 0,0,0
+
+PTX,PTY,PTZ = 0,100,0
+
+NTP = 0
+
+function OnFrame()
+	out(0,string.format("%d %s",NTP,_PLAYERNAME(NTP)))
+	
+	_M(CF)
+	_M(CR)
+	
+	NTX,NTY,NTZ = _NPOS_C9(NTP)
+	
+	local dx,dy,dz = _X(0)-NTX,_Y(0)-NTY,_Z(0)-NTZ
+	local dl = math.sqrt(dx*dx + dy*dy + dz*dz)
+	
+	if dl == 0 then dl = 1 end
+	
+	dx = dx / dl
+	dy = dy / dl
+	dz = dz / dl
+	
+	FTX,FTY,FTZ = dx * -0.6 + PTX, dy * -0.6 + PTY, dz * -0.6 + PTZ
+	RTX,RTY,RTZ = dx * 0.6 + PTX, dy * 0.6 + PTY, dz * 0.6 + PTZ
+	
+	FJX,FJY,FJZ = _RTJ(CF,FTX,FTY,FTZ)
+	RJX,RJY,RJZ = _RTJ(CR,RTX,RTY,RTZ)
+	
+	_DRWLIN(CF,FJX,FJY,FJZ)
+	_DRWLIN(CR,RJX,RJY,RJZ)
+	
+	NTP = math.mod(NTP+_KEYDOWN(1)-_KEYDOWN(0),_PLAYERS())
+	if NTP < 0 then NTP = 0 end
+	
+	_RAMIEL3D(NTX,NTY,NTZ,0.5)
+	
+	FAP = 0
+	RAP = 0
+	
+	FAJ = 0
+	RAJ = 0
+	
+	if _KEYDOWN(4) == 1 and _E(FAC) == _OPTION(FAC) then
+		FAJ = _OPTION(FAC)
+		FAP = _OPTION(FAC)
+	end
+	
+	CRP = _WZ(0) * 2000
+end
+}

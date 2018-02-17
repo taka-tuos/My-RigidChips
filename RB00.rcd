@@ -1,0 +1,60 @@
+// [RCD] 
+Val
+{
+	VAR(default=0, max=48000, step=2000)
+}
+Key
+{
+	0:VAR(step=2000)
+}
+Body
+{
+	Core() {
+		E:Chip(angle=20) {
+			E:Chip(angle=-110) {
+				W:RudderF(angle=15) {
+					W:Frame() {
+						W:RudderF(angle=-30) {
+							W:Frame() {
+								S:Frame(angle=-90) {
+									W:Frame(angle=-105) {
+										W:Frame(angle=160) {
+											W:Weight(angle=-160) {
+												W:Weight() { }
+												E:Weight() { }
+												W:Jet(angle=-90, power=-VAR) { }
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		W:Chip(angle=20) {
+			W:Chip(angle=-110) {
+				E:RudderF(angle=-15) {
+					E:Frame() {
+						E:RudderF(angle=30) {
+							E:Frame() {
+								S:Frame(angle=-90) {
+									E:Frame(angle=-105) {
+										E:Frame(angle=160) {
+											E:Weight(angle=-160) {
+												E:Weight() { }
+												W:Weight() { }
+												E:Jet(angle=-90, power=-VAR) { }
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

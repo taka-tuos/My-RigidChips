@@ -1,0 +1,122 @@
+// [RCD] 
+Val
+{
+	GA1(default=0, max=16777216, step=16777216)
+	GA2(default=0, max=16777216, step=16777216)
+	GA3(default=0, max=16777216, step=16777216)
+	GA4(default=0, max=16777216, step=16777216)
+	GA5(default=0, max=16777216, step=16777216)
+	GA6(default=0, max=16777216, step=16777216)
+	GA7(default=0, max=16777216, step=16777216)
+	GA8(default=0, max=16777216, step=16777216)
+	PJ(default=0, max=16777216, step=16777216)
+	PPH(default=0, max=16777216)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		E:Chip(angle=60) {
+			E:Chip() {
+				E:Weight(angle=-60) {
+					S:Weight() {
+						S:Weight() {
+							W:Weight() { }
+						}
+					}
+					N:Weight() {
+						N:Weight() {
+							W:Weight() { }
+						}
+					}
+				}
+			}
+		}
+		W:Chip(angle=60) {
+			W:Chip() {
+				W:Weight(angle=-60) {
+					N:Weight() {
+						N:Weight() {
+							E:Weight() { }
+						}
+					}
+					S:Weight() {
+						S:Weight() {
+							E:Weight() { }
+						}
+					}
+				}
+			}
+		}
+		N:TrimF(angle=PPH) {
+			N:Frame(option=1) {
+				S:TrimF(angle=45) {
+					W:Frame(option=1) {
+						N:Arm(option=60000, name=SA4, power=GA4) { }
+					}
+					E:Frame(option=1) {
+						N:Arm(option=60000, name=SA8, power=GA8) { }
+					}
+				}
+				S:TrimF(angle=-45) {
+					W:Frame(option=1) {
+						N:Arm(option=60000, name=SA2, power=GA2) { }
+					}
+					E:Frame(option=1) {
+						N:Arm(option=60000, name=SA6, power=GA6) { }
+					}
+				}
+				S:TrimF(angle=90) {
+					W:Frame(option=1) {
+						N:Arm(option=60000, name=SA5, power=GA5) { }
+					}
+					E:Frame(option=1) {
+						N:Arm(option=60000, name=SA1, power=GA1) { }
+					}
+				}
+			}
+			W:Frame(option=1) {
+				N:Arm(option=60000, name=SA3, power=GA3) { }
+			}
+			E:Frame(option=1) {
+				N:Arm(option=60000, name=SA7, power=GA7) { }
+			}
+		}
+		N:Frame(angle=-150) {
+			N:Jet(angle=-120, power=PJ) { }
+		}
+	}
+}
+Lua
+{
+NP = 0
+TP = 0
+SP = 0
+
+function main()
+	local i
+	
+	for i=1,8 do
+		if NP == i then
+			_G["GA"..i] = 16777216
+			PJ = 60000
+			TP = TP + 45
+			NP = 0
+			SP = math.mod(TP,360)
+		end
+	end
+	
+	if PPH < TP then
+		PPH = PPH + 45/2
+	end
+	
+	for i=1,8 do
+		if _E(_G["SA"..i]) == 60000 and SP == (i-1) * 45 and _KEY(4) == 1 and math.mod(_TICKS(),2) == 0 then
+			NP = i
+			break
+		end
+	end
+end
+}

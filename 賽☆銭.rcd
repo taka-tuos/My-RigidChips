@@ -1,0 +1,53 @@
+// [RCD] 
+Val
+{
+	VAR0(default=0, max=50000000, step=50000000)
+	VAR1(default=0, max=50000000, step=50000000)
+	VAR2(default=0, max=50000000, step=50000000)
+	VAR3(default=0, max=50000000, step=50000000)
+	VAR4(default=0, max=50000000, step=50000000)
+	VAR5(default=0, max=50000000, step=50000000)
+	VAR6(default=0, max=50000000, step=50000000)
+	VAR7(default=0, max=50000000, step=50000000)
+	VAR8(default=0, max=50000000, step=50000000)
+	VAR9(default=0, max=50000000, step=50000000)
+	VARA(default=0, max=50000000, step=50000000)
+	VARB(default=0, max=50000000, step=50000000)
+	VARC(default=0, max=50000000, step=50000000)
+	VARD(default=0, max=50000000, step=50000000)
+	VARE(default=0, max=50000000, step=50000000)
+	VARF(default=0, max=50000000, step=50000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Jet(power=VAR0, color=#FFFF00) { }
+		N:Jet(power=VAR1, color=#FFFF00) { }
+		N:Jet(power=VAR2, color=#FFFF00) { }
+		N:Jet(power=VAR3, color=#FFFF00) { }
+		N:Jet(power=VAR4, color=#FFFF00) { }
+		N:Jet(power=VAR5, color=#FFFF00) { }
+		N:Jet(power=VAR6, color=#FFFF00) { }
+		N:Jet(power=VAR7, color=#FFFF00) { }
+		N:Jet(power=VAR8, color=#FFFF00) { }
+		N:Jet(power=VAR9, color=#FFFF00) { }
+		N:Jet(power=VARA, color=#FFFF00) { }
+		N:Jet(power=VARB, color=#FFFF00) { }
+	}
+}
+Lua
+{
+T16 = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'}
+CN = 1
+
+function OnFrame()
+	if _KEYDOWN(0) == 1 and CN <= 12 then
+		_G['VAR'..T16[CN]] = 50000000
+		_SPLIT(CN)
+		CN = CN + 1
+	end
+end
+}

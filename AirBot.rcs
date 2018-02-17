@@ -1,0 +1,395 @@
+--[[
+	■ 対空射撃練習 シナリオ (Ver1.0)
+	デフォランド 用
+
+	H : ボール出現
+	J : 攻撃 ON/OFF
+
+	設定については conf.lua で何とか
+--]]
+
+------------------------[ Val ]---------------------------------
+debug = false --未使用
+
+	--------モデル側でも使える変数
+	RCS_MODEL_NUM = 0		--座標を得たいモデルの番号
+	RCS_MODEL_MAXNUM = 0		--モデル数
+
+	RCS_MODEL_X = 0		--RCS_MODEL_NUM で指定したモデルの座標が代入されます
+	RCS_MODEL_Y = -1000000	--出現していない場合、Y = -1000000 が返る
+	RCS_MODEL_Z = 0
+
+	rcs_TA = {
+		ver = "1.00",
+
+		EnemyNum = 0,		--活動中の敵の数
+		PlayerModelChip = 0,	--プレイヤーモデルの最後尾のチップ番号
+
+		USER2_Model = 440440,	--識別用番号(USER2使用)
+		Color = 0,
+
+		GameFlag = true,
+		Score = 0,
+
+		ShootTick = 0,
+		SetTick = 0,
+
+		TargetList = {},	--相手から狙われるチップ番号
+		ModelList = {},
+	}
+
+--外部設定ファイルの読み込み
+LUA_PATH = "?"	--何がなんでも相対パス
+require("./math.lua");
+require("./conf.lua");
+require("./Network.lua");
+require("./Model.lua");
+
+------------------------[ Event ]---------------------------------
+LastBall=-1
+
+function OnFrame()
+	
+	--[[メモリとｶﾞﾍﾞｰｼﾞｺﾚｸﾄの閾値を表示する
+		local me,li = gcinfo()
+		out(10,"memo:",me)
+		out(11,"limit:",li)
+	--]]
+
+	if (rcs_TA.NetworkFlag) then		rcs_NET.OnFrame()	end
+	OnFrame_GameSystem()
+
+	if(_SKEYDOWN(0)>0) then
+		LastBall=_ADDBALL(0.9, 2, _GETY(2,0)+6+LastBall*0.9*2 ,LastBall/10, 0.1)
+		_SETOBJCOLOR(LastBall,1,0,1)
+	end
+end
+
+function OnInit()
+	resetGame()
+	rcs_NET.Init()
+end
+function OnReset()
+
+	resetGame()
+end
+
+------------------------[ Sub (Game) ]---------------------------------
+function OnFrame_GameSystem()
+	rcs_NET.setSendVal( (rcs_TA.AttackFlag and 1 or 0) ,0,0,0 )
+
+	----model
+	if (_TOP( _CHIPS() - 1 ) == 0 and rcs_TA.ModelNum > 0) then	----最後尾は切り離されているはず
+		initTargetList()
+		initModel()
+	end
+	do
+		rcs_TA.EnemyNum = 0
+		local i,e
+		for i,e in next,rcs_TA.ModelList do
+			if (e.isDead == 0 or e.isDead == 1) then rcs_TA.EnemyNum = rcs_TA.EnemyNum + 1 end
+			e:OnFrame()
+		end
+	end
+
+	----
+	if ( rcs_TA.GameFlag ) then
+		local i,e
+
+		if ( rcs_TA.EnemyType == 0 and rcs_TA.SetTick <= 0) then
+			rcs_TA.SetTick = 15
+
+			e = searchFreeModel()
+			if ( e ) then
+				SetEnemy( e )
+			end
+
+		elseif ( rcs_TA.EnemyType == 1 and rcs_TA.EnemyNum <= 0 ) then
+			for i,e in next,rcs_TA.ModelList do
+				if (e.isDead == 3) then
+					SetEnemy( e )
+				end
+			end
+
+		end
+	else
+		rcs_TA.GameFlag = true
+	end
+
+	----
+	if ( rcs_TA.SetTick   > 0 ) then	rcs_TA.SetTick = rcs_TA.SetTick - 1	end
+	if ( rcs_TA.ShootTick > 0 ) then	rcs_TA.ShootTick = rcs_TA.ShootTick - 1	end
+
+	if ( _SKEYDOWN(1) > 0 ) then	rcs_TA.AttackFlag = not rcs_TA.AttackFlag	end
+
+	----
+	RCS_MODEL_X,RCS_MODEL_Y,RCS_MODEL_Z = getModelPost( RCS_MODEL_NUM )
+	RCS_MODEL_MAXNUM = table.getn( rcs_TA.ModelList )
+
+	if (_SKEY(2) > 0) then	rcs_NET.print(4)	end
+
+	if ( not rcs_TA.AttackFlag ) then	out(1,"Peace mode")	end
+	out(0, string.format("Destroy : %d",rcs_TA.Score) )
+end
+
+--------
+function resetGame()
+	math.randomseed( _STICKS() - _MX() )	--乱数初期化
+
+	rcs_TA.Score = 0
+	rcs_TA.ShootTick = 30*5
+	rcs_TA.SetTick  = 15
+	rcs_TA.GameFlag = false
+
+	setCursorLock( false )
+end
+
+--------カーソルキーの入力を無効化
+function setCursorLock( f )
+	local n = (f and 1 or 0)
+	_KEYLOCK(0,n)	_KEYLOCK(1,n)	_KEYLOCK(2,n)	_KEYLOCK(3,n)
+end
+
+----------------[ Enemy ]----------------
+----[ 敵出現 ]
+function SetEnemy( o, xx,yy,zz, rx,ry )
+	if ( not xx ) then	xx,yy,zz,rx,ry = SetEnemy_random( o )	end
+
+	o:SetUp( xx,yy,zz, math.deg(rx),math.deg(ry), rcs_TA.ModelArm,StepColor( rcs_TA.Color ) )
+	rcs_TA.Color = math.loop( rcs_TA.Color+0.1 ,1,0)
+
+	return true
+end
+
+function SetEnemy_random( o )
+	local xx,yy,zz, sx,sz, ry,rx, r
+	r = math.random2( math.pi )
+
+	xx = rcs_TA.FieldPost[1] + math.sin( r ) * rcs_TA.Move_Dist
+	zz = rcs_TA.FieldPost[3] + math.cos( r ) * rcs_TA.Move_Dist
+	yy = rcs_TA.FieldPost[2] + rcs_TA.Move_High
+
+	rx = 0
+	ry = r + math.pi / 2
+
+	return xx,yy,zz, rx,ry
+end
+
+----------------Score---------------
+function addScore( p )
+	rcs_TA.Score = rcs_TA.Score + p
+end
+
+------------------------[ Sub (Player) ]---------------------------------
+function initTargetList()
+	local chips,type,cn
+	chips = rcs_TA.PlayerModelChip
+
+	rcs_TA.TargetList = {}
+
+	for cn = 0,chips do
+		if ( rcs_TA.isTarget( cn ) ) then
+			table.insert( rcs_TA.TargetList ,cn )
+		end
+	end
+end
+
+function searchTarget( cn )
+	local i,e, maxv,maxc,maxi, val
+	maxc,maxi,maxv = nil,nil,-99999
+
+	for i,e in next,rcs_TA.TargetList do
+		if ( checkTarget( e ) ) then
+			val = valueTarget( cn, _X(e),_Y(e),_Z(e) )
+			if ( val > maxv ) then
+				maxc = e
+				maxv = val
+			end
+		else
+			table.remove( rcs_TA.TargetList,i )
+		end
+	end
+
+	----Network
+	if (rcs_TA.NetworkFlag) then
+		for i,e in next,rcs_NET.player_list do
+			if ( e:isUse() and e:getVal( 1 ) == 1 ) then
+				--out(e.num+3,e.newpos[1])
+				val = valueTarget( cn, e:getPos2() )
+				if ( val > maxv ) then
+					maxi = e
+					maxc = nil
+					maxv = val
+				end
+			end
+		end
+	end
+
+	if ( maxc ) then	return maxc,nil
+	elseif ( maxi ) then	return nil,maxi
+	end
+	return nil,nil
+end
+
+function valueTarget( pn, tx,ty,tz )
+	local sx,sy,sz ,d,a
+	sx,sy,sz = tx - _X(pn), ty - _Y(pn), tz - _Z(pn) 
+	d = sx^2 + sy^2 + sz^2 
+
+	return math.floor( 0 + (math.sqrt(d) - 1500) )
+end
+
+----生きてる？
+function checkTarget( cn )
+	return (_T( cn ) >= 0 or cn <= 0) and (math.abs( _Y( cn ) ) <= 100000-100)
+end
+
+function debugTarget()
+	local i,e
+	for i,e in next,rcs_TA.TargetList do
+		drawTargetBox( e )
+		out(i+4,i,":",e,":",_T(e))
+	end
+end
+
+function drawTargetBox2( x,y,z )
+	_SETCOLOR(255*256)
+	_MOVE3D( x+0.3,y,z )_LINE3D( x,y+0.3,z )_LINE3D( x-0.3,y,z )_LINE3D( x,y-0.3,z )_LINE3D( x+0.3,y,z )
+	_MOVE3D( x,y+0.3,z )_LINE3D( x,y,z+0.3 )_LINE3D( x,y-0.3,z )_LINE3D( x,y,z-0.3 )_LINE3D( x,y+0.3,z )
+end
+
+------------------------[ Sub (Model) ]---------------------------------
+--------------------------------モデルを整理
+function initModel()
+	listupModel()	--一回探しておく
+
+	if (table.getn( rcs_TA.ModelList ) <= 0) then
+		local cn,i,co
+		cn = _CHIPS() - 1	--モデルの最後に追加
+		co = 0
+		for i = 1,rcs_TA.ModelNum do
+			rcs_Model.createModel( cn )
+
+			co = co + 1
+			if (co >= 6) then
+				if (cn < 1) then break end
+				cn = cn - 1
+				co = 0
+			end
+		end
+
+		listupModel()
+	end
+	local i,e
+	for i,e in next,rcs_TA.ModelList do
+		e.isDead = 2
+	end
+end
+
+--------------------------------モデルを探査、ついでに切り離し
+function listupModel()
+	local chips,obj,num,cn
+
+	chips = _CHIPS() - 1
+	num = 1
+
+	rcs_TA.ModelList = {}	--initlist
+	rcs_TA.PlayerModelChip = 0
+
+	for cn = 0,chips do
+		if ( isModelChip( cn ) ) then
+			if (num <= 1) then
+				rcs_TA.PlayerModelChip = cn-1
+			end
+
+			table.insert( rcs_TA.ModelList ,rcs_Model.new( cn ,num ) )
+			_SPLIT( cn )
+
+			num = num + 1
+		end
+	end
+end
+
+--------------------------------出動できそうなモデルオブジェクトを指定(point)
+function searchFreeModel()
+	local i,e
+	for i,e in next,rcs_TA.ModelList do
+		if (e.isDead == 3) then	return e	end
+	end
+	return nil
+end
+
+----チップはシナリオ用モデルの物かどうか
+function isModelChip( n )
+	return (_GET(n,"USER2") == rcs_TA.USER2_Model)
+end
+
+----モデルの座標を得る(番号)
+function getModelPost( n )
+	local m,cn
+	if ( n < 1 or n > table.getn( rcs_TA.ModelList ) ) then return 0,-1000000,0 end
+	m = rcs_TA.ModelList[n]
+
+	if (m.isDead ~= 0) then return 0,-1000000,0 end
+	cn = m.ArmChip
+
+	return _X(cn),_Y(cn),_Z(cn)
+end
+
+------------------------[ Other ]---------------------------------
+----赤(0)→赤(1)
+function StepColor( v )
+	local re,gr,bl
+	if (v < 3/6) then	re =  2 - 6 * v
+	else			re = -4 + 6 * v
+	end
+
+	if (v < 2/6) then	gr = 0 + 6 * v
+	else			gr = 4 - 6 * v
+	end
+
+	if (v < 4/6) then	bl = -2 + 6 * v
+	else			bl =  6 - 6 * v
+	end
+
+	re = math.floor(math.limit(re,1,0)*255)
+	gr = math.floor(math.limit(gr,1,0)*255)
+	bl = math.floor(math.limit(bl,1,0)*255)
+
+	return re * 256^2 + gr * 256 + bl
+end
+
+--------------------------------
+function getlpos(wx,wy,wz,cn)
+	local lx,ly,lz
+	lx=_XX(cn)*wx+_XY(cn)*wy+_XZ(cn)*wz
+	ly=_YX(cn)*wx+_YY(cn)*wy+_YZ(cn)*wz
+	lz=_ZX(cn)*wx+_ZY(cn)*wy+_ZZ(cn)*wz
+	return lx,ly,lz
+end
+function getwpos(lx,ly,lz,cn)
+	local wx=_XX(cn)*lx+_YX(cn)*ly+_ZX(cn)*lz
+	local wy=_XY(cn)*lx+_YY(cn)*ly+_ZY(cn)*lz
+	local wz=_XZ(cn)*lx+_YZ(cn)*ly+_ZZ(cn)*lz
+	return wx,wy,wz
+end
+
+----sx,sy,sz : 相対座標  vx,vy,vz : 単位ごとの速度  bu : 単位ごとの弾速
+function Est(sx,sy,sz, vx,vy,vz, bu)
+	local a,b,c,d,t
+
+	a = bu^2 - (vx^2 + vy^2 + vz^2)
+	b = - (sx*vx + sy*vy + sz*vz)
+	c = - (sx^2 + sy^2 + sz^2)
+	d = b^2 - a*c
+
+	t = 0
+	if ( a == 0 and b ~= 0) then
+		t = -c / (2*b)
+	elseif (d >= 0) then
+		t = (-b + math.sqrt( d )) / a
+	end
+
+	return sx+vx*t,sy+vy*t,sz+vz*t,t
+end
+--------------------------------

@@ -1,0 +1,83 @@
+// [RCD] 
+Val
+{
+	J0(default=0, min=-16777216, max=16777216)
+	J1(default=0, min=-16777216, max=16777216)
+	J2(default=0, min=-16777216, max=16777216)
+	J3(default=0, min=-16777216, max=16777216)
+	J4(default=0, min=-16777216, max=16777216)
+	J5(default=0, min=-16777216, max=16777216)
+	J6(default=0, min=-16777216, max=16777216)
+	J7(default=0, min=-16777216, max=16777216)
+	J8(default=500, min=-16777216, max=16777216)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		E:Jet(power=J1, effect=0) { }
+		W:Jet(power=J3, effect=0) { }
+		S:Jet(power=J2, effect=0) { }
+		N:Jet(power=J0, effect=0) { }
+		N:Jet(angle=-90, power=J4, effect=0) {
+			E:Jet(power=J8, effect=0) { }
+			W:Jet(power=-J8, effect=0) { }
+		}
+		E:Jet(angle=-90, power=J5, effect=0) {
+			S:Jet(power=J8, effect=0) { }
+			N:Jet(power=-J8, effect=0) { }
+		}
+		S:Jet(angle=-90, power=J6, effect=0) {
+			E:Jet(power=-J8, effect=0) { }
+			W:Jet(power=J8, effect=0) { }
+		}
+		W:Jet(angle=-90, power=J7, effect=0) {
+			N:Jet(power=J8, effect=0) { }
+			S:Jet(power=-J8, effect=0) { }
+		}
+	}
+}
+Lua
+{
+JETPW = 8192
+VY = _Y(0)
+function M_VY(c)
+	local R = _Y(0) - VY
+	return R * 30
+end
+
+TX,TY,TZ = 0,70,0
+
+function OnFrame()
+	out(0,'X : '.._X(0));
+	out(1,'Y : '.._Y(0));
+	out(2,'Z : '.._Z(0));
+	
+	out(3,'TX : '..TX);
+	out(4,'TY : '..TY);
+	out(5,'TZ : '..TZ);
+	
+	if _KEYDOWN(0) ~=  0 then TZ = TZ + 10 end
+	if _KEYDOWN(1) ~=  0 then TZ = TZ - 10 end
+	if _KEYDOWN(2) ~=  0 then TX = TX - 10 end
+	if _KEYDOWN(3) ~=  0 then TX = TX + 10 end
+	if _KEYDOWN(7) ~=  0 then TY = TY + 10 end
+	if _KEYDOWN(4) ~=  0 then TY = TY - 10 end
+	
+	J0 =  _EX(0) * 65536 + ((TY + 1.8 - _Y(0))) * (JETPW/2) - ((M_VY(0)) * (JETPW/4))
+	J2 = -_EX(0) * 65536 + ((TY + 1.8 - _Y(0))) * (JETPW/2) - ((M_VY(0)) * (JETPW/4))
+	J1 =  _EZ(0) * 65536 + ((TY + 1.8 - _Y(0))) * (JETPW/2) - ((M_VY(0)) * (JETPW/4))
+	J3 = -_EZ(0) * 65536 + ((TY + 1.8 - _Y(0))) * (JETPW/2) - ((M_VY(0)) * (JETPW/4))
+	
+	J4 = ((TZ - _Z(0)) / 15) * (JETPW*1.5) - ((_VZ(0)) * (JETPW/4))
+	J5 = ((TX - _X(0)) / 15) * (JETPW*1.5) - ((_VX(0)) * (JETPW/4))
+	J6 = ((TZ - _Z(0)) / 15) * -(JETPW*1.5) + ((_VZ(0)) * (JETPW/4))
+	J7 = ((TX - _X(0)) / 15) * -(JETPW*1.5) + ((_VX(0)) * (JETPW/4))
+	
+	J8 = -_EY(0) * 65536
+	
+	VY = _Y(0)
+end
+}

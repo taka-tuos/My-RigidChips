@@ -1,0 +1,117 @@
+// [RCD] 
+Val
+{
+	ELON(default=0, min=-12, max=12, step=4)
+	ENGINE(default=0, max=307200, step=65536)
+	EVTR(default=0, min=-16, max=16, step=4)
+	GUN1(default=0, max=409600, step=65536)
+	GUN2(default=0, max=65536, step=65536)
+	GUN3(default=0, max=65536, step=65536)
+	GUN4(default=0, max=65536, step=65536)
+}
+Key
+{
+	0:EVTR(step=4)
+	1:EVTR(step=-4)
+	2:ELON(step=4)
+	3:ELON(step=-4)
+	4:ENGINE(step=65536)
+	5:GUN1(step=65536), GUN3(step=12288), GUN2(step=16384), GUN4(step=8192)
+}
+Body
+{
+	Core() {
+		S:Frame() {
+			S:Frame() {
+				S:Frame() {
+					S:Frame() {
+						S:Frame() {
+							S:Frame() {
+								E:Trim(angle=EVTR) {
+									S:Chip() {
+										E:Chip(angle=-20) { }
+									}
+									E:Chip(angle=-20) { }
+								}
+								W:Trim(angle=-EVTR) {
+									S:Chip() {
+										W:Chip(angle=-20) { }
+									}
+									W:Chip(angle=-20) { }
+								}
+							}
+							W:Frame() {
+								W:Chip(angle=-90) {
+									S:Chip() {
+										S:Chip() { }
+									}
+								}
+							}
+							E:Frame() {
+								E:Chip(angle=-90) {
+									S:Chip() {
+										S:Chip() { }
+									}
+								}
+							}
+						}
+					}
+				}
+				E:Trim(angle=ELON) {
+					E:Chip(angle=-20) {
+						E:Chip(angle=20) {
+							S:Chip() {
+								E:Cowl(option=4) { }
+							}
+							E:Cowl() { }
+						}
+						S:Chip() { }
+					}
+					S:Chip() { }
+				}
+				W:Trim(angle=ELON) {
+					W:Chip(angle=-20) {
+						W:Chip(angle=20) {
+							S:Chip() {
+								W:Cowl(option=3) { }
+							}
+							W:Cowl() { }
+						}
+						S:Chip() { }
+					}
+					S:Chip() { }
+				}
+			}
+			N:Frame(angle=-90) {
+				N:Frame(angle=90) {
+					N:Arm(angle=0, power=GUN3, option=65536, color=#404040, name=MGUN3) { }
+				}
+			}
+			W:Frame(angle=10) {
+				W:Frame() {
+					W:Wheel(angle=80) { }
+				}
+			}
+			E:Frame(angle=10) {
+				E:Frame() {
+					E:Wheel(angle=80) { }
+				}
+			}
+		}
+		N:Arm(power=GUN2, option=65536, color=#404040, name=MGUN2) { }
+		W:Frame(angle=-90) {
+			N:Arm(power=GUN4, option=65536, color=#404040, name=MGUN4) { }
+		}
+		E:Frame(angle=-90) {
+			N:Arm(power=GUN3, option=65536, color=#404040, name=MGUN4) { }
+		}
+		N:RLW(angle=-90, power=ENGINE, color=0) {
+			W:Trim(angle=55, color=#404040) { }
+			E:Trim(angle=55, color=#404040) { }
+		}
+		N:RLW(angle=-90, power=-ENGINE, color=0) {
+			S:Trim(angle=-55, color=#404040) { }
+			N:Trim(angle=-55, color=#404040) { }
+		}
+	}
+}

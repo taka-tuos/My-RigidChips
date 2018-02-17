@@ -1,0 +1,52 @@
+// [RCD] 
+Val
+{
+	G1(default=0, max=16777216, step=16777216)
+	G2(default=0, max=16777216, step=16777216)
+	G3(default=0, max=16777216, step=16777216)
+	G4(default=0, max=16777216, step=16777216)
+	P(default=0, min=-16777216, max=16777216)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=-90, option=1) {
+			S:RLW(angle=0, power=P, name=RBH) {
+				E:Arm(angle=-90, option=10000, power=G1) { }
+				S:Arm(angle=-90, option=10000, power=G2) { }
+				N:Arm(angle=-90, option=10000, power=G3) { }
+				W:Arm(angle=-90, option=10000, power=G4) { }
+			}
+		}
+		E:Weight() {
+			S:Weight() {
+				S:Weight() { }
+			}
+			N:Weight() { }
+		}
+		W:Weight() {
+			N:Weight() { }
+			S:Weight() {
+				S:Weight() { }
+			}
+		}
+	}
+}
+Lua
+{
+A=0
+
+function OnFrame()
+	RW=-_WY(RBH)/3.14/30
+	P=(RW-0.5)*1000000
+	
+	out(0,RW)
+	
+	_G["G"..A+1]=10000
+	
+	A=math.mod(A+1,4)
+end
+}

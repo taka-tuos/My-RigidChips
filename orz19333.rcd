@@ -1,0 +1,56 @@
+// [RCD] 
+Val{
+}
+Key{
+}
+Body{
+	Core(){}
+}
+Lua{----[ âÒì]Ç∑ÇÈê≥ëΩå`ï`âÊ ]
+function drawPolygon(n,x,y,z,t,size,col)
+
+	t = t or 0
+	size = size or 2
+	col = col or tonumber("00ffff",16)
+	
+	_SETCOLOR(col);
+	for i=1,n do
+		local aa = (math.pi*2/n) * i + t * 0.1
+		local bb = (math.pi*2/n) * (i - 1) + t * 0.1
+		_MOVE3D(math.cos(aa) * size + x,y,math.sin(aa) * size + z)
+		_LINE3D(math.cos(bb) * size + x,y,math.sin(bb) * size + z)
+	end
+end
+
+----[ main ]--------------------------------------------------------------
+num = 0
+corner = 0
+function main()
+
+	local ticks
+	
+	ticks = _TICKS();
+	num = math.mod(num + _KEYDOWN(4), 4);
+	corner = math.mod(corner + _KEYDOWN(5), 8);
+	
+	if (num == 0) then
+		--Ç¢Ç¡Ç±
+		drawPolygon(corner + 3, _X(0), _Y(0) + 0.5, _Z(0), ticks, 2, tonumber("00ffff",16));
+	elseif (num == 1) then
+		--ìÒèd
+		drawPolygon(corner + 3, _X(0), _Y(0) + 0.5, _Z(0), ticks, 1.6, tonumber("00ffff",16));
+		drawPolygon(corner + 3, _X(0), _Y(0) + 0.5, _Z(0), ticks, 2, tonumber("00ffff",16));
+	elseif (num == 2) then
+		--ãtì]
+		drawPolygon(corner + 3, _X(0), _Y(0) + 0.5, _Z(0), -ticks, 2, tonumber("00ffff",16));
+		drawPolygon(corner + 3, _X(0), _Y(0) + 0.5, _Z(0), ticks, 2, tonumber("00ffff",16));
+	elseif (num == 3) then
+		--ãtì]2
+		drawPolygon(corner + 3, _X(0), _Y(0) + 0.5, _Z(0), -ticks, 1, tonumber("00ffff",16));
+		drawPolygon(corner + 3, _X(0), _Y(0) + 0.5, _Z(0), ticks, 2, tonumber("00ffff",16));
+	end
+	
+	out(0, "Press 'z' to switch drawing");
+	out(2,"num :"..math.floor(num + 1))
+	out(3,"corners :"..math.floor(corner + 3))
+end}

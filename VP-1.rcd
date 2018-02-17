@@ -1,0 +1,117 @@
+// [RCD] 
+Val
+{
+	JX(default=0, min=-20000, max=20000)
+	JZ(default=0, min=-20000, max=20000)
+	P1(default=0, min=-200000000, max=200000000)
+	P2(default=0, min=-200000000, max=200000000)
+	P3(default=0, min=-200000000, max=200000000)
+	P4(default=0, min=-200000000, max=200000000)
+	RY(default=0, min=-200000000, max=200000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Frame(angle=-30) {
+			N:RLW(angle=30, power=P3, name=PR3) {
+				W:Trim(angle=30) { }
+				E:Trim(angle=30) { }
+			}
+		}
+		S:Frame(angle=-30) {
+			S:RLW(angle=30, power=P4, name=PR4) {
+				W:Trim(angle=30) { }
+				E:Trim(angle=30) { }
+			}
+		}
+		E:Frame(angle=-30) {
+			E:RLW(angle=30, power=P1, name=PR1) {
+				W:Trim(angle=30) { }
+				E:Trim(angle=30) { }
+			}
+			E:Jet(angle=120, power=-JX) { }
+		}
+		W:Frame(angle=-30) {
+			W:RLW(angle=30, power=-P2, name=PR2) {
+				E:Trim(angle=-30) { }
+				W:Trim(angle=-30) { }
+			}
+			W:Jet(angle=120, power=JX) { }
+		}
+		N:RLW(angle=-180, power=RY, brake=400000) { }
+		N:Trim(angle=-90, option=1) {
+			N:Arm() { }
+		}
+		S:Trim(angle=-90, option=1) {
+			S:Arm() { }
+		}
+		S:Frame(angle=-30) {
+			S:Jet(angle=120, power=-JZ) { }
+		}
+		N:Frame(angle=-30) {
+			N:Jet(angle=120, power=JZ) { }
+		}
+	}
+}
+Lua
+{
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+_PW1 = 400000
+_PW2 = 200000
+
+_PW3 = 700000
+
+P1L = 50
+P2L = 50
+P3L = 50
+P4L = 50
+
+TY = 0
+
+function OnFrame()
+	P1 = (_Y(PR1) - P1L) * _PW1 + _VY(PR1) * _PW2
+	P2 = (_Y(PR2) - P2L) * _PW1 + _VY(PR2) * _PW2
+	P3 = (_Y(PR3) - P3L) * _PW1 + _VY(PR3) * _PW2
+	P4 = (_Y(PR4) - P4L) * _PW1 + _VY(PR4) * _PW2
+	
+	if P1 < -_PW3 then P1 = -_PW3 end
+	if P1 > _PW3 then P1 = _PW3 end
+	
+	if P2 < -_PW3 then P2 = -_PW3 end
+	if P2 > _PW3 then P2 = _PW3 end
+	
+	if P3 < -_PW3 then P3 = -_PW3 end
+	if P3 > _PW3 then P3 = _PW3 end
+	
+	if P4 < -_PW3 then P4 = -_PW3 end
+	if P4 > _PW3 then P4 = _PW3 end
+	
+	JZ = _LINER(JZ,_KEY(0)*20000-_KEY(1)*20000,10000)
+	JX = _LINER(JX,_KEY(2)*20000-_KEY(3)*20000,10000)
+	
+	TY = TY+_KEY(7)-_KEY(8)
+	
+	P1L = math.max(4,P1L+(_KEY(4)*1-_KEY(5)*1))
+	P2L = math.max(4,P2L+(_KEY(4)*1-_KEY(5)*1))
+	P3L = math.max(4,P3L+(_KEY(4)*1-_KEY(5)*1))
+	P4L = math.max(4,P4L+(_KEY(4)*1-_KEY(5)*1))
+	
+	RY = (_EY(0)-math.rad(TY)) * 90000 + _WY(0) * 9000
+	
+	out(0,_Y(PR1),' ',_Y(PR2),' ',_Y(PR3),' ',_Y(PR4))
+	out(1,P1L,' ',P2L,' ',P3L,' ',P4L)
+end
+}

@@ -1,0 +1,37 @@
+function OnFrame()
+	
+end
+
+function OnInit()
+	local f = _FOPEN("m_data.bin","wb")
+	local x
+	local y
+	
+	for y=-512,511 do
+		for x=-512,511 do
+			local n = _GETY(x*0.6,y*0.6)
+			
+			if n < 0 then n = 0 end
+			
+			local b={}
+			
+			b[1] = math.floor(n/16777216)
+			b[2] = math.floor(math.mod(n/65536,256))
+			b[3] = math.floor(math.mod(n/256,256))
+			b[4] = math.floor(math.mod(n,256))
+			
+			out(0,b[1])
+			out(1,b[2])
+			out(2,b[3])
+			out(3,b[4])
+			out(4,x)
+			out(5,y)
+			out(6,n)
+			
+			
+			_FPUTS(f,string.char(b[1],b[2],b[3],b[4]))
+		end
+	end
+	
+	_FCLOSE(f)
+end

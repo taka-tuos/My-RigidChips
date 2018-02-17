@@ -1,0 +1,1691 @@
+// [RCD] 
+Val
+{
+	G0(default=0, max=10000000000)
+	G1(default=0, max=10000000000)
+	G2(default=0, max=10000000000)
+	G3(default=0, max=10000000000)
+	GJ(default=0, min=-10000000000, max=10000000000)
+	MA1(default=0, max=10000000000, step=10000000000)
+	MA2(default=0, max=10000000000, step=10000000000)
+	MP1(default=0, min=-10000000000, max=10000000000)
+	MP2(default=0, min=-10000000000, max=10000000000)
+	MX1(default=0, min=-90, max=90)
+	MX2(default=0, min=-90, max=90)
+	MY1(default=0, min=-90, max=90)
+	MY2(default=0, min=-90, max=90)
+	MZ1(default=0, min=-10000000000, max=10000000000)
+	MZ2(default=0, min=-10000000000, max=10000000000)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+	V0(default=0, min=-90, max=90)
+	V1(default=0, min=-90, max=90)
+	V2(default=0, min=-90, max=90)
+	V3(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+		S:Cowl() {
+			S:Cowl() {
+				S:Cowl() {
+					S:Cowl() {
+						S:Cowl() {
+							S:Cowl() {
+								W:Cowl(angle=0) {
+									S:Cowl(angle=30) {
+										S:Cowl(angle=150) {
+											S:Cowl(angle=-5) {
+												S:Cowl() {
+													S:Cowl() {
+														S:Cowl(angle=5) {
+															S:Cowl() {
+																S:Cowl() {
+																	W:Cowl(angle=90) {
+																		S:Cowl(option=3) { }
+																	}
+																	E:Cowl(angle=90) {
+																		S:Cowl(option=4) { }
+																	}
+																}
+																W:Cowl(angle=90) { }
+																E:Cowl(angle=90) { }
+															}
+															W:Cowl(angle=90) { }
+															E:Cowl(angle=90) { }
+														}
+														W:Cowl(angle=90) { }
+														E:Cowl(angle=90) { }
+													}
+													W:Cowl(angle=90) { }
+													E:Cowl(angle=90) { }
+												}
+												W:Cowl(angle=90) { }
+												E:Cowl(angle=90) { }
+											}
+											W:Cowl(angle=90) {
+												S:Cowl(option=5) { }
+												W:Cowl(angle=90) {
+													S:Cowl(angle=5) {
+														S:Cowl() {
+															S:Cowl() {
+																S:Cowl(angle=-5) {
+																	S:Cowl() {
+																		S:Cowl(angle=5) {
+																			S:Cowl() { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+													N:Cowl(angle=10, option=5, color=#202020) { }
+												}
+												N:Cowl(angle=10, option=5, color=#202020) { }
+											}
+											E:Cowl(angle=90) {
+												S:Cowl(option=5) { }
+												N:Cowl(angle=10, option=5, color=#202020) { }
+											}
+											N:Cowl(angle=10, option=5, color=#202020) { }
+										}
+									}
+								}
+								E:Cowl(angle=0) {
+									S:Cowl(angle=30) {
+										S:Cowl(angle=150) {
+											S:Cowl(angle=-5) {
+												S:Cowl() {
+													S:Cowl() {
+														S:Cowl(angle=5) {
+															S:Cowl() {
+																S:Cowl() {
+																	W:Cowl(angle=90) {
+																		S:Cowl(option=3) { }
+																	}
+																	E:Cowl(angle=90) {
+																		S:Cowl(option=4) { }
+																	}
+																}
+																W:Cowl(angle=90) { }
+																E:Cowl(angle=90) { }
+															}
+															W:Cowl(angle=90) { }
+															E:Cowl(angle=90) { }
+														}
+														W:Cowl(angle=90) { }
+														E:Cowl(angle=90) { }
+													}
+													W:Cowl(angle=90) { }
+													E:Cowl(angle=90) { }
+												}
+												W:Cowl(angle=90) { }
+												E:Cowl(angle=90) { }
+											}
+											W:Cowl(angle=90) {
+												S:Cowl(option=5) { }
+												N:Cowl(angle=10, option=5, color=#202020) { }
+											}
+											E:Cowl(angle=90) {
+												S:Cowl(option=5) { }
+												E:Cowl(angle=90) {
+													S:Cowl(angle=5) {
+														S:Cowl() {
+															S:Cowl() {
+																S:Cowl(angle=-5) {
+																	S:Cowl() {
+																		S:Cowl(angle=5) {
+																			S:Cowl() { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+													N:Cowl(angle=10, option=5, color=#202020) { }
+												}
+												N:Cowl(angle=10, option=5, color=#202020) { }
+											}
+											N:Cowl(angle=10, option=5, color=#202020) { }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		S:Trim(angle=90, spring=1, damper=1) {
+			S:Chip(spring=1, damper=1) {
+				S:Chip(spring=1, damper=1) {
+					S:Chip(spring=1, damper=1) {
+						S:Chip(spring=1, damper=1) {
+							S:Chip(spring=1, damper=1) {
+								S:Trim(angle=90) {
+									W:Frame(angle=0) {
+										N:Frame(angle=150) {
+											N:Jet(angle=120, power=-P) { }
+										}
+										W:Chip(angle=90) {
+											N:Cowl() { }
+											W:Cowl() {
+												W:Cowl(angle=-90, option=1, effect=#F0FB) {
+													N:Cowl(angle=-45, option=1, effect=#F0FB) {
+														E:Cowl(angle=-90) {
+															N:Cowl() {
+																W:Cowl(angle=-90, option=1, effect=#F0FB) {
+																	N:Cowl(angle=30, option=1, effect=#F0FB) {
+																		E:Cowl(angle=-90) {
+																			S:Cowl() { }
+																			N:Cowl() { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									E:Frame(angle=0) {
+										N:Frame(angle=150) {
+											N:Jet(angle=120, power=-P) { }
+										}
+										E:Chip(angle=90) {
+											E:Cowl() {
+												E:Cowl(angle=-90, option=1, effect=#F0FB) {
+													N:Cowl(angle=-45, option=1, effect=#F0FB) {
+														W:Cowl(angle=-90) {
+															N:Cowl() {
+																E:Cowl(angle=-90, option=1, effect=#F0FB) {
+																	N:Cowl(angle=30, option=1, effect=#F0FB) {
+																		W:Cowl(angle=-90) {
+																			S:Cowl() { }
+																			N:Cowl() { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+											N:Cowl() { }
+										}
+									}
+								}
+							}
+						}
+						S:Trim(angle=90) {
+							E:Trim(angle=V) {
+								N:Cowl(angle=-90, option=1, effect=#F0FB) {
+									E:Cowl(angle=-40, option=1, effect=#F0FB) {
+										S:Cowl(angle=-90) {
+											E:Cowl() {
+												E:Cowl() {
+													E:Cowl(option=3) {
+														S:Cowl(option=3) {
+															S:Cowl(angle=-90, option=1, effect=#F0FB) {
+																W:Cowl(angle=20, option=1, effect=#F0FB) {
+																	N:Cowl(angle=-90) {
+																		W:Cowl() { }
+																	}
+																}
+															}
+															W:Cowl() { }
+														}
+													}
+												}
+												S:Cowl() { }
+											}
+											S:Cowl(option=4) { }
+										}
+									}
+								}
+							}
+							W:Trim(angle=-V) {
+								N:Cowl(angle=-90, option=1, effect=#F0FB) {
+									W:Cowl(angle=-40, option=1, effect=#F0FB) {
+										S:Cowl(angle=-90) {
+											W:Cowl() {
+												W:Cowl() {
+													W:Cowl(option=4) {
+														S:Cowl(option=4) {
+															S:Cowl(angle=-90, option=1, effect=#F0FB) {
+																E:Cowl(angle=20, option=1, effect=#F0FB) {
+																	N:Cowl(angle=-90) {
+																		E:Cowl() { }
+																	}
+																}
+															}
+															E:Cowl() { }
+														}
+													}
+												}
+												S:Cowl() { }
+											}
+											S:Cowl(option=3) { }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			S:Trim(angle=90) {
+				E:Trim(angle=R) {
+					E:Chip() { }
+				}
+				W:Trim(angle=R) {
+					W:Chip() { }
+				}
+				E:TrimF(angle=180, spring=1) {
+					E:Chip(angle=0, name=MC1) {
+						N:Chip(angle=MY1) { }
+						N:Frame(angle=-150, option=1) {
+							N:Jet(angle=-120, power=-MP1) { }
+						}
+						S:Arm(power=MA1, option=100000, name=MG1) {
+							N:Trim(angle=90) {
+								N:Chip(angle=MX1) { }
+							}
+						}
+						E:Trim(angle=MZ1) { }
+						W:Trim(angle=MZ1) { }
+					}
+				}
+				W:TrimF(spring=1) {
+					W:Chip(angle=0, name=MC2) {
+						S:Chip(angle=MY2) { }
+						S:Frame(angle=-150, option=1) {
+							S:Jet(angle=-120, power=-MP2) { }
+						}
+						N:Arm(power=MA2, option=100000, name=MG2) {
+							S:Trim(angle=90) {
+								S:Chip(angle=MX2) { }
+							}
+						}
+						E:Trim(angle=MZ2) { }
+						W:Trim(angle=MZ2) { }
+					}
+				}
+			}
+			N:Trim(angle=90, spring=1, damper=1, name=CRE) {
+				N:Frame(angle=V0, spring=1, damper=1) {
+					N:Arm(option=50000, power=G0, angle=-V0, name=A0) { }
+				}
+				N:Frame(angle=V1, spring=1, damper=1) {
+					N:Arm(option=50000, power=G1, angle=-V1, name=A1) { }
+				}
+				N:Frame(angle=V2, spring=1, damper=1) {
+					N:Arm(option=50000, power=G2, angle=-V2, name=A2) { }
+				}
+				N:Frame(angle=V3, spring=1, damper=1) {
+					N:Arm(option=50000, power=G3, angle=-V3, name=A3) { }
+				}
+				N:Jet(angle=180, power=-GJ) { }
+				S:Chip(angle=V) { }
+			}
+			N:Weight(option=2) { }
+		}
+		N:Cowl() {
+			N:Cowl() {
+				N:Cowl() {
+					N:Cowl() {
+						N:Cowl() {
+							N:Cowl() {
+								N:Cowl() {
+									N:Cowl(angle=150) {
+										N:Cowl(angle=30) {
+											N:Cowl(angle=2) {
+												N:Cowl() {
+													N:Cowl() {
+														N:Cowl() {
+															N:Cowl(angle=-5) {
+																N:Cowl() {
+																	N:Cowl() {
+																		N:Cowl() {
+																			N:Cowl(angle=6) {
+																				N:Cowl() {
+																					N:Cowl() {
+																						N:Cowl() {
+																							N:Cowl() { }
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																	W:Cowl(angle=85) { }
+																	E:Cowl(angle=85) { }
+																}
+																W:Cowl(angle=85) { }
+																E:Cowl(angle=85) { }
+															}
+															W:Cowl(angle=85) {
+																N:Cowl(option=5) { }
+															}
+															E:Cowl(angle=85) {
+																N:Cowl(option=5) { }
+															}
+														}
+														W:Cowl(angle=85) { }
+														E:Cowl(angle=85) { }
+													}
+													W:Cowl(angle=85) { }
+													E:Cowl(angle=85) { }
+												}
+												W:Cowl(angle=85) { }
+												E:Cowl(angle=85) { }
+											}
+											W:Cowl(angle=85, option=3) { }
+											E:Cowl(angle=85, option=4) { }
+										}
+										W:Cowl(angle=85, option=3) {
+											N:Cowl(option=4) { }
+										}
+										E:Cowl(angle=85, option=4) {
+											N:Cowl(option=3) { }
+										}
+									}
+									N:Cowl(angle=-150) {
+										N:Cowl(angle=-20) {
+											N:Cowl() {
+												N:Cowl(angle=10, color=#4F3F1F, effect=#A0FB) {
+													N:Cowl(angle=-10, color=#4F3F1F, effect=#A0FB) {
+														N:Cowl(angle=-10, color=#4F3F1F, effect=#A0FB) {
+															N:Cowl(angle=-15) {
+																N:Cowl() {
+																	N:Cowl() {
+																		N:Cowl() {
+																			N:Cowl(angle=10) {
+																				N:Cowl() {
+																					N:Cowl() {
+																						N:Cowl() {
+																							N:Cowl() { }
+																						}
+																					}
+																				}
+																			}
+																			E:Cowl(angle=-85) { }
+																			W:Cowl(angle=-85) { }
+																		}
+																		E:Cowl(angle=-85) { }
+																		W:Cowl(angle=-85) { }
+																	}
+																	E:Cowl(angle=-85) { }
+																	W:Cowl(angle=-85) { }
+																}
+																E:Cowl(angle=-85) { }
+																W:Cowl(angle=-85) { }
+															}
+															W:Cowl(angle=-90, color=#4F3F1F, effect=#A0FB) { }
+															E:Cowl(angle=-90, color=#4F3F1F, effect=#A0FB) { }
+														}
+														W:Cowl(angle=-90, color=#4F3F1F, effect=#A0FB) { }
+														E:Cowl(angle=-90, color=#4F3F1F, effect=#A0FB) { }
+													}
+													W:Cowl(angle=-90, color=#4F3F1F, effect=#A0FB) { }
+													E:Cowl(angle=-90, color=#4F3F1F, effect=#A0FB) { }
+												}
+												W:Cowl(angle=-85) {
+													N:Cowl(option=4) { }
+												}
+												E:Cowl(angle=-85) {
+													N:Cowl(option=3) { }
+												}
+											}
+											W:Cowl(angle=-85, option=3) { }
+											E:Cowl(angle=-85, option=4) { }
+										}
+										W:Cowl(angle=-85, option=3) {
+											N:Cowl(option=4) { }
+										}
+										E:Cowl(angle=-85, option=4) {
+											N:Cowl(option=3) { }
+										}
+									}
+								}
+							}
+						}
+						W:Cowl(angle=90, option=1, effect=#F0FB) {
+							N:Cowl(angle=-160, option=1, effect=#F0FB) {
+								E:Cowl(angle=-90) {
+									N:Cowl() {
+										N:Cowl() {
+											N:Cowl() {
+												W:Cowl(angle=-90, option=1, effect=#F0FB) {
+													N:Cowl(angle=40, option=1, effect=#F0FB) {
+														E:Cowl(angle=-90) {
+															N:Cowl() {
+																N:Cowl() {
+																	N:Cowl() {
+																		N:Cowl() {
+																			N:Cowl(option=3) {
+																				E:Cowl(option=4) {
+																					N:Cowl(angle=-90, option=1, effect=#F0FB) {
+																						E:Cowl(angle=-70, option=1, effect=#F0FB) {
+																							S:Cowl(angle=-90) {
+																								E:Cowl() {
+																									E:Cowl() {
+																										E:Cowl() {
+																											E:Cowl() {
+																												E:Cowl() { }
+																												S:Cowl() { }
+																											}
+																											S:Cowl() { }
+																										}
+																										S:Cowl() { }
+																									}
+																									S:Cowl() { }
+																								}
+																								S:Cowl(option=4) { }
+																							}
+																						}
+																					}
+																				}
+																			}
+																			E:Cowl() { }
+																		}
+																		E:Cowl() { }
+																	}
+																	E:Cowl() { }
+																}
+																E:Cowl() { }
+															}
+															E:Cowl() { }
+														}
+													}
+												}
+												N:Cowl() { }
+											}
+											E:Cowl() {
+												N:Cowl() {
+													N:Cowl() { }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						E:Cowl(angle=90, option=1, effect=#F0FB) {
+							N:Cowl(angle=-160, option=1, effect=#F0FB) {
+								W:Cowl(angle=-90) {
+									N:Cowl() {
+										N:Cowl() {
+											N:Cowl() {
+												E:Cowl(angle=-90, option=1, effect=#F0FB) {
+													N:Cowl(angle=40, option=1, effect=#F0FB) {
+														W:Cowl(angle=-90) {
+															N:Cowl() {
+																N:Cowl() {
+																	N:Cowl() {
+																		N:Cowl() {
+																			N:Cowl(option=4) {
+																				W:Cowl(option=3) {
+																					N:Cowl(angle=-90, option=1, effect=#F0FB) {
+																						W:Cowl(angle=-70, option=1, effect=#F0FB) {
+																							S:Cowl(angle=-90) {
+																								W:Cowl() {
+																									W:Cowl() {
+																										W:Cowl() {
+																											W:Cowl() {
+																												W:Cowl() { }
+																												S:Cowl() { }
+																											}
+																											S:Cowl() { }
+																										}
+																										S:Cowl() { }
+																									}
+																									S:Cowl() { }
+																								}
+																								S:Cowl(option=3) { }
+																							}
+																						}
+																					}
+																				}
+																			}
+																			W:Cowl() { }
+																		}
+																		W:Cowl() { }
+																	}
+																	W:Cowl() { }
+																}
+																W:Cowl() { }
+															}
+															W:Cowl() { }
+														}
+													}
+												}
+												N:Cowl() { }
+											}
+											W:Cowl() {
+												N:Cowl() {
+													N:Cowl() { }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		W:Trim(angle=-V) { }
+		E:Trim(angle=V) { }
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+do
+	local FSX=_X(FS)
+	local FSY=_Y(FS)
+	local FSZ=_Z(FS)
+	local RSX=_X(RS)
+	local RSY=_Y(RS)
+	local RSZ=_Z(RS)
+	local LSX=_X(LS)
+	local LSY=_Y(LS)
+	local LSZ=_Z(LS)
+	local TSX=_X(TS)
+	local TSY=_Y(TS)
+	local TSZ=_Z(TS)
+	
+	function MF(a)
+		local FX=_X(FS)-FSX
+		local FY=_Y(FS)-FSY
+		local FZ=_Z(FS)-FSZ
+		local RX=_X(RS)-RSX
+		local RY=_Y(RS)-RSY
+		local RZ=_Z(RS)-RSZ
+		local LX=_X(LS)-LSX
+		local LY=_Y(LS)-LSY
+		local LZ=_Z(LS)-LSZ
+		local TX=_X(TS)-TSX
+		local TY=_Y(TS)-TSY
+		local TZ=_Z(TS)-TSZ
+
+		WX=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))-(TX*_YX(TS)+TY*_YY(TS)+TZ*_YZ(TS))
+		WY=(RX*_ZX(RS)+RY*_ZY(RS)+RZ*_ZZ(RS))-(LX*_ZX(LS)+LY*_ZY(LS)+LZ*_ZZ(LS))
+		WZ=(RX*_YX(RS)+RY*_YY(RS)+RZ*_YZ(RS))-(LX*_YX(LS)+LY*_YY(LS)+LZ*_YZ(LS))
+		VEL=(FX*_ZX(FS)+FY*_ZY(FS)+FZ*_ZZ(FS))*3.6
+		VX=(FX*_XX(FS)+FY*_XY(FS)+FZ*_XZ(FS))*3.6
+
+		VY=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))*3.6
+
+		FSX=_X(FS)
+		FSY=_Y(FS)
+		FSZ=_Z(FS)
+		RSX=_X(RS)
+		RSY=_Y(RS)
+		RSZ=_Z(RS)
+		LSX=_X(LS)
+		LSY=_Y(LS)
+		LSZ=_Z(LS)
+		TSX=_X(TS)
+		TSY=_Y(TS)
+		TSZ=_Z(TS)
+	end
+end
+
+math.limit = function (val,max,min)	return val>max and max or val<min and min or val	end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+function OnInit()
+	GF=20
+	GR=70
+end
+
+_rate2=0.2
+_rate1=1-_rate2
+
+_F=20
+_B=70
+
+_md=0
+_splash = 60
+
+_upx = -1.1
+_upy = 0
+_ups = 0.2
+
+_pdisp = {}
+
+function _RECT2D(x,y,s)
+	--左の縦線
+	_MOVE2D(x,y)
+	_LINE2D(x,y-s)
+
+	--右の縦線
+	_MOVE2D(x+s,y)
+	_LINE2D(x+s,y-s)
+
+	--上の横線
+	_MOVE2D(x,y)
+	_LINE2D(x+s,y)
+
+	--下の横線
+	_MOVE2D(x,y-s)
+	_LINE2D(x+s,y-s)
+end
+
+function _NPOS(n)
+	math.randomseed(1519)
+	local x = _PLAYERX(n)
+	math.randomseed(1519)
+	local y = _PLAYERY(n)
+	math.randomseed(1519)
+	local z = _PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	x = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+	
+	return x,y,z
+end
+
+function _CROSS3D(x,y,z)
+	_MOVE3D(x,y,z)
+	_LINE3D(x+0.3,y,z)
+	
+	_MOVE3D(x,y,z)
+	_LINE3D(x-0.3,y,z)
+	
+	_MOVE3D(x,y,z)
+	_LINE3D(x,y+0.3,z)
+	
+	_MOVE3D(x,y,z)
+	_LINE3D(x,y-0.3,z)
+	
+	_MOVE3D(x,y,z)
+	_LINE3D(x,y,z+0.3)
+	
+	_MOVE3D(x,y,z)
+	_LINE3D(x,y,z-0.3)
+end
+
+function OnInit()
+	--_ZOOM(_GETVIEWZOOM())
+end
+
+function _RAMIEL3D(ex,ey,ez)
+	local llen = 0.4
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	
+	_MOVE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+end
+
+--<AAM>
+
+function _NORMAL3(a,b,c,d,e,f)
+	return a / _LEN3(a,b,c), b / _LEN3(a,b,c), c / _LEN3(a,b,c), d, e, f
+end
+
+_mn = 2
+_men = {}
+_mfunc = {}
+_moWx={}
+_moWy={}
+_moBp={} -- 1-3 : m/s	4-6 : m/s^2
+
+_moPIDx={}
+_moPIDy={}
+_moPIDz={}
+
+_pw = 0
+
+_mdl = {1,-1}
+
+
+-- lx, ly, lz : レイの始点
+-- vx, vy, vz : レイの方向ベクトル
+-- px, py, pz : 球の中心点の座標
+-- r : 球の半径
+-- q1x, q1y, q1z: 衝突開始点（戻り値）
+-- q2x, q2y, q2z: 衝突終了点（戻り値）
+
+function RaySphereAAM(lx, ly, lz, vx, vy, vz, px, py, pz, r)
+	px = px - lx
+	py = py - ly
+	pz = pz - lz
+
+	local A = vx * vx + vy * vy + vz * vz
+	local B = vx * px + vy * py + vz * pz
+	local C = px * px + py * py + pz * pz - r * r
+
+	if A == 0 then
+		return false -- レイの長さが0
+	end
+
+	local s = B * B - A * C
+
+	if s < 0 then
+		return false -- 衝突していない
+	end
+
+	s = math.sqrt(s);
+	local a1 = ( B - s ) / A
+	local a2 = ( B + s ) / A
+
+	if a1 < 0 and a2 < 0 then
+		return false -- レイの反対で衝突
+	end
+
+	local q1x = lx + a1 * vx
+	local q1y = ly + a1 * vy
+	local q1z = lz + a1 * vz
+	local q2x = lx + a2 * vx
+	local q2y = ly + a2 * vy
+	local q2z = lz + a2 * vz
+
+	return true,q1x,q1y,q1z,q2x,q2y,q2z
+end
+
+function InitAAM(func)
+	local i
+	
+	for i=1,_mn do
+		_mfunc[i] = func
+		_moBp[i] = {}
+		
+		_moBp[i][1] = 0
+		_moBp[i][2] = 0
+		_moBp[i][3] = 0
+		
+		_moBp[i][4] = 0
+		_moBp[i][5] = 0
+		_moBp[i][6] = 0
+		
+		_moBp[i][7] = 0
+		_moBp[i][8] = 0
+		_moBp[i][9] = 0
+	end
+end
+
+function EnableAAM()
+	local i
+	
+	--_mn = n
+	
+	for i=1,_mn do
+		_SPLIT(_G["MC"..i])
+		_men[i] = true
+		_moWx[i] = 0
+		_moWy[i] = 0
+		_moPIDx[i] = XPID_new()
+		_moPIDy[i] = XPID_new()
+		_moPIDz[i] = XPID_new()
+	end
+end
+
+function MoveAAM()
+	local i
+	
+	for i=1,_mn do
+	local core = _G["MC"..i]
+		local mx,my,mz = _NORMAL3(_ZX(core)*_mdl[i],_ZY(core)*_mdl[i],_ZZ(core)*_mdl[i])
+		local ux,uy,uz = _mfunc[i](i)
+		local px,py,pz = _X(core),_Y(core),_Z(core)
+		local xx,xy,xz = _XX(core)*_mdl[i],_XY(core)*_mdl[i],_XZ(core)*_mdl[i]
+		local yx,yy,yz = _YX(core),_YY(core),_YZ(core)
+		local zx,zy,zz = _ZX(core),_ZY(core),_ZZ(core)
+		
+		-- 目標との距離
+		local ul = _LEN3(ux-px,uy-py,uz-pz)
+		
+		-- 目標の1F前の座標
+		local uxP = _moBp[i][1]
+		local uyP = _moBp[i][2]
+		local uzP = _moBp[i][3]
+		
+		-- 目標の1F前の速度
+		local uxvP = _moBp[i][4]
+		local uyvP = _moBp[i][5]
+		local uzvP = _moBp[i][6]
+		
+		-- 目標の速度
+		local uxv = (ux - uxP)
+		local uyv = (uy - uyP)
+		local uzv = (uz - uzP)
+		
+		-- 目標の加速度
+		local uxvD = (uxv - uxvP)
+		local uyvD = (uyv - uyvP)
+		local uzvD = (uzv - uzvP)
+		
+		-- 目標の予測速度
+		local uxvF = uxv + uxvD * (ul / 20)
+		local uyvF = uyv + uxvD * (ul / 20)
+		local uzvF = uzv + uxvD * (ul / 20)
+		
+		-- 目標の予測座標
+		local uxF = ux + uxvF * (ul / 20)
+		local uyF = uy + uyvF * (ul / 20)
+		local uzF = uz + uzvF * (ul / 20)
+		
+		-- ミサイルの速度
+		local vpx = _VX(core)
+		local vpy = _VY(core)
+		local vpz = _VZ(core)
+		
+		if _men[i] then
+			local tx,ty,tz =  _NORMAL3(ux-px,uy-py,uz-pz)
+			
+			local uvx = uxv * 30
+			local uvy = uyv * 30
+			local uvz = uzv * 30
+			
+			local avx,avy,avz = _VX(core)*_mdl[i],_VY(core)*_mdl[i],_VZ(core)*_mdl[i]
+			
+			local vx = (-xx * avx + -yx * avy + -zx * avz)
+			local vy = (-xy * avx + -yy * avy + -zy * avz)
+			local vz = (-xz * avx + -yz * avy + -zz * avz)
+			
+			local nx = uvx - vx
+			local ny = uvy - vy
+			local nz = uvz - vz
+			
+			local nl = _LEN3(uxv,uyv,uzv) - _LEN3(vx,vy,vz)
+			
+			out(0,nx,ny,nz)
+				
+			_G["MP"..i] = math.limit(nl * 30000,200000,-200000)
+			
+			local dmp = _G["MP"..i]
+			
+			if ul > 10 then _G["MP"..i] = 200000 end
+			if ul < 100 and _VEL(core) > 200 then _G["MP"..i] = dmp end
+			if ul < 20 then _G["MP"..i] = dmp end
+			
+			_pw = 60
+			if _VEL(core) > 150 then _pw = 30 end
+			if _VEL(core) > 250 then _pw = 15 end
+			if _VEL(core) > 350 then _pw = 10 end
+			if _VEL(core) > 450 then _pw = 5 end
+			
+			--if _LEN3(_mfunc[i](i)) < _VEL(core)*2 then _G["MP"..i] = _VEL(core) * 2000 end
+			
+			if _VEL(core) > 500 then _G["MP"..i] = (500-_VEL(core))*7000 end
+			
+			_SETCOLOR(255)
+			_MOVE3D(px,py,pz)
+			_LINE3D(px+mx,py+my,pz+mz)
+			
+			_SETCOLOR(16777215)
+			_MOVE3D(px,py,pz)
+			_LINE3D(px+tx,py+ty,pz+tz)
+			
+			local dx,dy,dz = mx-tx,my-ty,mz-tz
+			
+			local jx = dx * _pw
+			local jy = dy * _pw
+			local jz = dz * _pw
+			
+			_SETCOLOR(255*65536)
+			_MOVE3D(px,py,pz)
+			_LINE3D(px+xx,py+xy,pz+xz)
+			
+			_SETCOLOR(255*256)
+			_MOVE3D(px,py,pz)
+			_LINE3D(px+yx,py+yy,pz+yz)
+			
+			local xa = -(xx * jx + xy * jy + xz * jz)
+			local ya =	(yx * jx + yy * jy + yz * jz)
+			
+			_moWx[i] = _WX(core)
+			_moWy[i] = _WY(core)
+			
+			_G["MX"..i] = xa
+			_G["MY"..i] = ya
+			
+			local gip = _G["MG"..i]
+			
+			if _E(gip) == _OPTION(gip) then
+				if ul < 1000 then
+					local es,a,b,c = RaySphereAAM(px,py,pz,mx,my,mz,ux,uy,uz,0.6)
+					
+					if es then
+						 _G["MA"..i] = 10000000000
+					end
+				end
+			end
+		end
+		
+		_moBp[i][1] = ux
+		_moBp[i][2] = uy
+		_moBp[i][3] = uz
+		
+		_moBp[i][4] = uxv
+		_moBp[i][5] = uyv
+		_moBp[i][6] = uzv
+	end
+end
+
+function _NPOS(n)
+	math.randomseed(1519)
+	local x = _PLAYERX(n)
+	math.randomseed(1519)
+	local y = _PLAYERY(n)
+	math.randomseed(1519)
+	local z = _PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	x = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+	
+	return x,y,z
+end
+
+_ntp={0,0}
+
+function AAM_Callback(n)
+	local core = _G["MC"..n]
+	local x,y,z = _NPOS(_ntp[n])
+	
+	return x,y,z
+end
+
+function CalcNTP(n,inc,dec)
+	_ntp[n] = math.mod(_ntp[n]+inc-dec,_PLAYERS())
+	if _ntp[n] < 0 then _ntp[n] = _PLAYERS()-1 end
+end
+
+--</AAM>
+
+_vel=0
+_ovel=0
+
+_ab=0
+
+_slim=1500
+
+_velrot=0
+
+_rader=0
+
+_inited=false
+
+_tn=60
+_tv={0,_tn,_tn,_tn}
+_v=0
+
+function Rotate2D(px,py,pr)
+	return px * math.cos(pr) - py * math.sin(pr), px * math.sin(pr) + py * math.cos(pr)
+end
+
+function SetHUDMassage(sz)
+	_fmsg = 30
+	_msg = sz
+end
+
+function SetHUDMassageEx(sz,f)
+	_fmsg = 30
+	_msg = sz
+end
+
+function XPID_new()
+	local obj = {
+		i = 0,
+		d = 0,
+		e_b = 0,
+
+		PID = function (self,now,tgt,kp,ki,kd,lim)
+			local e_n = now - tgt
+			local e_d = e_n - self.e_b
+			
+			local p = e_n * kp
+			
+			local i = self.i + e_n * ki
+			
+			local d = e_d * kd
+			
+			i=math.min(20,math.max(-20,i))
+			
+			self.i = i
+			
+			self.e_b = e_n
+			
+			local pid = p+i+d
+			
+			pid = math.min(lim,math.max(-lim,pid))
+			
+			return pid
+		end
+	}
+	
+	return obj
+end
+
+R_PID = XPID_new()
+V_PID = XPID_new()
+J_PID = XPID_new()
+
+function OnFrame()
+	if not _oldW then _oldW = _WEIGHT() end
+	
+	if _TICKS() < 15 then
+		SetHUDMassageEx("-WELCOME-",1)
+	end
+	
+	if _TICKS() >= 15 and _TICKS() < 30 then
+		SetHUDMassageEx("CCVX-09 Lastochka-Refresh",1)
+	end
+	
+	MF()
+	
+	if not _inited then
+		InitAAM(AAM_Callback)
+		_inited = true
+	end
+	
+	for i=0,3 do
+		_G['V'..i]=_LINER(_G['V'..i],_tv[i+1],math.abs(_tn/3))
+		_G['G'..i]=0
+	end
+	
+	if _KEY(7) == 1 and _E(_G['A'.._v]) == _OPTION(_G['A'.._v]) and _G['V'.._v] == 0 then
+		_G['G'.._v]=_OPTION(_G['A'.._v])
+		_v=math.mod(_v+1,4)
+		_tv={_tn,_tn,_tn,_tn}
+		_tv[_v+1]=0
+	end
+	
+	--_ZOOM(_GETVIEWZOOM())
+	
+	--local vix,viy,viz = _GETVIEW()
+	
+	local p=_LINER(P,_KEY(4)*200000,20000)
+	--local r=_LINER(R,_KEY(2)*8+_KEY(3)*-8,4)
+	--local v=_LINER(V,_KEY(1)*24+_KEY(0)*-24,8)
+	
+	if _KEY(10) == 1 then p = (_VZ()*3.6)*4000 end
+	
+	if _VEL()*3.6 > _slim then p = (_slim-_VEL()*3.6)*7000 end
+	
+	_slim=1000
+	
+	if _md == 1 then
+		_slim=1500
+	end
+	
+	if _md == 2 then
+		_slim=2000
+	end
+	
+	if _md == 3 then
+		_slim=2200
+	end
+	
+	if _md == 4 then
+		_slim=2500
+	end
+	
+	if _md == 5 then
+		_slim=64512
+	end
+	
+	P=p
+	
+	local _r,_v,_j = 0,0,0
+	
+	local dr = math.rad((_KEY(2)-_KEY(3))*360/30)
+	local dv = math.rad((_KEY(1)-_KEY(0))*180/30)
+	
+	_r = R_PID:PID(dr,WZ,12,12,4,20)
+	_v = V_PID:PID(dv,WX,32,16,2,40)
+	--GJ = J_PID:PID(dv,WX,4096000,32,409600,10000000)
+	
+	--[[
+	
+	--if _KEY(2) == 0 and _KEY(3) == 0 then
+	--	--_r=WZ*-32
+	--	_r = R_PID:PID(0,WZ,16,16,24,20)
+	--end
+	
+	local _gj = 0
+	
+	if _KEY(0) == 0 and _KEY(1) == 0 then
+		--_v=WX*-128
+		--_gj=WX*-2000000
+		_v = V_PID:PID(0,WX,64,24,8,40)
+		_gj = J_PID:PID(0,WX,4096000,32,40960,10000000)
+	end
+	
+	
+	Z=WY*-128
+	
+	GJ =_gj
+	
+	R=r*_rate1+_r*_rate2
+	V=v*_rate1+_v*_rate2
+	
+	]]--
+	
+	R=_r
+	V=_v
+	
+	if _splash > 0 then _splash = _splash - 1 end
+	
+	_CROSS3D(_GX(),_GY(),_GZ())
+	
+	if _KEYDOWN(15) == 1 then
+		_md = math.mod(_md+1,6)
+	end
+	
+	if _KEYDOWN(14) == 1 then
+		EnableAAM()
+	end
+	
+	CalcNTP(1,_KEYDOWN(5),0)
+	CalcNTP(2,_KEYDOWN(6),0)
+	
+	_RAMIEL3D(_NPOS(_ntp[1]))
+	_RAMIEL3D(_NPOS(_ntp[2]))
+	
+	MoveAAM()
+	
+	--XGUI.RefreshWindowManager()
+	
+	--_SETCOLOR(255*256)
+	
+	--_MOVE2D( 0.10, 0.0)
+	--_LINE2D( 0.05,-0.05)
+	--_LINE2D( 0.00, 0.00)
+	--_LINE2D(-0.05,-0.05)
+	--_LINE2D(-0.10, 0.00)
+	--<HUD>----------------------------------------------------------------
+	
+	_raderbase = 500
+	_rader = math.mod(_rader+_KEYDOWN(11)*2000,100000)
+	
+	if not _opln then _opln = _PLAYERS() end
+	if not _opll then
+		local j
+		_opll = {}
+		_oplll = _PLAYERS()
+		for j=0,_PLAYERS()-1 do
+			_opll[j+1] = {}
+			_opll[j+1].id = _PLAYERID(j)
+			_opll[j+1].sz = _PLAYERNAME(j)
+		end
+	end
+	
+	if _opln ~= _PLAYERS() then
+		local j
+		if _oplll > _PLAYERS() then
+			if _PLAYERS() == 0 then
+				SetHUDMassage(string.format("LOG OUT",p))
+			else
+				for j=1,_oplll do
+					local p = _opll[j].id
+					local k
+					local e = false
+					for k=0,_PLAYERS()-1 do
+						if _PLAYERID(k) == p then e = true end
+					end
+					if not e then
+						SetHUDMassage(string.format("%s LOGOUT",_opll[j].sz))
+					end
+				end
+			end
+		else -- _oplll < _PLAYERS()
+			if _oplll == 0 then
+				SetHUDMassage(string.format("LOG IN",p))
+			else
+				for j=0,_PLAYERS()-1 do
+					local p = _PLAYERID(j)
+					local k
+					local e = false
+					for k=1,_oplll do
+						if _opll[k].id == p then e = true end
+					end
+					if not e then
+						SetHUDMassage(string.format("%s LOGIN", _PLAYERNAME(j)))
+					end
+				end
+			end
+		end
+		_oplll = _PLAYERS()
+		for j=0,_PLAYERS()-1 do
+			_opll[j+1] = {}
+			_opll[j+1].id = _PLAYERID(j)
+			_opll[j+1].sz = _PLAYERNAME(j)
+		end
+	end
+	
+	_opln = _PLAYERS()
+	
+	XGUI.SetDrawColorRGB(0,255,0)
+	
+	local r_r = 128
+	local r_s = r_r-8
+	local r_t = r_r+8
+	
+	XGUI.Move2D(16,r_r+16)
+	XGUI.Line2D(16,16)
+	XGUI.Line2D(r_r+16,16)
+	
+	local i
+	for i=180,-90,-5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_r+r_r+16,math.cos(math.rad(i))*r_r+r_r+16)
+	end
+	
+	i = 0
+	XGUI.Move2D(math.sin(math.rad(i))*r_s+r_r+16,math.cos(math.rad(i))*r_s+r_r+16)
+	
+	for i=0,360,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_s+r_r+16,math.cos(math.rad(i))*r_s+r_r+16)
+	end
+	
+	XGUI.Move2D(r_r+16,r_r+16)
+	XGUI.Line2D(math.sin(math.rad(180+_GETVIEWZOOM()/2))*r_s+r_r+16,math.cos(math.rad(180+_GETVIEWZOOM()/2))*r_s+r_r+16)
+	XGUI.Move2D(r_r+16,r_r+16)
+	XGUI.Line2D(math.sin(math.rad(180-_GETVIEWZOOM()/2))*r_s+r_r+16,math.cos(math.rad(180-_GETVIEWZOOM()/2))*r_s+r_r+16)
+	
+	
+	XGUI.Move2D(0,r_r+16)
+	
+	for i=-90,135,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_t+r_r+16,math.cos(math.rad(i))*r_t+r_r+16)
+	end
+	
+	XGUI.Line2D(math.sin(math.rad(135))*r_t+r_r+16+64,math.cos(math.rad(135))*r_t+r_r+16-40)
+	XGUI.Line2D(_WIDTH(),math.cos(math.rad(135))*r_t+r_r+16-40)
+	
+	
+	local r_u = 16
+	
+	local r_s1 = 512
+	
+	XGUI.Move2D(0,_HEIGHT()-16)
+	
+	XGUI.Line2D(_WIDTH()-r_s1-r_u*2,_HEIGHT()-16)
+	
+	for i=0,90,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_u+_WIDTH()-r_s1,math.cos(math.rad(i))*r_u+_HEIGHT()-16-r_u)
+	end
+	
+	for i=-90,-180,-5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_u+_WIDTH()-r_s1+r_u*2,math.cos(math.rad(i))*r_u+_HEIGHT()-16-r_u-72)
+	end
+	
+	XGUI.Line2D(_WIDTH(),_HEIGHT()-16-r_u*2-72)
+	
+	
+	local r_v = 48
+	
+	XGUI.Move2D(math.sin(math.rad(0))*r_v+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	
+	for i=0,360,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_v+r_v+16,math.cos(math.rad(i))*r_v+_HEIGHT()/2)
+	end
+	
+	local r_w = 16
+	
+	XGUI.Move2D(math.sin(math.rad(0))*r_w+r_v+16,math.cos(math.rad(0))*r_w+_HEIGHT()/2)
+	
+	for i=0,360,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_w+r_v+16,math.cos(math.rad(i))*r_w+_HEIGHT()/2)
+	end
+	
+	_vel = _VEL(0)
+	--if _maxvel < _vel then _maxvel = _vel end
+	
+	_velrot = _velrot + (math.rad(90)*(_vel-_ovel)*30)
+	
+	_ovel = _vel
+	
+	
+	for i=-20,20,40 do
+		XGUI.Move2D(math.sin(math.rad(_velrot+i))*r_w+r_v+16,math.cos(math.rad(_velrot+i))*r_w+_HEIGHT()/2)
+		XGUI.Line2D(math.sin(math.rad(_velrot+i))*r_v+r_v+16,math.cos(math.rad(_velrot+i))*r_v+_HEIGHT()/2)
+	end
+	
+	for i=-200,-160,40 do
+		XGUI.Move2D(math.sin(math.rad(_velrot+i))*r_w+r_v+16,math.cos(math.rad(_velrot+i))*r_w+_HEIGHT()/2)
+		XGUI.Line2D(math.sin(math.rad(_velrot+i))*r_v+r_v+16,math.cos(math.rad(_velrot+i))*r_v+_HEIGHT()/2)
+	end
+
+	XGUI.Move2D(math.sin(math.rad(0))*r_v+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	XGUI.Line2D(128+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	
+	XGUI.Move2D(math.sin(math.rad(90))*r_v+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2)
+	XGUI.Line2D(128+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2)
+	
+	XGUI.Move2D(128+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	XGUI.Line2D(128+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2)
+	
+	XGUI.SetStringPosition(math.sin(math.rad(90))*r_v+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2+8)
+	
+	XGUI.SetStringSize(32)
+	
+	XGUI.DrawVectorString(string.format("% 4d",_vel*3.6))
+	
+	local r_s2 = 96
+	local r_s3 = 24
+	
+	XGUI.Move2D(_WIDTH()-r_s2-16-r_s3*2,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2+r_s3)
+	XGUI.Line2D(_WIDTH()-r_s2-16-r_s3*2,_HEIGHT()/2+r_s3)
+	XGUI.Line2D(_WIDTH()-r_s2-16-r_s3*2,_HEIGHT()/2-r_s3)
+	
+	XGUI.SetStringPosition(_WIDTH()-r_s2-16-r_s3*2+16,_HEIGHT()/2-r_s3+8)
+	
+	XGUI.DrawVectorString(string.format("% 4d",_Y(0)))
+	
+	XGUI.SetStringPosition(_WIDTH()-r_s2-16-r_s3*2+16,_HEIGHT()/2-r_s3+8+32+8)
+	
+	local _gy = _RANGE(0,-_YX(),-_YY(),-_YZ())
+	if _gy == -100000 then _gy = _Y(0) end
+	
+	XGUI.DrawVectorString(string.format("% 4d",_gy))
+	
+	XGUI.Move2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16,_HEIGHT()/2-r_s3+r_s2)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3+r_s2)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3)
+	
+	
+	for i=-10,10 do
+		local j = i/11
+		local k = 0.5
+		
+		if math.mod((_Y()-math.mod(_Y(),1))-i,5) == 0 then k=1 end
+		
+		XGUI.Move2D(_WIDTH()-16-r_s3*k,_HEIGHT()/2+r_s3+r_s2/2*j+math.mod(_Y(),1)*4)
+		XGUI.Line2D(_WIDTH()-16,_HEIGHT()/2+r_s3+r_s2/2*j+math.mod(_Y(),1)*4)
+	end
+	
+	local r_s5 = math.tan(math.rad(_GETVIEWZOOM()))*_HEIGHT()
+	
+	for i=-360,360,20 do
+		local k = 0.5
+		
+		if math.mod(i,40) == 0 then k = 1 end
+		
+		local ax1,ay1 = Rotate2D(-384-128*k,-r_s5*(_ZY()+(i/180)),-_EZ())
+		local ax2,ay2 = Rotate2D(-384	   ,-r_s5*(_ZY()+(i/180)),-_EZ())
+		
+		local bx1,by1 = Rotate2D( 384+128*k,-r_s5*(_ZY()+(i/180)),-_EZ())
+		local bx2,by2 = Rotate2D( 384	   ,-r_s5*(_ZY()+(i/180)),-_EZ())
+		
+		XGUI.Move2D(ax1+_WIDTH()/2,ay1+_HEIGHT()/2)
+		XGUI.Line2D(ax2+_WIDTH()/2,ay2+_HEIGHT()/2)
+		
+		XGUI.Move2D(bx1+_WIDTH()/2,by1+_HEIGHT()/2)
+		XGUI.Line2D(bx2+_WIDTH()/2,by2+_HEIGHT()/2)
+	end
+	
+	
+	local ax1,ay1 = Rotate2D(-384-256,0,-_EZ())
+	local ax2,ay2 = Rotate2D(-384	   ,0,-_EZ())
+		
+	local bx1,by1 = Rotate2D( 384+256,0,-_EZ())
+	local bx2,by2 = Rotate2D( 384	   ,0,-_EZ())
+		
+	XGUI.Move2D(ax1+_WIDTH()/2,ay1+_HEIGHT()/2)
+	XGUI.Line2D(ax2+_WIDTH()/2,ay2+_HEIGHT()/2)
+		
+	XGUI.Move2D(bx1+_WIDTH()/2,by1+_HEIGHT()/2)
+	XGUI.Line2D(bx2+_WIDTH()/2,by2+_HEIGHT()/2)
+	
+	local cx1,cy1 = -256-128,0
+	local cx2,cy2 =	 256+128,0
+	
+	XGUI.SetStringSize(16)
+	
+	XGUI.SetStringPosition(cx1+_WIDTH()/2,cy1+_HEIGHT()/2)
+	XGUI.DrawVectorString(string.format("%d",math.abs(math.deg(_EX()))))
+	
+	XGUI.SetStringPosition(cx2+_WIDTH()/2,cy2+_HEIGHT()/2)
+	XGUI.DrawVectorString(string.format("%d",math.abs(math.deg(_EX()))))
+	
+	_rader = _rader + _raderbase
+	
+	for i=1,_PLAYERS()-1 do
+		local x,y,z = _NPOS(i)
+		local _wsize_hlf = r_r+16
+		
+		local x1,y1 = x-_X(0),z-_Z(0)
+		
+		local x2 = x1 * math.cos(_EY(0)) - y1 * math.sin(_EY(0))
+		local y2 = x1 * math.sin(_EY(0)) + y1 * math.cos(_EY(0))
+		
+		x2 = x2 / _rader * -r_r + _wsize_hlf
+		y2 = y2 / _rader *	r_r + _wsize_hlf
+		
+		local j
+		
+		for j=1,_mn do
+			if _men[i] then
+				local core = _G["MC"..j]
+				
+				local xd,yd = _X(core)-_X(0),_Z(core)-_Z(0)
+				
+				local xm = xd * math.cos(_EY(0)) - yd * math.sin(_EY(0))
+				local ym = xd * math.sin(_EY(0)) + yd * math.cos(_EY(0))
+				
+				xm = xm / _rader * -r_r + _wsize_hlf
+				ym = ym / _rader *	r_r + _wsize_hlf
+				
+				if math.sqrt(xd * xd + yd * yd) < _rader then
+					XGUI.SetStringSize(6)
+					
+					XGUI.SetDrawColorRGB(255,255,255)
+					
+					XGUI.SetStringPosition(xm,ym)
+					XGUI.DrawVectorStringCenter("△")
+				end
+			end
+		end
+		
+		XGUI.SetStringSize(12)
+		
+		if math.sqrt(x1 * x1 + y1 * y1) < _rader and _PLAYERID(i) ~= _PLAYERMYID() then
+			if _PLAYERARMS(i) ~= 0 then XGUI.SetDrawColorRGB(255,0,0)
+			else XGUI.SetDrawColorRGB(255,255,255) end
+			local szL = ""
+			if _ntp[1] == i and _ntp[2] ~= i then szL = "1" end
+			if _ntp[1] ~= i and _ntp[2] == i then szL = "2" end
+			if _ntp[1] == i and _ntp[2] == i then szL = "1,2" end
+			
+			if _ntp[1] == i or _ntp[2] == i then
+				XGUI.SetDrawColorRGB(255,255,0)
+				XGUI.SetStringPosition(x2+8,y2+8)
+				XGUI.DrawVectorString(string.format("LOCK %s",szL))
+			end
+			XGUI.SetStringPosition(x2,y2)
+			XGUI.DrawVectorStringCenter("×")
+		end
+	end
+	
+	_rader = _rader - _raderbase
+	
+	XGUI.SetDrawColorRGB(0,255,0)
+	
+	XGUI.SetStringPosition(24,32)
+	XGUI.DrawVectorString(string.format("% 4.4f",_FPS()))
+	
+	XGUI.SetStringSize(16)
+	
+	XGUI.SetStringPosition(128+12,256+32)
+	XGUI.DrawVectorStringCenter(string.format("%d",_rader + _raderbase))
+	
+	XGUI.Move2D(_WIDTH()/2-16,_HEIGHT()/2)
+	XGUI.Line2D(_WIDTH()/2+16,_HEIGHT()/2)
+	
+	XGUI.Move2D(_WIDTH()/2,_HEIGHT()/2)
+	XGUI.Line2D(_WIDTH()/2,_HEIGHT()/2+16)
+	
+	XGUI.SetDrawColorRGB(255,128,0)
+	
+	local r_s4 = 256
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u	  ,_HEIGHT()/2-r_s4-r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u+16,_HEIGHT()/2-r_s4-r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2-r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2-r_s4+16)
+	
+	
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u	  ,_HEIGHT()/2+r_s4+r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u-16,_HEIGHT()/2+r_s4+r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2+r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2+r_s4-16)
+	
+	
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u	  ,_HEIGHT()/2-r_s4-r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u-16,_HEIGHT()/2-r_s4-r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2-r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2-r_s4+16)
+	
+	
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u	  ,_HEIGHT()/2+r_s4+r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u+16,_HEIGHT()/2+r_s4+r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2+r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2+r_s4-16)
+	
+	
+	
+	for i=-90,-180,-5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2-r_s4)
+		XGUI.Line2D(math.sin(math.rad(	i))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(	i))*r_u+_HEIGHT()/2-r_s4)
+	end
+	
+	for i=-90,0,5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2+r_s4)
+		XGUI.Line2D(math.sin(math.rad(	i))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(	i))*r_u+_HEIGHT()/2+r_s4)
+	end
+	
+	for i=90,180,5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2-r_s4)
+		XGUI.Line2D(math.sin(math.rad(	i))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(  i))*r_u+_HEIGHT()/2-r_s4)
+	end
+	
+	for i=90,0,-5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2+r_s4)
+		XGUI.Line2D(math.sin(math.rad(	i))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(  i))*r_u+_HEIGHT()/2+r_s4)
+	end
+	
+	if not _fmsg then _fmsg = 0 end
+	if not _msg then _msg = "" end
+	
+	local cs = _CHAT()
+	
+	if not _ocs then _ocs = _CHAT() end
+	
+	if _ocs ~= cs then
+		SetHUDMassage("-NEW MESSAGE RECIEVED-")
+	end
+	
+	_ocs = cs
+	
+	XGUI.SetStringSize(48)
+	
+	if _fmsg > 0 then
+		local x = 0
+		local y = 0
+		for x=-2,2 do
+			for y=-2,2 do
+				if x ~= 0 or y ~= 0 then
+					XGUI.SetDrawColorRGB(0,0,0)
+					XGUI.SetStringPosition(_WIDTH()/2+x,_HEIGHT()/2+y)
+					XGUI.DrawVectorStringCenter(_msg)
+				end
+			end
+		end
+		
+		XGUI.SetDrawColorRGB(255,127,0)
+		XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()/2)
+		XGUI.DrawVectorStringCenter(_msg)
+		_fmsg = _fmsg - 1
+	end
+	
+	XGUI.SetStringSize(16)
+	
+	XGUI.SetDrawColorRGB(255,127,0)
+	XGUI.SetStringPosition(_WIDTH()-string.len(cs)*8,_HEIGHT()-128-16)
+	XGUI.DrawVectorString(cs)
+	
+	
+	XGUI.SetStringSize(24)
+	XGUI.SetDrawColorRGB(255,255,0)
+	XGUI.SetStringPosition(288,64)
+	XGUI.DrawVectorString(string.format("%d %s %dm/s",_ntp[1],_PLAYERNAME(_ntp[1]),_VEL(MC1)))
+	XGUI.SetStringPosition(288,64+24)
+	XGUI.DrawVectorString(string.format("%d %s %dm/s",_ntp[2],_PLAYERNAME(_ntp[2]),_VEL(MC2)))
+	
+	--</HUD>---------------------------------------------------------------
+end
+}

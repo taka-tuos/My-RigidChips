@@ -1,0 +1,636 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=200, step=50)
+	B2(default=0, max=200, step=50)
+	P(default=0, min=-2500, max=5000, step=4000)
+	P2(default=0, min=-1000000, max=1000000)
+	R(default=4194304, min=4194304, max=16711680, step=2097152)
+	S(default=-180, min=-210, max=-150, step=4)
+}
+Key
+{
+	0:P(step=2000)
+	1:P(step=-2000)
+	2:S(step=4)
+	3:S(step=-4)
+	4:B(step=50), B2(step=50)
+	5:B2(step=50)
+}
+Body
+{
+	Core() {
+		N:Frame(angle=90, option=1) {
+			N:Frame(angle=-90, color=#404040) {
+				S:Cowl(angle=-45, color=#404040) {
+					S:Cowl(angle=-30, option=5, color=#404040) { }
+				}
+				W:Cowl(color=#000000) {
+					W:Cowl(angle=-90, color=#202020) {
+						W:Cowl(angle=170, color=#202020) {
+							W:Cowl(angle=-160, color=#202020) {
+								W:Cowl(angle=170) {
+									E:Cowl(angle=90) {
+										N:Cowl(angle=10) {
+											N:Cowl(angle=30) { }
+											E:Cowl(angle=20) {
+												N:Cowl(angle=50, option=4) { }
+												S:Cowl(angle=50, option=3) { }
+											}
+										}
+									}
+									W:Cowl(angle=90, color=#202020) { }
+									N:Cowl(effect=#F0FB) {
+										W:Cowl(angle=90, effect=#F0FB) {
+											N:Cowl(option=5, color=#202020) { }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				E:Cowl(color=#000000) {
+					E:Cowl(angle=-90, color=#202020) {
+						E:Cowl(angle=170, color=#202020) {
+							E:Cowl(angle=-160, color=#202020) {
+								E:Cowl(angle=170, color=#0000FF) {
+									W:Cowl(angle=90, color=#0000FF) {
+										N:Cowl(angle=10, color=#0000FF) {
+											W:Cowl(angle=20) {
+												S:Cowl(angle=50, option=4) { }
+												N:Cowl(angle=50, option=3) { }
+											}
+											N:Cowl(angle=30, color=#0000FF) { }
+										}
+									}
+									E:Cowl(angle=90, color=#202020) { }
+									N:Cowl(effect=#F0FB) {
+										E:Cowl(angle=90, effect=#F0FB) {
+											N:Cowl(option=5, color=#202020) { }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				N:Chip(angle=0, color=#404040) {
+					E:Frame(angle=10, option=1) {
+						E:RudderF(angle=-S, option=1) {
+							W:Wheel(angle=-100, power=-P2, brake=B, effect=4, name=FRW) { }
+						}
+					}
+					W:Frame(angle=10, option=1) {
+						W:RudderF(angle=-S, option=1) {
+							E:Wheel(angle=-100, power=P2, brake=B, effect=4, name=FLW) { }
+						}
+					}
+					W:Chip(angle=-85) { }
+					E:Chip(angle=-85) { }
+					N:Cowl(color=#202020) {
+						E:Cowl(color=#202020) { }
+						W:Cowl(color=#202020) { }
+					}
+				}
+				S:Weight(option=1, color=#404040) {
+					S:Frame(color=#404040) {
+						S:Frame(angle=-90) { }
+						W:Cowl(color=#000000) {
+							W:Cowl(angle=-90, color=#202020) {
+								W:Cowl(angle=170, color=#202020) {
+									W:Cowl(angle=-160, color=#202020) {
+										W:Cowl(angle=170) {
+											E:Cowl(angle=90) {
+												S:Cowl() {
+													S:Cowl() {
+														W:Cowl(angle=90) { }
+													}
+												}
+											}
+											W:Cowl(angle=90, color=#202020) { }
+										}
+									}
+								}
+							}
+							S:Cowl(angle=-10, color=#202020) {
+								S:Cowl(angle=-10, color=#202020) { }
+							}
+						}
+						E:Cowl(color=#000000) {
+							E:Cowl(angle=-90, color=#202020) {
+								E:Cowl(angle=170, color=#202020) {
+									E:Cowl(angle=-160, color=#202020) {
+										E:Cowl(angle=170, color=#0000FF) {
+											W:Cowl(angle=90, color=#0000FF) {
+												S:Cowl(color=#0000FF) {
+													S:Cowl(color=#0000FF) {
+														E:Cowl(angle=90, color=#0000FF) { }
+													}
+												}
+											}
+											E:Cowl(angle=90, color=#202020) { }
+										}
+									}
+								}
+							}
+							S:Cowl(angle=-10, color=#202020) {
+								S:Cowl(angle=-10, color=#202020) { }
+							}
+						}
+						S:Chip(angle=0, color=#404040) {
+							E:Frame(angle=10, option=1) {
+								E:Wheel(angle=-100, power=-P2, brake=B2, effect=4, name=RRW) { }
+							}
+							W:Frame(angle=10, option=1) {
+								W:Wheel(angle=-100, power=P2, brake=B2, effect=4, name=RLW) { }
+							}
+							W:Chip(angle=-85) {
+								S:Cowl(color=#202020) { }
+							}
+							E:Chip(angle=-85) {
+								S:Cowl(color=#202020) { }
+							}
+							W:Cowl(effect=#F0FB) {
+								W:Cowl(angle=-90, effect=#F0FB) {
+									S:Cowl(color=#202020) { }
+								}
+							}
+							E:Cowl(effect=#F0FB) {
+								E:Cowl(angle=-90, effect=#F0FB) {
+									S:Cowl(color=#202020) { }
+								}
+							}
+							S:Cowl(angle=-30, option=5, color=R, effect=#0FFB) { }
+						}
+					}
+					W:Cowl(color=#202020) {
+						W:Cowl(angle=-90) {
+							W:Cowl(angle=-45, color=#202020, effect=#70FB) {
+								W:Cowl(angle=-45) {
+									N:Cowl(angle=-35, color=#202020, effect=#70FB) {
+										N:Cowl(color=#202020, effect=#70FB) {
+											E:Cowl(angle=-45, color=#202020, effect=#70FB) { }
+										}
+										E:Cowl(angle=-45, color=#202020, effect=#70FB) { }
+									}
+									S:Cowl(angle=-20, color=#202020, effect=#70FB) {
+										S:Cowl(color=#202020, effect=#70FB) {
+											E:Cowl(angle=-45, color=#202020, effect=#70FB) { }
+										}
+										E:Cowl(angle=-45, color=#202020, effect=#70FB) { }
+									}
+								}
+							}
+						}
+					}
+					E:Cowl(color=#202020) {
+						E:Cowl(angle=-90, color=#0000FF) {
+							E:Cowl(angle=-45, color=#202020, effect=#70FB) {
+								E:Cowl(angle=-45) {
+									N:Cowl(angle=-35, color=#202020, effect=#70FB) {
+										N:Cowl(color=#202020, effect=#70FB) {
+											W:Cowl(angle=-45, color=#202020, effect=#70FB) { }
+										}
+										W:Cowl(angle=-45, color=#202020, effect=#70FB) { }
+									}
+									S:Cowl(angle=-20, color=#202020, effect=#70FB) {
+										S:Cowl(color=#202020, effect=#70FB) {
+											W:Cowl(angle=-45, color=#202020, effect=#70FB) { }
+										}
+										W:Cowl(angle=-45, color=#202020, effect=#70FB) { }
+									}
+								}
+							}
+						}
+					}
+					S:Cowl(angle=-25) {
+						S:Cowl(angle=-130) {
+							S:Cowl(angle=-25, effect=#F0FB) {
+								S:Cowl() {
+									S:Cowl(angle=-10) {
+										S:Cowl(angle=-30) {
+											E:Cowl() { }
+											W:Cowl() { }
+										}
+									}
+									E:Cowl() { }
+									W:Cowl() { }
+								}
+								N:Cowl() {
+									N:Cowl() {
+										W:Cowl() { }
+										E:Cowl() { }
+										N:Cowl() {
+											W:Cowl() { }
+											E:Cowl() { }
+										}
+										N:Cowl(angle=-20) {
+											N:Cowl(angle=-160) {
+												N:Cowl(angle=-90, effect=#F0FB) {
+													N:Cowl(angle=-90, color=#202020) {
+														W:Cowl(color=#202020) {
+															W:Cowl(angle=-90, color=#202020) { }
+														}
+														E:Cowl(color=#202020) {
+															E:Cowl(angle=-90, color=#202020) { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					N:Frame(angle=-160, color=#202020) {
+						E:Chip(angle=10) { }
+						W:Chip(angle=10) { }
+					}
+					S:Cowl(color=0) { }
+					N:Cowl(color=0) { }
+				}
+			}
+		}
+	}
+}
+Lua
+{
+vec_font={
+[32]='!~ ',
+[33]='&¦BÃEÆ©hÛLeÉ ',
+[34]='&·İ+× ',
+[35]='!«Nµ@&»aÄ+mÛ ',
+[36]='!¤KnÇÍkĞDaÓ×dÚN+¼Â(Ü ',
+[37]='!´bÑDfÔØdÛB`ØÔ£nÛªlÍJhÊÆjÃLnÆÊ ',
+[38]='0£jÅgÉbÖÚdÜGiÚ×gÓbĞ`ÌÆcÃFhÄnÍ ',
+[39]='(¶ÜHfØ ',
+[40]='-¼hÚf×eÓËfÇhÄkÂ ',
+[41]='$¼fÚh×iÓËhÇfÄcÂ ',
+[42]='!©nÖ!nÉ)¦Ù ',
+[43]='"°M)¸È ',
+[44]='(§eÅdÇeÉgÇfÄcÁ ',
+[45]='"°M ',
+[46]='%¥fÃhÅfÇdÅH(§Ã ',
+[47]='!¤nÛ ',
+[48]='!µÉbÅeÃHkÅmÉÕkÙhÛEbÙ`Õ ',
+[49]='$£K)ÜcÖ ',
+[50]='!¶bÙeÛJlÚn×ÓlÎgÉ`ÃN ',
+[51]='!»MdÑIlÏmÍÇlÅiÃDbÄ`Æ ',
+[52]=',£Û)¼`ÌÊN ',
+[53]='!¦aÄcÃIkÄmÇÎlĞiÒC`Ğ¯ÛM ',
+[54]='/¹jÛEbÙ`ÕÇaÅdÃIlÅmÇÍlÏiÑD`Ï ',
+[55]='!·ÛNÙiÑgÊÃ ',
+[56]='!¦ÎcÑKnÎÆkÃC`Æ%±aÔØdÛJmØÔjÑ ',
+[57]='!¥dÃHkÅmÉØkÚiÛDbÚ`ØĞbÎdÍJmĞ ',
+[58]='&«gÍiËgÉeËI´EgÒiÔgÖeÔ ',
+[59]=')²eÔgÖiÔgÒÕ¤iÇËgÍeËgÉIgË ',
+[60]='0©`Ğn× ',
+[61]='"­M³A ',
+[62]='!©nĞ`× ',
+[63]='!µØcÛJmØÓjĞgÌÊ¦iÄgÂeÄgÆÃ ',
+[64]=',£D`ÇØdÜJnØÇ²kÕHeÑËgÈJnÌ ',
+[65]='!£gÜnÃ$¬K ',
+[66]='!£JmÅnÇÍmÏiÑA£Ü!IlÚmØÕlÓiÑ ',
+[67]='0¼Ö¸jÜDbÚ`ÖÊbÅdÃJmÆnÉ ',
+[68]='!¼HkÚm×ÈkÅhÃ@"Ü ',
+[69]='!¼N£@"Ü±L ',
+[70]='!¼N"Ã°K ',
+[71]='0·lÚiÜEbÚ`×ÈbÅeÃJnÆÎK ',
+[72]='"£Ü/Ã°A ',
+[73]='$£K)Ü$K ',
+[74]='!¥cÂGjÄlÈÜ ',
+[75]='"£Ü/aĞ#±nÃ ',
+[76]='!£N"Ü ',
+[77]='!£bÜgÉlÜnÃ ',
+[78]='"£ÜmÃÜ ',
+[79]='!ªbÅdÃIkÅmÊÕkÚiÜDbÚ`ÕÊ ',
+[80]='!¼JlÛnÙÓlÑjĞA¼Ã ',
+[81]='!©ÖbÚeÜHkÚmÖÉkÅhÃEbÅ`É%GjÇnÁ ',
+[82]='!¼JlÛnØÔlÑjĞA)mÃN"Ü ',
+[83]='!¦bÃJmÆÌjÏbÒ`ÕÙcÜJmÚ ',
+[84]='!¼N)Ã ',
+[85]='"¼ÈbÅdÃJlÅmÈÜ ',
+[86]='!¼gÃnÜ ',
+[87]='!¼cÃgÕkÃnÜ ',
+[88]='!£nÜ!nÃ ',
+[89]='!¼gÑÃ±nÜ ',
+[90]='!¼M`ÃM ',
+[91]='.¼GÂL ',
+[92]='!»nÄ*°E ',
+[92]='#¼GÂB ',
+[94]='$¸gİkØ ',
+[95]='!¡N ',
+[96]='+·hİFhÚ ',
+[97]='0£lÆÒjÕC`Ó.°cÎ`ËÆcÃIlÆ ',
+[98]='"£Ü±dÕJmÑÇjÃDaÇ ',
+[99]='/µĞ±jÕC`ÑÇcÃJmÇ ',
+[100]='/¼Ã§jÃC`ÇÑcÕJmÑ ',
+[101]='!®MĞkÓhÕEbÓ`ĞÈbÅeÃHkÅmÇ ',
+[102]=')£×hÚkÜN.´B ',
+[103]='!¢cÀJmÃÕ²jÕDaÒÊdÇJmÉ ',
+[104]='"£Ü²dÕJmÒÃ ',
+[105]='#£K)ÕD»fØhÛD ',
+[106]='!£cÁFiÃkÇÔHºj×lÚH ',
+[107]='"£Ü­mÕ£cÎ ',
+[108]='#£K)ÜD ',
+[109]='!£Õ²bÕEgÒÃ²iÕLnÒÃ ',
+[110]='"£Õ±dÕJmÑÃ ',
+[111]='"±ÇbÅdÃJlÅmÇÑlÓjÕDbÓaÑ ',
+[112]='"µÀ²dÕIkÔmÑÊkÇiÆDaÉ ',
+[113]='!±ÊbÇdÆIlÊ~Õ±iÕDbÔ`Ñ ',
+[114]='#£Õ®dÑfÓiÕL ',
+[115]='/²jÕDaÓÏdÍJmÊÆjÃC`Æ ',
+[116]='"µM£IfÆÙ ',
+[117]='"µÇdÃImÈµÃ ',
+[118]='!µgÃnÕ ',
+[119]='!µdÃgÑjÃnÕ ',
+[120]='"£mÕ"mÃ ',
+[121]='"~dÂmÕ!fÆ ',
+[122]='!µM`ÃM ',
+[123]='.¼IfÙĞcÏfÎÅiÂL ',
+[124]=')¡Ş ',
+[125]='#¼EhÙĞkÏhÎÅeÂB ',
+[126]='!¹cÜEi×KnÚ '
+}
+
+fsize=1.0
+hv=_WIDTH()/_HEIGHT()
+hh=_HEIGHT()/_WIDTH()
+
+tsize=1/_WIDTH()*hv*fsize
+ysize=1/_HEIGHT()*hh*2*fsize
+x=0
+y=0
+vx=0
+vy=0
+
+function stroke(str)
+	local i
+	local sbyte = string.byte
+	local ld = line_draw
+	local st = str
+	
+	if st==nil then return end
+	
+	local n = string.len(st)
+	
+	for i=0,n do
+		ld(sbyte(st,i))
+	end
+end
+
+function vecstr(stir)
+	local i
+	local n = string.len(stir)
+	local sbyte = string.byte
+	local stk = stroke
+	local vf = vec_font
+	local ji
+	
+	for i=0,n do
+		ji = sbyte(stir,i)
+		stk(vf[ji])
+		vx = vx + tsize*16
+	end
+end
+
+function line_draw(a2)
+	local a = a2
+	
+	if not a then
+		return 0
+	end
+	
+	if a>32 and a<39 then
+		x=a-33
+		_MOVE2D2(x,y)
+	end
+
+	if a>39 and a<64 then
+		x=a-34
+		_MOVE2D2(x,y)
+	end
+	
+	if a>63 and a<92 then
+		x=a-64
+		_LINE2D2(x,y)
+	end
+
+	if a>93 and a<96 then
+		x=a-65
+		_LINE2D2(x,y)
+	end
+
+	if a>95 and a<126 then
+		x=(a-96)
+	end
+	
+	if a==126 then
+		y=0
+		_MOVE2D2(x,y)
+	end
+
+	if a>160 and a<192 then
+		y=a-160
+		_MOVE2D2(x,y)
+	end
+
+	if a>191 and a<224 then
+		y=a-192
+		_LINE2D2(x,y)
+	end
+
+	if a==39 or a==92 or a==93 then
+		x=0
+		y=0
+	end
+end
+
+function _MOVE2D2(q,w)
+	_MOVE2D(q*tsize+vx,w*ysize+vy)
+end
+function _LINE2D2(q,w)
+	_LINE2D(q*tsize+vx,w*ysize+vy)
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+rdsklx={}
+rdskly={}
+
+RDCL = 32
+
+function OnInit()
+	_ZOOM(37.25)
+	local i
+	for i=0,RDCL do
+		rdsklx[i] = math.cos((math.pi*2/RDCL)*i)
+		rdskly[i] = math.sin((math.pi*2/RDCL)*i)
+	end
+end
+
+function _CIRCLE(x,y,s)
+	local i
+	_MOVE2D(rdsklx[0]*s+x,rdskly[0]*s+y)
+	for i=1,RDCL do
+		_LINE2D(rdsklx[i]*s+x,rdskly[i]*s+y)
+	end
+end
+
+function _CIRCLESTR(x,y,s,a,b,c,d)
+	local i,j,k
+	j = 0
+	for i=a,b,c do
+		k = string.format("%d",j)
+		vx = math.cos(math.rad(i))*s+x-((string.len(k)/2+1)*tsize*16)
+		vy = math.sin(math.rad(i))*s+y-(tsize*16)
+		vecstr(k)
+		j = j + d
+	end
+end
+
+function _CIRCLEM(x,y,s,t,a,b,c)
+	local i,j,k
+	for i=a,b,c do
+		local x0 = math.cos(math.rad(i))*s+x
+		local y0 = math.sin(math.rad(i))*s+y
+		
+		local x1 = math.cos(math.rad(i))*t+x
+		local y1 = math.sin(math.rad(i))*t+y
+		
+		_MOVE2D(x0,y0)
+		_LINE2D(x1,y1)
+	end
+end
+
+function _DR2(px,py,pr)
+	local rx = px * math.cos(pr) - py * math.sin(pr)
+	local ry = px * math.sin(pr) - py * math.cos(pr)
+	return rx,ry
+end
+
+function _DPIN(x,y,s,a,c)
+	_SETCOLOR(c)
+	
+	local i,j = _DR2(s*0.9,0,math.rad(a))
+	local k,l = _DR2(-s*0.25,0,math.rad(a))
+	
+	i = i + x
+	j = j + y
+	
+	k = k + x
+	l = l + y
+	
+	_MOVE2D(i,j)
+	_LINE2D(k,l)
+end
+
+-- x : XÀ•W
+-- y : YÀ•W
+-- s : ƒ[ƒ^[”¼Œa
+-- c : –Ú·n’[Šp“x(deg)
+-- d : –Ú·I’[Šp“x(deg)
+-- e : ‰½“x‚²‚Æ‚É–Ú·”š‚ª‚ ‚é‚©
+-- f : –Ú·”š‚ÌˆêŒÂ‚²‚Æ‚Ì·
+-- g : j‚Å¦‚·”’l
+-- h : j‚ªd“x‚ÌˆÊ’u‚É‚ ‚é‚Æ‚«‚Ìg‚Ì’l
+-- i : j‚Å¦‚·”’l(2)
+-- j : j‚Å¦‚·”’l(3)
+
+function _DMET(x,y,s,c,d,e,f,g,h,i,j)
+	_SETCOLOR(2105376)
+	
+	_CIRCLE(x,y,s)
+	
+	_CIRCLE(x,y,s/10)
+	
+	_SETCOLOR(0)
+	
+	_CIRCLESTR(x,y,s*0.75,c,d,e,f)
+	
+	_CIRCLEM(x,y,s*0.9,s,c,d,e)
+	
+	_CIRCLEM(x,y,s*0.95,s,c,d,e/10)
+	
+	--_SETCOLOR(16711680)
+	
+	_DPIN(x,y,s,c - (g / h * math.abs(d-c)),16711680)
+	if i ~= nil then _DPIN(x,y,s,c - (i / h * math.abs(d-c)),255) end
+	if j ~= nil then _DPIN(x,y,s,c - (j / h * math.abs(d-c)),65280) end
+	
+	--[[
+	local a = c - (g / h * math.abs(d-c))
+	
+	local i,j = _DR2(s*0.9,0,math.rad(a))
+	local k,l = _DR2(-s*0.25,0,math.rad(a))
+	
+	i = i + x
+	j = j + y
+	
+	k = k + x
+	l = l + y
+	
+	_MOVE2D(i,j)
+	_LINE2D(k,l)
+	]]--
+end
+
+mkph = 0
+erpm=0
+
+function main()
+	local kph = _VEL(0) * 3.6
+	
+	if mkph < kph then mkph = kph end
+
+	if _KEY(14) ~= 0 and kph >= 60 then
+		P = 0
+		B = 128
+	end
+	
+	R = _KEY(4) * 16711680
+
+	if _KEY(5) == 0 then
+		if S > -164 then
+			S = -164
+		end
+		
+		if S < -196 then
+			S = -196
+		end
+	end
+	
+	erpm=P*0.05+erpm*0.95
+	
+	_DMET(0.7,-0.4,0.2,-90,-360,-11.25*2,20,kph,240)
+	
+	_DMET(0.2,-0.4,0.2,-90,-360,-27,1,erpm*2,10000)
+	
+	P2=erpm*4
+	
+	_SETCOLOR(65280)
+	
+	vx = 0.8
+	vy = -0.625
+	
+	vecstr(string.format("%.2f km/h",kph))
+	
+	vx = 0.8
+	vy = -0.625-tsize*16*2
+	
+	vecstr(string.format("MAX %.2f km/h",mkph))
+	
+	vx = 0.8
+	vy = -0.625-tsize*16*4
+	
+	vecstr(string.format("%.4f FPS",_FPS()))
+end
+}

@@ -1,0 +1,28 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Trim(angle=80) { }
+		W:Trim(angle=80) { }
+		N:Trim(angle=80) { }
+		E:Trim(angle=80) { }
+		E:Weight(angle=90) {
+			E:Jet(angle=-90, power=262144) { }
+		}
+		S:Weight(angle=90) {
+			S:Jet(angle=-90, power=262144) { }
+		}
+		W:Weight(angle=90) {
+			W:Jet(angle=-90, power=262144) { }
+		}
+		N:Weight(angle=90) {
+			N:Jet(angle=-90, power=262144) { }
+		}
+	}
+}

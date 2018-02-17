@@ -1,0 +1,20 @@
+function _CHATN()
+	local str = _CHAT()
+	local astr = ''
+	
+	for i=1,string.len(str) do
+		if string.byte(str,i) == 62 then
+			astr = string.sub(str,i+1)
+			break
+		end
+	end
+	
+	return astr
+end
+
+_PLS = "$PLAY"
+
+function OnFrame()
+	if string.sub(_CHATN(),1,string.len(_PLS)) == _PLS then _PLAY()
+	else _PAUSE() end
+end

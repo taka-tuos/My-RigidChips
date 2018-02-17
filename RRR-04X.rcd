@@ -1,0 +1,193 @@
+// [RCD] 
+Val
+{
+	BRAKE(default=0, max=200, step=100)
+	ENGINE(default=0, min=-5000, max=500000, step=2000)
+	HANDLE(default=0, min=-20, max=20, step=4)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		E:Cowl() {
+			E:Cowl(angle=-90) {
+				E:Cowl(angle=-90) {
+					N:Cowl(option=3) { }
+					S:Cowl() {
+						E:Cowl(angle=60) {
+							S:Cowl(angle=-35, option=3) { }
+						}
+					}
+				}
+				S:Cowl() {
+					S:Cowl(option=4) {
+						E:Cowl(angle=-60) {
+							E:Cowl(angle=-30) {
+								W:Cowl(angle=-100) { }
+							}
+						}
+					}
+				}
+			}
+			S:Cowl() { }
+		}
+		W:Cowl() {
+			W:Cowl(angle=-90) {
+				W:Cowl(angle=-90) {
+					N:Cowl(option=4) { }
+					S:Cowl() {
+						W:Cowl(angle=60) {
+							S:Cowl(angle=-35, option=4) { }
+						}
+					}
+				}
+				S:Cowl() {
+					S:Cowl(option=3) {
+						W:Cowl(angle=-60) {
+							W:Cowl(angle=-30) {
+								E:Cowl(angle=-100) { }
+							}
+						}
+					}
+				}
+			}
+			S:Cowl() { }
+		}
+		N:Weight(option=1) {
+			E:Cowl(option=3) { }
+			W:Cowl(option=4) { }
+			N:Cowl(angle=-90) {
+				N:Cowl(angle=100) {
+					N:Cowl(angle=10) {
+						N:Cowl(angle=10) { }
+					}
+				}
+			}
+			W:Chip(angle=-89.9995) {
+				S:Chip() { }
+			}
+			E:Chip(angle=-89.9995) {
+				S:Chip() { }
+			}
+			N:Frame() {
+				W:Cowl(angle=-90) {
+					N:Cowl(option=3) { }
+				}
+				E:Cowl(angle=-90) {
+					N:Cowl(option=4) { }
+				}
+				N:Chip() {
+					W:Frame(angle=10, option=1) {
+						W:RudderF(angle=-HANDLE, option=1) {
+							E:Wheel(angle=-80, power=-ENGINE, brake=BRAKE, effect=4, name=FLH) { }
+						}
+					}
+					E:Frame(angle=10, option=1) {
+						E:RudderF(angle=-HANDLE, option=1) {
+							W:Wheel(angle=-80, power=ENGINE, brake=BRAKE, effect=4, name=FRH) { }
+						}
+					}
+					N:Cowl() {
+						W:Cowl() {
+							W:Cowl(angle=-90, option=4) { }
+						}
+						E:Cowl() {
+							E:Cowl(angle=-90, option=3) { }
+						}
+					}
+					E:Frame() {
+						N:Chip(angle=-160) { }
+					}
+					W:Frame() {
+						N:Chip(angle=-160) { }
+					}
+				}
+			}
+		}
+		S:Chip(angle=-20) { }
+		S:Frame() {
+			S:Frame(angle=-90, option=1) {
+				S:Cowl(angle=-90) { }
+			}
+			S:Chip() {
+				E:Frame(angle=10, option=1) {
+					E:Wheel(angle=-100, power=-ENGINE, brake=BRAKE, effect=4, name=RRH) { }
+				}
+				W:Frame(angle=10, option=1) {
+					W:Wheel(angle=-100, power=ENGINE, brake=BRAKE, effect=4, name=RLH) { }
+				}
+				E:Cowl(angle=-90) {
+					N:Cowl() { }
+				}
+				W:Cowl(angle=-90) {
+					N:Cowl() { }
+				}
+				E:Frame() {
+					N:Chip(angle=-160) { }
+				}
+				W:Frame() {
+					N:Chip(angle=-160) { }
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function mvval(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+WS=0.6*3.14159265358979
+T=0.6*3
+W=0.6*4
+
+PW=45000
+PW2=PW/10
+
+function OnFrame()
+	out(1,"X",_X()," Y",_Y()," Z",_Z())
+	out(0,_WEIGHT()," kg")
+	out(2,_VEL(0)*3.6)
+	out(3,_FPS())
+	_ZOOM(60)
+
+	WAS=-(_WY(RRH)-_WY(RLH))/2
+	WZS=(WAS*30/360)*WS*2
+	
+	WAS2=-(_WY(FLH)-_WY(FRH))/2
+	WZS2=(WAS2*30/360)*WS*2
+	
+	VZS=-_VZ(0)
+
+	ENGINE=mvval(ENGINE,PW*_KEY(0)+2500*-_KEY(1),3000)  --ÊßÜ°@MAX10k
+	BRAKE=mvval(BRAKE,100*_KEY(4),50)                      --ÌÞÚ°·@–³§ŒÀ
+	HANDLE=mvval(HANDLE,30*-_KEY(3)+30*_KEY(2),4)            --½Ã±ØÝ¸Þ@-30`+30
+
+	TCS=((WZS-WZS2)*PW2)
+	if TCS>0 and _KEY(0)+_KEY(1)>0 then ENGINE=ENGINE-TCS end
+	if ENGINE<0 and TCS>0 and _KEY(1) == 0 then ENGINE=0 end
+
+	ABS=((VZS-WZS2)*85)
+	if ABS>0 and _KEY(4)>0 then BRAKE=BRAKE-ABS end
+	if BRAKE<0 then BRAKE=0 end
+
+end
+}

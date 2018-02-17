@@ -1,0 +1,314 @@
+// [RCD] 
+Val
+{
+	AP(default=0, min=-10000000000, max=10000000000, step=10000000000)
+	XJ(default=0, min=-10000000000, max=10000000000)
+	XW(default=0, min=-10000000000, max=10000000000)
+	YJ(default=0, min=-10000000000, max=10000000000)
+	YW(default=0, min=-10000000000, max=10000000000)
+	ZJ(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:TrimF(angle=-90, option=1) {
+			E:Jet(power=-ZJ) { }
+		}
+		N:TrimF(angle=-90, option=1) { }
+		E:TrimF(angle=-90, option=1) {
+			W:Jet(power=AP, color=#FFFF00, name=A0) { }
+		}
+		S:TrimF(angle=-90, option=1) {
+			N:Jet(power=XJ) { }
+			N:RLW(power=XW, brake=20000) { }
+		}
+		S:Frame(option=1) {
+			N:Jet(power=-YJ) { }
+		}
+		N:Frame(option=1) {
+			S:RLW(power=YW, brake=20000) { }
+		}
+	}
+}
+Lua
+{
+
+math.limit = function (val,max,min)	return val>max and max or val<min and min or val	end
+
+function XPID_new()
+	local obj = {
+		i = 0,
+		d = 0,
+		e_b = 0,
+
+		PID = function (self,now,tgt,kp,ki,kd,lim)
+			local e_n = now - tgt
+			local e_d = e_n - self.e_b
+			
+			local p = e_n * kp
+			
+			local i = self.i + e_n * ki
+			
+			local d = e_d * kd
+			
+			i=math.min(lim/10,math.max(-lim/10,i))
+			
+			self.i = i
+			
+			self.e_b = e_n
+			
+			local pid = p+i+d
+			
+			pid = math.min(lim,math.max(-lim,pid))
+			
+			return pid
+		end
+	}
+	
+	return obj
+end
+
+_pw = 10000
+
+_ntx,_nty,_ntz = 0,_Y(),0
+
+PIDX = XPID_new()
+PIDY = XPID_new()
+PIDZ = XPID_new()
+
+PIDXW = XPID_new()
+PIDYW = XPID_new()
+
+_ax,_ay,_az = _X(A0),_Y(A0),_Z(A0)
+_px,_py,_pz = _YX(A0)*200000000,_YY(A0)*200000000,_YZ(A0)*200000000
+
+_ld = false
+
+function _LIMIT(c,x,y,z)
+	x,y,z = x/_M(c),y/_M(c),z/_M(c)
+	local m = 1
+	local lm = _GETSPPEDLIM()/8*10
+	if _LEN3(x,y,z) > lm then m = lm/_LEN3(x,y,z) end
+	x,y,z = x*m,y*m,z*m
+	return x*_M(c),y*_M(c),z*_M(c)
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _NORMAL3(a,b,c)
+	return a / _LEN3(a,b,c), b / _LEN3(a,b,c), c / _LEN3(a,b,c)
+end
+
+function _RAMIEL3D(ex,ey,ez,llen)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	
+	_MOVE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+end
+
+function _FORMAT(v)
+	return string.format("%f",v)
+end
+
+_altmax=0
+_altmaxtime=0
+
+function OnFrame()
+	local dx,dy,dz = _X(0)-_ntx,_Y(0)-_nty,_Z(0)-_ntz
+	
+	out(0,"x-pos err = ",dx)
+	out(1,"y-pos err = ",dy)
+	out(2,"z-pos err = ",dz)
+	
+	if not _ld then
+		_ax,_ay,_az = _X(A0),_Y(A0),_Z(A0)
+		_px,_py,_pz = _YX(A0)*200000000,_YY(A0)*200000000,_YZ(A0)*200000000
+	end
+	
+	local jx = PIDX:PID(dx,0,300000,5000,200000,40000)
+	local jy = PIDY:PID(dy,0,300000,5000,200000,40000)
+	local jz = PIDZ:PID(dz,0,300000,5000,200000,40000)
+	
+	local xx,xy,xz = _XX(0),_XY(0),_XZ(0)
+	local yx,yy,yz = _YX(0),_YY(0),_YZ(0)
+	local zx,zy,zz = _ZX(0),_ZY(0),_ZZ(0)
+	
+	local xj = (xx * jx + xy * jy + xz * jz)
+	local yj = (yx * jx + yy * jy + yz * jz)
+	local zj = (zx * jx + zy * jy + zz * jz)
+	
+	dx = 0
+	dy = 0
+	dz = 1
+	
+	local lpx,lpy,lpz = 359.3*5,82.79*5,478.87*5
+	
+	local vx,vy,vz = _NORMAL3(lpx-_ax,lpy-_ay,lpz-_az)
+	
+	local v = _GETSPPEDLIM()/8*10
+	local h = lpy-_ay
+	local s = _LEN3(lpx-_ax,lpz-_az,0)
+	local g = 9.807
+	
+	local b = -(2 * v * v * s) / (g * s * s)
+	local c = (2 * v * v * h) / (g * s * s)
+	
+	local d = b * b - 4 * c
+	
+	if d >= 0 then
+		local tt0 = math.atan((-b - math.sqrt(d)) / 2)
+		local tt1 = math.atan((-b + math.sqrt(d)) / 2)
+		
+		local t = math.max(tt0,tt1)
+		
+		dx = vx * math.cos(t)
+		dz = vz * math.cos(t)
+		dy = math.sin(t)
+		
+		dx,dy,dz = _NORMAL3(dx,dy,dz)
+	end
+	
+	XJ = xj
+	YJ = yj
+	ZJ = zj
+	
+	local xa = (xx * dx + xy * dy + xz * dz)
+	local ya = (yx * dx + yy * dy + yz * dz)
+	
+	out(3,"x-axis err = ",_FORMAT(xa))
+	out(4,"y-axis err = ",_FORMAT(ya))
+	
+	local px,py,pz = _px,_py,_pz
+	local m=_M(A0)
+	
+	px,py,pz = _LIMIT(A0,px,py,pz)
+	
+	local vx,vy,vz = px/m,py/m,pz/m
+	
+	local ax,ay,az = _ax,_ay,_az
+	
+	XW = PIDXW:PID(-ya,0,50000,50000,150000,100000)
+	YW = PIDYW:PID(-xa,0,50000,50000,150000,100000)
+	
+	_SETCOLOR(255*256)
+	
+	_MOVE3D(ax,ay,az)
+	
+	local ln=10000000000
+	local ls=0
+	local ly=0
+	local lys=0
+	local i=0
+	
+	for i=0,300*30 do
+		local ll = _LEN3(lpx-ax,lpy-ay,lpz-az)
+		if ll<ln then
+			ln=ll
+			ls=i/30
+		end
+		
+		if ly<ay then
+			ly=ay
+			lys=i/30
+		end
+		local wx,wy,wz = vx,vy,vz
+		px,py,pz = _LIMIT(A0,px,py,pz)
+		py = py - (9.807*m/30)
+		vx,vy,vz = px/m,py/m,pz/m
+		ax,ay,az = ax+(wx+vx)*0.5/30,ay+(wy+vy)*0.5/30,az+(wz+vz)*0.5/30
+		_LINE3D(ax,ay,az)
+	end
+	
+	if ln < 8 and not _ld then
+		AP=200000000
+		_SPLIT(A0)
+		_ld = true
+		_ldt = _TICKS()
+	end
+	
+	if _ld then
+		local nt = (_TICKS() - _ldt) / (ls * 30)
+		if nt > 1 then nt = 1 end
+		local n1 = nt * 64
+		local n2 = (1-nt) * 64
+		
+		local gp = "s | "
+		
+		local n=0
+		
+		for n=0,n1 do
+			gp = gp .. '|'
+		end
+		
+		for n=0,n2 do
+			gp = gp .. ' '
+		end
+		
+		gp = gp .. " | e"
+		out(7,"time : ", (_TICKS() - _ldt) / 30)
+		out(8,"left : ", ls - (_TICKS() - _ldt) / 30)
+		out(9,gp)
+		
+		out(11,"speed = ",_VEL(A0),"m/s","(",_VEL(A0)*3.6,"km/h)")
+		out(12,"alt = ",_Y(A0),"m")
+		out(14,"alt(Max) = ",ly,"m (",lys,"sec)")
+		
+		if _altmax<_Y(A0) then
+			_altmax = _Y(A0)
+			_altmaxtime = (_TICKS() - _ldt) / 30
+		else
+			out(18,"altMax passed")
+		end
+		
+		out(15,"alt(RealMax) = ",_altmax,"m (",_altmaxtime,"sec)")
+		out(16,"alt(Error) = ",_altmax-ly,"m (",_altmaxtime-lys,"sec)")
+	end
+	
+	_SETCOLOR(255*65536)
+	_MOVE3D(_X(0),_Y(0),_Z(0))
+	_LINE3D(_X(0)+_XX(0)*xj,_Y(0)+_XY(0)*xj,_Z(0)+_XZ(0)*xj)
+	
+	_SETCOLOR(255*256)
+	_MOVE3D(_X(0),_Y(0),_Z(0))
+	_LINE3D(_X(0)+_YX(0)*yj,_Y(0)+_YY(0)*yj,_Z(0)+_YZ(0)*yj)
+	
+	_SETCOLOR(255)
+	_MOVE3D(_X(0),_Y(0),_Z(0))
+	_LINE3D(_X(0)+_ZX(0)*zj,_Y(0)+_ZY(0)*zj,_Z(0)+_ZZ(0)*zj)
+	
+	_RAMIEL3D(359.3*5,82.79*5,478.87*5,2*5)
+	
+	out(5,string.format("%.3f sec %.3fm",ls,ln))
+end
+}

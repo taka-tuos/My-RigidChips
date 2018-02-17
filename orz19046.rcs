@@ -1,0 +1,54 @@
+max=0
+function OnFrame()
+	out(1,"*-- ƒOƒ‰ƒCƒfƒBƒ“ƒO --*")
+	out(2,"”ò‚×I")
+	out(5,"Å‚ ",max," m")
+	if(start==0) then
+		if(_CHECK2(0,0)>0) then start=1 end
+		if(_X(0)<290 or _Y(0)>120 or _Z(0)<250 or _Z(0)>320) then start=2 end
+		out(4,"‹L˜^ ",distance," m")
+	end
+	if(start==1) then
+		_SETREG("T",0)
+		_SETREG("J",0)
+		for i=0 , _CHIPS()-1,1 do
+			if(_Y(i)<0) then hit,start=1,3 end
+			d=_X(i)-500
+			if(d<distance) then distance=d end
+			if distance>max then max=distance end
+		end
+		if(hit==0) then distance=_X(0)-500 end
+		out(4,"‹L˜^= ",distance," m")
+	end
+	if(start==2)then
+		out(4,"‹L˜^= Ž¸Ši")
+	end
+	if(start==3)then
+		out(4,"‹L˜^= ",distance," m")
+	end
+end
+
+function OnInit()
+	_SETREG("G",1)
+	_SETREG("A",1)
+	_SETREG("T",1)
+	_SETREG("J",0)
+	_SETREG("U",0)
+	_SETREG("C",0)
+	_SETREG("S",1)
+	_WARP(0,300,93,285)
+	_DIRECT(0,0,-90,0)
+	_SETRING(0,500,90,285,0,90,0,50)
+	_SETRINGSTATE(0,0)
+	start=0
+	distance=0
+	hit=0
+end
+
+function OnReset()
+
+end
+
+function OnMode()
+
+end

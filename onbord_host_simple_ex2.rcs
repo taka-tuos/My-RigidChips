@@ -1,0 +1,162 @@
+_mono = {}
+_char = ""
+_bpls = _PLAYERS()
+
+_bayer_matrix = {
+	{ 0,  8,  2, 10},
+	{12,  4, 14,  6},
+	{ 3, 11,  1,  9},
+	{15,  7, 13,  5}
+}
+
+_bayer_colors = {0,85,170,255}
+
+function ChannelFilter(org, x, y)
+	local BLOCK_COLOR_COUNT = 255 / 3
+	
+	local index = math.floor(org / BLOCK_COLOR_COUNT)
+	if index >= 3 then return org end
+ 
+	local t = _bayer_matrix[math.mod(y,4)+1][math.mod(x,4)+1]
+	local c = math.mod(org,BLOCK_COLOR_COUNT)
+	t = t * BLOCK_COLOR_COUNT
+	t = t + 16 / 2
+	c = c * 16
+	if t > c then return _bayer_colors[index + 1] end
+ 
+	return _bayer_colors[index + 2];
+end
+
+function GetRegularPoint(x,y)
+	local rX,rY=0,0
+	
+	x=x-_HEIGHT()/2-(_WIDTH()-_HEIGHT())/2
+	rX=x/_HEIGHT()*2
+	
+	y=_HEIGHT()/2-y
+	rY=y/_HEIGHT()*2
+	
+	return rX,rY
+end
+
+function DrawFillBox(x, y, sx, sy)
+	for y = y, y + sy do
+		_MOVE2D(GetRegularPoint(x, y))
+		_LINE2D(GetRegularPoint(x + sx, y))
+	end
+end
+
+function ReadCCD_HW(x, y)
+	local R = _RED(x,y) * 255
+	local G = _GREEN(x,y) * 255
+	local B = _BLUE(x,y) * 255
+	
+	local X = 2.2
+
+	R = (R ^ X) * 0.222015
+	G = (G ^ X) * 0.706655
+	B = (B ^ X) * 0.071330
+
+	local Y = (R + G + B) ^ (1 / X)
+	return Y / 255
+end
+
+function ReadCCD_FB(x, y)
+	return _mono[y*16+x+1]
+end
+
+function RefreshRecieve()
+	local i
+	
+	for i = 0, _PLAYERS()-1 do
+		_RECEIVECLEAR(i)
+	end
+end
+
+function OnInit()
+	local pn = 0
+	while _PLAYERMYID() ~= _PLAYERID(pn) do
+		pn = pn + 1
+	end
+	
+	RefreshRecieve()
+end
+
+function OnFrame()
+	_char = ""
+	
+	if _bpls ~= _PLAYERS() then RefreshRecieve() end
+	_bpls = _PLAYERS()
+	
+	for y = 0,15 do
+		for x = 0,15 do
+			local avg = 0
+			for ay = 0,3 do
+				for ax = 0,3 do
+					avg = avg + ReadCCD_HW(x*4+ax,y*4+ay)
+				end
+			end
+			avg = avg / 16
+			_mono[y*16+x+1] = avg
+		end
+	end
+	
+	for y = 0,15 do
+		for x = 0,3 do
+			local dots = {}
+			local i
+			
+			for i=0,3 do
+				local cfb = ReadCCD_FB(y,x*4+i)
+				dots[i+1] = ChannelFilter(cfb*255,x*4+i,y) / 255 * 3
+			end
+			
+			local cbyte = dots[4]*64 + dots[3]*16 + dots[2]*4 + dots[1]
+			
+			_char = _char..string.char(cbyte)
+		end
+	end
+	
+	_SENDALL(_char)
+	
+	DrawOnBoardList()
+end
+
+
+function DrawOnBoardList()
+	local i
+	
+	for i = 0, _PLAYERS()-1 do
+		local sz = _RECEIVE(i)
+		local dots = {}
+		local x,y
+		
+		if _PLAYERMYID() == _PLAYERID(i) then
+			sz = _char
+		end
+		
+		if string.len(sz) == 64 then
+			for y = 0,15 do
+				for x = 0,3 do
+					local col = string.byte(sz,y*4+x+1)
+					local i
+					
+					for i=0,3 do
+						local dat = math.mod(math.floor(col/math.pow(2,i*2)),4)
+						local dot = dat*64 + dat*16 + dat*4 + dat
+						
+						dots[(x*4+i)+y*16+1] = dot
+					end
+				end
+			end
+			
+			for y = 0,15 do
+				for x = 0,15 do
+					local dot = dots[x+y*16+1]
+					_SETCOLOR(dot*65536+dot*256+dot)
+					DrawFillBox(x+i*16+(_WIDTH()/2-15*16),y,1,0)
+				end
+			end
+		end
+	end
+end

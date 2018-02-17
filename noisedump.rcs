@@ -1,0 +1,99 @@
+function _NPOS_I(n)
+	local x,y,z = _PLAYERX(n),_PLAYERY(n),_PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	x = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+	
+	return x,y,z
+end
+
+function _NPOS(n)
+	local i,j
+	local x,y,z = 0,0,0
+	
+	local cx,cy,cz = 0,0,0
+	
+	for j=1,16 do
+		local ax,ay,az = _NPOS_I(n)
+		local bx,by,bz = _NPOS_I(n)
+		
+		for i=1,64 do
+			local rx,ry,rz = _NPOS_I(n)
+			
+			ax = math.min(ax,rx)
+			ay = math.min(ay,ry)
+			az = math.min(az,rz)
+			
+			bx = math.max(bx,rx)
+			by = math.max(by,ry)
+			bz = math.max(bz,rz)
+		end
+		
+		cx = cx + (ax+bx) / 2
+		cy = cy + (ay+by) / 2
+		cz = cz + (az+bz) / 2
+	end
+	
+	x = cx / 16
+	y = cy / 16
+	z = cz / 16
+	
+	return x,y,z
+end
+
+fn = 0
+np = 0
+nf = 0
+
+function _SINC(g_RandTime)
+	return math.sin(g_RandTime / 150.0) + math.sin(g_RandTime / 350.0)
+end
+
+lua_randtime = _NTICKS()
+
+function OnFrame()
+	local f = 0
+	
+	if _KEYDOWN(0) == 1 then
+		np = np+1
+	end
+	
+	np = math.mod(np,_PLAYERS())
+	
+	out(0,string.format("%d %s",np,_PLAYERNAME(np)))
+	out(1,fn)
+	
+	if _KEYDOWN(4) == 1 then
+		if fn == 0 then
+			nf = 1
+		else
+			fn = 0
+		end
+	end
+	
+	if nf == 1 and fn == 0 then
+		f = _FOPEN("write".._PLAYERMYID().."_"..string.format("%d",_STICKS())..".csv","w")
+		lua_randtime = _NTICKS()
+	end
+	
+	if nf == 1 and fn < 1800 then
+		local a = _NTICKS()
+		local b = 2.0091 * _STICKS() + 22.169
+		local c = lua_randtime
+		
+		_FPUTS(f,string.format("%f,%f,%f\n",a,b,c))
+		
+		fn = fn + 1
+		lua_randtime = lua_randtime + math.mod(MTRand(),3)+1
+	end
+	
+	if nf == 1 and fn == 1800 then
+		_FCLOSE(f)
+	end
+	math.randomseed(0)
+end

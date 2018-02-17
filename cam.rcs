@@ -1,0 +1,5 @@
+function OnFrame()
+	_WARP(0,0,_GETY(0,0)+4,0)
+	_DIRECT(0,0,0,0)
+	_SETVIEW(_X(0)+_XX(0)*5,_Y(0)+_YY(0)*5,_Z(0)+_ZZ(0)*-5,_X(0),_Y(0),_Z(0))
+end

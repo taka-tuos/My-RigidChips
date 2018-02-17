@@ -1,0 +1,100 @@
+// [RCD] 
+Val
+{
+	P(default=0, max=300000, step=30000)
+	R(default=0, min=-8, max=8, step=8)
+	V(default=0, min=-8, max=8, step=8)
+}
+Key
+{
+	0:V(step=8)
+	1:V(step=-8)
+	2:R(step=8)
+	3:R(step=-8)
+	4:P(step=30000)
+}
+Body
+{
+	Core() {
+		E:Weight(angle=-40) {
+			E:Weight(angle=40) {
+				E:Weight() {
+					E:Weight() {
+						E:Weight() {
+							E:Weight() {
+								S:Weight() { }
+							}
+							S:Weight(angle=-R) { }
+						}
+						N:Jet(angle=90, power=P) { }
+						S:Weight(angle=-R) { }
+					}
+					N:Jet(angle=90, power=P) { }
+					S:Weight(angle=-R) { }
+				}
+				S:Weight() { }
+			}
+		}
+		W:Weight(angle=-40) {
+			W:Weight(angle=40) {
+				W:Weight() {
+					W:Weight() {
+						W:Weight() {
+							W:Weight() {
+								S:Weight() { }
+							}
+							S:Weight(angle=R) { }
+						}
+						N:Jet(angle=90, power=P) { }
+						S:Weight(angle=R) { }
+					}
+					N:Jet(angle=90, power=P) { }
+					S:Weight(angle=R) { }
+				}
+				S:Weight() { }
+			}
+		}
+		S:Weight() {
+			S:Weight() {
+				S:Weight() {
+					S:Weight() {
+						S:Weight() {
+							S:Weight() {
+								S:Weight() { }
+								W:Weight(angle=-20) {
+									W:Weight(angle=20) {
+										W:Weight() {
+											S:Weight(angle=V) { }
+										}
+										S:Weight(angle=V) { }
+									}
+								}
+								E:Weight(angle=-20) {
+									E:Weight(angle=20) {
+										E:Weight() {
+											S:Weight(angle=V) { }
+										}
+										S:Weight(angle=V) { }
+									}
+								}
+							}
+							W:Weight(angle=-70) {
+								S:Weight() {
+									W:Weight() { }
+								}
+							}
+							E:Weight(angle=-70) {
+								S:Weight() {
+									E:Weight() { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Weight(option=4) {
+			N:Weight(option=4) { }
+		}
+	}
+}

@@ -1,0 +1,129 @@
+// [RCD] 
+Val
+{
+	GUN1(default=0, max=16777216, step=16777216)
+	GUN2(default=0, max=16777216, step=16777216)
+	GUN3(default=0, max=16777216, step=16777216)
+	GUN4(default=0, max=16777216, step=16777216)
+	GUN5(default=0, max=16777216, step=16777216)
+	GUN6(default=0, max=16777216, step=16777216)
+	GUN7(default=0, max=16777216, step=16777216)
+	GUN8(default=0, max=16777216, step=16777216)
+	GUN9(default=0, max=16777216, step=16777216)
+	GUNA(default=0, max=16777216, step=16777216)
+	GUNB(default=0, max=16777216, step=16777216)
+	GUNC(default=0, max=16777216, step=16777216)
+	VAR1(default=0, max=16777216)
+	VAR2(default=0, max=16777216)
+	VAR3(default=0, max=16777216)
+	VAR4(default=0, max=16777216)
+	VAR5(default=0, max=16777216)
+	VAR6(default=0, max=16777216)
+	VAR7(default=0, max=16777216)
+	VAR8(default=0, max=16777216)
+	VAR9(default=0, max=16777216)
+	VARA(default=0, max=16777216)
+	VARB(default=0, max=16777216)
+	VARC(default=0, max=16777216)
+}
+Key
+{
+	4:VAR1(step=180)
+}
+Body
+{
+	Core() {
+		W:TrimF(angle=-VAR1, option=1) {
+			W:TrimF(option=1) {
+				E:Frame() { }
+			}
+			W:TrimF(angle=30, option=1) {
+				E:Frame() { }
+			}
+			W:TrimF(angle=60, option=1) {
+				E:Frame() { }
+			}
+			W:TrimF(angle=90, option=1) {
+				E:Frame() { }
+			}
+			W:TrimF(angle=120, option=1) {
+				E:Frame(angle=0) {
+					S:Arm(angle=-VAR3, power=GUN3, option=55000) { }
+					N:Arm(angle=VAR9, power=GUN9, option=55000) { }
+				}
+			}
+			W:TrimF(angle=150, option=1) {
+				E:Frame() { }
+			}
+		}
+		W:Frame(angle=45) {
+			W:Frame() {
+				W:Chip(angle=-45) {
+					S:Weight() { }
+					N:Weight() { }
+				}
+			}
+		}
+		E:Frame(angle=45) {
+			E:Frame() {
+				E:Chip(angle=-45) {
+					N:Weight() { }
+					S:Weight() { }
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function OnFrame()
+	VAR2 = VAR1 + 30
+	VAR3 = VAR2 + 30
+	VAR4 = VAR3 + 30
+	VAR5 = VAR4 + 30
+	VAR6 = VAR5 + 30
+	VAR7 = VAR6 + 30
+	VAR8 = VAR7 + 30
+	VAR9 = VAR8 + 30
+	VARA = VAR9 + 30
+	VARB = VARA + 30
+	VARC = VARB + 30
+	
+	if math.mod(-VAR1,360) == -0 and _KEY(4) == 1 then
+		GUN1 = 16777216
+	end
+	if math.mod(-VAR1,360) == -30 and _KEY(4) == 1 then
+		GUN2 = 16777216
+	end
+	if math.mod(-VAR1,360) == -60 and _KEY(4) == 1 then
+		GUN3 = 16777216
+	end
+	if math.mod(-VAR1,360) == -90 and _KEY(4) == 1 then
+		GUN4 = 16777216
+	end
+	if math.mod(-VAR1,360) == -120 and _KEY(4) == 1 then
+		GUN5 = 16777216
+	end
+	if math.mod(-VAR1,360) == -150 and _KEY(4) == 1 then
+		GUN6 = 16777216
+	end
+	if math.mod(-VAR1,360) == -180 and _KEY(4) == 1 then
+		GUN7 = 16777216
+	end
+	if math.mod(-VAR1,360) == -210 and _KEY(4) == 1 then
+		GUN8 = 16777216
+	end
+	if math.mod(-VAR1,360) == -240 and _KEY(4) == 1 then
+		GUN9 = 16777216
+	end
+	if math.mod(-VAR1,360) == -270 and _KEY(4) == 1 then
+		GUNA = 16777216
+	end
+	if math.mod(-VAR1,360) == -300 and _KEY(4) == 1 then
+		GUNB = 16777216
+	end
+	if math.mod(-VAR1,360) == -330 and _KEY(4) == 1 then
+		GUNC = 16777216
+	end
+end
+}

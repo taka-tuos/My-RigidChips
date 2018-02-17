@@ -1,0 +1,16 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		E:Jet(power=-16777216) { }
+		S:Jet(power=-16777216) { }
+		W:Jet(power=-16777216) { }
+		N:Jet(power=-16777216) { }
+	}
+}

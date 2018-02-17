@@ -1,0 +1,171 @@
+// [RCD] 
+Val
+{
+	A1(default=180, min=10, max=180, disp=0)
+	A10(default=180, min=10, max=180, disp=0)
+	A11(default=180, min=10, max=180, disp=0)
+	A12(default=180, min=10, max=180, disp=0)
+	A13(default=180, min=10, max=180, disp=0)
+	A14(default=180, min=10, max=180, disp=0)
+	A15(default=180, min=10, max=180, disp=0)
+	A16(default=180, min=10, max=180, disp=0)
+	A17(default=180, min=10, max=180, disp=0)
+	A18(default=180, min=10, max=180, disp=0)
+	A19(default=180, min=10, max=180, disp=0)
+	A2(default=180, min=10, max=180)
+	A20(default=180, min=10, max=180, disp=0)
+	A3(default=180, min=10, max=180)
+	A4(default=180, min=10, max=180)
+	A5(default=180, min=10, max=180)
+	A6(default=180, min=10, max=180, disp=0)
+	A7(default=180, min=10, max=180, disp=0)
+	A8(default=180, min=10, max=180, disp=0)
+	A9(default=180, min=10, max=180, disp=0)
+	ARM1(default=0, max=3200000, step=3200000)
+	ARM10(default=0, max=3200000, step=3200000, disp=0)
+	ARM11(default=0, max=3200000, step=3200000, disp=0)
+	ARM12(default=0, max=3200000, step=3200000, disp=0)
+	ARM13(default=0, max=3200000, step=3200000, disp=0)
+	ARM14(default=0, max=3200000, step=3200000, disp=0)
+	ARM15(default=0, max=3200000, step=3200000, disp=0)
+	ARM16(default=0, max=3200000, step=3200000, disp=0)
+	ARM17(default=0, max=3200000, step=3200000, disp=0)
+	ARM18(default=0, max=3200000, step=3200000, disp=0)
+	ARM19(default=0, max=3200000, step=3200000, disp=0)
+	ARM2(default=0, max=3200000, step=3200000, disp=0)
+	ARM20(default=0, max=3200000, step=3200000, disp=0)
+	ARM3(default=0, max=3200000, step=3200000, disp=0)
+	ARM4(default=0, max=3200000, step=3200000, disp=0)
+	ARM5(default=0, max=3200000, step=3200000, disp=0)
+	ARM6(default=0, max=3200000, step=3200000, disp=0)
+	ARM7(default=0, max=3200000, step=3200000, disp=0)
+	ARM8(default=0, max=3200000, step=3200000, disp=0)
+	ARM9(default=0, max=3200000, step=3200000, disp=0)
+	COUNT(default=0, max=600)
+	COUNT2(default=0, max=1)
+	HC(default=1, max=1, step=1)
+	HCC1(default=150, min=100, max=150, step=2)
+	HCC2(default=60, min=60, max=160, step=4)
+	HCC3(default=30, min=30, max=80, step=2)
+	TM(default=0, max=75)
+	W(default=#808080)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Weight(angle=170) {
+			S:Arm(angle=A2, power=ARM2, option=3200000, name=AM2) { }
+			S:Arm(angle=A3, power=ARM3, option=3200000, name=AM3) { }
+			S:Arm(angle=A4, power=ARM4, option=3200000, name=AM4) { }
+			S:Arm(angle=A1, power=ARM1, option=3200000, name=AM1) { }
+		}
+		S:Weight(angle=170) {
+			S:Arm(angle=A6, power=ARM6, option=3200000, name=AM6) { }
+			S:Arm(angle=A7, power=ARM7, option=3200000, name=AM7) { }
+			S:Arm(angle=A8, power=ARM8, option=3200000, name=AM8) { }
+			S:Arm(angle=A5, power=ARM5, option=3200000, name=AM5) { }
+		}
+		S:Weight(option=2, color=#FF0000) {
+			N:Cowl() { }
+			S:Weight(option=2, color=W) { }
+			S:Weight(option=2, color=W) { }
+			S:Weight(option=2, color=W) { }
+			S:Weight(option=2, color=W) { }
+			S:Weight(option=2, color=W) { }
+			S:Weight(option=2, color=W) { }
+			S:Weight(option=2, color=W) { }
+			S:Weight(option=2, color=W) { }
+		}
+		S:Weight(angle=-156, option=2) {
+			S:Weight(angle=-114) {
+				W:Weight(angle=-90) { }
+				E:Weight(angle=-90) { }
+			}
+		}
+		S:Cowl(angle=HCC1, effect=#F000) {
+			S:Cowl(angle=HCC2, effect=#F000) {
+				S:Cowl(angle=-HCC3) {
+					N:Cowl() { }
+					S:Cowl() { }
+				}
+			}
+		}
+	}
+}
+Lua
+{--¤‚±‚±‚©‚ç(–C‚Ìlua)--
+
+--›‰ğàŠJn--
+--íÔƒŒƒMƒ…ƒŒ[ƒVƒ‡ƒ“—p‚Ì‘f‘Ì–Cƒf[ƒ^‚Å‚·Bƒyƒiƒ‹ƒeƒB‚Ìd‚è‚ª‚·‚Å‚É•t—^‚³‚ê‚Ä‚¢‚Ü‚·B(•ŠDF‚ÌWaight)
+--d‚è‚Í“¯‚¶–‡”‚ªŠm•Û‚Å‚«‚é‚Ì‚Å‚ ‚ê‚ÎA•K—v‚É‰‚¶‚ÄA•Ê‚ÌêŠ‚ÖˆÚ“®‚·‚é‚±‚Æ‚àok‚Å‚·
+--‚±‚Ì–C‚É“‹Ú‚³‚ê‚Ä‚¢‚éarm‚Ì–‡”‚ÍAŒ»İ‚Ì•º‰È‚ÌãŒÀ‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B‚µ‚½‚ª‚Á‚Ä‚±‚Ì–C‚Ìarm‚Ì–‡”‚ğ‘‚â‚·‚Æ‹K’èˆá”½‚É‚È‚è‚Ü‚·‚Ì‚Å’ˆÓ(Œ¸‚ç‚·‚Ì‚Íok)
+--–C‚ğ\¬‚·‚éWaight‚Ìop‚ÍA–C‚Ì”½“®‚â‘Ï‹v—Í‚È‚Ç‚É‘Î‚µAÅ“K‰»‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ‚Ì‚ÅA’²®‚ğ‚¨Šè‚¢‚µ‚Ü‚·B
+--–Cg‚Ì•t‚¯ª‚ÍÔ‚¢Waight‚Å‚·B‚»‚±‚©‚ç–C“ƒ‚ğì¬‚µ‚Ä‚­‚¾‚³‚¢B
+--‚¨‚Ü‚¯‚Æ‚µ‚ÄA”­Ë‚ÉŒã‘Ş‚·‚éCowl–Cg‚ğ‚Â‚¯‚Ä‚ ‚è‚Ü‚·B•s—v‚Èê‡‚Í‚»‚Ì‚Ü‚Üíœ‚µ‚Ä‚­‚¾‚³‚¢‚Ë
+--›‰ğàI—¹--
+
+--ƒOƒ[ƒoƒ‹ŠÖ”--
+TM2=1
+TM3=0
+out(3,"fps",_FPS())
+
+
+function main()
+--•‘•‚ÌÚ×•\¦(‚±‚Ì’·‚¢‹ó”’‚ÍA‰æ–Ê’†‰›‹ß‚­‚É•\¦‚·‚é‚½‚ß‚Å‚·B©—R‚É‘‚«Š·‚¦‚Ä‚Ë)--
+	out(3,"fps",_FPS())
+	out(20,"                                                                                ‚RD‚Q‚l–C‚e‚W")
+
+--Å‰‚ÌARM[“U•\¦--
+	if _E(AM1)<3200000 and TM3==0 then out(24,"    @@@                                                                                                                    ’e–ò€”õ’† ",_E(AM1)/32000," “")end 
+	if _E(AM1)==3200000 and TM3==0 then TM3=1 end
+
+--Še–C‚Ì§Œä--
+
+	if COUNT==0 and TM2==1 and TM3==1 then A1=A1-30 COUNT2=0 out(6,"‘æ‚O‚P’e–ò ",_E(AM1)/32000," %‘•“UŠ®—¹I") end
+	if A1<0 and _KEYDOWN(7)==1 and TM==0 then ARM1=3200000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==1 then A1=A1+30 TM=TM-(30/_FPS()) end
+	 
+	if COUNT==1 and TM2==1 then A2=A2-30 COUNT2=0 out(6,"‘æ‚O‚Q’e–ò ",_E(AM2)/32000," %‘•“UŠ®—¹I") end
+	if A2<0 and _KEYDOWN(7)==1 and TM==0 then ARM2=3200000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end	
+	if COUNT2==1 and COUNT==2 then A2=A2+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==2 and TM2==1 then A3=A3-30 COUNT2=0 out(6,"‘æ‚O‚R’e–ò ",_E(AM3)/32000," %‘•“UŠ®—¹I") end
+	if A3<0 and _KEYDOWN(7)==1 and TM==0 then ARM3=3200000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end	
+	if COUNT2==1 and COUNT==3 then A3=A3+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==3 and TM2==1 then A4=A4-30 COUNT2=0 out(6,"‘æ‚O‚S’e–ò ",_E(AM4)/32000," %‘•“UŠ®—¹I") end
+	if A4<0 and _KEYDOWN(7)==1 and TM==0 then ARM4=3200000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==4 then A4=A4+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==4 and TM2==1 then A5=A5-30 COUNT2=0 out(6,"‘æ‚O‚T’e–ò ",_E(AM5)/32000," %‘•“UŠ®—¹I") end
+	if A5<0 and _KEYDOWN(7)==1 and TM==0 then ARM5=3200000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==5 then A5=A5+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==5 and TM2==1 then A6=A6-30 COUNT2=0 out(6,"‘æ‚O‚U’e–ò ",_E(AM6)/32000," %‘•“UŠ®—¹I") end
+	if A6<0 and _KEYDOWN(7)==1 and TM==0 then ARM6=3200000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==6 then A6=A6+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==6 and TM2==1 then A7=A7-30 COUNT2=0 out(6,"‘æ‚O‚V’e–ò ",_E(AM7)/32000," %‘•“UŠ®—¹I") end
+	if A7<0 and _KEYDOWN(7)==1 and TM==0 then ARM7=3200000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==7 then A7=A7+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==7 and TM2==1 then A8=A8-30 COUNT2=0 out(6,"‘æ‚O‚W’e–ò ",_E(AM8)/32000," %‘•“UŠ®—¹I") end
+	if A8<0 and _KEYDOWN(7)==1 and TM==0 then ARM8=3200000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==8 then A8=A8+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==8 and TM2==1 then COUNT=0  end
+
+--ƒŠƒ[ƒhŠÔ•\¦--
+
+	if TM>0 then out(24,"       @@@@@                                                                                                          ‘•“U’†@Š®—¹‚Ü‚Å ",TM/30," •b") end
+	if TM<0 then TM2=1 end
+
+--–Cgcowl‚Ì“®‚«lua--
+	if HC==0 then HCC1=HCC1-50 HCC2=HCC2+100 HCC3=HCC3+50 end
+	if HCC1>150 then HC=1 end
+
+end
+--¢‚±‚±‚Ü‚Å(–C‚Ìlua)-}

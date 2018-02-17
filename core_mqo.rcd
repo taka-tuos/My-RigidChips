@@ -1,0 +1,54 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Chip() { }
+	}
+}
+Lua
+{
+require("daretoku_taka/model/UI-4053.mqo.lua")
+require("daretoku_taka/xgl.lua")
+
+function _NPOS_C9(n)
+	math.randomseed(1519)
+	local x = _PLAYERX(n)
+	math.randomseed(1519)
+	local y = _PLAYERY(n)
+	math.randomseed(1519)
+	local z = _PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	x = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+	
+	return x,y,z
+end
+
+function VertexShader(x,y,z,n)
+	local xx,xy,xz = _XX(n),_XY(n),_XZ(n)
+	local yx,yy,yz = _YX(n),_YY(n),_YZ(n)
+	local zx,zy,zz = _ZX(n),_ZY(n),_ZZ(n)
+	
+	local a = (xx * x + yx * y + zx * z) * 0.8 + _X(n)
+	local b = (xy * x + yy * y + zy * z) * 0.8 + _Y(n)
+	local c = (xz * x + yz * y + zz * z) * 0.8 + _Z(n)
+	
+	return a,b,c
+end
+
+function OnFrame()
+	local n = XGL.Draw(_G[XGL.GenHash("UI-4053.mqo")],VertexShader,1)
+	out(0,"é¿ë™ê´î\ : " .. _FPS() * n .. "Œﬂÿ∫ﬁ›ñàïb")
+end
+}

@@ -1,0 +1,89 @@
+// [RCD] 
+Val
+{
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	RW(default=0, min=-10000000000, max=10000000000)
+	V(default=0, min=-90, max=90)
+	VW(default=0, min=-10000000000, max=10000000000)
+	YW(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+		S:Trim(angle=90) {
+			S:Chip() { }
+			N:Jet(angle=90, power=P) { }
+			N:Jet(angle=-90, power=-P) { }
+			N:RLW(angle=180, power=VW, brake=20000) { }
+		}
+		S:Chip() {
+			E:Trim(angle=R) { }
+			W:Trim(angle=R) { }
+			S:Chip(angle=-V) { }
+			S:Frame(angle=150) {
+				S:RLW(angle=120, power=RW, brake=20000) { }
+			}
+			N:RLW(angle=180, power=YW, brake=20000) { }
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/libccvx3.lua")
+
+_limitlist={1500,1800,2000,2200,2500,64512}
+
+_prvtbl = InitPRVTable()
+
+_prvtbl.p.limit = 200000
+_prvtbl.p.step  = 200000
+
+_prvtbl.r.tgt = 360
+_prvtbl.r.kp  = 2
+_prvtbl.r.ki  = 2
+_prvtbl.r.kd  = 2
+_prvtbl.r.il  = 20
+
+_prvtbl.v.tgt = 180
+_prvtbl.v.kp  = 4
+_prvtbl.v.ki  = 4
+_prvtbl.v.kd  = 2
+_prvtbl.v.il  = 40
+
+YAW_PID=XPID_new()
+
+function OnInit()
+	CCVXOnInit()
+end
+
+function OnFrame()
+	CCVXOnFrame(false)
+
+	ShowSplash("XX-1 Thermosphere")
+	
+	local p,r,v = GetPRVBAnalog(_prvtbl,{p=P,b=0})
+	
+	P=p
+	R=r
+	V=v
+	
+	RW=R*20000
+	VW=-V*20000
+	
+	YW=YAW_PID:PID(0,WY,4,4,2,20)*-20000
+	
+	CheckLimit()
+	
+	XHUD.Draw()
+end
+}

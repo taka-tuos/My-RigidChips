@@ -1,0 +1,322 @@
+// [RCD] 
+Val
+{
+	BMB(default=0, max=16777216, step=16777216)
+	ELON(default=0, min=-16, max=16, step=4)
+	ENGN(default=0, min=-307200, max=307200, step=65536)
+	EVTR(default=0, min=-16, max=16, step=4)
+	G1(default=30, min=10, max=30)
+	G2(default=70, max=70)
+	GUN1(default=0, max=16777216, step=16777216)
+	GUN2(default=0, max=16777216, step=16777216)
+	GUN3(default=0, max=16777216, step=16777216)
+	GUN4(default=0, max=16777216, step=16777216)
+	PTCH(default=55, min=55, max=90)
+	TJ(default=0, max=131072)
+}
+Key
+{
+	0:EVTR(step=4)
+	1:EVTR(step=-4)
+	2:ELON(step=4)
+	3:ELON(step=-4)
+	4:ENGN(step=65536)
+	11:ENGN(step=-65536)
+	14:G1(step=-4), G2(step=-4)
+	15:G1(step=4), G2(step=4)
+}
+Body
+{
+	Core() {
+		S:Frame(angle=170, option=1) {
+			S:Frame(angle=-80, option=1) {
+				S:Frame(angle=90, option=1) {
+					S:Weight(angle=0, option=1) {
+						N:Chip() {
+							N:Chip() {
+								E:Chip(angle=90) { }
+								W:Chip(angle=90) { }
+								N:Chip() {
+									N:Chip() {
+										E:Chip(angle=90) { }
+										W:Chip(angle=90) { }
+										N:Chip() {
+											N:TrimF(angle=90, option=1) {
+												S:RudderF(angle=90, option=1) {
+													N:Chip() {
+														W:Frame(option=1) { }
+														E:Chip() {
+															N:Rudder(angle=-65) {
+																N:Chip() { }
+																S:Chip() { }
+															}
+														}
+														N:Rudder(angle=-30) {
+															W:Rudder(angle=-60) {
+																E:Chip() { }
+															}
+															S:Chip() { }
+														}
+													}
+												}
+												S:Frame(option=1) {
+													N:Wheel() { }
+												}
+											}
+											E:Chip(angle=90) { }
+											W:Chip(angle=90) { }
+											N:Chip(angle=0) {
+												E:Frame(angle=170) {
+													E:Trim(angle=-EVTR) {
+														E:Cowl(option=5) { }
+														W:Frame(option=1) {
+															S:Rudder(angle=-20) {
+																E:Chip() {
+																	E:Cowl(option=5) { }
+																}
+															}
+														}
+													}
+												}
+												W:Frame(angle=170) {
+													W:Trim(angle=EVTR) {
+														W:Cowl(option=5) { }
+														E:Frame(option=1) {
+															S:Rudder(angle=25) {
+																W:Chip() {
+																	W:Cowl(option=5) { }
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							E:Chip(angle=90) { }
+							W:Chip(angle=90) { }
+							W:Frame(angle=170) {
+								W:Trim(angle=ELON) {
+									W:Chip(angle=10) {
+										W:Chip() {
+											W:Cowl(option=5) { }
+										}
+									}
+									N:Rudder(angle=-15) {
+										W:Chip(angle=10) {
+											W:Cowl() {
+												W:Cowl(option=5) { }
+											}
+										}
+										E:Cowl() { }
+										S:Cowl(angle=1, option=4) { }
+									}
+								}
+								W:Frame(option=1) {
+									W:Frame(angle=G1) {
+										W:Wheel(angle=G2) { }
+									}
+								}
+							}
+							E:Frame(angle=170) {
+								E:Trim(angle=ELON) {
+									E:Chip(angle=10) {
+										E:Chip() {
+											E:Cowl(option=5) { }
+										}
+									}
+									N:Rudder(angle=15) {
+										E:Chip(angle=10) {
+											E:Cowl() {
+												E:Cowl(option=5) { }
+											}
+										}
+										W:Cowl() { }
+										S:Cowl(angle=1, option=3) { }
+									}
+								}
+								E:Frame(option=1) {
+									E:Frame(angle=G1) {
+										E:Wheel(angle=G2) { }
+									}
+								}
+							}
+							S:TrimF(angle=90, option=1) {
+								N:RudderF(angle=-10, option=1) {
+									N:RudderF(angle=190, option=1) {
+										S:Chip(name=BS) {
+											N:Cowl(option=5) { }
+											S:Chip() {
+												N:Trim(angle=-90, name=BI) {
+													S:Chip() {
+														S:Cowl(option=5) { }
+														S:Arm(angle=180, power=BMB, option=16777216, name=AM) { }
+													}
+													N:Cowl(option=5) { }
+													N:Weight() { }
+													E:Rudder(angle=45) {
+														E:Chip() {
+															S:Frame(option=1) { }
+														}
+														S:Cowl() { }
+														W:Cowl() { }
+													}
+													W:Rudder(angle=-45) {
+														W:Chip() {
+															S:Frame(option=1) { }
+														}
+														S:Cowl() { }
+														E:Cowl() { }
+													}
+												}
+												S:Cowl(option=5) { }
+												S:Rudder(angle=-45) {
+													N:Rudder(angle=45) { }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						S:Cowl(angle=30) {
+							S:Cowl(angle=120) {
+								S:Cowl(angle=5, color=#202020, effect=#50FB) {
+									S:Cowl(angle=20, color=#202020, effect=#50FB) {
+										S:Cowl(angle=10, color=#202020, effect=#50FB) {
+											S:Cowl(angle=5) {
+												S:Cowl(angle=0) {
+													W:Cowl(angle=85) { }
+													S:Cowl(angle=0) {
+														E:Cowl(angle=85) { }
+														W:Cowl(angle=85) { }
+														S:Cowl(angle=15) {
+															W:Cowl(angle=90, option=3) { }
+															E:Cowl(angle=90, option=4) { }
+														}
+													}
+													E:Cowl(angle=85) { }
+												}
+												W:Cowl(angle=85) { }
+												E:Cowl(angle=85) { }
+											}
+											W:Cowl(angle=90, color=#202020, effect=#50FB) { }
+											E:Cowl(angle=90, color=#202020, effect=#50FB) { }
+										}
+										W:Cowl(angle=90, color=#202020, effect=#50FB) { }
+										E:Cowl(angle=90, color=#202020, effect=#50FB) { }
+									}
+									W:Cowl(angle=90, color=#202020, effect=#50FB) { }
+									E:Cowl(angle=90, color=#202020, effect=#50FB) { }
+								}
+							}
+							N:Cowl(angle=25) {
+								N:Cowl(angle=2.5) {
+									N:Cowl(angle=2.5) {
+										N:Cowl(angle=3) {
+											N:Cowl() {
+												W:Cowl(angle=85) { }
+												N:Cowl(angle=0) {
+													E:Cowl(angle=85, option=3) { }
+													W:Cowl(angle=85, option=4) { }
+													N:Cowl(angle=0) {
+														E:Cowl(angle=90, option=3) { }
+														W:Cowl(angle=90, option=4) { }
+													}
+												}
+												E:Cowl(angle=85) { }
+											}
+											W:Cowl(angle=85) { }
+											E:Cowl(angle=85) { }
+										}
+										W:Cowl(angle=85) { }
+										E:Cowl(angle=85) { }
+									}
+									W:Cowl(angle=85) { }
+									E:Cowl(angle=85) { }
+								}
+								W:Cowl(angle=85) { }
+								E:Cowl(angle=85) { }
+							}
+						}
+						W:Chip(angle=90) {
+							S:Arm(power=GUN4, option=50000) { }
+						}
+						E:Chip(angle=90) {
+							S:Arm(power=GUN3, option=50000) { }
+						}
+						S:Frame(angle=90, option=1) {
+							S:Arm(angle=-90, power=GUN1, option=50000) { }
+						}
+						S:Arm(power=GUN2, option=50000) { }
+						S:Jet(angle=90, power=ENGN) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{MKPH = 0
+NLEN = 0
+NGUN = 1
+IB = 0
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function OnFrame()
+	NKPH = math.floor(_VEL(0) * 3.6 + 0.5)
+	NLEN = NLEN + _VEL(0) / 30
+	
+	if NKPH > MKPH then
+		MKPH = NKPH
+	end
+
+	if _KEY(6) == 1 then
+		_SPLIT(BS)
+		IB = 1
+		TJ = 131072
+	end
+
+	if IB == 1 and _H(BI) <= 5 and _H(BI) >= 0 then
+		BMB = 16777216
+		IB = 0
+	end
+	
+	if IB == 1 and _Y(BI) <= 5 then
+		BMB = 16777216
+	end
+	
+	--PTCH = 25 * ((NKPH - 200) / 200) + 55
+	
+	out(0, "十五式汎用戦闘機　神雷")
+	out(1, NKPH, "kph")
+	out(2, _WEIGHT(), "kg")
+	out(3, _FPS(), "fps")
+	out(4, "max ", MKPH, "kph")
+	out(5, "odo ", NLEN / 1000, "km")
+	out(6, "bomb ", _E(AM) / 16777216 * 100,"%");
+	
+	if NGUN == 4 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN4 = 16777216
+		NGUN = 1
+	elseif NGUN == 3 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN3 = 16777216
+		NGUN = 4
+	elseif NGUN == 2 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN2 = 16777216
+		NGUN = 3
+	elseif NGUN == 1 and _KEY(5) == 1 and math.mod(_TICKS(),3) == 0 then
+		GUN1 = 16777216
+		NGUN = 2
+	end
+end
+}

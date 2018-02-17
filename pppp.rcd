@@ -1,0 +1,171 @@
+// [RCD] 
+Val{
+}
+Key{
+}
+Body{
+	Core(){}
+}
+Lua{---------------------------[ function ]--------------------------
+math.rgb = function(r,g,b)
+	return r*65536+g*256+b
+end
+
+math.sgn = function (x)
+	if x < 0 then return -1
+	elseif x == 0 then return 0
+	else return 1 end
+end
+
+math.step = function(v,n,s)
+	return v-math.limit(v-n,-s,s)
+end
+
+math.len2 = function(v1,v2)
+	return math.sqrt(v1^2 + v2^2)
+end
+
+math.len3 = function(ax,ay,az,bx,by,bz)
+	return math.sqrt((ax-bx)^2+(ay-by)^2+(az-bz)^2)
+end
+
+inWindow = function (mx,my)
+	return ( 0 < mx and mx < _WIDTH() and 0 < my and my < _HEIGHT() )
+end
+
+math.limit = function(val,min,max)
+	return math.max(math.min(val,max),min)
+end
+
+math.loop = function(val,max,min)
+	while (val > max) do	val = min + (val - max)	end
+	while (val < min) do	val = max + (val - min)	end
+	return val
+end
+
+----[ WorldPos ¨ LocalPos ]
+function getlpos(wx,wy,wz,cn)
+	local lx,ly,lz
+	lx=_XX(cn)*wx+_XY(cn)*wy+_XZ(cn)*wz
+	ly=_YX(cn)*wx+_YY(cn)*wy+_YZ(cn)*wz
+	lz=_ZX(cn)*wx+_ZY(cn)*wy+_ZZ(cn)*wz
+	return lx,ly,lz
+end
+
+----[ LocalPos ¨ WorldPos ]
+function getwpos(lx,ly,lz,cn)
+	local wx=_XX(cn)*lx+_YX(cn)*ly+_ZX(cn)*lz
+	local wy=_XY(cn)*lx+_YY(cn)*ly+_ZY(cn)*lz
+	local wz=_XZ(cn)*lx+_YZ(cn)*ly+_ZZ(cn)*lz
+	return wx,wy,wz
+end
+
+--ƒxƒNƒgƒ‹‚ð³‹K‰»
+function normal_3(a,b,c)
+	return a/math.sqrt(a*a+b*b+c*c), b/math.sqrt(a*a+b*b+c*c), c/math.sqrt(a*a+b*b+c*c)
+end
+
+--hud•`‰æ—p
+function hud_move3d(x,y,z,cn)
+	local cx,cy,cz = _X(cn),_Y(cn),_Z(cn)
+	local hxx,hxy,hxz = _XX(cn)*x,_XY(cn)*x,_XZ(cn)*x
+	local hyx,hyy,hyz = _YX(cn)*y,_YY(cn)*y,_YZ(cn)*y
+	local hzx,hzy,hzz = _ZX(cn)*z,_ZY(cn)*z,_ZZ(cn)*z
+	_MOVE3D(cx - hxx + hyx - hzx,cy - hxy + hyy - hzy,cz - hxz + hyz - hzz)
+end
+
+function hud_line3d(x,y,z,cn)
+	local cx,cy,cz = _X(cn),_Y(cn),_Z(cn)
+	local hxx,hxy,hxz = _XX(cn)*x,_XY(cn)*x,_XZ(cn)*x
+	local hyx,hyy,hyz = _YX(cn)*y,_YY(cn)*y,_YZ(cn)*y
+	local hzx,hzy,hzz = _ZX(cn)*z,_ZY(cn)*z,_ZZ(cn)*z
+	_LINE3D(cx - hxx + hyx - hzx,cy - hxy + hyy - hzy,cz - hxz + hyz - hzz)
+end
+
+range = 0.3
+charage_p = 0
+col = {
+	n = 0,
+	[0] = tonumber("8cfb95",16),--—Î
+	[1] = tonumber("ffd0c7",16),--ƒsƒ“ƒN
+	[2] = tonumber("feb080",16),--ƒIƒŒƒ“ƒW
+	[3] = tonumber("fefebb",16),--‰©F
+	[4] = tonumber("daf8ef",16),--…F
+	[5] = tonumber("e1efff",16),--Â
+	[6] = tonumber("a9b9df",16),--Ž‡
+}
+function main()
+
+	_ZOOM(90)
+
+	range = math.limit(range,0.3,10)
+	range = range + (_KEY(0) - _KEY(1)) * 0.5
+	charage_p = math.limit(charage_p,0,100)
+	charage_p = charage_p + (_KEY(2) - _KEY(3)) * 0.5
+	if (_KEY(4)>0) and (charage_p < 81) then
+		local str = math.limit((80-charage_p)/2.5,0.1,20)
+		charage_p = math.step(charage_p,80,str)
+	end
+	out(0,charage_p)
+	
+	local n = 3
+	local n2 = 8
+	local t = _TICKS()
+	local t2 = _TICKS()/8
+
+	--‰ñ“]‚·‚éŽOŠpŒ`•`‰æ
+	_SETCOLOR(tonumber("d2eedc",16))
+	for i = 1,n do
+		local aa = (math.pi*2/n) * i + t * 0.1
+		local bb = (math.pi*2/n) * (i - 1) + t * 0.1
+		hud_move3d(math.cos(aa)-1,math.sin(aa)-0.2,range+1,cn)
+		hud_line3d(math.cos(bb)-1,math.sin(bb)-0.2,range+1,cn)
+	end
+
+	--”ªŒT˜F•`‰æ
+	_SETCOLOR(tonumber("8cfb95",16))
+	for i = 1,n2 do
+		local aa = (math.pi*2/n2) * i + t2 * 0.1
+		hud_move3d(math.cos(aa)*0.1+0.3,math.sin(aa)*0.1-0.3,range,cn)
+		hud_line3d(math.cos(aa)*0.06+0.3,math.sin(aa)*0.06-0.3,range,cn)
+	end
+	for i = 1,40 do
+		local aa = (math.pi*2/40) * i
+		local bb = (math.pi*2/40) * (i - 1)
+		--ƒ`ƒƒ[ƒWƒ[ƒ^[ŠO˜g
+		hud_move3d(math.cos(aa)*0.15+0.3,math.sin(aa)*0.15-0.3,range,cn)
+		hud_line3d(math.cos(bb)*0.15+0.3,math.sin(bb)*0.15-0.3,range,cn)
+		--ƒ`ƒƒ[ƒWƒ[ƒ^[“àŠO˜g
+		hud_move3d(math.cos(aa)*0.11+0.3,math.sin(aa)*0.11-0.3,range,cn)
+		hud_line3d(math.cos(bb)*0.11+0.3,math.sin(bb)*0.11-0.3,range,cn)
+		--”ªŒT˜F’†˜g
+		hud_move3d(math.cos(aa)*0.087+0.3,math.sin(aa)*0.087-0.3,range,cn)
+		hud_line3d(math.cos(bb)*0.087+0.3,math.sin(bb)*0.087-0.3,range,cn)
+		--”ªŒT˜F“à˜g
+		hud_move3d(math.cos(aa)*0.05+0.3,math.sin(aa)*0.05-0.3,range,cn)
+		hud_line3d(math.cos(bb)*0.05+0.3,math.sin(bb)*0.05-0.3,range,cn)
+		
+	end
+	--”ªŒT˜Fƒ`ƒƒ[ƒWƒ[ƒ^[
+	col.n = math.mod(col.n+_KEYDOWN(5),6)
+	
+	_SETCOLOR(col[col.n])
+	local charage = (400 * (charage_p*0.01))
+	for i = 1,charage do
+		local aa = (math.pi*2/400) * i
+		local bb = (math.pi*2/400) * (i - 1)
+		for j = 0.115,0.145,0.001 do
+			hud_move3d(-math.sin(aa)*j+0.3,-math.cos(aa)*j-0.3,range,cn)
+			hud_line3d(-math.sin(bb)*j+0.3,-math.cos(bb)*j-0.3,range,cn)
+		end
+	end
+	--”ªŒT˜Fƒ`ƒƒ[ƒWƒ[ƒ^[‰¡ü
+--	local aa = (math.pi*2/400) * (charage-0.5)
+--	hud_move3d(-math.sin(aa)*0.14+0.3,-math.cos(aa)*0.14-0.3,range,cn)
+--	hud_line3d(-math.sin(aa)*0.12+0.3,-math.cos(aa)*0.12-0.3,range,cn)
+
+	--‚½‚¾‚Ì‰¡ü
+	_SETCOLOR(tonumber("ff0000",16))
+	hud_move3d(-1,0,1,cn)
+	hud_line3d(1,0,1,cn)
+end}

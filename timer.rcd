@@ -1,0 +1,126 @@
+// [RCD] 
+Val
+{
+	N0_0(default=61691, min=4091, max=61691, step=61691)
+	N0_1(default=61691, min=4091, max=61691, step=61691)
+	N0_2(default=61691, min=4091, max=61691, step=61691)
+	N0_3(default=61691, min=4091, max=61691, step=61691)
+	N0_4(default=61691, min=4091, max=61691, step=61691)
+	N0_5(default=61691, min=4091, max=61691, step=61691)
+	N0_6(default=61691, min=4091, max=61691, step=61691)
+	N0_7(default=61691, min=4091, max=61691, step=61691)
+	N0_8(default=61691, min=4091, max=61691, step=61691)
+	N0_9(default=61691, min=4091, max=61691, step=61691)
+	N1_0(default=61691, min=4091, max=61691, step=61691)
+	N1_1(default=61691, min=4091, max=61691, step=61691)
+	N1_2(default=61691, min=4091, max=61691, step=61691)
+	N1_3(default=61691, min=4091, max=61691, step=61691)
+	N1_4(default=61691, min=4091, max=61691, step=61691)
+	N1_5(default=61691, min=4091, max=61691, step=61691)
+	N1_6(default=61691, min=4091, max=61691, step=61691)
+	N1_7(default=61691, min=4091, max=61691, step=61691)
+	N1_8(default=61691, min=4091, max=61691, step=61691)
+	N1_9(default=61691, min=4091, max=61691, step=61691)
+	N2_0(default=61691, min=4091, max=61691, step=61691)
+	N2_1(default=61691, min=4091, max=61691, step=61691)
+	N2_2(default=61691, min=4091, max=61691, step=61691)
+	N2_3(default=61691, min=4091, max=61691, step=61691)
+	N2_4(default=61691, min=4091, max=61691, step=61691)
+	N2_5(default=61691, min=4091, max=61691, step=61691)
+	N2_6(default=61691, min=4091, max=61691, step=61691)
+	N2_7(default=61691, min=4091, max=61691, step=61691)
+	N2_8(default=61691, min=4091, max=61691, step=61691)
+	N2_9(default=61691, min=4091, max=61691, step=61691)
+	N3_0(default=61691, min=4091, max=61691, step=61691)
+	N3_1(default=61691, min=4091, max=61691, step=61691)
+	N3_2(default=61691, min=4091, max=61691, step=61691)
+	N3_3(default=61691, min=4091, max=61691, step=61691)
+	N3_4(default=61691, min=4091, max=61691, step=61691)
+	N3_5(default=61691, min=4091, max=61691, step=61691)
+	N3_6(default=61691, min=4091, max=61691, step=61691)
+	N3_7(default=61691, min=4091, max=61691, step=61691)
+	N3_8(default=61691, min=4091, max=61691, step=61691)
+	N3_9(default=61691, min=4091, max=61691, step=61691)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl() {
+			W:Cowl() {
+				W:Cowl() {
+					W:Cowl() {
+						W:Cowl() {
+							W:Cowl() {
+								W:Cowl() {
+									W:Cowl() { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Cowl(angle=-90, option=1, effect=#F0FB) {
+			N:Cowl(option=2) {
+				N:Cowl(option=1, effect=#F0FB) {
+					N:Cowl(option=2) { }
+				}
+			}
+		}
+		E:Cowl() {
+			E:Cowl() {
+				E:Cowl() {
+					E:Cowl() {
+						E:Cowl() {
+							E:Cowl() {
+								E:Cowl() {
+									E:Cowl() {
+										N:Cowl(angle=-90, effect=N0_0) {
+											N:Cowl(effect=N0_0) {
+												N:Cowl(effect=N0_0) {
+													N:Cowl(effect=N0_0) {
+														W:Cowl(effect=N0_0) {
+															W:Cowl(effect=N0_0) {
+																S:Cowl(effect=N0_0) {
+																	S:Cowl(effect=N0_0) {
+																		S:Cowl(effect=N0_0) {
+																			E:Cowl(effect=N0_0) { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function OnFrame()
+	_tt = os.date("*t")
+	
+	n0 = math.floor(_tt.min / 10)
+	n1 = math.mod(_tt.hour,10)
+	
+	n2 = math.floor(_tt.hour / 10)
+	n3 = math.mod(_tt.min,10)
+	
+	_G["N0_"..n0] = 4091
+	_G["N1_"..n1] = 4091
+	_G["N2_"..n2] = 4091
+	_G["N3_"..n3] = 4091
+end
+}

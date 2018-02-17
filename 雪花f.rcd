@@ -1,0 +1,776 @@
+// [RCD] 
+Val
+{
+	A1(default=0, max=10000000000)
+	A2(default=0, max=10000000000)
+	A3(default=0, max=10000000000)
+	A4(default=0, max=10000000000)
+	G0(default=0, max=10000000000)
+	G1(default=0, max=10000000000)
+	G2(default=0, max=10000000000)
+	G3(default=0, max=10000000000)
+	GJ(default=0, min=-10000000000, max=10000000000)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+	V0(default=0, min=-90, max=90)
+	V1(default=0, min=-90, max=90)
+	V2(default=0, min=-90, max=90)
+	V3(default=0, min=-90, max=90)
+	Y(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+		N:Frame(angle=30, option=1) {
+			N:Frame(angle=150, option=1) {
+				S:Cowl(option=1) {
+					S:Cowl(angle=150, color=#101020, effect=#70FB) {
+						S:Cowl(angle=15, color=#101020, effect=#70FB) {
+							S:Cowl(angle=15, color=#101020, effect=#70FB) {
+								S:Cowl(angle=10, color=#101020, effect=#70FB) {
+									S:Cowl() { }
+									W:Cowl(angle=85, option=0, color=#101020, effect=#70FB) { }
+									E:Cowl(angle=85, option=0, color=#101020, effect=#70FB) { }
+								}
+								W:Cowl(angle=85, option=0, color=#101020, effect=#70FB) { }
+								E:Cowl(angle=85, option=0, color=#101020, effect=#70FB) { }
+							}
+							W:Cowl(angle=85, option=4, color=#101020, effect=#70FB) { }
+							E:Cowl(angle=85, option=3, color=#101020, effect=#70FB) { }
+						}
+						W:Cowl(angle=85, option=4, color=#101020, effect=#70FB) {
+							S:Cowl(option=3, color=#101020, effect=#70FB) { }
+						}
+						E:Cowl(angle=85, option=3, color=#101020, effect=#70FB) {
+							S:Cowl(option=4, color=#101020, effect=#70FB) { }
+						}
+					}
+					S:Cowl(angle=-20) {
+						S:Cowl(angle=170) {
+							S:Cowl(angle=20) {
+								W:Cowl(angle=150) { }
+								E:Cowl(angle=150) { }
+							}
+							N:Cowl(angle=150) {
+								N:Cowl() {
+									N:Cowl() {
+										N:Cowl() {
+											N:Cowl() { }
+										}
+									}
+									W:Cowl(angle=150) { }
+									E:Cowl(angle=150) { }
+								}
+								E:Cowl(angle=145, option=4) { }
+								W:Cowl(angle=145, option=3) { }
+							}
+							E:Cowl(angle=145, option=3) { }
+							W:Cowl(angle=145, option=4) { }
+						}
+					}
+				}
+				N:TrimF() {
+					N:Trim(angle=90, spring=1, damper=1) {
+						N:Trim(spring=1, damper=1) {
+							N:Trim(spring=1, damper=1) {
+								N:Trim(spring=1, damper=1) {
+									N:Trim(spring=1, damper=1) {
+										N:Trim(spring=1, damper=1) {
+											E:Chip(angle=100) {
+												E:Trim(angle=-V) {
+													E:Chip() { }
+												}
+												E:Cowl(option=1) {
+													E:Cowl(option=1) {
+														E:Cowl(angle=-90, option=1, effect=#F0FB) {
+															S:Cowl(angle=-60, option=1, effect=#F0FB) {
+																W:Cowl(angle=-90) {
+																	S:Cowl() {
+																		S:Cowl() { }
+																	}
+																}
+															}
+														}
+													}
+												}
+												S:Cowl() { }
+											}
+											E:Chip(angle=-100) {
+												E:Trim(angle=V) {
+													E:Chip() { }
+												}
+												E:Cowl(option=1) {
+													E:Cowl(option=1) {
+														E:Cowl(angle=90, option=1, effect=#F0FB) {
+															S:Cowl(angle=60, option=1, effect=#F0FB) {
+																W:Cowl(angle=90) {
+																	S:Cowl() {
+																		S:Cowl() { }
+																	}
+																}
+															}
+														}
+													}
+												}
+												S:Cowl() { }
+											}
+											N:Rudder(angle=90) {
+												E:Chip(angle=Y) {
+													E:Cowl(option=5) { }
+													S:Rudder(angle=90) { }
+												}
+											}
+											S:Weight(option=2) { }
+										}
+										N:Weight(option=1) {
+											S:Weight() { }
+										}
+									}
+									E:Frame(angle=100, option=1) {
+										N:Jet(angle=90, power=-P) {
+											E:Cowl(angle=-120) {
+												W:Cowl(angle=-40) {
+													N:Cowl(angle=-90) {
+														W:Cowl(angle=-45) { }
+														W:Cowl(angle=-5) {
+															W:Cowl(angle=5) {
+																W:Cowl(option=4) { }
+															}
+															S:Cowl(angle=-85) {
+																W:Cowl(angle=10) { }
+																E:Cowl() {
+																	S:Cowl(angle=-90) {
+																		W:Cowl(angle=-10) { }
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+											N:Cowl(angle=-100) { }
+											S:Cowl(angle=-100) { }
+										}
+									}
+									E:Frame(angle=-100, option=1) {
+										N:Jet(angle=-90, power=P) {
+											E:Cowl(angle=120) {
+												W:Cowl(angle=40) {
+													N:Cowl(angle=90) {
+														W:Cowl(angle=45) { }
+														W:Cowl(angle=5) {
+															W:Cowl(angle=-5) {
+																W:Cowl(option=4) { }
+															}
+															S:Cowl(angle=85) {
+																E:Cowl() {
+																	S:Cowl(angle=90) {
+																		W:Cowl(angle=10) { }
+																	}
+																}
+																W:Cowl(angle=-10) { }
+															}
+														}
+													}
+												}
+											}
+											N:Cowl(angle=100) { }
+											S:Cowl(angle=100) { }
+										}
+									}
+									N:TrimF(angle=90) {
+										N:Jet(power=GJ) { }
+									}
+								}
+								E:Chip(angle=100) {
+									E:Trim(angle=R) {
+										E:Chip() {
+											E:Chip() { }
+										}
+									}
+									E:Cowl(option=1) {
+										E:Cowl(option=1) {
+											E:Cowl(option=1) {
+												E:Cowl(angle=-90, option=1, effect=#F0FB) {
+													S:Cowl(angle=-60, option=1, effect=#F0FB) {
+														W:Cowl(angle=-90) {
+															S:Cowl() {
+																S:Cowl() {
+																	S:Cowl() { }
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									S:Cowl() {
+										E:Cowl() { }
+									}
+								}
+								E:Chip(angle=-100) {
+									E:Trim(angle=R) {
+										E:Chip() {
+											E:Chip() { }
+										}
+									}
+									E:Cowl(option=1) {
+										E:Cowl(option=1) {
+											E:Cowl(option=1) {
+												E:Cowl(angle=90, option=1, effect=#F0FB) {
+													S:Cowl(angle=60, option=1, effect=#F0FB) {
+														W:Cowl(angle=90) {
+															S:Cowl() {
+																S:Cowl() {
+																	S:Cowl() { }
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									S:Cowl() {
+										E:Cowl() { }
+									}
+								}
+							}
+						}
+					}
+					N:Cowl(angle=160, option=0, color=1, effect=#F0FB) {
+						N:Cowl(angle=65, option=1, effect=#F0FB) {
+							E:Cowl(angle=85, option=3) {
+								E:Cowl(angle=-170, option=1, effect=#F0FB) {
+									E:Cowl(angle=175, option=3) {
+										S:Cowl(option=4) {
+											E:Cowl(option=3) {
+												S:Cowl(option=4) {
+													E:Cowl(angle=5, option=3) {
+														S:Cowl(angle=5, option=4) {
+															E:Cowl(angle=5, option=3) {
+																S:Cowl(angle=5, option=4) {
+																	E:Cowl(angle=5, option=3) { }
+																}
+															}
+														}
+													}
+												}
+												S:Cowl(angle=-90, option=1, effect=#F0FB) {
+													E:Cowl(angle=-135, option=1, effect=#F0FB) {
+														N:Cowl() {
+															E:Cowl() {
+																E:Cowl() { }
+															}
+														}
+													}
+												}
+											}
+										}
+										W:Cowl(option=3) {
+											N:Cowl(angle=15, option=4) {
+												W:Cowl(angle=90, option=3) { }
+											}
+										}
+									}
+								}
+							}
+							W:Cowl(angle=85, option=4) {
+								W:Cowl(angle=-170, option=1, effect=#F0FB) {
+									W:Cowl(angle=175, option=4) {
+										S:Cowl(option=3) {
+											W:Cowl(option=4) {
+												S:Cowl(option=3) {
+													W:Cowl(angle=5, option=4) {
+														S:Cowl(angle=5, option=3) {
+															W:Cowl(angle=5, option=4) {
+																S:Cowl(angle=5, option=3) {
+																	W:Cowl(angle=5, option=4) { }
+																}
+															}
+														}
+													}
+												}
+												S:Cowl(angle=-90, option=1, effect=#F0FB) {
+													W:Cowl(angle=-135, option=1, effect=#F0FB) {
+														N:Cowl() {
+															W:Cowl() {
+																W:Cowl() { }
+															}
+														}
+													}
+												}
+											}
+										}
+										E:Cowl(option=4) {
+											N:Cowl(angle=15, option=3) {
+												E:Cowl(angle=90, option=4) { }
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					N:TrimF(angle=0) {
+						S:Frame() {
+							S:Frame(angle=V0) {
+								S:Arm(option=50000, power=G0, angle=-V0, name=A0) { }
+							}
+							S:Frame(angle=V1) {
+								S:Arm(option=50000, power=G1, angle=-V1, name=A1) { }
+							}
+							S:Frame(angle=V2) {
+								S:Arm(option=50000, power=G2, angle=-V2, name=A2) { }
+							}
+							S:Frame(angle=V3) {
+								S:Arm(option=50000, power=G3, angle=-V3, name=A3) { }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+do
+	local FSX=_X(FS)
+	local FSY=_Y(FS)
+	local FSZ=_Z(FS)
+	local RSX=_X(RS)
+	local RSY=_Y(RS)
+	local RSZ=_Z(RS)
+	local LSX=_X(LS)
+	local LSY=_Y(LS)
+	local LSZ=_Z(LS)
+	local TSX=_X(TS)
+	local TSY=_Y(TS)
+	local TSZ=_Z(TS)
+	
+	function MF(a)
+		local FX=_X(FS)-FSX
+		local FY=_Y(FS)-FSY
+		local FZ=_Z(FS)-FSZ
+		local RX=_X(RS)-RSX
+		local RY=_Y(RS)-RSY
+		local RZ=_Z(RS)-RSZ
+		local LX=_X(LS)-LSX
+		local LY=_Y(LS)-LSY
+		local LZ=_Z(LS)-LSZ
+		local TX=_X(TS)-TSX
+		local TY=_Y(TS)-TSY
+		local TZ=_Z(TS)-TSZ
+
+		WX=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))-(TX*_YX(TS)+TY*_YY(TS)+TZ*_YZ(TS))
+		WY=(RX*_ZX(RS)+RY*_ZY(RS)+RZ*_ZZ(RS))-(LX*_ZX(LS)+LY*_ZY(LS)+LZ*_ZZ(LS))
+		WZ=(RX*_YX(RS)+RY*_YY(RS)+RZ*_YZ(RS))-(LX*_YX(LS)+LY*_YY(LS)+LZ*_YZ(LS))
+		VEL=(FX*_ZX(FS)+FY*_ZY(FS)+FZ*_ZZ(FS))*3.6
+		VX=(FX*_XX(FS)+FY*_XY(FS)+FZ*_XZ(FS))*3.6
+
+		VY=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))*3.6
+
+		FSX=_X(FS)
+		FSY=_Y(FS)
+		FSZ=_Z(FS)
+		RSX=_X(RS)
+		RSY=_Y(RS)
+		RSZ=_Z(RS)
+		LSX=_X(LS)
+		LSY=_Y(LS)
+		LSZ=_Z(LS)
+		TSX=_X(TS)
+		TSY=_Y(TS)
+		TSZ=_Z(TS)
+	end
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+function OnInit()
+	_ZOOM(_GETVIEWZOOM())
+end
+
+_RATE2=0.2
+_RATE1=1-_RATE2
+
+_vel=0
+_ovel=0
+
+_velrot=0
+_maxvel = 0
+
+function Rotate2D(px,py,pr)
+	return px * math.cos(pr) - py * math.sin(pr), px * math.sin(pr) + py * math.cos(pr)
+end
+
+_tn=-60
+_tv={0,_tn,_tn,_tn}
+_v=0
+
+_gjp=0
+
+function OnFrame()
+	MF()
+	
+	for i=0,3 do
+		_G['G'..i]=0
+	end
+	
+	if _KEY(5) == 1 and _E(_G['A'.._v]) == _OPTION(_G['A'.._v]) and _G['V'.._v] == 0 then
+		_G['G'.._v]=_OPTION(_G['A'.._v])
+		_gjp=_OPTION(_G['A'.._v])*-(((420-_VZ())/140)*0.8)
+		_v=math.mod(_v+1,4)
+		_tv={_tn,_tn,_tn,_tn}
+		_tv[_v+1]=0
+	end
+	
+	GJ=_gjp
+	_gjp=0
+	
+	for i=0,3 do
+		_G['V'..i]=_LINER(_G['V'..i],_tv[i+1],math.abs(_tn/3))
+	end
+	
+	P=_LINER(P,_KEY(4)*300000,20000)
+	R=_LINER(R,_KEY(2)*16+_KEY(3)*-16,4)
+	V=_LINER(V,_KEY(0)*32+_KEY(1)*-32,8)
+	
+	local _R,_V=0,0
+	
+	if _KEY(2) == 0 and _KEY(3) == 0 then
+		_R=WZ*-96
+	end
+	
+	if _KEY(0) == 0 and _KEY(1) == 0 then
+		_V=WX*256
+	end
+	
+	Y=WY*128
+	
+	R=R*_RATE1+_R*_RATE2
+	V=V*_RATE1+_V*_RATE2
+	
+	--<HUD>----------------------------------------------------------------
+	
+	XGUI.SetDrawColorRGB(0,255,0)
+	
+	local r_r = 128
+	local r_s = r_r-8
+	local r_t = r_r+8
+	
+	XGUI.Move2D(16,r_r+16)
+	XGUI.Line2D(16,16)
+	XGUI.Line2D(r_r+16,16)
+	
+	local i
+	for i=180,-90,-5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_r+r_r+16,math.cos(math.rad(i))*r_r+r_r+16)
+	end
+	
+	i = 0
+	XGUI.Move2D(math.sin(math.rad(i))*r_s+r_r+16,math.cos(math.rad(i))*r_s+r_r+16)
+	
+	for i=0,360,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_s+r_r+16,math.cos(math.rad(i))*r_s+r_r+16)
+	end
+	
+	XGUI.Move2D(r_r+16,r_r+16)
+	XGUI.Line2D(math.sin(math.rad(180+_GETVIEWZOOM()/2))*r_s+r_r+16,math.cos(math.rad(180+_GETVIEWZOOM()/2))*r_s+r_r+16)
+	XGUI.Move2D(r_r+16,r_r+16)
+	XGUI.Line2D(math.sin(math.rad(180-_GETVIEWZOOM()/2))*r_s+r_r+16,math.cos(math.rad(180-_GETVIEWZOOM()/2))*r_s+r_r+16)
+	
+	
+	XGUI.Move2D(0,r_r+16)
+	
+	for i=-90,135,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_t+r_r+16,math.cos(math.rad(i))*r_t+r_r+16)
+	end
+	
+	XGUI.Line2D(math.sin(math.rad(135))*r_t+r_r+16+64,math.cos(math.rad(135))*r_t+r_r+16-40)
+	XGUI.Line2D(_WIDTH(),math.cos(math.rad(135))*r_t+r_r+16-40)
+	
+	
+	local r_u = 16
+	
+	local r_s1 = 512
+	
+	XGUI.Move2D(0,_HEIGHT()-16)
+	
+	XGUI.Line2D(_WIDTH()-r_s1-r_u*2,_HEIGHT()-16)
+	
+	for i=0,90,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_u+_WIDTH()-r_s1,math.cos(math.rad(i))*r_u+_HEIGHT()-16-r_u)
+	end
+	
+	for i=-90,-180,-5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_u+_WIDTH()-r_s1+r_u*2,math.cos(math.rad(i))*r_u+_HEIGHT()-16-r_u-72)
+	end
+	
+	XGUI.Line2D(_WIDTH(),_HEIGHT()-16-r_u*2-72)
+	
+	
+	local r_v = 48
+	
+	XGUI.Move2D(math.sin(math.rad(0))*r_v+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	
+	for i=0,360,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_v+r_v+16,math.cos(math.rad(i))*r_v+_HEIGHT()/2)
+	end
+	
+	local r_w = 16
+	
+	XGUI.Move2D(math.sin(math.rad(0))*r_w+r_v+16,math.cos(math.rad(0))*r_w+_HEIGHT()/2)
+	
+	for i=0,360,5 do
+		XGUI.Line2D(math.sin(math.rad(i))*r_w+r_v+16,math.cos(math.rad(i))*r_w+_HEIGHT()/2)
+	end
+	
+	_vel = _VEL(0)
+	if _maxvel < _vel then _maxvel = _vel end
+	
+	_velrot = _velrot + (math.rad(90)*(_vel-_ovel)*30)
+	
+	_ovel = _vel
+	
+	
+	for i=-20,20,40 do
+		XGUI.Move2D(math.sin(math.rad(_velrot+i))*r_w+r_v+16,math.cos(math.rad(_velrot+i))*r_w+_HEIGHT()/2)
+		XGUI.Line2D(math.sin(math.rad(_velrot+i))*r_v+r_v+16,math.cos(math.rad(_velrot+i))*r_v+_HEIGHT()/2)
+	end
+	
+	for i=-200,-160,40 do
+		XGUI.Move2D(math.sin(math.rad(_velrot+i))*r_w+r_v+16,math.cos(math.rad(_velrot+i))*r_w+_HEIGHT()/2)
+		XGUI.Line2D(math.sin(math.rad(_velrot+i))*r_v+r_v+16,math.cos(math.rad(_velrot+i))*r_v+_HEIGHT()/2)
+	end
+
+	XGUI.Move2D(math.sin(math.rad(0))*r_v+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	XGUI.Line2D(128+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	
+	XGUI.Move2D(math.sin(math.rad(90))*r_v+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2)
+	XGUI.Line2D(128+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2)
+	
+	XGUI.Move2D(128+r_v+16,math.cos(math.rad(0))*r_v+_HEIGHT()/2)
+	XGUI.Line2D(128+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2)
+	
+	XGUI.SetStringPosition(math.sin(math.rad(90))*r_v+r_v+16,math.cos(math.rad(90))*r_v+_HEIGHT()/2+8)
+	
+	XGUI.SetStringSize(32)
+	
+	XGUI.DrawVectorString(string.format("% 4d",_vel*3.6))
+	
+	local r_s2 = 96
+	local r_s3 = 24
+	
+	XGUI.Move2D(_WIDTH()-r_s2-16-r_s3*2,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2+r_s3)
+	XGUI.Line2D(_WIDTH()-r_s2-16-r_s3*2,_HEIGHT()/2+r_s3)
+	XGUI.Line2D(_WIDTH()-r_s2-16-r_s3*2,_HEIGHT()/2-r_s3)
+	
+	XGUI.SetStringPosition(_WIDTH()-r_s2-16-r_s3*2+16,_HEIGHT()/2-r_s3+8)
+	
+	XGUI.DrawVectorString(string.format("% 4d",_Y(0)))
+	
+	XGUI.Move2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16,_HEIGHT()/2-r_s3)
+	XGUI.Line2D(_WIDTH()-16,_HEIGHT()/2-r_s3+r_s2)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3+r_s2)
+	XGUI.Line2D(_WIDTH()-16-r_s3*2,_HEIGHT()/2-r_s3)
+	
+	
+	for i=-10,10 do
+		local j = i/11
+		local k = 0.5
+		
+		if math.mod((_Y()-math.mod(_Y(),1))-i,5) == 0 then k=1 end
+		
+		XGUI.Move2D(_WIDTH()-16-r_s3*k,_HEIGHT()/2+r_s3+r_s2/2*j+math.mod(_Y(),1)*4)
+		XGUI.Line2D(_WIDTH()-16,_HEIGHT()/2+r_s3+r_s2/2*j+math.mod(_Y(),1)*4)
+	end
+	
+	local r_s5 = math.tan(math.rad(_GETVIEWZOOM()))*_HEIGHT()
+	
+	for i=-360,360,20 do
+		local k = 0.5
+		
+		if math.mod(i,40) == 0 then k = 1 end
+		
+		local ax1,ay1 = Rotate2D(-384-128*k,-r_s5*(_ZY()+(i/180)),-_EZ())
+		local ax2,ay2 = Rotate2D(-384      ,-r_s5*(_ZY()+(i/180)),-_EZ())
+		
+		local bx1,by1 = Rotate2D( 384+128*k,-r_s5*(_ZY()+(i/180)),-_EZ())
+		local bx2,by2 = Rotate2D( 384      ,-r_s5*(_ZY()+(i/180)),-_EZ())
+		
+		XGUI.Move2D(ax1+_WIDTH()/2,ay1+_HEIGHT()/2)
+		XGUI.Line2D(ax2+_WIDTH()/2,ay2+_HEIGHT()/2)
+		
+		XGUI.Move2D(bx1+_WIDTH()/2,by1+_HEIGHT()/2)
+		XGUI.Line2D(bx2+_WIDTH()/2,by2+_HEIGHT()/2)
+	end
+	
+	
+	local ax1,ay1 = Rotate2D(-384-256,0,-_EZ())
+	local ax2,ay2 = Rotate2D(-384      ,0,-_EZ())
+		
+	local bx1,by1 = Rotate2D( 384+256,0,-_EZ())
+	local bx2,by2 = Rotate2D( 384      ,0,-_EZ())
+		
+	XGUI.Move2D(ax1+_WIDTH()/2,ay1+_HEIGHT()/2)
+	XGUI.Line2D(ax2+_WIDTH()/2,ay2+_HEIGHT()/2)
+		
+	XGUI.Move2D(bx1+_WIDTH()/2,by1+_HEIGHT()/2)
+	XGUI.Line2D(bx2+_WIDTH()/2,by2+_HEIGHT()/2)
+	
+	local cx1,cy1 = -256-128,0
+	local cx2,cy2 =  256+128,0
+	
+	XGUI.SetStringSize(16)
+	
+	XGUI.SetStringPosition(cx1+_WIDTH()/2,cy1+_HEIGHT()/2)
+	XGUI.DrawVectorString(string.format("%d",math.abs(math.deg(_EX()))))
+	
+	XGUI.SetStringPosition(cx2+_WIDTH()/2,cy2+_HEIGHT()/2)
+	XGUI.DrawVectorString(string.format("%d",math.abs(math.deg(_EX()))))
+	
+	
+	for i=1,_PLAYERS()-1 do
+		local x,y,z = _NPOS(i)
+		local _wsize_hlf = r_r+16
+		
+		local x1,y1 = x-_X(0),z-_Z(0)
+		
+		local x2 = x1 * math.cos(_EY(0)) - y1 * math.sin(_EY(0))
+		local y2 = x1 * math.sin(_EY(0)) + y1 * math.cos(_EY(0))
+		
+		x2 = x2 / 600 * -r_r + _wsize_hlf
+		y2 = y2 / 600 * r_r + _wsize_hlf
+		
+		XGUI.SetStringSize(12)
+		
+		if math.sqrt(x1 * x1 + y1 * y1) < 600 and _PLAYERID(i) ~= _PLAYERMYID() then
+			if _PLAYERARMS(i) ~= 0 then XGUI.SetDrawColorRGB(255,0,0)
+			else XGUI.SetDrawColorRGB(255,255,255) end
+			XGUI.SetStringPosition(x2,y2)
+			XGUI.DrawVectorStringCenter("~")
+		end
+	end
+	
+	XGUI.SetDrawColorRGB(0,255,0)
+	
+	XGUI.SetStringPosition(24,32)
+	XGUI.DrawVectorString(string.format("% 4.4f",_FPS()))
+	
+	XGUI.Move2D(_WIDTH()/2-16,_HEIGHT()/2)
+	XGUI.Line2D(_WIDTH()/2+16,_HEIGHT()/2)
+	
+	XGUI.Move2D(_WIDTH()/2,_HEIGHT()/2)
+	XGUI.Line2D(_WIDTH()/2,_HEIGHT()/2+16)
+	
+	XGUI.SetDrawColorRGB(255,128,0)
+	
+	local r_s4 = 256
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u   ,_HEIGHT()/2-r_s4-r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u+16,_HEIGHT()/2-r_s4-r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2-r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2-r_s4+16)
+	
+	
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u   ,_HEIGHT()/2+r_s4+r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u-16,_HEIGHT()/2+r_s4+r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2+r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2+r_s4-16)
+	
+	
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u   ,_HEIGHT()/2-r_s4-r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u-16,_HEIGHT()/2-r_s4-r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2-r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2+r_s4+r_u*2 ,_HEIGHT()/2-r_s4+16)
+	
+	
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u   ,_HEIGHT()/2+r_s4+r_u)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u+16,_HEIGHT()/2+r_s4+r_u)
+	
+	XGUI.Move2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2+r_s4)
+	XGUI.Line2D(r_u+_WIDTH()/2-r_s4-r_u*2 ,_HEIGHT()/2+r_s4-16)
+	
+	
+	
+	for i=-90,-180,-5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2-r_s4)
+		XGUI.Line2D(math.sin(math.rad(  i))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(  i))*r_u+_HEIGHT()/2-r_s4)
+	end
+	
+	for i=-90,0,5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2+r_s4)
+		XGUI.Line2D(math.sin(math.rad(  i))*r_u+_WIDTH()/2-r_s4,math.cos(math.rad(  i))*r_u+_HEIGHT()/2+r_s4)
+	end
+	
+	for i=90,180,5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2-r_s4)
+		XGUI.Line2D(math.sin(math.rad(  i))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(  i))*r_u+_HEIGHT()/2-r_s4)
+	end
+	
+	for i=90,0,-5 do
+		XGUI.Move2D(math.sin(math.rad(i-5))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(i-5))*r_u+_HEIGHT()/2+r_s4)
+		XGUI.Line2D(math.sin(math.rad(  i))*r_u+_WIDTH()/2+r_s4+r_u*2,math.cos(math.rad(  i))*r_u+_HEIGHT()/2+r_s4)
+	end
+	
+	--</HUD>---------------------------------------------------------------
+end
+
+function _NPOS(n)
+	math.randomseed(1519)
+	local x = _PLAYERX(n)
+	math.randomseed(1519)
+	local y = _PLAYERY(n)
+	math.randomseed(1519)
+	local z = _PLAYERZ(n)
+	
+	local a = math.pow(_PLAYERCHIPS(n), 1.0 / 3.0) / 2.0
+	
+	local g_RandTime = _NTICKS()
+	
+	x = x - math.sin(g_RandTime / 150.0)*a + math.sin(g_RandTime / 350.0)*a
+	y = y - math.sin(g_RandTime / 160.0)*a + math.sin(g_RandTime / 360.0)*a
+	z = z - math.sin(g_RandTime / 140.0)*a + math.sin(g_RandTime / 340.0)*a
+	
+	return x,y,z
+end
+}

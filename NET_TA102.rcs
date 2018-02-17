@@ -1,0 +1,199 @@
+ring={
+	{0,50,-20,0,0,0,12},
+	{0,50,-93,	0,0,0,10},
+	{79,45,-126,0,-155,0,10},
+	{68,41,-162,0,50,0,10},
+	{-6,36,-180,0,-50,0,10},
+	{-19,35,-191,0,139,0,10},
+	{11,31,-125,0,-123,0,10},
+	{105,25,-72,0,-30,0,10},
+	{131,22,-28,0,-180,0,10},
+	{175,24,19,0,-28,0,10},
+	{227,29,33,0,-179,0,10},
+	{182,33,66,0,77,0,10},
+	{122,38,87,0,-37,0,10},
+	{0,50,-20,0,0,0,12},
+}
+
+if hikeolib==nil then hikeolib={} end
+
+function netown()
+	local ret=-1
+	
+	for i=0,_PLAYERS()-1 do
+		if _PLAYERID(i)==_PLAYERMYID() then
+			ret=i
+		end
+	end
+	
+	return ret
+end
+
+
+--変数共有
+hikeolib.IsShare={}
+function ShareVal(vals)
+	local index
+	--local index2=1
+	local tmp
+	local sendtmp=""
+	
+	index , tmp = next (vals ,index)
+	while true do
+		if type(tmp)=="number" then
+			sendtmp=sendtmp..string.format("%d",tmp*100)
+		elseif type(tmp)=="string" then
+			sendtmp=sendtmp..string.format("\"%s\"",tmp)
+		else
+			sendtmp=sendtmp..tmp
+		end
+		
+		index , tmp = next(vals ,index)
+		
+		if tmp==nil then break end
+		--index2=index2+1
+		sendtmp=sendtmp..","
+	end
+	
+	_SENDALL(sendtmp)
+	
+	--out(2,sendtmp)
+	--out(3,index2)
+	
+	-------------ここから受信-------------
+	--[[
+	local recv=sendtmp
+	local i=1
+	]]
+	for i=0,_PLAYERS()-1 do
+		hikeolib.IsShare[i]=0
+		_G["hikeolib.plval".._PLAYERNAME(i)]=_G["hikeolib.plval".._PLAYERNAME(i)] or {}
+		if type(_G["hikeolib.plval".._PLAYERNAME(i)][1])~="nil"
+			then hikeolib.IsShare[i]=1
+		end
+		
+		
+		
+		local recv=_RECEIVE(i)
+		if recv~="" then
+			hikeolib.IsShare[i]=1
+			local tmpfunc="return "..recv--.." end"
+			
+			--out(5,tmpfunc)
+			_G["hikeolib.plval".._PLAYERNAME(i)] = {assert(loadstring(tmpfunc))()}
+			
+			local index=1
+			while true do
+				if type(_G["hikeolib.plval".._PLAYERNAME(i)][index])=="number" then
+					_G["hikeolib.plval".._PLAYERNAME(i)][index]=_G["hikeolib.plval".._PLAYERNAME(i)][index]/100
+				end
+				
+				if _G["hikeolib.plval".._PLAYERNAME(i)][index+1]==nil then break end
+				index=index+1
+			end
+		end
+		_RECEIVECLEAR(i)
+		--out(10,recv)
+	end
+	
+	--out(6,_G["hikeolib.plval".._PLAYERNAME(i)][1])
+end
+
+--hikeolib.ShareVal=ShareVal
+function TimeSend(t)
+	t=t or -1
+	t=string.format("%.2f",t)
+	ShareVal({t})
+end
+
+function TimeResv()--時間を分けてくれ
+	local index=5
+	for i=0,_PLAYERS()-1 do
+		
+		if hikeolib.IsShare[i]==1 and i~=netown() then
+			local t=tonumber(_G["hikeolib.plval".._PLAYERNAME(i)][1])
+			if t~="" then
+				if t<0 then
+					out(index,_PLAYERNAME(i))
+				else
+					out(index,_PLAYERNAME(i)," : ",t)
+				end
+				index=index+1
+			end
+			
+		end
+	end
+end
+
+
+
+function OnFrame()
+	_SETREG("G",1)
+	_SETREG("A",1)
+	_SETREG("T",1)
+	_SETREG("J",0)
+	_SETREG("U",0)
+	_SETREG("C",0)
+	_SETREG("S",1)
+	_SETREG("E",0)
+	
+	out(0,"TimeAttack")
+	
+	if _CHECK2(count,0)>0 then 
+		_SETRINGSTATE(count,0)
+		if count==1 then
+			st=true
+			_ENERVATE(0)		--速度を0にリセット
+		end
+		if count==ring.n then
+			gl=true
+			mybesttime=mybesttime or time
+			mybesttime=math.min(mybesttime,time)
+			
+		end
+		count=count+1
+		_SETRINGSTATE(count,2)
+	end
+	
+	if st and not gl then
+		time=time+1/_BASE()
+	end
+	
+	TimeSend(mybesttime)
+	TimeResv()
+	
+	--out(4,count)
+	mybesttime2=mybesttime or ""
+	out(2,"Time : ",time,"  Best : ",mybesttime2)
+end
+
+
+function OnInit()
+	
+	st=false
+	gl=false
+	time=0
+	count=1
+	
+	local tmp=0
+	local index=1
+	_SETRINGSTATE(1,2)
+	_SETRING(index,ring[index][1],ring[index][2],ring[index][3],ring[index][4],ring[index][5],ring[index][6],ring[index][7])
+	while tmp~=nil do
+		index , tmp = next (ring ,index)
+		if tmp~=nil then
+			_SETRING(index,ring[index][1],ring[index][2],ring[index][3],ring[index][4],ring[index][5],ring[index][6],ring[index][7])
+			_SETRINGSTATE(index,0)
+			ring.n=index
+		end
+	end
+	
+end
+
+function OnReset()
+
+end
+
+function OnMode()
+
+end

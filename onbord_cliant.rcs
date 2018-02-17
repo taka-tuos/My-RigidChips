@@ -1,0 +1,11 @@
+pn = 0
+
+function Oninit()
+	while _PLAYERMYID() ~= _PLAYERID(pn) do
+		pn = pn + 1
+	end
+end
+
+function OnFrame()
+	out(0,_RECEIVE(pn));
+end

@@ -1,0 +1,457 @@
+// [RCD] 
+Val
+{
+	AB(default=0, max=20, step=2.5, disp=0)
+	COL1(default=#FFFFFF, disp=0)
+	COL1C(default=#808080, disp=0)
+	FLBRK(default=0, max=2000, disp=0)
+	FLP(default=0, max=18, step=3, disp=0)
+	FRBRK(default=0, max=2000, disp=0)
+	FREG(default=45, min=45, max=180, disp=0)
+	MBRK(default=0, max=500, step=250, disp=0)
+	MODE(default=0, max=1, disp=0)
+	P1(default=55, min=55, max=70, disp=0)
+	PERA(default=0, min=-4000000, max=10000000, disp=0)
+	PI(default=0, min=-12, max=12, step=3, disp=0)
+	PWR(default=0, min=-40, max=100, disp=0)
+	RLBRK(default=0, max=2000, disp=0)
+	RO(default=0, min=-12, max=12, step=4, disp=0)
+	ROL(default=0, min=-20, max=20, disp=0)
+	ROR(default=0, min=-20, max=20, disp=0)
+	RRBRK(default=0, max=2000, disp=0)
+	RREG(default=90, max=90, disp=0)
+	WBRK(default=0, max=140, step=20, disp=0)
+	YOI(default=0, min=-12, max=12, step=2, disp=0)
+	YOL(default=0, min=-30, max=30, disp=0)
+	YOR(default=0, min=-30, max=30, disp=0)
+}
+Key
+{
+	0:pi(step=3)
+	1:pi(step=-3)
+}
+Body
+{
+	Core(color=COL1) {
+		S:Frame(angle=-10, option=1) {
+			S:Frame(angle=90, option=1) {
+				S:Chip(angle=-80) {
+					W:Rudder(color=COL1, angle=-20) {
+						W:Weight(color=COL1) {
+							S:TrimF(color=COL1, angle=90, option=1) {
+								N:Chip(color=COL1, angle=20) {
+									W:Frame(color=COL1, angle=-Freg) {
+										W:Wheel(color=COL1, angle=freg, brake=FLBRK, name=WFL) { }
+										N:Arm() { }
+									}
+									E:Cowl(color=COL1C, angle=-170) {
+										S:Cowl(color=COL1C) {
+											S:Cowl(color=COL1C) {
+												S:Cowl(color=COL1C) {
+													S:Cowl(color=COL1C) { }
+												}
+											}
+										}
+									}
+								}
+								N:Chip(color=COL1, angle=-160) {
+									N:Chip(color=COL1) {
+										N:Chip(color=COL1) {
+											N:Chip(color=COL1) {
+												N:Chip(color=COL1) {
+													N:Chip(color=COL1, angle=yol) {
+														S:RudderF(color=COL1, angle=-RREG, option=1) {
+															N:Wheel(color=COL1, brake=RLBRK, name=WRL) { }
+														}
+														E:Chip(color=COL1, angle=0) { }
+													}
+													E:Cowl(color=COL1C, option=4) { }
+												}
+												N:Trim(color=COL1, angle=90) {
+													N:Chip(color=COL1, angle=pi) {
+														E:Chip(color=COL1) {
+															E:Chip(color=COL1) { }
+														}
+													}
+													E:Chip(color=COL1, angle=180) { }
+													E:Cowl(color=COL1C) {
+														E:Cowl(color=COL1C, option=4) { }
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							W:Trim(color=COL1, angle=rol) {
+								W:Chip(color=COL1) { }
+							}
+						}
+						N:Cowl(color=COL1C) {
+							W:Cowl(color=COL1C) {
+								W:Cowl(color=COL1C) {
+									W:Cowl(color=COL1C) {
+										W:Cowl(color=COL1C) {
+											S:Cowl(color=COL1C) { }
+										}
+									}
+								}
+							}
+							E:Cowl(color=COL1C) { }
+						}
+					}
+					E:Rudder(color=COL1, angle=20) {
+						E:Weight(color=COL1) {
+							S:TrimF(color=COL1, angle=-90, option=1) {
+								N:Chip(color=COL1, angle=20) {
+									E:Frame(color=COL1, angle=-Freg) {
+										E:Wheel(color=COL1, angle=freg, brake=FRBRK, name=WFR) { }
+										N:Arm() { }
+									}
+									W:Cowl(color=COL1C, angle=-170) {
+										S:Cowl(color=COL1C) {
+											S:Cowl(color=COL1C) {
+												S:Cowl(color=COL1C) {
+													S:Cowl(color=COL1C) { }
+												}
+											}
+										}
+									}
+								}
+								N:Chip(color=COL1, angle=-160) {
+									N:Chip(color=COL1) {
+										N:Chip(color=COL1) {
+											N:Chip(color=COL1) {
+												N:Chip(color=COL1) {
+													N:Chip(color=COL1, angle=yor) {
+														S:RudderF(color=COL1, angle=RREG, option=1) {
+															N:Wheel(color=COL1, brake=RRBRK, name=WRR) { }
+														}
+														W:Chip(color=COL1) { }
+													}
+													W:Cowl(option=3, color=COL1C) { }
+												}
+												N:Trim(color=COL1, angle=90) {
+													N:Chip(color=COL1, angle=-pi) {
+														E:Chip(color=COL1) {
+															E:Chip(color=COL1) { }
+														}
+													}
+													E:Chip(color=COL1, angle=180) { }
+													E:Cowl(color=COL1C) {
+														E:Cowl(color=COL1C, option=4) { }
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							E:Trim(color=COL1, angle=ror) {
+								E:Chip(color=COL1) { }
+							}
+						}
+						N:Cowl(color=COL1C) {
+							E:Cowl(color=COL1C) {
+								E:Cowl(color=COL1C) {
+									E:Cowl(color=COL1C) {
+										E:Cowl(color=COL1C) {
+											S:Cowl(color=COL1C) { }
+										}
+									}
+								}
+							}
+							W:Cowl(color=COL1C) { }
+						}
+					}
+					N:Cowl(color=COL1C) {
+						S:Cowl(color=COL1C, angle=-30) {
+							S:Cowl(color=COL1C, angle=30) {
+								E:Cowl(color=COL1C, angle=90) { }
+								W:Cowl(color=COL1C, angle=90) {
+									W:Cowl(color=COL1C, angle=90) {
+										S:Cowl(color=COL1C, angle=-165) {
+											S:Cowl(color=COL1C, angle=-7) {
+												W:Cowl(color=COL1C, angle=-90) { }
+												E:Cowl(color=COL1C, angle=-90) { }
+												S:Cowl(color=COL1C, angle=-120) { }
+											}
+											W:Cowl(color=COL1C, angle=-91) { }
+											E:Cowl(color=COL1C, angle=-91) { }
+										}
+									}
+								}
+								S:Cowl(color=COL1C, angle=-165) {
+									S:Cowl(color=COL1C, angle=-5) {
+										S:Cowl(color=COL1C, angle=-10) {
+											W:Cowl(color=COL1C, angle=-91) { }
+											E:Cowl(color=COL1C, angle=-91) { }
+											S:Cowl(color=#202020, angle=-5, effect=#4000) {
+												S:Cowl(color=#202020, angle=-25, effect=#4000) {
+													W:Cowl(color=#202020, angle=-91, option=3, effect=#4000) { }
+													E:Cowl(color=#202020, angle=-91, option=4, effect=#4000) { }
+													S:Cowl(color=COL1C, angle=10) {
+														S:Cowl(color=COL1C, angle=-135) {
+															S:Cowl(color=COL1C, angle=-15) {
+																S:Cowl(color=COL1C, angle=-10) {
+																	S:Cowl(color=COL1C) {
+																		E:Cowl(color=COL1C, angle=-90) { }
+																		W:Cowl(color=COL1C, angle=-90) { }
+																	}
+																	E:Cowl(color=COL1C, angle=-90) {
+																		N:Cowl(color=COL1C, angle=1, option=5) { }
+																	}
+																	W:Cowl(color=COL1C, angle=-90) {
+																		N:Cowl(color=COL1C, angle=1, option=5) { }
+																	}
+																}
+															}
+															W:Cowl(color=COL1C, angle=-90, option=4) { }
+															E:Cowl(color=COL1C, angle=-90, option=3) { }
+														}
+													}
+													S:Cowl(angle=-100, color=#303030, effect=#0000) { }
+												}
+												W:Cowl(color=#202020, angle=-91, option=4, effect=#4000) {
+													W:Cowl(color=COL1C, angle=180, option=3) { }
+												}
+												E:Cowl(color=#202020, angle=-91, option=3, effect=#4000) {
+													E:Cowl(color=COL1C, angle=180, option=4) { }
+												}
+											}
+										}
+										W:Cowl(color=COL1C, angle=-91) { }
+										E:Cowl(color=COL1C, angle=-91) { }
+									}
+									W:Cowl(color=COL1C, angle=-91) { }
+									E:Cowl(color=COL1C, angle=-91) { }
+								}
+							}
+						}
+					}
+					S:TrimF(color=COL1) {
+						S:Chip(color=COL1) {
+							N:Frame(color=COL1, angle=-147, option=1) {
+								N:Wheel(color=COL1, angle=-123, power=pera, effect=4) {
+									E:Trim(color=COL1, angle=-p1) { }
+									W:Trim(color=COL1, angle=-p1) { }
+								}
+								N:Wheel(color=COL1, angle=-123, power=-pera, effect=4) {
+									E:Trim(color=COL1, angle=p1) { }
+									W:Trim(color=COL1, angle=p1) { }
+								}
+							}
+							S:Frame(color=COL1, angle=-147, option=1) {
+								S:Wheel(color=COL1, angle=-123, power=pera, effect=6) {
+									W:Trim(color=COL1, angle=p1) { }
+									E:Trim(color=COL1, angle=p1) { }
+								}
+								S:Wheel(color=COL1, angle=-123, power=-pera, effect=6) {
+									W:Trim(color=COL1, angle=-p1) { }
+									E:Trim(color=COL1, angle=-p1) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function ang(m,n,v)
+	if m-n<v and m-n>-v then m=n
+	elseif m<n then m=m+v
+	elseif m>n then m=m-v
+	end
+	return m
+end
+
+function engine()--エンジン--------------------------
+	--エンジン入力制御   ～ 0で一時停止編 ～
+	if( _KEY(5)==0 and _KEY(8)==0 )then EM=1 end
+	if( PWR==0 )then --エンジンが0のとき
+		if( EM==2 )then EM=0 end
+	end
+	
+	--エンジンが0以外のとき
+	if( _KEY(5)==1 and EM>=1 and PWR<=98 )then
+		PWR=PWR+2
+		EM=2
+	end
+	if( _KEY(8)==1 and EM>=1 and PWR>=-38 )then
+		PWR=PWR-2
+		EM=2
+	end --エンジン入力制御終わり
+	
+	--出力
+	PERA=PWR*950
+end
+
+function pera()
+	if v<100 then P1=ang(P1,55,5)
+	elseif v>220 then P1=ang(P1,70,5)
+	else
+		P1=ang(P1,(v-100)/8+55,5)
+	end
+end
+
+function yo() --ヨー-------------------
+	if( _KEY(4)==1 and _KEY(6)==0 )then
+		YOI=YOI+2
+	end
+	if( _KEY(4)==0 and _KEY(6)==1 )then
+		YOI=YOI-2
+	end
+	
+	if( YOI > 0 )then--右向き
+		YOL = YOI * 1.5
+		YOR = YOI
+	else
+		YOL = YOI
+		YOR = YOI * 1.5
+	end
+	
+	if( _KEY(6)==1 and _KEY(4)==1 ) then
+		WBRK=WBRK+20
+		
+		if  _H(WRL)<0 or _H(WRL)>1  or  _H(WRR)<0 or _H(WRR)>1  then
+			AB=AB+2.5
+		end
+	else
+		WBRK=WBRK-20
+	end
+	
+	YOL=YOL+AB
+	YOR=-YOR+AB
+end
+
+bcset=3.3
+slip={}
+bc={}
+
+flb=0
+frb=0
+rlb=0
+rrb=0
+
+function abs()
+	
+	
+	absstat="○"
+	if _VZ(0)<-3 then
+		for i=1,4 do
+			if slip[i]<bcset then
+				absstat="●"
+				bc[i]=math.max(slip[i]/(bcset+0.05),0.1)
+			else
+				bc[i]=1
+			end
+		end
+	else
+		bc={1,1,1,1}
+	end
+	
+	if WBRK==0 then absstat="○" end
+	
+	FLBRK=MBRK+WBRK*bc[1]
+	FRBRK=MBRK+WBRK*bc[2]       
+	RLBRK=MBRK+WBRK*bc[3]
+	RRBRK=MBRK+WBRK*bc[4]
+	
+--	out(7,"&  ",slip[1]," ",slip[2]," ",slip[3]," ",slip[4])
+--	out(9,"&  ",bc[1]," ",bc[2]," ",bc[3]," ",bc[4])
+--	out(9,"&  ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL))
+end
+
+gtime=0
+
+function main()
+	v=-(_VZ(0)*3.6)
+	
+	if _VZ(0)==0 then
+		for i=1,i<4 do
+			slip[i]=0
+		end
+	else
+		slip[1]=math.abs(_WY(WFL)/_VZ(0))
+		slip[2]=math.abs(_WY(WFR)/_VZ(0))
+		slip[3]=math.abs(_WY(WRL)/_VZ(0))
+		slip[4]=math.abs(_WY(WRR)/_VZ(0))
+	end
+	
+	pera()
+	engine()
+	yo()
+	
+	
+	if _KEYDOWN(9)==1 then MODE=math.mod(MODE+1,2) end
+	
+	if MODE == 0 then
+		RREG=RREG+3
+		FREG=FREG-3
+	elseif MODE == 1 then
+		RREG=RREG-3
+		FREG=FREG+3
+	end
+	
+	if MODE==1 then MBRK = MBRK + 5 end
+	
+	if( _KEY(2)==1 and _KEY(3)==0 )then
+		RO=RO+6
+	end
+	if( _KEY(2)==0 and _KEY(3)==1 )then
+		RO=RO-6
+	end
+	
+	RO=math.min(math.max(RO,-20),20)
+	
+	if( _KEY(2)==1 and _KEY(3)==1 )then
+		FLP=FLP+3
+	end
+	
+	
+	ROL=RO-FLP
+	ROR=RO+FLP
+	
+	
+	abs()
+	
+	
+	zoom=_ZOOM(70)
+	out(0,string.format("FPS : %2.1f  Chips : %d  Weight : %.1f    %3.1f km/h",_FPS(),_CHIPS(),_WEIGHT(),v)) 
+
+	out(2,"  [A:   ----   ]     [S: POWER -]   [D: GEAR]")
+	out(3,"  [Z: YAW L]  [X: POWER +]  [C: YAW R]")
+	
+	if( PWR<-30					)then out(5,"  power "..PWR," % ****|")end
+	if( PWR>=-30 and PWR<-20	)then out(5,"  power "..PWR," %   ***|")end
+	if( PWR>=-20 and PWR<-10	)then out(5,"  power "..PWR," %     **|")end
+	if( PWR==-10					)then out(5,"  power "..PWR," %       *|")end
+	if( PWR>-10 and PWR<0		)then out(5,"  power "..PWR," %         *|")end
+	if( PWR==0					)then out(5,"  power "..PWR," %            |")end
+	if( PWR>0 and PWR<=10		)then out(5,"  power "..PWR," %            |*")end
+	if( PWR==10					)then out(5,"  power "..PWR," %          |*")end
+	if( PWR>10 and PWR<=20	)then out(5,"  power "..PWR," %          |**")end
+	if( PWR>20 and PWR<=30	)then out(5,"  power "..PWR," %          |***")end
+	if( PWR>30 and PWR<=40	)then out(5,"  power "..PWR," %          |****")end
+	if( PWR>40 and PWR<=50	)then out(5,"  power "..PWR," %          |*****")end
+	if( PWR>50 and PWR<=60	)then out(5,"  power "..PWR," %          |******")end
+	if( PWR>60 and PWR<=70	)then out(5,"  power "..PWR," %          |*******")end
+	if( PWR>70 and PWR<=80	)then out(5,"  power "..PWR," %          |********")end
+	if( PWR>80 and PWR<=90	)then out(5,"  power "..PWR," %          |*********")end
+	if( PWR>90 and PWR<100	)then out(5,"  power "..PWR," %          |**********")end
+	if( PWR==100				)then out(5,"  power "..PWR," %        |***********")end
+	
+	if( FREG<=72					)then
+		out(6,"  gear : down")
+	end
+	if( FREG>72 and FREG<99	)then out(6,"  gear : down *     up")end
+	if( FREG>=99 and FREG<126	)then out(6,"  gear : down   *   up")end
+	if( FREG>=126 and FREG<153	)then out(6,"  gear : down     * up")end
+	if( FREG>=153					)then
+		out(6,"  gear : up")
+	end
+end
+}

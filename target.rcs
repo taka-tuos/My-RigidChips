@@ -1,0 +1,13 @@
+CNUM = 0
+
+function OnInit()
+	_RELOAD()
+	CNUM = _ADDCHIP(0,"WEIGHT","N",0)
+	_SPLIT(CNUM)
+	_SET(CNUM,"OPTION",8)
+end
+
+function OnFrame()
+	_WARP(CNUM,0,5,-1000)
+	_DIRECT(CNUM,90,45,0)
+end

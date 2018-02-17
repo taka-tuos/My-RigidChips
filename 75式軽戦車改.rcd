@@ -1,0 +1,383 @@
+// [RCD] 
+Val
+{
+	BEAM1(default=0, max=16777216, step=16777216)
+	BEAM10(default=0, max=16777216, step=16777216)
+	BEAM11(default=0, max=16777216, step=16777216)
+	BEAM12(default=0, max=16777216, step=16777216)
+	BEAM2(default=0, max=16777216, step=16777216)
+	BEAM3(default=0, max=16777216, step=16777216)
+	BEAM4(default=0, max=16777216, step=16777216)
+	BEAM5(default=0, max=16777216, step=16777216)
+	BEAM6(default=0, max=16777216, step=16777216)
+	BEAM7(default=0, max=16777216, step=16777216)
+	BEAM8(default=0, max=16777216, step=16777216)
+	BEAM9(default=0, max=16777216, step=16777216)
+	BRAKE(default=0, max=512, step=512)
+	LT(default=0, min=-32768, max=32768, step=16384)
+	PPH1(default=0, max=180)
+	PPH10(default=0, max=180)
+	PPH11(default=0, max=180)
+	PPH12(default=0, max=180)
+	PPH2(default=0, max=180)
+	PPH3(default=0, max=180)
+	PPH4(default=0, max=180)
+	PPH5(default=0, max=180)
+	PPH6(default=0, max=180)
+	PPH7(default=0, max=180)
+	PPH8(default=0, max=180)
+	PPH9(default=0, max=180)
+	RT(default=0, min=-32768, max=32768, step=16384)
+	SHOT(default=0, max=3145728, step=3145728)
+}
+Key
+{
+	0:LT(step=256), RT(step=256)
+	1:RT(step=-256), LT(step=-256)
+	2:LT(step=256), RT(step=-256)
+	3:RT(step=256), LT(step=-256)
+	5:SHOT(step=2097152)
+	6:BRAKE(step=262144)
+}
+Body
+{
+	Core() {
+		W:Frame() {
+			W:Weight(angle=-90) {
+				W:Weight(angle=-90, option=0) {
+					W:Weight(angle=90, option=0) {
+						S:Weight() {
+							S:Weight() { }
+						}
+					}
+				}
+			}
+		}
+		E:Frame() {
+			E:Weight(angle=-90, option=0) {
+				E:Weight(angle=-90, option=0) {
+					E:Weight(angle=90, option=0) {
+						S:Weight() {
+							S:Weight() { }
+						}
+					}
+				}
+			}
+		}
+		W:Frame(angle=-130) {
+			W:Frame(angle=-50) {
+				W:Wheel(angle=-90, power=-LT, brake=BRAKE, effect=4) { }
+			}
+		}
+		E:Frame(angle=-130) {
+			E:Frame(angle=-50) {
+				E:Wheel(angle=-90, power=RT, brake=BRAKE, effect=4) { }
+			}
+		}
+		S:Frame(angle=-90) {
+			S:Frame(angle=60) {
+				S:Frame(angle=-150) {
+					S:Arm(angle=PPH1, power=BEAM1, option=131072, name=MSHOT1) { }
+					S:Arm(angle=PPH2, power=BEAM2, option=131072, name=MSHOT2) { }
+					S:Arm(angle=PPH3, power=BEAM3, option=131072, name=MSHOT3) { }
+					S:Arm(angle=PPH4, power=BEAM4, option=131072, name=MSHOT4) { }
+					S:Arm(angle=PPH5, power=BEAM5, option=131072, name=MSHOT5) { }
+					S:Arm(angle=PPH6, power=BEAM6, option=131072, name=MSHOT6) { }
+					S:Arm(angle=PPH7, power=BEAM7, option=131072, name=MSHOT7) { }
+					S:Arm(angle=PPH8, power=BEAM8, option=131072, name=MSHOT8) { }
+					S:Arm(angle=PPH9, power=BEAM9, option=131072, name=MSHOT9) { }
+					S:Arm(angle=PPH10, power=BEAM10, option=131072, name=MSHOT10) { }
+					S:Arm(angle=PPH11, power=BEAM11, option=131072, name=MSHOT11) { }
+					S:Arm(angle=PPH12, power=BEAM12, option=131072, name=MSHOT12) { }
+				}
+			}
+		}
+		S:Weight(option=0) {
+			W:Frame() {
+				W:Weight(angle=-90) {
+					W:Weight(angle=-90, option=0) { }
+				}
+			}
+			E:Frame() {
+				E:Weight(angle=-90, option=0) {
+					E:Weight(angle=-90, option=0) { }
+				}
+			}
+			W:Frame(angle=-130) {
+				W:Frame(angle=-50) {
+					W:Wheel(angle=-90, power=-LT, brake=BRAKE, effect=4) { }
+				}
+			}
+			E:Frame(angle=-130) {
+				E:Frame(angle=-50) {
+					E:Wheel(angle=-90, power=RT, brake=BRAKE, effect=4) { }
+				}
+			}
+			S:Weight(option=0) {
+				W:Frame() {
+					W:Weight(angle=-90) {
+						W:Weight(angle=-90, option=0) { }
+					}
+					S:Weight(angle=-90) { }
+				}
+				E:Frame() {
+					E:Weight(angle=-90, option=0) {
+						E:Weight(angle=-90, option=0) { }
+					}
+					S:Weight(angle=-90, option=0) { }
+				}
+				W:Frame(angle=-130) {
+					W:Frame(angle=-50) {
+						W:Wheel(angle=-90, power=-LT, brake=BRAKE, effect=4) { }
+					}
+				}
+				E:Frame(angle=-130) {
+					E:Frame(angle=-50) {
+						E:Wheel(angle=-90, power=RT, brake=BRAKE, effect=4) { }
+					}
+				}
+				S:Weight(angle=-90) {
+					S:Weight(angle=-90) {
+						S:Frame(angle=90, option=1) {
+							S:Weight(angle=-90) {
+								S:Weight() { }
+								N:Weight(angle=-45) {
+									N:Weight(angle=-35) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Frame() {
+			E:Frame(angle=-130) {
+				E:Frame(angle=-50) {
+					E:Wheel(angle=-90, power=RT, brake=BRAKE, effect=4) { }
+				}
+			}
+			W:Frame(angle=-130) {
+				W:Frame(angle=-50) {
+					W:Wheel(angle=-90, power=-LT, brake=BRAKE, effect=4) { }
+				}
+			}
+			W:Frame() {
+				W:Weight(angle=-90) {
+					W:Weight(angle=-90, option=0) { }
+				}
+				N:Weight(angle=-90, option=0) { }
+			}
+			E:Frame() {
+				E:Weight(angle=-90, option=0) {
+					E:Weight(angle=-90, option=0) { }
+				}
+				N:Weight(angle=-90, option=0) { }
+			}
+			N:Weight(angle=-90) {
+				N:Weight(angle=-90) { }
+			}
+		}
+	}
+}
+Lua
+{function ang(m,n,v)
+	if m-n<v and m-n>-v then m=n
+	elseif m<n then m=m+v
+	elseif m>n then m=m-v
+	end
+	return m
+end
+
+TPPH = {0,180,180,180,180,180,180,180,180,180,180,180}
+NPPH = 0
+BPPH = 12
+AF = 0
+
+function main()
+	TPPH[BPPH] = 180
+	TPPH[NPPH] = 0
+	
+	out(0,TPPH[0])
+	out(1,TPPH[1])
+	out(2,TPPH[2])
+	out(3,TPPH[3])
+	out(4,TPPH[4])
+	out(5,TPPH[5])
+	out(6,TPPH[6])
+	out(7,TPPH[7])
+	out(8,TPPH[8])
+	out(9,TPPH[9])
+	out(10,TPPH[10])
+	out(11,TPPH[11])
+	
+	PPH1 = ang(PPH1,TPPH[0],5)
+	PPH2 = ang(PPH2,TPPH[1],5)
+	PPH3 = ang(PPH3,TPPH[2],5)
+	PPH4 = ang(PPH4,TPPH[3],5)
+	PPH5 = ang(PPH5,TPPH[4],5)
+	PPH6 = ang(PPH6,TPPH[5],5)
+	PPH7 = ang(PPH7,TPPH[6],5)
+	PPH8 = ang(PPH8,TPPH[7],5)
+	PPH9 = ang(PPH9,TPPH[8],5)
+	PPH10 = ang(PPH10,TPPH[9],5)
+	PPH11 = ang(PPH11,TPPH[10],5)
+	PPH12 = ang(PPH12,TPPH[11],5)
+	
+	if TPPH[11] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 11
+		BPPH = 10
+		AF = 0
+	end
+	
+	if TPPH[10] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 10
+		BPPH = 9
+		AF = 0
+	end
+	
+	if TPPH[9] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 9
+		BPPH = 8
+		AF = 0
+	end
+	
+	if TPPH[8] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 8
+		BPPH = 7
+		AF = 0
+	end
+	
+	if TPPH[7] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 7
+		BPPH = 6
+		AF = 0
+	end
+	
+	if TPPH[6] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 6
+		BPPH = 5
+		AF = 0
+	end
+	
+	if TPPH[5] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 5
+		BPPH = 4
+		AF = 0
+	end
+	
+	if TPPH[4] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 4
+		BPPH = 3
+		AF = 0
+	end
+	
+	if TPPH[3] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 3
+		BPPH = 2
+		AF = 0
+		end
+	
+	if TPPH[2] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 2
+		BPPH = 1
+		AF = 0
+	end
+	
+	if TPPH[1] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 1
+		BPPH = 0
+		AF = 0
+	end
+	
+	if TPPH[0] == 0 and _KEY(4) == 1 and AF == 1 then
+		NPPH = 0
+		BPPH = 11
+		AF = 0
+	end
+	
+	if _E(MSHOT1) == 131072 and NPPH == 0 and AF == 0 then
+		BEAM1 = 131072
+		NPPH = 1
+		BPPH = 0
+		AF = 1
+	end
+	
+	if _E(MSHOT2) == 131072 and NPPH == 1 and AF == 0 then
+		BEAM2 = 131072
+		NPPH = 2
+		BPPH = 1
+		AF = 1
+	end
+	
+	if _E(MSHOT3) == 131072 and NPPH == 2 and AF == 0 then
+		BEAM3 = 131072
+		NPPH = 3
+		BPPH = 2
+		AF = 1
+	end
+	
+	if _E(MSHOT4) == 131072 and NPPH == 3 and AF == 0 then
+		BEAM4 = 131072
+		NPPH = 4
+		BPPH = 3
+		AF = 1
+	end
+	
+	if _E(MSHOT5) == 131072 and NPPH == 4 and AF == 0 then
+		BEAM5 = 131072
+		NPPH = 5
+		BPPH = 4
+		AF = 1
+	end
+	
+	if _E(MSHOT6) == 131072 and NPPH == 5 and AF == 0 then
+		BEAM6 = 131072
+		NPPH = 6
+		BPPH = 5
+		AF = 1
+	end
+	
+	if _E(MSHOT7) == 131072 and NPPH == 6 and AF == 0 then
+		BEAM7 = 131072
+		NPPH = 7
+		BPPH = 6
+		AF = 1
+	end
+	
+	if _E(MSHOT8) == 131072 and NPPH == 7 and AF == 0 then
+		BEAM8 = 131072
+		NPPH = 8
+		BPPH = 7
+		AF = 1
+	end
+	
+	if _E(MSHOT9) == 131072 and NPPH == 8 and AF == 0 then
+		BEAM9 = 131072
+		NPPH = 9
+		BPPH = 8
+		AF = 1
+	end
+	
+	if _E(MSHOT10) == 131072 and NPPH == 9 and AF == 0 then
+		BEAM10 = 131072
+		NPPH = 10
+		BPPH = 9
+		AF = 1
+	end
+	
+	if _E(MSHOT11) == 131072 and NPPH == 10 and AF == 0 then
+		BEAM11 = 131072
+		NPPH = 11
+		BPPH = 10
+		AF = 1
+	end
+	
+	if _E(MSHOT12) == 131072 and NPPH == 11 and AF == 0 then
+		BEAM12 = 131072
+		NPPH = 0
+		BPPH = 11
+		AF = 1
+	end
+	
+end
+}

@@ -1,0 +1,21 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() { }
+}
+Lua
+{
+require("juno/juno.lua")
+
+juno = juno_spawn()
+
+function OnFrame()
+	juno:step()
+end
+}

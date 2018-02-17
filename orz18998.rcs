@@ -1,0 +1,326 @@
+
+function myNo()
+no=0
+for i=0,_PLAYERS(),1 do
+if _PLAYERID(i)==_PLAYERMYID() then no=i end
+end
+return no
+end
+
+function CCs()
+x=0
+for i=0,_PLAYERS(),1 do
+if _PLAYERNAME(i)=="CC.Takaku" then x=i end
+end
+return x
+end
+
+function dataout(p)
+
+
+
+if _RECEIVE(p)~="D" then
+L=string.find(_RECEIVE(p), "L")
+T=string.find(_RECEIVE(p), "T")
+F=string.find(_RECEIVE(p), "F")
+LL=string.sub (_RECEIVE(p), L+1 , T-1)
+TT=string.sub (_RECEIVE(p), T+1 , F-1)
+FF=string.sub (_RECEIVE(p), F+1)
+PlayersL[p]=""..LL
+PlayersT[p]=""..TT
+PlayersF[p]=""..FF
+end
+end
+
+
+
+function M_S(x)
+ss={"0","1","2","3","4","5","6","7","8","9","."}
+y=0
+p=0
+m=0
+for i=1,string.len (""..x),1 do
+if string.sub (""..x, 1,1)=="-" then m=1 end
+for j=0,10,1 do
+	if p==0 and string.sub (""..x, i,i)~="." and string.sub (""..x, i,i)==ss[j] then y=y+(j-1)*(10^-(i-1-m)) end
+	if p~=0 and string.sub (""..x, i,i)~="." and string.sub (""..x, i,i)==ss[j] then y=y+(j-1)*(10^-(i-2-m))  end
+			if string.sub (""..x, i,i)=="." then p=i end
+			
+	end
+
+end
+if p==0 then p=string.len (""..x)-1 end
+y=y*(10^(p))
+if m==1 then y=-y end
+return y
+end
+
+function runking(p)
+
+no=1
+for i=1,EntryPlayers,1 do
+A=M_S(PlayersL[entry[i]])
+B=M_S(PlayersL[entry[p]])
+if A>B then no=no+1 end
+end
+for i=1,EntryPlayers,1 do
+A=M_S(PlayersL[entry[i]])
+B=M_S(PlayersL[entry[p]])
+C=M_S(PlayersT[entry[i]])
+D=M_S(PlayersT[entry[p]])
+if (A==B) and C<D   then no=no+1 end
+end
+
+
+return no
+end
+
+entry={}
+lap={}
+time={}
+PlayersL={}
+PlayersT={}
+PlayersF={}
+PlayersR={}
+PUTRUNK={}
+STEP=0
+EntrySTEP=0
+AcceptanceSTEP=0
+EntryPlayers=0
+OKplayers=0
+scnt1=0
+cnt=0
+ilap=0
+myfastest=99999
+putrunk=1
+putrunkcnt=0
+comprunk=0
+LAPS=1
+Cstep=0
+endflag=0
+function main()
+
+CCno=CCs()
+
+if STEP==0 then
+for i=0,_PLAYERS(),1 do
+_RECEIVECLEAR(i)
+end
+STEP=1
+end
+if _PLAYERNAME(myNo())=="CC.Takaku" then 
+
+		_WARP(0,-66,53,-17.5)
+
+	if AcceptanceSTEP==0 then
+	out(0,"Entry")
+		EntryPlayers=0
+		for i=0,_PLAYERS(),1 do
+			if _RECEIVE(i)=="A" then
+ 				EntryPlayers=EntryPlayers+1 
+				entry[EntryPlayers]=i
+			end
+				
+		end
+	out(1,"CCNumber_",myNo())
+	out(2,"MyNumber_",CCno)
+	out(3,"EntryPlayers_",EntryPlayers)
+	out(4,"START?_Push key H")
+		if _SKEYDOWN(0)==1 then AcceptanceSTEP=1 end
+out(5,M_S(""..100))
+
+	elseif AcceptanceSTEP==1 then
+	out(0,"Entry Acceptance")	
+		for i=1,EntryPlayers,1 do
+			out(i,_PLAYERNAME(entry[i]))
+		end
+out(EntryPlayers+1,"OK?_Push key H")
+ if _SKEYDOWN(0)==1 then AcceptanceSTEP=2 end
+	elseif AcceptanceSTEP==2 then
+			out(0,"Entry Acceptanced...")
+		_SENDALL("B")
+OKplayers=0
+for i=1,EntryPlayers,1 do
+if _RECEIVE(entry[i])=="C" then OKplayers=OKplayers+1 end
+end
+out(1,"-OK- Players",OKplayers)
+
+out(2,"OK?_Push key A LAP_"..LAPS)
+if _KEYDOWN(7)==1 then AcceptanceSTEP=3 end
+LAPS=LAPS+_KEYDOWN(0)-_KEYDOWN(1)
+
+for i=1,EntryPlayers,1 do
+if _RECEIVE(entry[i])=="C" then Cstep=1 end
+end
+
+
+elseif AcceptanceSTEP==3 then
+scnt1=scnt1+1
+out(0,"Count",scnt1)
+
+if scnt1>210 then 
+_SENDALL("GO")
+
+
+RERE=0
+for i=1,EntryPlayers,1 do
+PlayersL[entry[i]]=-1
+PlayersT[entry[i]]=99999
+PlayersF[entry[i]]=99999
+PlayersR[i]=entry[i]
+if _RECEIVE(entry[i])=="D" then RERE=RERE+1 end
+end
+if RERE==EntryPlayers then 
+AcceptanceSTEP=4 
+scnt1=0
+end
+end
+
+elseif AcceptanceSTEP==4 then
+scnt1=scnt1+1
+out(0,"time  ",scnt1/30,"sec")
+
+for i=1,EntryPlayers,1 do
+dataout(entry[i])
+end
+
+for i=1,EntryPlayers,1 do
+for j=1,EntryPlayers,1 do
+if i==runking(j) then
+PlayersR[i]=entry[j]
+end
+end
+end
+
+for i=1,EntryPlayers,1 do
+if PlayersR[i]>0 then
+if M_S(PlayersL[PlayersR[i]])>-1 then
+out(3+i,_PLAYERNAME(PlayersR[i]),"   ",M_S(PlayersL[PlayersR[i]]))
+end
+end
+end
+out(2,putrunk,"  ",putrunkcnt,"  ",EntryPlayers)
+
+finish=""
+if M_S(PlayersL[PlayersR[putrunk]])>=LAPS then finish="FINISH" end
+_SENDALL("No_"..PlayersR[putrunk].." "..finish.." Rank_"..putrunk.." "..string.sub (_PLAYERNAME(PlayersR[putrunk]),1,3).." Best_"..string.sub (""..PlayersF[PlayersR[putrunk]],1,6))
+
+
+putrunkcnt=putrunkcnt+1
+
+if putrunkcnt>20 then
+_SENDALL("NEXT")
+if putrunk>=EntryPlayers then _SENDALL("RETURN") end
+end
+
+if putrunk>=EntryPlayers and putrunkcnt>40 then
+putrunk=1
+putrunkcnt=0
+end
+
+if putrunkcnt>40 then
+putrunk=putrunk+1
+putrunkcnt=0
+end
+
+
+
+	end
+
+
+	
+	else
+out(0,"レースにエントリーします")
+out(1,"オフィシャルからの応答待機中...")
+_SETRING(0,-66.35, 50.67, -17.64,0.09, 92.79, 0.02,10)
+_SETRINGSTATE(0, 2)
+if EntrySTEP==0 then
+	_SENDALL("A")
+if _RECEIVE(CCno)=="B" then EntrySTEP=1 end
+
+elseif EntrySTEP==1 then
+out(0,"スタート準備完了")
+out(1,"グリッドについてください")
+out(2,"準備完了ならＨを押してください")
+if _SKEYDOWN(0)==1 then EntrySTEP=2 end
+
+elseif EntrySTEP==2 then
+PUTRUNK[0]="Unknow_____________________________"
+PUTRUNK[1]="Unknow_____________________________"
+out(0,"スタートします")
+
+out(1,"カウントを開始します")
+out(2,"ブラックアウトでスタートです")
+_SENDALL("C")
+if _RECEIVE(CCno)=="GO" then 
+EntrySTEP=3 
+_SENDALL("D")
+end
+cnt1=0
+elseif EntrySTEP==3 then
+cnt1=cnt1+1
+cnt=cnt+1
+lap[ilap]=cnt1/30
+if _CHECK2(0,0)==1 then
+time[ilap]=cnt/30
+ilap=ilap+1
+if ilap>1 and myfastest>lap[ilap-1] then myfastest=lap[ilap-1] end
+cnt1=0
+if ilap>0 and endflag==0 then
+_SENDALL("L"..(ilap-1).."T"..time[ilap-1].."F"..myfastest)
+end
+end
+
+
+out(0,"Lap",ilap,"  Fastest_",myfastest)
+out(1,finish)
+if putrunkcnt<putrunk then putrunkcnt=putrunk end
+
+if _RECEIVE(CCno)~="RETURN" and  _RECEIVE(CCno)~="NEXT" then comprunk=0 end 
+
+if _RECEIVE(CCno)=="NEXT" and comprunk==0
+then putrunk=putrunk+1
+comprunk=1
+end
+
+if _RECEIVE(CCno)=="RETURN" then
+comprunk=1
+end
+if comprunk==0 then
+PUTRUNK[putrunk]=_RECEIVE(CCno)
+
+finish="Running..."
+for i=1,putrunkcnt,1 do
+
+if (""..myNo())==(""..string.sub(PUTRUNK[i],4,4)) then 
+if string.sub(PUTRUNK[i],6,11)=="FINISH" then 
+finish="FINISH"
+endflag=1
+end
+end
+end
+end
+
+
+
+for i=1,putrunkcnt,1 do
+out(i+3,PUTRUNK[i])
+end
+
+if _RECEIVE(CCno)=="RETURN" then
+putrunk=1
+end 
+
+
+
+
+for i=1,ilap,1 do
+out(i+4+putrunkcnt,i,"_",lap[i],"sec   ",time[i])
+end
+
+
+end
+
+end
+
+end

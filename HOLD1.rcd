@@ -1,0 +1,48 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Chip() {
+			N:Chip() {
+				W:Chip() { }
+				E:Chip() { }
+			}
+			N:Frame(angle=20, option=1) {
+				W:Frame(option=1) {
+					N:Frame(angle=-90, option=1) {
+						N:Frame(angle=-130, option=1) {
+							W:Wheel(angle=-90) { }
+						}
+					}
+				}
+				E:Frame(option=1) {
+					N:Frame(angle=-90, option=1) {
+						N:Frame(angle=-130, option=1) {
+							E:Wheel(angle=-90) { }
+						}
+					}
+				}
+			}
+		}
+		S:Chip() {
+			S:Chip() {
+				E:Chip() { }
+				W:Chip() { }
+			}
+			S:Frame(angle=20) {
+				W:Frame() {
+					W:Wheel(angle=90) { }
+				}
+				E:Frame() {
+					E:Wheel(angle=90) { }
+				}
+			}
+		}
+	}
+}

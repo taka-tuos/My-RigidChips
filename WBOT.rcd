@@ -1,0 +1,39 @@
+// [RCD] 
+Val
+{
+	JYRO1(default=0, min=-16777216, max=16777216, step=16777216)
+	JYRO2(default=0, min=-16777216, max=16777216, step=16777216)
+	JYRO3(default=0, min=-16777216, max=16777216, step=16777216)
+}
+Key
+{
+}
+Body
+{
+	Core(color=#0080FF) {
+		N:TrimF(angle=-90, option=1) {
+			S:RLW(option=1) { }
+		}
+		S:TrimF(angle=-90, option=1) {
+			N:RLW(power=-JYRO2, brake=20000, effect=3) { }
+		}
+		E:TrimF(angle=-90, option=1) {
+			W:RLW(power=-JYRO1, brake=20000, effect=4) { }
+		}
+		W:TrimF(angle=-90, option=1) {
+			E:RLW(option=1) { }
+		}
+		E:RLW(angle=-180, power=JYRO3, brake=20000, effect=3) { }
+	}
+}
+Lua
+{function OnFrame()
+	ez = _EZ(0) / 3.14 * 180
+	ex = _EX(0) / 3.14 * 180
+	ey = _EY(0) / 3.14 * 180
+	JYRO1 = (ez / 180) * 65536
+	JYRO2 = (ex / 180) * 65536
+	JYRO3 = (ey / 180) * 65536
+end
+
+}

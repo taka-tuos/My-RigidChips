@@ -1,0 +1,56 @@
+// [RCD] 
+Val
+{
+	ENGN(default=0, min=-8192, max=16384, step=4096)
+	HNDL(default=180, min=148, max=212, step=4)
+}
+Key
+{
+	0:ENGN(step=8192)
+	1:ENGN(step=-1024)
+	2:HNDL(step=-4)
+	3:HNDL(step=4)
+}
+Body
+{
+	Core() {
+		N:Chip() {
+			W:Frame(angle=-30) {
+				W:RudderF(angle=HNDL, option=1) {
+					E:RLW(angle=120, power=-ENGN, effect=3) { }
+				}
+				N:Chip(angle=-150) { }
+			}
+			E:Frame(angle=-30) {
+				E:RudderF(angle=HNDL, option=1) {
+					W:RLW(angle=120, power=ENGN, effect=3) { }
+				}
+				N:Chip(angle=-150) { }
+			}
+			S:Frame(angle=20, option=1) {
+				W:Chip(angle=-90) {
+					S:Rudder(angle=20) {
+						S:Chip() { }
+					}
+				}
+				E:Chip(angle=-90) {
+					S:Rudder(angle=-20) {
+						S:Chip() { }
+					}
+				}
+			}
+		}
+		S:Chip() {
+			S:Chip() {
+				W:Frame(angle=-30) {
+					W:RLW(angle=120, power=-ENGN, effect=3) { }
+					N:Chip(angle=-150) { }
+				}
+				E:Frame(angle=-30) {
+					E:RLW(angle=120, power=ENGN, effect=3) { }
+					N:Chip(angle=-150) { }
+				}
+			}
+		}
+	}
+}

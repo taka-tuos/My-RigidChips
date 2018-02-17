@@ -1,0 +1,142 @@
+// [RCD] 
+Val
+{
+	BRAKE(default=0, max=512, step=512)
+	FLW(default=0, min=-2048, max=2048, step=100000)
+	FP(default=0, max=90)
+	FRW(default=0, min=-2048, max=2048, step=100000)
+	LW(default=0, min=-20, max=20, step=4)
+	LW2(default=0, min=-20, max=20, step=4)
+	PA(default=0, max=300000)
+	RUDDER(default=0, min=-15, max=15, step=5)
+	RW(default=0, min=-20, max=20, step=4)
+	RW2(default=0, min=-20, max=20, step=4)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=30, option=1, damper=1) {
+			S:Frame(angle=-25) {
+				N:Frame(angle=5) {
+					S:Frame(angle=10, option=1) {
+						S:TrimF(angle=90, option=1) {
+							S:RLW(angle=-RUDDER) { }
+						}
+						S:Frame(option=1) { }
+					}
+					N:Frame() {
+						W:Frame(angle=20) {
+							W:RLW(angle=60, power=-FLW, brake=BRAKE) { }
+						}
+						E:Frame(angle=20) {
+							E:RLW(angle=60, power=FRW, brake=BRAKE) { }
+						}
+						W:Rudder(angle=-39) {
+							W:Trim(angle=-LW) {
+								W:Chip() {
+									W:Chip() { }
+								}
+							}
+						}
+						E:Rudder(angle=39) {
+							E:Trim(angle=RW) {
+								E:Chip() {
+									E:Chip() { }
+								}
+							}
+						}
+						N:Chip() { }
+						S:Trim(angle=-90) { }
+					}
+				}
+				S:Frame() {
+					S:Frame(angle=-5) {
+						S:Chip() {
+							W:Trim(angle=LW2) { }
+							E:Trim(angle=-RW2) { }
+						}
+						N:TrimF(angle=-90, option=1) {
+							S:Rudder(angle=-45) {
+								S:Chip() {
+									W:Rudder(angle=45) {
+										N:Chip() { }
+									}
+								}
+							}
+						}
+					}
+					N:Frame(angle=25, option=1) {
+						N:RLW(angle=-110, power=PA) {
+							N:Trim(angle=FP) { }
+							S:Trim(angle=FP) { }
+						}
+						N:RLW(angle=-110, power=-PA) {
+							E:Trim(angle=-FP) { }
+							W:Trim(angle=-FP) { }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function main()
+SP=_VZ()*3.6*-1
+if SP<150 then
+FP=50
+elseif SP>=150 and SP<300 then
+FP=45
+elseif SP>=300 then
+FP=40
+end
+
+
+if _KEY(5)>0 then
+PA=PA+8000
+end
+if _KEY(8)>0 then
+PA=PA-8000
+end
+
+
+
+if _KEY(15)>0 and _KEY(14)==0 and _KEY(16)==0 and _H()<3 then
+FRW=FRW+128
+FLW=FLW+128
+end
+
+
+if _KEY(4)>0 then
+RUDDER=RUDDER+5
+elseif _KEY(6)>0 then
+RUDDER=RUDDER-5
+end
+
+if _KEY(1)>0 then
+RW2=RW2+4
+LW2=LW2+4
+elseif _KEY(0)>0 then
+RW2=RW2-4
+LW2=LW2-4
+end
+
+
+if _KEY(2)>0 then
+RW=RW+4
+LW=LW-4
+elseif _KEY(3)> 0then
+RW=RW-4
+LW=LW+4
+end
+
+if _KEY(9)>0 then
+BRAKE=1000
+end
+out(0,string.format("%dfps %dkm/h",_FPS(),SP))
+end
+}

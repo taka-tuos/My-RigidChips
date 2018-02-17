@@ -1,0 +1,73 @@
+napi = {}
+
+__napi_rtime = 0
+__napi_mlval = 1
+
+function napi.myrand()
+	__napi_mlval = __napi_mlval * 214013 + 2531011
+	return math.floor(math.mod(math.floor(__napi_mlval / 65536),32768))
+end
+
+function napi.rmsins(x,np)
+	local a = math.pow(_PLAYERCHIPS(np), 1.0 / 3.0) / 2.0
+	local b = (math.floor(math.mod(napi.myrand(),10000)) - 5000) / 1000.0*a + math.sin(__napi_rtime / 160.0)*a - math.sin(__napi_rtime / 360.0)*a
+	
+	return x - b
+end
+
+function napi.readpos(p)
+	local px=_PLAYERX(p)
+	local py=_PLAYERY(p)
+	local pz=_PLAYERZ(p)
+	
+	__napi_rtime = __napi_rtime + math.floor(math.mod(napi.myrand(),3)) + 1
+	
+	if __napi_rtime > 20000000 then __napi_rtime = 0 end
+	
+	px = napi.rmsins(px,p)
+	py = napi.rmsins(py,p)
+	pz = napi.rmsins(pz,p)
+	
+	return px,py,pz
+end
+
+fn = 0
+np = 0
+nf = 0
+
+function OnFrame()
+	local f = 0
+	
+	if _KEYDOWN(0) == 1 then
+		np = np+1
+	end
+	
+	np = math.mod(np,_PLAYERS())
+	
+	out(0,string.format("%d %s",np,_PLAYERNAME(np)))
+	
+	if _KEYDOWN(4) == 1 then
+		if fn == 0 then
+			nf = 1
+		else
+			fn = 0
+		end
+	end
+	
+	if nf == 1 and fn == 0 then
+		f = _FOPEN("write".._PLAYERMYID().."_"..string.format("%d",_STICKS())..".csv","w")
+	end
+	
+	if nf == 1 and fn < 180 then
+		local x,y,z = napi.readpos(np)
+		local nx = x
+		local ny = y
+		local nz = z
+		_FPUTS(f,string.format("%f,%f,%f\n",nx,ny,nz))
+		fn = fn + 1
+	end
+	
+	if nf == 1 and fn == 180 then
+		_FCLOSE(f)
+	end
+end

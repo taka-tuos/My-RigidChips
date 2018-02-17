@@ -1,0 +1,130 @@
+// [RCD] 
+Val
+{
+	APW(default=0, max=3200000, step=16000000)
+	HRAD(default=0, min=-360, max=360)
+	VRAD(default=0, min=-360, max=360)
+	Z(default=0, max=3200000, step=16000000)
+}
+Key
+{
+	4:APW(step=3200000)
+}
+Body
+{
+	Core() {
+		W:Frame(angle=70) {
+			W:Frame() {
+				W:Frame(angle=110) {
+					N:Chip() {
+						E:Weight() { }
+					}
+					S:Chip() {
+						E:Weight() { }
+					}
+					E:Weight() { }
+				}
+			}
+		}
+		E:Frame(angle=70) {
+			E:Frame() {
+				E:Frame(angle=110) {
+					N:Chip() {
+						W:Weight() { }
+					}
+					S:Chip() {
+						W:Weight() { }
+					}
+					W:Weight() { }
+				}
+			}
+		}
+		N:Frame(option=1) {
+			N:Frame(option=1) {
+				S:RudderF(angle=HRAD) {
+					N:TrimF(angle=-90, option=1) {
+						S:RudderF(angle=VRAD, name=N1) {
+							N:Frame() {
+								N:Arm(name=N2, option=200000, power=APW) {
+									S:Frame(angle=-30, option=1) {
+										S:Jet(angle=120, power=-Z) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("wakaru/wakaru_eye.lua")
+
+eye=Wakaru_Eye.new()
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function nvec(x,y,z)
+	len = _LEN3(x,y,z)
+	
+	if len < 0.000001 then return x,y,z end
+	
+	len = 1 / len
+	x = x * len
+	y = y * len
+	z = z * len
+	
+	return x,y,z
+end
+
+PN = 0
+
+function OnFrame()
+	eye:tick()
+	
+	out(0,string.format("%d %s",PN,_PLAYERNAME(PN)))
+	out(1,string.format("%d power",_E(N2)))
+	
+	if _PLAYERS() == 0 then v = Wector.new(0,0,0)
+	else v = eye:getPos(_PLAYERID(PN)) end
+	
+	ax,ay,az = _X(0)-_ZX(0)*0.9,_Y(0)-_ZY(0)*0.9,_Z(0)-_ZZ(0)*0.9
+	bx,by,bz = v.x,v.y,v.z
+	
+	PN = PN + _KEYDOWN(0)
+	PN = PN - _KEYDOWN(1)
+	if _PLAYERS() ~= 0 then PN = math.mod(PN,_PLAYERS()) end
+	
+	ex,ey,ez = bx-ax,by-ay,bz-az
+	
+	_MOVE3D(ax,ay,az)
+	_LINE3D(ax+ex,ay+ey,az+ez)
+	
+	TGH = -math.deg(_EY(0)-math.atan2(ex,ez))
+	TGV = -math.deg(_EX(0)-math.atan2(ey,ez))
+	
+	HRAD = _LINER(HRAD,TGH,15)
+	VRAD = _LINER(VRAD,TGV,15)
+	
+	if _E(N2) == 200000 and _KEY(4) == 1 then Z = 200000 end
+end
+}

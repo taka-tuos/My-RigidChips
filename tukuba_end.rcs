@@ -1,0 +1,101 @@
+stime=0
+time=0
+lapnum=0
+myid=0
+
+timest = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+
+function push_time(s)
+	slide_time()
+	timest[16] = s
+end
+
+function show_time()
+	for index=0, 16, 1 do
+		out(index+5,timest[index])
+	end
+end
+
+function slide_time()
+	for index=0, 15, 1 do
+		timest[index]=timest[index+1]
+	end
+end
+
+function OnFrame()
+	min=time/60
+	sec=math.mod(time,60)
+	msec=math.mod(time,1)*1000
+	
+	timestring=string.format("%01d\'%02d\"%03d lap %d", min, sec, msec, lapnum)
+	mytime=string.format("No.%d %01d\'%02d\"%03d lap %d", myid, min, sec, msec, lapnum)
+	
+	for index=0, 32, 1 do
+		othertime=_RECEIVE(index)
+		_RECEIVECLEAR(index)
+		out(24,othertime)
+		if string.len(othertime) ~= 0 then
+			push_time(othertime)
+		end
+	end
+	
+	out(1,"*-- JCCR Class 1 --*")
+	out(2,"’}”g‘Ï‹v ver0")
+	
+	show_time()
+	
+	if lapnum > 0 then 
+		time=_STICKS()/30-stime 
+	end
+	if(_CHECK2(0,0)>0) then 
+		stime=_STICKS()/30
+		if lapnum > 0 then 
+			mytime=string.format("No.%d %01d\'%02d\"%03d lap %d", myid, min, sec, msec, lapnum)
+			_SENDALL(mytime)
+			push_time(mytime)
+		end
+		lapnum=lapnum+1
+	end
+	
+	out(4,"time : ",timestring)
+end
+
+function OnInit()
+	_SETREG("G",1)
+	_SETREG("A",1)
+	_SETREG("T",1)
+	_SETREG("J",0)
+	_SETREG("U",0)
+	_SETREG("C",1)
+	_SETREG("S",1)
+	_SETREG("E",1)
+	_LOADLAND("tukuba.x")
+	_WARP(0,-19,_GETY(x,z)+5,20)
+	_DIRECT(0,0,0,0)
+	time=0
+	lapnum=0
+	myid=0
+	
+	while _PLAYERMYID() ~= _PLAYERID(myid) do
+		myid = myid + 1
+	end
+	
+	for index=0, 16, 1 do
+		timest[index]="No.- -\'--\"---"
+	end
+	
+	_RECEIVECLEAR(myid)
+	
+	_SETRING(0,0,55,0,0,0,0,17)
+	_SETRINGSTATE(0,2)
+	_SETRINGCOLOR(0,1,1,0)
+	stime=_STICKS()/30
+end
+
+function OnReset()
+
+end
+
+function OnMode()
+
+end

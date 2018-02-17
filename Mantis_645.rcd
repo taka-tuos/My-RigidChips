@@ -1,0 +1,1077 @@
+// [RCD] 
+Val{
+	BRK(default=0,max=220,step=50,disp=0)
+	COL1(default=#000064,disp=0)
+	COLBRK(default=#550000,disp=0)
+	COLBRKF(default=#0000FB,disp=0)
+	COLHL(default=#B0B0B0,disp=0)
+	COLHLF(default=#0000FB,disp=0)
+	COLHLF2(default=#0090FB,disp=0)
+	COLL(default=#996600,disp=0)
+	COLLF(default=#0000FB,disp=0)
+	COLR(default=#996600,disp=0)
+	COLRF(default=#0000FB,disp=0)
+	DAM(default=0.4,max=1,disp=0)
+	ENG1(default=0,min=-70,max=100,step=10,disp=0)
+	ENG2(default=1,min=1,max=50,disp=0)
+	ENGFL(default=0,min=-60000,max=200000,disp=0)
+	ENGFR(default=0,min=-60000,max=200000,disp=0)
+	ENGINE(default=0,min=-60000,max=200000,disp=0)
+	ENGRL(default=0,min=-60000,max=200000,disp=0)
+	ENGRR(default=0,min=-60000,max=200000,disp=0)
+	FLBRK(default=0,max=2000,disp=0)
+	FRBRK(default=0,max=2000,disp=0)
+	FVANG(default=15,disp=0)
+	FVW(default=180,min=160,max=200,disp=0)
+	FWL(default=3,min=3,max=35,disp=0)
+	FWR(default=3,min=3,max=35,disp=0)
+	HANDLE(default=0,min=-27,max=27,step=3,disp=0)
+	LHANDLE(default=180,min=145,max=215,disp=0)
+	RHANDLE(default=180,min=145,max=215,disp=0)
+	RLBRK(default=0,max=2000,disp=0)
+	RRBRK(default=0,max=2000,disp=0)
+	RWANG(default=0,max=90,disp=0)
+	RWL(default=10,min=-5,max=30,disp=0)
+	RWR(default=10,min=-5,max=30,disp=0)
+	SMOKE(default=#0030FB,disp=0)
+	SPR(default=0.4,max=1,disp=0)
+	TOU(default=#00F000,disp=0)
+}
+Key{
+}
+Body{
+	Core(color=col1){
+		N:Trim(angle=90){
+			S:Chip(){
+				S:Chip(){
+					S:Trim(angle=rwang){}
+				}
+			}
+			N:Trim(angle=-90){
+				W:Trim(color=col1,angle=FWL){}
+				E:Trim(color=col1,angle=-FWR){}
+			}
+			N:RudderF(option=1,color=col1,spring=0.4,damper=0.6){
+				E:Frame(angle=91,option=1){
+					E:Frame(angle=55,option=1){
+						E:Frame(angle=-140,option=1){
+							S:Wheel(angle=LHANDLE,power=-engFL,brake=flbrk,effect=3,name=WFL){}
+						}
+					}
+				}
+				E:Frame(angle=-91,option=1){
+					E:Frame(angle=-55,option=1){
+						E:Frame(angle=140,option=1){
+							S:Wheel(angle=RHANDLE,power=-ENGFR,brake=frbrk,effect=3,name=WFR){}
+						}
+					}
+				}
+				S:Chip(angle=FVW,color=col1){}
+			}
+		}
+		S:TrimF(spring=0.45,damper=0.8){
+			W:TrimF(angle=80,spring=0.4,damper=0.6){
+				W:Chip(angle=90,color=col1){
+					W:Wheel(power=-engRL,brake=rlbrk,effect=4,name=WRL){}
+				}
+			}
+			E:TrimF(angle=-80,spring=0.4,damper=0.6){
+				E:Chip(angle=90,color=col1){
+					E:Wheel(power=engRR,brake=rrbrk,effect=4,name=WRR){}
+				}
+			}
+			S:Chip(){
+				W:Trim(color=col1,angle=RWL){}
+				E:Trim(color=col1,angle=-RWR){}
+			}
+		}
+		N:Cowl(angle=-35,color=col1){
+			N:Cowl(angle=38,color=col1){
+				S:Cowl(angle=5,color=col1){
+					N:Cowl(color=#202020,effect=smoke,angle=-155){
+						N:Cowl(option=1,color=col1,angle=-106,effect=tou){
+							N:Cowl(option=1,color=col1,angle=-145,effect=tou){
+								N:Cowl(color=#202020,effect=smoke,angle=-106){
+									N:Cowl(color=col1,angle=-30){}
+								}
+							}
+						}
+					}
+					N:Cowl(angle=80,color=col1){
+						W:Cowl(angle=12,color=col1){
+							S:Cowl(color=#202020,effect=smoke,angle=55){
+								S:Cowl(option=1,color=col1,angle=106,effect=tou){
+									S:Cowl(option=1,color=col1,angle=145,effect=tou){
+										S:Cowl(color=#202020,effect=smoke,angle=107){
+											S:Cowl(color=col1,angle=27){
+												W:Cowl(angle=90,option=1,color=0,effect=tou){
+													N:Cowl(angle=-168,option=1,color=0,effect=tou){
+														E:Cowl(angle=150,color=#202020,effect=smoke){
+															S:Cowl(angle=6,option=4,color=#202020,effect=smoke){}
+															N:Cowl(angle=18,option=3,color=#202020,effect=smoke){}
+														}
+														E:Cowl(angle=-89,color=col1){
+															E:Cowl(angle=-6,color=col1){}
+															N:Cowl(angle=-33,color=#202020,effect=smoke){
+																W:Cowl(angle=-50,option=3,color=col1){}
+																E:Cowl(angle=-5,color=#202020,effect=smoke){}
+															}
+														}
+													}
+												}
+											}
+											W:Cowl(angle=55,option=3,color=#202020,effect=smoke){}
+										}
+									}
+								}
+								W:Cowl(angle=55,option=4,color=#202020,effect=smoke){}
+							}
+						}
+						E:Cowl(angle=12,color=col1){
+							S:Cowl(color=#202020,effect=smoke,angle=55){
+								S:Cowl(option=1,color=col1,angle=106,effect=tou){
+									S:Cowl(option=1,color=col1,angle=145,effect=tou){
+										S:Cowl(color=#202020,effect=smoke,angle=107){
+											S:Cowl(color=col1,angle=27){
+												E:Cowl(angle=90,option=1,color=0,effect=tou){
+													N:Cowl(angle=-168,option=1,color=0,effect=tou){
+														W:Cowl(angle=150,color=#202020,effect=smoke){
+															S:Cowl(angle=6,option=3,color=#202020,effect=smoke){}
+															N:Cowl(angle=18,option=4,color=#202020,effect=smoke){}
+														}
+														W:Cowl(angle=-89,color=col1){
+															W:Cowl(angle=-6,color=col1){}
+															N:Cowl(angle=-33,color=#202020,effect=smoke){
+																E:Cowl(angle=-50,option=4,color=col1){}
+																W:Cowl(angle=-5,color=#202020,effect=smoke){}
+															}
+														}
+													}
+												}
+											}
+											E:Cowl(angle=55,option=4,color=#202020,effect=smoke){}
+										}
+									}
+								}
+								E:Cowl(angle=55,option=3,color=#202020,effect=smoke){}
+							}
+						}
+					}
+				}
+				E:Cowl(angle=70,color=col1){
+					E:Cowl(angle=-160,color=col1){
+						E:Cowl(angle=93,color=col1){
+							S:Cowl(angle=8,color=col1){
+								S:Cowl(angle=-6,color=col1){
+									S:Cowl(color=col1){
+										E:Cowl(angle=85,color=col1){}
+										S:Cowl(angle=100,color=col1){
+											S:Cowl(angle=160,color=col1){
+												S:Cowl(angle=103,color=col1){
+													S:Cowl(angle=-2,color=col1){
+														W:Cowl(angle=3.5,color=col1){
+															S:Cowl(angle=89,color=col1){
+																S:Cowl(angle=130,color=col1){
+																	S:Cowl(angle=133,color=col1){
+																		S:Cowl(angle=100,color=col1){
+																			E:Cowl(angle=5,color=col1){
+																				N:Cowl(angle=100,color=col1){}
+																				E:Cowl(angle=85,option=4,color=col1){}
+																			}
+																		}
+																	}
+																}
+															}
+															N:Cowl(angle=-160,option=1,color=0){
+																N:Cowl(angle=165,color=col1){
+																	E:Cowl(angle=10,color=col1){
+																		E:Cowl(angle=85,option=3,color=col1){}
+																	}
+																}
+															}
+														}
+														S:Cowl(angle=90,color=colBRK,effect=colBRKF){
+															E:Cowl(angle=176,color=col1){
+																E:Cowl(angle=178,color=colR,effect=COLRF){}
+															}
+														}
+														E:Cowl(angle=88,option=3,color=col1){}
+													}
+													W:Cowl(angle=3.5,color=col1){}
+													E:Cowl(angle=86,option=4,color=col1){}
+												}
+											}
+										}
+									}
+									E:Cowl(angle=85,color=col1){
+										N:Cowl(angle=0,color=col1){}
+									}
+								}
+								E:Cowl(angle=87,option=5,color=col1){}
+								W:Cowl(angle=3,color=col1){}
+							}
+							N:Cowl(angle=10,color=col1){
+								N:Cowl(angle=105,option=1,color=col1,effect=tou){
+									N:Cowl(angle=145,option=1,color=col1,effect=TOU){
+										N:Cowl(angle=108,option=4,color=col1){
+											W:Cowl(angle=-179.3,option=5,color=colhl,effect=colhlf){}
+											N:Cowl(angle=135,option=2,color=col1){
+												W:Cowl(angle=-179,option=5,color=col1){}
+											}
+											N:Cowl(angle=160,option=2,color=colr,effect=colrf){}
+											N:Cowl(angle=145,option=2,color=col1){}
+											S:Cowl(angle=-179.1,option=3,color=col1){
+												W:Cowl(angle=-3.5,color=col1){
+													S:Cowl(angle=-145,color=col1){}
+												}
+											}
+										}
+									}
+								}
+								N:Cowl(angle=115,option=1,color=col1,effect=tou){
+									N:Cowl(angle=-128,color=col1){
+										W:Cowl(angle=3.5,color=col1){}
+										E:Cowl(angle=-110,option=3,color=col1){}
+										W:Cowl(angle=-60,option=4,color=col1){}
+									}
+								}
+								E:Cowl(angle=120,option=4,color=col1){}
+								W:Cowl(angle=3.5,color=col1){
+									N:Cowl(angle=107,color=0){
+										E:Cowl(angle=-10,option=5,color=0){}
+									}
+								}
+							}
+							W:Cowl(angle=3.5,color=col1){}
+						}
+					}
+				}
+				W:Cowl(angle=70,color=col1){
+					W:Cowl(angle=-160,color=col1){
+						W:Cowl(angle=93,color=col1){
+							N:Cowl(angle=10,color=col1){
+								N:Cowl(angle=115,option=1,color=col1,effect=tou){
+									N:Cowl(angle=-128,color=col1){
+										E:Cowl(angle=3.5,color=col1){}
+										W:Cowl(angle=-110,option=4,color=col1){}
+										E:Cowl(angle=-60,option=3,color=col1){}
+									}
+								}
+								N:Cowl(angle=105,option=1,color=col1,effect=TOU){
+									N:Cowl(angle=145,option=1,color=col1,effect=TOU){
+										N:Cowl(angle=108,option=3,color=col1){
+											E:Cowl(angle=-179.3,option=5,color=colhl,effect=colhlf){}
+											N:Cowl(angle=135,option=2,color=col1){
+												E:Cowl(angle=-179,option=5,color=col1){}
+											}
+											N:Cowl(angle=160,option=2,color=coll,effect=collf){}
+											N:Cowl(angle=145,option=2,color=col1){}
+											S:Cowl(angle=-179.1,option=4,color=col1){
+												E:Cowl(angle=-3.5,color=col1){
+													S:Cowl(angle=-145,color=col1){}
+												}
+											}
+										}
+									}
+								}
+								W:Cowl(angle=120,option=3,color=col1){}
+								E:Cowl(angle=3.5,color=col1){
+									N:Cowl(angle=107,color=0){
+										W:Cowl(angle=-10,option=5,color=0){}
+									}
+								}
+							}
+							S:Cowl(angle=8,color=col1){
+								S:Cowl(angle=-6,color=col1){
+									S:Cowl(color=col1){
+										W:Cowl(angle=85,color=col1){}
+										S:Cowl(angle=100,color=col1){
+											S:Cowl(angle=160,color=col1){
+												S:Cowl(angle=103,color=col1){
+													E:Cowl(angle=3.5,color=col1){}
+													S:Cowl(angle=-2,color=col1){
+														E:Cowl(angle=3.5,color=col1){
+															S:Cowl(angle=89,color=col1){
+																S:Cowl(angle=130,color=col1){
+																	S:Cowl(angle=133,color=col1){
+																		S:Cowl(angle=100,color=col1){
+																			W:Cowl(angle=5,color=col1){
+																				N:Cowl(angle=100,color=col1){}
+																				W:Cowl(angle=95,option=3,color=col1){}
+																			}
+																		}
+																	}
+																}
+															}
+															N:Cowl(angle=-160,option=1,color=0){
+																N:Cowl(angle=165,color=col1){
+																	W:Cowl(angle=10,color=col1){
+																		W:Cowl(angle=85,option=4,color=col1){}
+																	}
+																}
+															}
+														}
+														S:Cowl(angle=90,color=colBRK,effect=COLBRKF){
+															W:Cowl(angle=176,color=col1){
+																W:Cowl(angle=178,color=coll,effect=COLLF){}
+															}
+														}
+														W:Cowl(angle=95,option=4,color=col1){}
+													}
+													W:Cowl(angle=86,option=3,color=col1){}
+												}
+											}
+										}
+									}
+									W:Cowl(angle=85,color=col1){
+										N:Cowl(color=col1){}
+									}
+								}
+								W:Cowl(angle=87,color=col1){}
+								E:Cowl(angle=3,color=col1){}
+							}
+							E:Cowl(angle=3.5,color=col1){}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua{
+function ang(m,n,v)
+	if m-n<v and m-n>-v then m=n
+	elseif m<n then m=m+v
+	elseif m>n then m=m-v
+	end
+	return m
+end
+
+function rgb(r,g,b)
+	return math.floor(math.min(r,255)) * 65536 + math.floor(math.min(g,255)) * 256 + math.floor(math.min(b,255))
+end
+
+function spcl(d,c,b,a)
+	return math.floor(math.min(a,15)) + math.floor(math.min(b,15)) * 16 + math.floor(math.min(c,15)) * 256 + math.floor(math.min(d,15)) * 4096
+end
+
+function m_input(free)
+	if free==nil then free=0 end
+	
+	local mx=(math.min(math.max(_MX(),0),_WIDTH()))/_WIDTH()-0.5
+	local my=(math.min(math.max(_MY(),0),_HEIGHT()))/_HEIGHT()-0.5
+	
+	if math.abs(mx)<=free then mx=0
+	else mx=mx-free*(mx/math.abs(mx)) end
+	
+	if math.abs(my)<=free then my=0
+	else my=my-free*(my/math.abs(my)) end
+	
+	return mx,my
+end
+
+function graph(val,min,max,wake,mode)
+	local o=""
+	local tmp2=max-min
+	local tmp=val-min+tmp2/wake/2
+	
+	if mode==0 then
+		for i=1,wake do
+			if tmp>=tmp2/wake then o=o.."■"
+			else o=o.."□" end
+			tmp=tmp-tmp2/wake
+		end
+	elseif mode==1 then
+		o="■"
+		j=0
+		wake=wake-1
+		for i=1,wake do
+			if tmp<=tmp2/wake then break
+			else
+				o="□"..o
+				tmp=tmp-tmp2/wake
+				j=i
+			end
+		end
+		for i=1,wake-j do
+			o=o.."□"
+		end
+	end
+	
+	return o
+end
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+
+function handle()--ハンドル--------------------------------
+	if(_KEY(2)==1 and _KEY(3)==0)then
+		HANDLE=HANDLE-3
+		FLBRK=FLBRK+inbk*HANDLE/25
+		RLBRK=RLBRK+inbk*HANDLE/25
+	end
+	
+	if(_KEY(3)==1 and _KEY(2)==0)then
+		HANDLE=HANDLE+3
+		FRBRK=FRBRK+inbk*HANDLE/25
+		RRBRK=RRBRK+inbk*HANDLE/25
+	end
+	
+	if(HANDLE > 0)then 
+		RHANDLE = HANDLE * 1.35 + 182
+		LHANDLE = HANDLE + 178
+	else
+		RHANDLE = HANDLE + 182
+		LHANDLE = HANDLE * 1.35 + 178
+	end
+	
+	
+	FVW=HANDLE*0.25+180
+end
+
+function engine()--エンジン出力---------------------------------------
+	if(_KEY(0)==1 and _KEY(1)==0)then ENG1=ENG1+5 end
+	if(_KEY(1)==1 and _KEY(0)==0)then ENG1=ENG1-5 end
+	
+	if(_KEY(5)==1 and _H(0)<1)then
+		TB=0.080 --パワーアップ時のターボブースト係数
+		limit.l[1]=120000
+	else
+		TB=0.040 --通常時のターボブースト係数
+		limit.l[1]=100000
+	end
+	
+	ENG2=1.0+(math.abs(_VZ(0))*TB)--速度に応じて出力を調整
+	ENGINE=(ENG1*100)*ENG2
+	
+	--[[
+	if(HANDLE<0 and _VZ(0)<0) then		engl=ENGINE*(1-def) ; engr=ENGINE*(1+def)
+	elseif(HANDLE>0 and _VZ(0)<0) then	engr=ENGINE*(1-def) ; engl=ENGINE*(1+def)
+	else											engl=ENGINE     ; engr=ENGINE end
+	]]
+	--engl=ENGINE ; engr=ENGINE
+	tcs()
+	
+end
+
+	slip={}
+	tc={}
+	bc={}
+	
+function tcs()
+	
+	if tcsmode==1 then
+		TCSstat="○"
+		for i=1,4 do
+			if slip[i]>tcset then
+				TCSstat="●"
+				tc[i]=math.max(3.0/slip[i],0.1)
+			else
+				tc[i]=1
+			end
+		end
+		if ENG1==0 then TCSstat="○" end
+	else
+		TCSstat="×"
+		tc={1,1,1,1}
+	end
+	
+	
+	ENGFL=ENGINE*tc[1]*kudou.l[kudou.m].f * (1+def*HANDLE/25)
+	ENGFR=ENGINE*tc[2]*kudou.l[kudou.m].f * (1-def*HANDLE/25)
+	
+	ENGRL=ENGINE*tc[3]*kudou.l[kudou.m].r * (1+def*HANDLE/25)
+	ENGRR=ENGINE*tc[4]*kudou.l[kudou.m].r * (1-def*HANDLE/25)
+	
+	
+	--リミッター
+	
+	while ENGFL+ENGFR+ENGRL+ENGRR > limit.l[limit.m] do
+		ENGFL=ENGFL*0.94
+		ENGFR=ENGFR*0.94
+		ENGRL=ENGRL*0.973
+		ENGRR=ENGRR*0.973
+	end
+	
+	local t=(limit.l[limit.m]-(ENGFL+ENGFR+ENGRL+ENGRR))
+	if ENGRL+ENGRR > limit.l[limit.m]*0.66 then
+		ENGFL=ENGFL+t/2
+		ENGFR=ENGFR+t/2
+	elseif t<limit.l[limit.m]*0.12 then
+		ENGFL=ENGFL+t/4
+		ENGFR=ENGFR+t/4
+		ENGRL=ENGRL+t/4
+		ENGRR=ENGRR+t/4
+	end
+	
+	
+	
+--	out(7,"&  ",slip[1]," ",slip[2]," ",slip[3]," ",slip[4])
+--	out(8,"&  ",tc[1]," ",tc[2]," ",tc[3]," ",tc[4])
+--	out(9,"&  ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL))
+end
+
+function brake()
+	if _KEY(4)==1 then BRK=BRK+30 end
+	
+	if absmode==1 then
+		absstat="○"
+		if _VZ(0)<-3 then
+			for i=1,4 do
+				if slip[i]<bcset then
+					absstat="●"
+					bc[i]=math.max(slip[i]/(bcset+0.05),0.1)
+				else
+					bc[i]=1
+				end
+			end
+		else
+			bc={1,1,1,1}
+		end
+		
+		if BRK==0 then absstat="○" end
+	else
+		absstat="×"
+		bc={1,1,1,1}
+	end
+	
+	FLBRK=BRK*bc[1]
+	FRBRK=BRK*bc[2]
+	               
+	RLBRK=BRK*bc[3]
+	RRBRK=BRK*bc[4]
+	
+--	out(7,"&  ",slip[1]," ",slip[2]," ",slip[3]," ",slip[4])
+--	out(9,"&  ",bc[1]," ",bc[2]," ",bc[3]," ",bc[4])
+--	out(9,"&  ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL)," ",_WY(WFL))
+end
+
+function teiti()--定地旋回----------------------------------------------
+	
+	if(_KEY(2)==1) then 
+		engl=-10000
+		engr=10000
+	elseif (_KEY(3)==1) then 
+		engl=10000
+		engr=-10000
+	else
+		engl = 0
+		engr = 0
+	end
+	
+	ENGFL=engl
+	ENGFR=engr
+	ENGRL=engl
+	ENGRR=engr
+	
+end
+
+s_tmp=0
+
+function s_int(val,max,min,k1,k2,ma,mb)
+	val=val+(_KEYDOWN(k1)-_KEYDOWN(k2))*ma
+	
+	if _KEY(k1)==1 and _KEY(k2)==0 then
+		if s_tmp<0 then s_temp=0 end
+		s_tmp=s_tmp+1
+		if s_tmp==15 then
+			s_tmp=10
+			val=val+mb
+		end
+	elseif _KEY(k1)==0 and _KEY(k2)==1 then
+		if s_tmp>0 then s_temp=0 end
+		s_tmp=s_tmp-1
+		if s_tmp==-15 then
+			s_tmp=-10
+			val=val-mb
+		end
+	else s_tmp=0 end
+	
+	val=math.min(math.max(val,min),max)
+	return val
+end
+
+
+
+setmode=0
+
+col={
+	m=7,
+	c={
+		[0]={
+			[1]=rgb(198,0,0),
+		},
+		[1]={
+			[1]=rgb(0,0,200),
+		},
+		[2]={
+			[1]=rgb(255,255,255),
+		},
+		[3]={
+			[1]=rgb(20,20,20),
+		},
+		[4]={
+			[1]=rgb(200,160,0),
+		},
+		[5]={
+			[1]=rgb(100,100,100),
+		},
+		[6]={
+			[1]=rgb(100,0,0),
+		},
+		[7]={
+			[1]=rgb(0,0,100),
+		},
+		[8]={
+			[1]=rgb(0,30,10),
+		},
+	},
+	p=9
+}
+
+limit={
+	m=0,
+	n={
+		[0]="無制限",
+		[1]="100k+ ",
+		[2]="50k   "
+	},
+	l={
+		[0]=90000000,
+		[1]=100000,
+		[2]=50000
+	}
+}
+
+rvw={
+	m=0,
+	n={
+		[0]="Grip ",
+		[1]="Drift"
+	}
+}
+
+kudou={
+	m=3,
+	n={
+		[0]="4WD ",
+		[1]="RWD ",
+		[2]="FWD ",
+		[3]="4WD2"
+	},
+	l={
+		[0]={f=1,r=1},
+		[1]={f=0,r=1},
+		[2]={f=1,r=0},
+		[3]={f=1,r=0.84}
+	}
+}
+tcsmode=1
+absmode=1
+bcset=3.3
+tcset=3.62
+autowingf=1
+autowingr=1
+fwing=23
+rwing=24
+def=0.4
+inbk=25
+
+premode=1
+pre={
+	[0]={
+		name="ｶｽﾀﾑ",
+		colm=1,
+		limitm=0,
+		rvwm=0,
+		kudoum=3,
+		tcsmode=1,
+		tcset=3.64,
+		absmode=1,
+		bcset=3.3,
+		autowingf=1,
+		autowingr=1,
+		fwing=23,
+		rwing=24,
+		def=0.4,
+		inbk=25
+	},
+	[1]={
+		name="デフォ",
+		colm=7,
+		limitm=0,
+		rvwm=0,
+		kudoum=3,
+		tcsmode=1,
+		tcset=3.64,
+		absmode=1,
+		bcset=3.3,
+		autowingf=1,
+		autowingr=1,
+		fwing=23,
+		rwing=24,
+		def=0.4,
+		inbk=25
+	},
+	[2]={
+		name="旧設定",
+		colm=0,
+		limitm=0,
+		rvwm=0,
+		kudoum=0,
+		tcsmode=1,
+		tcset=3.6,
+		absmode=1,
+		bcset=3.3,
+		autowingf=1,
+		autowingr=1,
+		fwing=11,
+		rwing=11,
+		def=0.27,
+		inbk=0
+	},
+	[3]={
+		name="ﾄﾞﾘﾌﾄ用",
+		colm=1,
+		limitm=0,
+		rvwm=1,
+		kudoum=0,
+		tcsmode=1,
+		tcset=3.70,
+		absmode=1,
+		bcset=3.35,
+		autowingf=1,
+		autowingr=1,
+		fwing=11,
+		rwing=11,
+		def=0.43,
+		inbk=0
+	}
+}
+
+
+function setting()
+	if _KEYDOWN(9)==1 then setmode=math.mod(setmode+1,11) end
+	
+	if setmode==0 then
+		
+		if _KEYDOWN(7)==1 then premode=math.mod(premode+1,4) end
+		
+		out(2,string.format("[ｾｯﾃｨﾝｸﾞ読込 (%s) ]  [D:項目変更]",pre[premode].name))
+		
+		
+		if _KEYDOWN(8)==1 then
+			
+			col.m=     pre[premode].colm
+			limit.m=   pre[premode].limitm
+			rvw.m=     pre[premode].rvwm
+			kudou.m=   pre[premode].kudoum
+			tcsmode=   pre[premode].tcsmode
+			tcset=     pre[premode].tcset
+			absmode=   pre[premode].absmode
+			bcset=     pre[premode].bcset
+			autowingf= pre[premode].autowingf
+			autowingr= pre[premode].autowingr
+			fwing=     pre[premode].fwing
+			rwing=     pre[premode].rwing
+			def=       pre[premode].def
+			inbk=      pre[premode].inbk
+			
+			for i=1,3 do
+				_G["COL"..i]=col.c[col.m][i]
+			end
+			if autowingf==0 then
+				FWL=fwing+3
+				FWR=fwing+3
+			end
+			if autowingr==0 then
+				RWL=rwing+23
+				RWR=rwing+23
+			end
+		end
+		
+	elseif setmode==1 then
+		
+		out(2,string.format("[色　パターン "..(col.m+1).." AS:選択]　　　[D:項目変更]"))
+		if _KEYDOWN(8)==1 then col.m=math.mod(col.m+1,col.p) end
+		if _KEYDOWN(7)==1 then
+			col.m=col.m-1
+			if col.m==-1 then col.m=col.p-1 end
+		end
+		if _KEYDOWN(7)==1 or _KEYDOWN(8)==1 then
+			for i=1,3 do
+				_G["COL"..i]=col.c[col.m][i]
+			end
+		end
+	
+	elseif setmode==2 then
+	
+		out(2,string.format("[リミッター "..limit.n[limit.m].." AS:選択]   [D:項目変更]"))
+		if _KEYDOWN(8)==1 then limit.m=math.mod(limit.m+1,3) end
+		if _KEYDOWN(7)==1 then
+			limit.m=limit.m-1
+			if limit.m==-1 then limit.m=2 end
+		end
+	
+	elseif setmode==3 then
+	
+		out(2,string.format("[後部垂直翼 "..rvw.n[rvw.m].." AS:選択]   [D:項目変更]"))
+		if _KEYDOWN(8)==1 then rvw.m=math.mod(rvw.m+1,2) end
+		if _KEYDOWN(7)==1 then
+			rvw.m=rvw.m-1
+			if rvw.m==-1 then rvw.m=1 end
+		end
+	
+	elseif setmode==4 then
+	
+		out(2,string.format("[駆動モード　"..kudou.n[kudou.m].."　AS:選択] 　 [D:項目変更]"))
+		if _KEYDOWN(8)==1 then kudou.m=math.mod(kudou.m+1,4) end
+		if _KEYDOWN(7)==1 then
+			kudou.m=kudou.m-1
+			if kudou.m==-1 then kudou.m=3 end
+		end
+	
+	elseif setmode==5 then
+	
+		out(2,string.format("[TCS"..TCSstat.." %.02f AS:+- A+S:On/Off][D:項目変更]",tcset))
+		tcset=s_int(tcset,4,2.8,8,7,0.01,0.03)
+		if _KEYDOWN(7)+_KEYDOWN(8)==2 then tcsmode=math.mod(tcsmode+1,2) end
+	
+	elseif setmode==6 then
+	
+		out(2,string.format("[ABS"..absstat.." %.02f AS:+- A+S:On/Off][D:項目変更]",bcset))
+		bcset=s_int(bcset,4,2.8,8,7,0.01,0.03)
+		if _KEYDOWN(7)+_KEYDOWN(8)==2 then absmode=math.mod(absmode+1,2) end
+	
+	elseif setmode==7 then
+		
+		out(2,string.format("[イン側ブレーキ %.0f AS:+- A+S:On/Off][D:項目変更]",inbk))
+		inbk=s_int(inbk,100,0,8,7,5,10)
+		if _KEYDOWN(7)+_KEYDOWN(8)==2 then tcsmode=math.mod(tcsmode+1,2) end
+		
+	elseif setmode==8 then
+		
+		fwing=s_int(fwing,35,0,8,7,1,3)
+		if autowingf==0 then
+			out(2,string.format("[空力前 手 %d AS:+- A+S:自]   [D:項目変更]",fwing))
+			FWL=fwing+3
+			FWR=fwing+3
+		else
+			out(2,string.format("[空力前 自 %d AS:+- A+S:解]   [D:項目変更]",fwing))
+		end
+		if _KEYDOWN(7)+_KEYDOWN(8)==2 then autowingf=math.mod(autowingf+1,2) end
+	
+	elseif setmode==9 then
+	
+		rwing=s_int(rwing,35,0,8,7,1,3)
+		if autowingr==0 then
+			out(2,string.format("[空力後 手 %d AS:+- A+S:自]   [D:項目変更]",rwing))
+			RWL=rwing+23
+			RWR=rwing+23
+		else
+			out(2,string.format("[空力後 自 %d AS:+- A+S:解]   [D:項目変更]",rwing))
+		end
+		if _KEYDOWN(7)+_KEYDOWN(8)==2 then autowingr=math.mod(autowingr+1,2) end
+	
+	elseif setmode==10 then
+	
+		out(2,string.format("&[デフ回転差 A:弱 %1.2f S:強]   [D:項目変更]",def))
+		def=s_int(def,1,0,8,7,0.01,0.03)
+	
+	end
+	
+	if autowingf==1 then wing_f() end
+	if autowingr==1 then wing_r() end
+	
+	if rvw.m==0 then RWANG=RWANG-5
+	else RWANG=RWANG+5 end
+	
+	
+	if setmode~=0 and premode~=0 then
+		if col.m~=pre[premode].colm or 
+			limit.m~=   pre[premode].limitm or
+			rvw.m~=     pre[premode].rvwm or
+			kudou.m~=   pre[premode].kudoum or
+			tcsmode~=   pre[premode].tcsmode or
+			tcset~=     pre[premode].tcset or
+			absmode~=   pre[premode].absmode or
+			bcset~=     pre[premode].bcset or
+			autowingf~= pre[premode].autowingf or
+			autowingr~= pre[premode].autowingr or
+			fwing~=     pre[premode].fwing or
+			rwing~=     pre[premode].rwing or
+			def~=       pre[premode].def or
+			inbk~=      pre[premode].inbk then
+		premode=0 end
+	end
+	
+	if setmode~=0 and premode==0 then
+			pre[0].colm      = col.m
+			pre[0].limitm    = limit.m
+			pre[0].rvwm      = rvw.m
+			pre[0].kudoum    = kudou.m
+			pre[0].tcsmode   = tcsmode
+			pre[0].tcset     = tcset
+			pre[0].absmode   = absmode
+			pre[0].bcset     = bcset
+			pre[0].autowingf = autowingf
+			pre[0].autowingr = autowingr
+			pre[0].fwing     = fwing
+			pre[0].rwing     = rwing
+			pre[0].def       = def
+			pre[0].inbk      = inbk
+	end
+end
+
+
+
+fwl=0
+fwr=0
+rwl=0
+rwr=0
+function wing_f()
+	if _H(WFL)>0 then
+		local tmp=math.min(((_H(WFL)-0.3)*14)+math.abs((LHANDLE-180)*0.35,0)+fwing,40)
+		fwl=ang(fwl,tmp,5)
+	end
+	if _H(WFR)>0 then
+		local tmp=math.min(((_H(WFR)-0.3)*14)+math.abs((RHANDLE-180)*0.35,0)+fwing,40)
+		fwr=ang(fwr,tmp,5)
+	end
+	
+	
+	
+	if (_H(WFL)>2 and _H(WFR) > 2) or (_H(WFL)<-100 and _H(WFR)<-100) then
+		fwl=ang(fwl,sxf*8+szl*6+fwing*0.45,5)
+		fwr=ang(fwr,-sxf*8+szr*6+fwing*0.45,5)
+	elseif _H(WFL)>1.2 and _H(WFR)>1.2 and _H(WRL)>0.9 and _H(WRR)>0.9 and (_H(WFL)+_H(WFR))>(_H(WRL)+_H(WRR)+0.5) then
+		fwl=fwl*1.04
+		fwr=fwr*1.04
+	end
+	
+	FWL=fwl*wvel+3
+	FWR=fwr*wvel+3
+end	
+
+function wing_r()
+	if _H(WRL)>0 then
+		local tmp=math.min(((_H(WRL)-0.3)*13)+math.abs((LHANDLE-180)*0.2)+rwing,60)
+		rwl=ang(rwl,tmp,5)
+	end
+	if _H(WRR)>0 then
+		local tmp=math.min(((_H(WRR)-0.3)*13)+math.abs((RHANDLE-180)*0.2)+rwing,60)
+		rwr=ang(rwr,tmp,5)
+	end
+	
+	if (_H(WRL)>2 and _H(WRR) > 2) or (_H(WRL)<-100 and _H(WRR)<-100) then
+		rwl=ang(rwl,sxr*8-szl*6+rwing*0.4,5)
+		rwr=ang(rwr,-sxr*8-szr*6+rwing*0.4,5)
+	end
+	
+	RWL=rwl*wvel+3
+	RWR=rwr*wvel+3
+end
+
+time=0
+lmode=0
+rmode=0
+lightmode=0
+
+function gimic()
+	if _KEYDOWN(10)==1 then lmode=math.mod(lmode+1,2) end
+	if _KEYDOWN(11)==1 then rmode=math.mod(rmode+1,2) end
+	if _KEYDOWN(13)==1 then lightmode=math.mod(lightmode+1,2) end
+	
+	--テールランプ
+	if _KEY(4)==1 then
+		COLBRK=16711680
+		COLBRKF=spcl(0,15,4,15)
+	else
+		COLBRK=5570560
+		COLBRKF=spcl(0,0,15,11)
+	end
+	
+	if lmode+rmode==0 then time=0 end
+	
+	if lmode==1 and time<12 then
+			COLL=16759552
+			COLLF=spcl(0,15,4,15)
+	else
+		COLL=10053120
+		COLLF=spcl(0,0,15,0)
+	end
+	
+	if rmode==1 and time<12 then
+		COLR=16759552
+		COLRF=spcl(0,15,4,15)
+	else
+		COLR=10053120
+		COLRF=spcl(0,0,15,0)
+	end
+	
+	time=math.mod(time+1,25)
+	
+	
+	if lightmode==0 then
+		COLHL=rgb(150,150,150)
+		COLHLF=spcl(0,0,15,11)
+		--COLHLF2=spcl(9,0,15,11)
+	else
+		COLHL=rgb(255,255,255)
+		COLHLF=spcl(0,15,0,15)
+		--COLHLF2=spcl(9,15,0,15)
+	end
+end
+
+function main()
+	
+	
+	if _VZ(0)==0 then
+		for i=1,i<4 do
+			slip[i]=0
+		end
+	else
+		slip[1]=math.abs(_WY(WFL)/_VZ(0))
+		slip[2]=math.abs(_WY(WFR)/_VZ(0))
+		slip[3]=math.abs(_WY(WRL)/_VZ(0))
+		slip[4]=math.abs(_WY(WRR)/_VZ(0))
+	end
+	sxf=_Y(WFL)-_Y(WFR)
+	sxr=_Y(WRL)-_Y(WRR)
+	szl=_Y(WFL)-_Y(WRL)
+	szr=_Y(WFR)-_Y(WRR)
+	
+	wvel=1-math.min(math.max(math.abs(_VZ(0))*0.0073-0.2,0),0.8)
+	--out(7,"slip1  ",slip[1])
+	
+	
+	brake()
+	
+	handle() --ステアリング
+	
+	if _KEY(6) == 1 then
+		teiti() --定地旋回
+	else
+		engine() --エンジンパワー
+	end
+	
+	
+	
+	--out(10,wvel)
+	
+	setting()
+	
+	gimic()
+	
+	
+	_ZOOM(80)
+	
+	vel=math.sqrt( _VX(0)^2 + _VY(0)^2 + _VZ(0)^2 )*3.6
+	out(0,string.format("&FPS:%2.1f  Chips:%d  Weight:%.1f %3.1fkm/h %3.1fkm/h",_FPS(),_CHIPS(),_WEIGHT(),-(_VZ(0)*3.6),vel)) 
+	out(3,"&[Z:ブレーキ]   [X:ブースト]   [C:定地旋回]")
+	out(5,string.format("ブースト：%.3f",TB))
+	out(6,string.format("出力：%d",(ENGFL+ENGFR+ENGRL+ENGRR)))
+	out(7,"TCS："..TCSstat.."  ABS:"..absstat)
+end
+}

@@ -1,0 +1,69 @@
+// [RCD] 
+Val
+{
+	BRKE(default=0, max=60, step=30)
+	ENGN(default=0, min=-2500, max=5000, step=1000)
+	HNDL(default=0, min=-15, max=15, step=5)
+	HNDL2(default=0, min=-30, max=30, step=10)
+	JYRO(default=0, min=-40000, max=40000, step=40000)
+}
+Key
+{
+	0:ENGN(step=4096)
+	1:ENGN(step=-1024)
+	2:HNDL(step=4), HNDL2(step=8)
+	3:HNDL(step=-4), HNDL2(step=-8)
+	4:BRKE(step=32)
+}
+Body
+{
+	Core() {
+		S:TrimF(angle=-90, option=1) {
+			N:Frame(option=1) {
+				S:RudderF(angle=-20, spring=1, damper=1) {
+					S:Wheel(power=ENGN, brake=BRKE, option=1, effect=2) { }
+				}
+			}
+			N:RudderF(angle=20, option=1) {
+				S:Frame(option=1) {
+					N:TrimF(option=1) { }
+					N:TrimF(angle=-HNDL, spring=1, damper=1) {
+						N:Frame(option=1) {
+							W:TrimF(angle=HNDL, option=1) {
+								E:Wheel(brake=BRKE, option=1, effect=2) { }
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Cowl(angle=-135) {
+			W:Cowl(angle=-90, option=5) { }
+			E:Cowl(angle=-90, option=5) { }
+		}
+		S:Frame(angle=45, option=1) {
+			E:Cowl(angle=90, option=4) { }
+			W:Cowl(angle=90, option=3) { }
+		}
+		S:Cowl(angle=20) { }
+		N:Frame(angle=-160, option=1) {
+			N:RLW(angle=-110, power=JYRO, brake=204800) { }
+		}
+		S:Chip(angle=-20) {
+			S:Cowl(angle=25) { }
+			E:Cowl(angle=90, option=3) {
+				S:Cowl(option=4) { }
+			}
+			W:Cowl(angle=90, option=4) {
+				S:Cowl(option=3) { }
+			}
+			N:Chip() { }
+		}
+	}
+}
+Lua
+{function OnFrame()
+	ez = _EZ(0) / 3.14 * 180
+	JYRO = (ez / 180) * 200000
+end
+}

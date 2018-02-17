@@ -1,0 +1,85 @@
+// [RCD] 
+Val
+{
+	ELON(default=0, min=-8, max=8, step=4)
+	EVTR(default=0, min=-8, max=8, step=4)
+	JET(default=0, max=204800, step=65536)
+}
+Key
+{
+	0:EVTR(step=4)
+	1:EVTR(step=-4)
+	2:ELON(step=4)
+	3:ELON(step=-4)
+	4:JET(step=65536)
+}
+Body
+{
+	Core() {
+		S:Chip() {
+			W:Rudder(angle=-50) {
+				W:Trim(angle=ELON) {
+					W:Chip() {
+						S:Rudder(angle=-40) { }
+					}
+				}
+			}
+			E:Rudder(angle=50) {
+				E:Trim(angle=ELON) {
+					E:Chip(angle=0) {
+						S:Rudder(angle=40) { }
+					}
+				}
+			}
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						W:Frame(option=1) {
+							W:Chip(angle=-90) { }
+						}
+						E:Frame(option=1) {
+							E:Chip(angle=-90) { }
+						}
+						E:Trim(angle=EVTR) { }
+						W:Trim(angle=-EVTR) { }
+					}
+					S:Frame(angle=-30) {
+						S:Jet(angle=120, power=-JET) { }
+					}
+				}
+				N:Frame(angle=-30) {
+					N:Frame(angle=30) {
+						N:Arm() { }
+						E:Frame(angle=90) {
+							N:Arm() { }
+						}
+						S:Frame(angle=90) {
+							S:Frame(angle=90) {
+								S:Arm() { }
+							}
+						}
+						W:Frame(angle=90) {
+							N:Arm() { }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{function _VEL(n)
+	return _LEN3(_VX(n),_VY(n),_VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a*a+b*b+c*c)
+end
+
+MPH = 0
+
+function OnFrame()
+	out(0,_VEL(0)*3.6)
+	out(1,MPH*3.6)
+	if _VEL(0) > MPH then MPH = _VEL(0) end
+end}

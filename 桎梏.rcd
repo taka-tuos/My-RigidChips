@@ -1,0 +1,122 @@
+// [RCD] 
+Val
+{
+	G0(default=0, max=10000000000)
+	G1(default=0, max=10000000000)
+	G2(default=0, max=10000000000)
+	G3(default=0, max=10000000000)
+	P(default=0, max=10000000000)
+	R(default=0, min=-90, max=90)
+	T(default=0, max=90)
+	V(default=0, min=-90, max=90)
+	V0(default=0, min=-90, max=90)
+	V1(default=0, min=-90, max=90)
+	V2(default=0, min=-90, max=90)
+	V3(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+		S:Trim(angle=90) {
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							S:TrimF(angle=-90) {
+								W:Trim(angle=V) { }
+								E:Trim(angle=-V) { }
+							}
+							S:Rudder(angle=-90) {
+								S:Rudder(angle=90) {
+									W:Chip() { }
+								}
+							}
+						}
+					}
+				}
+				N:Trim(angle=90, spring=1, damper=1, name=CRE) {
+					N:Frame(angle=V0, spring=1, damper=1) {
+						N:Arm(option=50000, power=G0, angle=-V0, name=A0) { }
+					}
+					N:Frame(angle=V1, spring=1, damper=1) {
+						N:Arm(option=50000, power=G1, angle=-V1, name=A1) { }
+					}
+					N:Frame(angle=V2, spring=1, damper=1) {
+						N:Arm(option=50000, power=G2, angle=-V2, name=A2) { }
+					}
+					N:Frame(angle=V3, spring=1, damper=1) {
+						N:Arm(option=50000, power=G3, angle=-V3, name=A3) { }
+					}
+				}
+			}
+			S:TrimF(angle=-90) {
+				E:Trim(angle=R) {
+					E:Chip() { }
+				}
+				W:Trim(angle=R) {
+					W:Chip() { }
+				}
+				N:Frame(angle=-150) {
+					N:RLW(angle=-120, power=P) {
+						W:Trim(angle=-T) { }
+						E:Trim(angle=-T) { }
+						S:Trim(angle=-T) { }
+						N:Trim(angle=-T) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+require("daretoku_taka/xhud.lua")
+require("daretoku_taka/libccvx.lua")
+
+_mn = 0
+_mdl = {1,-1}
+_ntp = {0,0}
+
+_prvtbl = InitPRVTable()
+
+_prvtbl.p.limit = 400000
+_prvtbl.p.step  = 200000
+
+_prvtbl.r.tgt = 360
+_prvtbl.r.kp  = 12
+_prvtbl.r.ki  = 12
+_prvtbl.r.kd  = 4
+_prvtbl.r.il  = 20
+
+_prvtbl.v.tgt = 180
+_prvtbl.v.kp  = 32
+_prvtbl.v.ki  = 32
+_prvtbl.v.kd  = 4
+_prvtbl.v.il  = 40
+
+function OnFrame()
+	CCVXOnFrame(true)
+
+	ShowSplash("TRI/P-01 ž~ž‡")
+	
+	local p,r,v = GetPRV(true,_prvtbl)
+	
+	P=p
+	R=r
+	V=v
+	
+	T = 25 * ((_VEL()*3.6 - 200) / 300) + 55
+	
+	CheckLimit()
+	
+	XHUD.Draw()
+end
+}

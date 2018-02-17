@@ -1,0 +1,103 @@
+// [RCD] 
+Val
+{
+	BRKE(default=0, max=60, step=30)
+	ENGN(default=0, min=-2500, max=10000, step=1000)
+	HNDL(default=0, min=-15, max=15, step=0.9)
+	HNDL2(default=0, min=-180, max=180)
+	JYRO(default=0, min=-4000000, max=4000000, step=4000000)
+}
+Key
+{
+	0:ENGN(step=4000)
+	1:ENGN(step=-1000)
+	2:HNDL(step=0.9)
+	3:HNDL(step=-0.9)
+	4:BRKE(step=30)
+}
+Body
+{
+	Core() {
+		N:TrimF(angle=-HNDL2) {
+			S:Frame() {
+				N:RLW(angle=90, power=JYRO, brake=100000) { }
+				N:Frame(angle=150) {
+					N:Frame(angle=-150, name=JT) {
+						N:TrimF(angle=90, option=1) {
+							S:RudderF(angle=20, option=1) {
+								N:TrimF() {
+									S:RudderF(angle=-20, option=1) { }
+									S:Chip(angle=HNDL) { }
+									S:TrimF(angle=90, option=1) {
+										N:Chip(angle=0) { }
+									}
+									N:Frame(option=1) {
+										W:TrimF(angle=HNDL, option=1) {
+											E:Wheel(brake=BRKE, option=1, effect=3) { }
+										}
+									}
+								}
+							}
+						}
+						N:Frame(angle=-90, option=1) { }
+						N:TrimF(angle=90, option=1) {
+							S:RudderF(angle=-20) {
+								N:Cowl(angle=20) {
+									N:Cowl(angle=-40, option=3) {
+										S:Cowl(angle=-20) {
+											S:Cowl(angle=-10) {
+												E:Cowl(angle=-40, option=4) { }
+											}
+											E:Cowl(angle=-40, option=3) { }
+										}
+									}
+								}
+								N:Cowl(angle=-20) {
+									N:Cowl(angle=40, option=3) {
+										S:Cowl(angle=20) {
+											S:Cowl(angle=10) {
+												E:Cowl(angle=40, option=4) { }
+											}
+											E:Cowl(angle=40, option=3) { }
+										}
+									}
+								}
+								S:Wheel(power=ENGN, brake=BRKE, option=1, effect=3) { }
+							}
+						}
+					}
+					S:Cowl(angle=-20) {
+						N:Cowl(angle=5) {
+							N:Cowl(angle=20) {
+								W:Cowl(angle=-120, option=4) {
+									S:Cowl() { }
+								}
+								E:Cowl(angle=-120, option=3) {
+									S:Cowl() { }
+								}
+							}
+							E:Cowl(angle=-110, option=3) { }
+							W:Cowl(angle=-110, option=4) { }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function OnFrame()
+	out(0,(_VEL(0) * 3.6), " kph") 
+	ez = _EZ(0) / 3.14 * 180
+	bk = (HNDL * 1.7 / 3)
+	JYRO = ((ez+bk) / 90) * 100000 + _WZ(0)*3000
+end
+}

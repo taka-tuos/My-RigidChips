@@ -1,0 +1,496 @@
+// [RCD] 
+Val
+{
+	A1(default=180, min=-5.2, max=180, step=30, disp=0)
+	A10(default=180, min=-5.2, max=180, step=30, disp=0)
+	A11(default=180, min=-5.2, max=180, step=30, disp=0)
+	A12(default=180, min=-5.2, max=180, step=30, disp=0)
+	A13(default=180, min=-5.2, max=180, step=30, disp=0)
+	A14(default=180, min=-5.2, max=180, step=30, disp=0)
+	A15(default=180, min=-5.2, max=180, step=30, disp=0)
+	A2(default=180, min=-5.2, max=180, step=30, disp=0)
+	A3(default=180, min=-5.2, max=180, step=30, disp=0)
+	A4(default=180, min=-5.2, max=180, step=30, disp=0)
+	A5(default=180, min=-5.2, max=180, step=30, disp=0)
+	A6(default=180, min=-5.2, max=180, step=30, disp=0)
+	A7(default=180, min=-5.2, max=180, step=30, disp=0)
+	A8(default=180, min=-5.2, max=180, step=30, disp=0)
+	A9(default=180, min=-5.2, max=180, step=30, disp=0)
+	ARM1(default=0, max=4800000, step=4800000, disp=0)
+	ARM10(default=0, max=4800000, step=4800000, disp=0)
+	ARM11(default=0, max=4800000, step=4800000, disp=0)
+	ARM12(default=0, max=4800000, step=4800000, disp=0)
+	ARM13(default=0, max=4800000, step=4800000, disp=0)
+	ARM14(default=0, max=4800000, step=4800000, disp=0)
+	ARM15(default=0, max=4800000, step=4800000, disp=0)
+	ARM2(default=0, max=4800000, step=4800000, disp=0)
+	ARM3(default=0, max=4800000, step=4800000, disp=0)
+	ARM4(default=0, max=4800000, step=4800000, disp=0)
+	ARM5(default=0, max=4800000, step=4800000, disp=0)
+	ARM6(default=0, max=4800000, step=4800000, disp=0)
+	ARM7(default=0, max=4800000, step=4800000, disp=0)
+	ARM8(default=0, max=4800000, step=4800000, disp=0)
+	ARM9(default=0, max=4800000, step=4800000, disp=0)
+	BRAKE_L(default=100, max=100, step=20, disp=0)
+	BRAKE_R(default=100, max=100, step=20, disp=0)
+	CCL1(default=#00FF00, disp=0)
+	CCL2(default=#5B5B5B, disp=0)
+	COUNT(default=0, disp=0)
+	DPA(default=0.2, max=1, disp=0)
+	FA1(default=0, max=50000, step=50000, disp=0)
+	FAA1(default=230, min=120, max=230, step=15, disp=0)
+	FAA2(default=180, max=180, step=30, disp=0)
+	HC(default=1, max=1, step=1, disp=0)
+	HCC1(default=150, min=100, max=150, step=2, disp=0)
+	HCC2(default=60, min=60, max=160, step=4, disp=0)
+	HCC3(default=30, min=30, max=80, step=2, disp=0)
+	TM(default=0, max=75, disp=0)
+	TS(default=2, min=0.1, max=5)
+	TURN(default=180, min=-999999999)
+	UD(default=90, min=70, max=96.8)
+	WEIGHT(default=#0080FF)
+	WHEEL_L(default=0, min=-8800, max=8800, step=1000)
+	WHEEL_R(default=0, min=-8800, max=8800, step=1000)
+}
+Key
+{
+	0:BrAke_L(step=-10), BrAke_r(step=-10)
+	1:BrAke_L(step=-10), BrAke_r(step=-10)
+	2:BrAke_L(step=10), BrAke_r(step=-10)
+	3:BrAke_L(step=-10), BrAke_r(step=10)
+	9:FAA1(step=-50), FA1(step=10000), FAA2(step=-50)
+}
+Body
+{
+	Core(color=col1) {
+		S:Weight(angle=-156) {
+			S:Weight(angle=-114, color=ccl1, user2=100) {
+				E:Weight(angle=-90, color=ccl1, user2=100) { }
+				W:Weight(angle=-90, color=ccl1, user2=100) {
+					N:Frame(angle=FAA1) {
+						E:Arm(angle=FAA2, power=FA1, option=15000, color=0) { }
+					}
+				}
+			}
+		}
+		S:Weight(angle=55, option=2, name=HPNONE) {
+			N:Cowl(angle=60, color=ccl1, effect=ccef2) {
+				N:Cowl(angle=-5, color=ccl1, effect=ccef1) {
+					N:Cowl(angle=165, color=ccl1, effect=#F000) {
+						N:Cowl(angle=-165, color=ccl1) {
+							S:Cowl(color=ccl1) { }
+						}
+					}
+					N:Cowl(angle=-170, color=ccl1, effect=#F000) {
+						N:Cowl(angle=170, color=ccl1) {
+							E:Cowl(angle=155, color=ccl1) { }
+							W:Cowl(angle=155, color=ccl1) { }
+							S:Cowl(color=ccl1) { }
+						}
+					}
+				}
+			}
+			N:Weight(angle=60) {
+				N:Arm(angle=A1, power=ARM1, option=4800000, name=AM1) { }
+				N:Arm(angle=A2, power=ARM2, option=4800000, name=AM2) { }
+				N:Arm(angle=A3, power=ARM3, option=4800000, name=AM3) { }
+				N:Arm(angle=A4, power=ARM4, option=4800000, name=AM4) { }
+				N:Arm(angle=A5, power=ARM5, option=4800000, name=AM5) { }
+			}
+			N:Weight(angle=60) {
+				N:Arm(angle=A6, power=ARM6, option=4800000, name=AM6) { }
+				N:Arm(angle=A7, power=ARM7, option=4800000, name=AM7) { }
+				N:Arm(angle=A8, power=ARM8, option=4800000, name=AM8) { }
+				N:Arm(angle=A9, power=ARM9, option=4800000, name=AM9) { }
+				N:Arm(angle=A10, power=ARM10, option=4800000, name=AM10) { }
+			}
+			N:Weight(angle=60) {
+				N:Arm(angle=A11, power=ARM11, option=4800000, name=AM11) { }
+				N:Arm(angle=A12, power=ARM12, option=4800000, name=AM12) { }
+				N:Arm(angle=A13, power=ARM13, option=4800000, name=AM13) { }
+				N:Arm(angle=A14, power=ARM14, option=4800000, name=AM14) { }
+				N:Arm(angle=A15, power=ARM15, option=4800000, name=AM15) { }
+			}
+		}
+		S:Weight(option=8, color=WEIGHT) {
+			N:Jet(name=SMOKEJ) { }
+		}
+		S:Weight(option=8, color=WEIGHT) { }
+		S:Weight(option=8, color=WEIGHT) { }
+		S:Weight(option=6, color=WEIGHT) { }
+		S:Cowl(angle=HCC1, effect=#F000) {
+			S:Cowl(angle=HCC2, effect=#F000) {
+				S:Cowl(angle=-HCC3, effect=#F000) {
+					S:Cowl(angle=-5, color=ccl1, effect=#F000) {
+						S:Cowl(angle=-175, color=ccl1) {
+							S:Cowl(color=ccl1) { }
+							N:Cowl(option=1, color=ccl1) { }
+						}
+					}
+				}
+			}
+		}
+		S:Weight(angle=UD, color=ccl1, user2=100) {
+			E:Weight(angle=-120, color=ccl1, damper=0, user2=100) { }
+			W:Weight(angle=-120, color=ccl1, damper=0, user2=100) {
+				W:Weight(angle=-150, option=3, damper=DPAS) {
+					W:Weight(angle=Turn, option=3, damper=DPAS, name=HPNONE1) {
+						S:Weight(option=3) {
+							S:Weight(angle=-60, option=3, damper=DPAS) {
+								E:Weight(option=3, damper=DPAS) {
+									E:Weight(option=3, damper=DPAS) {
+										S:Weight(angle=150, option=2) {
+											N:Frame(color=ccl1) {
+												E:Frame(angle=90) {
+													N:RLW(angle=-90, power=WHEEL_R, brake=BRAKE_L, color=ccl2, effect=4) { }
+												}
+											}
+											E:Weight(angle=90, color=ccl1, user2=100) {
+												E:Weight(angle=70, color=ccl1, user2=100) { }
+											}
+										}
+										S:Weight(angle=-50, option=2, spring=0.1, damper=0.2) {
+											S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=CCL2, effect=4) { }
+											S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=ccl1, effect=4) { }
+										}
+									}
+									S:Weight(angle=-50, option=2, spring=0.1, damper=0.2) {
+										S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=ccl2, effect=4) { }
+										S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=CCL2, effect=4) { }
+										S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=ccl1, effect=4) { }
+									}
+								}
+								S:Weight(angle=-50, option=2, spring=0.1, damper=0.2) {
+									S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=ccl2, effect=4) { }
+									S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=CCL2, effect=4) { }
+									S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=ccl1, effect=4) { }
+								}
+								W:Weight(option=3, damper=DPAS) {
+									W:Weight(option=3, damper=DPAS) {
+										S:Frame(angle=-30) {
+											W:Frame(angle=-70) {
+												S:RLW(angle=90, power=-WHEEL_R, brake=BRAKE_L, color=ccl2, effect=4) { }
+											}
+										}
+										S:Weight(angle=-50, option=2, spring=0.1, damper=0.2) {
+											S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=ccl2, effect=4) { }
+											S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=ccl1, effect=4) { }
+										}
+									}
+									S:Weight(angle=-50, option=2, spring=0.1, damper=0.2) {
+										S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=ccl2, effect=4) { }
+										S:RLW(angle=115, power=-WHEEL_R, brake=BRAKE_R, color=ccl1, effect=4) { }
+									}
+								}
+							}
+							S:Weight(angle=60, option=3, damper=DPAS) {
+								E:Weight(option=3, damper=DPAS) {
+									E:Weight(option=3, damper=DPAS) {
+										S:Weight(angle=-150, option=2) {
+											N:Frame() {
+												E:Frame(angle=-90) {
+													N:RLW(angle=90, power=-WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+												}
+											}
+											E:Weight(angle=-90, color=ccl1, user2=100) {
+												E:Weight(angle=-70, color=ccl1, user2=100) { }
+											}
+										}
+										S:Weight(angle=50, option=2, spring=0.1, damper=0.2) {
+											S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+											S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+										}
+									}
+									S:Weight(angle=50, option=2, spring=0.1, damper=0.2) {
+										S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+										S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+										S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+									}
+								}
+								S:Weight(angle=50, option=2, spring=0.1, damper=0.2) {
+									S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+									S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+									S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+								}
+								W:Weight(option=3, damper=DPAS) {
+									W:Weight(option=3, damper=DPAS) {
+										S:Frame(angle=30) {
+											W:Frame(angle=70) {
+												S:RLW(angle=-90, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+											}
+										}
+										S:Weight(angle=50, option=2, spring=0.1, damper=0.2) {
+											S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+											S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+										}
+									}
+									S:Weight(angle=50, option=2, spring=0.1, damper=0.2) {
+										S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+										S:RLW(angle=-115, power=WHEEL_L, brake=BRAKE_L, color=ccl2, effect=4) { }
+									}
+								}
+							}
+							W:Cowl(angle=90, color=ccl1) {
+								W:Cowl(color=ccl1) {
+									W:Cowl(angle=90, color=ccl1) {
+										W:Cowl(color=ccl1) {
+											W:Cowl(option=5, color=ccl1) { }
+											W:Cowl(angle=45, color=ccl1) {
+												W:Cowl(color=ccl1) {
+													W:Cowl(angle=45, color=ccl1) {
+														N:Cowl(angle=65, color=ccl1) { }
+													}
+													N:Cowl(angle=65, option=3, color=ccl1) {
+														E:Cowl(color=ccl1) { }
+													}
+												}
+											}
+										}
+										E:Cowl(color=ccl1) {
+											E:Cowl(color=ccl1) {
+												E:Cowl(option=4, color=ccl1) { }
+												E:Cowl(angle=90, color=ccl1) {
+													E:Cowl(angle=-90, color=ccl1) {
+														E:Cowl(angle=90, color=ccl1) { }
+													}
+												}
+											}
+											N:Cowl(angle=65, color=ccl1) {
+												W:Cowl(color=ccl1) {
+													W:Cowl(color=ccl1) { }
+												}
+												E:Cowl(color=ccl1) {
+													E:Cowl(color=ccl1) {
+														N:Cowl(angle=25, color=ccl1) {
+															W:Cowl(color=ccl1) { }
+															E:Cowl(angle=90, color=ccl1) { }
+														}
+														E:Cowl(angle=90, option=4, color=ccl1) { }
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							W:Cowl(angle=-90, color=ccl1) {
+								W:Cowl(color=ccl1) {
+									W:Cowl(angle=90, color=ccl1) {
+										W:Cowl(color=ccl1) {
+											W:Cowl(option=3, color=ccl1) { }
+											W:Cowl(angle=90, color=ccl1) {
+												W:Cowl(angle=-90, color=ccl1) {
+													W:Cowl(angle=90, color=ccl1) { }
+												}
+											}
+										}
+										E:Cowl(color=ccl1) {
+											E:Cowl(color=ccl1) {
+												E:Cowl(option=5, color=ccl1) { }
+												E:Cowl(angle=45, color=ccl1) {
+													E:Cowl(color=ccl1) {
+														E:Cowl(angle=45, color=ccl1) {
+															N:Cowl(angle=65, color=ccl1) { }
+														}
+														N:Cowl(angle=65, option=4, color=ccl1) {
+															W:Cowl(color=ccl1) { }
+														}
+													}
+												}
+											}
+										}
+										N:Cowl(angle=65, color=ccl1) {
+											W:Cowl(color=ccl1) {
+												W:Cowl(color=ccl1) {
+													N:Cowl(angle=25, color=ccl1) {
+														E:Cowl(color=ccl1) { }
+														W:Cowl(angle=90, color=ccl1) { }
+													}
+													W:Cowl(angle=90, option=3, color=ccl1) { }
+												}
+											}
+											E:Cowl(color=ccl1) {
+												E:Cowl(color=ccl1) { }
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			N:Cowl(angle=-65, color=ccl1) {
+				N:Cowl(angle=155, color=ccl1) {
+					W:Cowl(color=ccl1) {
+						W:Cowl(angle=90, color=ccl1) {
+							N:Cowl(angle=65, color=ccl1) {
+								E:Cowl(angle=90, color=ccl1) { }
+							}
+							S:Cowl(angle=50, color=ccl1) {
+								S:Cowl(color=ccl1) {
+									E:Cowl(angle=90, color=ccl1) { }
+								}
+								E:Cowl(angle=90, color=ccl1) { }
+							}
+						}
+					}
+					E:Cowl(color=ccl1) {
+						E:Cowl(angle=90, color=ccl1) {
+							N:Cowl(angle=65, color=ccl1) {
+								W:Cowl(angle=90, color=ccl1) { }
+							}
+							S:Cowl(angle=50, color=ccl1) {
+								S:Cowl(color=ccl1) {
+									W:Cowl(angle=90, color=ccl1) { }
+								}
+								W:Cowl(angle=90, color=ccl1) { }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{ww2_hp1=3
+
+ww2_hp2=0
+A=0
+ALT=0
+for i=0,_CHIPS() do
+if _USER2(i)==100 then ww2_hp2=ww2_hp2+1 end
+if _USER2(i)~=100 and _TYPE(i)~=3 and _TYPE(i)~=4 and _TYPE(i)~=5 and _TYPE(i)~=7 and _TYPE(i)~=10 and _TYPE(i)~=33 and _TYPE(i)~=34 and _TYPE(i)~=35 then ww2_hp2=ww2_hp2+2 end
+if _USER2(i)~=100 and _TYPE(i)==7 then ww2_hp2=ww2_hp2+0.5 end
+end
+ww2_hp3=ww2_hp2
+TM2=1
+TM3=0
+
+function main()
+
+	out(3,"MS01")
+	out(4, _FPS(), "fps")
+
+	TS=TS+(_KEY(11)-_KEY(10))*0.1
+	TURN=TURN+(_KEY(4)-_KEY(6))*TS UD=UD+(_KEY(5)-_KEY(8))*TS
+	_MOVE3D(_X(CANNON),_Y(CANNON),_Z(CANNON))   
+	_LINE3D(_X(CANNON)-_ZX(CANNON)*1180,_Y(CANNON)-_ZY(CANNON)*1180,_Z(CANNON)-_ZZ(CANNON)*1180)
+
+	if _KEY(0)==1 and ALT==0 then WHEEL_R=WHEEL_R-100 WHEEL_L=WHEEL_L+100 end
+
+	if _KEY(1)==1 and ALT==0 then WHEEL_R=WHEEL_R+100 WHEEL_L=WHEEL_L-100 end
+
+	if _KEY(2)==1 and -6000<WHEEL_R and WHEEL_R<6000 then WHEEL_R=WHEEL_R-100 end
+	if _KEY(2)==1 and -6000<WHEEL_L and WHEEL_L<6000 then WHEEL_L=WHEEL_L-100 end
+
+	if _KEY(3)==1 and -6000<WHEEL_R and WHEEL_R<6000 then WHEEL_R=WHEEL_R+100 end
+	if _KEY(3)==1 and -6000<WHEEL_L and WHEEL_L<6000 then WHEEL_L=WHEEL_L+100 end
+
+
+
+
+
+
+	if _E(AM1)<4800000 and TM3==0 then out(24,"    Å@Å@Å@                                                                                                                    íeñÚèÄîıíÜ ",_E(AM1)/48000," Åì")end 
+	if _E(AM1)==4800000 and TM3==0 then TM3=1 end
+
+	if COUNT==0 and TM2==1 and TM3==1 then A1=A1-30 COUNT2=0 out(6,"ëÊÇOÇPíeñÚ ",_E(AM1)/48000," %ëïìUäÆóπÅI") end
+	if A1<0 and _KEYDOWN(7)==1 and TM==0 then ARM1=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==1 then A1=A1+30 TM=TM-(30/_FPS()) end
+	 
+	if COUNT==1 and TM2==1 then A2=A2-30 COUNT2=0 out(6,"ëÊÇOÇQíeñÚ ",_E(AM2)/48000," %ëïìUäÆóπÅI") end
+	if A2<0 and _KEYDOWN(7)==1 and TM==0 then ARM2=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end	
+	if COUNT2==1 and COUNT==2 then A2=A2+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==2 and TM2==1 then A3=A3-30 COUNT2=0 out(6,"ëÊÇOÇRíeñÚ ",_E(AM3)/48000," %ëïìUäÆóπÅI") end
+	if A3<0 and _KEYDOWN(7)==1 and TM==0 then ARM3=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end	
+	if COUNT2==1 and COUNT==3 then A3=A3+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==3 and TM2==1 then A4=A4-30 COUNT2=0 out(6,"ëÊÇOÇSíeñÚ ",_E(AM4)/48000," %ëïìUäÆóπÅI") end
+	if A4<0 and _KEYDOWN(7)==1 and TM==0 then ARM4=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==4 then A4=A4+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==4 and TM2==1 then A5=A5-30 COUNT2=0 out(6,"ëÊÇOÇTíeñÚ ",_E(AM5)/48000," %ëïìUäÆóπÅI") end
+	if A5<0 and _KEYDOWN(7)==1 and TM==0 then ARM5=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==5 then A5=A5+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==5 and TM2==1 then A6=A6-30 COUNT2=0 out(6,"ëÊÇOÇUíeñÚ ",_E(AM6)/48000," %ëïìUäÆóπÅI") end
+	if A6<0 and _KEYDOWN(7)==1 and TM==0 then ARM6=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==6 then A6=A6+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==6 and TM2==1 then A7=A7-30 COUNT2=0 out(6,"ëÊÇOÇVíeñÚ ",_E(AM7)/48000," %ëïìUäÆóπÅI") end
+	if A7<0 and _KEYDOWN(7)==1 and TM==0 then ARM7=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==7 then A7=A7+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==7 and TM2==1 then A8=A8-30 COUNT2=0 out(6,"ëÊÇOÇWíeñÚ ",_E(AM8)/48000," %ëïìUäÆóπÅI") end
+	if A8<0 and _KEYDOWN(7)==1 and TM==0 then ARM8=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==8 then A8=A8+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==8 and TM2==1 then A9=A9-30 COUNT2=0 out(6,"ëÊÇOÇXíeñÚ ",_E(AM9)/48000," %ëïìUäÆóπÅI") end
+	if A9<0 and _KEYDOWN(7)==1 and TM==0 then ARM9=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==9 then A9=A9+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==9 and TM2==1 then A10=A10-30 COUNT2=0 out(6,"ëÊÇPÇOíeñÚ ",_E(AM10)/48000," %ëïìUäÆóπÅI") end
+	if A10<0 and _KEYDOWN(7)==1 and TM==0 then ARM10=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end	
+	if COUNT2==1 and COUNT==10 then A10=A10+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==10 and TM2==1 then A11=A11-30 COUNT2=0 out(6,"ëÊÇPÇPíeñÚ ",_E(AM11)/48000," %ëïìUäÆóπÅI") end
+	if A11<0 and _KEYDOWN(7)==1 and TM==0 then ARM11=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==11 then A6=A6+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==11 and TM2==1 then A12=A12-30 COUNT2=0 out(6,"ëÊÇPÇQíeñÚ ",_E(AM12)/48000," %ëïìUäÆóπÅI") end
+	if A12<0 and _KEYDOWN(7)==1 and TM==0 then ARM12=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==12 then A7=A7+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==12 and TM2==1 then A13=A13-30 COUNT2=0 out(6,"ëÊÇPÇRíeñÚ ",_E(AM13)/48000," %ëïìUäÆóπÅI") end
+	if A13<0 and _KEYDOWN(7)==1 and TM==0 then ARM13=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==13 then A8=A8+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==13 and TM2==1 then A14=A14-30 COUNT2=0 out(6,"ëÊÇPÇSíeñÚ ",_E(AM14)/48000," %ëïìUäÆóπÅI") end
+	if A14<0 and _KEYDOWN(7)==1 and TM==0 then ARM14=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end
+	if COUNT2==1 and COUNT==14 then A9=A9+30 TM=TM-(30/_FPS()) end
+
+	if COUNT==14 and TM2==1 then A15=A15-30 COUNT2=0 out(6,"ëÊÇPÇTíeñÚ ",_E(AM15)/48000," %ëïìUäÆóπÅI") end
+	if A15<0 and _KEYDOWN(7)==1 and TM==0 then ARM15=4800000 TM=TM+1000 COUNT=COUNT+1 TM2=TM2-1 COUNT2=COUNT2+1 HC=0 end	
+	if COUNT2==1 and COUNT==15 then A10=A10+30 TM=TM-(30/_FPS()) end
+
+
+	if COUNT==15 and TM2==1 then COUNT=0  end
+
+	if TM>0 then out(24,"       Å@Å@Å@Å@Å@                                                                                                          ëïìUíÜÅ@äÆóπÇ‹Ç≈ ",TM/30," ïb") end
+	if TM<0 then TM2=1 end
+
+	if HC==0 then HCC1=HCC1-50 HCC2=HCC2+100 HCC3=HCC3+50 end
+	if HCC1>150 then HC=1 end
+
+
+
+ww2_hp2=0
+for i=0,_CHIPS() do
+if _T(i)>=0 then
+if _USER2(i)==100 then ww2_hp2=ww2_hp2+1 end
+if _USER2(i)~=100 and _TYPE(i)~=3 and _TYPE(i)~=4 and _TYPE(i)~=5 and _TYPE(i)~=7 and _TYPE(i)~=10 and _TYPE(i)~=33 and _TYPE(i)~=34 and _TYPE(i)~=35 then ww2_hp2=ww2_hp2+2 end
+if _USER2(i)~=100 and _TYPE(i)==7 then ww2_hp2=ww2_hp2+0.5 end
+end
+end
+if ww2_hp1-(ww2_hp3-ww2_hp2)>0 then
+out(19,"                                                                                écÇËHP ",ww2_hp1-(ww2_hp3-ww2_hp2),"/",ww2_hp1)
+
+
+else
+out(24,"       Å@Å@Å@Å@Å@                                                                                                          êÌé‘Ç™îjâÛÇ≥ÇÍÇ‹ÇµÇΩ")
+out(19,"                                                                                écÇËHP ",ww2_hp1-(ww2_hp3-ww2_hp2),"/",ww2_hp1)
+
+if A==1 then _BYE(HPNONE1) _BYE(HPNONE) end
+A=1 TURN=TURN+70
+
+CCL1=0
+
+
+
+
+
+end
+end}

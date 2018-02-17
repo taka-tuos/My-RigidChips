@@ -1,0 +1,49 @@
+// [RCD] 
+Val
+{
+	TONBOX(default=0)
+	TONKEY(default=0)
+}
+Key
+{
+}
+Body
+{
+	Core(color=#FF0080) { }
+}
+Lua
+{
+R=0
+G=255
+B=0
+
+_rgbs=0
+
+function ProcChangeColor()
+	_rgbs=math.mod(_rgbs+_KEYDOWN(5),3)
+	local gs = "R"
+	if _rgbs == 1 then gs = "G" end
+	if _rgbs == 2 then gs = "B" end
+	
+	_G[gs] = math.mod(_G[gs] + _KEYDOWN(4),256)
+	
+	_SETCOLOR(R*65536+G*256+B)
+	
+	out(0,"NOW SELECTING " .. gs)
+	out(1,"R=" .. R)
+	out(2,"G=" .. G)
+	out(3,"B=" .. B)
+end
+
+function OnFrame()
+
+ --_SETCOLOR(tonumber("00FF00",16))
+ ProcChangeColor()
+ _MOVE3D(-50,45,0)
+ _LINE3D(50,45,0)
+ _MOVE3D(0,45,-50)
+ _LINE3D(0,45,50)
+ _MOVE3D(0,-5,0)
+ _LINE3D(0,95,0)
+end
+}

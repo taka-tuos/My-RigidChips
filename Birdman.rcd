@@ -1,0 +1,239 @@
+// [RCD] 
+Val
+{
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Trim(angle=-90) {
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							S:Chip() {
+								S:Chip() {
+									W:Rudder(angle=-90) {
+										W:Chip() { }
+										E:Cowl(option=5) { }
+									}
+									S:Chip() {
+										W:Frame(angle=100, option=1) {
+											W:Trim(angle=V) {
+												E:Chip() { }
+											}
+											W:Cowl(option=1) {
+												W:Cowl(angle=-90) {
+													N:Cowl(angle=-60) {
+														E:Cowl(angle=-90) {
+															N:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+										W:Frame(angle=-100, option=1) {
+											W:Trim(angle=-V) {
+												E:Chip() { }
+											}
+											W:Cowl(option=1) {
+												W:Cowl(angle=90) {
+													N:Cowl(angle=60) {
+														E:Cowl(angle=90) {
+															N:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							W:Chip(angle=100) {
+								W:Trim(angle=-R) {
+									W:Chip() {
+										W:Chip() { }
+									}
+								}
+								N:Cowl() {
+									W:Cowl() { }
+								}
+								W:Cowl(option=1) {
+									W:Cowl(option=1) {
+										W:Cowl(option=1) {
+											W:Cowl(angle=-90) {
+												N:Cowl(angle=-60) {
+													E:Cowl(angle=-90) {
+														N:Cowl() {
+															N:Cowl() {
+																N:Cowl() { }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							W:Chip(angle=-100) {
+								W:Trim(angle=-R) {
+									W:Chip() {
+										W:Chip() { }
+									}
+								}
+								W:Cowl(option=1) {
+									W:Cowl(option=1) {
+										W:Cowl(option=1) {
+											W:Cowl(angle=90) {
+												N:Cowl(angle=60) {
+													E:Cowl(angle=90) {
+														N:Cowl() {
+															N:Cowl() {
+																N:Cowl() { }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								N:Cowl() {
+									W:Cowl() { }
+								}
+							}
+						}
+					}
+				}
+				W:Cowl(angle=-100, option=4) {
+					S:Cowl() {
+						W:Cowl(option=4) { }
+					}
+				}
+				W:Cowl(angle=100, option=4) {
+					S:Cowl() {
+						W:Cowl(option=4) { }
+					}
+				}
+			}
+		}
+		S:Weight(option=1) {
+			S:Frame(angle=30, name=OMEGA) {
+				S:Jet(angle=-120, power=P) { }
+			}
+			S:Cowl() { }
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+_circle_quol = 32
+_quol_txt = 0.4
+
+function TextShader(x,y,obj)
+	local lx,ly,lz = obj.x,obj.y,obj.z
+	
+	if obj.v == 0 then -- N
+		lx = lx - x * _quol_txt
+		ly = ly + y * _quol_txt
+	end
+	
+	if obj.v == 1 then -- S
+		lx = lx + x * _quol_txt
+		ly = ly + y * _quol_txt
+	end
+	
+	if obj.v == 2 then -- E
+		lz = lz + x * _quol_txt
+		ly = ly + y * _quol_txt
+	end
+	
+	if obj.v == 3 then -- W
+		lz = lz - x * _quol_txt
+		ly = ly + y * _quol_txt
+	end
+	
+	return lx,ly,lz
+end
+
+function LineCircle(x,y,z,r)
+	_SETCOLOR(255*256)
+	
+	local ex = _EX(0)
+	
+	if _EZ(0) < 0 then ex = -ex end
+	
+	local pxx,pxy,pxz = _XX(0)*r,_XY(0)*r,_XZ(0)*r
+	local pyx,pyy,pyz = _YX(0)*r,_YY(0)*r,_YZ(0)*r
+	local pzx,pzy,pzz = _ZX(0)*r,_ZY(0)*r,_ZZ(0)*r
+	
+	local rf = pzz * _ZZ(0) + pzx * _ZX(0)
+	local rg = pzy
+	
+	_MOVE3D(x,y-rg/2,z+math.cos(0)*rf)
+	
+	for i=0,_circle_quol do
+		local rad = math.rad((360 / _circle_quol) * i)
+		local anx = math.sin(rad) * rf
+		local anz = math.cos(rad) * rf
+		
+		_LINE3D(x+anx,y-rg/2,z+anz)
+	end
+	
+	
+	--[[
+	
+	local obj = {}
+	
+	obj.x,obj.y,obj.z = x-1.6,y-3.2-rg/2,z-rf
+	obj.v = 0
+	XGUI.DrawVectorString3D("N",TextShader,obj)
+	
+	obj.x,obj.y,obj.z = x-1.6,y-3.2-rg/2,z+rf
+	obj.v = 1
+	XGUI.DrawVectorString3D("S",TextShader,obj)
+	
+	obj.x,obj.y,obj.z = x-rf,y-3.2-rg/2,z-1.6
+	obj.v = 2
+	XGUI.DrawVectorString3D("E",TextShader,obj)
+	
+	obj.x,obj.y,obj.z = x+rf,y-3.2-rg/2,z-1.6
+	obj.v = 3
+	XGUI.DrawVectorString3D("W",TextShader,obj)
+	
+	]]--
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r<t and t<0 then r=t end
+	if r>t and t>0 then r=t end
+	if t-r<s and t-r>0 then r=t end
+	if r-t<s and r-t>0 then r=t end
+	return r
+end
+
+_jp=200000
+_ra=10
+_va=10
+
+function OnFrame()
+	P=_LINER(P,_KEY(4)*_jp,_jp/10)
+	R=_LINER(R,_KEY(3)*_ra-_KEY(2)*_ra,_ra/4)
+	V=_LINER(V,_KEY(1)*_va-_KEY(0)*_va,_va/4)
+	
+	LineCircle(_X(0),_Y(0),_Z(0),200)
+
+	_ZOOM(90)
+end
+}

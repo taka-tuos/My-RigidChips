@@ -1,0 +1,25 @@
+// [RCD] 
+Val
+{
+	VAR0(default=0, min=-20, max=20, step=5)
+	VAR1(default=0, min=-16384, max=16384, step=1024)
+	VAR2(default=90, min=70, max=110, step=5)
+}
+Key
+{
+	0:VAR1(step=-1024)
+	1:VAR1(step=1024)
+	2:VAR0(step=5), VAR2(step=5)
+	3:VAR0(step=-5), VAR2(step=-5)
+}
+Body
+{
+	Core() {
+		N:Trim(angle=-VAR2) {
+			N:Wheel(angle=-VAR0, option=1) { }
+		}
+		S:Trim(angle=90) {
+			S:Wheel(power=VAR1, option=1) { }
+		}
+	}
+}

@@ -1,0 +1,45 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=120, option=1) {
+			S:Frame(angle=-30) {
+				S:Frame(angle=-45, option=1) {
+					W:RLW(angle=90) { }
+					E:RLW(angle=90) { }
+				}
+				S:Cowl(angle=30) {
+					S:Cowl(angle=-165) {
+						S:Cowl(angle=-40) { }
+					}
+				}
+				S:Cowl(angle=-30) {
+					S:Cowl(angle=165) {
+						S:Cowl(angle=40) { }
+					}
+				}
+				W:Cowl(angle=70, option=4) { }
+				E:Cowl(angle=70, option=3) { }
+			}
+		}
+		W:Cowl(angle=90) {
+			W:Cowl(angle=80) {
+				N:Cowl(angle=90, option=3) { }
+			}
+		}
+		E:Cowl(angle=90) {
+			E:Cowl(angle=80) {
+				N:Cowl(angle=90, option=4) { }
+			}
+		}
+		N:Cowl(angle=88, option=5, color=#002020) { }
+		N:Cowl(angle=90) { }
+		S:Cowl(angle=90) { }
+	}
+}

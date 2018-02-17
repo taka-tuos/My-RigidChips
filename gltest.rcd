@@ -1,0 +1,19 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() { }
+}
+Lua
+{
+loadlib("rcgl.dll","lib_init")()
+
+function OnFrame()
+	
+end
+}

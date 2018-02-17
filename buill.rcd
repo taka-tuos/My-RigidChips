@@ -1,0 +1,188 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		E:Weight(option=8) {
+			E:Weight(angle=-90, option=8) {
+				E:Weight(option=8) {
+					E:Weight(option=8) {
+						E:Weight(option=8) {
+							E:Weight(option=8) {
+								E:Weight(option=8) {
+									E:Weight(option=8) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		W:Weight(option=8) {
+			W:Weight(angle=-90, option=8) {
+				W:Weight(option=8) {
+					W:Weight(option=8) {
+						W:Weight(option=8) {
+							W:Weight(option=8) {
+								W:Weight(option=8) {
+									W:Weight(option=8) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Weight(option=8) {
+			W:Weight(option=8) {
+				N:Weight(angle=-90, option=8) {
+					N:Weight(option=8) {
+						N:Weight(option=8) {
+							N:Weight(option=8) {
+								N:Weight(option=8) {
+									N:Weight(option=8) {
+										N:Weight(option=8) { }
+									}
+								}
+							}
+						}
+					}
+				}
+				W:Weight(angle=-90, option=8) {
+					W:Weight(option=8) {
+						W:Weight(option=8) {
+							W:Weight(option=8) {
+								W:Weight(option=8) {
+									W:Weight(option=8) {
+										W:Weight(option=8) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			E:Weight(option=8) {
+				E:Weight(angle=-90, option=8) {
+					E:Weight(option=8) {
+						E:Weight(option=8) {
+							E:Weight(option=8) {
+								E:Weight(option=8) {
+									E:Weight(option=8) {
+										E:Weight(option=8) { }
+									}
+								}
+							}
+						}
+					}
+				}
+				N:Weight(angle=-90, option=8) {
+					N:Weight(option=8) {
+						N:Weight(option=8) {
+							N:Weight(option=8) {
+								N:Weight(option=8) {
+									N:Weight(option=8) {
+										N:Weight(option=8) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			N:Weight(angle=-90, option=8) {
+				N:Weight(option=8) {
+					N:Weight(option=8) {
+						N:Weight(option=8) {
+							N:Weight(option=8) {
+								N:Weight(option=8) {
+									N:Weight(option=8) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		S:Weight(option=8) {
+			W:Weight(option=8) {
+				W:Weight(angle=-90, option=8) {
+					W:Weight(option=8) {
+						W:Weight(option=8) {
+							W:Weight(option=8) {
+								W:Weight(option=8) {
+									W:Weight(option=8) {
+										W:Weight(option=8) { }
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Weight(angle=-90, option=8) {
+					S:Weight(option=8) {
+						S:Weight(option=8) {
+							S:Weight(option=8) {
+								S:Weight(option=8) {
+									S:Weight(option=8) {
+										S:Weight(option=8) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			E:Weight(option=8) {
+				E:Weight(angle=-90, option=8) {
+					E:Weight(option=8) {
+						E:Weight(option=8) {
+							E:Weight(option=8) {
+								E:Weight(option=8) {
+									E:Weight(option=8) {
+										E:Weight(option=8) { }
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Weight(angle=-90, option=8) {
+					S:Weight(option=8) {
+						S:Weight(option=8) {
+							S:Weight(option=8) {
+								S:Weight(option=8) {
+									S:Weight(option=8) {
+										S:Weight(option=8) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			S:Weight(angle=-90, option=8) {
+				S:Weight(option=8) {
+					S:Weight(option=8) {
+						S:Weight(option=8) {
+							S:Weight(option=8) {
+								S:Weight(option=8) {
+									S:Weight(option=8) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		E:Arm() { }
+		S:Arm() { }
+		W:Arm() { }
+		N:Arm() { }
+	}
+}

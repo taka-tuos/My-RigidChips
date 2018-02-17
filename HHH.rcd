@@ -1,0 +1,42 @@
+// [RCD] 
+Val
+{
+	VAR(default=0, max=300000, step=30000)
+}
+Key
+{
+	4:VAR(step=30000)
+}
+Body
+{
+	Core() {
+		N:Chip(angle=30) { }
+		E:Chip(angle=30) { }
+		S:Chip(angle=30) { }
+		W:Chip(angle=30) { }
+		S:Frame(angle=-90) {
+			S:RLW(angle=-90, power=VAR) {
+				W:TrimF(angle=20) {
+					W:Chip() {
+						W:Chip() { }
+					}
+				}
+				E:TrimF(angle=20) {
+					E:Chip() {
+						E:Chip() { }
+					}
+				}
+				S:TrimF(angle=20) {
+					S:Chip() {
+						S:Chip() { }
+					}
+				}
+				N:TrimF(angle=20) {
+					N:Chip() {
+						N:Chip() { }
+					}
+				}
+			}
+		}
+	}
+}

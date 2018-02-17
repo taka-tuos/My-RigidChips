@@ -1,0 +1,23 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() { }
+}
+Lua
+{
+require("pme/pme.lua")
+
+function OnFrame()
+	if _KEYDOWN(4) == 1 then
+		pme.alloc(_X(0),_Y(0),_Z(0),math.random(512)/512,10,math.random(512)/512)
+	end
+	
+	pme.draw()
+end
+}

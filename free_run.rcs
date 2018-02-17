@@ -1,0 +1,107 @@
+stime=0
+time=0
+lapnum=0
+myid=0
+
+timest = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+
+function push_time(s)
+	slide_time()
+	timest[16] = s
+end
+
+function show_time()
+	for index=16, 0, -1 do
+		out(16-index+5,timest[index])
+	end
+end
+
+function slide_time()
+	for index=0, 15, 1 do
+		timest[index]=timest[index+1]
+	end
+end
+
+function OnFrame()
+	min=time/60
+	sec=math.mod(time,60)
+	msec=math.mod(time,1)*1000
+	
+	timestring=string.format("　%01d\'%02d\"%03d lap %03d", min, sec, msec, lapnum)
+	mytime=string.format("　%s %01d\'%02d\"%03d lap %03d", string.sub(_PLAYERNAME(myid),0,3), min, sec, msec, lapnum)
+	
+	if math.mod(FN,5) == 0 then
+		for index=0, 32, 1 do
+			othertime=_RECEIVE(index)
+			_RECEIVECLEAR(index)
+			out(24,othertime)
+			if string.len(othertime) ~= 0 then
+				push_time(othertime)
+			end
+		end
+	end
+	
+	show_time()
+	
+	out(1,"*-- RRR Class CR --*")
+	out(2,"Generic 耐久 ver0")
+	
+	if lapnum > 0 then 
+		time=_STICKS()/30-stime 
+	end
+	if(_CHECK2(0,0)>0) then 
+		stime=_STICKS()/30
+		if lapnum > 0 then
+			mytime=string.format("　%s %01d\'%02d\"%03d lap %03d", string.sub(_PLAYERNAME(myid),0,3), min, sec, msec, lapnum)
+			_SENDALL(mytime)
+			push_time(mytime)
+		end
+		lapnum=lapnum+1
+	end
+	
+	out(4,"time : ",timestring)
+	
+	FN = FN + 1
+end
+
+FN = 0
+
+function OnInit()
+	_SETREG("G",1)
+	_SETREG("A",1)
+	_SETREG("T",1)
+	_SETREG("J",0)
+	_SETREG("U",0)
+	_SETREG("C",1)
+	_SETREG("S",1)
+	_SETREG("E",1)
+	_LOADLAND("ぼろめサーキット.x")
+	_WARP(0,0,_GETY(x,z)+5,0)
+	_DIRECT(0,0,0,0)
+	time=0
+	lapnum=0
+	myid=0
+	
+	while _PLAYERMYID() ~= _PLAYERID(myid) do
+		myid = myid + 1
+	end
+	
+	for index=0, 16, 1 do
+		timest[index]=" "
+	end
+	
+	_RECEIVECLEAR(myid)
+	
+	_SETRING(0,-65,50,-20,0,90,0,10)
+	_SETRINGSTATE(0,2)
+	_SETRINGCOLOR(0,1,1,0)
+	stime=_STICKS()/30
+end
+
+function OnReset()
+
+end
+
+function OnMode()
+
+end
