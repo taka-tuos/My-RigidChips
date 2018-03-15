@@ -537,12 +537,12 @@ RD_PID = XPID_new()
 local inited = false
 
 function OnFrame()
-	CCVXOnFrame(true)
-	
 	if not inited then
 		CCVXOnInit({ Missile={n=2,mdl={1,-1},func=_KEYDOWN,fire=1} , Gun={func=_KEY,fire=2,op=50000,an=4,ang=65} })
 		inited = true
 	end
+	
+	CCVXOnFrame(true)
 
 	ShowSplash("Xi-1 Catalyst")
 	

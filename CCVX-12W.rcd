@@ -429,12 +429,13 @@ Body
 Lua
 {
 require("daretoku_taka/xgui.lua")
-require("daretoku_taka/xhud.lua")
-require("daretoku_taka/libccvx2.lua")
+require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/libccvx3.lua")
+require("daretoku_taka/libresume.lua")
+require("daretoku_taka/libgun.lua")
+require("daretoku_taka/libweapon.lua")
 
-_mn = 2
-_mdl = {1,-1}
-_ntp = {0,0}
+_limitlist={1500,1800,2000,2200,2500,64512}
 
 _prvtbl = InitPRVTable()
 
@@ -461,33 +462,24 @@ RD_PID = XPID_new()
 _gf=20
 _gr=70
 
+local inited = false
+
 function OnFrame()
+	if not inited then
+		CCVXOnInit({ Missile={n=2,mdl={1,-1},func=_KEYDOWN,fire=1} , Gun={func=_KEY,fire=2,op=50000,an=4,ang=65} })
+		inited = true
+	end
+
 	CCVXOnFrame(true)
 
 	ShowSplash("CCVX-12 Grand+Finale")
 	
-	if not _inited then
-		InitAAM(AAM_Callback)
-		_inited = true
-	end
-	
-	if _KEYDOWN(1) == 1 then
-		EnableAAM()
-	end
-	
-	CalcNTP(1,_KEYDOWN(6)*_KEY(0),0)
-	CalcNTP(2,_KEYDOWN(7)*_KEY(0),0)
-	
-	_RAMIEL3D(_NPOS(_ntp[1]))
-	_RAMIEL3D(_NPOS(_ntp[2]))
-	
-	MoveAAM()
-	
-	local p,r,v = GetPRVAnalog(_prvtbl)
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
 	
 	P=p
 	R=r
 	V=v
+	AB=b
 	
 	local dv = math.rad(-_NORMANALOG(1)*180/30)
 	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
@@ -498,11 +490,6 @@ function OnFrame()
 	JY = JY_PID:PID(dy,WY,24,16,2,40)
 	RD = RD_PID:PID(dy,WY,24,16,2,40)
 	WS = WS_PID:PID(dy,WY,24,16,2,40)
-	
-	local ab = _NORMANALOG(5)
-	if ab > 0 then ab = 0 end
-	
-	AB=_LINER(AB,ab*60,30)
 	
 	if _KEY(0) == 0 then
 		if _KEYDOWN(6) == 1 then
@@ -521,5 +508,7 @@ function OnFrame()
 	CheckLimit()
 	
 	XHUD.Draw()
+	
+	Weapon.Stat()
 end
 }
