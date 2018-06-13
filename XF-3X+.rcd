@@ -2,9 +2,9 @@
 Val
 {
 	AB(default=0, min=-90, max=90)
+	AGAP1(default=0, min=-10000000000, max=10000000000)
 	AGXP1(default=0, min=-10000000000, max=10000000000)
 	AGYP1(default=0, min=-10000000000, max=10000000000)
-	AGAP1(default=0, min=-10000000000, max=10000000000)
 	G0(default=0, max=10000000000)
 	G1(default=0, max=10000000000)
 	G2(default=0, max=10000000000)
@@ -519,7 +519,7 @@ Body
 										S:Cowl(angle=-178, color=#ECC67D) { }
 									}
 								}
-								E:Trim() {
+								E:Trim(angle=RD) {
 									E:Cowl(color=#FFD200) {
 										E:Cowl(angle=-90, option=1, effect=#F0FB) {
 											N:Cowl(angle=-30, option=1, effect=#F0FB) {
@@ -580,6 +580,9 @@ Body
 			}
 			E:Trim(angle=-AB) { }
 			W:Trim(angle=AB) { }
+			N:TrimF(angle=90, option=1) {
+				S:Rudder(angle=90) { }
+			}
 		}
 		N:Weight(angle=180, option=3) { }
 		S:TrimF(option=1, spring=1, damper=1, name=CRE) {
@@ -626,13 +629,18 @@ _prvtbl.v.tgt = 180
 _prvtbl.v.kp  = 12
 _prvtbl.v.ki  = 24
 _prvtbl.v.kd  = 4
-_prvtbl.v.il  = 60
+_prvtbl.v.il  = 30
 
-function OnInit()
-	CCVXOnInit({ Missile={n=2,mdl={1,-1},func=_KEYDOWN,fire=1} , Gun={func=_KEY,fire=2,op=50000,an=4,ang=65} })
-end
+RD_PID = XPID_new()
+
+inited = false
 
 function OnFrame()
+	if not inited then
+		CCVXOnInit({ Missile={n=2,mdl={1,-1},func=_KEYDOWN,fire=1} , Gun={func=_KEY,fire=2,op=50000,an=4,ang=65} })
+		inited = true
+	end
+
 	CCVXOnFrame(true)
 
 	ShowSplash("XF-3X+ Phantom II")
@@ -643,6 +651,10 @@ function OnFrame()
 	R=r
 	V=v
 	AB=b
+	
+	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
+	
+	RD = RD_PID:PID(dy,WY,12,24,4,40)
 	
 	CheckLimit()
 	

@@ -1,0 +1,125 @@
+// [RCD] 
+Val
+{
+	P(default=0, max=10000000000)
+	R(default=0, min=-10000000000, max=10000000000)
+	RD(default=0, min=-10000000000, max=10000000000)
+	V(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, option=1, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, option=1, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, option=1, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, option=1, name=FS) { }
+		S:Trim(angle=90) {
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						S:Chip() {
+							S:Chip() {
+								S:Jet(power=RD) { }
+								S:Rudder(angle=-60) {
+									S:Chip() { }
+								}
+							}
+							S:TrimF(angle=90) {
+								S:Jet(power=V) { }
+							}
+						}
+					}
+					E:TrimF(angle=90) {
+						W:Frame(angle=150) {
+							W:RLW(angle=120, power=-P) {
+								S:Trim(angle=20) {
+									S:Chip() {
+										S:Chip() {
+											S:Chip() { }
+										}
+									}
+								}
+								N:Trim(angle=20) {
+									N:Chip() {
+										N:Chip() {
+											N:Chip() { }
+										}
+									}
+								}
+							}
+						}
+					}
+					W:Frame(angle=-60) {
+						W:Jet(angle=-30, power=R) {
+							N:Chip() { }
+							S:Chip() { }
+						}
+					}
+					W:Frame(angle=60) {
+						W:Jet(angle=30, power=R) {
+							N:Chip() { }
+							S:Chip() { }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/libccvx3.lua")
+
+_limitlist={1500,1800,2000,2200,2500,64512}
+
+_prvtbl = InitPRVTable()
+
+_prvtbl.p.limit = 200000
+_prvtbl.p.step  = 100000
+
+_prvtbl.r.tgt = 360
+_prvtbl.r.kp  = 4
+_prvtbl.r.ki  = 8
+_prvtbl.r.kd  = 4
+_prvtbl.r.il  = 30
+
+_prvtbl.v.tgt = 180
+_prvtbl.v.kp  = 12
+_prvtbl.v.ki  = 24
+_prvtbl.v.kd  = 4
+_prvtbl.v.il  = 60
+
+RD_PID = XPID_new()
+
+inited = false
+
+function OnFrame()
+	if not inited then
+		CCVXOnInit()
+		inited = true
+	end
+
+	CCVXOnFrame(true)
+
+	ShowSplash("Xh-1 Haind")
+	
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
+	
+	P=p
+	R=r*10000
+	V=v*10000
+	
+	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
+	
+	RD = RD_PID:PID(dy,WY,12,24,4,40)*10000
+	
+	CheckLimit()
+	
+	XHUD.Draw()
+end
+}

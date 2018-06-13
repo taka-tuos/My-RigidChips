@@ -9,7 +9,8 @@ Val
 	PWRL(default=0, min=-10000000000, max=10000000000)
 	PWRR(default=0, min=-10000000000, max=10000000000)
 	R(default=0, max=16777216)
-	S(default=0, min=-360, max=360)
+	S1(default=0, min=-360, max=360)
+	S2(default=0, min=-360, max=360)
 	SD(default=0, max=1)
 	SS(default=0, max=1)
 }
@@ -28,7 +29,7 @@ Body
 				E:Frame(option=1) {
 					E:Chip(angle=90, option=1, spring=1, damper=1) {
 						S:Rudder(angle=10, option=1, spring=0.2, damper=1) {
-							S:Wheel(angle=S, power=PWFR, brake=B, effect=5, name=FRW) { }
+							S:Wheel(angle=S2, power=PWFR, brake=B, effect=5, name=FRW) { }
 							S:Cowl(angle=-150, color=#0000FF) {
 								S:Cowl(angle=150, color=#0000FF) {
 									E:Cowl(angle=90, color=#0000FF) {
@@ -40,7 +41,7 @@ Body
 									N:Cowl(option=4, color=#0000FF) { }
 								}
 							}
-							S:Cowl(angle=S, option=1, effect=#F0FB) {
+							S:Cowl(angle=S2, option=1, effect=#F0FB) {
 								S:Cowl(angle=-150, option=1, effect=#F0FB) {
 									S:Cowl(angle=150, option=5, color=#0000FF) {
 										N:Cowl(angle=20, option=5, color=#0000FF) { }
@@ -85,7 +86,7 @@ Body
 				W:Frame(option=1, spring=1, damper=1) {
 					W:Chip(angle=90, option=1, spring=1, damper=1) {
 						S:Rudder(angle=-10, option=1, spring=0.2, damper=1) {
-							S:Wheel(angle=-S, power=-PWFL, brake=B, effect=5, name=FLW) { }
+							S:Wheel(angle=-S1, power=-PWFL, brake=B, effect=5, name=FLW) { }
 							S:Cowl(angle=-150) {
 								S:Cowl(angle=150) {
 									W:Cowl(angle=90) {
@@ -97,7 +98,7 @@ Body
 									N:Cowl(option=3) { }
 								}
 							}
-							S:Cowl(angle=-S, option=1, effect=#F0FB) {
+							S:Cowl(angle=-S1, option=1, effect=#F0FB) {
 								S:Cowl(angle=-150, option=1, effect=#F0FB) {
 									S:Cowl(angle=150, option=5) {
 										N:Cowl(angle=20, option=5) { }
@@ -570,6 +571,10 @@ function r_g(p,w,vz,pid)
 	return p
 end
 
+W=0.6*4
+T=0.6*3
+S=0
+
 function OnFrame()
 	if window_info == nil then
 		window_info = XGUI.CreateWindow(960,384,"ŒvŠí—Þ MAX=Âj NOW=Ôj AVG=—Îj",OnDraw_Window_Info,true)
@@ -623,7 +628,25 @@ function OnFrame()
 	
 	HDS=-H_PID:PID(_VX(0)/30,0,16,12,8,45)
 	
-	S=_LINER(S,_NORMANALOG(0)*20*(0.9^(_VEL()*3.6/200)),6)
+	S=_LINER(S,_NORMANALOG(0)*30*(0.9^(_VEL()*3.6/200)),6)
 	--S = S_PID:PID(WY,tr,24,16,4,20)
+	
+	local RO=W/math.tan(math.rad(math.abs(S)))
+	
+	S1=math.rad(S)
+	S2=math.rad(S)
+	
+	if S>0 then
+		S2=math.atan(W/RO)
+		S1=math.atan(W/(RO-T))
+	end
+	
+	if S<0 then
+		S1=-math.atan(W/RO)
+		S2=-math.atan(W/(RO-T))
+	end
+	
+	S1=math.deg(S1)
+	S2=math.deg(S2)
 end
 }

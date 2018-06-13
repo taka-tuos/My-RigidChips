@@ -148,8 +148,8 @@ function OnFrame()
 		MKPH = NKPH
 	end
 	
-	--XW = _EX(GYRO) * 300000
-	--YW = _EY(GYRO) * 300000
+	XW = _EX(GYRO) * 300000
+	YW = _EY(GYRO) * 300000
 	ZA = _EZ(GYRO)
 	
 	out(0,"‘“˜@‹ZŒ¤")

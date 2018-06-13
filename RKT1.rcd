@@ -1,0 +1,109 @@
+// [RCD] 
+Val
+{
+	A1(default=-120, min=-180, max=0)
+	A2(default=30, max=30)
+	J(default=0, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=A1) {
+			S:Chip(angle=A2) {
+				N:Chip() {
+					N:Chip() {
+						N:Weight() {
+							E:Chip() {
+								S:Cowl(option=3) { }
+							}
+							W:Chip() {
+								S:Cowl(option=4) { }
+							}
+						}
+						N:Trim(angle=90) {
+							W:Chip() {
+								S:Cowl(option=4) { }
+							}
+							E:Chip() {
+								S:Cowl(option=3) { }
+							}
+						}
+						N:Frame(angle=30) { }
+						N:Frame(angle=-30) {
+							N:Jet(angle=120, power=-J) { }
+						}
+					}
+					S:Cowl(angle=30) {
+						S:Cowl(angle=-30) {
+							E:Cowl(angle=-90) {
+								N:Cowl() {
+									N:Cowl() {
+										N:Cowl() {
+											N:Cowl() { }
+										}
+									}
+								}
+								S:Cowl(angle=-30, option=5) { }
+							}
+							N:Cowl() {
+								N:Cowl() {
+									N:Cowl() {
+										N:Cowl() { }
+									}
+								}
+							}
+							S:Cowl(angle=-30, option=5) { }
+						}
+					}
+					S:Cowl(angle=-30) {
+						S:Cowl(angle=30) {
+							W:Cowl(angle=90) {
+								N:Cowl() {
+									N:Cowl() {
+										N:Cowl() {
+											N:Cowl() { }
+										}
+									}
+								}
+								S:Cowl(angle=30, option=5) { }
+							}
+							N:Cowl() {
+								N:Cowl() {
+									N:Cowl() {
+										N:Cowl() { }
+									}
+								}
+							}
+							S:Cowl(angle=30, option=5) { }
+						}
+					}
+				}
+				S:Chip() { }
+			}
+		}
+	}
+}
+Lua
+{
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+
+function OnFrame()
+	A1 = _LINER(A1,-180,4)
+	A2 = _LINER(A2,0,2)
+	
+	if _KEYDOWN(4) == 1 then
+		J = 1000000
+	end
+end
+}

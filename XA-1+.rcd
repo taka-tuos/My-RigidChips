@@ -1,0 +1,220 @@
+// [RCD] 
+Val
+{
+	AB(default=0, min=-90, max=90)
+	G0(default=0, max=16777216, step=16777216)
+	G1(default=0, max=16777216, step=16777216)
+	G10(default=0, max=16777216, step=16777216)
+	G11(default=0, max=16777216, step=16777216)
+	G12(default=0, max=16777216, step=16777216)
+	G13(default=0, max=16777216, step=16777216)
+	G14(default=0, max=16777216, step=16777216)
+	G15(default=0, max=16777216, step=16777216)
+	G16(default=0, max=16777216, step=16777216)
+	G17(default=0, max=16777216, step=16777216)
+	G18(default=0, max=16777216, step=16777216)
+	G19(default=0, max=16777216, step=16777216)
+	G2(default=0, max=16777216, step=16777216)
+	G3(default=0, max=16777216, step=16777216)
+	G4(default=0, max=16777216, step=16777216)
+	G5(default=0, max=16777216, step=16777216)
+	G6(default=0, max=16777216, step=16777216)
+	G7(default=0, max=16777216, step=16777216)
+	G8(default=0, max=16777216, step=16777216)
+	G9(default=0, max=16777216, step=16777216)
+	GF(default=0, min=-180, max=180)
+	GJ(default=0, max=16777216, step=16777216)
+	GR(default=0, min=-180, max=180)
+	JX(default=0, min=-90, max=90)
+	JY(default=0, min=-90, max=90)
+	MA1(default=0, max=10000000000, step=10000000000)
+	MA2(default=0, max=10000000000, step=10000000000)
+	MP1(default=0, min=-10000000000, max=10000000000)
+	MP2(default=0, min=-10000000000, max=10000000000)
+	MX1(default=0, min=-90, max=90)
+	MX2(default=0, min=-90, max=90)
+	MY1(default=0, min=-90, max=90)
+	MY2(default=0, min=-90, max=90)
+	MZ1(default=0, min=-10000000000, max=10000000000)
+	MZ2(default=0, min=-10000000000, max=10000000000)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	RD(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+	V0(default=0, max=90)
+	V1(default=0, max=90)
+	V10(default=0, max=90)
+	V11(default=0, max=90)
+	V12(default=0, max=90)
+	V13(default=0, max=90)
+	V14(default=0, max=90)
+	V15(default=0, max=90)
+	V16(default=0, max=90)
+	V17(default=0, max=90)
+	V18(default=0, max=90)
+	V19(default=0, max=90)
+	V2(default=0, max=90)
+	V3(default=0, max=90)
+	V4(default=0, max=90)
+	V5(default=0, max=90)
+	V6(default=0, max=90)
+	V7(default=0, max=90)
+	V8(default=0, max=90)
+	V9(default=0, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		N:Cowl(option=1, effect=#F0FB, name=FS) { }
+		S:Weight(angle=180, option=8) { }
+		S:Trim(angle=-90, spring=1, damper=1) {
+			N:Jet(angle=90, power=P) { }
+			N:Jet(angle=-90, power=-P) { }
+			S:Weight(spring=1, damper=1) {
+				S:TrimF(angle=-90) {
+					E:Frame(angle=20) {
+						E:Frame(angle=160, option=1) {
+							W:Trim(angle=V) {
+								E:Chip() { }
+							}
+							W:Frame(option=1) { }
+						}
+						E:Chip(angle=160) {
+							N:Chip() {
+								W:Chip() { }
+							}
+						}
+					}
+					W:Frame(angle=20) {
+						W:Frame(angle=160, option=1) {
+							E:Trim(angle=-V) {
+								W:Chip() { }
+							}
+							E:Frame(option=1) { }
+						}
+						W:Chip(angle=160) {
+							N:Chip() {
+								E:Chip() { }
+							}
+						}
+					}
+				}
+				W:Rudder(angle=-90) {
+					E:Chip() { }
+					W:Chip() { }
+				}
+				S:Weight() { }
+				S:Jet() { }
+			}
+		}
+		S:TrimF(angle=180, spring=1, damper=1) {
+			W:Weight(angle=20, option=2) {
+				W:Chip(angle=160) {
+					E:Trim(angle=R) {
+						E:Chip() { }
+					}
+					N:Chip() {
+						E:Chip() { }
+					}
+				}
+			}
+			E:Weight(angle=20, option=2) {
+				E:Chip(angle=160) {
+					W:Trim(angle=R) {
+						W:Chip() { }
+					}
+					N:Chip() {
+						W:Chip() { }
+					}
+				}
+			}
+		}
+		S:Cowl() { }
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/libccvx3.lua")
+
+_limitlist={1500,1800,2000,2200,2500,64512}
+
+_prvtbl = InitPRVTable()
+
+_prvtbl.p.limit = 400000
+_prvtbl.p.step  = 200000
+
+_prvtbl.r.tgt = 180
+_prvtbl.r.kp  = 8
+_prvtbl.r.ki  = 16
+_prvtbl.r.kd  = 4
+_prvtbl.r.il  = 30
+
+_prvtbl.v.tgt = 45
+_prvtbl.v.kp  = 8
+_prvtbl.v.ki  = 16
+_prvtbl.v.kd  = 4
+_prvtbl.v.il  = 60
+
+JX_PID = XPID_new()
+JY_PID = XPID_new()
+WS_PID = XPID_new()
+RD_PID = XPID_new()
+
+_tn=60
+_tv={0,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn}
+_v=0
+
+function OnFrame()
+	CCVXOnFrame()
+
+	ShowSplash("XF-3 Phantom")
+	
+	if not _inited then
+		CCVXOnInit()
+		_inited = true
+	end
+	
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
+	
+	P=p
+	R=r
+	V=v
+	
+	local dv = math.rad(-_NORMANALOG(1)*180/30)
+	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
+	
+	JX = JX_PID:PID(dv,WX,24,16,2,40)
+	JY = JY_PID:PID(dy,WY,24,16,2,40)
+	RD = RD_PID:PID(dy,WY,24,16,2,40)
+	WS = WS_PID:PID(dy,WY,24,16,2,40)
+	
+	local ab = _NORMANALOG(5)
+	if ab > 0 then ab = 0 end
+	
+	AB=_LINER(AB,ab*60,30)
+	
+	if _KEY(7) == 1 and _E(_G['A'.._v]) == _OPTION(_G['A'.._v]) and _G['V'.._v] == 0 then
+		_G['G'.._v]=_OPTION(_G['A'.._v])
+		GJ=_OPTION(_G['A'.._v])*4
+		_v=math.mod(_v+1,20)
+		_tv={_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn,_tn}
+		_tv[_v+1]=0
+	end
+	
+	for i=0,19 do
+		_G['V'..i]=_LINER(_G['V'..i],_tv[i+1],_tn/2)
+	end
+	
+	CheckLimit()
+	
+	XHUD.Draw()
+end
+}

@@ -1,14 +1,15 @@
 // [RCD] 
 Val
 {
-	G0(default=0, max=16777216)
-	G1(default=0, max=16777216)
-	G2(default=0, max=16777216)
-	G3(default=0, max=16777216)
-	J(default=0, max=10000000000)
-	P(default=55, min=55, max=90)
-	R(default=0, min=-12, max=12)
-	V(default=0, min=-20, max=20)
+	G0(default=0, max=10000000000)
+	G1(default=0, max=10000000000)
+	G2(default=0, max=10000000000)
+	G3(default=0, max=10000000000)
+	P(default=0, min=-10000000000, max=10000000000)
+	PH(default=0, min=-90, max=90)
+	R(default=0, min=-90, max=90)
+	RD(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
 }
 Key
 {
@@ -198,12 +199,12 @@ Body
 							S:Frame(option=1) {
 								S:TrimF(angle=-90, option=1) {
 									S:Frame(option=1) {
-										W:Chip(color=#004000) {
+										W:Trim(angle=RD, color=#004000) {
 											W:Cowl(option=5, color=#004000) { }
 										}
 									}
 									W:Rudder(angle=-35, color=#004000) {
-										W:Chip(color=#004000) { }
+										W:Trim(color=#004000) { }
 									}
 								}
 								S:Frame(angle=-40, option=1) {
@@ -254,13 +255,13 @@ Body
 							}
 						}
 					}
-					S:RLW(angle=-90, power=J) {
-						E:Trim(angle=-P, color=#202020) { }
-						W:Trim(angle=-P, color=#202020) { }
+					S:RLW(angle=-90, power=P) {
+						E:Trim(angle=-PH, color=#202020) { }
+						W:Trim(angle=-PH, color=#202020) { }
 					}
-					S:RLW(angle=-90, power=-J) {
-						E:Trim(angle=P, color=#202020) { }
-						W:Trim(angle=P, color=#202020) { }
+					S:RLW(angle=-90, power=-P) {
+						E:Trim(angle=PH, color=#202020) { }
+						W:Trim(angle=PH, color=#202020) { }
 					}
 				}
 				N:Cowl(color=#004000) {
@@ -282,16 +283,14 @@ Body
 Lua
 {
 require("daretoku_taka/xgui.lua")
-require("daretoku_taka/xhud.lua")
-require("daretoku_taka/libccvx2.lua")
+require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/libccvx3.lua")
 
-_mn = 0
-_mdl = {1,-1}
-_ntp = {0,0}
+_limitlist={1500,1800,2000,2200,2500,64512}
 
 _prvtbl = InitPRVTable()
 
-_prvtbl.p.limit = 360000
+_prvtbl.p.limit = 720000
 _prvtbl.p.step  = 360000
 
 _prvtbl.r.tgt = 360
@@ -306,34 +305,47 @@ _prvtbl.v.ki  = 32
 _prvtbl.v.kd  = 4
 _prvtbl.v.il  = 40
 
-_ng = 0
+RD_PID = XPID_new()
+
+inited = false
+
+local ng = 0
+
+local i = 0
 
 function OnFrame()
-	CCVXOnFrame(false)
+	if not inited then
+		CCVXOnInit()
+		inited = true
+	end
 
-	ShowSplash("XU-2 WolfFire")
+	CCVXOnFrame(true)
+
+	ShowSplash("XU-2 Wolffire")
 	
-	local p,r,v = GetPRVAnalog(_prvtbl)
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
 	
-	for _i=0,3 do
-		_G["G".._i] = 0
-	end
-	
-	if _KEY(7) == 1 and math.mod(_TICKS(),3) == 0 then
-		_G["G".._ng] = 10000000000
-		_ng = math.mod(_ng+1,4)
-	end
-	
-	J=p
+	P=p
 	R=r
 	V=v
 	
-	NK = _VEL(0) * 3.6
+	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
 	
-	P = 25 * ((NK - 200) / 200) + 55
+	RD = RD_PID:PID(dy,WY,12,24,4,40)
 	
 	CheckLimit()
 	
 	XHUD.Draw()
+	
+	for i=0,3 do
+		_G["G"..i] = 0
+	end
+	
+	if _KEY(7) == 1 and math.mod(_TICKS(),3) == 0 then
+		_G["G"..ng] = 10000000000
+		ng = math.mod(ng+1,4)
+	end
+	
+	PH = math.max(55,25 * ((_VEL(0) * 3.6 - 200) / 200) + 55)
 end
 }

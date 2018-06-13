@@ -477,11 +477,14 @@ JX_PID = XPID_new()
 JY_PID = XPID_new()
 RD_PID = XPID_new()
 
-function OnInit()
-	CCVXOnInit()
-end
+inited = false
 
 function OnFrame()
+	if not inited then
+		CCVXOnInit()
+		inited = true
+	end
+
 	CCVXOnFrame(true)
 
 	ShowSplash("Xi-1 Catalyst")

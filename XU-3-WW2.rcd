@@ -129,10 +129,8 @@ Body
 							W:RLW(angle=120, power=P) {
 								S:Trim(angle=-PH, color=#202020) { }
 								N:Trim(angle=-PH, color=#202020) { }
-							}
-							W:RLW(angle=120, power=-P) {
-								S:Trim(angle=PH, color=#202020) { }
-								N:Trim(angle=PH, color=#202020) { }
+								W:Trim(angle=-PH, color=#202020) { }
+								E:Trim(angle=-PH, color=#202020) { }
 							}
 						}
 						W:Chip(angle=0, name=CRE) {
@@ -400,7 +398,7 @@ function OnFrame()
 	--GE2=_LINER(GE2,_gb,4)
 	
 	--PH = 25 * (((_VEL(0)*3.6) - 200) / 180) + 55
-	PH = math.max(55,25 * ((_VEL(0) * 3.6 - 200) / 200) + 55)
+	PH = math.max(55,30 * ((_VEL(0) * 3.6 - 200) / 180) + 55)
 	
 	CheckLimit()
 	

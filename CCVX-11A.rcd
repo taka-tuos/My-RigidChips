@@ -506,93 +506,9 @@ Body
 			S:Trim(angle=90) {
 				E:Trim(angle=R) {
 					E:Chip() { }
-					W:Rudder(angle=90) {
-						E:Frame(option=1, name=AGSC1) {
-							W:RLW(angle=180, power=AGYP1, brake=200000) { }
-							E:TrimF(angle=90, option=1) {
-								W:RLW(power=AGXP1, brake=200000) { }
-							}
-							W:Arm(power=AGAP1, option=1000000, name=AGAC1) { }
-							E:Frame(angle=150, option=1) {
-								E:Jet(angle=120, power=AGJP1) { }
-							}
-						}
-						E:Frame(option=1, name=AGSC3) {
-							W:RLW(angle=180, power=AGYP3, brake=200000) { }
-							E:TrimF(angle=90, option=1) {
-								W:RLW(power=AGXP3, brake=200000) { }
-							}
-							W:Arm(power=AGAP3, option=1000000, name=AGAC3) { }
-							E:Frame(angle=150, option=1) {
-								E:Jet(angle=120, power=AGJP3) { }
-							}
-						}
-						E:Frame(option=1, name=AGSC5) {
-							W:RLW(angle=180, power=AGYP5, brake=200000) { }
-							E:TrimF(angle=90, option=1) {
-								W:RLW(power=AGXP5, brake=200000) { }
-							}
-							W:Arm(power=AGAP5, option=1000000, name=AGAC5) { }
-							E:Frame(angle=150, option=1) {
-								E:Jet(angle=120, power=AGJP5) { }
-							}
-						}
-						E:Frame(option=1, name=AGSC7) {
-							W:RLW(angle=180, power=AGYP7, brake=200000) { }
-							E:TrimF(angle=90, option=1) {
-								W:RLW(power=AGXP7, brake=200000) { }
-							}
-							W:Arm(power=AGAP7, option=1000000, name=AGAC7) { }
-							E:Frame(angle=150, option=1) {
-								E:Jet(angle=120, power=AGJP7) { }
-							}
-						}
-					}
 				}
 				W:Trim(angle=R) {
 					W:Chip() { }
-					E:Rudder(angle=-90) {
-						W:Frame(option=1, name=AGSC2) {
-							E:RLW(angle=180, power=AGYP2, brake=200000) { }
-							W:TrimF(angle=90, option=1) {
-								E:RLW(power=AGXP2, brake=200000) { }
-							}
-							E:Arm(power=AGAP2, option=1000000, name=AGAC2) { }
-							W:Frame(angle=-150, option=1) {
-								W:Jet(angle=-120, power=-AGJP2) { }
-							}
-						}
-						W:Frame(option=1, name=AGSC4) {
-							E:RLW(angle=180, power=AGYP4, brake=200000) { }
-							W:TrimF(angle=90, option=1) {
-								E:RLW(power=AGXP4, brake=200000) { }
-							}
-							E:Arm(power=AGAP4, option=1000000, name=AGAC4) { }
-							W:Frame(angle=-150, option=1) {
-								W:Jet(angle=-120, power=-AGJP4) { }
-							}
-						}
-						W:Frame(option=1, name=AGSC6) {
-							E:RLW(angle=180, power=AGYP6, brake=200000) { }
-							W:TrimF(angle=90, option=1) {
-								E:RLW(power=AGXP6, brake=200000) { }
-							}
-							E:Arm(power=AGAP6, option=1000000, name=AGAC6) { }
-							W:Frame(angle=-150, option=1) {
-								W:Jet(angle=-120, power=-AGJP6) { }
-							}
-						}
-						W:Frame(option=1, name=AGSC8) {
-							E:RLW(angle=180, power=AGYP8, brake=200000) { }
-							W:TrimF(angle=90, option=1) {
-								E:RLW(power=AGXP8, brake=200000) { }
-							}
-							E:Arm(power=AGAP8, option=1000000, name=AGAC8) { }
-							W:Frame(angle=-150, option=1) {
-								W:Jet(angle=-120, power=-AGJP8) { }
-							}
-						}
-					}
 				}
 				E:TrimF(angle=180, spring=1) {
 					E:Chip(angle=0, name=MC1) {

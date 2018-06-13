@@ -296,15 +296,15 @@ _prvtbl = InitPRVTable()
 _prvtbl.p.limit = 360000
 _prvtbl.p.step  = 360000
 
-_prvtbl.r.tgt = 120
+_prvtbl.r.tgt = 360
 _prvtbl.r.kp  = 12
-_prvtbl.r.ki  = 24
+_prvtbl.r.ki  = 12
 _prvtbl.r.kd  = 4
 _prvtbl.r.il  = 20
 
-_prvtbl.v.tgt = 60
+_prvtbl.v.tgt = 180
 _prvtbl.v.kp  = 32
-_prvtbl.v.ki  = 48
+_prvtbl.v.ki  = 32
 _prvtbl.v.kd  = 4
 _prvtbl.v.il  = 40
 

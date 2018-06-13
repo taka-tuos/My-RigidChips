@@ -1,0 +1,122 @@
+// [RCD] 4WD
+Val
+{
+	BRAKE(default=0, max=10000000000)
+	COWL(default=0, min=-90, max=90)
+	COWR(default=0, min=-90, max=90)
+	ENGINE(default=0, min=-10000000000, max=10000000000)
+	HANDLE(default=0, min=-90, max=90)
+	HBRAKE(default=0, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=-15) {
+			W:Chip(angle=0) { }
+			E:Chip(angle=0) { }
+		}
+		W:Frame() {
+			W:Frame(angle=-95) {
+				N:RudderF(angle=15, spring=0.08, damper=0.15) {
+					N:Frame() {
+						E:Chip(angle=-100) { }
+						N:Wheel(angle=-Handle, power=-Engine, brake=Brake) { }
+					}
+					N:Cowl(angle=10) {
+						N:Cowl(angle=COWR, option=5) { }
+					}
+				}
+				S:RudderF(angle=-40, spring=0.08, damper=0.15) {
+					S:Wheel(power=-Engine, brake=HBrake) { }
+					N:Cowl(angle=170) {
+						N:Cowl(angle=10, option=5) { }
+					}
+				}
+			}
+		}
+		E:Frame() {
+			E:Frame(angle=-95) {
+				N:RudderF(angle=-15, spring=0.08, damper=0.15) {
+					N:Frame() {
+						W:Chip(angle=-100) { }
+						N:Wheel(angle=Handle, power=Engine, brake=Brake) { }
+					}
+					N:Cowl(angle=10) {
+						N:Cowl(angle=COWL, option=5) { }
+					}
+				}
+				S:RudderF(angle=40, spring=0.08, damper=0.15) {
+					S:Wheel(power=Engine, brake=HBrake, name=TY) { }
+					N:Cowl(angle=170) {
+						N:Cowl(angle=10, option=5) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+_sms=0
+_sma=0
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+function _NORMANALOG(n)
+	local v = _ANALOG(n)
+	if v < 100 and v > -100 then v = 0 end
+	return v/1000
+end
+
+function OnFrame()
+	_ZOOM(_GETVIEWZOOM())
+
+	XGUI.SetStringSize(32)
+	
+	XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()-64)
+	XGUI.DrawVectorStringCenter(string.format("% 3d km/h",math.abs(_VEL(0))*3.6))
+	
+	local key4 = -_NORMANALOG(5)
+	local key0 = _NORMANALOG(5)
+	local key1 = 0
+	
+	if key0 < 0 then
+		if _KEY(14) == 1 then
+			key1 = -key0
+		end
+		key0 = 0
+	end
+	
+	if key4 < 0 or key1 > 0 then key4 = 0 end
+	
+	HBRAKE=_LINER(HBRAKE,key4*100+_KEY(15)*200,100)
+	BRAKE=_LINER(BRAKE,key4*200,100)
+	
+	ENGINE=_LINER(ENGINE,key0*-15000+key1*5000,2000)
+	
+	HANDLE=_LINER(HANDLE,_NORMANALOG(0)*-30,5)
+	
+	COWL=HANDLE-10
+	COWR=-HANDLE-10
+end
+}

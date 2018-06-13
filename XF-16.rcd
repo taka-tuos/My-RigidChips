@@ -267,7 +267,7 @@ Body
 												}
 											}
 											W:Cowl(angle=60) {
-												S:Cowl(angle=30) { }
+												S:Cowl(angle=30, option=3) { }
 											}
 										}
 										W:Cowl(angle=60) { }
@@ -600,7 +600,7 @@ end
 function OnFrame()
 	CCVXOnFrame(true)
 
-	ShowSplash("XF-15 Phatman")
+	ShowSplash("XF-15 Raptor")
 	
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
 	

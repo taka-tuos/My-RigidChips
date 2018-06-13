@@ -126,11 +126,11 @@ Body
 					}
 					E:Trim(angle=90) {
 						W:Frame(angle=150) {
-							W:RLW(angle=120, power=P) {
+							W:RLW(angle=120, power=P, name=PRLW1) {
 								S:Trim(angle=-PH, color=#202020) { }
 								N:Trim(angle=-PH, color=#202020) { }
 							}
-							W:RLW(angle=120, power=-P) {
+							W:RLW(angle=120, power=-P, name=PRLW2) {
 								S:Trim(angle=PH, color=#202020) { }
 								N:Trim(angle=PH, color=#202020) { }
 							}
@@ -350,8 +350,8 @@ _limitlist={1500,1800,2000,2200,2500,64512}
 
 _prvtbl = InitPRVTable()
 
-_prvtbl.p.limit = 360000
-_prvtbl.p.step  = 180000
+_prvtbl.p.limit = 750000
+_prvtbl.p.step  = 375000
 
 _prvtbl.r.tgt = 180
 _prvtbl.r.kp  = 16
@@ -375,6 +375,7 @@ function OnFrame()
 	if not inited then
 		CCVXOnInit({ Gun={func=_KEY,fire=7,op=50000,an=4,ang=65} })
 		inited = true
+		Eg = trit_Component.AE10:new()
 	end
 	
 	CCVXOnFrame(true)
@@ -400,7 +401,11 @@ function OnFrame()
 	--GE2=_LINER(GE2,_gb,4)
 	
 	--PH = 25 * (((_VEL(0)*3.6) - 200) / 180) + 55
-	PH = math.max(55,25 * ((_VEL(0) * 3.6 - 200) / 200) + 55)
+	--PH = 45+math.limit(-_VZ(0) * 3.6 / 13.6,30,0)
+	--PH = math.max(55,25 * ((_VEL(0) * 3.6 - 200) / 500) + 55)
+	PH=math.limit((-(_VZ(0)*3.6)-115)/6.9+50,75,45)
+	
+	out(0,_VY(PRLW1))
 	
 	CheckLimit()
 	

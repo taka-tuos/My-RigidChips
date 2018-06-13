@@ -13,7 +13,7 @@ Body
 }
 Lua
 {
-require("daretoku_taka/model/UI-4053.mqo.lua")
+require("daretoku_taka/UI-4053.mqo.lua")
 require("daretoku_taka/xgl.lua")
 
 function _NPOS_C9(n)

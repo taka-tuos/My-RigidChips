@@ -23,7 +23,7 @@ Body
 		E:Frame(option=1) {
 			N:Chip() {
 				S:Trim(angle=-90) {
-					S:Chip() { }
+					S:Chip(angle=S) { }
 					N:Chip() { }
 				}
 			}
@@ -33,7 +33,7 @@ Body
 				N:Frame(option=1) { }
 				S:Trim(angle=-90) {
 					N:Chip() { }
-					S:Chip() { }
+					S:Chip(angle=S) { }
 				}
 			}
 		}
@@ -76,7 +76,6 @@ Body
 			S:Chip(angle=-B) { }
 			N:Chip() { }
 		}
-		S:RLW(angle=-180, power=-S, brake=20000) { }
 	}
 }
 Lua
@@ -336,24 +335,62 @@ end
 _jp=200000
 _jp1=150000
 _jp2=_jp1/10
-_hp=0.5
+_hp=0.2
 _ba=90
-_sp=100000
+_sp=20
 
-function _GETHJ(n,o,d)
+function _NORMANALOG(n)
+	local v = _ANALOG(n)
+	if v < 100 and v > -100 then v = 0 end
+	return v/1000
+end
+
+function XPID_new()
+	local obj = {
+		i = 0,
+		d = 0,
+		e_b = 0,
+
+		PID = function (self,now,tgt,kp,ki,kd,lim)
+			local e_n = now - tgt
+			local e_d = e_n - self.e_b
+			
+			local p = e_n * kp
+			
+			local i = self.i + e_n * ki
+			
+			local d = e_d * kd
+			
+			i=math.min(20000,math.max(-20000,i))
+			
+			self.i = i
+			
+			self.e_b = e_n
+			
+			local pid = p+i+d
+			
+			pid = math.min(lim,math.max(-lim,pid))
+			
+			return pid
+		end
+	}
+	
+	return obj
+end
+
+_pfr=XPID_new()
+_pfl=XPID_new()
+_prr=XPID_new()
+_prl=XPID_new()
+
+function _GETHJ(n,o,d,pid)
 	local tr=_RANGE(n)-1+d
 	local tv=-_VY(o)
 	
 	if tr+1<0 then tr=0 end
 	if tr>0 then tr=tr*0.8 end
 	
-	return tr*_jp1-tv*_jp2
-end
-
-function _NORMANALOG(n)
-	local v = _ANALOG(n)
-	if v < 100 and v > -100 then v = 0 end
-	return v/1000
+	return pid:PID(_RANGE(n),1+d,_jp,_jp/8,_jp,_jp)
 end
 
 function OnFrame()
@@ -377,18 +414,18 @@ function OnFrame()
 	if key4 < 0 or key1 > 0 then key4 = 0 end
 	
 	JP=_LINER(JP,(key0-key1)*_jp,_jp/10)
-	H=_LINER(H,(-_NORMANALOG(0))*_hp,_hp/2)
+	H=_LINER(H,(_NORMANALOG(0))*_hp,_hp/2)
 	B=_LINER(B,key4*_ba,_ba/3)
-	S=(-_NORMANALOG(0))*_sp
+	S=(_NORMANALOG(0))*_sp*(0.9^(_VEL()*3.6/200))
 	
-	if (_NORMANALOG(0)) == 0 then
-		S=WY*-_sp*2
-	end
+	--if (_NORMANALOG(0)) == 0 then
+	--	S=WY*-_sp*2
+	--end
 	
-	JF=-_GETHJ(SF,VF,0)
-	JB=-_GETHJ(SB,VB,0)
-	JR=-_GETHJ(SR,VR,H)
-	JL=-_GETHJ(SL,VL,-H)
+	JF=-_GETHJ(SF,VF,0,_pfr)
+	JB=-_GETHJ(SB,VB,0,_pfl)
+	JR=-_GETHJ(SR,VR,H,_prr)
+	JL=-_GETHJ(SL,VL,-H,_prl)
 	
 	XGUI.RefreshWindowManager()
 end

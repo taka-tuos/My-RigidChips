@@ -141,7 +141,7 @@ function OnFrame()
 	
 	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
 	
-	--RD = RD_PID:PID(dy,WY,24,16,2,40)
+	RD = -RD_PID:PID(dy,WY,24,32,2,40)
 	
 	for _i=0,3 do
 		_G["G".._i] = 0
