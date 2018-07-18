@@ -419,6 +419,7 @@ function OnFrame()
 	if not inited then
 		CCVXOnInit({ Gun={func=_KEY,fire=7,op=50000,an=8,ang=45} })
 		inited = true
+		--_WARP(0,0,10300,0)
 	end
 	
 	CCVXOnFrame(true)

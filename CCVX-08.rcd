@@ -225,12 +225,6 @@ window_info = nil
 window_radar = nil
 window_vert = nil
 
-function OnInit()
-	window_info = XGUI.CreateWindow(640,200,"ã@ëÃèÛãµ",OnDraw_Window_Info,false)
-	
-	_ZOOM(_GETVIEWZOOM())
-end
-
 _vel=0
 _ovel=0
 
@@ -261,6 +255,11 @@ _mx = 0
 prev=0	-- ï‚ê≥çÄ
 
 function OnFrame()
+	if not window_info then
+		window_info = XGUI.CreateWindow(640,200,"ã@ëÃèÛãµ",OnDraw_Window_Info,false)
+		_ZOOM(_GETVIEWZOOM())
+	end
+	
 	if not _oldW then _oldW = _WEIGHT() end
 	
 	if _TICKS() < 15 then
@@ -286,7 +285,7 @@ function OnFrame()
 	
 	--local vix,viy,viz = _GETVIEW()
 	
-	local p=_LINER(P,_KEY(4)*400000,20000)
+	local p=_LINER(P,_KEY(4)*500000,20000)
 	local r=_LINER(R,_KEY(2)*4+_KEY(3)*-4,2)
 	local v=_LINER(V,_KEY(1)*4+_KEY(0)*-4,2)
 	
@@ -321,7 +320,7 @@ function OnFrame()
 	local _r,_v = 0,0
 	
 	if _KEY(2) == 0 and _KEY(3) == 0 then
-		_r=WZ*-4
+		_r=WZ*-128
 	end
 	
 	if _KEY(0) == 0 and _KEY(1) == 0 then

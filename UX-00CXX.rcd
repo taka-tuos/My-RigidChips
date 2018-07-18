@@ -14,10 +14,32 @@ Body
 {
 	Core() {
 		N:Frame(angle=90, option=1, spring=1, damper=1) {
-			N:Frame(angle=90, option=1, color=#202020, spring=1, damper=1) {
+			N:Chip(angle=90, color=#202020, spring=1, damper=1) {
 				E:Frame(option=1) {
-					E:Chip(angle=90, option=1, spring=1, damper=1) {
-						S:Rudder(angle=10, option=1, spring=0.2, damper=1) {
+					E:Frame(angle=90, option=1, spring=1, damper=1) {
+						N:RudderF(angle=-10, option=1, spring=1, damper=1) {
+							N:Wheel(power=P, brake=B2, effect=5, name=RRW) { }
+							N:Cowl(angle=-150) {
+								N:Cowl(angle=150, color=#0000FF) {
+									N:Cowl(option=5, color=#0000FF) { }
+									E:Cowl(angle=90) {
+										E:Cowl(angle=90, color=#0000FF) {
+											N:Cowl(option=5, color=#0000FF) { }
+											S:Cowl(option=4) { }
+										}
+										S:Cowl(angle=45, color=#0000FF) { }
+										S:Cowl(angle=-170, color=#0000FF) {
+											S:Cowl(angle=-110, option=4, color=R, effect=#0FFF) { }
+											W:Cowl(angle=-90, color=#0000FF) { }
+											E:Cowl(angle=-90, color=#0000FF) { }
+										}
+									}
+									S:Cowl(option=3, color=#0000FF) { }
+									N:Cowl(angle=90, color=#0000FF) { }
+								}
+							}
+						}
+						S:RudderF(angle=10, option=1, spring=1, damper=1) {
 							S:Wheel(angle=S, power=P, brake=B, effect=5, name=FRW) { }
 							S:Cowl(angle=-150, color=#0000FF) {
 								S:Cowl(angle=150, color=#0000FF) {
@@ -43,33 +65,33 @@ Body
 								}
 							}
 						}
-						N:Rudder(angle=-10, option=1, spring=0.2, damper=1) {
-							N:Wheel(power=P, brake=B2, effect=5, name=RRW) { }
-							N:Cowl(angle=-150) {
-								N:Cowl(angle=150, color=#0000FF) {
-									N:Cowl(option=5, color=#0000FF) { }
-									E:Cowl(angle=90) {
-										E:Cowl(angle=90, color=#0000FF) {
-											N:Cowl(option=5, color=#0000FF) { }
-											S:Cowl(option=4) { }
-										}
-										S:Cowl(angle=45, color=#0000FF) { }
-										S:Cowl(angle=-170, color=#0000FF) {
-											S:Cowl(angle=-110, option=4, color=R, effect=#0FFF) { }
-											W:Cowl(angle=-90, color=#0000FF) { }
-											E:Cowl(angle=-90, color=#0000FF) { }
-										}
-									}
-									S:Cowl(option=3, color=#0000FF) { }
-									N:Cowl(angle=90, color=#0000FF) { }
-								}
-							}
-						}
 					}
 				}
 				W:Frame(option=1, spring=1, damper=1) {
-					W:Chip(angle=90, option=1, spring=1, damper=1) {
-						S:Rudder(angle=-10, option=1, spring=0.2, damper=1) {
+					W:Frame(angle=90, option=1, spring=1, damper=1) {
+						N:RudderF(angle=10, option=1, spring=1, damper=1) {
+							N:Wheel(power=-P, brake=B2, effect=5, name=RLW) { }
+							N:Cowl(angle=-150) {
+								N:Cowl(angle=150) {
+									W:Cowl(angle=90) {
+										S:Cowl(angle=45) { }
+										W:Cowl(angle=90) {
+											N:Cowl(option=5) { }
+											S:Cowl(option=3) { }
+										}
+										S:Cowl(angle=-170) {
+											S:Cowl(angle=-110, option=3, color=R, effect=#0FFF) { }
+											W:Cowl(angle=-90) { }
+											E:Cowl(angle=-90) { }
+										}
+									}
+									S:Cowl(option=4) { }
+									N:Cowl(option=5) { }
+									N:Cowl(angle=90) { }
+								}
+							}
+						}
+						S:RudderF(angle=-10, option=1, spring=1, damper=1) {
 							S:Wheel(angle=-S, power=-P, brake=B, effect=5, name=FLW) { }
 							S:Cowl(angle=-150) {
 								S:Cowl(angle=150) {
@@ -92,28 +114,6 @@ Body
 									S:Cowl(angle=-150, option=5) {
 										N:Cowl(angle=-20, option=5) { }
 									}
-								}
-							}
-						}
-						N:Rudder(angle=10, option=1, spring=0.2, damper=1) {
-							N:Wheel(power=-P, brake=B2, effect=5, name=RLW) { }
-							N:Cowl(angle=-150) {
-								N:Cowl(angle=150) {
-									W:Cowl(angle=90) {
-										S:Cowl(angle=45) { }
-										W:Cowl(angle=90) {
-											N:Cowl(option=5) { }
-											S:Cowl(option=3) { }
-										}
-										S:Cowl(angle=-170) {
-											S:Cowl(angle=-110, option=3, color=R, effect=#0FFF) { }
-											W:Cowl(angle=-90) { }
-											E:Cowl(angle=-90) { }
-										}
-									}
-									S:Cowl(option=4) { }
-									N:Cowl(option=5) { }
-									N:Cowl(angle=90) { }
 								}
 							}
 						}
@@ -182,11 +182,12 @@ Body
 						}
 					}
 				}
-				W:Chip(angle=90) { }
-				E:Chip(angle=90) { }
-				S:Chip(angle=165) { }
-				N:TrimF(angle=-90, option=1) {
-					S:Rudder(angle=90) { }
+				S:Frame(angle=160) {
+					E:Chip() { }
+					W:Chip() { }
+				}
+				N:TrimF(angle=90, option=1) {
+					N:Rudder(angle=90) { }
 				}
 			}
 		}

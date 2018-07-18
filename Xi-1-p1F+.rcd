@@ -2,6 +2,14 @@
 Val
 {
 	AB(default=0, min=-90, max=90)
+	G0(default=0, max=10000000000)
+	G1(default=0, max=10000000000)
+	G2(default=0, max=10000000000)
+	G3(default=0, max=10000000000)
+	G4(default=0, max=10000000000)
+	G5(default=0, max=10000000000)
+	G6(default=0, max=10000000000)
+	G7(default=0, max=10000000000)
 	GF(default=0, min=-180, max=180)
 	GR(default=0, min=-180, max=180)
 	JP1(default=0, min=-90, max=90)
@@ -9,10 +17,36 @@ Val
 	JP3(default=0, min=-90, max=90)
 	JX(default=0, min=-90, max=90)
 	JY(default=0, min=-90, max=90)
+	MA1(default=0, max=10000000000, step=10000000000)
+	MA2(default=0, max=10000000000, step=10000000000)
+	MP1(default=0, min=-10000000000, max=10000000000)
+	MP2(default=0, min=-10000000000, max=10000000000)
+	MX1(default=0, min=-90, max=90)
+	MX2(default=0, min=-90, max=90)
+	MY1(default=0, min=-90, max=90)
+	MY2(default=0, min=-90, max=90)
+	MZ1(default=0, min=-10000000000, max=10000000000)
+	MZ2(default=0, min=-10000000000, max=10000000000)
 	P(default=0, max=10000000000)
 	R(default=0, min=-90, max=90)
 	RD(default=0, min=-90, max=90)
 	V(default=0, min=-90, max=90)
+	V0(default=0, min=-90, max=90)
+	V1(default=0, min=-90, max=90)
+	V2(default=0, min=-90, max=90)
+	V3(default=0, min=-90, max=90)
+	V4(default=0, min=-90, max=90)
+	V5(default=0, min=-90, max=90)
+	V6(default=0, min=-90, max=90)
+	V7(default=0, min=-90, max=90)
+	W0(default=0, min=-180, max=180)
+	W1(default=0, min=-180, max=180)
+	W2(default=0, min=-180, max=180)
+	W3(default=0, min=-180, max=180)
+	W4(default=0, min=-180, max=180)
+	W5(default=0, min=-180, max=180)
+	W6(default=0, min=-180, max=180)
+	W7(default=0, min=-180, max=180)
 	WB(default=0, max=10000000000)
 	WS(default=0, min=-90, max=90)
 }
@@ -168,47 +202,93 @@ Body
 				}
 			}
 		}
-		N:Weight(angle=180, option=2, spring=1, damper=1) { }
-		S:Chip(angle=-AB) { }
-		S:Trim(angle=90, spring=1, damper=1) {
-			N:Chip() { }
-			N:RudderF(angle=-GF, option=1) {
-				N:Wheel(angle=WS, brake=WB) { }
-			}
-		}
-		S:Chip(angle=AB) { }
-		S:Chip(spring=1, damper=1) {
-			W:Cowl(angle=90, option=1, effect=#F0FB) {
-				N:Cowl(angle=-150, option=1, effect=#F0FB) {
-					E:Cowl(angle=-90, color=#457285) {
-						N:Cowl(color=#457285) {
-							W:Cowl(angle=-90, option=1, effect=#F0FB) {
-								N:Cowl(angle=-30, option=1, effect=#F0FB) {
-									E:Cowl(angle=-90, option=3, color=#457285) { }
-								}
-							}
-						}
+		S:Trim(angle=90, spring=1, damper=1) { }
+		S:Trim(angle=0, spring=1, damper=1) {
+			S:Trim(angle=0, spring=1, damper=1, name=CRE) {
+				N:Frame(angle=V0, spring=1, damper=1) {
+					N:Frame(angle=-W0, spring=1, damper=1) {
+						N:Arm(option=50000, power=G0, angle=V0, spring=1, damper=1, name=A0) { }
+					}
+				}
+				N:Frame(angle=V1, spring=1, damper=1) {
+					N:Frame(angle=-W1, spring=1, damper=1) {
+						N:Arm(option=50000, power=G1, angle=V1, spring=1, damper=1, name=A1) { }
+					}
+				}
+				N:Frame(angle=V2, spring=1, damper=1) {
+					N:Frame(angle=-W2, spring=1, damper=1) {
+						N:Arm(option=50000, power=G2, angle=V2, spring=1, damper=1, name=A2) { }
+					}
+				}
+				N:Frame(angle=V3, spring=1, damper=1) {
+					N:Frame(angle=-W3, spring=1, damper=1) {
+						N:Arm(option=50000, power=G3, angle=V3, spring=1, damper=1, name=A3) { }
+					}
+				}
+				N:Frame(angle=V4, spring=1, damper=1) {
+					N:Frame(angle=-W4, spring=1, damper=1) {
+						N:Arm(option=50000, power=G4, angle=V4, spring=1, damper=1, name=A4) { }
+					}
+				}
+				N:Frame(angle=V5, spring=1, damper=1) {
+					N:Frame(angle=-W5, spring=1, damper=1) {
+						N:Arm(option=50000, power=G5, angle=V5, spring=1, damper=1, name=A5) { }
+					}
+				}
+				N:Frame(angle=V6, spring=1, damper=1) {
+					N:Frame(angle=-W6, spring=1, damper=1) {
+						N:Arm(option=50000, power=G6, angle=V6, spring=1, damper=1, name=A6) { }
+					}
+				}
+				N:Frame(angle=V7, spring=1, damper=1) {
+					N:Frame(angle=-W7, spring=1, damper=1) {
+						N:Arm(option=50000, power=G7, angle=V7, spring=1, damper=1, name=A7) { }
 					}
 				}
 			}
-			E:Cowl(angle=90, option=1, effect=#F0FB) {
-				N:Cowl(angle=-150, option=1, effect=#F0FB) {
-					W:Cowl(angle=-90, color=#457285) {
-						N:Cowl(color=#457285) {
-							E:Cowl(angle=-90, option=1, effect=#F0FB) {
-								N:Cowl(angle=-30, option=1, effect=#F0FB) {
-									W:Cowl(angle=-90, option=4, color=#457285) { }
+			S:Trim(spring=1, damper=1) {
+				S:Trim(spring=1, damper=1) {
+					S:TrimF(angle=0, option=1, effect=#F0FB) {
+						E:TrimF(angle=180, spring=1) {
+							E:Chip(angle=0, name=MC1) {
+								N:Chip(angle=MY1) { }
+								N:Frame(angle=-150, option=1, effect=#F0FB) {
+									N:Jet(angle=-120, power=-MP1) { }
 								}
+								S:Arm(power=MA1, option=100000, name=MG1) {
+									N:Trim(angle=90) {
+										N:Chip(angle=MX1) { }
+									}
+								}
+								E:Trim(angle=MZ1) { }
+								W:Trim(angle=MZ1) { }
+							}
+						}
+						W:TrimF(spring=1) {
+							W:Chip(angle=0, name=MC2) {
+								S:Chip(angle=MY2) { }
+								S:Frame(angle=-150, option=1, effect=#F0FB) {
+									S:Jet(angle=-120, power=-MP2) { }
+								}
+								N:Arm(power=MA2, option=100000, name=MG2) {
+									S:Trim(angle=90) {
+										S:Chip(angle=MX2) { }
+									}
+								}
+								E:Trim(angle=MZ2) { }
+								W:Trim(angle=MZ2) { }
 							}
 						}
 					}
-				}
-			}
-			S:Chip(spring=1, damper=1) {
-				S:Chip(spring=1, damper=1) {
-					S:Chip(spring=1, damper=1) {
-						S:Chip(spring=1, damper=1) {
-							S:Chip(spring=1, damper=1) {
+					S:Trim(angle=0, spring=1, damper=1) {
+						E:Frame() {
+							E:Wheel(angle=GR, brake=WB) { }
+						}
+						W:Frame() {
+							W:Wheel(angle=GR, option=WB) { }
+						}
+						S:Trim(spring=1, damper=1) {
+							S:Trim(spring=1, damper=1) {
 								W:Cowl(option=1, effect=#F0FB) {
 									W:Cowl(option=1, effect=#F0FB) {
 										W:Cowl(color=#41505D) {
@@ -563,11 +643,33 @@ Body
 								}
 							}
 						}
-						E:Frame() {
-							E:Wheel(angle=GR, brake=WB) { }
+					}
+				}
+			}
+		}
+		S:Cowl() {
+			E:Cowl(angle=90, option=1, effect=#F0FB) {
+				N:Cowl(angle=-150, option=1, effect=#F0FB) {
+					W:Cowl(angle=-90, color=#457285) {
+						N:Cowl(color=#457285) {
+							E:Cowl(angle=-90, option=1, effect=#F0FB) {
+								N:Cowl(angle=-30, option=1, effect=#F0FB) {
+									W:Cowl(angle=-90, option=4, color=#457285) { }
+								}
+							}
 						}
-						W:Frame() {
-							W:Wheel(angle=GR, option=WB) { }
+					}
+				}
+			}
+			W:Cowl(angle=90, option=1, effect=#F0FB) {
+				N:Cowl(angle=-150, option=1, effect=#F0FB) {
+					E:Cowl(angle=-90, color=#457285) {
+						N:Cowl(color=#457285) {
+							W:Cowl(angle=-90, option=1, effect=#F0FB) {
+								N:Cowl(angle=-30, option=1, effect=#F0FB) {
+									E:Cowl(angle=-90, option=3, color=#457285) { }
+								}
+							}
 						}
 					}
 				}
@@ -588,8 +690,8 @@ _limitlist={1500,1800,2000,2200,2500,64512}
 
 _prvtbl = InitPRVTable()
 
-_prvtbl.p.limit = 200000
-_prvtbl.p.step  = 100000
+_prvtbl.p.limit = 300000
+_prvtbl.p.step  = 150000
 
 _prvtbl.r.tgt = 360
 _prvtbl.r.kp  = 8
@@ -615,7 +717,7 @@ _gr=70
 
 function OnFrame()
 	if not inited then
-		CCVXOnInit()
+		CCVXOnInit({ Missile={n=2,mdl={1,-1},func=_KEYDOWN,fire=1} , Gun={func=_KEY,fire=7,op=50000,an=8,ang=45} })
 		inited = true
 	end
 
@@ -650,6 +752,15 @@ function OnFrame()
 	WS = WS_PID:PID(dy,WY,8,8,8,40)
 	GF=_LINER(GF,_gf,1)
 	GR=_LINER(GR,_gr,4.4)
+	
+	W0 = V0*2
+	W1 = V1*2
+	W2 = V2*2
+	W3 = V3*2
+	W4 = V4*2
+	W5 = V5*2
+	W6 = V6*2
+	W7 = V7*2
 	
 	local njx = JX
 	local njy = JY

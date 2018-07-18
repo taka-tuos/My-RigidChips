@@ -13,7 +13,7 @@ Body
 }
 Lua
 {
-require("daretoku_taka/UI-4053.mqo.lua")
+require("heisi.mqo.lua")
 require("daretoku_taka/xgl.lua")
 
 function _NPOS_C9(n)
@@ -48,7 +48,7 @@ function VertexShader(x,y,z,n)
 end
 
 function OnFrame()
-	local n = XGL.Draw(_G[XGL.GenHash("UI-4053.mqo")],VertexShader,1)
+	local n = XGL.Draw(_G[XGL.GenHash("heisi.mqo")],VertexShader,1)
 	out(0,"é¿ë™ê´î\ : " .. _FPS() * n .. "Œﬂÿ∫ﬁ›ñàïb")
 end
 }

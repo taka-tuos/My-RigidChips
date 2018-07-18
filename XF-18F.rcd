@@ -6,6 +6,10 @@ Val
 	G1(default=0, max=10000000000)
 	G2(default=0, max=10000000000)
 	G3(default=0, max=10000000000)
+	G4(default=0, max=10000000000)
+	G5(default=0, max=10000000000)
+	G6(default=0, max=10000000000)
+	G7(default=0, max=10000000000)
 	GF(default=0, min=-180, max=180)
 	GR(default=0, min=-180, max=180)
 	JX(default=0, min=-90, max=90)
@@ -28,6 +32,18 @@ Val
 	V1(default=0, min=-90, max=90)
 	V2(default=0, min=-90, max=90)
 	V3(default=0, min=-90, max=90)
+	V4(default=0, min=-90, max=90)
+	V5(default=0, min=-90, max=90)
+	V6(default=0, min=-90, max=90)
+	V7(default=0, min=-90, max=90)
+	W0(default=0, min=-180, max=180)
+	W1(default=0, min=-180, max=180)
+	W2(default=0, min=-180, max=180)
+	W3(default=0, min=-180, max=180)
+	W4(default=0, min=-180, max=180)
+	W5(default=0, min=-180, max=180)
+	W6(default=0, min=-180, max=180)
+	W7(default=0, min=-180, max=180)
 	WB(default=0, max=10000000000)
 	WS(default=0, min=-90, max=90)
 }
@@ -37,7 +53,7 @@ Key
 Body
 {
 	Core() {
-		W:Cowl(option=1, effect=#F0FB, option=1, name=LS) { }
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
 		E:Cowl(option=1, effect=#F0FB, option=1, name=RS) { }
 		S:Cowl(option=1, effect=#F0FB, option=1, name=TS) { }
 		N:Cowl(option=1, effect=#F0FB, option=1, name=FS) { }
@@ -195,11 +211,6 @@ Body
 				}
 			}
 			S:Chip() {
-				N:TrimF(angle=90, option=1) {
-					N:RudderF(angle=GF, option=1) {
-						N:Wheel(angle=-WS, brake=WB) { }
-					}
-				}
 				S:Chip() {
 					S:Chip(color=#402040) {
 						S:TrimF(angle=-90) {
@@ -322,6 +333,71 @@ Body
 							}
 						}
 					}
+					N:TrimF(angle=90, option=1) {
+						N:RudderF(angle=GF, option=1) {
+							N:Wheel(angle=-WS, brake=WB) { }
+						}
+					}
+				}
+			}
+			S:Trim(angle=0, spring=1, damper=1, name=CRE) {
+				N:Frame(angle=V0, spring=1, damper=1) {
+					N:Frame(angle=-W0, spring=1, damper=1) {
+						N:Arm(option=50000, power=G0, angle=V0, spring=1, damper=1, name=A0) { }
+					}
+				}
+				N:Frame(angle=V1, spring=1, damper=1) {
+					N:Frame(angle=-W1, spring=1, damper=1) {
+						N:Arm(option=50000, power=G1, angle=V1, spring=1, damper=1, name=A1) { }
+					}
+				}
+				N:Frame(angle=V2, spring=1, damper=1) {
+					N:Frame(angle=-W2, spring=1, damper=1) {
+						N:Arm(option=50000, power=G2, angle=V2, spring=1, damper=1, name=A2) { }
+					}
+				}
+				N:Frame(angle=V3, spring=1, damper=1) {
+					N:Frame(angle=-W3, spring=1, damper=1) {
+						N:Arm(option=50000, power=G3, angle=V3, spring=1, damper=1, name=A3) { }
+					}
+				}
+				N:Frame(angle=V4, spring=1, damper=1) {
+					N:Frame(angle=-W4, spring=1, damper=1) {
+						N:Arm(option=50000, power=G4, angle=V4, spring=1, damper=1, name=A4) { }
+					}
+				}
+				N:Frame(angle=V5, spring=1, damper=1) {
+					N:Frame(angle=-W5, spring=1, damper=1) {
+						N:Arm(option=50000, power=G5, angle=V5, spring=1, damper=1, name=A5) { }
+					}
+				}
+				N:Frame(angle=V6, spring=1, damper=1) {
+					N:Frame(angle=-W6, spring=1, damper=1) {
+						N:Arm(option=50000, power=G6, angle=V6, spring=1, damper=1, name=A6) { }
+					}
+				}
+				N:Frame(angle=V7, spring=1, damper=1) {
+					N:Frame(angle=-W7, spring=1, damper=1) {
+						N:Arm(option=50000, power=G7, angle=V7, spring=1, damper=1, name=A7) { }
+					}
+				}
+			}
+		}
+		E:Trim(angle=V, color=#402040) {
+			E:Cowl(angle=90, option=1, effect=#F0FB) {
+				N:Cowl(angle=45, option=1, effect=#F0FB) {
+					W:Cowl(angle=90, color=#402040) {
+						N:Cowl(option=3, color=#402040) { }
+					}
+				}
+			}
+		}
+		W:Trim(angle=-V, color=#402040) {
+			W:Cowl(angle=90, option=1, effect=#F0FB) {
+				N:Cowl(angle=45, option=1, effect=#F0FB) {
+					E:Cowl(angle=90, color=#402040) {
+						N:Cowl(option=4, color=#402040) { }
+					}
 				}
 			}
 		}
@@ -367,7 +443,7 @@ local inited = false
 
 function OnFrame()
 	if not inited then
-		CCVXOnInit()
+		CCVXOnInit({ Gun={func=_KEY,fire=7,op=50000,an=8,ang=45} })
 		inited = true
 	end
 
@@ -405,6 +481,15 @@ function OnFrame()
 	
 	GF=_LINER(GF,_gf,1)
 	GR=_LINER(GR,_gr,4.4)
+	
+	W0 = V0*2
+	W1 = V1*2
+	W2 = V2*2
+	W3 = V3*2
+	W4 = V4*2
+	W5 = V5*2
+	W6 = V6*2
+	W7 = V7*2
 	
 	CheckLimit()
 	

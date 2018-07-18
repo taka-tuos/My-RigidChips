@@ -2,19 +2,20 @@
 Val
 {
 	AB(default=0, min=-90, max=90)
-	GF(default=0, min=-180, max=180)
-	GR(default=0, min=-180, max=180)
-	JP1(default=0, min=-90, max=90)
-	JP2(default=0, min=-90, max=90)
-	JP3(default=0, min=-90, max=90)
-	JX(default=0, min=-90, max=90)
-	JY(default=0, min=-90, max=90)
+	JP1L(default=0, min=-90, max=90)
+	JP1R(default=0, min=-90, max=90)
+	JP2L(default=0, min=-90, max=90)
+	JP2R(default=0, min=-90, max=90)
+	JP3L(default=0, min=-90, max=90)
+	JP3R(default=0, min=-90, max=90)
+	JXL(default=0, min=-90, max=90)
+	JXR(default=0, min=-90, max=90)
+	JYL(default=0, min=-90, max=90)
+	JYR(default=0, min=-90, max=90)
 	P(default=0, max=10000000000)
 	R(default=0, min=-90, max=90)
 	RD(default=0, min=-90, max=90)
 	V(default=0, min=-90, max=90)
-	WB(default=0, max=10000000000)
-	WS(default=0, min=-90, max=90)
 }
 Key
 {
@@ -168,13 +169,10 @@ Body
 				}
 			}
 		}
-		N:Weight(angle=180, option=2, spring=1, damper=1) { }
+		N:Weight(angle=180, option=1.5, spring=1, damper=1) { }
 		S:Chip(angle=-AB) { }
 		S:Trim(angle=90, spring=1, damper=1) {
 			N:Chip() { }
-			N:RudderF(angle=-GF, option=1) {
-				N:Wheel(angle=WS, brake=WB) { }
-			}
 		}
 		S:Chip(angle=AB) { }
 		S:Chip(spring=1, damper=1) {
@@ -290,8 +288,12 @@ Body
 									}
 								}
 								W:Chip(spring=1, damper=1) {
+									W:Chip(color=#41505D, spring=1, damper=1) {
+										W:Trim(angle=R, color=#41505D, spring=1, damper=1) { }
+									}
 									W:Chip(angle=-90, color=#41505D, spring=1, damper=1) {
 										N:Cowl(option=5, color=#457285) { }
+										W:Trim(angle=RD, color=#41505D, spring=1, damper=1) { }
 										W:Cowl(color=#41505D) {
 											W:Cowl(angle=90, option=1, effect=#F0FB) {
 												N:Cowl(angle=50, option=1, effect=#F0FB) {
@@ -306,12 +308,9 @@ Body
 												}
 											}
 										}
-										E:Frame(option=1) {
-											W:Trim(angle=RD, color=#41505D, spring=1, damper=1) { }
-										}
 									}
-									S:Frame(angle=-JX, option=1) {
-										N:RudderF(angle=-JY, option=1, effect=#F0FB) {
+									S:Frame(angle=-JXL, option=1) {
+										N:RudderF(angle=-JYL, option=1, effect=#F0FB) {
 											N:Frame(angle=150, option=1, effect=#F0FB) {
 												N:Jet(angle=120, power=-P, effect=4) { }
 											}
@@ -335,7 +334,7 @@ Body
 																								E:Cowl(angle=-100, option=1, effect=#F0FB) {
 																									W:Cowl(angle=150, option=1, effect=#F0FB) {
 																										W:Cowl(angle=120, option=1, effect=#F0FB) {
-																											S:Cowl(angle=JP2, option=5, color=#606060) { }
+																											S:Cowl(angle=JP2L, option=5, color=#606060) { }
 																											S:Cowl(angle=185, option=5, color=#41505D) { }
 																										}
 																									}
@@ -351,7 +350,7 @@ Body
 																								E:Cowl(angle=-100, option=1, effect=#F0FB) {
 																									W:Cowl(angle=150, option=1, effect=#F0FB) {
 																										W:Cowl(angle=120, option=1, effect=#F0FB) {
-																											S:Cowl(angle=JP3, option=5, color=#606060) { }
+																											S:Cowl(angle=JP3L, option=5, color=#606060) { }
 																											S:Cowl(angle=185, option=5, color=#41505D) { }
 																										}
 																									}
@@ -367,7 +366,7 @@ Body
 																								E:Cowl(angle=-100, option=1, effect=#F0FB) {
 																									W:Cowl(angle=150, option=1, effect=#F0FB) {
 																										W:Cowl(angle=120, option=1, effect=#F0FB) {
-																											S:Cowl(angle=JP1, option=5, color=#606060) { }
+																											S:Cowl(angle=JP1L, option=5, color=#606060) { }
 																											S:Cowl(angle=175, option=5, color=#41505D) { }
 																										}
 																									}
@@ -387,14 +386,14 @@ Body
 											}
 										}
 									}
-									W:Frame(option=1, color=#41505D, spring=1, damper=1) {
-										W:Chip(color=#41505D, spring=1, damper=1) { }
-									}
-									W:Trim(angle=R, color=#41505D, spring=1, damper=1) { }
 								}
 								E:Chip(spring=1, damper=1) {
+									E:Chip(color=#41505D, spring=1, damper=1) {
+										E:Trim(angle=R, color=#41505D, spring=1, damper=1) { }
+									}
 									E:Chip(angle=-90, color=#41505D, spring=1, damper=1) {
 										N:Cowl(option=5, color=#457285) { }
+										E:Trim(angle=RD, color=#41505D, spring=1, damper=1) { }
 										E:Cowl(color=#41505D) {
 											E:Cowl(angle=90, option=1, effect=#F0FB) {
 												N:Cowl(angle=50, option=1, effect=#F0FB) {
@@ -409,12 +408,9 @@ Body
 												}
 											}
 										}
-										W:Frame(option=1) {
-											E:Trim(angle=RD, color=#41505D, spring=1, damper=1) { }
-										}
 									}
-									S:Frame(angle=-JX, option=1) {
-										N:RudderF(angle=-JY, option=1, effect=#F0FB) {
+									S:Frame(angle=-JXR, option=1) {
+										N:RudderF(angle=-JYR, option=1, effect=#F0FB) {
 											N:Frame(angle=150, option=1, effect=#F0FB) {
 												N:Jet(angle=120, power=-P, effect=4, spring=4) { }
 											}
@@ -438,7 +434,7 @@ Body
 																								E:Cowl(angle=-100, option=1, effect=#F0FB) {
 																									W:Cowl(angle=150, option=1, effect=#F0FB) {
 																										W:Cowl(angle=120, option=1, effect=#F0FB) {
-																											S:Cowl(angle=JP2, option=5, color=#606060) { }
+																											S:Cowl(angle=JP2R, option=5, color=#606060) { }
 																											S:Cowl(angle=185, option=5, color=#41505D) { }
 																										}
 																									}
@@ -454,7 +450,7 @@ Body
 																								E:Cowl(angle=-100, option=1, effect=#F0FB) {
 																									W:Cowl(angle=150, option=1, effect=#F0FB) {
 																										W:Cowl(angle=120, option=1, effect=#F0FB) {
-																											S:Cowl(angle=JP3, option=5) { }
+																											S:Cowl(angle=JP3R, option=5) { }
 																											S:Cowl(angle=185, option=5, color=#41505D) { }
 																										}
 																									}
@@ -470,7 +466,7 @@ Body
 																								E:Cowl(angle=-100, option=1, effect=#F0FB) {
 																									W:Cowl(angle=150, option=1, effect=#F0FB) {
 																										W:Cowl(angle=120, option=1, effect=#F0FB) {
-																											S:Cowl(angle=JP1, option=5, color=#606060) { }
+																											S:Cowl(angle=JP1R, option=5, color=#606060) { }
 																											S:Cowl(angle=175, option=5, color=#41505D) { }
 																										}
 																									}
@@ -490,10 +486,6 @@ Body
 											}
 										}
 									}
-									E:Frame(color=#41505D, spring=1, damper=1) {
-										E:Chip(color=#41505D, spring=1, damper=1) { }
-									}
-									E:Trim(angle=R, color=#41505D, spring=1, damper=1) { }
 								}
 								E:Cowl() {
 									N:Cowl(angle=150, option=1, effect=#F0FB) {
@@ -563,12 +555,6 @@ Body
 								}
 							}
 						}
-						E:Frame() {
-							E:Wheel(angle=GR, brake=WB) { }
-						}
-						W:Frame() {
-							W:Wheel(angle=GR, option=WB) { }
-						}
 					}
 				}
 			}
@@ -577,92 +563,204 @@ Body
 }
 Lua
 {
-require("daretoku_taka/xgui.lua")
-require("daretoku_taka/xhud2.lua")
-require("daretoku_taka/libccvx3.lua")
-require("daretoku_taka/libresume.lua")
-require("daretoku_taka/libgun.lua")
-require("daretoku_taka/libweapon.lua")
+maf = require("daretoku_taka/maf.lua")
 
-_limitlist={1500,1800,2000,2200,2500,64512}
+do
+	local FSX=_X(FS)
+	local FSY=_Y(FS)
+	local FSZ=_Z(FS)
+	local RSX=_X(RS)
+	local RSY=_Y(RS)
+	local RSZ=_Z(RS)
+	local LSX=_X(LS)
+	local LSY=_Y(LS)
+	local LSZ=_Z(LS)
+	local TSX=_X(TS)
+	local TSY=_Y(TS)
+	local TSZ=_Z(TS)
+	
+	function MF(a)
+		local FX=_X(FS)-FSX
+		local FY=_Y(FS)-FSY
+		local FZ=_Z(FS)-FSZ
+		local RX=_X(RS)-RSX
+		local RY=_Y(RS)-RSY
+		local RZ=_Z(RS)-RSZ
+		local LX=_X(LS)-LSX
+		local LY=_Y(LS)-LSY
+		local LZ=_Z(LS)-LSZ
+		local TX=_X(TS)-TSX
+		local TY=_Y(TS)-TSY
+		local TZ=_Z(TS)-TSZ
 
-_prvtbl = InitPRVTable()
+		WX=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))-(TX*_YX(TS)+TY*_YY(TS)+TZ*_YZ(TS))
+		WY=(RX*_ZX(RS)+RY*_ZY(RS)+RZ*_ZZ(RS))-(LX*_ZX(LS)+LY*_ZY(LS)+LZ*_ZZ(LS))
+		WZ=(RX*_YX(RS)+RY*_YY(RS)+RZ*_YZ(RS))-(LX*_YX(LS)+LY*_YY(LS)+LZ*_YZ(LS))
+		VEL=(FX*_ZX(FS)+FY*_ZY(FS)+FZ*_ZZ(FS))*3.6
+		VX=(FX*_XX(FS)+FY*_XY(FS)+FZ*_XZ(FS))*3.6
 
-_prvtbl.p.limit = 200000
-_prvtbl.p.step  = 100000
+		VY=(FX*_YX(FS)+FY*_YY(FS)+FZ*_YZ(FS))*3.6
 
-_prvtbl.r.tgt = 360
-_prvtbl.r.kp  = 8
-_prvtbl.r.ki  = 8
-_prvtbl.r.kd  = 8
-_prvtbl.r.il  = 30
+		FSX=_X(FS)
+		FSY=_Y(FS)
+		FSZ=_Z(FS)
+		RSX=_X(RS)
+		RSY=_Y(RS)
+		RSZ=_Z(RS)
+		LSX=_X(LS)
+		LSY=_Y(LS)
+		LSZ=_Z(LS)
+		TSX=_X(TS)
+		TSY=_Y(TS)
+		TSZ=_Z(TS)
+	end
+end
 
-_prvtbl.v.tgt = 180
-_prvtbl.v.kp  = 8
-_prvtbl.v.ki  = 8
-_prvtbl.v.kd  = 8
-_prvtbl.v.il  = 30
+math.limit = function (val,max,min)	return val>max and max or val<min and min or val	end
+
+function _NORMANALOG(n)
+	local v = _ANALOG(n)
+	if v < 100 and v > -100 then v = 0 end
+	return _ANALOG(n)/1000
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+function XPID_new()
+	local obj = {
+		i = 0,
+		d = 0,
+		e_b = 0,
+
+		PID = function (self,now,tgt,kp,ki,kd,lim)
+			local e_n = now - tgt
+			local e_d = e_n - self.e_b
+			
+			local p = e_n * kp
+			
+			local i = self.i + e_n * ki
+			
+			local d = e_d * kd
+			
+			i=math.min(lim,math.max(-lim,i))
+			
+			self.i = i
+			
+			self.e_b = e_n
+			
+			local pid = p+i+d
+			
+			pid = math.min(lim,math.max(-lim,pid))
+			
+			return pid
+		end
+	}
+	
+	return obj
+end
 
 JX_PID = XPID_new()
 JY_PID = XPID_new()
-RD_PID = XPID_new()
-WS_PID = XPID_new()
+JZ_PID = XPID_new()
 
-inited = false
+i = maf.vec3(0,0,-1)
+e = maf.vec3(0,0,0)
+q = maf.quat()
 
-_gf=25
-_gr=70
+i2 = maf.vec3(0,1,0)
 
 function OnFrame()
-	if not inited then
-		CCVXOnInit()
-		inited = true
-	end
-
-	CCVXOnFrame(true)
-
-	ShowSplash("Xi-1 Catalyst")
+	MF()
 	
-	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
+	local core = 0
 	
-	P=p
-	R=r
-	V=v
-	AB=b
+	local p = maf.vec3(_X(core),_Y(core),_Z(core))
+	local xv = maf.vec3(_XX(core),_XY(core),_XZ(core))
+	local yv = maf.vec3(_YX(core),_YY(core),_YZ(core))
+	local zv = maf.vec3(_ZX(core),_ZY(core),_ZZ(core))
 	
-	if _KEY(0) == 0 then
-		if _KEYDOWN(6) == 1 then
-			if _gf == 0 then _gf = 25
-			else _gf = 0 end
-			if _gr == 70 then _gr = 180
-			else _gr = 70 end
-		end
-		
-		WB=_LINER(WB,_KEY(7)*100,50)
-	end
+	e = maf.vec3(-_NORMANALOG(1)/10,0,-_NORMANALOG(0)/10)
 	
-	local dv = math.rad(-_NORMANALOG(1)*180/30)
-	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
+	q:setEularAngles(e)
 	
-	JX = JX_PID:PID(dv,WX,8,8,8,40)
-	JY = JY_PID:PID(dy,WY,8,8,8,40)
-	RD = RD_PID:PID(dy,WY,8,8,8,40)
-	WS = WS_PID:PID(dy,WY,8,8,8,40)
-	GF=_LINER(GF,_gf,1)
-	GR=_LINER(GR,_gr,4.4)
+	local t = q * i + -zv
 	
-	local njx = JX
-	local njy = JY
-	local bjp = 20 * (p / _prvtbl.p.limit) - 10
+	local m = -zv
+	local d = m - t
 	
-	JP2 = (bjp - math.sin(math.rad(-60)) * njx + math.cos(math.rad(-60)) * njy)
-	JP3 = (bjp + math.sin(math.rad( 60)) * njx - math.cos(math.rad( 60)) * njy)
-	JP1 = (bjp - njx)
+	_SETCOLOR(255*65536)
+	_MOVE3D(p:unpack())
+	_LINE3D((p+m*10):unpack())
 	
-	CheckLimit()
+	_SETCOLOR(255*256)
+	_MOVE3D(p:unpack())
+	_LINE3D((p+t*10):unpack())
 	
-	XHUD.Draw()
+	local _pw = 30
 	
-	Weapon.Stat()
+	local j = maf.vec3(JX_PID:PID(d.x,0,30,0,0,30), JY_PID:PID(d.y,0,30,0,0,30), JZ_PID:PID(d.z,0,30,0,0,30))
+	
+	local xj = j * xv
+	local yj = j * yv
+	
+	local xa = (xj.x + xj.y + xj.z)
+	local ya = -(yj.x + yj.y + yj.z)
+	
+	local t2 = q * i2 + yv
+	m = yv
+	d = m - t2
+	
+	_SETCOLOR(255*65536)
+	_MOVE3D(p:unpack())
+	_LINE3D((p+m*10):unpack())
+	
+	_SETCOLOR(255*256)
+	_MOVE3D(p:unpack())
+	_LINE3D((p+t2*10):unpack())
+	
+	j = maf.vec3(JX_PID:PID(d.x,0,30,0,0,30), JY_PID:PID(d.y,0,30,0,0,30), JZ_PID:PID(d.z,0,30,0,0,30))
+	
+	xj = j * xv
+	yj = j * zv
+	
+	JXR = ya
+	JYR = xa
+	JXL = ya
+	JYL = xa
+	
+	RD = xa
+	V = ya
+	R = -(xj.x + xj.y + xj.z)
+	
+	--P=100000
+	
+	local njxR = JXR
+	local njyR = JYR
+	local njxL = JXL
+	local njyL = JYL
+	local bjp = 0
+	
+	JP2R = (bjp - math.sin(math.rad(-60)) * njxR + math.cos(math.rad(-60)) * njyR)
+	JP3R = (bjp + math.sin(math.rad( 60)) * njxR - math.cos(math.rad( 60)) * njyR)
+	JP1R = (bjp - njxR)
+	
+	JP2L = (bjp - math.sin(math.rad(-60)) * njxL + math.cos(math.rad(-60)) * njyL)
+	JP3L = (bjp + math.sin(math.rad( 60)) * njxL - math.cos(math.rad( 60)) * njyL)
+	JP1L = (bjp - njxL)
 end
 }

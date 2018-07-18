@@ -248,7 +248,10 @@ Body
 							S:Cowl(angle=-30, option=5, color=R, effect=#0FFB) { }
 						}
 					}
-					N:Chip(angle=-170) { }
+					N:Chip(angle=-160) {
+						E:Chip() { }
+						W:Chip() { }
+					}
 					W:Chip(angle=-90) { }
 					E:Chip(angle=-90) { }
 				}

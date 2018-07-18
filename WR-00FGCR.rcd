@@ -1,0 +1,382 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=10000000000)
+	B2(default=0, max=10000000000)
+	BL(default=0, max=16777216)
+	DM(default=0, max=1)
+	DMF(default=0, max=1)
+	P(default=0, min=-10000000000, max=10000000000)
+	PU(default=0, min=-10000000000, max=10000000000)
+	S(default=180, min=-360, max=360)
+	SP(default=0, max=1)
+	SPF(default=0, max=1)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Frame(angle=180) {
+			N:Frame(angle=-160) {
+				N:Frame(angle=70, option=1) {
+					N:Chip(angle=90, option=1, color=0) {
+						N:TrimF(angle=180, option=1) {
+							N:Chip(option=1, color=0) {
+								W:Frame(angle=10, option=1, spring=SP, damper=DM) {
+									W:Wheel(angle=-100, power=-P, brake=B2, option=0, effect=3, name=RRW) { }
+								}
+								E:Frame(angle=10, option=1, spring=SP, damper=DM) {
+									E:Wheel(angle=-100, power=P, brake=B2, option=0, effect=3, name=RLW) { }
+								}
+								N:Cowl(angle=-90) {
+									E:Cowl() { }
+									W:Cowl() { }
+									N:Cowl(angle=-90) {
+										E:Cowl() {
+											N:Cowl(angle=-10) { }
+											E:Cowl(angle=-100) { }
+										}
+										W:Cowl() {
+											N:Cowl(angle=-10) { }
+											W:Cowl(angle=-100) { }
+										}
+									}
+								}
+							}
+							N:Cowl(angle=5) {
+								N:Cowl(angle=-70) {
+									W:Cowl() {
+										W:Cowl(angle=-100, option=4) { }
+									}
+									N:Cowl(angle=-115) {
+										E:Cowl() {
+											E:Cowl(angle=-100, option=4) { }
+										}
+										W:Cowl() {
+											W:Cowl(angle=-100, option=3) { }
+										}
+									}
+									E:Cowl() {
+										E:Cowl(angle=-100, option=3) { }
+									}
+								}
+								N:Cowl(angle=-50) {
+									W:Cowl() {
+										W:Cowl(angle=-90, option=4) { }
+									}
+									N:Cowl(angle=-135) {
+										W:Cowl() { }
+										E:Cowl() { }
+									}
+									E:Cowl() {
+										E:Cowl(angle=-90, option=3) { }
+									}
+								}
+							}
+						}
+						S:TrimF(angle=180, option=1) {
+							S:Chip(option=1) {
+								E:Frame(angle=10, option=1, spring=SPF, damper=DMF) {
+									E:RudderF(angle=-S, option=1) {
+										W:Wheel(angle=-100, power=P, brake=B, effect=3, name=FLW) { }
+									}
+								}
+								W:Frame(angle=10, option=1, spring=SPF, damper=DMF) {
+									W:RudderF(angle=-S, option=1) {
+										E:Wheel(angle=-100, power=-P, brake=B, effect=3, name=FRW) { }
+									}
+								}
+							}
+							S:Cowl(angle=5) {
+								S:Cowl(angle=-75) {
+									W:Cowl() {
+										S:Cowl(angle=-100) {
+											S:Cowl(angle=-20) {
+												W:Cowl(angle=-100, option=3) { }
+											}
+											E:Cowl(angle=-10, option=3) {
+												S:Cowl(angle=-20) { }
+											}
+											W:Cowl(angle=-100, option=4) { }
+										}
+										W:Cowl(angle=-100, option=3) { }
+									}
+									E:Cowl() {
+										S:Cowl(angle=-100) {
+											S:Cowl(angle=-20) {
+												E:Cowl(angle=-100, option=4) { }
+											}
+											W:Cowl(angle=-10, option=4) {
+												S:Cowl(angle=-20) { }
+											}
+											E:Cowl(angle=-100, option=3) { }
+										}
+										E:Cowl(angle=-100, option=4) { }
+										E:Cowl(angle=85) {
+											E:Cowl(angle=-170) {
+												E:Cowl(angle=-95) {
+													S:Cowl(angle=100) {
+														S:Cowl(angle=20) {
+															W:Cowl(angle=90, option=4) { }
+														}
+													}
+												}
+											}
+										}
+									}
+									S:Cowl(angle=-105) {
+										S:Cowl() { }
+									}
+								}
+							}
+						}
+						E:Chip(angle=100) { }
+						S:Frame(angle=160) {
+							W:Chip() { }
+							E:Chip() { }
+						}
+						W:Chip(angle=100) { }
+						W:Cowl(angle=-5) {
+							W:Cowl(angle=95) {
+								S:Cowl() { }
+								N:Cowl(angle=10) { }
+								W:Cowl(angle=90) {
+									N:Cowl() { }
+									S:Cowl() { }
+								}
+								E:Cowl(angle=90) {
+									N:Cowl() { }
+								}
+							}
+						}
+						E:Cowl(angle=-5) {
+							E:Cowl(angle=95) {
+								N:Cowl(angle=10) { }
+								S:Cowl() { }
+								E:Cowl(angle=90) {
+									N:Cowl() { }
+									S:Cowl() { }
+								}
+								W:Cowl(angle=90) {
+									N:Cowl() { }
+								}
+							}
+						}
+						S:Cowl() {
+							S:Cowl(angle=90) {
+								S:Cowl(angle=60) {
+									S:Cowl(angle=30) {
+										S:Cowl(angle=20) {
+											S:Cowl(angle=10) { }
+											W:Cowl(angle=45) {
+												S:Cowl(angle=10) { }
+											}
+											E:Cowl(angle=45) {
+												S:Cowl(angle=10) { }
+											}
+										}
+										W:Cowl(angle=45) { }
+										E:Cowl(angle=45) { }
+									}
+									W:Cowl(angle=45) { }
+									E:Cowl(angle=45) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+XMET={}
+
+-- x : X座標
+-- y : Y座標
+-- s : メーター半径
+-- c : 目盛始端角度(deg)
+-- d : 目盛終端角度(deg)
+-- e : 何度ごとに目盛数字があるか
+-- f : 目盛数字の一個ごとの差
+-- g : 針で示す数値
+-- h : 針がd度の位置にあるときのgの値
+-- i : 針で示す数値(2)
+-- j : 針で示す数値(3)
+-- k : 針で示す数値(4)
+
+function XMET.Draw(obj,x,y,s,c,d,e,f,g,h,i,j,k)
+	XGUI.SetDrawColorINT(2105376)
+	
+	XMET.Circle(obj,x,y,s)
+	
+	XMET.Circle(obj,x,y,s/10)
+	
+	XGUI.SetDrawColorINT(0)
+	
+	XMET.CircleString(obj,x,y,s*0.75,c,d,e,f)
+	
+	XMET.CircleM(obj,x,y,s*0.9,s,c,d,e)
+	
+	XGUI.SetDrawColorINT(2105376)
+	
+	XMET.CircleM(obj,x,y,s*0.95,s,c,d,e/10)
+	
+	if k ~= nil then XMET.Needle(obj,x,y,s,c - (k / h * math.abs(d-c)),16776960) end
+	if j ~= nil then XMET.Needle(obj,x,y,s,c - (j / h * math.abs(d-c)),65280) end
+	if i ~= nil then XMET.Needle(obj,x,y,s,c - (i / h * math.abs(d-c)),255) end
+	XMET.Needle(obj,x,y,s,c - (g / h * math.abs(d-c)),16711680)
+end
+
+function XMET.Circle(obj,x,y,s)
+	local i
+	XGUI.Move2D(math.cos((math.pi*2/32)*0)*s+x,math.sin((math.pi*2/32)*0)*s+y)
+	for i=1,32 do
+		XGUI.Line2D(math.cos((math.pi*2/32)*i)*s+x,math.sin((math.pi*2/32)*i)*s+y)
+	end
+end
+
+function XMET.CircleString(obj,x,y,s,a,b,c,d)
+	local i,j,k
+	j = 0
+	for i=a,b,c do
+		k = string.format("%d",j)
+		local vx = math.cos(math.rad(i))*s+x
+		local vy = math.sin(math.rad(i))*s+y
+		XGUI.SetStringPosition(vx,vy)
+		XGUI.SetDrawColorINT(16777215)
+		XGUI.DrawVectorStringCenter(k)
+		j = j + d
+	end
+end
+
+function XMET.CircleM(obj,x,y,s,t,a,b,c)
+	local i,j,k
+	for i=a,b,c do
+		local x0 = math.cos(math.rad(i))*s+x
+		local y0 = math.sin(math.rad(i))*s+y
+		
+		local x1 = math.cos(math.rad(i))*t+x
+		local y1 = math.sin(math.rad(i))*t+y
+		
+		XGUI.Move2D(x0,y0)
+		XGUI.Line2D(x1,y1)
+	end
+end
+
+function XMET.Rotation(px,py,pr)
+	local rx = px * math.cos(pr) - py * math.sin(pr)
+	local ry = px * math.sin(pr) - py * math.cos(pr)
+	return rx,ry
+end
+
+function XMET.Needle(obj,x,y,s,a,c)
+	XGUI.SetDrawColorINT(c)
+	
+	local i,j = XMET.Rotation(s*0.9,0,math.rad(180-a))
+	local k,l = XMET.Rotation(-s*0.25,0,math.rad(180-a))
+	
+	i = i + x
+	j = j + y
+	
+	k = k + x
+	l = l + y
+	
+	XGUI.Move2D(i,j)
+	XGUI.Line2D(k,l)
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+function _NORMANALOG(n)
+	local v = _ANALOG(n)
+	if v < 100 and v > -100 then v = 0 end
+	return v/1000
+end
+
+_tp=0
+
+_tecset=true
+
+function OnFrame()
+	if _KEYDOWN(1) == 1 then
+		_tp = -15 - _tp
+	end
+	
+	XGUI.SetStringSize(32)
+	
+	XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()-64)
+	XGUI.DrawVectorStringCenter(string.format("% 3d km/h",math.abs(_VEL(0))*3.6))
+	
+	if _KEYDOWN(6) == 1 then _tecset = not _tecset end
+	
+	local key4 = -_NORMANALOG(5)
+	local key0 = _NORMANALOG(5)
+	local key1 = 0
+	
+	if key0 < 0 then
+		if _KEY(14) == 1 then
+			key1 = -key0
+		end
+		key0 = 0
+	end
+	
+	if key4 < 0 or key1 > 0 then key4 = 0 end
+	
+	BL = (math.floor(223*key4)+32)*65536
+	
+	PU=_LINER(PU,_tp,0.2)
+	
+	B2=_LINER(B2,key4*100+_KEY(15)*200,100)
+	B=_LINER(B,key4*200,100)
+	
+	P=_LINER(P,key0*15000-key1*5000,15000)
+	
+	S=_LINER(S,180+_NORMANALOG(0)*30,15)
+	
+	_ZOOM(_GETVIEWZOOM())
+	
+	XGUI.SetStringSize(16)
+	
+	XGUI.SetStringPosition(128,128+32)
+	XGUI.DrawVectorStringCenter("残燃料")
+	XGUI.SetStringPosition(128,128+32+16)
+	XGUI.DrawVectorStringCenter("x1 [%]")
+	
+	XMET.Draw(obj,128,128,128,90,360,27,10,_FUEL()/_FUELMAX(),1)
+	
+	XGUI.SetDrawColorINT(16777215)
+	
+	if _tecset then
+		SP=0.15
+		SPF=0.15
+		DM=0.15
+		DMF=0.15
+	else
+		SP=1
+		SPF=1
+		DM=1
+		DMF=1
+	end
+end
+}

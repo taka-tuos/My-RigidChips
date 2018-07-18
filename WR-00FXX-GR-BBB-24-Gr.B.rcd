@@ -21,7 +21,7 @@ Body
 		N:Frame(angle=180) {
 			N:Frame(angle=-160) {
 				N:Frame(angle=70, option=1) {
-					N:Chip(angle=90, option=1, color=0) {
+					N:Weight(angle=90, option=1, color=0) {
 						N:Cowl(color=0) {
 							N:Cowl(color=0) {
 								W:Cowl(color=0) { }
@@ -596,9 +596,9 @@ function OnFrame()
 	B2=_LINER(B2,key4*100+_KEY(15)*200,100)
 	B=_LINER(B,key4*200,100)
 	
-	P=_LINER(P,key0*15000-key1*5000,15000)
+	P=_LINER(P,key0*40000-key1*5000,20000)
 	
-	S=_LINER(S,180+_NORMANALOG(0)*30,15)
+	S=_LINER(S,180+_NORMANALOG(0)*30,30)
 	
 	_ZOOM(_GETVIEWZOOM())
 	

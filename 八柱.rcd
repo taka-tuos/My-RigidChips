@@ -5,9 +5,11 @@ Val
 	AWFR(default=0, min=-30, max=60)
 	AWRL(default=0, min=-30, max=60)
 	AWRR(default=0, min=-30, max=60)
-	B(default=0, max=5000)
-	B2(default=0, max=5000)
+	BFL(default=0, max=5000)
+	BFR(default=0, max=5000)
 	BL(default=2097152, min=2097152, max=16711680, step=16711680)
+	BRL(default=0, max=5000)
+	BRR(default=0, max=5000)
 	DRS(default=0, min=-180, max=-90)
 	HDS(default=0, min=-90, max=90)
 	PWFL(default=0, min=-10000000000, max=10000000000)
@@ -28,54 +30,6 @@ Body
 		E:Cowl(option=1, effect=#F0FB, name=RS) { }
 		S:Cowl(option=1, effect=#F0FB, name=TS) { }
 		N:Cowl(option=1, effect=#F0FB, name=FS) { }
-		S:Frame(option=1) {
-			S:Cowl(angle=5) {
-				S:Cowl(angle=-25, color=#101010) {
-					W:Cowl(color=#101010) {
-						W:Cowl(angle=-90, option=4, color=#101010) { }
-					}
-					E:Cowl(color=#101010) {
-						E:Cowl(angle=-90, option=3, color=#101010) { }
-					}
-				}
-			}
-			S:Cowl(angle=-10) {
-				S:Cowl(angle=-10, color=#101010) {
-					W:Cowl(color=#101010) { }
-					E:Cowl(color=#101010) { }
-				}
-			}
-			S:TrimF(option=1, spring=SS, damper=SD) {
-				E:Frame(option=1, spring=SS, damper=SD) {
-					E:Wheel(angle=-90, power=-PWRR, brake=B2, option=1, effect=4, spring=SS, damper=SD, name=RRW) { }
-					E:Frame(angle=-90, option=1, name=RRC) { }
-				}
-				W:Frame(option=1, spring=SS, damper=SD) {
-					W:Wheel(angle=-90, power=PWRL, brake=B2, option=1, effect=4, spring=SS, damper=SD, name=RLW) { }
-					W:Frame(angle=-90, option=1, name=RLC) { }
-				}
-				N:Frame(angle=DRS, option=1) {
-					W:Trim(angle=AWRR, name=ACRR) { }
-					E:Trim(angle=-AWRL, name=ACRL) { }
-				}
-				E:Chip(angle=-90) { }
-				W:Chip(angle=-90) { }
-			}
-			E:Frame(option=1) {
-				E:Chip(angle=-90, color=#101010) {
-					N:Cowl() {
-						N:Cowl(color=#101010) { }
-					}
-				}
-			}
-			W:Frame(option=1) {
-				W:Chip(angle=-90, color=#101010) {
-					N:Cowl() {
-						N:Cowl(color=#101010) { }
-					}
-				}
-			}
-		}
 		E:Cowl(angle=-50) {
 			E:Cowl(angle=100) {
 				E:Cowl(angle=-140) {
@@ -268,20 +222,16 @@ Body
 				S:Cowl(color=#101010) { }
 			}
 		}
-		N:Frame(option=1) {
-			N:TrimF(option=1, spring=SS, damper=SD) {
-				W:Frame(option=1, spring=SS, damper=SD) {
-					W:RudderF(angle=-S, option=1, spring=SS, damper=SD) {
-						E:Wheel(angle=-90, power=-PWFL, brake=B, option=1, effect=4, spring=SS, damper=SD, name=FLW) { }
-						E:Frame(angle=-90, option=1, name=FLC) { }
-					}
+		S:TrimF(angle=-90, option=1) {
+			N:Rudder(angle=-90, option=1) {
+				E:Trim(angle=-HDS) {
+					W:Chip() { }
 				}
-				E:Frame(option=1, spring=SS, damper=SD) {
-					E:RudderF(angle=-S, option=1, spring=SS, damper=SD) {
-						W:Wheel(angle=-90, power=PWFR, brake=B, option=1, effect=4, spring=SS, damper=SD, name=FRW) { }
-						W:Frame(angle=-90, option=1, name=FRC) { }
-					}
-				}
+				W:Trim(angle=HDS) { }
+			}
+		}
+		N:TrimF(option=1, spring=1, damper=1) {
+			N:TrimF(option=1, spring=1, damper=1) {
 				N:Frame(angle=DRS, option=1) {
 					E:Trim(angle=-AWFL, name=ACFL) { }
 					W:Trim(angle=AWFR, name=ACFR) { }
@@ -292,14 +242,70 @@ Body
 				E:Frame(angle=-90) {
 					S:Chip(angle=S) { }
 				}
+				E:Chip(option=1, spring=SS, damper=SD) {
+					E:RudderF(angle=-S, option=1, spring=1, damper=1) {
+						W:Wheel(angle=-90, power=PWFR, brake=BFR, option=1, effect=4, spring=1, damper=1, name=FRW) { }
+						W:Frame(angle=-90, option=1, name=FRC) { }
+					}
+				}
+				W:Chip(option=1, spring=SS, damper=SD) {
+					W:RudderF(angle=-S, option=1, spring=1, damper=1) {
+						E:Wheel(angle=-90, power=-PWFL, brake=BFL, option=1, effect=4, spring=1, damper=1, name=FLW) { }
+						E:Frame(angle=-90, option=1, name=FLC) { }
+					}
+				}
 			}
 		}
-		S:TrimF(angle=-90, option=1) {
-			N:Rudder(angle=-90, option=1) {
-				E:Trim(angle=-HDS) {
-					W:Chip() { }
+		S:TrimF(option=1, spring=1, damper=1) {
+			S:Cowl(angle=5) {
+				S:Cowl(angle=-25, color=#101010) {
+					W:Cowl(color=#101010) {
+						W:Cowl(angle=-90, option=4, color=#101010) { }
+					}
+					E:Cowl(color=#101010) {
+						E:Cowl(angle=-90, option=3, color=#101010) { }
+					}
 				}
-				W:Trim(angle=HDS) { }
+			}
+			S:Cowl(angle=-10) {
+				S:Cowl(angle=-10, color=#101010) {
+					W:Cowl(color=#101010) { }
+					E:Cowl(color=#101010) { }
+				}
+			}
+			S:TrimF(option=1, spring=1, damper=1) {
+				N:Frame(angle=DRS, option=1) {
+					W:Trim(angle=AWRR, name=ACRR) { }
+					E:Trim(angle=-AWRL, name=ACRL) { }
+				}
+				E:Chip(angle=-90) {
+					N:Chip() { }
+				}
+				W:Chip(angle=-90) {
+					N:Chip() { }
+				}
+				W:Chip(option=1, spring=SS, damper=SD) {
+					W:Wheel(angle=-90, power=PWRL, brake=BRL, option=1, effect=4, spring=1, damper=1, name=RLW) { }
+					W:Frame(angle=-90, option=1, name=RLC) { }
+				}
+				E:Chip(option=1, spring=SS, damper=SD) {
+					E:Wheel(angle=-90, power=-PWRR, brake=BRR, option=1, effect=4, spring=1, damper=1, name=RRW) { }
+					E:Frame(angle=-90, option=1, name=RRC) { }
+				}
+			}
+			E:Frame(option=1) {
+				E:Chip(angle=-90, color=#101010) {
+					N:Cowl() {
+						N:Cowl(color=#101010) { }
+					}
+				}
+			}
+			W:Frame(option=1) {
+				W:Chip(angle=-90, color=#101010) {
+					N:Cowl() {
+						N:Cowl(color=#101010) { }
+					}
+				}
 			}
 		}
 	}
@@ -308,9 +314,9 @@ Lua
 {
 require("daretoku_taka/xgui.lua")
 
-window_info=nil
+--window_info=nil
 
-XMET={}
+--XMET={}
 
 _fl=0
 _fr=0
@@ -326,7 +332,7 @@ _rra=0
 
 _sms=0
 _sma=0
-
+--[[
 function OnDraw_Window_Info(obj)
 	local kph=math.abs(_VEL(0))*3.6
 	
@@ -500,7 +506,7 @@ function XMET.Needle(obj,x,y,s,a,c)
 	
 	XGUI.Move2D(i,j)
 	XGUI.Line2D(k,l)
-end
+end]]--
 
 function _VEL(n)
 	return _LEN3( _VX(n), _VY(n), _VZ(n))
@@ -607,26 +613,29 @@ end
 
 WL=1.2*math.pi
 
-MXPW=100000
-MXTCS=MXPW/200
+MXPW=200000
+MXTCS=MXPW/50
 MXTCS2=MXPW*2
 
-MXB=200
-MXABS=MXB/20
+MXB=100
+MXABS=MXB/10
+
+B=0
+B2=0
 
 function r_pw(p)
 	return MXPW*key0+5500*-key1
 end
 
 S_PID = XPID_new()
-B_PID = XPID_new()
+--B_PID = XPID_new()
 H_PID = XPID_new()
 
 function r_tc(p,w,vz,pid)
 	--n=w/vz
 	--TCS=(n-3.5)*MXTCS2
 	
-	TCS=pid:PID(w-vz,0,MXTCS,MXTCS/32,MXTCS/64,MXPW)
+	TCS=pid:PID(w-vz,0,MXTCS,MXTCS/16,MXTCS/32,MXPW)
 	if TCS>0 and key0+key1>0 then p=p-TCS end
 	if p<0 and TCS>0 and key1 == 0 then p=0 end
 	return p
@@ -646,6 +655,11 @@ FL_PID = XPID_new()
 RR_PID = XPID_new()
 RL_PID = XPID_new()
 
+BFR_PID = XPID_new()
+BFL_PID = XPID_new()
+BRR_PID = XPID_new()
+BRL_PID = XPID_new()
+
 function _NORMANALOG(n)
 	local v = _ANALOG(n)
 	if v < 100 and v > -100 then v = 0 end
@@ -653,11 +667,16 @@ function _NORMANALOG(n)
 end
 
 function OnFrame()
-	if window_info == nil then
-		window_info = XGUI.CreateWindow(960,384,"åväÌóﬁ MAX=ê¬êj NOW=ê‘êj AVG=óŒêj",OnDraw_Window_Info,true)
-	end
+	--if window_info == nil then
+	--	window_info = XGUI.CreateWindow(960,384,"åväÌóﬁ MAX=ê¬êj NOW=ê‘êj AVG=óŒêj",OnDraw_Window_Info,true)
+	--end
 	
-	XGUI.RefreshWindowManager()
+	--XGUI.RefreshWindowManager()
+	
+	XGUI.SetStringSize(32)
+	
+	XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()-64)
+	XGUI.DrawVectorStringCenter(string.format("% 3d km/h",math.abs(_VEL(0))*3.6))
 	
 	local key4 = -_NORMANALOG(5)
 	
@@ -670,7 +689,6 @@ function OnFrame()
 		end
 		key0 = 0
 	end
-	
 	
 	if key4 < 0 or key1 > 0 then key4 = 0 end
 	
@@ -705,20 +723,41 @@ function OnFrame()
 	PWRR=r_g(PWRR,RRR,math.abs(_VZ(RRC)),RR_PID)
 	PWRL=r_g(PWRL,RLR,math.abs(_VZ(RLC)),RL_PID)
 	
-	ABS=B_PID:PID(-(WR+_VZ(0)),0,MXABS,MXABS/32,MXABS/64,MXB)
-	if ABS>0 and key4>0 then
-		B=B-ABS
-		B2=B2-ABS
-	end
-	if B<0 then B=0 end
-	if B2<0 then B2=0 end
-
-	HDS=-H_PID:PID(_VX(0)/30,0,16,12,8,45)
-
-	DRS=-150 --+_VZ(0)/140*25
+	BFR=B
+	BFL=B
+	BRL=B
+	BRR=B
 	
-	SS=0.5
-	SD=0.5
+	ABSFR=BFR_PID:PID(FLR-math.abs(_VZ(FRC)),0,MXABS,MXABS/32,MXABS/64,MXB)
+	ABSFL=BFL_PID:PID(FRR-math.abs(_VZ(FLC)),0,MXABS,MXABS/32,MXABS/64,MXB)
+	ABSRR=BRR_PID:PID(RLR-math.abs(_VZ(RRC)),0,MXABS,MXABS/32,MXABS/64,MXB)
+	ABSRL=BRL_PID:PID(RRR-math.abs(_VZ(RLC)),0,MXABS,MXABS/32,MXABS/64,MXB)
+	if ABSFR>0 and key4>0 then
+		BFR=BFR-ABSFR
+	end
+	if ABSFL>0 and key4>0 then
+		BFL=BFL-ABSFL
+	end
+	if ABSRR>0 and key4>0 then
+		BRR=BRR-ABSRR
+	end
+	if ABSRL>0 and key4>0 then
+		BRL=BRL-ABSRL
+	end
+	if BFL<0 then BFL=0 end
+	if BFR<0 then BFR=0 end
+	if BRL<0 then BRL=0 end
+	if BRR<0 then BRR=0 end
+	
+	--if B<0 then B=0 end
+	--if B2<0 then B2=0 end
+
+	--HDS=-H_PID:PID(_VX(0)/30,0,16,12,8,45)
+
+	DRS=-160
+	
+	SS=1
+	SD=1
 	
 	local AHFR=_H(ACFR)
 	local AHFL=_H(ACFL)
