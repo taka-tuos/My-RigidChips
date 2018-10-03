@@ -313,7 +313,7 @@ Body
 									S:Frame(angle=-JX, option=1) {
 										N:RudderF(angle=-JY, option=1, effect=#F0FB) {
 											N:Frame(angle=150, option=1, effect=#F0FB) {
-												N:Jet(angle=120, power=-P, effect=4) { }
+												N:Jet(angle=120, power=-P) { }
 											}
 										}
 									}
@@ -416,7 +416,7 @@ Body
 									S:Frame(angle=-JX, option=1) {
 										N:RudderF(angle=-JY, option=1, effect=#F0FB) {
 											N:Frame(angle=150, option=1, effect=#F0FB) {
-												N:Jet(angle=120, power=-P, effect=4, spring=4) { }
+												N:Jet(angle=120, power=-P, spring=4) { }
 											}
 										}
 									}

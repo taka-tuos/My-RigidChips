@@ -1,10 +1,10 @@
 // [RCD] 
 Val
 {
-	B(default=0, min=-10000000000, max=10000000000)
-	B2(default=0, min=-10000000000, max=10000000000)
-	P(default=0, min=-10000000000, max=10000000000)
-	S(default=0, min=-90, max=90)
+	B(default=0, max=128, step=64)
+	BL(default=2097152, min=2097152, max=16711680, step=16711680)
+	P(default=0, min=-2500, max=5000, step=2500)
+	S(default=180, min=148, max=212, step=4)
 }
 Key
 {
@@ -12,43 +12,121 @@ Key
 Body
 {
 	Core() {
-		S:Chip() {
-			S:Rudder(angle=10) {
-				S:Rudder(angle=170) {
-					E:Frame(angle=10, option=1) {
-						E:RLW(angle=-100, power=P, brake=B2, effect=3) { }
+		N:Frame(angle=180, option=1) {
+			N:Frame(angle=-130, option=1) {
+				N:Frame(angle=-50, option=1) {
+					E:Cowl(angle=25) {
+						E:Cowl(angle=-110) {
+							S:Cowl() {
+								E:Cowl(angle=-90) {
+									N:Cowl() {
+										N:Cowl(angle=-15) { }
+									}
+									S:Cowl() {
+										S:Cowl(angle=-90) { }
+									}
+								}
+							}
+						}
+						E:Cowl(angle=-135) { }
 					}
-				}
-			}
-			S:Rudder(angle=-10) {
-				S:Rudder(angle=-170) {
-					W:Frame(angle=10, option=1) {
-						W:RLW(angle=-100, power=-P, brake=B2, effect=3) { }
+					W:Cowl(angle=25) {
+						W:Cowl(angle=-110) {
+							S:Cowl() {
+								W:Cowl(angle=-90) {
+									N:Cowl() {
+										N:Cowl(angle=-15) { }
+									}
+									S:Cowl() {
+										S:Cowl(angle=-90) { }
+									}
+								}
+							}
+						}
+						W:Cowl(angle=-135) { }
 					}
-				}
-			}
-		}
-		N:Chip() {
-			N:Rudder(angle=10) {
-				N:Rudder(angle=170) {
-					W:Frame(angle=10, option=1) {
-						W:RudderF(angle=-S, option=1) {
-							E:RLW(angle=-80, brake=B, effect=3) { }
+					S:Cowl(angle=-45) {
+						S:Cowl(angle=45) {
+							S:Cowl(angle=90) { }
+						}
+					}
+					N:Cowl(angle=25) {
+						N:Cowl(angle=-25) {
+							E:Cowl() {
+								E:Cowl(angle=-90, option=3) { }
+							}
+							W:Cowl() {
+								W:Cowl(angle=-90, option=4) { }
+							}
+							N:Cowl(angle=-125) {
+								E:Cowl() {
+									N:Cowl(angle=-45) {
+										N:Cowl(angle=-45) { }
+									}
+								}
+								W:Cowl() {
+									N:Cowl(angle=-45) {
+										N:Cowl(angle=-45) { }
+									}
+								}
+								N:Cowl(angle=-45) {
+									N:Cowl(angle=-45) { }
+									N:Cowl(angle=25, color=#202020, effect=#50FB) {
+										E:Cowl(angle=-40, option=3, color=#202020, effect=#50FB) { }
+										W:Cowl(angle=-35, option=4, color=#202020, effect=#50FB) { }
+									}
+								}
+							}
+						}
+					}
+					E:Chip(angle=-87.5) {
+						S:Chip() { }
+					}
+					W:Chip(angle=-87.5) {
+						S:Chip() { }
+					}
+					S:Frame(angle=0, option=1) {
+						S:Cowl(angle=-40) {
+							N:Cowl(angle=120, option=5, color=BL) { }
+						}
+						N:Frame(angle=-160) {
+							E:Chip(angle=20) { }
+							W:Chip(angle=20) { }
+						}
+						S:Frame() {
+							W:Frame(angle=-30) {
+								W:Wheel(angle=120, power=-P, brake=B, effect=3) { }
+							}
+							E:Frame(angle=-30) {
+								E:Wheel(angle=120, power=P, brake=B, effect=3) { }
+							}
+							S:Cowl(angle=160, color=0) {
+								E:Cowl(angle=90) {
+									E:Cowl(angle=90, option=4) {
+										W:Cowl() { }
+									}
+								}
+								W:Cowl(angle=90) {
+									W:Cowl(angle=90, option=4) {
+										E:Cowl() { }
+									}
+								}
+							}
+						}
+					}
+					N:Frame(angle=0) {
+						W:Frame(angle=-30) {
+							W:RudderF(angle=-S, option=1) {
+								E:Wheel(angle=120, power=-P, brake=B, effect=3) { }
+							}
+						}
+						E:Frame(angle=-30) {
+							E:RudderF(angle=-S, option=1) {
+								W:Wheel(angle=120, power=P, brake=B, effect=3) { }
+							}
 						}
 					}
 				}
-			}
-			N:Rudder(angle=-10) {
-				N:Rudder(angle=-170) {
-					E:Frame(angle=10, option=1) {
-						E:RudderF(angle=-S, option=1) {
-							W:RLW(angle=-80, brake=B, effect=3) { }
-						}
-					}
-				}
-			}
-			S:TrimF(angle=-90, option=1) {
-				S:Rudder(angle=90) { }
 			}
 		}
 	}
@@ -176,9 +254,15 @@ function _NORMANALOG(n)
 	return v/1000
 end
 
+_tp=0
+
 _tecset=true
 
 function OnFrame()
+	if _KEYDOWN(1) == 1 then
+		_tp = -15 - _tp
+	end
+	
 	XGUI.SetStringSize(32)
 	
 	XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()-64)
@@ -201,12 +285,14 @@ function OnFrame()
 	
 	BL = (math.floor(223*key4)+32)*65536
 	
-	B2=_LINER(B2,key4*100+_KEY(15)*200,100)
+	--PU=_LINER(PU,_tp,0.2)
+	
+	--B2=_LINER(B2,key4*100+_KEY(15)*200,100)
 	B=_LINER(B,key4*200,100)
 	
-	P=_LINER(P,key0*10000-key1*5000,15000)
+	P=_LINER(P,key0*2500-key1*5000,15000)
 	
-	S=_LINER(S,_NORMANALOG(0)*80,15)
+	S=_LINER(S,180+_NORMANALOG(0)*30,15)
 	
 	_ZOOM(_GETVIEWZOOM())
 	
@@ -222,10 +308,10 @@ function OnFrame()
 	XGUI.SetDrawColorINT(16777215)
 	
 	if _tecset then
-		SP=0.175
-		SPF=0.175
-		DM=0.2
-		DMF=0.2
+		SP=0.15
+		SPF=0.15
+		DM=0.15
+		DMF=0.15
 	else
 		SP=1
 		SPF=1

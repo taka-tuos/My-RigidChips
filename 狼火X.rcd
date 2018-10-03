@@ -290,8 +290,8 @@ _limitlist={1500,1800,2000,2200,2500,64512}
 
 _prvtbl = InitPRVTable()
 
-_prvtbl.p.limit = 720000
-_prvtbl.p.step  = 360000
+_prvtbl.p.limit = 800000
+_prvtbl.p.step  = 400000
 
 _prvtbl.r.tgt = 360
 _prvtbl.r.kp  = 12
@@ -346,6 +346,7 @@ function OnFrame()
 		ng = math.mod(ng+1,4)
 	end
 	
-	PH = math.max(55,25 * ((_VEL(0) * 3.6 - 200) / 200) + 55)
+	--PH = math.max(55,25 * ((_VEL(0) * 3.6 - 200) / 200) + 55)
+	PH = math.max(55,25 * ((_VEL(0) * 3.6 - 200) / 500) + 55)
 end
 }

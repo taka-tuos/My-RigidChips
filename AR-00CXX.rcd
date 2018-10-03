@@ -173,7 +173,6 @@ Body
 					}
 					S:Cowl(color=0) { }
 					N:Cowl(color=0) { }
-					N:TrimF(angle=-90, option=1) { }
 					S:TrimF(color=#404040, spring=1, damper=1) {
 						W:Cowl(color=#000000) {
 							W:Cowl(angle=-90, color=#202020) {
@@ -248,10 +247,7 @@ Body
 							S:Cowl(angle=-30, option=5, color=R, effect=#0FFB) { }
 						}
 					}
-					N:Chip(angle=-160) {
-						E:Chip() { }
-						W:Chip() { }
-					}
+					N:Chip(angle=-160) { }
 					W:Chip(angle=-90) { }
 					E:Chip(angle=-90) { }
 				}

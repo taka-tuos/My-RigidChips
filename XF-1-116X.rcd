@@ -67,7 +67,7 @@ Body
 					E:Frame(angle=-90, option=1) {
 						W:RudderF(angle=90) {
 							E:RudderF(angle=-GR) {
-								E:Wheel(effect=10) { }
+								E:Wheel() { }
 							}
 						}
 					}
@@ -89,7 +89,7 @@ Body
 					W:Frame(angle=90, option=1) {
 						E:RudderF(angle=90) {
 							W:RudderF(angle=-GR) {
-								W:Wheel(effect=10) { }
+								W:Wheel() { }
 							}
 						}
 					}
@@ -211,7 +211,7 @@ Body
 			N:Weight() {
 				N:Weight(option=2) {
 					N:RudderF(angle=GF) {
-						N:Wheel(effect=10) { }
+						N:Wheel() { }
 					}
 				}
 			}

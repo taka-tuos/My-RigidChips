@@ -111,7 +111,7 @@ function OnFrame()
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
 	
 	P=p
-	R=r*10000
+	R=-r*10000
 	V=v*10000
 	
 	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)

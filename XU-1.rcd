@@ -291,8 +291,8 @@ _mn = 0
 
 _prvtbl = InitPRVTable()
 
-_prvtbl.p.limit = 300000
-_prvtbl.p.step  = 100000
+_prvtbl.p.limit = 800000
+_prvtbl.p.step  = 400000
 
 _prvtbl.r.tgt = 360
 _prvtbl.r.kp  = 8
@@ -409,7 +409,8 @@ function OnFrame()
 	
 	local nk=_VEL(0)*3.6
 	
-	PH=math.max(25*((nk-150)/350)+55,55)
+	--PH=math.max(25*((nk-150)/350)+55,55)
+	PH = math.max(55,25 * ((_VEL(0) * 3.6 - 200) / 500) + 55)
 	
 	P=p
 	R=r

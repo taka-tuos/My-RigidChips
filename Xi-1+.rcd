@@ -747,7 +747,7 @@ function OnFrame()
 	V = ya
 	R = -(xj.x + xj.y + xj.z)
 	
-	--P=100000
+	P=100000
 	
 	local njxR = JXR
 	local njyR = JYR

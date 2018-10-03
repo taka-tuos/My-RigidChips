@@ -425,12 +425,9 @@ Body
 						S:Cowl(color=0) {
 							N:Cowl(color=0) { }
 						}
-						E:Chip(angle=100) { }
-						W:Chip(angle=100) { }
-						S:Frame(angle=160) {
-							W:Chip() { }
-							E:Chip() { }
-						}
+						E:Chip(angle=90) { }
+						W:Chip(angle=90) { }
+						S:Chip(angle=175) { }
 					}
 				}
 			}

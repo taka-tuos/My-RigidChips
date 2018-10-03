@@ -1,0 +1,167 @@
+// [RCD] 
+Val
+{
+	MIG(default=45, min=-90, max=90)
+	MIG2(default=45, min=-90, max=90)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, min=-90, max=90)
+	V(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		W:Cowl(option=1, effect=#F0FB, name=LS) { }
+		E:Cowl(option=1, effect=#F0FB, name=RS) { }
+		S:Cowl(option=1, effect=#F0FB, name=TS) { }
+		E:Rudder(angle=MIG, spring=1, damper=1) {
+			E:Trim(angle=R, spring=1, damper=1) {
+				E:Trim(angle=-R, spring=1, damper=1) {
+					E:RudderF(angle=MIG2, option=1, spring=1, damper=1) {
+						W:Trim(angle=90) {
+							E:Chip() {
+								E:Cowl(option=5) { }
+							}
+							W:Cowl(option=5) { }
+						}
+					}
+					S:Chip(angle=-V) { }
+					E:Cowl(option=3) {
+						S:Cowl(option=3) { }
+					}
+				}
+				S:Chip(angle=-V) {
+					W:Cowl(option=3) { }
+				}
+			}
+		}
+		S:Frame(angle=-30, option=1, spring=1, damper=1) {
+			S:Jet(angle=120, power=-P, spring=1, damper=1) { }
+		}
+		W:Rudder(angle=-MIG, spring=1, damper=1) {
+			W:Trim(angle=R, spring=1, damper=1) {
+				W:Trim(angle=-R, spring=1, damper=1) {
+					W:RudderF(angle=-MIG2, option=1, spring=1, damper=1) {
+						E:Trim(angle=90) {
+							W:Chip() {
+								W:Cowl(option=5) { }
+							}
+							E:Cowl(option=5) { }
+						}
+					}
+					S:Chip(angle=-V) { }
+					W:Cowl(option=4) {
+						S:Cowl(option=4) { }
+					}
+				}
+				S:Chip(angle=-V) {
+					E:Cowl(option=4) { }
+				}
+			}
+		}
+		S:Trim(angle=90, spring=1, damper=1) {
+			N:Chip(spring=1, damper=1) {
+				N:Jet() { }
+			}
+		}
+		N:Jet() { }
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/libccvx3.lua")
+require("daretoku_taka/libresume.lua")
+require("daretoku_taka/libgun2.lua")
+require("daretoku_taka/libweapon.lua")
+
+_limitlist={1500,1800,2000,2200,2500,64512}
+
+_prvtbl = InitPRVTable()
+
+_prvtbl.p.limit = 500000
+_prvtbl.p.step  = 250000
+
+_prvtbl.r.tgt = 360
+_prvtbl.r.kp  = 2
+_prvtbl.r.ki  = 2
+_prvtbl.r.kd  = 0
+_prvtbl.r.il  = 5
+
+_prvtbl.v.tgt = 180
+_prvtbl.v.kp  = 2
+_prvtbl.v.ki  = 2
+_prvtbl.v.kd  = 0
+_prvtbl.v.il  = 5
+
+window_info = nil
+
+_mx = 0
+
+prev = 0
+
+function OnFrame()
+	if not window_info then
+		window_info = XGUI.CreateWindow(640,200,"機体状況",OnDraw_Window_Info,false)
+		_ZOOM(_GETVIEWZOOM())
+		CCVXOnInit()
+	end
+	
+	CCVXOnFrame(true)
+
+	ShowSplash("CCVX-08+ StratoSphere")
+	
+	if _mx == 0 then prev = 0 end
+	
+	out(1,_mx)
+	
+	_mx = math.mod(_mx+_KEYDOWN(11),2)
+	
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
+	
+	if _mx == 1 then
+		prev=prev-(_AX(0)-math.atan2(-_VY(0),-_VZ(0)))*4.0
+		prev=math.min(2,math.max(-2,prev))	-- 補正項のリミッタ
+		r=_EZ(0)*6+WZ
+		v=-_AX(0)*12-WX+prev
+	end
+	
+	P=p
+	R=r
+	V=v
+	
+	MIG=math.max(45,45+((_VEL()-1000)/7000*45))
+	MIG2=90-MIG
+	
+	CheckLimit()
+	
+	XHUD.Draw()
+	
+	Weapon.Stat()
+	
+	XGUI.RefreshWindowManager()
+end
+
+_maxvel = 0
+_maxvely = 0
+
+function OnDraw_Window_Info(obj)
+	XGUI.SetWindowPosition(obj,_WIDTH()/2-320,32)
+	
+	XGUI.WindowDrawBegin(obj)
+	XGUI.SetStringPosition(2,0)
+	local vel = _VEL(0)
+	XGUI.DrawVectorString(string.format("現在 : %.3f km/h (%.3f MACH, %.3f m/s)",vel*3.6,vel/340,vel))
+	if _maxvel < vel then _maxvel = vel _maxvely = _Y(0) end
+	vel = _maxvel
+	XGUI.SetStringPosition(2,16)
+	XGUI.DrawVectorString(string.format("最高 : %.3f km/h (%.3f MACH, %.3f m/s) @ %.3f m",vel*3.6,vel/340,vel,_maxvely))
+	XGUI.SetStringPosition(2,48)
+	XGUI.DrawVectorString(string.format("海抜 %.3f m",_Y(0)))
+	
+	XGUI.WindowDrawEnd()
+end
+}

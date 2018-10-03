@@ -432,8 +432,8 @@ _mn = 0
 
 _prvtbl = InitPRVTable()
 
-_prvtbl.p.limit = 300000
-_prvtbl.p.step  = 100000
+_prvtbl.p.limit = 800000
+_prvtbl.p.step  = 400000
 
 _prvtbl.r.tgt = 360
 _prvtbl.r.kp  = 8
@@ -609,7 +609,7 @@ function OnFrame()
 	GE1=_LINER(GE1,_gf,4)
 	GE2=_LINER(GE2,_gb,4)
 	
-	T = 25 * ((nk - 200) / 180) + 55
+	T = math.max(55,25 * ((_VEL(0) * 3.6 - 200) / 500) + 55)
 	
 	CheckLimit()
 	
