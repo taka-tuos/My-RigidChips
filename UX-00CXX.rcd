@@ -182,10 +182,9 @@ Body
 						}
 					}
 				}
-				N:TrimF(angle=90, option=1) {
-					S:Rudder(angle=-90) { }
-				}
 				S:Chip(angle=160) { }
+				E:Chip(angle=100) { }
+				W:Chip(angle=100) { }
 			}
 		}
 		E:Cowl() {

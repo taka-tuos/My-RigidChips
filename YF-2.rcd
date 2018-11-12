@@ -31,8 +31,9 @@ Body
 							S:Chip(spring=1, damper=1) {
 								W:Rudder(angle=30, color=#002F7F, spring=1, damper=1) {
 									E:Cowl(option=4, color=#002F7F) { }
-									W:Cowl(color=#002F7F) {
-										W:Cowl(color=#002F7F) {
+									W:Trim(angle=R, color=#002F7F, spring=1, damper=1) { }
+									W:Frame(color=#002F7F) {
+										W:Chip(color=#002F7F) {
 											W:Cowl(color=#80AFFF) {
 												W:Cowl(angle=90, option=1, effect=#F0FB) {
 													S:Cowl(angle=-150, option=1, effect=#F0FB) {
@@ -54,12 +55,12 @@ Body
 											E:Cowl(color=#002F7F) { }
 										}
 									}
-									W:Trim(angle=R, color=#002F7F, spring=1, damper=1) { }
 								}
 								E:Rudder(angle=-30, color=#002F7F, spring=1, damper=1) {
 									W:Cowl(option=3, color=#002F7F) { }
-									E:Cowl(color=#002F7F) {
-										E:Cowl(color=#002F7F) {
+									E:Trim(angle=R, color=#002F7F, spring=1, damper=1) { }
+									E:Chip(color=#002F7F) {
+										E:Chip(color=#002F7F) {
 											E:Cowl(color=#80AFFF) {
 												E:Cowl(angle=90, option=1, effect=#F0FB) {
 													S:Cowl(angle=-150, option=1, effect=#F0FB) {
@@ -81,7 +82,6 @@ Body
 											W:Cowl(color=#002F7F) { }
 										}
 									}
-									E:Trim(angle=R, color=#002F7F, spring=1, damper=1) { }
 								}
 							}
 							S:Frame(angle=30) {
@@ -159,7 +159,9 @@ Body
 						}
 						S:TrimF(angle=90, option=1, spring=1, damper=1) {
 							S:RudderF(angle=-90, option=1, color=#002F7F, spring=1, damper=1) {
-								S:TrimF(angle=RD, option=1, color=#002F7F, spring=1, damper=1) {
+								S:Cowl(color=#002F7F) { }
+								E:Chip() { }
+								S:Trim(angle=RD, option=1, color=#002F7F, spring=1, damper=1) {
 									S:Cowl(angle=-90, option=1, effect=#F0FB) {
 										W:Cowl(angle=-70, option=1, effect=#F0FB) {
 											N:Cowl(angle=-90, color=#002F7F) {
@@ -182,7 +184,6 @@ Body
 									}
 									N:Chip(color=#002F7F) { }
 								}
-								S:Cowl(color=#002F7F) { }
 							}
 						}
 						S:Chip(angle=AB) { }
@@ -455,7 +456,7 @@ function OnFrame()
 	
 	--JX = JX_PID:PID(dv,WX,24,16,2,40)
 	--JY = JY_PID:PID(dy,WY,24,16,2,40)
-	RD = RD_PID:PID(dy,WY,8,8,8,40)
+	--RD = RD_PID:PID(dy,WY,8,8,8,40)
 	WS = WS_PID:PID(dy,WY,24,16,2,40)
 	
 	if _KEY(0) == 0 then

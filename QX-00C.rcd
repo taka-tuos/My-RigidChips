@@ -84,9 +84,8 @@ Body
 					S:Cowl(angle=-90) { }
 				}
 				S:Chip(spring=1, damper=1) {
-					N:Chip(angle=-165) { }
-					E:Chip(angle=-90) { }
-					W:Chip(angle=-90) { }
+					E:Chip(angle=-100) { }
+					W:Chip(angle=-100) { }
 					W:Cowl() {
 						W:Cowl(angle=-90) {
 							N:Cowl(angle=5) {
@@ -230,8 +229,11 @@ Body
 								}
 							}
 						}
+						N:Chip(angle=-170) { }
 					}
+					S:TrimF(angle=90, option=1) { }
 				}
+				N:Chip(angle=-170) { }
 			}
 		}
 	}

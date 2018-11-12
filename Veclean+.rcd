@@ -1,0 +1,296 @@
+// [RCD] 
+Val
+{
+	P(default=0, max=3000000)
+	XJ(default=0, min=-10000000000, max=10000000000)
+	XW(default=0, min=-10000000000, max=10000000000)
+	YJ(default=0, min=-10000000000, max=10000000000)
+	YW(default=0, min=-10000000000, max=10000000000)
+	ZJ(default=0, min=-10000000000, max=10000000000)
+	ZW(default=0, min=-10000000000, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Frame(angle=120) {
+			E:Cowl(angle=90, option=3, color=#00FFFF) { }
+			W:Cowl(angle=90, option=4, color=#00FFFF) { }
+			N:Frame() {
+				N:Chip(angle=-120, name=JC) {
+					N:TrimF(angle=-90, option=1) {
+						S:RLW(power=XW, brake=20000) { }
+					}
+					W:TrimF(angle=-90, option=1) {
+						E:Jet(power=-ZJ) { }
+						W:Frame(angle=-120, option=1) {
+							W:Frame(angle=-150, option=1) {
+								W:Arm(power=P, option=30000, name=A2) {
+									E:Cowl(option=4) {
+										N:Cowl(angle=10, color=#0000FF) { }
+									}
+								}
+							}
+						}
+					}
+					E:TrimF(angle=-90, option=1) {
+						W:RLW(power=ZW, brake=20000) { }
+						E:Frame(angle=120, option=1) {
+							E:Frame(angle=150, option=1) {
+								E:Arm(power=P, option=30000, name=A1) {
+									W:Cowl(option=4) { }
+								}
+								S:Cowl(angle=-10, color=#0000FF) { }
+							}
+						}
+					}
+					S:TrimF(angle=-90, option=1) {
+						N:Jet(power=XJ) { }
+					}
+					S:Frame(option=1) {
+						N:Jet(power=-YJ) { }
+					}
+					N:Frame(option=1) { }
+					N:RLW(angle=180, power=YW, brake=20000) { }
+					W:Cowl(angle=-110, option=5, color=#808080) {
+						E:Cowl(color=#808080) {
+							S:Cowl(angle=-80, option=3, color=#808080) { }
+						}
+					}
+					N:Cowl(angle=-110, option=5) {
+						S:Cowl(color=#808080) {
+							E:Cowl(angle=-80, option=4, color=#808080) { }
+							W:Cowl(angle=-80, option=3, color=#808080) { }
+							N:Cowl(angle=15) {
+								E:Cowl(angle=-100, option=3) { }
+								W:Cowl(angle=-100, option=4) { }
+								W:Cowl(angle=175, option=4, color=#808080) { }
+								E:Cowl(angle=175, option=3, color=#808080) { }
+							}
+						}
+					}
+					N:Cowl(angle=-110) {
+						S:Cowl() { }
+					}
+					E:Cowl(angle=-110, option=5, color=#808080) {
+						W:Cowl(color=#808080) {
+							S:Cowl(angle=-80, option=4, color=#808080) { }
+						}
+					}
+					S:Cowl(angle=-110, option=5, color=#808080) {
+						N:Cowl(color=#808080) { }
+					}
+				}
+			}
+			N:Cowl(angle=-20) {
+				W:Cowl(angle=-70, option=4, color=#FCE2C4) { }
+				E:Cowl(angle=-70, option=3, color=#FCE2C4) { }
+			}
+			N:Frame(angle=-30) { }
+			S:Cowl(angle=180, color=#FCE2C4) { }
+		}
+		S:Cowl(angle=-160) {
+			S:Cowl(angle=-100, option=2, color=#FCE2C4) {
+				E:Cowl(angle=-85, option=4, color=#80FFFF) { }
+				W:Cowl(angle=-85, option=3, color=#80FFFF) { }
+			}
+			N:Cowl(angle=160, color=#FF8040) {
+				W:Cowl(angle=80, option=3, color=#FF8040) {
+					N:Cowl(angle=90, option=3, color=#FF8040) {
+						E:Cowl(angle=80, option=4, color=#FF8040) { }
+					}
+				}
+				E:Cowl(angle=80, option=4, color=#FF8040) {
+					N:Cowl(angle=90, option=4, color=#FF8040) {
+						W:Cowl(angle=80, option=3, color=#FF8040) { }
+					}
+				}
+				S:Cowl(angle=80, color=#FCE2C4) { }
+				S:Cowl(angle=60, option=3, color=#FF8040) {
+					W:Cowl(angle=85, option=3, color=#FF8040) { }
+					E:Cowl(angle=85, option=4, color=#FF8040) { }
+					N:Cowl(angle=180, option=3, color=#FF8040) { }
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function _RAMIEL3D(ex,ey,ez,llen)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_MOVE3D(ex, ey + llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_MOVE3D(ex, ey - llen * 2, ez)
+	_LINE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	
+	_MOVE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex - llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez - llen * 1.41421356)
+	_MOVE3D(ex - llen * 1.41421356, ey, ez + llen * 1.41421356)
+	_LINE3D(ex + llen * 1.41421356, ey, ez + llen * 1.41421356)
+end
+
+
+math.limit = function (val,max,min)	return val>max and max or val<min and min or val	end
+
+function XPID_new()
+	local obj = {
+		i = 0,
+		d = 0,
+		e_b = 0,
+
+		PID = function (self,now,tgt,kp,ki,kd,lim)
+			local e_n = now - tgt
+			local e_d = e_n - self.e_b
+			
+			local p = e_n * kp
+			
+			local i = self.i + e_n * ki
+			
+			local d = e_d * kd
+			
+			i=math.min(lim/10,math.max(-lim/10,i))
+			
+			self.i = i
+			
+			self.e_b = e_n
+			
+			local pid = p+i+d
+			
+			pid = math.min(lim,math.max(-lim,pid))
+			
+			return pid
+		end
+	}
+	
+	return obj
+end
+
+_pw = 10000
+
+_ntx,_nty,_ntz = _X(JC),_Y(JC),_Z(JC)
+
+PIDX = XPID_new()
+PIDY = XPID_new()
+PIDZ = XPID_new()
+PIDXW = XPID_new()
+PIDYW = XPID_new()
+PIDZW = XPID_new()
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _NORMAL3(a,b,c)
+	return a / _LEN3(a,b,c), b / _LEN3(a,b,c), c / _LEN3(a,b,c)
+end
+
+_altmax=0
+_altmaxtime=0
+
+_impulsepower=200000000
+
+_rx,_rz = 1,0
+_r = 0
+
+function OnFrame()
+	local dx,dy,dz = _X(JC)-_ntx,_Y(JC)-_nty,_Z(JC)-_ntz
+	
+	out(0,"x-pos err = ",dx)
+	out(1,"y-pos err = ",dy)
+	out(2,"z-pos err = ",dz)
+	
+	local jx = PIDX:PID(dx,0,100000,20000,2000000,100000)
+	local jy = PIDY:PID(dy,0,100000,20000,2000000,100000)
+	local jz = PIDZ:PID(dz,0,100000,20000,2000000,100000)
+	
+	local xx,xy,xz = _XX(JC),_XY(JC),_XZ(JC)
+	local yx,yy,yz = _YX(JC),_YY(JC),_YZ(JC)
+	local zx,zy,zz = _ZX(JC),_ZY(JC),_ZZ(JC)
+	
+	local xj = (xx * jx + xy * jy + xz * jz)
+	local yj = (yx * jx + yy * jy + yz * jz)
+	local zj = (zx * jx + zy * jy + zz * jz)
+	
+	XJ = xj
+	YJ = yj
+	ZJ = zj
+	
+	local dx,dy,dz = _NORMAL3(0,1,0)
+	
+	local xa = (zx * dx + zy * dy + zz * dz)
+	local za = (xx * dx + xy * dy + xz * dz)
+	
+	local dx,dy,dz = _NORMAL3(_rx,0,_rz)
+	
+	local ya = (zx * dx + zy * dy + zz * dz)
+	
+	XW = PIDXW:PID(xa,0,20000,5000,300000,100000)
+	YW = PIDYW:PID(ya,0,20000,5000,300000,100000)
+	ZW = PIDZW:PID(za,0,20000,5000,300000,100000)
+	
+	out(4,_E(A1)/_OPTION(A1)*100, "%")
+	out(5,_E(A2)/_OPTION(A2)*100, "%")
+	
+	P = 0
+	
+	if _KEY(4) == 1 then
+		P = 10000000000
+	end
+	
+	_RAMIEL3D(_ntx,_nty,_ntz,0.3)
+	
+	local mx,my,mz = _NORMAL3(-zx,0,-zz)
+	
+	if _KEY(0) == 1 then
+		_ntx = _ntx + mx*0.1
+		_ntz = _ntz + mz*0.1
+	end
+	
+	if _KEY(1) == 1 then
+		_ntx = _ntx - mx*0.1
+		_ntz = _ntz - mz*0.1
+	end
+	
+	if _KEY(2) == 1 then
+		_r = _r + 0.1*0.2*math.pi
+	end
+	
+	if _KEY(3) == 1 then
+		_r = _r - 0.1*0.2*math.pi
+	end
+	
+	if _KEY(14) == 1 then
+		_nty = _nty + 0.1
+	end
+	
+	if _KEY(15) == 1 then
+		_nty = _nty - 0.1
+	end
+	
+	_rx = math.cos(_r)
+	_rz = math.sin(_r)
+end
+}

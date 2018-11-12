@@ -7,6 +7,7 @@ Val
 	YJ(default=0, min=-10000000000, max=10000000000)
 	YW(default=0, min=-10000000000, max=10000000000)
 	ZJ(default=0, min=-10000000000, max=10000000000)
+	ZW(default=0, min=-10000000000, max=10000000000)
 }
 Key
 {
@@ -144,6 +145,8 @@ end
 _altmax=0
 _altmaxtime=0
 
+_impulsepower=200000000
+
 function OnFrame()
 	local dx,dy,dz = _X(0)-_ntx,_Y(0)-_nty,_Z(0)-_ntz
 	
@@ -186,11 +189,15 @@ function OnFrame()
 	
 	local d = b * b - 4 * c
 	
+	local tans = 0
+	
 	if d >= 0 then
 		local tt0 = math.atan((-b - math.sqrt(d)) / 2)
 		local tt1 = math.atan((-b + math.sqrt(d)) / 2)
 		
 		local t = math.max(tt0,tt1)
+		
+		tans = t
 		
 		dx = vx * math.cos(t)
 		dz = vz * math.cos(t)
@@ -231,8 +238,9 @@ function OnFrame()
 	local lys=0
 	local i=0
 	
-	for i=0,300*30 do
+	for i=0,200*30 do
 		local ll = _LEN3(lpx-ax,lpy-ay,lpz-az)
+		
 		if ll<ln then
 			ln=ll
 			ls=i/30
@@ -251,7 +259,7 @@ function OnFrame()
 	end
 	
 	if ln < 8 and not _ld then
-		AP=200000000
+		AP=_impulsepower
 		_SPLIT(A0)
 		_ld = true
 		_ldt = _TICKS()

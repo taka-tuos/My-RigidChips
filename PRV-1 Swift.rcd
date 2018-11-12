@@ -69,17 +69,25 @@ Body
 										E:Cowl() {
 											E:Cowl(angle=90, option=4) { }
 											N:Cowl(angle=90) {
-												N:Cowl(angle=135) {
+												N:Cowl(angle=135, option=4) {
 													S:Cowl(angle=45) {
 														S:Cowl() {
 															E:Cowl(angle=90) {
 																E:Cowl(angle=90) { }
+																S:Cowl() {
+																	S:Cowl() { }
+																}
 															}
 															W:Cowl() { }
+															S:Cowl(angle=15) {
+																S:Cowl() { }
+															}
 														}
 														W:Cowl() { }
 													}
-													W:Cowl() { }
+													W:Cowl() {
+														E:Cowl(angle=10, color=#FFFF00) { }
+													}
 												}
 											}
 											W:Cowl(angle=90, option=3) { }
@@ -96,8 +104,10 @@ Body
 										W:Cowl() {
 											W:Cowl(angle=90, option=3) { }
 											N:Cowl(angle=90) {
-												N:Cowl(angle=135) {
-													E:Cowl() { }
+												N:Cowl(angle=135, option=3) {
+													E:Cowl() {
+														W:Cowl(angle=10, color=#FFFF00) { }
+													}
 												}
 												N:Cowl(angle=-90) {
 													N:Cowl() {
@@ -188,9 +198,9 @@ Body
 											E:Cowl(angle=90) {
 												E:Cowl(angle=90) {
 													S:Cowl() {
-														S:Cowl() {
-															W:Cowl(angle=90) {
-																W:Cowl(angle=90) { }
+														W:Cowl(angle=90, option=1, effect=#F0FB) {
+															S:Cowl(angle=30, option=1) {
+																E:Cowl(angle=90) { }
 															}
 														}
 													}

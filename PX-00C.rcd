@@ -19,7 +19,12 @@ Body
 {
 	Core() {
 		S:Frame(angle=90, spring=1, damper=1) {
-			S:Frame(angle=-90, spring=1, damper=1) {
+			S:Chip(angle=-90, spring=1, damper=1) {
+				S:Cowl(angle=-90, color=#202020) {
+					S:Cowl(angle=90) {
+						S:Cowl(angle=30, option=5, color=BL) { }
+					}
+				}
 				N:Trim(spring=1, damper=1) {
 					E:Cowl(color=#202020) {
 						S:Cowl(color=#202020) { }
@@ -43,10 +48,7 @@ Body
 						}
 						S:Cowl(color=#202020) { }
 					}
-					W:Chip(angle=-90) { }
-					E:Chip(angle=-90) { }
-					N:Chip(angle=-165, option=1) { }
-					N:TrimF(spring=1, damper=1) {
+					N:Trim(spring=1, damper=1) {
 						E:Cowl(angle=105, option=1, effect=#F0FB) {
 							E:Cowl(angle=150, option=1, effect=#F0FB) {
 								E:Cowl(angle=105, color=#202020) {
@@ -55,9 +57,11 @@ Body
 											E:Cowl(angle=-90, option=1, effect=#F0FB) {
 												E:Cowl(angle=-30) { }
 												N:Cowl(angle=-10) {
-													N:Cowl(angle=-35) { }
 													E:Cowl(angle=-30) { }
 													S:Cowl(angle=-20) { }
+													N:Cowl(angle=-35, option=3) {
+														E:Cowl(angle=-30, option=3) { }
+													}
 												}
 											}
 										}
@@ -73,11 +77,10 @@ Body
 											}
 											N:Cowl(angle=-170, color=#202020) {
 												E:Cowl(angle=-11, option=4, color=#202020) { }
+												E:Cowl(angle=20, option=4) { }
 											}
 										}
-										E:Cowl(option=1, effect=#F0FB) {
-											N:Cowl(option=5, color=#202020) { }
-										}
+										E:Cowl(option=1, effect=#F0FB) { }
 									}
 								}
 							}
@@ -94,7 +97,9 @@ Body
 												N:Cowl(angle=-10) {
 													W:Cowl(angle=-30) { }
 													S:Cowl(angle=-20) { }
-													N:Cowl(angle=-35) { }
+													N:Cowl(angle=-35, option=4) {
+														W:Cowl(angle=-30, option=4) { }
+													}
 												}
 											}
 										}
@@ -110,16 +115,15 @@ Body
 											}
 											N:Cowl(angle=-170, color=#202020) {
 												W:Cowl(angle=-10, option=3, color=#202020) { }
+												W:Cowl(angle=20, option=3) { }
 											}
 										}
-										W:Cowl(option=1, effect=#F0FB) {
-											N:Cowl(option=5, color=#202020) { }
-										}
+										W:Cowl(option=1, effect=#F0FB) { }
 									}
 								}
 							}
 						}
-						N:TrimF(spring=1, damper=1) {
+						N:TrimF(option=1, spring=1, damper=1) {
 							E:Frame(angle=10, option=1, effect=#F0FB, spring=SPF, damper=DMF) {
 								E:RudderF(angle=-S, option=1, effect=#F0FB, spring=1, damper=1) {
 									W:Wheel(angle=-80, power=P, brake=B, effect=6, spring=1, damper=1) { }
@@ -133,7 +137,7 @@ Body
 							N:Cowl(color=#202020) {
 								S:Cowl() {
 									S:Cowl(angle=-90) {
-										S:Cowl(angle=-110) {
+										S:Cowl(angle=-110, option=1, effect=#F0FB) {
 											N:Cowl(angle=-20) {
 												N:Cowl(angle=30, color=#303010) {
 													W:Cowl(angle=-44, color=#303010) { }
@@ -170,25 +174,30 @@ Body
 											}
 											E:Cowl(angle=-20) {
 												N:Cowl(angle=-20) { }
+												W:Cowl(angle=-80, option=3) { }
 											}
 											W:Cowl(angle=-20) {
 												N:Cowl(angle=-20) { }
+												E:Cowl(angle=-80, option=4) { }
 											}
 										}
+										S:Cowl(angle=-120) { }
 									}
 								}
-								E:Cowl(color=#202020) { }
-								W:Cowl(color=#202020) { }
+							}
+						}
+						N:Chip(angle=-170) { }
+						S:TrimF(angle=-90, option=1) {
+							S:Rudder(angle=90) {
+								E:Rudder(angle=90) { }
 							}
 						}
 					}
-				}
-				S:Cowl(angle=-90, color=#202020) {
-					S:Cowl(angle=90) {
-						S:Cowl(angle=30, option=5, color=BL) { }
+					N:TrimF(angle=-90, option=1) {
+						N:Rudder(angle=90) { }
 					}
 				}
-				S:TrimF(spring=1, damper=1) {
+				S:TrimF(option=1, spring=1, damper=1) {
 					W:Frame(angle=10, option=1, effect=#F0FB, spring=SP, damper=DM) {
 						W:Wheel(angle=-100, power=P, brake=B2, effect=6, spring=1, damper=1) { }
 					}
@@ -196,32 +205,35 @@ Body
 						E:Wheel(angle=-100, power=-P, brake=B2, effect=6, spring=1, damper=1) { }
 					}
 					S:Cowl(option=1, effect=#F0FB) {
-						E:Cowl(option=1, effect=#F0FB) {
-							E:Cowl(angle=-90, color=#202020) { }
-						}
-						W:Cowl(option=1, effect=#F0FB) {
-							W:Cowl(angle=-90, color=#202020) { }
-						}
+						E:Cowl(option=1, effect=#F0FB) { }
+						W:Cowl(option=1, effect=#F0FB) { }
 						W:Cowl(angle=105, option=1, effect=#F0FB) {
 							W:Cowl(angle=150, option=1, effect=#F0FB) {
 								W:Cowl(angle=105, option=1, effect=#F0FB) {
 									W:Cowl(option=1, effect=#F0FB) {
-										W:Cowl(angle=-90) {
+										W:Cowl(angle=-90, option=1, effect=#F0FB) {
 											W:Cowl(angle=-90, option=1, effect=#F0FB) {
 												N:Cowl() {
 													S:Cowl(angle=-5) { }
+													N:Cowl(angle=-10, option=4) { }
 												}
 												W:Cowl() {
 													N:Cowl(angle=15) {
 														E:Cowl(angle=-45, option=4) { }
 													}
-													E:Cowl(angle=-90, option=4, color=#202020) { }
+													E:Cowl(angle=-90, color=#202020) {
+														E:Cowl(angle=-90, option=1, effect=#F0FB) {
+															N:Cowl(angle=-155, color=#202020) { }
+														}
+													}
 												}
 											}
 											N:Cowl(option=1, effect=#F0FB) {
 												N:Cowl(angle=-20, option=4) {
-													W:Cowl(angle=-90) {
-														N:Cowl(angle=-5) { }
+													W:Cowl(angle=-90, option=1, effect=#F0FB) {
+														S:Cowl(angle=-175) {
+															S:Cowl() { }
+														}
 													}
 													E:Cowl(angle=-90, color=#202020) {
 														N:Cowl(color=#202020) { }
@@ -230,17 +242,19 @@ Body
 											}
 											W:Cowl(angle=105, option=1, effect=#F0FB) {
 												W:Cowl(angle=150, option=1, effect=#F0FB) {
-													W:Cowl(angle=100, color=#202020) {
+													W:Cowl(angle=100, option=1, effect=#F0FB) {
 														W:Cowl(angle=-85, option=1, effect=#F0FB) {
 															S:Cowl(angle=-170, color=#202020) {
 																W:Cowl(angle=5, color=#202020) { }
+																W:Cowl(angle=65, option=4) { }
 															}
 														}
+														W:Cowl(angle=180, option=4, color=#202020) { }
 													}
 												}
 											}
+											W:Cowl(angle=180, option=3) { }
 										}
-										N:Cowl(angle=-155, color=#202020) { }
 									}
 								}
 							}
@@ -249,50 +263,56 @@ Body
 							E:Cowl(angle=150, option=1, effect=#F0FB) {
 								E:Cowl(angle=105, option=1, effect=#F0FB) {
 									E:Cowl(option=1, effect=#F0FB) {
-										E:Cowl(angle=-90) {
+										E:Cowl(angle=-90, option=1, effect=#F0FB) {
 											N:Cowl(option=1, effect=#F0FB) {
 												N:Cowl(angle=-20, option=3) {
 													W:Cowl(angle=-90, color=#202020) {
 														N:Cowl(color=#202020) { }
 													}
-													E:Cowl(angle=-90) {
-														N:Cowl(option=5) { }
+													E:Cowl(angle=-90, option=1, effect=#F0FB) {
+														S:Cowl(angle=-175) {
+															S:Cowl() { }
+														}
 													}
 												}
 											}
 											E:Cowl(angle=105, option=1, effect=#F0FB) {
 												E:Cowl(angle=150, option=1, effect=#F0FB) {
-													E:Cowl(angle=100, color=#202020) {
+													E:Cowl(angle=100, option=11, effect=#F0FB) {
 														E:Cowl(angle=-85, option=1, effect=#F0FB) {
 															S:Cowl(angle=-170, color=#202020) {
 																E:Cowl(angle=5, color=#202020) { }
+																E:Cowl(angle=65, option=3) { }
 															}
 														}
+														E:Cowl(angle=180, option=3, color=#202020) { }
 													}
 												}
 											}
 											E:Cowl(angle=-90, option=1, effect=#F0FB) {
 												N:Cowl() {
 													S:Cowl(angle=-5) { }
+													N:Cowl(angle=-10, option=3) { }
 												}
 												E:Cowl() {
 													N:Cowl(angle=15) {
 														W:Cowl(angle=-45, option=3) { }
 													}
-													W:Cowl(angle=-90, option=3, color=#202020) { }
+													W:Cowl(angle=-90, color=#202020) {
+														W:Cowl(angle=-90, option=1, effect=#F0FB) {
+															N:Cowl(angle=-155, color=#202020) { }
+														}
+													}
 												}
 											}
+											E:Cowl(angle=180, option=4) { }
 										}
-										N:Cowl(angle=-155, color=#202020) { }
 									}
 								}
 							}
 						}
 					}
-					S:Cowl(angle=-25, color=#202020) {
-						W:Cowl(color=#202020) { }
-						E:Cowl(color=#202020) { }
-					}
+					S:Cowl(angle=-25, color=#202020) { }
 					W:Cowl(angle=-90, color=#202020) {
 						S:Cowl(color=#202020) {
 							N:Cowl(angle=45, color=#202020) {
@@ -308,6 +328,7 @@ Body
 						}
 					}
 				}
+				N:Chip(angle=-170) { }
 			}
 		}
 	}
@@ -391,7 +412,7 @@ function XMET.CircleM(obj,x,y,s,t,a,b,c)
 end
 
 function XMET.Rotation(px,py,pr)
-	local rx = px * math.cos(pr) - py * math.sin(pr)
+	local rx = px * math.cos(pr) + py * math.sin(pr)
 	local ry = px * math.sin(pr) - py * math.cos(pr)
 	return rx,ry
 end
@@ -435,7 +456,113 @@ function _NORMANALOG(n)
 	return v/1000
 end
 
+function DrawRect(x,y,w,h)
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x,y+h)
+	XGUI.Line2D(x+w,y+h)
+	XGUI.Line2D(x+w,y)
+	XGUI.Line2D(x,y)
+end
+
+function DrawFillRect(x,y,w,h)
+	if w==0 or h == 0 then return end
+	local i
+	for i=0,h-1 do
+		XGUI.Move2D(x,y+i)
+		XGUI.Line2D(x+w,y+i)
+	end
+end
+
+function Rotate(px,py,pr)
+	local rx = px * math.cos(pr) + py * math.sin(pr)
+	local ry = px * math.sin(pr) - py * math.cos(pr)
+	return rx,ry
+end
+
+function DrawRotateRect(x,y,w,h,r)
+	local x1,y1 = -w/2, -h/2
+	local x2,y2 =  w/2, -h/2
+	local x3,y3 =  w/2,  h/2
+	local x4,y4 = -w/2,  h/2
+	
+	x1,y1 = Rotate(x1,y1,math.rad(r))
+	x2,y2 = Rotate(x2,y2,math.rad(r))
+	x3,y3 = Rotate(x3,y3,math.rad(r))
+	x4,y4 = Rotate(x4,y4,math.rad(r))
+	
+	XGUI.Move2D(x1+x,y1+y)
+	XGUI.Line2D(x2+x,y2+y)
+	XGUI.Line2D(x3+x,y3+y)
+	XGUI.Line2D(x4+x,y4+y)
+	XGUI.Line2D(x1+x,y1+y)
+end
+
+function DispInput()
+	local key4 = -_NORMANALOG(5)
+	local key0 = _NORMANALOG(5)
+	local key1 = 0
+	
+	if key0 < 0 then
+		if _KEY(14) == 1 then
+			key1 = -key0
+		end
+		key0 = 0
+	end
+	
+	if key4 < 0 or key1 > 0 then key4 = 0 end
+	
+	local keys = _NORMANALOG(0)
+	
+	DrawRect(256+32,16,16,256)
+	DrawRect(256+64,16,16,256)
+	
+	local k4d = math.floor(key4*253+0.5)
+	local k0d = math.floor(key0*253+0.5)
+	local k1d = math.floor(key1*253+0.5)
+	local khd = _KEY(15)*253
+	
+	XGUI.SetDrawColorRGB(0,0,255)
+	DrawFillRect(256+32+2,18+(253-k0d),16-3,k0d)
+	
+	XGUI.SetDrawColorRGB(0,255,0)
+	DrawFillRect(256+32+2,18+(253-k1d),16-3,k1d)
+	
+	XGUI.SetDrawColorRGB(255,0,0)
+	DrawFillRect(256+64+2,18+(253-k4d),16-3,k4d)
+	
+	XGUI.SetDrawColorRGB(255,255,0)
+	DrawFillRect(256+64+2,18+(253-khd),16-3,khd)
+	
+	XGUI.SetDrawColorRGB(255,255,255)
+	
+	DrawRotateRect(256+160,64,24,64,keys*-30)
+	DrawRotateRect(256+160+128,64,24,64,keys*-30)
+	
+	XGUI.SetStringPosition(256+160,128)
+	XGUI.DrawVectorString("Left Blue    : Accel")
+	XGUI.SetStringPosition(256+160,128+16)
+	XGUI.DrawVectorString("Left Green   : Back")
+	XGUI.SetStringPosition(256+160,128+32)
+	XGUI.DrawVectorString("Right Red    : Brake")
+	XGUI.SetStringPosition(256+160,128+48)
+	XGUI.DrawVectorString("Right Yellow : Handbrake")
+	
+	XGUI.SetStringPosition(256+160,128+80)
+	XGUI.DrawVectorString(string.format("% 3d km/h",math.abs(_VEL(0))*3.6))
+	
+	if _tecedge then XGUI.SetDrawColorRGB(255,0,0) end
+	
+	local sus = "Hard"
+	if _tecset then sus = "Soft" end
+	
+	XGUI.SetStringPosition(256+160,128+96)
+	XGUI.DrawVectorString(string.format("Suspension Set : %s",sus))
+	
+	XGUI.SetDrawColorRGB(255,255,255)
+end
+
 _tecset=true
+_tecedge=false
 
 function OnFrame()
 	XGUI.SetStringSize(32)
@@ -443,7 +570,12 @@ function OnFrame()
 	XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()-64)
 	XGUI.DrawVectorStringCenter(string.format("% 3d km/h",math.abs(_VEL(0))*3.6))
 	
-	if _KEYDOWN(6) == 1 then _tecset = not _tecset end
+	_tecedge=false
+	
+	if _KEYDOWN(6) == 1 then
+		_tecset = not _tecset
+		_tecedge = true
+	end
 	
 	local key4 = -_NORMANALOG(5)
 	local key0 = _NORMANALOG(5)
@@ -491,5 +623,7 @@ function OnFrame()
 		DM=1
 		DMF=1
 	end
+	
+	DispInput()
 end
 }
