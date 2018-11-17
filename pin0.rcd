@@ -513,5 +513,8 @@ function OnFrame()
 	if _KEY(3) == 1 then
 		HR = HR - (0.5 + 0.5 * _md)
 	end
+	
+	HR = (_ANALOG(0)/1000)*40
+	HV = (_ANALOG(1)/1000)*40
 end
 }

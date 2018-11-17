@@ -15,9 +15,7 @@ Key
 Body
 {
 	Core() {
-		N:Frame(angle=120) {
-			E:Cowl(angle=90, option=3, color=#00FFFF) { }
-			W:Cowl(angle=90, option=4, color=#00FFFF) { }
+		N:Frame(angle=120, option=1) {
 			N:Frame() {
 				N:Chip(angle=-120, name=JC) {
 					N:TrimF(angle=-90, option=1) {
@@ -29,7 +27,7 @@ Body
 							W:Frame(angle=-150, option=1) {
 								W:Arm(power=P, option=30000, name=A2) {
 									E:Cowl(option=4) {
-										N:Cowl(angle=10, color=#0000FF) { }
+										N:Cowl(angle=10, color=#FF8000) { }
 									}
 								}
 							}
@@ -42,76 +40,99 @@ Body
 								E:Arm(power=P, option=30000, name=A1) {
 									W:Cowl(option=4) { }
 								}
-								S:Cowl(angle=-10, color=#0000FF) { }
+								S:Cowl(angle=-10, color=#FF8000) { }
 							}
 						}
 					}
 					S:TrimF(angle=-90, option=1) {
 						N:Jet(power=XJ) { }
+						E:Cowl(angle=90, option=1, effect=#F0FB) {
+							N:Cowl(angle=120, option=1, effect=#F0FB) {
+								W:Cowl(angle=90, option=3, color=#FF8000) { }
+							}
+						}
 					}
 					S:Frame(option=1) {
 						N:Jet(power=-YJ) { }
 					}
 					N:Frame(option=1) { }
 					N:RLW(angle=180, power=YW, brake=20000) { }
-					W:Cowl(angle=-110, option=5, color=#808080) {
-						E:Cowl(color=#808080) {
-							S:Cowl(angle=-80, option=3, color=#808080) { }
-						}
-					}
-					N:Cowl(angle=-110, option=5) {
-						S:Cowl(color=#808080) {
-							E:Cowl(angle=-80, option=4, color=#808080) { }
-							W:Cowl(angle=-80, option=3, color=#808080) { }
-							N:Cowl(angle=15) {
-								E:Cowl(angle=-100, option=3) { }
-								W:Cowl(angle=-100, option=4) { }
-								W:Cowl(angle=175, option=4, color=#808080) { }
-								E:Cowl(angle=175, option=3, color=#808080) { }
-							}
-						}
-					}
-					N:Cowl(angle=-110) {
-						S:Cowl() { }
-					}
-					E:Cowl(angle=-110, option=5, color=#808080) {
-						W:Cowl(color=#808080) {
-							S:Cowl(angle=-80, option=4, color=#808080) { }
-						}
-					}
-					S:Cowl(angle=-110, option=5, color=#808080) {
-						N:Cowl(color=#808080) { }
-					}
 				}
 			}
 			N:Cowl(angle=-20) {
 				W:Cowl(angle=-70, option=4, color=#FCE2C4) { }
 				E:Cowl(angle=-70, option=3, color=#FCE2C4) { }
+				S:Cowl(angle=170) {
+					S:Cowl(angle=-5, color=#503040) {
+						E:Cowl(angle=80, option=4, color=#503040) { }
+						W:Cowl(angle=80, option=3, color=#503040) { }
+					}
+				}
 			}
 			N:Frame(angle=-30) { }
-			S:Cowl(angle=180, color=#FCE2C4) { }
-		}
-		S:Cowl(angle=-160) {
-			S:Cowl(angle=-100, option=2, color=#FCE2C4) {
-				E:Cowl(angle=-85, option=4, color=#80FFFF) { }
-				W:Cowl(angle=-85, option=3, color=#80FFFF) { }
-			}
-			N:Cowl(angle=160, color=#FF8040) {
-				W:Cowl(angle=80, option=3, color=#FF8040) {
-					N:Cowl(angle=90, option=3, color=#FF8040) {
-						E:Cowl(angle=80, option=4, color=#FF8040) { }
+			S:Cowl(angle=180, option=1, effect=#F0FB) {
+				S:Cowl(angle=30) {
+					N:Cowl(angle=170, color=#FCE2C4) {
+						N:Cowl(angle=-90, option=1, effect=#F0FB) {
+							N:Cowl(angle=170, option=1, effect=#F0FB) {
+								N:Cowl(angle=-10, option=1, effect=#F0FB) {
+									W:Cowl(angle=-80, option=4, color=#503040) {
+										E:Cowl(option=3, color=#503040) { }
+										S:Cowl(angle=-80, option=4, color=#503040) { }
+									}
+									E:Cowl(angle=-80, option=3, color=#503040) {
+										W:Cowl(option=4, color=#503040) { }
+										S:Cowl(angle=-80, option=3, color=#503040) { }
+									}
+								}
+							}
+						}
+						N:Cowl(angle=-30, option=5) {
+							S:Cowl(angle=-35, option=5) { }
+						}
+						S:Cowl(angle=-10, option=2, color=#FCE2C4) {
+							N:Cowl(angle=130, option=1, effect=#F0FB) {
+								N:Cowl(angle=100, color=#FF8000) {
+									S:Cowl(angle=40, option=3, color=#FF8000) {
+										W:Cowl(angle=80, option=3, color=#FF8000) { }
+									}
+									W:Cowl(angle=80, option=4, color=#FF8000) {
+										N:Cowl(angle=-90, option=1, effect=#F0FB) {
+											E:Cowl(angle=-160, option=1, effect=#F0FB) {
+												S:Cowl(option=3, color=#FF8000) {
+													N:Cowl(angle=90, option=3, color=#FF8000) {
+														S:Cowl(angle=150, color=#FF8000) {
+															W:Cowl(option=3, color=#FF8000) { }
+														}
+													}
+													W:Cowl(angle=100, option=4, color=#FF8000) { }
+												}
+											}
+										}
+									}
+									S:Cowl(angle=40, option=4, color=#FF8000) {
+										E:Cowl(angle=80, option=4, color=#FF8000) { }
+									}
+									E:Cowl(angle=80, option=3, color=#FF8000) {
+										N:Cowl(angle=-90, option=1, effect=#F0FB) {
+											W:Cowl(angle=-160, option=1, effect=#F0FB) {
+												S:Cowl(option=4, color=#FF8000) {
+													N:Cowl(angle=90, option=4, color=#FF8000) {
+														S:Cowl(angle=150, color=#FF8000) {
+															E:Cowl(option=4, color=#FF8000) { }
+														}
+													}
+													E:Cowl(angle=100, option=3, color=#FF8000) { }
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
-				}
-				E:Cowl(angle=80, option=4, color=#FF8040) {
-					N:Cowl(angle=90, option=4, color=#FF8040) {
-						W:Cowl(angle=80, option=3, color=#FF8040) { }
-					}
-				}
-				S:Cowl(angle=80, color=#FCE2C4) { }
-				S:Cowl(angle=60, option=3, color=#FF8040) {
-					W:Cowl(angle=85, option=3, color=#FF8040) { }
-					E:Cowl(angle=85, option=4, color=#FF8040) { }
-					N:Cowl(angle=180, option=3, color=#FF8040) { }
+					S:Cowl(option=4, color=#FCE2C4) { }
+					S:Cowl(option=3, color=#FCE2C4) { }
 				}
 			}
 		}
@@ -247,12 +268,14 @@ function OnFrame()
 	
 	local ya = (zx * dx + zy * dy + zz * dz)
 	
-	XW = PIDXW:PID(xa,0,20000,5000,300000,100000)
-	YW = PIDYW:PID(ya,0,20000,5000,300000,100000)
-	ZW = PIDZW:PID(za,0,20000,5000,300000,100000)
+	XW = PIDXW:PID(xa,0,50000,5000,300000,100000)
+	YW = PIDYW:PID(ya,0,50000,5000,300000,100000)
+	ZW = PIDZW:PID(za,0,50000,5000,300000,100000)
 	
 	out(4,_E(A1)/_OPTION(A1)*100, "%")
 	out(5,_E(A2)/_OPTION(A2)*100, "%")
+	
+	out(7,_CHAT())
 	
 	P = 0
 	
@@ -260,18 +283,18 @@ function OnFrame()
 		P = 10000000000
 	end
 	
-	_RAMIEL3D(_ntx,_nty,_ntz,0.3)
+	--_RAMIEL3D(_ntx,_nty,_ntz,0.3)
 	
 	local mx,my,mz = _NORMAL3(-zx,0,-zz)
 	
 	if _KEY(0) == 1 then
-		_ntx = _ntx + mx*0.1
-		_ntz = _ntz + mz*0.1
+		_ntx = _ntx + mx*0.2
+		_ntz = _ntz + mz*0.2
 	end
 	
 	if _KEY(1) == 1 then
-		_ntx = _ntx - mx*0.1
-		_ntz = _ntz - mz*0.1
+		_ntx = _ntx - mx*0.2
+		_ntz = _ntz - mz*0.2
 	end
 	
 	if _KEY(2) == 1 then

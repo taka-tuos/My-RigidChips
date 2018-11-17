@@ -1,6 +1,7 @@
 // [RCD] 
 Val
 {
+	AB(default=0, min=-90, max=90)
 	G0(default=0, max=10000000000)
 	G1(default=0, max=10000000000)
 	G2(default=0, max=10000000000)
@@ -11,6 +12,8 @@ Val
 	G7(default=0, max=10000000000)
 	GF(default=0, min=-180, max=180)
 	GR(default=0, min=-180, max=180)
+	JX(default=0, min=-90, max=90)
+	JY(default=0, min=-90, max=90)
 	P(default=0, min=-10000000000, max=10000000000)
 	PH(default=0, min=-90, max=90)
 	R(default=0, min=-90, max=90)
@@ -236,58 +239,63 @@ Body
 						}
 					}
 					E:Trim(angle=90, spring=1, damper=1) {
-						W:Trim(angle=0, spring=1, damper=1) {
-							W:Trim(angle=0, spring=1, damper=1, name=CRE) {
-								E:Frame(angle=V0, spring=1, damper=1) {
-									E:Frame(angle=-W0, spring=1, damper=1) {
-										E:Arm(option=50000, power=G0, angle=V0, spring=1, damper=1, name=A0) { }
+						W:Trim(angle=0, spring=1, damper=1) { }
+						W:Chip(angle=AB) { }
+						W:Chip(angle=-AB) { }
+						W:Frame(angle=JX, spring=1, damper=1) {
+							E:RudderF(angle=JY) {
+								W:Frame(angle=-150) {
+									W:RLW(angle=-120, power=-P, spring=1, damper=1, name=PRLW1) {
+										S:Trim(angle=-PH, color=#202020) { }
+										N:Trim(angle=-PH, color=#202020) { }
 									}
-								}
-								E:Frame(angle=V1, spring=1, damper=1) {
-									E:Frame(angle=-W1, spring=1, damper=1) {
-										E:Arm(option=50000, power=G1, angle=V1, spring=1, damper=1, name=A1) { }
-									}
-								}
-								E:Frame(angle=V2, spring=1, damper=1) {
-									E:Frame(angle=-W2, spring=1, damper=1) {
-										E:Arm(option=50000, power=G2, angle=V2, spring=1, damper=1, name=A2) { }
-									}
-								}
-								E:Frame(angle=V3, spring=1, damper=1) {
-									E:Frame(angle=-W3, spring=1, damper=1) {
-										E:Arm(option=50000, power=G3, angle=V3, spring=1, damper=1, name=A3) { }
-									}
-								}
-								E:Frame(angle=V4, spring=1, damper=1) {
-									E:Frame(angle=-W4, spring=1, damper=1) {
-										E:Arm(option=50000, power=G4, angle=V4, spring=1, damper=1, name=A4) { }
-									}
-								}
-								E:Frame(angle=V5, spring=1, damper=1) {
-									E:Frame(angle=-W5, spring=1, damper=1) {
-										E:Arm(option=50000, power=G5, angle=V5, spring=1, damper=1, name=A5) { }
-									}
-								}
-								E:Frame(angle=V6, spring=1, damper=1) {
-									E:Frame(angle=-W6, spring=1, damper=1) {
-										E:Arm(option=50000, power=G6, angle=V6, spring=1, damper=1, name=A6) { }
-									}
-								}
-								E:Frame(angle=V7, spring=1, damper=1) {
-									E:Frame(angle=-W7, spring=1, damper=1) {
-										E:Arm(option=50000, power=G7, angle=V7, spring=1, damper=1, name=A7) { }
+									W:RLW(angle=-120, power=P, spring=1, damper=1, name=PRLW2) {
+										S:Trim(angle=PH, color=#202020) { }
+										N:Trim(angle=PH, color=#202020) { }
 									}
 								}
 							}
 						}
-						W:Frame(angle=-150) {
-							W:RLW(angle=-120, power=-P, spring=1, damper=1, name=PRLW1) {
-								S:Trim(angle=-PH, color=#202020) { }
-								N:Trim(angle=-PH, color=#202020) { }
+						W:Trim(angle=0, spring=1, damper=1, name=CRE) {
+							E:Frame(angle=V1, spring=1, damper=1) {
+								E:Frame(angle=-W1, spring=1, damper=1) {
+									E:Arm(option=50000, power=G1, angle=V1, spring=1, damper=1, name=A1) { }
+								}
 							}
-							W:RLW(angle=-120, power=P, spring=1, damper=1, name=PRLW2) {
-								S:Trim(angle=PH, color=#202020) { }
-								N:Trim(angle=PH, color=#202020) { }
+							E:Frame(angle=V2, spring=1, damper=1) {
+								E:Frame(angle=-W2, spring=1, damper=1) {
+									E:Arm(option=50000, power=G2, angle=V2, spring=1, damper=1, name=A2) { }
+								}
+							}
+							E:Frame(angle=V3, spring=1, damper=1) {
+								E:Frame(angle=-W3, spring=1, damper=1) {
+									E:Arm(option=50000, power=G3, angle=V3, spring=1, damper=1, name=A3) { }
+								}
+							}
+							E:Frame(angle=V4, spring=1, damper=1) {
+								E:Frame(angle=-W4, spring=1, damper=1) {
+									E:Arm(option=50000, power=G4, angle=V4, spring=1, damper=1, name=A4) { }
+								}
+							}
+							E:Frame(angle=V5, spring=1, damper=1) {
+								E:Frame(angle=-W5, spring=1, damper=1) {
+									E:Arm(option=50000, power=G5, angle=V5, spring=1, damper=1, name=A5) { }
+								}
+							}
+							E:Frame(angle=V6, spring=1, damper=1) {
+								E:Frame(angle=-W6, spring=1, damper=1) {
+									E:Arm(option=50000, power=G6, angle=V6, spring=1, damper=1, name=A6) { }
+								}
+							}
+							E:Frame(angle=V7, spring=1, damper=1) {
+								E:Frame(angle=-W7, spring=1, damper=1) {
+									E:Arm(option=50000, power=G7, angle=V7, spring=1, damper=1, name=A7) { }
+								}
+							}
+							E:Frame(angle=V0, spring=1, damper=1) {
+								E:Frame(angle=-W0, spring=1, damper=1) {
+									E:Arm(option=50000, power=G0, angle=V0, spring=1, damper=1, name=A0) { }
+								}
 							}
 						}
 					}
@@ -397,19 +405,21 @@ _prvtbl = InitPRVTable()
 _prvtbl.p.limit = 800000
 _prvtbl.p.step  = 400000
 
-_prvtbl.r.tgt = 180
+_prvtbl.r.tgt = 360
 _prvtbl.r.kp  = 16
 _prvtbl.r.ki  = 32
 _prvtbl.r.kd  = 16
 _prvtbl.r.il  = 30
 
-_prvtbl.v.tgt = 90
+_prvtbl.v.tgt = 180
 _prvtbl.v.kp  = 24
 _prvtbl.v.ki  = 24
 _prvtbl.v.kd  = 16
 _prvtbl.v.il  = 30
 
 RD_PID = XPID_new()
+JX_PID = XPID_new()
+JY_PID = XPID_new()
 
 _gf=70
 
@@ -426,15 +436,19 @@ function OnFrame()
 
 	ShowSplash("XU-3 Archer")
 	
-	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
 	
 	P=p
 	R=-r
 	V=v
+	AB=b
 	
+	local dv = math.rad(-_NORMANALOG(1)*180/30)
 	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
 	
 	RD = RD_PID:PID(dy,WY,24,24,16,40)
+	JX = JX_PID:PID(dv,WX,24,24,16,90)
+	JY = JY_PID:PID(dy,WY,24,24,16,90)
 	
 	if _KEYDOWN(6) == 1 then
 		if _gf == 180 then _gf = 70
