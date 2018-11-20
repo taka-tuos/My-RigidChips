@@ -1,0 +1,96 @@
+// [RCD] 
+Val
+{
+	FLAG(default=-90, min=-90, max=0, step=90)
+}
+Key
+{
+	14:FLAG(step=90)
+}
+Body
+{
+	Core() {
+		N:Chip(angle=FLAG) {
+			N:Chip(angle=FLAG) {
+				N:Chip(angle=FLAG) {
+					E:Chip(angle=FLAG) {
+						E:Chip(angle=FLAG) {
+							E:Chip(angle=FLAG) { }
+						}
+					}
+					W:Chip(angle=FLAG) {
+						W:Chip(angle=FLAG) {
+							W:Chip(angle=FLAG) { }
+						}
+					}
+				}
+				E:Chip(angle=FLAG) {
+					E:Chip(angle=FLAG) {
+						E:Chip(angle=FLAG) { }
+					}
+				}
+				W:Chip(angle=FLAG) {
+					W:Chip(angle=FLAG) {
+						W:Chip(angle=FLAG) { }
+					}
+				}
+			}
+			E:Chip(angle=FLAG) {
+				E:Chip(angle=FLAG) {
+					E:Chip(angle=FLAG) { }
+				}
+			}
+			W:Chip(angle=FLAG) {
+				W:Chip(angle=FLAG) {
+					W:Chip(angle=FLAG) { }
+				}
+			}
+		}
+		S:Chip(angle=FLAG) {
+			S:Chip(angle=FLAG) {
+				S:Chip(angle=FLAG) {
+					W:Chip(angle=FLAG) {
+						W:Chip(angle=FLAG) {
+							W:Chip(angle=FLAG) { }
+						}
+					}
+					E:Chip(angle=FLAG) {
+						E:Chip(angle=FLAG) {
+							E:Chip(angle=FLAG) { }
+						}
+					}
+				}
+				W:Chip(angle=FLAG) {
+					W:Chip(angle=FLAG) {
+						W:Chip(angle=FLAG) { }
+					}
+				}
+				E:Chip(angle=FLAG) {
+					E:Chip(angle=FLAG) {
+						E:Chip(angle=FLAG) { }
+					}
+				}
+			}
+			W:Chip(angle=FLAG) {
+				W:Chip(angle=FLAG) {
+					W:Chip(angle=FLAG) { }
+				}
+			}
+			E:Chip(angle=FLAG) {
+				E:Chip(angle=FLAG) {
+					E:Chip(angle=FLAG) { }
+				}
+			}
+		}
+		W:Chip(angle=FLAG) {
+			W:Chip(angle=FLAG) {
+				W:Chip(angle=FLAG) { }
+			}
+		}
+		E:Chip(angle=FLAG) {
+			E:Chip(angle=FLAG) {
+				E:Chip(angle=FLAG) { }
+			}
+		}
+	}
+}

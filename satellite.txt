@@ -1,0 +1,458 @@
+// [RCD] 
+Val
+{
+	BIT_A1_1(default=0, disp=0)
+	BIT_J1_1(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J2_1(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J3_1(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J4_1(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J5_1(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J6_1(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_A1_2(default=0, disp=0)
+	BIT_J1_2(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J2_2(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J3_2(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J4_2(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J5_2(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J6_2(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_A1_3(default=0, disp=0)
+	BIT_J1_3(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J2_3(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J3_3(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J4_3(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J5_3(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J6_3(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_A1_4(default=0, disp=0)
+	BIT_J1_4(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J2_4(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J3_4(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J4_4(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J5_4(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J6_4(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_A1_5(default=0, disp=0)
+	BIT_J1_5(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J2_5(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J3_5(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J4_5(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J5_5(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J6_5(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_A1_6(default=0, disp=0)
+	BIT_J1_6(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J2_6(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J3_6(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J4_6(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J5_6(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J6_6(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_A1_7(default=0, disp=0)
+	BIT_J1_7(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J2_7(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J3_7(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J4_7(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J5_7(default=100, min=-1000000, max=1000000, disp=0)
+	BIT_J6_7(default=100, min=-1000000, max=1000000, disp=0)
+	ENGINE(default=0, min=-2500, max=2500)
+	HANDLE(default=0, min=-20, max=20, step=5)
+}
+Key
+{
+	2:Handle(step=-0.5)
+	3:Handle(step=0.5)
+}
+Body
+{
+	Core() {
+		N:Rudder(angle=Handle) {
+			W:Wheel(angle=32, power=Engine) { }
+			E:Wheel(angle=32, power=-Engine) { }
+		}
+		S:TrimF(angle=90, option=1) {
+			N:Wheel(angle=180) { }
+		}
+
+		N:Arm(angle=30, power=BIT_A1_1, option=30000, name=Bit_N1_1) {
+			E:Jet(angle=-45, power=BIT_J1_1) {
+				N:Jet(angle=90, power=BIT_J3_1) {
+					W:Jet(angle=-90, power=BIT_J5_1) { }
+				}
+			}
+			W:Jet(angle=45, power=BIT_J2_1) {
+				S:Jet(angle=-90, power=BIT_J4_1) {
+					E:Jet(angle=90, power=BIT_J6_1) { }
+				}
+			}
+		}
+		N:Arm(angle=30, power=BIT_A1_2, option=30000, name=Bit_N1_2) {
+			E:Jet(angle=-45, power=BIT_J1_2) {
+				N:Jet(angle=90, power=BIT_J3_2) {
+					W:Jet(angle=-90, power=BIT_J5_2) { }
+				}
+			}
+			W:Jet(angle=45, power=BIT_J2_2) {
+				S:Jet(angle=-90, power=BIT_J4_2) {
+					E:Jet(angle=90, power=BIT_J6_2) { }
+				}
+			}
+		}
+		N:Arm(angle=30, power=BIT_A1_3, option=30000, name=Bit_N1_3) {
+			E:Jet(angle=-45, power=BIT_J1_3) {
+				N:Jet(angle=90, power=BIT_J3_3) {
+					W:Jet(angle=-90, power=BIT_J5_3) { }
+				}
+			}
+			W:Jet(angle=45, power=BIT_J2_3) {
+				S:Jet(angle=-90, power=BIT_J4_3) {
+					E:Jet(angle=90, power=BIT_J6_3) { }
+				}
+			}
+		}
+		N:Arm(angle=30, power=BIT_A1_4, option=30000, name=Bit_N1_4) {
+			E:Jet(angle=-45, power=BIT_J1_4) {
+				N:Jet(angle=90, power=BIT_J3_4) {
+					W:Jet(angle=-90, power=BIT_J5_4) { }
+				}
+			}
+			W:Jet(angle=45, power=BIT_J2_4) {
+				S:Jet(angle=-90, power=BIT_J4_4) {
+					E:Jet(angle=90, power=BIT_J6_4) { }
+				}
+			}
+		}
+		N:Arm(angle=30, power=BIT_A1_5, option=30000, name=Bit_N1_5) {
+			E:Jet(angle=-45, power=BIT_J1_5) {
+				N:Jet(angle=90, power=BIT_J3_5) {
+					W:Jet(angle=-90, power=BIT_J5_5) { }
+				}
+			}
+			W:Jet(angle=45, power=BIT_J2_5) {
+				S:Jet(angle=-90, power=BIT_J4_5) {
+					E:Jet(angle=90, power=BIT_J6_5) { }
+				}
+			}
+		}
+		N:Arm(angle=30, power=BIT_A1_6, option=30000, name=Bit_N1_6) {
+			E:Jet(angle=-45, power=BIT_J1_6) {
+				N:Jet(angle=90, power=BIT_J3_6) {
+					W:Jet(angle=-90, power=BIT_J5_6) { }
+				}
+			}
+			W:Jet(angle=45, power=BIT_J2_6) {
+				S:Jet(angle=-90, power=BIT_J4_6) {
+					E:Jet(angle=90, power=BIT_J6_6) { }
+				}
+			}
+		}
+		N:Arm(angle=30, power=BIT_A1_7, option=30000, name=Bit_N1_7) {
+			E:Jet(angle=-45, power=BIT_J1_7) {
+				N:Jet(angle=90, power=BIT_J3_7) {
+					W:Jet(angle=-90, power=BIT_J5_7) { }
+				}
+			}
+			W:Jet(angle=45, power=BIT_J2_7) {
+				S:Jet(angle=-90, power=BIT_J4_7) {
+					E:Jet(angle=90, power=BIT_J6_7) { }
+				}
+			}
+		}
+	}
+}
+Lua
+{
+math.limit = function (val,max,min)	return val>max and max or val<min and min or val	end
+math.len2 = function(v1,v2)	return math.sqrt(v1^2 + v2^2)	end
+math.step = function (v,n,s)		return (v+s<n and v+s or (v-s>n and v-s or n))	end
+
+BaseRad = 10
+BasePos = {0,100,0}	--設置位置
+SiteMode = false
+AccSite = {0,0,0}
+Site = {0,45,0}
+Rnd_rad = 0
+ShootCount = 0
+
+_ZOOM(5)
+
+function main()
+	local i,e
+
+	out(1,"Z : Fire	 A : Rot  D : Switch")
+
+	if (_KEY(7) > 0) then
+		Rnd_rad = Rnd_rad + math.rad(5)
+		if (Rnd_rad > math.pi*2) then	Rnd_rad = Rnd_rad - math.pi*2	end
+	end
+	if (_KEYDOWN(9) > 0) then
+		SiteMode = not SiteMode
+	end
+
+
+	if (SiteMode) then
+		out(2,"Active.  X/S : U-D")
+
+		local ax,ay,az,ar,li
+		ax = (_KEY(3) > 0 and 1 or 0) + (_KEY(2) > 0 and -1 or 0)
+		az = (_KEY(0) > 0 and 1 or 0) + (_KEY(1) > 0 and -1 or 0)
+		ay = (_KEY(5) > 0 and 1 or 0) + (_KEY(8) > 0 and -1 or 0)
+
+		if (ax == 0) then AccSite[1] = 0	end
+		if (ay == 0) then AccSite[2] = 0	end
+		if (az == 0) then AccSite[3] = 0	end
+
+		lim = (_KEY(4)>0 and 0.1 or 20)
+		AccSite[1] = math.limit( AccSite[1] + ax * 0.05 , lim,-lim )
+		AccSite[2] = math.limit( AccSite[2] + ay * 0.05 , lim,-lim )
+		AccSite[3] = math.limit( AccSite[3] + az * 0.05 , lim,-lim )
+
+		ENGINE = 0
+	else
+		out(2,"Stay.")
+
+		local en
+		en = (_KEY(1) > 0 and 1 or 0) + (_KEY(0) > 0 and -1 or 0)
+
+		if (en ~= 0) then
+			ENGINE = ENGINE + en * 500
+		else
+			ENGINE = math.step(ENGINE,0,2500)
+		end
+
+		for i=1,3 do	AccSite[i] = 0	end
+	end
+
+	for i=1,3 do	Site[i] = Site[i] + AccSite[i]	end
+
+	do	----Line
+		local r,r2,r3,rn,aa
+
+		_SETCOLOR(255*256)
+
+		r = 30
+		r2= 0.6
+		r3= 20
+		rn = 8
+
+		for i=1,4 do
+			aa = math.pi*2 / 4 * i
+			_MOVE3D( Site[1] + math.cos(aa) * r2,Site[2],Site[3] + math.sin(aa) * r2 )
+			_LINE3D( Site[1] + math.cos(aa) * r3,Site[2] + 30,Site[3] + math.sin(aa) * r3 )
+		end
+
+		_MOVE3D( Site[1] + r,Site[2],Site[3] )
+		for i=1,rn do
+			aa = math.pi*2 / rn * i
+			_LINE3D( Site[1] + math.cos(aa) * r,Site[2],Site[3] + math.sin(aa) * r )
+		end
+
+		_MOVE3D( Site[1] + r ,Site[2],Site[3] )
+		_LINE3D( Site[1] + r2,Site[2],Site[3] )
+		_MOVE3D( Site[1] - r ,Site[2],Site[3] )
+		_LINE3D( Site[1] - r2,Site[2],Site[3] )
+		_MOVE3D( Site[1],Site[2],Site[3] + r  )
+		_LINE3D( Site[1],Site[2],Site[3] + r2 )
+
+		_SETCOLOR(128*256)
+		_MOVE3D( Site[1],Site[2],Site[3] - r  )
+		_LINE3D( Site[1],Site[2],Site[3] - r2 )
+		_MOVE3D( Site[1],Site[2],Site[3])
+		_LINE3D( Site[1],Site[2] - 10,Site[3])
+	end
+
+	if (not BitList) then
+		BitList = {}
+		for i=1,7 do	BitList[i] = Bit.new(i)	end
+		for i,e in next,BitList do	e:init()	end
+	end
+
+	local ra,tn
+	tn = table.getn(BitList)
+
+	if (_KEY(4) > 0) then
+		ShootCount = ( (ShootCount >= tn) and 1 or ShootCount + 1 )
+		--for i,e in next,BitList do	e:Fire()	end
+		BitList[ShootCount]:Fire()
+	end
+
+	for i,e in next,BitList do
+		ra = math.pi*2 / tn * i + Rnd_rad
+		BitList[i]:updatePos( { math.cos(ra) * BaseRad + BasePos[1], BasePos[2], math.sin(ra) * BaseRad + BasePos[3] },
+					Site )
+	end
+
+	for i,e in next,BitList do	e:onFrame()	end
+end
+
+--------------------[  Bit  ]-------------------
+Bit = {}
+Bit_mt = { __index=Bit }
+
+function Bit.new( num )
+	tmp = {}
+	tmp.num = num
+
+	tmp.mov_pos,tmp.rot_pos,tmp.old_pos = { 0,0,0, }, { 0,0,0, },{ 0,0,0, }
+	tmp.fire,tmp.die = false,false
+	tmp.core,tmp.arm = 0,0
+
+	tmp.val = {}
+	tmp.tick = 0
+	tmp.pid_rx,tmp.pid_ry = nil,nil
+
+	return setmetatable (tmp, Bit_mt)
+end
+
+function Bit:init()
+	self.val[1] = 0.6
+	self.core = _G[ self:getChipNam( 1 ) ]
+	self.arm  = self.core
+
+	local d = _SPLIT(self.core)
+	self.pid_rx = Pid.new(0, 1.5, 1.0, 0.02, 10 )
+	self.pid_ry = Pid.new(0, 1.5, 1.0, 0.02, 10 )
+end
+function Bit:getJetValNam( n )	return "BIT_J"..n.."_"..(self.num)	end
+function Bit:getArmValNam( n )	return "BIT_A"..n.."_"..(self.num)	end
+function Bit:getChipNam( n )	return "BIT_N"..n.."_"..(self.num)	end
+function Bit:checkArm( cn )	return (_OPTION(cn) >= _E(cn) and _OPTION(cn) or 0)	end
+function Bit:checkBreak()
+	local i
+	for i=1,Bit.ChipNum - 1 do
+		if (_TOP(self.core + i) ~= self.core)	then
+			return true
+		end
+	end
+	return false
+end
+
+Bit.Phyval = {3000,20000,20000, }
+Bit.Rotval = {10000,10000,12000, }
+Bit.ChipNum, Bit.JetNum, Bit.ArmNum = 7,6,1
+
+function Bit:updatePos( mp, rp )
+	local i
+	if (mp) then	for i=1,3 do	self.mov_pos[i] = mp[i]	end	end
+	if (rp) then	for i=1,3 do	self.rot_pos[i] = rp[i]	end	end
+end
+
+function Bit:Fire()	self.fire = true	end
+function Bit:setVal( n , v )	self.val[n] = v	end
+function Bit:isDie()	return self.die	end
+function Bit:inDie()	self:updateJetVal( { 0,0,0,0,0,0, } )	end
+
+function Bit:onFrame()
+	if (self.die) then	return	end
+
+	local cn = self.core
+	local i
+
+	----
+	self.tick = self.tick + 1
+	if (self.tick > 10) then
+		self.tick = 0
+		self.die = self:checkBreak()
+		if (self.die) then	self:inDie()	return	end
+	end
+
+	----
+	local ax,ay,az
+	local vec,rot,aar,bar = {},{},{},{}
+
+	ax,ay,az = unpack( self.mov_pos )
+	aar[1],aar[2],aar[3] = self:getlpos( _GX(cn) - ax,_GY(cn) - ay,_GZ(cn) - az, cn )
+	rot[1],rot[2],rot[3] = _VX(cn)/30,_VY(cn)/30,_VZ(cn)/30
+
+	for i = 1,3 do
+		bar[i] = aar[i] - self.old_pos[i]
+		self.old_pos[i] = aar[i]
+	end
+
+	self:limitVect3D( aar, 30 )
+	self:limitVect3D( bar, 5 )
+
+	for i = 1,3 do	vec[i] = aar[i] * Bit.Phyval[1] + rot[i] * Bit.Phyval[2] + bar[i] * Bit.Phyval[3]	end
+
+	ax,ay,az = unpack( self.rot_pos )
+	ax,ay,az = self:getlpos( ax - _X(cn), ay - _Y(cn), az - _Z(cn), cn )
+
+	aar[1],aar[2],aar[3] = math.atan2( ay,math.len2(az,ax) ), math.atan2( ax,-az ), 0
+	bar[1],bar[2],bar[3] = (self.pid_rx):get(aar[1]), (self.pid_ry):get(aar[2]), _WZ(cn)/30
+
+	for i = 1,3 do	rot[i] = bar[i] * Bit.Rotval[i]	end
+
+	local ang,ang2, fi, a1
+	ang = math.limit( math.atan2( self.val[1],math.sqrt(ax^2+ay^2+az^2) ),math.pi/4, 0)
+	ang2= math.abs( math.atan2( math.len2(ax,ay),-az ) )
+	fi = ( ang2 < ang )
+
+	----
+	bar = {
+		( ( self.fire and fi ) and self:checkArm( self.arm ) or 0 ),
+	}
+
+	a1 = 1.42 / 2
+	aar = {
+		-vec[1]*a1 - vec[2]*a1 + rot[3]/2 - rot[1]/2 ,
+		-vec[1]*a1 - vec[2]*a1 - rot[3]/2 + rot[1]/2 ,
+		 vec[3]/2 + rot[2] + bar[1]*0 + rot[1]/2 ,
+		 vec[3]/2 - rot[2] + bar[1]*0 - rot[1]/2 ,
+		 vec[1]*a1 - vec[2]*a1 + rot[1] ,
+		 vec[1]*a1 - vec[2]*a1 - rot[1] ,
+	}
+	self:updateJetVal( aar )
+	self:updateArmVal( bar )
+
+	if (bar[1] > 0) then	self.fire = false	end
+end
+
+function Bit:updateJetVal( ar )
+	local i
+	for i=1,Bit.JetNum do	_G[ self:getJetValNam( i ) ] = ar[i]	end
+end
+function Bit:updateArmVal( ar )
+	local i
+	for i=1,Bit.ArmNum do	_G[ self:getArmValNam( i ) ] = ar[i]	end
+end
+function Bit:limitVect3D( arg, lim )
+	local di = arg[1]^2 + arg[2]^2 + arg[3]^2
+	if (di >= lim^2) then
+		di = math.sqrt( di )
+		for i = 1,3 do	arg[i] = arg[i] / di * lim	end
+		return true
+	end
+	return false
+end
+function Bit:getlpos(wx,wy,wz,cn)
+	local lx,ly,lz
+	lx=_XX(cn)*wx+_XY(cn)*wy+_XZ(cn)*wz
+	ly=_YX(cn)*wx+_YY(cn)*wy+_YZ(cn)*wz
+	lz=_ZX(cn)*wx+_ZY(cn)*wy+_ZZ(cn)*wz
+	return lx,ly,lz
+end
+--------------------[  Pid  ]-------------------
+Pid = {}
+Pid_mt = { __index=Pid }
+----追加	dei:Iの初期値  lim:Iのリミッタ(nilで無限扱い)  xkp,xki,xkd:各項の係数
+function Pid.new(dei,lim,xkp,xki,xkd)
+	tmp = {}
+	tmp.kp,tmp.ki,tmp.kd = xkp,xki,xkd
+	tmp.i = dei
+	tmp.l = lim
+	return setmetatable (tmp, Pid_mt)
+end
+Pid.limit = function (val,max,min)	return val>max and max or val<min and min or val	end
+function Pid:get(sp,sd)
+	local d
+	self.i = self.i + sp
+	if (self.l) then  self.i = Pid.limit(self.i,self.l,-self.l)	end
+
+	if (not sd) then
+		if (not self.bd) then self.bd = sp	end
+		d = sp - self.bd	self.bd = sp
+	else d = sd	end
+	return sp * self.kp + self.i * self.ki + d * self.kd
+end
+function Pid:init( dei, lim,xkp,xki,xkd )
+	self.kp,self.ki,self.kd = xkp,xki,xkd
+	self.i,self.l = dei,lim
+	if (self.bd) then	self.bd = 0	end
+end
+----------------------------------------
+}

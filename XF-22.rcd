@@ -337,6 +337,9 @@ _z=_Z()
 gmax = 0
 gmay = 0
 
+gmix = 0
+gmiy = 0
+
 local inited = false
 
 function OnFrame()
@@ -375,11 +378,15 @@ function OnFrame()
 	
 	out(0,g)
 	out(1,gmax)
-	out(3,h)
-	out(4,gmay)
+	out(2,gmix)
+	out(4,h)
+	out(5,gmay)
+	out(6,gmiy)
 	
 	gmax = math.max(gmax,g)
 	gmay = math.max(gmay,h)
+	gmix = math.min(gmix,g)
+	gmiy = math.min(gmiy,h)
 	
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
 	

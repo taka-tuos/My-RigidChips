@@ -1,0 +1,71 @@
+//plane
+val{
+	pitch(default=0,min=-10,max=10,step=1,disp=1)
+	roll(default=0,min=-10,max=10,step=1,disp=1)
+	yaw(default=0,min=-10,max=10,step=1,disp=1)
+	jet(default=0,min=0,max=50000,step=0,disp=1)
+}
+
+key{
+	0:pitch(step=-1)
+	1:pitch(step= 1)
+	2:roll(step= 0.5)
+	3:roll(step=-0.5)
+	4:yaw(step=-1)
+	6:yaw(step= 1)
+	5:jet(step= 50000)
+	8:jet(step=-50000)
+}
+
+body{
+	core(){
+		n:frame(angle=-20){
+			n:jet(angle=110,power=jet,effect=1){}
+		}
+		w:chip(){
+			w:trim(angle=roll){
+				w:chip(){}
+			}
+		}
+		e:chip(){
+			e:trim(angle=roll){
+				e:chip(){}
+			}
+		}
+		s:chip(){
+			s:chip(){
+				s:chip(){
+					w:chip(angle=-90){
+						s:chip(angle=-yaw){}
+					}
+					e:chip(angle=-90){
+						s:chip(angle=yaw){}
+					}
+					s:chip(){
+						w:trim(angle=pitch){}
+						e:trim(angle=-pitch){}
+					}
+				}
+			}
+		}
+		w:frame(angle=10){
+			w:wheel(angle=gear_angle){}
+		}
+		e:frame(angle=10){
+			e:wheel(angle=gear_angle){}
+		}
+	}
+}
+
+Lua{
+
+function main()
+	-- •\Ž¦
+	out(0,"Up/Down:Pitch, Left/Right:Roll, Z/C:Yaw, X:Jet-On, S:Jet-Off")
+	out(1,"x=",_X(0),", y=",_Y(0),", z=",_Z(0))
+	out(2,"ax=",math.deg(_AX(0)),", ay=",math.deg(_AY(0)),", ez=",math.deg(_EZ(0)))
+	out(3,"vx=",_VX(0),", vy=",_VY(0),", vz=",_VZ(0))
+	out(4,"wx=",_WX(0),", wy=",_WY(0),", wz=",_WZ(0))
+end
+
+}

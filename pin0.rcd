@@ -514,7 +514,7 @@ function OnFrame()
 		HR = HR - (0.5 + 0.5 * _md)
 	end
 	
-	HR = (_ANALOG(0)/1000)*40
-	HV = (_ANALOG(1)/1000)*40
+	--HR = (_ANALOG(0)/1000)*40
+	--HV = (_ANALOG(1)/1000)*40
 end
 }

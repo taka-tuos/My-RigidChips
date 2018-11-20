@@ -1,0 +1,85 @@
+// [RCD] 
+Val
+{
+	BRAKE(default=1, max=300, step=300)
+	ENGINE(default=0, min=-33500, max=3500, step=3500)
+	HANDLE(default=0, min=-30, max=30, step=5)
+	HBRAKE(default=1, max=80, step=80)
+}
+Key
+{
+	0:Engine(step=-200)
+	1:Engine(step=200)
+	2:Handle(step=-5)
+	3:Handle(step=5)
+	7:Brake(step=30), HBrake(step=20)
+	8:HBrake(step=20)
+}
+Body
+{
+	Core(color=#ff0022) {
+		N:Frame(angle=-15) {
+			N:Frame(angle=15, spring=0.7, damper=0.3) {
+				W:Rudder(angle=Handle, spring=0.7, color=#ff0022) {
+					N:Frame(angle=-150, spring=0.3, damper=0.3) {
+						N:Frame(angle=150, spring=0.5, damper=0.3) {
+							W:Wheel(angle=90, power=Engine, brake=Brake) { }
+						}
+					}
+					E:Chip(angle=-130, color=#ff0022) {
+						S:Rudder(angle=15, color=#ff0022) { }
+					}
+					N:Chip(angle=-165, color=#ff0022) { }
+				}
+				E:Rudder(angle=Handle, spring=0.7, color=#ff0022) {
+					N:Frame(angle=-150, spring=0.3, damper=0.3) {
+						N:Frame(angle=150, spring=0.5, damper=0.3) {
+							E:Wheel(angle=90, power=-Engine, brake=Brake) { }
+						}
+					}
+					W:Chip(angle=-130, color=#ff0022) {
+						S:Rudder(angle=-15, color=#ff0022) { }
+					}
+					N:Chip(angle=-165, color=#ff0022) { }
+				}
+			}
+		}
+		S:Frame() {
+			E:Chip(angle=-50, color=#ff0022) {
+				N:Chip(color=#ff0022) { }
+			}
+			W:Chip(angle=-50, color=#ff0022) {
+				N:Chip(color=#ff0022) { }
+			}
+			W:Chip(color=#ff0022) {
+				N:Frame(angle=-160, spring=0.3, damper=0.3) {
+					N:Frame(angle=160, spring=0.5, damper=0.3) {
+						W:Wheel(angle=90, power=Engine, brake=HBrake) { }
+					}
+				}
+				E:Chip(angle=-90, color=#ff0022) { }
+				N:Chip(angle=-165, color=#ff0022) { }
+			}
+			E:Chip(color=#ff0022) {
+				N:Frame(angle=-160, spring=0.3, damper=0.3) {
+					N:Frame(angle=160, spring=0.5, damper=0.3) {
+						E:Wheel(angle=90, power=-Engine, brake=HBrake) { }
+					}
+				}
+				W:Chip(angle=-90, color=#ff0022) { }
+				N:Chip(angle=-165, color=#ff0022) { }
+			}
+		}
+	}
+}
+Script
+{
+	print 0,"Welcome to Rigid-Chips World."
+	print 1,"  FPS=",_FPS(),"  Chips=",_CHIPS(),"  Weight=",_WEIGHT()
+	print 2,"  Width=",_WIDTH(),"  Height=",_HEIGHT()
+	print 3,"  Faces=",_FACE()
+	print 4,"  Vel=",_VEL()
+	print 5,"  R=",_RED(32,32)
+	print 6,"  G=",_GREEN(32,32)
+	print 7,"  B=",_BLUE(32,32)
+}

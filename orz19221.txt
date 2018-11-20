@@ -1,0 +1,134 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Trim(angle=90, option=1, color=COL1, spring=1, damper=1, name=BOMB) {
+			N:Arm(power=ARM1, option=6000000, color=COL1, name=A_N1) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM1, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM2, option=6000000, color=COL1, name=A_N2) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM2, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM3, option=6000000, color=COL1, name=A_N3) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM3, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM4, option=6000000, color=COL1, name=A_N4) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM4, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM5, option=6000000, color=COL1, name=A_N5) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM5, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM6, option=6000000, color=COL1, name=A_N6) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM6, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM7, option=6000000, color=COL1, name=A_N7) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM7, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM8, option=6000000, color=COL1, name=A_N8) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM8, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM9, option=6000000, color=COL1, name=A_N9) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM9, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM10, option=6000000, color=COL1, name=A_N10) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM10, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM11, option=6000000, color=COL1, name=A_N11) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM11, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM12, option=6000000, color=COL1, name=A_N12) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM12, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM13, option=6000000, color=COL1, name=A_N13) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM13, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM14, option=6000000, color=COL1, name=A_N14) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM14, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+			N:Arm(power=ARM15, option=6000000, color=COL1, name=A_N15) {
+				S:Trim(angle=90, color=COL1) {
+					N:Arm(power=ARM15, option=6000000, color=COL1) {
+					}
+				}
+				S:Chip(color=COL1) {
+				}
+			}
+		}
+	}
+}

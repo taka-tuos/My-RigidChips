@@ -1,0 +1,2 @@
+[rcgl_path]convert path C:/luarc/rcgl/paw16k.fnt
+[rcgl_path]convert path C:/luarc/rcgl/paw16a.fnt

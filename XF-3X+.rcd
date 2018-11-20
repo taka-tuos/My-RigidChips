@@ -539,38 +539,6 @@ Body
 				}
 			}
 		}
-		S:TrimF(angle=0, option=1) {
-			E:TrimF(angle=180, spring=1) {
-				E:Chip(angle=0, name=MC1) {
-					N:Chip(angle=MY1) { }
-					N:Frame(angle=-150, option=1) {
-						N:Jet(angle=-120, power=-MP1) { }
-					}
-					S:Arm(power=MA1, option=100000, name=MG1) {
-						N:Trim(angle=90) {
-							N:Chip(angle=MX1) { }
-						}
-					}
-					E:Trim(angle=MZ1) { }
-					W:Trim(angle=MZ1) { }
-				}
-			}
-			W:TrimF(spring=1) {
-				W:Chip(angle=0, name=MC2) {
-					S:Chip(angle=MY2) { }
-					S:Frame(angle=-150, option=1) {
-						S:Jet(angle=-120, power=-MP2) { }
-					}
-					N:Arm(power=MA2, option=100000, name=MG2) {
-						S:Trim(angle=90) {
-							S:Chip(angle=MX2) { }
-						}
-					}
-					E:Trim(angle=MZ2) { }
-					W:Trim(angle=MZ2) { }
-				}
-			}
-		}
 		S:TrimF() {
 			E:Trim(angle=R) {
 				E:Chip() { }
@@ -585,20 +553,6 @@ Body
 			}
 		}
 		N:Weight(angle=180, option=3) { }
-		S:TrimF(option=1, spring=1, damper=1, name=CRE) {
-			N:Frame(angle=-V0) {
-				N:Arm(option=50000, power=G0, angle=V0, name=A0) { }
-			}
-			N:Frame(angle=-V1) {
-				N:Arm(option=50000, power=G1, angle=V1, name=A1) { }
-			}
-			N:Frame(angle=-V2) {
-				N:Arm(option=50000, power=G2, angle=V2, name=A2) { }
-			}
-			N:Frame(angle=-V3) {
-				N:Arm(option=50000, power=G3, angle=V3, name=A3) { }
-			}
-		}
 		W:Trim(angle=-V) { }
 		E:Trim(angle=V) { }
 	}

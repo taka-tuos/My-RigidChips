@@ -1,0 +1,120 @@
+// [RCD] 
+Val
+{
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Chip(spring=1, damper=1) {
+			S:Chip(spring=1, damper=1) {
+				S:Chip(spring=1, damper=1) {
+					S:Chip(spring=1, damper=1) {
+						S:Chip(spring=1, damper=1) {
+							S:Chip(spring=1, damper=1) {
+								S:Chip(spring=1, damper=1) {
+									S:Chip(spring=1, damper=1) {
+										S:Chip(spring=1, damper=1) {
+											S:Chip(spring=1, damper=1) {
+												S:Trim(angle=90, spring=1, damper=1) {
+													S:Chip() {
+														E:Chip() { }
+														E:Frame(angle=67) {
+															W:Trim() {
+																W:Cowl() { }
+															}
+														}
+														E:Frame(angle=-67) {
+															W:Trim() {
+																W:Cowl() {
+																	W:Cowl(angle=-90) {
+																		N:Cowl(angle=-45) {
+																			E:Cowl() { }
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										E:Trim() { }
+										W:Trim() { }
+									}
+								}
+							}
+							N:Trim(angle=90) {
+								N:RudderF(angle=30) {
+									N:Wheel() { }
+								}
+							}
+						}
+						S:Rudder(angle=42) {
+							S:Chip() {
+								E:Cowl() { }
+								S:Chip() {
+									S:Chip() {
+										S:Chip() {
+											S:Cowl(angle=-10) {
+												W:Cowl(angle=-90) {
+													S:Cowl(angle=-48) {
+														E:Cowl(angle=-90, option=4) { }
+														S:Cowl(angle=-105) {
+															E:Cowl(angle=-90, option=3) {
+																S:Cowl() {
+																	S:Cowl(angle=-10) {
+																		S:Cowl() { }
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										E:Cowl() { }
+									}
+									E:Cowl() { }
+								}
+							}
+						}
+						S:Rudder(angle=-42) {
+							W:Cowl() { }
+							S:Chip() {
+								S:Chip() {
+									S:Chip() {
+										S:Chip() {
+											S:Cowl(angle=-10) {
+												E:Cowl(angle=-90) {
+													S:Cowl(angle=-48) {
+														W:Cowl(angle=-90, option=3) { }
+														S:Cowl(angle=-105) {
+															W:Cowl(angle=-90) {
+																S:Cowl() {
+																	S:Cowl(angle=-10) {
+																		S:Cowl() { }
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+											W:Cowl(option=3) { }
+										}
+										W:Cowl() { }
+									}
+									W:Cowl() { }
+								}
+								W:Cowl() { }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

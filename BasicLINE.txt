@@ -1,0 +1,59 @@
+//BasicCar
+Val
+{
+	Brake(default=0,min=0,max=80,step=80)
+	HBrake(default=0,min=0,max=100,step=100)
+	Handle(default=0,min=-20,max=20,step=5)
+	Engine(default=0,min=-2500,max=2500,step=11500)
+}
+Key
+{
+	0:Engine(step=-500)
+	1:Engine(step=500)
+	2:Handle(step=-0.5)
+	3:Handle(step=0.5)
+	7:Brake(step=30),HBrake(step=20)
+	8:HBrake(step=20)
+}
+Body {
+	Core(){
+		N:Chip(){
+			N:Rudder(angle=Handle){
+				W:Frame(){
+					W:Wheel(angle=90,brake=Brake){
+					}
+				}
+				E:Frame(){
+					E:Wheel(angle=90,brake=Brake){
+					}
+				}
+			}
+		}
+		S:Chip(){
+			W:Frame(){
+				W:Wheel(angle=90,power=Engine,brake=HBrake){
+				}
+			}
+			E:Frame(){
+				E:Wheel(angle=90,power=-Engine,brake=HBrake){
+				}
+			}
+		}
+	}
+}
+Lua
+{
+function OnFrame()
+	local i
+	out(0,_FPS())
+	for i=1,16384 do
+		local x0 = (math.random(16385)-8192)/8192
+		local x1 = (math.random(16385)-8192)/8192
+		local y0 = (math.random(16385)-8192)/8192
+		local y1 = (math.random(16385)-8192)/8192
+		
+		_MOVE2D(x0,y0)
+		_LINE2D(x1,y1)
+	end
+end
+}

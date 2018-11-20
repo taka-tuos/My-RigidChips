@@ -1,0 +1,109 @@
+// [RCD] plane
+Val
+{
+	BRAKE(default=0, max=100, step=100)
+	JET(default=0, min=-65536, max=204800, step=65536)
+	L(default=0, min=-10, max=20, step=8)
+	R(default=0, min=-10, max=20, step=8)
+	VAR(default=0, max=65536, step=65536)
+}
+Key
+{
+	0:L(step=-0.5), R(step=-0.5)
+	1:L(step=0.5), R(step=0.5)
+	2:L(step=0.5)
+	3:R(step=0.5)
+	4:Jet(step=16384)
+	5:Brake(step=10)
+	6:VAR(step=65536)
+	7:Jet(step=-1000)
+}
+Body
+{
+	Core() {
+		W:Chip(angle=-25) {
+			W:Trim(angle=-R) {
+				W:Chip(angle=0) {
+					W:Chip(angle=0, color=#ff) {
+						S:Cowl() {
+							E:Cowl() {
+								E:Cowl() {
+									E:Cowl() { }
+								}
+							}
+						}
+					}
+				}
+			}
+			W:Frame(angle=115) {
+				W:Wheel(angle=0, brake=Brake) { }
+			}
+		}
+		E:Chip(angle=-25) {
+			E:Trim(angle=L) {
+				E:Chip(angle=0) {
+					E:Chip(angle=0, color=#ff) {
+						S:Cowl() {
+							W:Cowl() {
+								W:Cowl() {
+									W:Cowl() { }
+								}
+							}
+						}
+					}
+				}
+			}
+			E:Frame(angle=115) {
+				E:Wheel(angle=0, brake=Brake) { }
+			}
+		}
+		S:Chip() {
+			S:Chip() {
+				S:Chip() {
+					S:Chip() {
+						W:Chip(angle=-45) {
+							W:Chip(angle=45) {
+								W:Trim(angle=-10) { }
+							}
+						}
+						E:Chip(angle=-45) {
+							E:Chip(angle=45) {
+								E:Trim(angle=10) { }
+							}
+						}
+						W:Wheel(angle=90) { }
+						E:Wheel(angle=90) { }
+					}
+				}
+			}
+			N:Chip(angle=-45) {
+				N:Chip(angle=45) {
+					N:RLW(angle=90, power=-JET) {
+						W:Trim(angle=55) { }
+						E:Trim(angle=55) { }
+						S:Trim(angle=55) { }
+						N:Trim(angle=55) { }
+					}
+					N:RLW(angle=90, power=JET) {
+						W:Trim(angle=-55) { }
+						E:Trim(angle=-55) { }
+						S:Trim(angle=-55) { }
+						N:Trim(angle=-55) { }
+					}
+				}
+			}
+		}
+		N:Chip() { }
+	}
+}
+Script
+{
+	print 0,"Welcome to Rigid-Chips World."
+	print 1,"  FPS=",_FPS(),"  Chips=",_CHIPS(),"  Weight=",_WEIGHT()
+	print 2,"  Width=",_WIDTH(),"  Height=",_HEIGHT()
+	print 3,"  Faces=",_FACE()
+	print 4,"  Vel=",_VEL()
+	print 5,"  R=",_RED(32,32)
+	print 6,"  G=",_GREEN(32,32)
+	print 7,"  B=",_BLUE(32,32)
+}

@@ -1,0 +1,549 @@
+Val{
+	lr(default=0,min=-180,max=180,step=0)
+	ud(default=-155,min=-165,max=-140,step=0)
+	fire(default=0,min=0,max=2,step=2)
+	trigger(default=0,min=0,max=1,step=1)
+	mis(default=1,min=0,max=81,step=0)
+	ti(default=0,max=3,min=0,step=1)
+	fmode(default=0,max=2,min=0,step=2)
+	fsel(default=1,min=1,max=3,step=0)
+	burst(default=1,min=1,max=3,step=0)
+	powl(default=0,min=-5000,max=5000,step=2500)
+	powr(default=0,min=-5000,max=5000,step=2500)
+	m1p(default=0,min=-1000000,max=1000000,step=0)
+	m2p(default=0,min=-1000000,max=1000000,step=0)
+	m3p(default=0,min=-1000000,max=1000000,step=0)
+	m4p(default=0,min=-1000000,max=1000000,step=0)
+	m5p(default=0,min=-1000000,max=1000000,step=0)
+	m6p(default=0,min=-1000000,max=1000000,step=0)
+	m7p(default=0,min=-1000000,max=1000000,step=0)
+	m8p(default=0,min=-1000000,max=1000000,step=0)
+	m9p(default=0,min=-1000000,max=1000000,step=0)
+	m10p(default=0,min=-1000000,max=1000000,step=0)
+	m11p(default=0,min=-1000000,max=1000000,step=0)
+	m12p(default=0,min=-1000000,max=1000000,step=0)
+	m13p(default=0,min=-1000000,max=1000000,step=0)
+	m14p(default=0,min=-1000000,max=1000000,step=0)
+	m15p(default=0,min=-1000000,max=1000000,step=0)
+	m16p(default=0,min=-1000000,max=1000000,step=0)
+	m17p(default=0,min=-1000000,max=1000000,step=0)
+	m18p(default=0,min=-1000000,max=1000000,step=0)
+	m19p(default=0,min=-1000000,max=1000000,step=0)
+	m20p(default=0,min=-1000000,max=1000000,step=0)
+	m21p(default=0,min=-1000000,max=1000000,step=0)
+	m22p(default=0,min=-1000000,max=1000000,step=0)
+	m23p(default=0,min=-1000000,max=1000000,step=0)
+	m24p(default=0,min=-1000000,max=1000000,step=0)
+	m25p(default=0,min=-1000000,max=1000000,step=0)
+	m26p(default=0,min=-1000000,max=1000000,step=0)
+	m27p(default=0,min=-1000000,max=1000000,step=0)
+	m28p(default=0,min=-1000000,max=1000000,step=0)
+	m29p(default=0,min=-1000000,max=1000000,step=0)
+	m30p(default=0,min=-1000000,max=1000000,step=0)
+	m31p(default=0,min=-1000000,max=1000000,step=0)
+	m32p(default=0,min=-1000000,max=1000000,step=0)
+	m33p(default=0,min=-1000000,max=1000000,step=0)
+	m34p(default=0,min=-1000000,max=1000000,step=0)
+	m35p(default=0,min=-1000000,max=1000000,step=0)
+	m36p(default=0,min=-1000000,max=1000000,step=0)
+	m37p(default=0,min=-1000000,max=1000000,step=0)
+	m38p(default=0,min=-1000000,max=1000000,step=0)
+	m39p(default=0,min=-1000000,max=1000000,step=0)
+	m40p(default=0,min=-1000000,max=1000000,step=0)
+	m41p(default=0,min=-1000000,max=1000000,step=0)
+	m42p(default=0,min=-1000000,max=1000000,step=0)
+	m43p(default=0,min=-1000000,max=1000000,step=0)
+	m44p(default=0,min=-1000000,max=1000000,step=0)
+	m45p(default=0,min=-1000000,max=1000000,step=0)
+	m46p(default=0,min=-1000000,max=1000000,step=0)
+	m47p(default=0,min=-1000000,max=1000000,step=0)
+	m48p(default=0,min=-1000000,max=1000000,step=0)
+	m49p(default=0,min=-1000000,max=1000000,step=0)
+	m50p(default=0,min=-1000000,max=1000000,step=0)
+	m51p(default=0,min=-1000000,max=1000000,step=0)
+	m52p(default=0,min=-1000000,max=1000000,step=0)
+	m53p(default=0,min=-1000000,max=1000000,step=0)
+	m54p(default=0,min=-1000000,max=1000000,step=0)
+	m55p(default=0,min=-1000000,max=1000000,step=0)
+	m56p(default=0,min=-1000000,max=1000000,step=0)
+	m57p(default=0,min=-1000000,max=1000000,step=0)
+	m58p(default=0,min=-1000000,max=1000000,step=0)
+	m59p(default=0,min=-1000000,max=1000000,step=0)
+	m60p(default=0,min=-1000000,max=1000000,step=0)
+	m61p(default=0,min=-1000000,max=1000000,step=0)
+	m62p(default=0,min=-1000000,max=1000000,step=0)
+	m63p(default=0,min=-1000000,max=1000000,step=0)
+	m64p(default=0,min=-1000000,max=1000000,step=0)
+	m65p(default=0,min=-1000000,max=1000000,step=0)
+	m66p(default=0,min=-1000000,max=1000000,step=0)
+	m67p(default=0,min=-1000000,max=1000000,step=0)
+	m68p(default=0,min=-1000000,max=1000000,step=0)
+	m69p(default=0,min=-1000000,max=1000000,step=0)
+	m70p(default=0,min=-1000000,max=1000000,step=0)
+	m71p(default=0,min=-1000000,max=1000000,step=0)
+	m72p(default=0,min=-1000000,max=1000000,step=0)
+	m73p(default=0,min=-1000000,max=1000000,step=0)
+	m74p(default=0,min=-1000000,max=1000000,step=0)
+	m75p(default=0,min=-1000000,max=1000000,step=0)
+	m76p(default=0,min=-1000000,max=1000000,step=0)
+	m77p(default=0,min=-1000000,max=1000000,step=0)
+	m78p(default=0,min=-1000000,max=1000000,step=0)
+	m79p(default=0,min=-1000000,max=1000000,step=0)
+	m80p(default=0,min=-1000000,max=1000000,step=0)
+                     
+}
+
+Key{
+0:powl(step=1000),powr(step=1000)
+1:powl(step=-1000),powr(step=-1000)
+2:powl(step=-1000),powr(step=1000)
+3:powl(step=1000),powr(step=-1000)
+4:lr(step=-1)
+5:ud(step=-0.5)
+6:lr(step=1)
+7:fmode(step=1)
+8:ud(step=0.5)
+9:fire(step=1),trigger(step=1)
+}
+
+Body {
+Core(color=#4000){
+ s:rudder(angle=lr,color=#4000){
+  s:chip(color=#4000,angle=ud){		//ミサイル取り付け+70
+
+s:jet(power=m41p,name=m41,angle=70){
+w:jet(power=m42p,name=m42,angle=-180){
+w:jet(power=m43p,name=m43,angle=-180){
+w:jet(power=m44p,name=m44,angle=-180){
+w:jet(power=m45p,name=m45,angle=-180){
+w:jet(power=m46p,name=m46,angle=-180){
+w:jet(power=m47p,name=m47,angle=-180){
+w:jet(power=m48p,name=m48,angle=-180){
+w:jet(power=m49p,name=m49,angle=-180){
+w:jet(power=m50p,name=m50,angle=-180){
+w:jet(power=m51p,name=m51,angle=-180){
+w:jet(power=m52p,name=m52,angle=-180){
+w:jet(power=m53p,name=m53,angle=-180){
+w:jet(power=m54p,name=m54,angle=-180){
+w:jet(power=m55p,name=m55,angle=-180){
+w:jet(power=m56p,name=m56,angle=-180){
+w:jet(power=m57p,name=m57,angle=-180){
+w:jet(power=m58p,name=m58,angle=-180){
+w:jet(power=m59p,name=m59,angle=-180){
+w:jet(power=m60p,name=m60,angle=-180){
+w:jet(power=m61p,name=m61,angle=-180){
+w:jet(power=m62p,name=m62,angle=-180){
+w:jet(power=m63p,name=m63,angle=-180){
+w:jet(power=m64p,name=m64,angle=-180){
+w:jet(power=m65p,name=m65,angle=-180){
+w:jet(power=m66p,name=m66,angle=-180){
+w:jet(power=m67p,name=m67,angle=-180){
+w:jet(power=m68p,name=m68,angle=-180){
+w:jet(power=m69p,name=m69,angle=-180){
+w:jet(power=m70p,name=m70,angle=-180){
+w:jet(power=m71p,name=m71,angle=-180){
+w:jet(power=m72p,name=m72,angle=-180){
+w:jet(power=m73p,name=m73,angle=-180){
+w:jet(power=m74p,name=m74,angle=-180){
+w:jet(power=m75p,name=m75,angle=-180){
+w:jet(power=m76p,name=m76,angle=-180){
+w:jet(power=m77p,name=m77,angle=-180){
+w:jet(power=m78p,name=m78,angle=-180){
+w:jet(power=m79p,name=m79,angle=-180){
+w:jet(power=m80p,name=m80,angle=-180){
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+  
+  
+  
+  
+  
+s:chip(color=#4000,angle=160){
+N:jet(power=m1p,name=m1,angle=-90){
+w:jet(power=m2p,name=m2,angle=-180){
+w:jet(power=m3p,name=m3,angle=-180){
+w:jet(power=m4p,name=m4,angle=-180){
+w:jet(power=m5p,name=m5,angle=-180){
+w:jet(power=m6p,name=m6,angle=-180){
+w:jet(power=m7p,name=m7,angle=-180){
+w:jet(power=m8p,name=m8,angle=-180){
+w:jet(power=m9p,name=m9,angle=-180){
+w:jet(power=m10p,name=m10,angle=-180){
+w:jet(power=m11p,name=m11,angle=-180){
+w:jet(power=m12p,name=m12,angle=-180){
+w:jet(power=m13p,name=m13,angle=-180){
+w:jet(power=m14p,name=m14,angle=-180){
+w:jet(power=m15p,name=m15,angle=-180){
+w:jet(power=m16p,name=m16,angle=-180){
+w:jet(power=m17p,name=m17,angle=-180){
+w:jet(power=m18p,name=m18,angle=-180){
+w:jet(power=m19p,name=m19,angle=-180){
+w:jet(power=m20p,name=m20,angle=-180){
+w:jet(power=m21p,name=m21,angle=-180){
+w:jet(power=m22p,name=m22,angle=-180){
+w:jet(power=m23p,name=m23,angle=-180){
+w:jet(power=m24p,name=m24,angle=-180){
+w:jet(power=m25p,name=m25,angle=-180){
+w:jet(power=m26p,name=m26,angle=-180){
+w:jet(power=m27p,name=m27,angle=-180){
+w:jet(power=m28p,name=m28,angle=-180){
+w:jet(power=m29p,name=m29,angle=-180){
+w:jet(power=m30p,name=m30,angle=-180){
+w:jet(power=m31p,name=m31,angle=-180){
+w:jet(power=m32p,name=m32,angle=-180){
+w:jet(power=m33p,name=m33,angle=-180){
+w:jet(power=m34p,name=m34,angle=-180){
+w:jet(power=m35p,name=m35,angle=-180){
+w:jet(power=m36p,name=m36,angle=-180){
+w:jet(power=m37p,name=m37,angle=-180){
+w:jet(power=m38p,name=m38,angle=-180){
+w:jet(power=m39p,name=m39,angle=-180){
+w:jet(power=m40p,name=m40,angle=-180){
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+   
+   
+    n:chip(color=#804000,angle=-5){
+	 n:chip(angle=5){
+	  n:chip(){
+	  }
+	 }
+	}
+	
+    e:chip(color=#4000,angle=-90){
+	 n:chip(color=#804000,angle=-5){
+	  n:chip(angle=5){
+	   n:chip(){
+	   }
+	  }
+	 }
+	 s:chip(color=#4000,angle=-10){
+	 }
+	}
+	w:chip(color=#4000,angle=-90){
+	 n:chip(color=#804000,angle=-5){
+	  n:chip(angle=5){
+	   n:chip(){
+	   }
+	  }
+	 }
+	 s:chip(color=#4000,angle=-10){
+	 }
+	 W:chip(color=#4000,angle=-90){
+	  n:chip(color=#804000,angle=-5){
+	   n:chip(angle=5){
+	    n:chip(){
+	    }
+	   }
+	  }
+	  s:chip(color=#4000,angle=-10){
+	  }
+	 }
+	}
+    s:chip(color=#4000,angle=-10){
+	}
+   }
+  }
+ }
+ E:chip(color=#4000,angle=10){
+  e:chip(color=#4000,angle=160){
+   e:frame(angle=-140){
+    E:chip(color=#787b42,angle=-30){
+     E:wheel(angle=90,power=powr){
+     }
+     N:chip(color=#787b42){
+      E:wheel(angle=90,power=powr){
+	  }
+	  N:chip(color=#787b42){
+	   E:Wheel(angle=90,power=powr){
+       }
+	  }
+ 	 }
+    S:chip(color=#787b42){
+     E:wheel(angle=90,power=powr){
+     }
+     S:chip(color=#787b42){
+      E:Wheel(angle=90,power=powr){
+	  }
+	 }
+	}
+   }
+  }
+ }
+ 
+  E:chip(color=#787b42,angle=-10){
+  }
+ }
+ W:chip(color=#4000,angle=10){
+   w:chip(color=#4000,angle=160){
+   w:frame(angle=-140){
+    w:chip(color=#787b42,angle=-30){
+     w:wheel(angle=90,power=-powl){
+     }
+     N:chip(color=#787b42){
+      w:wheel(angle=90,power=-powl){
+	  }
+	  N:chip(color=#787b42){
+	   w:Wheel(angle=90,power=-powl){
+       }
+	  }
+ 	 }
+    S:chip(color=#787b42){
+     w:wheel(angle=90,power=-powl){
+     }
+     S:chip(color=#787b42){
+      w:Wheel(angle=90,power=-powl){
+	  }
+	 }
+	}
+   }
+  }
+ }
+  W:chip(color=#787b42,angle=-10){
+  }
+ }
+ S:chip(color=#4000,angle=0){
+  E:chip(color=#3e3e3e,angle=10){
+   E:chip(color=#787b42,angle=-10){
+   }
+  }
+  W:chip(color=#3e3e3e,angle=10){
+   W:chip(color=#787b42,angle=-10){
+   }
+  }
+  S:chip(color=#4000,angle=0){
+   E:chip(color=#4000,angle=10){
+    E:chip(color=#787b42,angle=-10){
+     S:chip(color=#787b42,angle=45){
+     }
+    }
+    S:chip(color=#3e3e3e,angle=80){
+    }
+   }
+   W:chip(color=#4000,angle=10){
+    W:chip(color=#787b42,angle=-10){
+     S:chip(color=#787b42,angle=45){
+     }
+    }
+    S:chip(color=#3e3e3e,angle=80){
+    }
+   }
+   S:chip(color=#3e3e3e,angle=80){
+   }
+  }
+ }
+ N:chip(color=#4000,angle=20){
+  E:chip(color=#4000,angle=10){
+   E:chip(color=#787b42,angle=-10){
+   }
+  }
+  W:chip(color=#4000,angle=10){
+   W:chip(color=#787b42,angle=-10){
+   }
+  }
+  N:chip(color=#4000,angle=-20){
+   E:chip(color=#4000,angle=10){
+    E:chip(color=#787b42,angle=-10){
+     N:chip(color=#787b42,angle=30){
+     }
+    }
+    N:chip(color=#4000,angle=130){
+    }
+   }
+   W:chip(color=#4000,angle=10){
+	W:chip(color=#787b42,angle=-10){
+     N:chip(color=#787b42,angle=30){
+     }
+    }
+    N:chip(color=#4000,angle=130){
+    }
+   }
+   N:chip(color=#4000,angle=135){
+   }
+  }
+ }
+}
+}
+
+
+
+
+Script
+{
+if fsel=1 {print 0,"                                  GUNMODE:SEMI-AUTO"}
+if fsel=2 {print 0,"                                  GUNMODE:3POINTS BURST"}
+if fsel=3 {print 0,"                                  GUNMODE:FULL-AUTO"}
+           print 1,"                                  AMMO   :",81-mis
+
+
+if fmode=1 & fsel=1 {fsel=2 fmode=2} //semi auto
+if fmode=1 & fsel=2 {fsel=3 fmode=2} //3p burst
+if fmode=1 & fsel=3 {fsel=1 fmode=2} //full auto
+
+if trigger=0 {ti=0}
+if trigger=1 {ti=ti+1.5}
+if fsel=3 & fire=2 & trigger=1 & ti=3 {ti=0 fire=1}
+if fsel=2 & burst<3 & trigger=1 & ti=3 {ti=0 fire=1 burst=burst+1} 
+if burst=3 & trigger=0 {burst=1}
+
+if fire=1 & mis=1  {fire=2 m80p=-1000000 mis=mis+1 dummy=_bye(m80)}	
+if fire=1 & mis=2  {fire=2 m79p= 1000000 mis=mis+1 dummy=_bye(m79)}
+if fire=1 & mis=3  {fire=2 m78p=-1000000 mis=mis+1 dummy=_bye(m78)}
+if fire=1 & mis=4  {fire=2 m77p= 1000000 mis=mis+1 dummy=_bye(m77)}
+if fire=1 & mis=5  {fire=2 m76p=-1000000 mis=mis+1 dummy=_bye(m76)}
+if fire=1 & mis=6  {fire=2 m75p= 1000000 mis=mis+1 dummy=_bye(m75)}
+if fire=1 & mis=7  {fire=2 m74p=-1000000 mis=mis+1 dummy=_bye(m74)}
+if fire=1 & mis=8  {fire=2 m73p= 1000000 mis=mis+1 dummy=_bye(m73)}
+if fire=1 & mis=9  {fire=2 m72p=-1000000 mis=mis+1 dummy=_bye(m72)}
+if fire=1 & mis=10 {fire=2 m71p= 1000000 mis=mis+1 dummy=_bye(m71)}
+if fire=1 & mis=11 {fire=2 m70p=-1000000 mis=mis+1 dummy=_bye(m70)}
+if fire=1 & mis=12 {fire=2 m69p= 1000000 mis=mis+1 dummy=_bye(m69)}
+if fire=1 & mis=13 {fire=2 m68p=-1000000 mis=mis+1 dummy=_bye(m68)}
+if fire=1 & mis=14 {fire=2 m67p= 1000000 mis=mis+1 dummy=_bye(m67)}
+if fire=1 & mis=15 {fire=2 m66p=-1000000 mis=mis+1 dummy=_bye(m66)}
+if fire=1 & mis=16 {fire=2 m65p= 1000000 mis=mis+1 dummy=_bye(m65)}
+if fire=1 & mis=17 {fire=2 m64p=-1000000 mis=mis+1 dummy=_bye(m64)}
+if fire=1 & mis=18 {fire=2 m63p= 1000000 mis=mis+1 dummy=_bye(m63)}
+if fire=1 & mis=19 {fire=2 m62p=-1000000 mis=mis+1 dummy=_bye(m62)}
+if fire=1 & mis=20 {fire=2 m61p= 1000000 mis=mis+1 dummy=_bye(m61)}
+if fire=1 & mis=21 {fire=2 m60p=-1000000 mis=mis+1 dummy=_bye(m60)}
+if fire=1 & mis=22 {fire=2 m59p= 1000000 mis=mis+1 dummy=_bye(m59)}
+if fire=1 & mis=23 {fire=2 m58p=-1000000 mis=mis+1 dummy=_bye(m58)}
+if fire=1 & mis=24 {fire=2 m57p= 1000000 mis=mis+1 dummy=_bye(m57)}
+if fire=1 & mis=25 {fire=2 m56p=-1000000 mis=mis+1 dummy=_bye(m56)}
+if fire=1 & mis=26 {fire=2 m55p= 1000000 mis=mis+1 dummy=_bye(m55)}
+if fire=1 & mis=27 {fire=2 m54p=-1000000 mis=mis+1 dummy=_bye(m54)}
+if fire=1 & mis=28 {fire=2 m53p= 1000000 mis=mis+1 dummy=_bye(m53)}
+if fire=1 & mis=29 {fire=2 m52p=-1000000 mis=mis+1 dummy=_bye(m52)}
+if fire=1 & mis=30 {fire=2 m51p= 1000000 mis=mis+1 dummy=_bye(m51)}
+if fire=1 & mis=31 {fire=2 m50p=-1000000 mis=mis+1 dummy=_bye(m50)}
+if fire=1 & mis=32 {fire=2 m49p= 1000000 mis=mis+1 dummy=_bye(m49)}
+if fire=1 & mis=33 {fire=2 m48p=-1000000 mis=mis+1 dummy=_bye(m48)}
+if fire=1 & mis=34 {fire=2 m47p= 1000000 mis=mis+1 dummy=_bye(m47)}
+if fire=1 & mis=35 {fire=2 m46p=-1000000 mis=mis+1 dummy=_bye(m46)}
+if fire=1 & mis=36 {fire=2 m45p= 1000000 mis=mis+1 dummy=_bye(m45)}
+if fire=1 & mis=37 {fire=2 m44p=-1000000 mis=mis+1 dummy=_bye(m44)}
+if fire=1 & mis=38 {fire=2 m43p= 1000000 mis=mis+1 dummy=_bye(m43)}
+if fire=1 & mis=39 {fire=2 m42p=-1000000 mis=mis+1 dummy=_bye(m42)}
+if fire=1 & mis=40 {fire=2 m41p= 1000000 mis=mis+1 dummy=_bye(m41)}
+
+
+if fire=1 & mis=41  {fire=2 m40p= 1000000 mis=mis+1 dummy=_bye(m40)}
+if fire=1 & mis=42  {fire=2 m39p=-1000000 mis=mis+1 dummy=_bye(m39)}
+if fire=1 & mis=43  {fire=2 m38p= 1000000 mis=mis+1 dummy=_bye(m38)}
+if fire=1 & mis=44  {fire=2 m37p=-1000000 mis=mis+1 dummy=_bye(m37)}
+if fire=1 & mis=45  {fire=2 m36p= 1000000 mis=mis+1 dummy=_bye(m36)}
+if fire=1 & mis=46  {fire=2 m35p=-1000000 mis=mis+1 dummy=_bye(m35)}
+if fire=1 & mis=47  {fire=2 m34p= 1000000 mis=mis+1 dummy=_bye(m34)}
+if fire=1 & mis=48  {fire=2 m33p=-1000000 mis=mis+1 dummy=_bye(m33)}
+if fire=1 & mis=49  {fire=2 m32p= 1000000 mis=mis+1 dummy=_bye(m32)}
+if fire=1 & mis=50  {fire=2 m31p=-1000000 mis=mis+1 dummy=_bye(m31)}
+if fire=1 & mis=51  {fire=2 m30p= 1000000 mis=mis+1 dummy=_bye(m30)}
+if fire=1 & mis=52  {fire=2 m29p=-1000000 mis=mis+1 dummy=_bye(m29)}
+if fire=1 & mis=53  {fire=2 m28p= 1000000 mis=mis+1 dummy=_bye(m28)}
+if fire=1 & mis=54  {fire=2 m27p=-1000000 mis=mis+1 dummy=_bye(m27)}
+if fire=1 & mis=55  {fire=2 m26p= 1000000 mis=mis+1 dummy=_bye(m26)}
+if fire=1 & mis=56  {fire=2 m25p=-1000000 mis=mis+1 dummy=_bye(m25)}
+if fire=1 & mis=57  {fire=2 m24p= 1000000 mis=mis+1 dummy=_bye(m24)}
+if fire=1 & mis=58  {fire=2 m23p=-1000000 mis=mis+1 dummy=_bye(m23)}
+if fire=1 & mis=59  {fire=2 m22p= 1000000 mis=mis+1 dummy=_bye(m22)}
+if fire=1 & mis=60  {fire=2 m21p=-1000000 mis=mis+1 dummy=_bye(m21)}
+if fire=1 & mis=61  {fire=2 m20p= 1000000 mis=mis+1 dummy=_bye(m20)}
+if fire=1 & mis=62  {fire=2 m19p=-1000000 mis=mis+1 dummy=_bye(m19)}
+if fire=1 & mis=63  {fire=2 m18p= 1000000 mis=mis+1 dummy=_bye(m18)}
+if fire=1 & mis=64  {fire=2 m17p=-1000000 mis=mis+1 dummy=_bye(m17)}
+if fire=1 & mis=65  {fire=2 m16p= 1000000 mis=mis+1 dummy=_bye(m16)}
+if fire=1 & mis=66  {fire=2 m15p=-1000000 mis=mis+1 dummy=_bye(m15)}
+if fire=1 & mis=67  {fire=2 m14p= 1000000 mis=mis+1 dummy=_bye(m14)}
+if fire=1 & mis=68  {fire=2 m13p=-1000000 mis=mis+1 dummy=_bye(m13)}
+if fire=1 & mis=69  {fire=2 m12p= 1000000 mis=mis+1 dummy=_bye(m12)}
+if fire=1 & mis=70  {fire=2 m11p=-1000000 mis=mis+1 dummy=_bye(m11)}
+if fire=1 & mis=71  {fire=2 m10p= 1000000 mis=mis+1 dummy=_bye(m10)}
+if fire=1 & mis=72  {fire=2 m9p=-1000000 mis=mis+1 dummy=_bye(m9)}
+if fire=1 & mis=73  {fire=2 m8p= 1000000 mis=mis+1 dummy=_bye(m8)}
+if fire=1 & mis=74  {fire=2 m7p=-1000000 mis=mis+1 dummy=_bye(m7)}
+if fire=1 & mis=75  {fire=2 m6p= 1000000 mis=mis+1 dummy=_bye(m6)}
+if fire=1 & mis=76  {fire=2 m5p=-1000000 mis=mis+1 dummy=_bye(m5)}
+if fire=1 & mis=77  {fire=2 m4p= 1000000 mis=mis+1 dummy=_bye(m4)}
+if fire=1 & mis=78  {fire=2 m3p=-1000000 mis=mis+1 dummy=_bye(m3)}
+if fire=1 & mis=79  {fire=2 m2p= 1000000 mis=mis+1 dummy=_bye(m2)}
+if fire=1 & mis=80  {fire=2 m1p=-1000000 mis=mis+1 dummy=_bye(m1)}
+
+}
+
