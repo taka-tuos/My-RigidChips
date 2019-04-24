@@ -608,6 +608,9 @@ JY_PID = XPID_new()
 RD_PID = XPID_new()
 WS_PID = XPID_new()
 
+RX_PID = XPID_new()
+VX_PID = XPID_new()
+
 inited = false
 
 _gf=25
@@ -625,6 +628,9 @@ function OnFrame()
 	
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
 	
+	v = VX_PID:PID(0,WY,24,0,0,1000) + -_NORMANALOG(1) * 20
+	r = RX_PID:PID(0,WZ,24,0,0,1000) + _NORMANALOG(0) * 20
+	
 	P=p
 	R=r
 	V=v
@@ -641,13 +647,14 @@ function OnFrame()
 		WB=_LINER(WB,_KEY(7)*100,50)
 	end
 	
-	local dv = math.rad(-_NORMANALOG(1)*180/30)
-	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
+	local ay = (_KEY(5)-_KEY(4))*10
 	
-	JX = JX_PID:PID(dv,WX,8,8,8,40)
-	JY = JY_PID:PID(dy,WY,8,8,8,40)
-	RD = RD_PID:PID(dy,WY,8,8,8,40)
-	WS = WS_PID:PID(dy,WY,8,8,8,40)
+	RD = ay
+	WS = ay
+	
+	JX = v
+	JY = ay
+	
 	GF=_LINER(GF,_gf,1)
 	GR=_LINER(GR,_gr,4.4)
 	

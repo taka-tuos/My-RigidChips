@@ -1,0 +1,273 @@
+// [RCD] BasicCar
+Val
+{
+	B(default=0, max=10000000000)
+	B2(default=0, max=10000000000)
+	DM(default=0, max=1)
+	DMF(default=0, max=1)
+	P(default=0, min=-10000000000, max=10000000000)
+	S(default=0, min=-180, max=180)
+	SP(default=0, max=1)
+	SPF(default=0, max=1)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Chip() {
+			N:Chip() {
+				W:Frame(spring=SPF, damper=DMF) {
+					W:RudderF(angle=-S, option=1) {
+						E:Wheel(angle=90, brake=B) { }
+					}
+				}
+				E:Frame(spring=SPF, damper=DMF) {
+					E:RudderF(angle=-S, option=1) {
+						W:Wheel(angle=90, brake=B) { }
+					}
+				}
+			}
+		}
+		S:Trim(spring=SP, damper=DM) {
+			W:Frame() {
+				W:Wheel(angle=90, power=-P, brake=B2) { }
+			}
+			E:Frame() {
+				E:Wheel(angle=90, power=P, brake=B2) { }
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+XMET={}
+
+-- x : X座標
+-- y : Y座標
+-- s : メーター半径
+-- c : 目盛始端角度(deg)
+-- d : 目盛終端角度(deg)
+-- e : 何度ごとに目盛数字があるか
+-- f : 目盛数字の一個ごとの差
+-- g : 針で示す数値
+-- h : 針がd度の位置にあるときのgの値
+-- i : 針で示す数値(2)
+-- j : 針で示す数値(3)
+-- k : 針で示す数値(4)
+
+function XMET.Draw(obj,x,y,s,c,d,e,f,g,h,i,j,k)
+	XGUI.SetDrawColorINT(2105376)
+	
+	XMET.Circle(obj,x,y,s)
+	
+	XMET.Circle(obj,x,y,s/10)
+	
+	XGUI.SetDrawColorINT(0)
+	
+	XMET.CircleString(obj,x,y,s*0.75,c,d,e,f)
+	
+	XMET.CircleM(obj,x,y,s*0.9,s,c,d,e)
+	
+	XGUI.SetDrawColorINT(2105376)
+	
+	XMET.CircleM(obj,x,y,s*0.95,s,c,d,e/10)
+	
+	if k ~= nil then XMET.Needle(obj,x,y,s,c - (k / h * math.abs(d-c)),16776960) end
+	if j ~= nil then XMET.Needle(obj,x,y,s,c - (j / h * math.abs(d-c)),65280) end
+	if i ~= nil then XMET.Needle(obj,x,y,s,c - (i / h * math.abs(d-c)),255) end
+	XMET.Needle(obj,x,y,s,c - (g / h * math.abs(d-c)),16711680)
+end
+
+function XMET.Circle(obj,x,y,s)
+	local i
+	XGUI.Move2D(math.cos((math.pi*2/32)*0)*s+x,math.sin((math.pi*2/32)*0)*s+y)
+	for i=1,32 do
+		XGUI.Line2D(math.cos((math.pi*2/32)*i)*s+x,math.sin((math.pi*2/32)*i)*s+y)
+	end
+end
+
+function XMET.CircleString(obj,x,y,s,a,b,c,d)
+	local i,j,k
+	j = 0
+	for i=a,b,c do
+		k = string.format("%d",j)
+		local vx = math.cos(math.rad(i))*s+x
+		local vy = math.sin(math.rad(i))*s+y
+		XGUI.SetStringPosition(vx,vy)
+		XGUI.SetDrawColorINT(16777215)
+		XGUI.DrawVectorStringCenter(k)
+		j = j + d
+	end
+end
+
+function XMET.CircleM(obj,x,y,s,t,a,b,c)
+	local i,j,k
+	for i=a,b,c do
+		local x0 = math.cos(math.rad(i))*s+x
+		local y0 = math.sin(math.rad(i))*s+y
+		
+		local x1 = math.cos(math.rad(i))*t+x
+		local y1 = math.sin(math.rad(i))*t+y
+		
+		XGUI.Move2D(x0,y0)
+		XGUI.Line2D(x1,y1)
+	end
+end
+
+function XMET.Rotation(px,py,pr)
+	local rx = px * math.cos(pr) - py * math.sin(pr)
+	local ry = px * math.sin(pr) - py * math.cos(pr)
+	return rx,ry
+end
+
+function XMET.Needle(obj,x,y,s,a,c)
+	XGUI.SetDrawColorINT(c)
+	
+	local i,j = XMET.Rotation(s*0.9,0,math.rad(180-a))
+	local k,l = XMET.Rotation(-s*0.25,0,math.rad(180-a))
+	
+	i = i + x
+	j = j + y
+	
+	k = k + x
+	l = l + y
+	
+	XGUI.Move2D(i,j)
+	XGUI.Line2D(k,l)
+end
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+function _NORMANALOG(n)
+	local v = _ANALOG(n)
+	if v < 100 and v > -100 then v = 0 end
+	return v/1000
+end
+
+_tecset=true
+
+vx1=0
+vy1=0
+vz1=0
+
+_x=_X()
+_y=_Y()
+_z=_Z()
+
+gmax = 0
+gmay = 0
+
+gmix = 0
+gmiy = 0
+
+function OnFrame()
+	
+	XGUI.SetStringSize(32)
+	
+	XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()-64)
+	XGUI.DrawVectorStringCenter(string.format("% 3d km/h",math.abs(_VEL(0))*3.6))
+	
+	if _KEYDOWN(6) == 1 then _tecset = not _tecset end
+	
+	local key4 = -_NORMANALOG(5)
+	local key0 = _NORMANALOG(5)
+	local key1 = 0
+	
+	if key0 < 0 then
+		if _KEY(14) == 1 then
+			key1 = -key0
+		end
+		key0 = 0
+	end
+	
+	if key4 < 0 or key1 > 0 then key4 = 0 end
+	
+	local vx=(_X()-_x)*30
+	local vy=(_Y()-_y)*30
+	local vz=(_Z()-_z)*30
+	
+	local x=(vx-vx1)*30*_YX()
+	local y=(vy-vy1)*30*_YY()
+	local z=(vz-vz1)*30*_YZ()
+	
+	local gx=(vx-vx1)*30
+	local gy=(vy-vy1)*30
+	local gz=(vz-vz1)*30
+	
+	local g=(x+y+z)/9.8
+	local h=_LEN3(gx,gy,gz)/9.8
+	
+	_x=_X()
+	_y=_Y()
+	_z=_Z()
+	
+	vx1=vx
+	vy1=vy
+	vz1=vz
+	
+	out(0,g)
+	out(1,gmax)
+	out(2,gmix)
+	out(4,h)
+	out(5,gmay)
+	out(6,gmiy)
+	
+	gmax = math.max(gmax,g)
+	gmay = math.max(gmay,h)
+	gmix = math.min(gmix,g)
+	gmiy = math.min(gmiy,h)
+	
+	BL = (math.floor(223*key4)+32)*65536
+	
+	B2=_LINER(B2,key4*100+_KEY(15)*200,100)
+	B=_LINER(B,key4*200,100)
+	
+	P=_LINER(P,key0*15000-key1*5000,15000)
+	
+	S=_LINER(S,_NORMANALOG(0)*60,15)
+	
+	_ZOOM(_GETVIEWZOOM())
+	
+	XGUI.SetStringSize(16)
+	
+	XGUI.SetStringPosition(128,128+32)
+	XGUI.DrawVectorStringCenter("残燃料")
+	XGUI.SetStringPosition(128,128+32+16)
+	XGUI.DrawVectorStringCenter("x1 [%]")
+	
+	XMET.Draw(obj,128,128,128,90,360,27,10,_FUEL()/_FUELMAX(),1)
+	
+	XGUI.SetDrawColorINT(16777215)
+	
+	if _tecset then
+		SP=0.05
+		SPF=0.05
+		DM=0.5
+		DMF=0.5
+	else
+		SP=1
+		SPF=1
+		DM=1
+		DMF=1
+	end
+end
+}

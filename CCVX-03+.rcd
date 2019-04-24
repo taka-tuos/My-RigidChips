@@ -326,7 +326,12 @@ function OnFrame()
 
 	ShowSplash("CCVX-03+ Typhoon")
 	
+	local va=math.abs(_VEL()*3.6/800)+1
+	
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
+	
+	v = -_NORMANALOG(1) * (20/va)
+	r = _NORMANALOG(0) * (20/va)
 	
 	P=p
 	R=r

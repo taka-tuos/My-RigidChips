@@ -59,7 +59,7 @@ Body
 								E:Rudder(angle=-30, color=#002F7F, spring=1, damper=1) {
 									W:Cowl(option=3, color=#002F7F) { }
 									E:Trim(angle=R, color=#002F7F, spring=1, damper=1) { }
-									E:Chip(color=#002F7F) {
+									E:Frame(color=#002F7F) {
 										E:Chip(color=#002F7F) {
 											E:Cowl(color=#80AFFF) {
 												E:Cowl(angle=90, option=1, effect=#F0FB) {
@@ -157,11 +157,12 @@ Body
 								W:Wheel(angle=GR, brake=WB) { }
 							}
 						}
-						S:TrimF(angle=90, option=1, spring=1, damper=1) {
+						S:Chip(angle=AB) { }
+						S:Chip(angle=-AB) { }
+						S:Trim(angle=90, option=1, spring=1, damper=1) {
 							S:RudderF(angle=-90, option=1, color=#002F7F, spring=1, damper=1) {
 								S:Cowl(color=#002F7F) { }
-								E:Chip() { }
-								S:Trim(angle=RD, option=1, color=#002F7F, spring=1, damper=1) {
+								S:Cowl(option=1, color=#002F7F) {
 									S:Cowl(angle=-90, option=1, effect=#F0FB) {
 										W:Cowl(angle=-70, option=1, effect=#F0FB) {
 											N:Cowl(angle=-90, color=#002F7F) {
@@ -182,12 +183,11 @@ Body
 											N:Cowl(angle=-90, color=#002F7F) { }
 										}
 									}
-									N:Chip(color=#002F7F) { }
+									N:Cowl(color=#002F7F) { }
 								}
 							}
+							S:Chip(angle=RD) { }
 						}
-						S:Chip(angle=AB) { }
-						S:Chip(angle=-AB) { }
 					}
 				}
 			}
@@ -367,7 +367,9 @@ Body
 			}
 		}
 		E:RudderF(angle=-135, option=1, spring=1, damper=1) {
-			W:Trim(angle=V, color=#002F7F, spring=1, damper=1) { }
+			W:Trim(angle=V, color=#002F7F, spring=1, damper=1) {
+				E:Rudder(angle=-45) { }
+			}
 			S:Cowl(angle=90, option=1, effect=#F0FB) {
 				W:Cowl(angle=-160, option=1, effect=#F0FB) {
 					N:Cowl(angle=-90, color=#002F7F) {
@@ -377,7 +379,9 @@ Body
 			}
 		}
 		W:RudderF(angle=135, option=1, spring=1, damper=1) {
-			E:Trim(angle=-V, color=#002F7F, spring=1, damper=1) { }
+			E:Trim(angle=-V, color=#002F7F, spring=1, damper=1) {
+				W:Rudder(angle=45) { }
+			}
 			S:Cowl(angle=90, option=1, effect=#F0FB) {
 				E:Cowl(angle=-160, option=1, effect=#F0FB) {
 					N:Cowl(angle=-90, color=#002F7F) {
@@ -386,12 +390,12 @@ Body
 				}
 			}
 		}
-		N:Weight(angle=180) { }
 		S:Trim(angle=90, spring=1, damper=1) {
 			N:RudderF(angle=-GF) {
 				N:Wheel(angle=WS, brake=WB) { }
 			}
 		}
+		N:Chip() { }
 	}
 }
 Lua
@@ -410,16 +414,16 @@ _prvtbl = InitPRVTable()
 _prvtbl.p.limit = 200000
 _prvtbl.p.step  = 200000
 
-_prvtbl.r.tgt = 360
-_prvtbl.r.kp  = 12
-_prvtbl.r.ki  = 8
-_prvtbl.r.kd  = 4
+_prvtbl.r.tgt = 180
+_prvtbl.r.kp  = 0
+_prvtbl.r.ki  = 12
+_prvtbl.r.kd  = 128
 _prvtbl.r.il  = 20
 
 _prvtbl.v.tgt = 180
-_prvtbl.v.kp  = 12
+_prvtbl.v.kp  = 0
 _prvtbl.v.ki  = 12
-_prvtbl.v.kd  = 4
+_prvtbl.v.kd  = 128
 _prvtbl.v.il  = 20
 
 JX_PID = XPID_new()
@@ -427,10 +431,89 @@ JY_PID = XPID_new()
 WS_PID = XPID_new()
 RD_PID = XPID_new()
 
+RX_PID = XPID_new()
+VX_PID = XPID_new()
+
 _gf=25
 _gr=70
 
+vx1=0
+vy1=0
+vz1=0
+
+_x=_X()
+_y=_Y()
+_z=_Z()
+
+gmax = 0
+gmay = 0
+
+gmix = 0
+gmiy = 0
+
 local inited = false
+
+local st={}
+
+local max=0
+
+local prev=0
+
+function foreach_func2D(i,v)
+	if i == 1 then
+		prev=v
+	end
+	
+	local dif = math.abs((v+prev)/2)
+	
+	local vc=dif/(9.8*200/_BASE())
+	local col=math.min(1,vc)
+	
+	local r,g = 0,0
+	
+	if col < 0.5 then
+		g = 255
+		r = col * 2 * 255
+	else
+		g = 255 - (col - 0.5) * 2 * 255
+		r = 255
+	end
+	
+	XGUI.SetDrawColorRGB(r,g,0)
+	
+	if i == 1 then
+		XGUI.Move2D(128+300-300/(_BASE()*10)*i,32+150-v/max*150)
+	else
+		XGUI.Line2D(128+300-300/(_BASE()*10)*i,32+150-v/max*150)
+	end
+	
+	prev=v
+	
+	XGUI.SetDrawColorRGB(255,255,255)
+end
+
+local pvy=_VY()
+
+function Gmeter()
+	if table.getn(st) > _BASE()*10 then
+		table.remove(st,1)
+	end
+	
+	table.insert(st,pvy-_VY())
+	
+	local pmax = math.abs(math.max(unpack(st)))
+	local nmax = math.abs(math.min(unpack(st)))
+	
+	max = math.max(pmax,nmax)
+	
+	table.foreachi(st,foreach_func2D)
+	
+	XGUI.Move2D(128,32)
+	XGUI.Line2D(128+300,32)
+	XGUI.Line2D(128+300,32+300)
+	XGUI.Line2D(128,32+300)
+	XGUI.Line2D(128,32)
+end
 
 function OnFrame()
 	if not inited then
@@ -444,10 +527,48 @@ function OnFrame()
 	
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
 	
+	v = VX_PID:PID(0,WY,24,0,0,1000) + -_NORMANALOG(1) * 20
+	r = RX_PID:PID(0,WZ,24,0,0,1000) + _NORMANALOG(0) * 20
+	
 	P=p
 	R=r
 	V=v
 	AB=b
+	
+	local vx=(_X()-_x)*30
+	local vy=(_Y()-_y)*30
+	local vz=(_Z()-_z)*30
+	
+	local x=(vx-vx1)*30*_YX()
+	local y=(vy-vy1)*30*_YY()
+	local z=(vz-vz1)*30*_YZ()
+	
+	local gx=(vx-vx1)*30
+	local gy=(vy-vy1)*30
+	local gz=(vz-vz1)*30
+	
+	local g=(x+y+z)/9.8
+	local h=_LEN3(gx,gy,gz)/9.8
+	
+	_x=_X()
+	_y=_Y()
+	_z=_Z()
+	
+	vx1=vx
+	vy1=vy
+	vz1=vz
+	
+	out(0,g)
+	out(1,gmax)
+	out(2,gmix)
+	out(4,h)
+	out(5,gmay)
+	out(6,gmiy)
+	
+	gmax = math.max(gmax,g)
+	gmay = math.max(gmay,h)
+	gmix = math.min(gmix,g)
+	gmiy = math.min(gmiy,h)
 	
 	local dv = math.rad(-_NORMANALOG(1)*180/30)
 	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
@@ -457,7 +578,9 @@ function OnFrame()
 	--JX = JX_PID:PID(dv,WX,24,16,2,40)
 	--JY = JY_PID:PID(dy,WY,24,16,2,40)
 	--RD = RD_PID:PID(dy,WY,8,8,8,40)
-	WS = WS_PID:PID(dy,WY,24,16,2,40)
+	--WS = WS_PID:PID(dy,WY,24,16,2,40)
+	RD = RD_PID:PID(dy,WY,16,12,4,20)
+	WS = WS_PID:PID(dy,WY,16,12,4,20)
 	
 	if _KEY(0) == 0 then
 		if _KEYDOWN(6) == 1 then
@@ -478,5 +601,7 @@ function OnFrame()
 	XHUD.Draw()
 	
 	Weapon.Stat()
+	
+	Gmeter()
 end
 }

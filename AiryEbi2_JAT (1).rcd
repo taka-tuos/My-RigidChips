@@ -1,0 +1,657 @@
+// [RCD] 
+Val
+{
+	ABL(default=180, max=180)
+	BI(default=40, max=360)
+	BLF(default=0, max=200)
+	BLR(default=0, max=200)
+	CO(default=#5BACAC)
+	CO3(default=#347272)
+	COC(default=#477E7E)
+	COC2(default=#CDE7E7)
+	COC3(default=#1E4242)
+	COC_AC(default=#FF8000)
+	COC_DSP(default=#444444)
+	COC_I(default=#525252)
+	COW(default=#7A848B)
+	DA(default=0, max=1)
+	EFKG(default=#00F000)
+	EL(default=180, max=360)
+	ER(default=180, max=360)
+	G1(default=50, min=50, max=120)
+	G2(default=110, min=110, max=240)
+	G3(default=30, min=-120, max=30)
+	G4(default=24, max=24)
+	G5(default=90, max=90)
+	HAN(default=180, max=360)
+	SL(default=0, min=-200000, max=200000)
+	SMOKE(default=0, max=2501)
+	SP(default=0, max=1)
+	YO(default=180, max=360)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=15, option=1, color=CO) {
+			S:Frame(angle=80, option=1, color=CO) {
+				S:Chip(angle=-95, color=CO, name=CHF) {
+					S:Chip(color=CO) {
+						E:Chip(angle=-90, color=CO) {
+							E:Chip(angle=90, color=CO) {
+								E:Chip(color=CO) {
+									E:Chip(color=CO) {
+										E:Frame(option=1, color=CO) {
+											N:Chip(angle=-ER, color=CO) { }
+											E:Cowl(option=5, color=COC_AC) {
+												E:Cowl(angle=-90, option=1, color=COC, effect=EFKG) {
+													N:Cowl(angle=-80, option=1, color=COC, effect=EFKG) {
+														W:Cowl(angle=-90, option=1, color=COC, effect=EFKG) {
+															N:Cowl(color=COC) {
+																N:Cowl(color=COC) {
+																	N:Cowl(color=COC) {
+																		N:Cowl(color=COC) { }
+																	}
+																}
+																S:Cowl(option=5, color=COC_AC) { }
+															}
+														}
+													}
+												}
+											}
+										}
+										E:Cowl(angle=90, option=1, color=COC, effect=EFKG) {
+											S:Cowl(angle=80, option=1, color=COC, effect=EFKG) {
+												W:Cowl(angle=90, color=COC) {
+													S:Cowl(color=COC) {
+														S:Cowl(angle=1, color=COC) { }
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							N:Chip(angle=-ABL, color=CO) { }
+						}
+						W:Chip(angle=-90, color=CO) {
+							W:Chip(angle=90, color=CO) {
+								W:Chip(color=CO) {
+									W:Chip(color=CO) {
+										W:Frame(option=1, color=CO) {
+											N:Chip(angle=EL, color=CO) { }
+											W:Cowl(option=5, color=COC_AC) {
+												W:Cowl(angle=-90, option=1, color=COC, effect=EFKG) {
+													N:Cowl(angle=-80, option=1, color=COC, effect=EFKG) {
+														E:Cowl(angle=-90, option=1, color=COC, effect=EFKG) {
+															N:Cowl(color=COC) {
+																N:Cowl(color=COC) {
+																	N:Cowl(color=COC) {
+																		N:Cowl(color=COC) { }
+																	}
+																}
+																S:Cowl(option=5, color=COC_AC) { }
+															}
+														}
+													}
+												}
+											}
+										}
+										W:Cowl(angle=90, option=1, color=COC, effect=EFKG) {
+											S:Cowl(angle=80, option=1, color=COC, effect=EFKG) {
+												E:Cowl(angle=90, color=COC) {
+													S:Cowl(color=COC) {
+														S:Cowl(angle=1, color=COC) { }
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							N:Chip(angle=-ABL, color=CO) { }
+						}
+						S:Chip(color=CO) {
+							S:Chip(color=CO3) {
+								S:Jet(angle=-90, power=SMOKE, color=CO3, effect=5) {
+									E:Frame(angle=120, option=1, color=CO3) {
+										E:Frame(angle=-30, option=1, color=CO3) {
+											W:Chip(angle=-YO, color=CO3) { }
+											S:RudderF(angle=-40, option=1, color=CO3) {
+												S:Frame(angle=90, option=1, color=CO) {
+													N:Trim(angle=-BI, color=CO3) {
+														S:Chip(color=CO3) {
+															S:Cowl(option=5, color=COC3) { }
+														}
+														N:Cowl(option=5, color=COC3) { }
+													}
+												}
+												S:Cowl(option=4, color=COC_AC) {
+													N:Cowl(color=COC3) {
+														N:Cowl(option=4, color=COC3) { }
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							E:Frame(angle=-G1, option=1, color=CO) {
+								E:Frame(angle=G2, option=1, color=CO) {
+									E:Wheel(angle=G3, brake=BLR, color=COW) { }
+								}
+							}
+							W:Frame(angle=-G1, option=1, color=CO) {
+								W:Frame(angle=G2, option=1, color=CO) {
+									W:Wheel(angle=G3, brake=BLR, color=COW) { }
+								}
+							}
+							S:Jet(angle=-90, power=SL, color=CO) { }
+						}
+						E:Frame(angle=-120, option=1, color=CO) {
+							E:Frame(angle=-150, option=1, color=CO) {
+								N:Rudder(angle=-27, color=CO) { }
+							}
+						}
+					}
+					N:Frame(angle=G4, color=COW) {
+						N:TrimF(angle=G5, option=1, spring=SP, damper=DA) {
+							S:Wheel(angle=HAN, brake=BLF, color=COW) { }
+						}
+					}
+					N:Cowl(angle=10, option=1, color=COC, effect=EFKG) {
+						N:Cowl(angle=-12, color=COC2) {
+							S:Cowl(color=COC) {
+								S:Cowl(angle=-2, color=COC) {
+									S:Cowl(angle=-3, color=COC) {
+										S:Cowl(color=COC) {
+											S:Cowl(color=COC3) {
+												E:Cowl(angle=-90, color=COC3) {
+													S:Cowl(angle=-15, color=COC3) {
+														S:Cowl(option=4, color=COC3) { }
+														W:Cowl(angle=-91, option=3, color=COC3) { }
+														E:Cowl(angle=-90.5, option=4, color=COC3) { }
+													}
+												}
+												W:Cowl(angle=-90, color=COC3) {
+													S:Cowl(angle=-15, color=COC3) {
+														S:Cowl(option=3, color=COC3) { }
+														E:Cowl(angle=-91, option=4, color=COC3) { }
+														W:Cowl(angle=-90.5, option=3, color=COC3) { }
+													}
+												}
+											}
+											E:Cowl(angle=-80, option=5, color=COC) { }
+											W:Cowl(angle=-80, option=5, color=COC) { }
+										}
+										E:Cowl(angle=-75, option=5, color=COC) { }
+										W:Cowl(angle=-75, option=5, color=COC) { }
+									}
+									E:Cowl(angle=-70, option=5, color=COC) { }
+									W:Cowl(angle=-70, option=5, color=COC) { }
+								}
+								E:Cowl(angle=-70, option=3, color=COC) { }
+								W:Cowl(angle=-70, option=4, color=COC) { }
+								N:Cowl(angle=-90, color=COC2) { }
+							}
+							N:Cowl(angle=80, option=1, color=COC, effect=EFKG) {
+								N:Cowl(angle=-160, option=1, color=COC, effect=EFKG) {
+									N:Cowl(angle=80, color=COC2) {
+										N:Cowl(angle=-20, color=COC2) {
+											N:Cowl(angle=-140, color=COC2) {
+												E:Cowl(angle=-135, option=4, color=COC2) { }
+												W:Cowl(angle=-135, option=3, color=COC2) { }
+												N:Cowl(angle=86, option=1, color=COC, effect=EFKG) {
+													N:Cowl(angle=-160, option=1, color=COC, effect=EFKG) {
+														N:Cowl(color=COC_DSP, effect=#0F00, name=CN_DSP) {
+															S:Cowl(angle=-77, color=COC2) {
+																E:Cowl(angle=-115, option=4, color=COC2) { }
+																W:Cowl(angle=-115, option=3, color=COC2) { }
+															}
+															E:Cowl(angle=-90, option=3, color=COC2) { }
+															W:Cowl(angle=-90, option=4, color=COC2) { }
+														}
+													}
+												}
+											}
+											E:Cowl(angle=-135, option=3, color=COC2) { }
+											W:Cowl(angle=-135, option=4, color=COC2) { }
+										}
+										E:Cowl(angle=-91, option=3, color=COC2) {
+											S:Cowl(angle=-1, color=COC2) { }
+										}
+										W:Cowl(angle=-91, option=4, color=COC2) {
+											S:Cowl(angle=-1, color=COC2) { }
+										}
+									}
+								}
+							}
+							N:Cowl(angle=-1, color=COC2) { }
+							E:Cowl(angle=-90, color=COC2) {
+								S:Cowl(angle=-2, option=5, color=COC2) { }
+							}
+							W:Cowl(angle=-90, color=COC2) {
+								S:Cowl(angle=-2, option=5, color=COC2) { }
+							}
+						}
+					}
+					N:Cowl(color=COC) {
+						E:Cowl(angle=-90, color=COC2) {
+							S:Cowl(angle=160, color=COC_I) {
+								S:Cowl(angle=-155, color=COC) {
+									S:Cowl(angle=-10, color=COC) {
+										S:Cowl(color=COC) {
+											S:Cowl(angle=10, color=COC) {
+												S:Cowl(angle=-20, option=4, color=COC) {
+													E:Cowl(angle=-92, color=COC) { }
+												}
+												W:Cowl(angle=-90, color=COC) {
+													S:Cowl(option=3, color=COC3) { }
+												}
+												E:Cowl(angle=-90, option=5, color=COC) { }
+												S:Cowl(angle=-90, color=COC_I) { }
+											}
+											W:Cowl(angle=-80, option=5, color=COC) { }
+											E:Cowl(angle=-85, option=5, color=COC) { }
+										}
+										W:Cowl(angle=-80, option=5, color=COC) { }
+										E:Cowl(angle=-85, option=5, color=COC) { }
+									}
+									W:Cowl(angle=-80, option=5, color=COC) { }
+									E:Cowl(angle=-80, option=5, color=COC2) { }
+									S:Cowl(angle=178, option=1, effect=EFKG) {
+										S:Cowl(angle=-178, option=4, color=COC2) { }
+									}
+								}
+							}
+						}
+						W:Cowl(angle=-90, color=COC2) {
+							S:Cowl(angle=160, color=COC_I) {
+								S:Cowl(angle=-155, color=COC) {
+									S:Cowl(angle=-10, color=COC) {
+										S:Cowl(color=COC) {
+											S:Cowl(angle=10, color=COC) {
+												S:Cowl(angle=-20, option=3, color=COC) {
+													W:Cowl(angle=-92, color=COC) { }
+												}
+												E:Cowl(angle=-90, color=COC) {
+													S:Cowl(option=4, color=COC3) { }
+												}
+												W:Cowl(angle=-90, option=5, color=COC) { }
+												S:Cowl(angle=-90, color=COC_I) { }
+											}
+											E:Cowl(angle=-80, option=5, color=COC) { }
+											W:Cowl(angle=-85, option=5, color=COC) { }
+										}
+										E:Cowl(angle=-80, option=5, color=COC) { }
+										W:Cowl(angle=-85, option=5, color=COC) { }
+									}
+									E:Cowl(angle=-80, option=5, color=COC) { }
+									W:Cowl(angle=-80, option=5, color=COC2) { }
+									S:Cowl(angle=178, option=1, effect=EFKG) {
+										S:Cowl(angle=-178, option=3, color=COC2) { }
+									}
+								}
+							}
+						}
+					}
+				}
+				S:Cowl(angle=135, option=1, color=COC, effect=EFKG) {
+					S:Cowl(angle=100, option=1, color=COC, effect=EFKG) {
+						S:Cowl(angle=-141, color=COC2) {
+							S:Cowl(angle=-15, color=0, effect=#A0FB) {
+								S:Cowl(angle=-15, color=0, effect=#A0FB) {
+									S:Cowl(angle=-15, color=0, effect=#A0FB) {
+										W:Cowl(angle=-92, option=3, color=0, effect=#A0FB) { }
+										E:Cowl(angle=-92, option=4, color=0, effect=#A0FB) { }
+									}
+									W:Cowl(angle=-92, color=0, effect=#A0FB) { }
+									E:Cowl(angle=-92, color=0, effect=#A0FB) { }
+								}
+								W:Cowl(angle=-92, color=0, effect=#A0FB) { }
+								E:Cowl(angle=-92, color=0, effect=#A0FB) { }
+							}
+							N:Cowl(angle=4, color=COC) {
+								N:Cowl(color=COC) {
+									N:Cowl(color=COC) {
+										E:Cowl(angle=-80, option=5, color=COC) { }
+										W:Cowl(angle=-80, option=5, color=COC) { }
+										N:Cowl(option=5, color=COC) { }
+									}
+									E:Cowl(angle=-75, option=5, color=COC) { }
+									W:Cowl(angle=-75, option=5, color=COC) { }
+								}
+								E:Cowl(angle=-70, option=5, color=COC) { }
+								W:Cowl(angle=-70, option=5, color=COC) { }
+							}
+							E:Cowl(angle=-70, option=4, color=COC2) { }
+							W:Cowl(angle=-70, option=3, color=COC2) { }
+							S:Cowl(angle=-90, color=COC2) {
+								W:Cowl(angle=-91, color=COC2) { }
+								E:Cowl(angle=-91, color=COC2) { }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+--最大値,最小値を決める関数
+function limit(val,min,max)
+	return math.min(max,math.max(min,val))
+end
+
+--符号を求める
+function math.sgn(val)
+	if val < 0 then return -1 elseif val > 0 then return 1 else return 0 end
+end
+
+--val を set まで step ずつ動かす
+function stepVal(val,set,step)
+	if val+step<set then
+		return val +step
+	elseif val-step>set then
+		return val -step
+	else
+		return set
+	end
+end
+
+--ワールドローカル変換(flag==trueでW→L, falseでL→W)
+function CnvWL(dx,dy,dz, cn, flag)
+	if flag then
+		return dx*_XX(cn)+dy*_XY(cn)+dz*_XZ(cn),dx*_YX(cn)+dy*_YY(cn)+dz*_YZ(cn),dx*_ZX(cn)+dy*_ZY(cn)+dz*_ZZ(cn)
+	else
+		return _X(cn)+dx*_XX(cn)+dy*_YX(cn)+dz*_ZX(cn),_Y(cn)+dx*_XY(cn)+dy*_YY(cn)+dz*_ZY(cn),_Z(cn)+dx*_XZ(cn)+dy*_YZ(cn)+dz*_ZZ(cn)
+	end
+end
+
+----劣化角速度　多分実用レベル　1Fに1回呼び出し
+Base = {}
+function Physic(cn)
+	Base[cn] = Base[cn] or {_YX(cn),_YY(cn),_YZ(cn),_ZX(cn),_ZY(cn),_ZZ(cn),_TICKS()}
+	local yx,yy,yz = CnvWL(Base[cn][1],Base[cn][2],Base[cn][3],cn,true)
+	local zx,zy,zz = CnvWL(Base[cn][4],Base[cn][5],Base[cn][6],cn,true)
+	if Base[cn][7]~=_TICKS() then
+		Base[cn] = {_YX(cn),_YY(cn),_YZ(cn),_ZX(cn),_ZY(cn),_ZZ(cn),_TICKS()}
+	end
+	return -(math.atan2(zz,zy)-math.pi/2)*30,(math.atan2(zz,zx)-math.pi/2)*30,(math.atan2(yx,yy))*30
+end
+
+--カウルの色を渡すと対応するチップの色を返す
+function colch2cw(col)
+	local str=string.format("%06x_",col)
+	local r=tonumber(string.sub (str, 1 , 2),16)
+	local g=tonumber(string.sub (str, 3 , 4),16)
+	local b=tonumber(string.sub (str, 5 , 6),16)
+	local p=0.7
+	r=math.floor( math.min(255, (r+math.min(128,r*p))*p +r*0.5 ) )
+　	g=math.floor( math.min(255, (g+math.min(128,g*p))*p +g*0.5 ) )
+	b=math.floor( math.min(255, (b+math.min(128,b*p))*p +b*0.5 ) )
+	return r*65536 + g*256 +b
+end
+
+--舵
+KeyPi = 0
+KeyRo = 0
+KeyYo = 0
+gw = 1		--ギア上げ下げｽｲｯﾁ
+cnt = {
+	["I"] = {0,0,0},		--積分項 p,y,r
+	["dif_old"] = {0,0,0}	--値保存用 p,y,r
+}
+
+--エンジン
+AnaPow = false	--trueでアナログ使っている
+slw = 1			--出力指定,速度指定切り替えｽｲｯﾁ
+smw = 0			--スモークｽｲｯﾁ
+enp = 0			--エンジン出力
+setV = 0		--設定速度
+slc_i = 0		--積分項
+difV_old = 0	--値保存用
+
+local ReadySKA = pcall(require,"shared/SharedKeyAssign.lua")
+if not ReadySKA then
+	SharedKeyAssign = {};
+	SharedKeyAssign.PitchUp = 1;
+	SharedKeyAssign.PitchDown = 0;
+	SharedKeyAssign.RollLeft = 2;
+	SharedKeyAssign.RollRight = 3;
+	SharedKeyAssign.YawLeft = 4;
+	SharedKeyAssign.YawRight = 6;
+	SharedKeyAssign.PowerUp = 8;
+	SharedKeyAssign.PowerDown = 5;
+	SharedKeyAssign.Gear = 10;
+	SharedKeyAssign.ModeChange = 12;
+	SharedKeyAssign.Fire = 7;
+	SharedKeyAssign.Shift = 9;
+	SharedKeyAssign.Option2 = 14;
+
+	SharedKeyAssign.PitchFunc = function()
+		return -_ANALOG(1)/1000;
+	end
+	SharedKeyAssign.RollFunc = function()
+		return _ANALOG(0)/1000;
+	end
+	SharedKeyAssign.YawFunc = function()
+		return -_ANALOG(2)/1000;
+	end
+	SharedKeyAssign.PowerFunc = function()
+		return 0 ;
+	end
+
+	SKA = SharedKeyAssign;
+end
+
+function main()
+	_ZOOM(80)
+	--ギア
+	gw = gw - _KEYDOWN(SKA.Gear)*2*gw	--ｽｲｯﾁ(==1でギアダウン)
+	G1 = G1 -gw*1.56	--主脚根元
+	G2 = G2 -gw*2.89	--主脚中間
+	G3 = G3 +gw*3.33	--主脚先端
+	G4 = G4 +gw*0.53	--前脚根元
+	G5 = G5 +gw*2		--主脚先端
+
+	--Gup : ギアアップで2, ダウンで0
+	--Gdown : アップで0, ダウンで2
+	local Gup, Gdown = 1-gw, 1+gw
+	BLF = Gup*10					--前輪ブレーキ
+	BLR = BLF +_KEY(SKA.Shift)*80	--後輪ブレーキ
+	SP = Gup/2 +Gdown/2*0.25		--前脚バネ
+	DA = Gup/2 						--前脚ダンパー
+
+	--エアブレーキ
+	ABL = stepVal(ABL, 180-_KEY(SKA.Shift)*30 , 5)
+
+	--舵の入力
+	KeyPi = stepVal(KeyPi, (_KEY(SKA.PitchUp) - _KEY(SKA.PitchDown))*3, 0.5)
+	KeyYo = stepVal(KeyYo, (_KEY(SKA.YawRight) - _KEY(SKA.YawLeft))*2, 1-Gdown*0.3)
+	KeyRo = stepVal(KeyRo, (_KEY(SKA.RollLeft) - _KEY(SKA.RollRight))*8, 2)
+	local AnaPi = SKA.PitchFunc()*1.8
+	local AnaYo = SKA.YawFunc()*3
+	local AnaRo = SKA.RollFunc()*5
+--[[
+	--確認用
+	out(7,"P :  Ana[",AnaPi,"]    Key[",KeyPi,"]")
+	out(8,"R :  Ana[",AnaRo,"]    Key[",KeyRo,"]")
+	out(9,"Y :  Ana[",AnaYo,"]    Key[",KeyYo,"]")
+]]
+	--舵の制御
+	local wx,wy,wz = Physic(CHF)
+	local input = {	--ここで符号の調整をした
+		-wx +KeyPi +AnaPi,
+		 wy -KeyYo -AnaYo,
+		 wz +KeyRo +AnaRo }
+	local TakeOffSupport = Gdown*math.max( math.sgn(_H(CHF))*2 , 0)
+	local K = {	--係数P,Y,R
+		["p"] = {5+TakeOffSupport, 5,                           2},
+		["i"] = {2.5,              1+_KEY(SKA.Shift)*2,         1.5},
+		["lim"]={0.5,              0.5+_KEY(SKA.Shift)*2+Gdown, 0.5},
+		["d"] = {0, 0, 0} }
+	local output = {0, 0, 0}
+	for i=1,3 do
+		local dif = input[i]
+		local P = dif*K["p"][i]
+		cnt["I"][i] = cnt["I"][i] +dif*K["i"][i]
+		cnt["I"][i] = limit(cnt["I"][i],-K["lim"][i],K["lim"][i])
+		local D = (dif - cnt["dif_old"][i])*K["d"][i]
+		cnt["dif_old"][i] = dif
+		output[i] = P+cnt["I"][i]+D
+	end
+	local outP = output[1]
+	local outY = output[2]
+	local outR = output[3]
+
+	EL = outR +180		--左エルロン
+	ER = outR +180		--右エルロン
+	BI = outP +40		--水平尾翼
+	YO = outY +180		--ラダー
+
+	local hap = 180 +(KeyYo+AnaYo)*Gdown*4	--ステアリング操作
+	HAN = HAN+(hap-HAN)/2	--前輪角度
+
+	--エンジン
+	--アナログ操作をすると，アナログモード
+	if math.mod(SKA.PowerFunc(), 1) ~= 0 then
+		slw = 1
+		AnaPow = true
+	end
+	--ﾚﾊﾞｰ中立+Option2でアナログモード解除
+	if _KEYDOWN(SKA.Option2)==1 and SKA.PowerFunc()==0 then
+		AnaPow = false
+		enp = 0
+	end
+	
+	local V = -_VZ(CHF)*3.6		--速度
+
+	if AnaPow then	--アナログ使ってるとき
+		setV = math.floor(V*0.1+0.5)*10		--設定速度は現在速度に合わせる
+		enp = ( 1+SKA.PowerFunc() )/2 *100	--エンジン出力 [%]
+		SL = enp*800	--JET出力
+
+		if SKA.PowerFunc()==-1 then			--レバーを-1まで戻すとアナログモード解除
+			AnaPow = false
+		end
+
+	else			--アナログ使ってないとき	
+		--出力指定,速度指定切り替え (==1で出力指定)
+		slw = slw+_KEYDOWN(SKA.ModeChange) -_KEYDOWN(SKA.ModeChange)*slw*2
+		--出力指定モード
+		enp = enp + (_KEY(SKA.PowerUp)-_KEY(SKA.PowerDown))*2*slw -(  (_KEY(SKA.PowerUp)*_KEY(SKA.PowerDown)) +(1-slw)  )*enp	--エンジン出力 [%]
+		enp = limit(enp, -20, 100)
+
+		--速度指定モード
+		setV = ( setV + (_KEY(SKA.PowerUp)-_KEY(SKA.PowerDown))*5 )*(1-slw) + math.floor(V*0.1+0.5)*10 *slw	--設定速度 [km/h]
+		setV = limit(setV,0,510)
+		--PID
+		local difV = setV-V
+		local Kp,Ki,Kd = 8000, 500, 3000	--係数
+		local slc_p = difV*Kp
+		slc_i = slc_i +difV*Ki*(1-slw)
+		slc_i = limit(slc_i,-80000,80000)
+		local slc_d = (difV-difV_old)*Kd
+		difV_old = difV
+		local slc_pid = limit(slc_p+slc_i+slc_d, -150000, 150000)
+		SL = enp*700*slw +slc_pid*(1-slw)	--JET出力
+	end
+
+	--スモーク
+	smw = smw+_KEYDOWN(SKA.Fire) -_KEYDOWN(SKA.Fire)*smw*2
+	SMOKE = smw*2501	--スモーク用JET出力
+
+	--画面表示
+	out(1,string.format("%05.1fkm/h   Gsp[%05.1fkm/h]",math.abs(V), math.abs(V)*(_FPS()/_BASE())) )
+	
+	if slw == 1 then
+		out(2,string.format("Engine   : %03d%%",enp))
+	else
+		out(2,string.format("Set         : %03dkm/h",math.abs(setV)))
+	end
+
+	if smw == 1 then
+		out(3,"Smoke  : ON")
+	else
+		out(3,"Smoke  : OFF")
+	end
+
+	if gw == 1 then
+		out(4,"Gear       : DOWN")
+	else
+		out(4,"Gear       : UP")
+	end
+
+	if AnaPow then out(5,"Analog Mode") end
+	if not ReadySKA then out(0,"Welcome to Rigid-Chips World.") end
+
+	--色
+	CO = colch2cw(COC)
+	CO3 =  colch2cw(COC3)
+	
+--[[
+	統合曲芸練習機 AiryEbi2_JAT
+
+	----- 操作方法 -----
+	・SKA
+	ModeChange	: 速度指定,出力指定
+	Shift		: ブレーキ
+	Fire		: スモーク
+	ﾚﾊﾞｰ中立+Option2 : アナログモード解除
+	
+	†エンジン出力の操作†
+	SKA.PowerUp と SKA.PowerDown でスロットル，設定速度をキー操作します．
+	SKA.PowerFunc() でスロットルをアナログ操作します
+
+	[ ☆ SKA.PowerFunc()をアナログ操作用に設定している場合 ☆ ]
+	例)
+	SharedKeyAssign.PowerFunc = function()
+		return _ANALOG(5)/1000 ;
+	end
+	→  SKA.PowerFunc()の返り値 -1～1 が，エンジン出力の 0～100% に対応します．（スロットルレバーを想定）
+		レバーを動かすとアナログモードになります．
+		アナログモード時は，出力指定で固定され，SKA.PowerUp, SKA.PowerDown, SKA.ModeChange が使用不能になります．
+		SKA.PowerFunc()==-1(0%まで戻す) または，SKA.PowerFunc()==0(中立)＋SKA.Option2 でアナログモード解除ができます．
+
+		アナログ操作時はエンジン出力が少し強くなります．
+		（アナログ操作で最大80000，キー操作で最大70000）
+
+	[ ☆ SKA.PowerFunc()をキー操作用に設定している場合 ☆ ]
+	例)
+	SharedKeyAssign.PowerFunc = function()
+		return _KEY(SKA.PowerUp)-_KEY(SKA.PowerDown);
+	end
+	→  SKA.PowerFunc()は使われません．
+
+
+
+	・SKAを導入していない時
+	↑↓ or _ANALOG(1)	: エレベータ
+	←→ or _ANALOG(0)	: エルロン
+	ZC or _ANALOG(2)	: ラダー
+	SX		: スロットル,速度変更
+	D		: ブレーキ
+	V		: ギア
+	F		: 速度指定,出力指定
+	A		: スモーク
+
+	----- 見た目用Val変数メモ -----
+	・color
+	CO		: 胴体チップ
+	CO3		: 後部チップ
+	COC		: 胴体カウル
+	COC2	: 機首カウル
+	COC3	: 後部カウル
+	COW		: 車輪
+	COC_I	: インテークとノズルの奥の部分
+	COC_DSP	: コクピットにある計器盤っぽいところ
+	COC_AC	: 翼端のアクセント
+
+	・effect
+	EFKG	: 透明カウル
+]]
+end}

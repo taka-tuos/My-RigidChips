@@ -80,5 +80,5 @@ function OnFrame()
 	nk=_VEL(0)*3.6
 	pw=pw*0.9+-179*0.1
 	VAL = _TICKS()*pw
-	T = 90-(25*((nk-200)/300)+55)
+	T = 10
 end}

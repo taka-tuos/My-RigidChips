@@ -16,14 +16,14 @@ Body
 			S:Rudder(angle=10) {
 				S:Rudder(angle=170) {
 					E:Frame(angle=10, option=1) {
-						E:RLW(angle=-100, power=P, brake=B2, effect=3) { }
+						E:Wheel(angle=-100, power=P, brake=B2, effect=3) { }
 					}
 				}
 			}
 			S:Rudder(angle=-10) {
 				S:Rudder(angle=-170) {
 					W:Frame(angle=10, option=1) {
-						W:RLW(angle=-100, power=-P, brake=B2, effect=3) { }
+						W:Wheel(angle=-100, power=-P, brake=B2, effect=3) { }
 					}
 				}
 			}
@@ -33,7 +33,7 @@ Body
 				N:Rudder(angle=170) {
 					W:Frame(angle=10, option=1) {
 						W:RudderF(angle=-S, option=1) {
-							E:RLW(angle=-80, brake=B, effect=3) { }
+							E:Wheel(angle=-80, power=P, brake=B, effect=3) { }
 						}
 					}
 				}
@@ -42,7 +42,7 @@ Body
 				N:Rudder(angle=-170) {
 					E:Frame(angle=10, option=1) {
 						E:RudderF(angle=-S, option=1) {
-							W:RLW(angle=-80, brake=B, effect=3) { }
+							W:Wheel(angle=-80, power=-P, brake=B, effect=3) { }
 						}
 					}
 				}
@@ -204,9 +204,9 @@ function OnFrame()
 	B2=_LINER(B2,key4*100+_KEY(15)*200,100)
 	B=_LINER(B,key4*200,100)
 	
-	P=_LINER(P,key0*10000-key1*5000,15000)
+	P=_LINER(P,key0*15000-key1*5000,15000)
 	
-	S=_LINER(S,_NORMANALOG(0)*80,15)
+	S=_LINER(S,_NORMANALOG(0)*30,15)
 	
 	_ZOOM(_GETVIEWZOOM())
 	

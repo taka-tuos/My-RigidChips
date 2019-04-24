@@ -429,10 +429,12 @@ Body
 Lua
 {
 require("daretoku_taka/xgui.lua")
-require("daretoku_taka/xhud.lua")
-require("daretoku_taka/libccvx2.lua")
+require("daretoku_taka/xhud-le.lua")
+require("daretoku_taka/libccvx3.lua")
+require("daretoku_taka/libweapon.lua")
+require("daretoku_taka/libgun2.lua")
 
-_mn = 0
+_limitlist={1500,1800,2000,2200,2500,64512}
 
 _prvtbl = InitPRVTable()
 
@@ -458,29 +460,19 @@ RD_PID = XPID_new()
 
 _gt=0
 
-function OnFrame()
-	CCVXOnFrame(false)
+local inited = false
 
-	ShowSplash("CCVX-12 Grand+Finale")
+function OnFrame()
+	if not inited then
+		CCVXOnInit({ Gun={func=_KEY,fire=7,op=95000,an=10,ang=45} })
+		inited = true
+	end
 	
-	--if not _inited then
-	--	InitAAM(AAM_Callback)
-	--	_inited = true
-	--end
+	CCVXOnFrame(true)
+
+	ShowSplash("RenGan")
 	
-	--if _KEYDOWN(1) == 1 then
-	--	EnableAAM()
-	--end
-	
-	--CalcNTP(1,_KEYDOWN(6)*_KEY(0),0)
-	--CalcNTP(2,_KEYDOWN(7)*_KEY(0),0)
-	
-	--_RAMIEL3D(_NPOS(_ntp[1]))
-	--_RAMIEL3D(_NPOS(_ntp[2]))
-	
-	--MoveAAM()
-	
-	local p,r,v = GetPRVAnalog(_prvtbl)
+	local p,r,v = GetPRVBAnalog(_prvtbl,{p=P,b=0})
 	
 	P=p
 	R=r
@@ -502,7 +494,7 @@ function OnFrame()
 		_gt = 180 - _gt
 	end
 	
-	if _KEY(2) == 1 and _E(_G['A'.._v]) == _OPTION(_G['A'.._v]) and _G['V'.._v] == 0 then
+	--[[if _KEY(2) == 1 and _E(_G['A'.._v]) == _OPTION(_G['A'.._v]) and _G['V'.._v] == 0 then
 		_G['G'.._v]=_OPTION(_G['A'.._v])
 		GJ=_OPTION(_G['A'.._v])*4
 		_v=math.mod(_v+1,10)
@@ -512,10 +504,12 @@ function OnFrame()
 	
 	for i=0,9 do
 		_G['V'..i]=_LINER(_G['V'..i],_tv[i+1],_tn/2)
-	end
+	end]]--
 	
 	CheckLimit()
 	
 	XHUD.Draw()
+	
+	Weapon.Stat()
 end
 }

@@ -1,0 +1,542 @@
+// [RCD] 
+Val
+{
+	B(default=0, max=10000000000)
+	B2(default=0, max=10000000000)
+	BL(default=0, max=16777216)
+	DM(default=0, max=1)
+	DMF(default=0, max=1)
+	P(default=0, min=-10000000000, max=10000000000)
+	R(default=0, max=16777216)
+	S(default=0, min=-360, max=360)
+	SP(default=0, max=1)
+	SPF(default=0, max=1)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=90) {
+			S:Chip(angle=90) {
+				N:Chip() {
+					E:Chip() {
+						N:Frame(angle=-20, option=1, spring=SP, damper=DM) {
+							E:Wheel(angle=90, power=P, brake=B2, effect=4) { }
+						}
+						E:Cowl(angle=80) {
+							E:Cowl(angle=-160) {
+								E:Cowl(angle=170) {
+									E:Cowl(angle=90) {
+										N:Cowl() {
+											N:Cowl() {
+												W:Cowl(angle=90) {
+													W:Cowl(angle=110, option=1, effect=#F0FB) {
+														W:Cowl(angle=140, option=1, effect=#F0FB) {
+															W:Cowl(angle=-70) {
+																W:Cowl(angle=-90, option=1, effect=#F0FB) {
+																	N:Cowl(angle=-160) {
+																		W:Cowl() { }
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										E:Cowl(angle=70) {
+											N:Cowl() { }
+										}
+									}
+								}
+							}
+						}
+						N:Cowl(angle=20) {
+							N:Cowl(angle=10) { }
+						}
+					}
+					N:Cowl() {
+						W:Cowl(angle=20, option=1) {
+							W:Cowl(angle=160, option=1) { }
+						}
+						E:Cowl(angle=20, option=1) {
+							E:Cowl(angle=160, option=1) { }
+						}
+						E:Cowl(angle=90) {
+							E:Cowl(angle=-100) {
+								S:Cowl() { }
+								N:Cowl(option=4) { }
+							}
+							N:Cowl() {
+								W:Cowl(angle=-90, option=1, effect=#F0FB) {
+									W:Cowl(angle=-90) { }
+								}
+							}
+						}
+						W:Cowl(angle=90) {
+							W:Cowl(angle=-100) {
+								S:Cowl() { }
+								N:Cowl(option=3) { }
+							}
+							N:Cowl() {
+								E:Cowl(angle=-90, option=1, effect=#F0FB) {
+									E:Cowl(angle=-90) { }
+								}
+							}
+						}
+						N:Cowl(angle=90) {
+							N:Cowl(angle=90) {
+								N:Cowl() { }
+							}
+						}
+						N:Cowl(angle=30, option=5, color=BL, effect=#0FFB) { }
+					}
+					W:Chip() {
+						N:Frame(angle=-20, option=1, spring=SP, damper=DM) {
+							W:Wheel(angle=90, power=-P, brake=B2, effect=4) { }
+						}
+						W:Cowl(angle=80) {
+							W:Cowl(angle=-160) {
+								W:Cowl(angle=170) {
+									W:Cowl(angle=90) {
+										N:Cowl() {
+											N:Cowl() {
+												E:Cowl(angle=90) {
+													E:Cowl(angle=110, option=1, effect=#F0FB) {
+														E:Cowl(angle=140, option=1, effect=#F0FB) {
+															E:Cowl(angle=-70) {
+																E:Cowl(angle=-90, option=1, effect=#F0FB) {
+																	N:Cowl(angle=-160) {
+																		E:Cowl() { }
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										W:Cowl(angle=70) {
+											N:Cowl() { }
+										}
+									}
+								}
+							}
+						}
+						N:Cowl(angle=20) {
+							N:Cowl(angle=10) { }
+						}
+					}
+				}
+				S:Chip() {
+					S:Chip() {
+						E:Frame(angle=-10, option=1, spring=SPF, damper=DMF) {
+							E:RudderF(angle=S, option=1) {
+								W:Wheel(angle=80, power=-P, brake=B, effect=4) { }
+							}
+						}
+						W:Frame(angle=-10, option=1, spring=SPF, damper=DMF) { }
+						W:Cowl(angle=20, option=1) {
+							W:Cowl(angle=160, option=1) {
+								W:Cowl(angle=20) { }
+							}
+						}
+						E:Cowl(angle=20, option=1) {
+							E:Cowl(angle=160, option=1) {
+								E:Cowl(angle=20) { }
+							}
+						}
+						S:Cowl() {
+							E:Cowl() {
+								W:Cowl(angle=100, option=1, effect=#F0FB) {
+									W:Cowl(angle=160, option=1, effect=#F0FB) {
+										W:Cowl(angle=-80, option=1, effect=#F0FB) {
+											N:Cowl(angle=180, option=5) { }
+										}
+									}
+								}
+							}
+							W:Cowl() {
+								E:Cowl(angle=100, option=1, effect=#F0FB) {
+									E:Cowl(angle=160, option=1, effect=#F0FB) {
+										E:Cowl(angle=-80, option=1, effect=#F0FB) {
+											N:Cowl(angle=180, option=5) { }
+										}
+									}
+								}
+							}
+						}
+						W:Frame(angle=-10, option=1, spring=SPF, damper=DMF) {
+							W:RudderF(angle=S, option=1) {
+								E:Wheel(angle=80, power=P, brake=B, effect=4) { }
+							}
+						}
+					}
+					N:Chip(angle=20) { }
+					N:TrimF(angle=90, option=1) {
+						S:Rudder(angle=-90) {
+							E:Chip() { }
+						}
+					}
+					N:Cowl(angle=20) {
+						N:Cowl(angle=60, option=5) { }
+					}
+					E:Cowl() {
+						E:Cowl(angle=80) {
+							E:Cowl(angle=-160) {
+								E:Cowl(angle=170) {
+									E:Cowl(angle=90) {
+										S:Cowl(angle=10) {
+											S:Cowl(angle=30) {
+												E:Cowl(angle=60, option=4) { }
+											}
+											E:Cowl(angle=60) { }
+										}
+										E:Cowl(angle=60) { }
+									}
+								}
+							}
+						}
+					}
+					W:Cowl() {
+						W:Cowl(angle=80) {
+							W:Cowl(angle=-160) {
+								W:Cowl(angle=170) {
+									W:Cowl(angle=90) {
+										S:Cowl(angle=10) {
+											S:Cowl(angle=30) {
+												W:Cowl(angle=60, option=3) { }
+											}
+											W:Cowl(angle=60) { }
+										}
+										W:Cowl(angle=60) { }
+									}
+								}
+							}
+						}
+					}
+					N:Cowl(angle=90) {
+						N:Cowl(angle=100) {
+							N:Cowl(angle=10) {
+								N:Cowl(angle=5) {
+									E:Cowl(option=3) { }
+									W:Cowl(option=4) { }
+								}
+								E:Cowl() { }
+								W:Cowl() { }
+							}
+							E:Cowl() { }
+							W:Cowl() { }
+							S:Cowl(angle=-30) {
+								E:Cowl(angle=40) { }
+								W:Cowl(angle=40) { }
+								S:Cowl(angle=40) {
+									S:Cowl(angle=30) {
+										S:Cowl() { }
+										W:Cowl(angle=40) {
+											S:Cowl(option=4) { }
+										}
+										E:Cowl(angle=40) {
+											S:Cowl(option=3) { }
+										}
+									}
+									W:Cowl(angle=40) { }
+									E:Cowl(angle=40) { }
+								}
+							}
+						}
+					}
+				}
+				W:Cowl() {
+					W:Cowl(angle=90) {
+						N:Cowl() { }
+						S:Cowl() { }
+						W:Cowl(angle=90) { }
+					}
+				}
+				E:Cowl() {
+					E:Cowl(angle=90) {
+						S:Cowl() { }
+						N:Cowl() { }
+						E:Cowl(angle=90) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+function _NORMANALOG(n)
+	local v = _ANALOG(n)
+	if v < 100 and v > -100 then v = 0 end
+	return v/1000
+end
+
+function DrawDigits(x,y,s,n)
+	x = x + (s/2 + s/8)*4
+	local i,j
+	
+	if n < 10 then j = 1
+	elseif n < 100 then j = 2
+	else j = 3 end
+	
+	for i=1,j do
+		local d = math.floor(math.mod(n,10))
+		DrawDigit[d](x,y,s)
+		x = x - s/2 - s/8
+		n = n / 10
+	end
+end
+
+DrawDigit={
+[0]=function(x,y,s)
+	--¶‚Ìcü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x,y+s)
+
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y)
+	XGUI.Line2D(x+s/2,y+s)
+
+	--ã‚Ì‰¡ü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x+s/2,y)
+
+	--‰º‚Ì‰¡ü
+	XGUI.Move2D(x,y+s)
+	XGUI.Line2D(x+s/2,y+s)
+end,
+[1]=function(x,y,s)
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y)
+	XGUI.Line2D(x+s/2,y+s)
+end,
+[2]=function(x,y,s)
+	--¶‚Ìcü
+	XGUI.Move2D(x,y+s/2)
+	XGUI.Line2D(x,y+s)
+
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y)
+	XGUI.Line2D(x+s/2,y+s/2)
+
+	--ã‚Ì‰¡ü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x+s/2,y)
+
+	--^‚ñ’†‚Ì‰¡ü
+	XGUI.Move2D(x,y+s/2)
+	XGUI.Line2D(x+s/2,y+s/2)
+
+	--‰º‚Ì‰¡ü
+	XGUI.Move2D(x,y+s)
+	XGUI.Line2D(x+s/2,y+s)
+end,
+[3]=function(x,y,s)
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y)
+	XGUI.Line2D(x+s/2,y+s)
+
+	--ã‚Ì‰¡ü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x+s/2,y)
+
+	--^‚ñ’†‚Ì‰¡ü
+	XGUI.Move2D(x,y+s/2)
+	XGUI.Line2D(x+s/2,y+s/2)
+
+	--‰º‚Ì‰¡ü
+	XGUI.Move2D(x,y+s)
+	XGUI.Line2D(x+s/2,y+s)
+end,
+[4]=function(x,y,s)
+	--¶‚Ìcü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x,y+s/2)
+
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y)
+	XGUI.Line2D(x+s/2,y+s)
+
+	--^‚ñ’†‚Ì‰¡ü
+	XGUI.Move2D(x,y+s/2)
+	XGUI.Line2D(x+s/2,y+s/2)
+end,
+[5]=function(x,y,s)
+	--¶‚Ìcü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x,y+s/2)
+
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y+s/2)
+	XGUI.Line2D(x+s/2,y+s)
+
+	--ã‚Ì‰¡ü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x+s/2,y)
+
+	--^‚ñ’†‚Ì‰¡ü
+	XGUI.Move2D(x,y+s/2)
+	XGUI.Line2D(x+s/2,y+s/2)
+
+	--‰º‚Ì‰¡ü
+	XGUI.Move2D(x,y+s)
+	XGUI.Line2D(x+s/2,y+s)
+end,
+[6]=function(x,y,s)
+	--¶‚Ìcü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x,y+s)
+
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y+s/2)
+	XGUI.Line2D(x+s/2,y+s)
+
+	--ã‚Ì‰¡ü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x+s/2,y)
+
+	--^‚ñ’†‚Ì‰¡ü
+	XGUI.Move2D(x,y+s/2)
+	XGUI.Line2D(x+s/2,y+s/2)
+
+	--‰º‚Ì‰¡ü
+	XGUI.Move2D(x,y+s)
+	XGUI.Line2D(x+s/2,y+s)
+end,
+[7]=function(x,y,s)
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y)
+	XGUI.Line2D(x+s/2,y+s)
+
+	--ã‚Ì‰¡ü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x+s/2,y)
+end,
+[8]=function(x,y,s)
+	--¶‚Ìcü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x,y+s)
+
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y)
+	XGUI.Line2D(x+s/2,y+s)
+
+	--ã‚Ì‰¡ü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x+s/2,y)
+
+	--^‚ñ’†‚Ì‰¡ü
+	XGUI.Move2D(x,y+s/2)
+	XGUI.Line2D(x+s/2,y+s/2)
+
+	--‰º‚Ì‰¡ü
+	XGUI.Move2D(x,y+s)
+	XGUI.Line2D(x+s/2,y+s)
+end,
+[9]=function(x,y,s)
+	--¶‚Ìcü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x,y+s/2)
+
+	--‰E‚Ìcü
+	XGUI.Move2D(x+s/2,y)
+	XGUI.Line2D(x+s/2,y+s)
+
+	--ã‚Ì‰¡ü
+	XGUI.Move2D(x,y)
+	XGUI.Line2D(x+s/2,y)
+
+	--^‚ñ’†‚Ì‰¡ü
+	XGUI.Move2D(x,y+s/2)
+	XGUI.Line2D(x+s/2,y+s/2)
+
+	--‰º‚Ì‰¡ü
+	XGUI.Move2D(x,y+s)
+	XGUI.Line2D(x+s/2,y+s)
+end,
+}
+
+_tecset=true
+_tecedge=false
+
+function OnFrame()
+	XGUI.SetDrawColorRGB(0,0,0)
+	
+	local i
+	
+	for i=-8,40 do
+		XGUI.Move2D(_WIDTH()/2-48,_HEIGHT()-160+i)
+		XGUI.Line2D(_WIDTH()/2+48,_HEIGHT()-160+i)
+	end
+	
+	XGUI.SetDrawColorRGB(255,255,255)
+	
+	DrawDigits(_WIDTH()/2-(16/8*2+16*3)*1.333,_HEIGHT()-160,32,_VEL(0)*3.6)
+	
+	_tecedge=false
+	
+	if _KEYDOWN(6) == 1 then
+		_tecset = not _tecset
+		_tecedge = true
+	end
+	
+	local key4 = -_NORMANALOG(5)
+	local key0 = _NORMANALOG(5)
+	local key1 = 0
+	
+	if key0 < 0 then
+		if _KEY(14) == 1 then
+			key1 = -key0
+		end
+		key0 = 0
+	end
+	
+	if key4 < 0 or key1 > 0 then key4 = 0 end
+	
+	BL = (math.floor(223*key4)+32)*65536
+	
+	B2=_LINER(B2,key4*100+_KEY(15)*200,100)
+	B=_LINER(B,key4*200,100)
+	
+	P=_LINER(P,key0*15000-key1*5000,15000)
+	
+	S=_LINER(S,_NORMANALOG(0)*30,15)
+	
+	_ZOOM(_GETVIEWZOOM())
+	
+	if _tecset then
+		SP=0.175
+		SPF=0.175
+		DM=0.2
+		DMF=0.2
+	else
+		SP=1
+		SPF=1
+		DM=1
+		DMF=1
+	end
+end
+}

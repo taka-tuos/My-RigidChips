@@ -258,6 +258,7 @@ X_PID = {XPID_new(),XPID_new(),XPID_new(),XPID_new(),XPID_new(),XPID_new(),XPID_
 Y_PID = {XPID_new(),XPID_new(),XPID_new(),XPID_new(),XPID_new(),XPID_new(),XPID_new(),XPID_new()}
 
 function OnFrameAGC()
+	local i
 	for i=1,__agc_count do
 		local agsc=_G['AGSC'..i]
 		local agac=_G['AGAC'..i]
@@ -425,7 +426,7 @@ __agc_next=0
 function OnFrame()
 	CCVXOnFrame(true)
 
-	ShowSplash("XF-3 Phantom")
+	ShowSplash("XA-1 StrikePigeon")
 	
 	if not _inited then
 		InitAAM(AAM_Callback)

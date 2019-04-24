@@ -1,0 +1,319 @@
+// [RCD] 
+Val
+{
+	P(default=0, max=10000000000)
+	P1(default=0, min=-90, max=90)
+	P2(default=0, min=-90, max=90)
+	P3(default=0, min=-90, max=90)
+	P4(default=0, min=-90, max=90)
+	RD(default=0, min=-90, max=90)
+	RP(default=0, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=170, option=1) {
+			S:Frame(angle=-170, option=1) {
+				S:Frame(angle=90) {
+					S:Weight(angle=90, option=2) {
+						N:Trim() {
+							N:Chip() {
+								S:Frame(angle=90, spring=1, damper=1) {
+									S:TrimF(spring=1, damper=1) {
+										S:TrimF(option=1, spring=1, damper=1) {
+											S:RLW(angle=90, power=P) {
+												S:Trim(angle=P2, color=#202020, name=AP2) {
+													S:Chip(color=#202020) {
+														S:Chip(color=#202020) { }
+													}
+												}
+												N:Trim(angle=P1, color=#202020, name=AP1) {
+													N:Chip(color=#202020) {
+														N:Chip(color=#202020) { }
+													}
+												}
+											}
+											S:Frame(angle=90, name=AP0) { }
+											E:Cowl(angle=90, option=1) {
+												E:Cowl(angle=90, option=1) {
+													E:Cowl(angle=90, option=1) {
+														N:Cowl(angle=-20) {
+															N:Cowl(angle=60) {
+																E:Cowl(angle=25, option=3) { }
+																W:Cowl(angle=25, option=4) { }
+															}
+															E:Cowl(angle=20, option=4) { }
+															W:Cowl(angle=20, option=3) { }
+														}
+													}
+													N:Cowl(angle=-60) {
+														E:Cowl(angle=90) { }
+														W:Cowl(angle=90) { }
+														N:Cowl(angle=-10) {
+															E:Cowl(angle=90) { }
+															W:Cowl(angle=90) { }
+														}
+													}
+												}
+												N:Cowl(angle=-20) {
+													N:Cowl(angle=60) {
+														E:Cowl(angle=25, option=3) { }
+														W:Cowl(angle=25, option=4) { }
+													}
+													E:Cowl(angle=20, option=4) { }
+													W:Cowl(angle=20, option=3) { }
+												}
+											}
+											N:Cowl(angle=180, option=1) {
+												S:Cowl(angle=60) {
+													W:Cowl(angle=-90, option=3) { }
+													E:Cowl(angle=-90, option=4) { }
+												}
+											}
+										}
+									}
+								}
+								E:Frame(angle=30) {
+									E:Frame(angle=-110) {
+										N:Chip() { }
+										S:Chip() { }
+									}
+								}
+								W:Frame(angle=30) {
+									W:Frame(angle=-110) {
+										N:Chip() { }
+										S:Chip() { }
+									}
+								}
+								N:TrimF(option=1) {
+									N:TrimF(angle=90, option=1) {
+										N:RudderF(angle=90, option=1, spring=1, damper=1) {
+											N:RudderF(angle=-80, option=1) {
+												N:RLW(power=RP) {
+													E:Trim(angle=RD) { }
+													W:Trim(angle=RD) { }
+												}
+												N:Cowl(angle=180) {
+													N:Cowl() { }
+													E:Cowl(angle=90, option=1, effect=#F0FB) {
+														S:Cowl(angle=160, option=1, effect=#F0FB) {
+															W:Cowl(angle=-90) {
+																S:Cowl(option=5) { }
+															}
+														}
+													}
+													S:Cowl(angle=-5, option=5) { }
+													S:Cowl(angle=5, option=5) { }
+												}
+											}
+										}
+									}
+								}
+								N:Cowl() {
+									N:Cowl() {
+										W:Cowl(angle=90, option=4) { }
+										E:Cowl(angle=90, option=3) { }
+										N:Cowl(angle=120) {
+											W:Cowl(angle=90, option=3) { }
+											E:Cowl(angle=90, option=4) { }
+										}
+									}
+								}
+							}
+						}
+						S:Cowl() {
+							S:Cowl(angle=130) {
+								S:Cowl(color=#404020, effect=#70FB) {
+									S:Cowl(angle=40) {
+										W:Cowl(angle=90, color=#404020, effect=#70FB) { }
+										S:Cowl(angle=10) {
+											W:Cowl(angle=85) {
+												N:Cowl(option=4) { }
+											}
+											E:Cowl(angle=85) {
+												N:Cowl(option=3) { }
+											}
+										}
+										E:Cowl(angle=90, color=#404020, effect=#70FB) { }
+									}
+									W:Cowl(angle=90, color=#404020, effect=#70FB) { }
+									E:Cowl(angle=90, color=#404020, effect=#70FB) { }
+								}
+								W:Cowl(angle=85, option=4) {
+									S:Cowl(option=3) { }
+								}
+								E:Cowl(angle=85, option=3) {
+									S:Cowl(option=4) { }
+								}
+							}
+							W:Cowl(angle=85, option=3) {
+								N:Cowl() {
+									N:Cowl() {
+										N:Cowl() {
+											N:Cowl() {
+												N:Cowl(angle=5, option=3) { }
+											}
+										}
+									}
+								}
+							}
+							E:Cowl(angle=85, option=4) { }
+						}
+						E:Cowl(angle=85) {
+							N:Cowl() {
+								N:Cowl() {
+									N:Cowl() {
+										N:Cowl(angle=5, option=4) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+maf = require("daretoku_taka/maf.lua")
+require("daretoku_taka/xplane.lua")
+
+local pidTable = xpInitPID()
+
+pidTable.pow.tgt = 20
+pidTable.pow.stp = 10
+
+pidTable.rol.tgt = 5
+pidTable.rol.kp  = 8
+pidTable.rol.ki  = 6
+pidTable.rol.kd  = 0
+pidTable.rol.il  = 15
+
+pidTable.pit.tgt = 3
+pidTable.pit.kp  = 8
+pidTable.pit.ki  = 6
+pidTable.pit.kd  = 0
+pidTable.pit.il  = 15
+
+pidTable.yaw.tgt = 8
+pidTable.yaw.kp  = 8
+pidTable.yaw.ki  = 6
+pidTable.yaw.kd  = 0
+pidTable.yaw.il  = 15
+
+pidTable.brk.tgt = 30
+pidTable.brk.stp = 10
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function main()
+	if not inited then
+		xpOnInit()
+		inited = true
+	end
+	
+	local a,d = xpOnFrame()
+	
+	if a then
+		out(0,"ANALOG MODE")
+	else
+		out(0,"DIGITAL MODE")
+	end
+	
+	if d then
+		out(1,string.format("POWER SELECT ENGINE : %02d%%",pidTable.pow.now/pidTable.pow.tgt*100))
+	else
+		if a then
+			out(1,"ANALOG ENGINE")
+		else
+			out(1,"DIGITAL ENGINE")
+		end
+	end
+	
+	out(3,_CHAT())
+	
+	local xa = maf.vec3(_XX(AP0),_XY(AP0),_XZ(AP0))
+	local za = maf.vec3(_ZX(AP0),_ZY(AP0),_ZZ(AP0))
+	
+	local cp = maf.vec3(_X(AP0),_Y(AP0),_Z(AP0))
+	
+	local j1 = cp + za * 0.6
+	local j2 = cp + xa * 0.6
+	local j3 = cp - za * 0.6
+	local j4 = cp - xa * 0.6
+	
+	local b1 = maf.vec3(_X(AP1),_Y(AP1),_Z(AP1))
+	local b2 = maf.vec3(_X(AP2),_Y(AP2),_Z(AP2))
+	--local b3 = maf.vec3(_X(AP3),_Y(AP3),_Z(AP3))
+	--local b4 = maf.vec3(_X(AP4),_Y(AP4),_Z(AP4))
+	
+	local d11 = b1:distance(j1)
+	local d12 = b1:distance(j2)
+	local d13 = b1:distance(j3)
+	local d14 = b1:distance(j4)
+	
+	local d21 = b2:distance(j1)
+	local d22 = b2:distance(j2)
+	local d23 = b2:distance(j3)
+	local d24 = b2:distance(j4)
+	
+	--local d31 = b3:distance(j1)
+	--local d32 = b3:distance(j2)
+	--local d33 = b3:distance(j3)
+	--local d34 = b3:distance(j4)
+	
+	--local d41 = b4:distance(j1)
+	--local d42 = b4:distance(j2)
+	--local d43 = b4:distance(j3)
+	--local d44 = b4:distance(j4)
+	
+	local d1m = math.max(d11,d12,d13,d14)
+	local d2m = math.max(d21,d22,d23,d24)
+	--local d3m = math.max(d31,d32,d33,d34)
+	--local d4m = math.max(d41,d42,d43,d44)
+	
+	d11 = d11 / d1m
+	d12 = d12 / d1m
+	d13 = d13 / d1m
+	d14 = d14 / d1m
+	
+	d21 = d21 / d2m
+	d22 = d22 / d2m
+	d23 = d23 / d2m
+	d24 = d24 / d2m
+	
+	--d31 = d31 / d1m
+	--d32 = d32 / d1m
+	--d33 = d33 / d1m
+	--d34 = d34 / d1m
+	
+	--d41 = d41 / d2m
+	--d42 = d42 / d2m
+	--d43 = d43 / d2m
+	--d44 = d44 / d2m
+	
+	local pow,rol,pit,yaw,brk = xpDoControl(pidTable)
+	
+	P=300000
+	RD=yaw
+	RP=200000
+	
+	local p = pit
+	local r = -rol
+	
+	P1 = d11 * r + d12 * p - d13 * r - d14 * p - pow
+	P2 = d21 * r + d22 * p - d23 * r - d24 * p - pow
+	--P3 = d31 * r + d32 * p - d33 * r - d34 * p - pow
+	--P4 = d41 * r + d42 * p - d43 * r - d44 * p - pow
+end
+}

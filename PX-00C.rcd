@@ -53,7 +53,7 @@ Body
 							E:Cowl(angle=150, option=1, effect=#F0FB) {
 								E:Cowl(angle=105, color=#202020) {
 									E:Cowl(color=#202020) {
-										E:Cowl(angle=-90) {
+										E:Cowl(angle=-90, option=1, effect=#F0FB) {
 											E:Cowl(angle=-90, option=1, effect=#F0FB) {
 												E:Cowl(angle=-30) { }
 												N:Cowl(angle=-10) {
@@ -64,6 +64,7 @@ Body
 													}
 												}
 											}
+											E:Cowl(angle=180, option=4) { }
 										}
 									}
 									N:Cowl(color=#202020) {
@@ -89,7 +90,7 @@ Body
 							W:Cowl(angle=150, option=1, effect=#F0FB) {
 								W:Cowl(angle=105, color=#202020) {
 									W:Cowl(color=#202020) {
-										W:Cowl(angle=-90) {
+										W:Cowl(angle=-90, option=1, effect=#F0FB) {
 											W:Cowl(angle=-90, option=1, effect=#F0FB) {
 												W:Cowl(angle=-30) {
 													E:Cowl(angle=-120) { }
@@ -102,6 +103,7 @@ Body
 													}
 												}
 											}
+											W:Cowl(angle=180, option=3) { }
 										}
 									}
 									N:Cowl(color=#202020) {
@@ -592,8 +594,8 @@ function OnFrame()
 	
 	BL = (math.floor(223*key4)+32)*65536
 	
-	B2=_LINER(B2,key4*100+_KEY(15)*200,100)
-	B=_LINER(B,key4*200,100)
+	B2=_LINER(B2,key4*70+_KEY(15)*200,100)
+	B=_LINER(B,key4*70,100)
 	
 	P=_LINER(P,key0*15000-key1*5000,15000)
 	
@@ -603,12 +605,12 @@ function OnFrame()
 	
 	XGUI.SetStringSize(16)
 	
-	XGUI.SetStringPosition(128,128+32)
+	--[[XGUI.SetStringPosition(128,128+32)
 	XGUI.DrawVectorStringCenter("Žc”R—¿")
 	XGUI.SetStringPosition(128,128+32+16)
 	XGUI.DrawVectorStringCenter("x1 [%]")
 	
-	XMET.Draw(obj,128,128,128,90,360,27,10,_FUEL()/_FUELMAX(),1)
+	XMET.Draw(obj,128,128,128,90,360,27,10,_FUEL()/_FUELMAX(),1)]]--
 	
 	XGUI.SetDrawColorINT(16777215)
 	

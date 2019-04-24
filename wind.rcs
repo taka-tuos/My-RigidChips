@@ -7,5 +7,5 @@ end
 function OnFrame()
 	out(0,string.format("%.3fkm/h(%.3fm/s)",w*3.6,w))
 	_SETWIND(0,0,w)
-	if w < 47.4 then w = w + 1 end
+	--if w < 1000 then w = w + 1 end
 end

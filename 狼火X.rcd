@@ -290,7 +290,7 @@ _limitlist={1500,1800,2000,2200,2500,64512}
 
 _prvtbl = InitPRVTable()
 
-_prvtbl.p.limit = 800000
+_prvtbl.p.limit = 400000
 _prvtbl.p.step  = 400000
 
 _prvtbl.r.tgt = 360
@@ -306,6 +306,9 @@ _prvtbl.v.kd  = 4
 _prvtbl.v.il  = 40
 
 RD_PID = XPID_new()
+
+RX_PID = XPID_new()
+VX_PID = XPID_new()
 
 inited = false
 
@@ -324,6 +327,9 @@ function OnFrame()
 	ShowSplash("XU-2 Wolffire")
 	
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
+	
+	v = VX_PID:PID(0,WY,24,0,0,1000) + -_NORMANALOG(1) * 20
+	r = RX_PID:PID(0,WZ,24,0,0,1000) + _NORMANALOG(0) * 20
 	
 	P=p
 	R=r

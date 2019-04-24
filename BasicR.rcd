@@ -86,15 +86,15 @@ MXB=200
 MXABS=MXB/20
 
 function r_pw(p)
-	return _LVAL(p,MXPW*_KEY(0)+5500*-_KEY(1),MXPW/10)
+	return _LVAL(p,MXPW*key0+5500*-key1,MXPW/10)
 end
 
 function r_tc(p,w,vz)
 	--n=w/vz
 	--TCS=(n-3.5)*MXTCS2
 	TCS=(w-vz)*MXTCS
-	if TCS>0 and _KEY(0)+_KEY(1)>0 then p=p-TCS end
-	if p<0 and TCS>0 and _KEY(1) == 0 then p=0 end
+	if TCS>0 and key0+key1>0 then p=p-TCS end
+	if p<0 and TCS>0 and key1 == 0 then p=0 end
 	return p
 end
 
@@ -106,9 +106,28 @@ end
 
 _td=30
 
+function _NORMANALOG(n)
+	local v = _ANALOG(n)
+	if v < 100 and v > -100 then v = 0 end
+	return v/1000
+end
+
 function OnFrame()
-	B=_LVAL(B,MXB*_KEY(4),50)
-	S=_LVAL(S,30*_KEY(3)+30*-_KEY(2),4)
+	key4 = -_NORMANALOG(5)
+	key0 = _NORMANALOG(5)
+	key1 = 0
+	
+	if key0 < 0 then
+		if _KEY(14) == 1 then
+			key1 = -key0
+		end
+		key0 = 0
+	end
+	
+	if key4 < 0 or key1 > 0 then key4 = 0 end
+
+	B=_LVAL(B,key4*100,50)
+	S=_LVAL(S,30*-_NORMANALOG(0),4)
 	
 	BL=16711680*_KEY(4)
 	

@@ -1,0 +1,48 @@
+// [RCD] 
+Val
+{
+	VAL(default=0, max=10000000000)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Cowl(angle=-90) {
+			W:Cowl(angle=104.4775122, option=1, effect=#F0FB) {
+				W:Cowl(angle=151.0449756, option=1, effect=#F0FB) {
+					W:Cowl(angle=-75.5224878, option=1, effect=#F0FB) {
+						E:Cowl(angle=VAL, option=1, effect=#F0FB) {
+							S:Cowl(option=1, effect=#F0FB) {
+								E:Cowl(angle=104.4775122, option=1, effect=#F0FB) {
+									E:Cowl(angle=151.0449756, option=1, effect=#F0FB) {
+										E:Cowl(angle=-75.5224878) { }
+									}
+								}
+								W:Cowl(angle=104.4775122, option=1, effect=#F0FB) {
+									W:Cowl(angle=151.0449756, option=1, effect=#F0FB) {
+										W:Cowl(angle=-75.5224878, option=1, effect=#F0FB) { }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		N:Cowl(angle=-90) {
+			W:Cowl(angle=104.4775122) {
+				W:Cowl(angle=151.0449756) {
+					W:Cowl(angle=-165.5224878) {
+						N:Cowl() { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{function main()
+	VAL=VAL+1
+end}

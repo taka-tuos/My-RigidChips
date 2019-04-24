@@ -467,14 +467,10 @@ Body
 				}
 			}
 		}
-		S:TrimF(angle=90, option=1, spring=1, damper=1) {
-			S:Frame(angle=10, option=1) {
-				S:Jet(angle=80, power=-P) { }
-			}
-			S:Frame(angle=-10, option=1) {
-				S:Jet(angle=-80, power=P) { }
-			}
-			S:TrimF(option=1, spring=1, damper=1) {
+		S:TrimF() {
+			E:Trim(angle=-AB) { }
+			W:Trim(angle=AB) { }
+			S:TrimF(angle=90, option=1, spring=1, damper=1) {
 				S:TrimF(option=1, spring=1, damper=1) {
 					S:TrimF(option=1, spring=1, damper=1) {
 						S:TrimF(option=1, spring=1, damper=1) {
@@ -498,6 +494,7 @@ Body
 										W:Chip(angle=-180) { }
 										S:Cowl(angle=178, color=#ECC67D) { }
 									}
+									W:Chip() { }
 								}
 								E:Frame(angle=-67, option=1) {
 									W:Trim(angle=-V) {
@@ -518,6 +515,7 @@ Body
 										W:Chip(angle=-180) { }
 										S:Cowl(angle=-178, color=#ECC67D) { }
 									}
+									W:Chip() { }
 								}
 								E:Trim(angle=RD) {
 									E:Cowl(color=#FFD200) {
@@ -537,24 +535,31 @@ Body
 						}
 					}
 				}
+				N:TrimF(option=1, spring=1, damper=1) {
+					S:Frame(angle=10, option=1) {
+						S:Jet(angle=80, power=-P) { }
+					}
+					S:Frame(angle=-10, option=1) {
+						S:Jet(angle=-80, power=P) { }
+					}
+				}
+				N:Rudder(angle=90) { }
 			}
-		}
-		S:TrimF() {
-			E:Trim(angle=R) {
+			N:Weight() { }
+			W:Frame(option=1) {
+				W:Trim(angle=R) { }
+			}
+			E:Frame(option=1) {
+				E:Trim(angle=R) { }
+			}
+			E:Chip() {
 				E:Chip() { }
 			}
-			W:Trim(angle=R) {
+			W:Chip() {
 				W:Chip() { }
-			}
-			E:Trim(angle=-AB) { }
-			W:Trim(angle=AB) { }
-			N:TrimF(angle=90, option=1) {
-				S:Rudder(angle=90) { }
 			}
 		}
 		N:Weight(angle=180, option=3) { }
-		W:Trim(angle=-V) { }
-		E:Trim(angle=V) { }
 	}
 }
 Lua
@@ -574,14 +579,14 @@ _prvtbl.p.limit = 200000
 _prvtbl.p.step  = 100000
 
 _prvtbl.r.tgt = 360
-_prvtbl.r.kp  = 8
-_prvtbl.r.ki  = 16
+_prvtbl.r.kp  = 4
+_prvtbl.r.ki  = 8
 _prvtbl.r.kd  = 4
 _prvtbl.r.il  = 30
 
 _prvtbl.v.tgt = 180
-_prvtbl.v.kp  = 12
-_prvtbl.v.ki  = 24
+_prvtbl.v.kp  = 4
+_prvtbl.v.ki  = 8
 _prvtbl.v.kd  = 4
 _prvtbl.v.il  = 30
 
@@ -591,7 +596,7 @@ inited = false
 
 function OnFrame()
 	if not inited then
-		CCVXOnInit({ Missile={n=2,mdl={1,-1},func=_KEYDOWN,fire=1} , Gun={func=_KEY,fire=2,op=50000,an=4,ang=65} })
+		CCVXOnInit()
 		inited = true
 	end
 

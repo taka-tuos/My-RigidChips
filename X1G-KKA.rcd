@@ -1,0 +1,380 @@
+// [RCD] 
+Val
+{
+	G0(default=0, max=10000000000)
+	G1(default=0, max=10000000000)
+	G2(default=0, max=10000000000)
+	G3(default=0, max=10000000000)
+	G4(default=0, max=10000000000)
+	G5(default=0, max=10000000000)
+	G6(default=0, max=10000000000)
+	G7(default=0, max=10000000000)
+	P(default=0, max=10000000000)
+	R(default=0, min=-180, max=180)
+	V(default=0, min=-180, max=180)
+	V0(default=0, min=-90, max=90)
+	V1(default=0, min=-90, max=90)
+	V2(default=0, min=-90, max=90)
+	V3(default=0, min=-90, max=90)
+	V4(default=0, min=-90, max=90)
+	V5(default=0, min=-90, max=90)
+	V6(default=0, min=-90, max=90)
+	V7(default=0, min=-90, max=90)
+	W0(default=0, min=-180, max=180)
+	W1(default=0, min=-180, max=180)
+	W2(default=0, min=-180, max=180)
+	W3(default=0, min=-180, max=180)
+	W4(default=0, min=-180, max=180)
+	W5(default=0, min=-180, max=180)
+	W6(default=0, min=-180, max=180)
+	W7(default=0, min=-180, max=180)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		N:Frame(option=1) {
+			N:Frame(angle=170, option=1) {
+				N:Frame(angle=-80) {
+					N:Chip(angle=-90) {
+						S:Chip() {
+							E:Frame(angle=-20, option=1) {
+								E:Frame(angle=-160, option=1) {
+									W:Trim(angle=R) {
+										E:Chip() { }
+										W:Trim(angle=-R) {
+											W:Chip() {
+												W:Rudder(angle=170) {
+													W:Cowl() {
+														W:Cowl() {
+															W:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+									W:Frame() {
+										N:Jet(angle=-90, power=-P) {
+											N:Cowl(angle=-90) {
+												S:Cowl() {
+													S:Cowl(angle=-20, option=5) { }
+												}
+												N:Cowl(angle=-20, option=5) { }
+											}
+											E:Cowl(angle=-90) {
+												W:Cowl() {
+													W:Cowl(angle=-20, option=5) { }
+												}
+												E:Cowl(angle=-20, option=5) { }
+											}
+											W:Cowl(angle=-90) {
+												E:Cowl() {
+													E:Cowl(angle=-20, option=5) { }
+												}
+												W:Cowl(angle=-20, option=5) { }
+											}
+											S:Cowl(angle=-90) {
+												S:Cowl(angle=-20, option=5) { }
+												N:Cowl() {
+													N:Cowl(angle=-20, option=5) { }
+												}
+											}
+										}
+									}
+								}
+							}
+							W:Frame(angle=-20, option=1) {
+								W:Frame(angle=-160, option=1) {
+									E:Trim(angle=R) {
+										W:Chip() { }
+										E:Trim(angle=-R) {
+											E:Chip() {
+												E:Rudder(angle=-170) {
+													E:Cowl() {
+														E:Cowl() {
+															E:Cowl() { }
+														}
+													}
+												}
+											}
+										}
+									}
+									E:Frame() {
+										N:Jet(angle=-90, power=-P) {
+											N:Cowl(angle=-90) {
+												S:Cowl() {
+													S:Cowl(angle=-20, option=5) { }
+												}
+												N:Cowl(angle=-20, option=5) { }
+											}
+											E:Cowl(angle=-90) {
+												W:Cowl() {
+													W:Cowl(angle=-20, option=5) { }
+												}
+												E:Cowl(angle=-20, option=5) { }
+											}
+											W:Cowl(angle=-90) {
+												E:Cowl() {
+													E:Cowl(angle=-20, option=5) { }
+												}
+												W:Cowl(angle=-20, option=5) { }
+											}
+											S:Cowl(angle=-90) {
+												S:Cowl(angle=-20, option=5) { }
+												N:Cowl() {
+													N:Cowl(angle=-20, option=5) { }
+												}
+											}
+										}
+									}
+								}
+							}
+							E:Cowl(angle=-90) { }
+							W:Cowl(angle=-90) { }
+							S:Frame() {
+								E:Cowl(angle=-90) {
+									S:Cowl(angle=-10) {
+										S:Cowl() {
+											S:Cowl() { }
+											E:Cowl(angle=-150) { }
+											W:Cowl(angle=-150) { }
+										}
+										E:Cowl(angle=-150) { }
+										W:Cowl(angle=-150) { }
+									}
+									E:Cowl(angle=-150) { }
+									W:Cowl(angle=-150) { }
+								}
+								W:Cowl(angle=-90) {
+									S:Cowl(angle=-10) {
+										S:Cowl() {
+											S:Cowl() { }
+											W:Cowl(angle=-150) { }
+											E:Cowl(angle=-150) { }
+										}
+										W:Cowl(angle=-150) { }
+										E:Cowl(angle=-150) { }
+									}
+									W:Cowl(angle=-150) { }
+									E:Cowl(angle=-150) { }
+								}
+								S:Frame() {
+									S:Frame(angle=-40) {
+										S:Frame(angle=40) {
+											W:Trim(angle=V) {
+												W:Rudder(angle=160) {
+													E:Cowl(option=5) { }
+													W:Cowl() { }
+												}
+												E:Cowl() { }
+											}
+											E:Trim(angle=-V) {
+												E:Rudder(angle=-160) {
+													W:Cowl(option=5) { }
+													E:Cowl() { }
+												}
+												W:Cowl() { }
+											}
+										}
+										S:Trim(angle=-90) {
+											S:Rudder(angle=50) {
+												W:Rudder(angle=45) {
+													E:Cowl(option=5) { }
+													W:Cowl() { }
+												}
+												N:Cowl() { }
+											}
+										}
+									}
+								}
+							}
+							S:Trim(angle=180, spring=1, damper=1, name=CRE) {
+								N:Frame(angle=V1, spring=1, damper=1) {
+									N:Frame(angle=-W1, spring=1, damper=1) {
+										N:Arm(option=50000, power=G1, angle=V1, spring=1, damper=1, name=A1) { }
+									}
+								}
+								N:Frame(angle=V2, spring=1, damper=1) {
+									N:Frame(angle=-W2, spring=1, damper=1) {
+										N:Arm(option=50000, power=G2, angle=V2, spring=1, damper=1, name=A2) { }
+									}
+								}
+								N:Frame(angle=V3, spring=1, damper=1) {
+									N:Frame(angle=-W3, spring=1, damper=1) {
+										N:Arm(option=50000, power=G3, angle=V3, spring=1, damper=1, name=A3) { }
+									}
+								}
+								N:Frame(angle=V4, spring=1, damper=1) {
+									N:Frame(angle=-W4, spring=1, damper=1) {
+										N:Arm(option=50000, power=G4, angle=V4, spring=1, damper=1, name=A4) { }
+									}
+								}
+								N:Frame(angle=V5, spring=1, damper=1) {
+									N:Frame(angle=-W5, spring=1, damper=1) {
+										N:Arm(option=50000, power=G5, angle=V5, spring=1, damper=1, name=A5) { }
+									}
+								}
+								N:Frame(angle=V6, spring=1, damper=1) {
+									N:Frame(angle=-W6, spring=1, damper=1) {
+										N:Arm(option=50000, power=G6, angle=V6, spring=1, damper=1, name=A6) { }
+									}
+								}
+								N:Frame(angle=V7, spring=1, damper=1) {
+									N:Frame(angle=-W7, spring=1, damper=1) {
+										N:Arm(option=50000, power=G7, angle=V7, spring=1, damper=1, name=A7) { }
+									}
+								}
+								N:Frame(angle=V0, spring=1, damper=1) {
+									N:Frame(angle=-W0, spring=1, damper=1) {
+										N:Arm(option=50000, power=G0, angle=V0, spring=1, damper=1, name=A0) { }
+									}
+								}
+							}
+						}
+						E:Cowl(angle=-90) { }
+						W:Cowl(angle=-90) { }
+						N:Cowl() {
+							N:Cowl(angle=-90) {
+								N:Cowl(angle=90) {
+									N:Cowl(angle=30, option=5) { }
+									S:Cowl() {
+										S:Cowl(angle=-30, color=0, effect=#80FB) {
+											S:Cowl(angle=30, color=0, effect=#80FB) {
+												S:Cowl(angle=30, color=0, effect=#80FB) {
+													S:Cowl(angle=-30, option=5) { }
+													W:Cowl(angle=91, color=0, effect=#80FB) { }
+													E:Cowl(angle=91, color=0, effect=#80FB) { }
+												}
+												W:Cowl(angle=91, color=0, effect=#80FB) { }
+												E:Cowl(angle=91, color=0, effect=#80FB) { }
+											}
+											W:Cowl(angle=91, color=0, effect=#80FB) { }
+											E:Cowl(angle=91, color=0, effect=#80FB) { }
+										}
+									}
+								}
+							}
+							E:Cowl(angle=-90) { }
+							W:Cowl(angle=-90) { }
+							N:Cowl() {
+								N:Cowl(angle=-30, option=5) { }
+								W:Cowl(angle=-90) {
+									N:Cowl(angle=-30, option=5) { }
+								}
+								E:Cowl(angle=-90) {
+									N:Cowl(angle=-30, option=5) { }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+require("daretoku_taka/xhud-le.lua")
+require("daretoku_taka/libccvx3.lua")
+require("daretoku_taka/libgun2.lua")
+require("daretoku_taka/libweapon.lua")
+
+local maxpow = _WEIGHT()*29.4/2
+
+_limitlist={1500,1800,2000,2200,2500,64512}
+
+_prvtbl = InitPRVTable()
+
+_prvtbl.p.limit = maxpow
+_prvtbl.p.step  = maxpow/2
+
+_prvtbl.r.tgt = 360
+_prvtbl.r.kp  = 12
+_prvtbl.r.ki  = 12
+_prvtbl.r.kd  = 4
+_prvtbl.r.il  = 20
+
+_prvtbl.v.tgt = 180
+_prvtbl.v.kp  = 12
+_prvtbl.v.ki  = 16
+_prvtbl.v.kd  = 4
+_prvtbl.v.il  = 20
+
+WS_PID = XPID_new()
+RD_PID = XPID_new()
+
+RX_PID = XPID_new()
+VX_PID = XPID_new()
+
+local inited = false
+
+_mv=0
+_my=0
+_xy=0
+
+_gf=25
+_gr=70
+
+_vm=false
+_vmv=0
+
+function OnFrame()
+	if not inited then
+		CCVXOnInit({ Gun={func=_KEY,fire=7,op=50000,an=8,ang=45} })
+		inited = true
+	end
+
+	CCVXOnFrame(true)
+	
+	out(0,string.format("%.3f km/h @ %.2f m", _mv*3.6, _my))
+	out(1,string.format("MAX %.2f m", _xy))
+	
+	if _mv < _VEL(0) then
+		_mv = _VEL(0)
+		_my = _Y(0)
+	end
+	
+	
+	if _xy < _Y(0) then
+		_xy = _Y(0)
+	end
+	
+	if _KEYDOWN(7) == 1 then
+		_vm = not _vm
+		_vmv = _VEL()
+	end
+	
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=0})
+	
+	v = VX_PID:PID(0,WY,24,0,0,1000) + -_NORMANALOG(1) * 20
+	r = RX_PID:PID(0,WZ,24,0,0,1000) + _NORMANALOG(0) * 20
+	
+	if _vm then
+		local dif = _VEL() - _vmv
+		out(2,dif)
+		--p = SS_PID:PID(0,dif,100000,20000,20000,500000)
+	end
+	
+	P=p
+	R=r
+	V=v
+	AB=b
+	
+	local ay = (_KEY(5)-_KEY(4))*10
+	
+	RD = ay
+	WS = ay
+	
+	if _gf == 0 then ay = ay * 2 end
+	
+	CheckLimit()
+	
+	XHUD.Draw()
+	
+	Weapon.Stat()
+end
+}

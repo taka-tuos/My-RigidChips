@@ -1,0 +1,102 @@
+// [RCD] 
+Val
+{
+	B(default=0, min=-10000000000, max=10000000000)
+	B2(default=0, min=-10000000000, max=10000000000)
+	P(default=0, min=-10000000000, max=10000000000)
+	S(default=0, min=-90, max=90)
+}
+Key
+{
+}
+Body
+{
+	Core() {
+		S:Frame(angle=90) {
+			S:Chip(angle=-90) {
+				N:Chip() {
+					N:Chip() {
+						N:TrimF() {
+							E:Frame(angle=20, spring=0.1, damper=0.1) {
+								E:RudderF(angle=-S, option=1) {
+									W:Wheel(angle=-70, power=P, option=1, effect=5) { }
+								}
+							}
+							W:Frame(angle=20, spring=0.1, damper=0.1) {
+								W:RudderF(angle=-S, option=1) {
+									E:Wheel(angle=-70, power=-P, option=1, effect=5) { }
+								}
+							}
+						}
+					}
+				}
+				S:TrimF() {
+					E:Frame(angle=20, spring=0.1, damper=0.1) {
+						E:Wheel(angle=-110, option=1, effect=5) { }
+					}
+					W:Frame(angle=20, spring=0.1, damper=0.1) {
+						W:Wheel(angle=-110, option=1, effect=5) { }
+					}
+				}
+			}
+		}
+	}
+}
+Lua
+{
+require("daretoku_taka/xgui.lua")
+
+function _VEL(n)
+	return _LEN3( _VX(n), _VY(n), _VZ(n))
+end
+
+function _LEN3(a,b,c)
+	return math.sqrt(a * a + b * b + c * c)
+end
+
+function _LINER(v,t,s)
+	local r=v
+	if v<t then r=v+s end
+	if v>t then r=v-s end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
+	return r
+end
+
+function _NORMANALOG(n)
+	local v = _ANALOG(n)
+	if v < 100 and v > -100 then v = 0 end
+	return v/1000
+end
+
+function OnFrame()
+	XGUI.SetStringSize(32)
+	
+	XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()-64)
+	XGUI.DrawVectorStringCenter(string.format("% 3d km/h",math.abs(_VEL(0))*3.6))
+	
+	local key4 = -_NORMANALOG(5)
+	local key0 = _NORMANALOG(5)
+	local key1 = 0
+	
+	if key0 < 0 then
+		if _KEY(14) == 1 then
+			key1 = -key0
+		end
+		key0 = 0
+	end
+	
+	if key4 < 0 or key1 > 0 then key4 = 0 end
+	
+	BL = (math.floor(223*key4)+32)*65536
+	
+	B2=_LINER(B2,key4*100+_KEY(15)*200,100)
+	B=_LINER(B,key4*200,100)
+	
+	P=_LINER(P,key0*15000-key1*5000,15000)
+	
+	S=_LINER(S,_NORMANALOG(0)*30,15)
+	
+	_ZOOM(_GETVIEWZOOM())
+end
+}

@@ -277,7 +277,7 @@ Body
 											E:Cowl(angle=-90, option=1, effect=#F0FB) {
 												N:Cowl(angle=-40, option=1, effect=#F0FB) {
 													N:Cowl(angle=-85, option=1, effect=#F0FB) {
-														W:Cowl(angle=-90) {
+														W:Cowl(angle=-90, name=SR) {
 															N:Cowl() {
 																N:Cowl() {
 																	N:Cowl() {
@@ -319,7 +319,7 @@ Body
 												N:Cowl(angle=-40, option=1, effect=#F0FB) {
 													E:Cowl(angle=-90) { }
 													N:Cowl(angle=-85, option=1, effect=#F0FB) {
-														E:Cowl(angle=-90) {
+														E:Cowl(angle=-90, name=SL) {
 															N:Cowl() {
 																N:Cowl() {
 																	N:Cowl() {
@@ -376,119 +376,172 @@ Body
 }
 Lua
 {
+maf = require("daretoku_taka/maf.lua")
 require("daretoku_taka/xgui.lua")
-require("daretoku_taka/xhud2.lua")
-require("daretoku_taka/libccvx3.lua")
-require("daretoku_taka/libresume.lua")
-require("daretoku_taka/libgun.lua")
-require("daretoku_taka/libweapon.lua")
+require("daretoku_taka/xplane.lua")
 
-_limitlist={1500,1800,2000,2200,2500,64512}
+local pidTable = xpInitPID()
 
-_prvtbl = InitPRVTable()
+pidTable.pow.tgt = 200000
+pidTable.pow.stp = 10000
 
-_prvtbl.p.limit = 500000
-_prvtbl.p.step  = 250000
+pidTable.rol.tgt = 5
+pidTable.rol.kp  = 2
+pidTable.rol.ki  = 0.5
+pidTable.rol.kd  = 0
+pidTable.rol.il  = 20
 
-_prvtbl.r.tgt = 360
-_prvtbl.r.kp  = 8
-_prvtbl.r.ki  = 16
-_prvtbl.r.kd  = 4
-_prvtbl.r.il  = 30
+pidTable.pit.tgt = 3
+pidTable.pit.kp  = 2
+pidTable.pit.ki  = 0.5
+pidTable.pit.kd  = 0
+pidTable.pit.il  = 40
 
-_prvtbl.v.tgt = 180
-_prvtbl.v.kp  = 64
-_prvtbl.v.ki  = 12
-_prvtbl.v.kd  = 4
-_prvtbl.v.il  = 30
+pidTable.yaw.tgt = 8
+pidTable.yaw.kp  = 2
+pidTable.yaw.ki  = 0.5
+pidTable.yaw.kd  = 0
+pidTable.yaw.il  = 40
 
-JX_PID = XPID_new()
-JY_PID = XPID_new()
-WS_PID = XPID_new()
-RD_PID = XPID_new()
+pidTable.brk.tgt = 30
+pidTable.brk.stp = 10
 
-_gf=25
-_gr=70
+local tgtGf=20
+local tgtGr=70
 
-vx1=0
-vy1=0
-vz1=0
-
-_x=_X()
-_y=_Y()
-_z=_Z()
-
-gmax = 0
+local gear=0
 
 local inited = false
 
+local st={}
+
+local max=0
+
+local prev=0
+
+function foreach_func2D(i,v)
+	if i == 1 then
+		prev=v
+	end
+	
+	local dif = math.abs((v+prev)/2)
+	
+	local vc=dif/(9.8*200/_BASE())
+	local col=math.min(1,vc)
+	
+	local r,g = 0,0
+	
+	if col < 0.5 then
+		g = 255
+		r = col * 2 * 255
+	else
+		g = 255 - (col - 0.5) * 2 * 255
+		r = 255
+	end
+	
+	XGUI.SetDrawColorRGB(r,g,0)
+	
+	if i == 1 then
+		XGUI.Move2D(128+300-300/(_BASE()*10)*i,32+150-v/max*150)
+	else
+		XGUI.Line2D(128+300-300/(_BASE()*10)*i,32+150-v/max*150)
+	end
+	
+	prev=v
+	
+	XGUI.SetDrawColorRGB(255,255,255)
+end
+
+local pvy=_VY()
+
+function Gmeter()
+	if table.getn(st) > _BASE()*10 then
+		table.remove(st,1)
+	end
+	
+	table.insert(st,pvy-_VY())
+	
+	local pmax = math.abs(math.max(unpack(st)))
+	local nmax = math.abs(math.min(unpack(st)))
+	
+	max = math.max(pmax,nmax)
+	
+	table.foreachi(st,foreach_func2D)
+	
+	XGUI.Move2D(128,32)
+	XGUI.Line2D(128+300,32)
+	XGUI.Line2D(128+300,32+300)
+	XGUI.Line2D(128,32+300)
+	XGUI.Line2D(128,32)
+end
+
 function OnFrame()
 	if not inited then
-		CCVXOnInit()
+		xpOnInit()
+		_ZOOM(5)
 		inited = true
 	end
 
-	CCVXOnFrame(true)
-
-	ShowSplash("XF-12B+ Mirage2K")
+	local a,d = xpOnFrame()
 	
-	
-	local vx=(_X()-_x)*30
-	local vy=(_Y()-_y)*30
-	local vz=(_Z()-_z)*30
-	
-	local x=(vx-vx1)*30*_YX()
-	local y=(vy-vy1)*30*_YY()
-	local z=(vz-vz1)*30*_YZ()
-	
-	local g=(x+y+z)/9.8
-	
-	_x=_X()
-	_y=_Y()
-	_z=_Z()
-	
-	vx1=vx
-	vy1=vy
-	vz1=vz
-	
-	out(0,g)
-	out(1,gmax)
-	
-	gmax = math.max(gmax,g)
-	
-	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
-	
-	P=p
-	R=r
-	V=v
-	AB=b
-	
-	local dv = math.rad(-_NORMANALOG(1)*180/30)
-	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
-	
-	if _gf == 0 then dy = dy * 2 end
-	
-	RD = RD_PID:PID(dy,WY,10,8,8,20)
-	WS = WS_PID:PID(dy,WY,10,8,8,20)
-	
-	if _KEY(0) == 0 then
-		if _KEYDOWN(6) == 1 then
-			if _gf == 0 then _gf = 25
-			else _gf = 0 end
-			if _gr == 70 then _gr = 180
-			else _gr = 70 end
-		end
-		
-		WB=_LINER(WB,_KEY(7)*100,50)
+	if a then
+		out(0,"ANALOG MODE")
+	else
+		out(0,"DIGITAL MODE")
 	end
 	
-	GF=_LINER(GF,_gf,1)
-	GR=_LINER(GR,_gr,4.4)
+	if d then
+		out(1,string.format("POWER SELECT ENGINE : %02d%%",pidTable.pow.now/pidTable.pow.tgt*100))
+	else
+		if a then
+			out(1,"ANALOG ENGINE")
+		else
+			out(1,"DIGITAL ENGINE")
+		end
+	end
 	
-	CheckLimit()
+	out(3,_CHAT())
+	out(5,string.format("%.3f km/h",_VEL()*3.6))
 	
-	XHUD.Draw()
+	local pow,rol,pit,yaw,brk = xpDoControl(pidTable)
 	
-	Weapon.Stat()
+	P=pow
+	R=rol
+	V=pit
+	RD=yaw
+	AB=brk
+	WS=yaw
+	WB=AB*1000
+	
+	if _KEYDOWN(SharedKeyAssign.Gear) == 1 then
+		gear = 1 - gear
+	end
+	
+	if gear == 0 then tgtGf = 20
+	else tgtGf = 0 end
+	
+	if gear == 0 then tgtGr = 70
+	else tgtGr = -180 end
+	
+	GF=xpStepVal(GF,tgtGf,1)
+	GR=xpStepVal(GR,tgtGr,12.5)
+	
+	--Gmeter()
+	
+	local x,y,i
+	
+	for x=0,63 do
+		for y=0,63 do
+			local col15 = _CCD(x,y)
+			local col24 = ( math.mod(math.floor(col15/1024), 32) * 65536 + math.mod(math.floor(col15/32), 32) * 256 + math.mod(col15, 32) ) * 8
+			
+			XGUI.SetDrawColorINT(col24)
+			
+			--for i=0,4 do
+				XGUI.Move2D(384+y,32+x+0)
+				XGUI.Line2D(384+y,32+x+1)
+			--end
+		end
+	end
 end
 }

@@ -352,6 +352,9 @@ function OnFrame()
 
 	ShowSplash("XF-22 Spectre")
 	
+	_MOVE3D(_X(),_Y(),_Z())
+	_LINE3D(_NPOS(0))
+	
 	
 	local vx=(_X()-_x)*30
 	local vy=(_Y()-_y)*30

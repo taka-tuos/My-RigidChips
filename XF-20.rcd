@@ -21,115 +21,115 @@ Body
 		E:Cowl(option=1, effect=#F0FB, option=1, name=RS) { }
 		S:Cowl(option=1, effect=#F0FB, option=1, name=TS) { }
 		N:Cowl(option=1, effect=#F0FB, option=1, name=FS) { }
-		E:Rudder(angle=60) {
-			E:Chip() {
-				E:Chip() {
-					E:Trim(angle=R) { }
+		E:Rudder(angle=60, color=#64646E) {
+			E:Chip(color=#C0C8C0) {
+				E:Chip(color=#C0C8C0) {
+					E:Trim(angle=R, color=#64646E) { }
 					E:Frame(option=1) {
-						E:Chip(angle=-V) { }
-						S:Rudder(angle=30) {
-							N:Chip(angle=-90) {
-								E:Chip(angle=RD, color=#407FFF) { }
-								W:Cowl(option=4) { }
+						E:Chip(angle=-V, color=#FFD200) { }
+						S:Rudder(angle=30, color=#64646E) {
+							N:Chip(angle=-90, color=#FFD200) {
+								E:Chip(angle=RD, color=#FFD200) { }
+								W:Cowl(option=4, color=#C0C8C0) { }
 							}
 							N:Wheel(angle=GR, brake=WB) { }
-							W:Cowl() { }
-							N:Cowl(option=3) {
-								E:Cowl() {
+							W:Cowl(color=#A0A0AA) { }
+							N:Cowl(option=3, color=#64646E) {
+								E:Cowl(color=#FFD200) {
 									E:Cowl(angle=90, option=1, effect=#F0FB) {
 										N:Cowl(angle=35, option=1, effect=#F0FB) {
-											W:Cowl(angle=90) {
-												W:Cowl() { }
+											W:Cowl(angle=90, color=#FFD200) {
+												W:Cowl(color=#64646E) { }
 											}
 										}
 									}
 								}
 							}
-							E:Cowl(option=4) { }
+							E:Cowl(option=4, color=#FFD200) { }
 							E:Cowl(angle=90, option=1, effect=#F0FB) {
 								S:Cowl(angle=80, option=1, effect=#F0FB) {
-									W:Cowl(angle=90) {
-										S:Cowl() { }
+									W:Cowl(angle=90, color=#A0A0AA) {
+										S:Cowl(color=#A0A0AA) { }
 									}
 								}
 							}
 						}
 					}
 				}
-				S:Cowl(option=3) { }
+				S:Cowl(option=3, color=#C0C8C0) { }
 			}
 			N:Cowl(angle=90, option=1, effect=#F0FB) {
 				W:Cowl(angle=-15, option=1, effect=#F0FB) {
 					S:Cowl(angle=90) {
 						E:Cowl() { }
 						W:Cowl() { }
-						N:Cowl(angle=-150) {
-							E:Cowl() {
-								E:Cowl(angle=-30, option=4) { }
+						N:Cowl(angle=-150, color=#A0A0AA) {
+							E:Cowl(color=#64646E) {
+								E:Cowl(angle=-30, option=4, color=#C0C8C0) { }
 							}
 							W:Cowl(option=4) { }
 						}
-						N:Cowl(angle=150) {
+						N:Cowl(angle=150, color=#A0A0AA) {
 							W:Cowl(option=4) { }
-							E:Cowl() {
-								E:Cowl(angle=30, option=4) { }
+							E:Cowl(color=#64646E) {
+								E:Cowl(angle=30, option=4, color=#64646E) { }
 							}
 						}
 					}
 				}
 			}
 		}
-		W:Rudder(angle=-60) {
-			W:Chip() {
-				W:Chip() {
-					W:Trim(angle=R) { }
+		W:Rudder(angle=-60, color=#C0C8C0) {
+			W:Chip(color=#64646E) {
+				W:Chip(color=#A0A0AA) {
+					W:Trim(angle=R, color=#C0C8C0) { }
 					W:Frame(option=1) {
-						W:Chip(angle=-V) { }
-						S:Rudder(angle=-30) {
-							N:Chip(angle=-90) {
-								W:Chip(angle=-RD, color=#407FFF) { }
-								E:Cowl(option=3) { }
+						W:Chip(angle=-V, color=#FFD200) { }
+						S:Rudder(angle=-30, color=#C0C8C0) {
+							N:Chip(angle=-90, color=#FFD200) {
+								W:Chip(angle=-RD, color=#FFD200) { }
+								E:Cowl(option=3, color=#A0A0AA) { }
 							}
 							N:Wheel(angle=GR, brake=WB) { }
-							E:Cowl() { }
-							N:Cowl(option=4) {
-								W:Cowl() {
+							E:Cowl(color=#A0A0AA) { }
+							N:Cowl(option=4, color=#C0C8C0) {
+								W:Cowl(color=#FFD200) {
 									W:Cowl(angle=90, option=1, effect=#F0FB) {
 										N:Cowl(angle=35, option=1, effect=#F0FB) {
-											E:Cowl(angle=90) {
-												E:Cowl() { }
+											E:Cowl(angle=90, color=#FFD200) {
+												E:Cowl(color=#C0C8C0) { }
 											}
 										}
 									}
 								}
 							}
-							W:Cowl(option=3) { }
+							W:Cowl(option=3, color=#64646E) { }
 							W:Cowl(angle=90, option=1, effect=#F0FB) {
 								S:Cowl(angle=80, option=1, effect=#F0FB) {
-									E:Cowl(angle=90) {
-										S:Cowl() { }
+									E:Cowl(angle=90, color=#A0A0AA) {
+										S:Cowl(color=#64646E) { }
 									}
 								}
 							}
 						}
 					}
 				}
-				S:Cowl(option=4) { }
+				S:Cowl(option=4, color=#64646E) { }
 			}
 			N:Cowl(angle=90, option=1, effect=#F0FB) {
 				E:Cowl(angle=-15, option=1, effect=#F0FB) {
 					S:Cowl(angle=90) {
 						W:Cowl() { }
 						E:Cowl(option=4) { }
-						N:Cowl(angle=-150) {
-							W:Cowl() {
-								W:Cowl(angle=-30, option=3) { }
+						N:Cowl(angle=-150, color=#A0A0AA) {
+							W:Cowl(color=#C0C8C0) {
+								W:Cowl(angle=-30, option=3, color=#64646E) { }
 							}
 							E:Cowl(option=3) { }
 						}
-						N:Cowl(angle=150) {
-							W:Cowl() {
-								W:Cowl(angle=30, option=3) { }
+						N:Cowl(angle=150, color=#A0A0AA) {
+							W:Cowl(color=#C0C8C0) {
+								W:Cowl(angle=30, option=3, color=#C0C8C0) { }
 							}
 							E:Cowl(option=3) { }
 						}
@@ -139,70 +139,73 @@ Body
 		}
 		S:Frame(angle=30) {
 			S:Jet(angle=-120, power=P) {
-				N:Cowl(angle=110, color=#202000) {
+				N:Cowl(angle=110, color=#402010) {
 					S:Cowl(angle=20) { }
-					S:Cowl(angle=10) {
-						S:Cowl(angle=10) {
-							W:Cowl(angle=90) { }
-							E:Cowl(angle=90) { }
+					S:Cowl(angle=10, color=#C0C8C0) {
+						S:Cowl(angle=10, color=#A0A0AA) {
+							W:Cowl(angle=90, color=#A0A0AA) { }
+							E:Cowl(angle=90, color=#A0A0AA) { }
 						}
-						W:Cowl(angle=90) { }
-						E:Cowl(angle=90) { }
+						W:Cowl(angle=90, color=#C0C8C0) { }
+						E:Cowl(angle=90, color=#C0C8C0) { }
 					}
 				}
-				S:Cowl(angle=110, color=#202000) {
-					N:Cowl(angle=10) { }
+				S:Cowl(angle=110, color=#402010) {
+					N:Cowl(angle=10, color=#64646E) {
+						W:Cowl(angle=90, color=#64646E) { }
+						E:Cowl(angle=90, color=#C0C8C0) { }
+					}
 				}
-				E:Cowl(angle=100, option=5, color=#202000) {
-					W:Cowl(angle=5, option=4) { }
+				E:Cowl(angle=100, option=5, color=#402010) {
+					W:Cowl(angle=5, option=4, color=#C0C8C0) { }
 				}
-				W:Cowl(angle=100, option=5, color=#202000) {
-					E:Cowl(angle=5, option=3) { }
+				W:Cowl(angle=100, option=5, color=#402010) {
+					E:Cowl(angle=5, option=3, color=#64646E) { }
 				}
 			}
 		}
 		N:Weight() {
 			N:Cowl() {
-				N:Cowl(angle=-150) {
-					N:Cowl(angle=-20, color=#FFC082) {
-						N:Cowl(angle=-10, color=#FFC082) {
+				N:Cowl(angle=-155) {
+					N:Cowl(angle=-2, color=#404040, effect=#308F) {
+						N:Cowl(angle=-30, color=#404040, effect=#308F) {
 							N:Cowl(angle=-10) {
-								W:Cowl(angle=-90) { }
-								E:Cowl(angle=-90) { }
+								W:Cowl(angle=-90, color=#64646E) { }
+								E:Cowl(angle=-90, color=#C0C8C0) { }
 							}
-							W:Cowl(angle=-90, color=#FFC082) { }
-							E:Cowl(angle=-90, color=#FFC082) { }
+							W:Cowl(angle=-90, color=#404040, effect=#308F) { }
+							E:Cowl(angle=-90, color=#404040, effect=#308F) { }
 						}
-						W:Cowl(angle=-90, color=#FFC082) { }
-						E:Cowl(angle=-90, color=#FFC082) { }
+						W:Cowl(angle=-90, color=#404040, effect=#308F) { }
+						E:Cowl(angle=-90, color=#404040, effect=#308F) { }
 					}
 					W:Cowl(angle=-85, option=3) {
-						N:Cowl(angle=-5, option=4) { }
+						N:Cowl(angle=-5, option=4, color=#C0C8C0) { }
 					}
 					E:Cowl(angle=-85, option=4) {
-						N:Cowl(angle=-5, option=3) { }
+						N:Cowl(angle=-5, option=3, color=#64646E) { }
 					}
 				}
 				N:Cowl(angle=150) {
-					N:Cowl(angle=30) {
+					N:Cowl(angle=30, color=#64646E) {
 						N:Cowl(angle=5) {
 							N:Cowl() {
 								W:Cowl(angle=85, option=4) {
-									S:Cowl() { }
+									S:Cowl(color=#A0A0AA) { }
 								}
 							}
-							E:Cowl(angle=85) {
+							E:Cowl(angle=85, color=#A0A0AA) {
 								N:Cowl(option=4) { }
 							}
 						}
-						W:Cowl(angle=85, option=3) { }
-						E:Cowl(angle=85, option=4) { }
+						W:Cowl(angle=85, option=3, color=#A0A0AA) { }
+						E:Cowl(angle=85, option=4, color=#64646E) { }
 					}
 					W:Cowl(angle=85, option=3) {
-						N:Cowl(angle=5, option=4) { }
+						N:Cowl(angle=5, option=4, color=#C0C8C0) { }
 					}
 					E:Cowl(angle=85, option=4) {
-						N:Cowl(angle=5, option=3) { }
+						N:Cowl(angle=5, option=3, color=#64646E) { }
 					}
 				}
 			}
@@ -219,7 +222,7 @@ Body
 Lua
 {
 require("daretoku_taka/xgui.lua")
-require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/xhud-le.lua")
 require("daretoku_taka/libccvx3.lua")
 require("daretoku_taka/libresume.lua")
 require("daretoku_taka/libgun.lua")
@@ -247,6 +250,9 @@ _prvtbl.v.il  = 20
 WS_PID = XPID_new()
 RD_PID = XPID_new()
 
+RX_PID = XPID_new()
+VX_PID = XPID_new()
+
 local inited = false
 
 _mv=0
@@ -255,6 +261,9 @@ _xy=0
 
 _gf=25
 _gr=70
+
+_vm=false
+_vmv=0
 
 function OnFrame()
 	if not inited then
@@ -277,22 +286,35 @@ function OnFrame()
 		_xy = _Y(0)
 	end
 	
+	if _KEYDOWN(7) == 1 then
+		_vm = not _vm
+		_vmv = _VEL()
+	end
+	
 	ShowSplash("XF-20 Erne")
 	
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
+	
+	v = VX_PID:PID(0,WY,24,0,0,1000) + -_NORMANALOG(1) * 20
+	r = RX_PID:PID(0,WZ,24,0,0,1000) + _NORMANALOG(0) * 20
+	
+	if _vm then
+		local dif = _VEL() - _vmv
+		out(2,dif)
+		--p = SS_PID:PID(0,dif,100000,20000,20000,500000)
+	end
 	
 	P=p
 	R=r
 	V=v
 	AB=b
 	
-	local dv = math.rad(-_NORMANALOG(1)*180/30)
-	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
+	local ay = (_KEY(5)-_KEY(4))*10
 	
-	RD = RD_PID:PID(dy,WY,16,12,4,20)
-	WS = WS_PID:PID(dy,WY,16,12,4,20)
+	RD = ay
+	WS = ay
 	
-	if _gf == 0 then dy = dy * 2 end
+	if _gf == 0 then ay = ay * 2 end
 	
 	if _KEY(0) == 0 then
 		if _KEYDOWN(6) == 1 then
@@ -310,7 +332,7 @@ function OnFrame()
 	
 	CheckLimit()
 	
-	XHUD.Draw()
+	--XHUD.Draw()
 	
 	Weapon.Stat()
 end

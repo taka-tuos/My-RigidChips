@@ -2,33 +2,14 @@
 Val
 {
 	AB(default=0, min=-90, max=90)
-	G0(default=0, max=10000000000)
-	G1(default=0, max=10000000000)
-	G2(default=0, max=10000000000)
-	G3(default=0, max=10000000000)
 	GF(default=0, min=-180, max=180)
 	GR(default=0, min=-180, max=180)
 	JX(default=0, min=-90, max=90)
 	JY(default=0, min=-90, max=90)
-	MA1(default=0, max=10000000000, step=10000000000)
-	MA2(default=0, max=10000000000, step=10000000000)
-	MP1(default=0, min=-10000000000, max=10000000000)
-	MP2(default=0, min=-10000000000, max=10000000000)
-	MX1(default=0, min=-90, max=90)
-	MX2(default=0, min=-90, max=90)
-	MY1(default=0, min=-90, max=90)
-	MY2(default=0, min=-90, max=90)
-	MZ1(default=0, min=-10000000000, max=10000000000)
-	MZ2(default=0, min=-10000000000, max=10000000000)
 	P(default=0, min=-10000000000, max=10000000000)
 	R(default=0, min=-90, max=90)
 	RD(default=0, min=-90, max=90)
 	V(default=0, min=-90, max=90)
-	V0(default=0, min=-90, max=90)
-	V1(default=0, min=-90, max=90)
-	V2(default=0, min=-90, max=90)
-	V3(default=0, min=-90, max=90)
-	VAR(default=0, max=10000000000)
 }
 Key
 {
@@ -49,52 +30,6 @@ Body
 			}
 		}
 		S:Trim(angle=-90, spring=1, damper=1) {
-			S:TrimF(angle=90, option=1) {
-				E:TrimF(angle=180, spring=1) {
-					E:Chip(angle=0, name=MC1) {
-						N:Chip(angle=MY1) { }
-						N:Frame(angle=-150, option=1) {
-							N:Jet(angle=-120, power=-MP1) { }
-						}
-						S:Arm(power=MA1, option=100000, name=MG1) {
-							N:Trim(angle=90) {
-								N:Chip(angle=MX1) { }
-							}
-						}
-						E:Trim(angle=MZ1) { }
-						W:Trim(angle=MZ1) { }
-					}
-					E:Frame(angle=-90, option=1) {
-						W:RudderF(angle=90) {
-							E:RudderF(angle=-GR) {
-								E:Wheel() { }
-							}
-						}
-					}
-				}
-				W:TrimF(spring=1) {
-					W:Chip(angle=0, name=MC2) {
-						S:Chip(angle=MY2) { }
-						S:Frame(angle=-150, option=1) {
-							S:Jet(angle=-120, power=-MP2) { }
-						}
-						N:Arm(power=MA2, option=100000, name=MG2) {
-							S:Trim(angle=90) {
-								S:Chip(angle=MX2) { }
-							}
-						}
-						E:Trim(angle=MZ2) { }
-						W:Trim(angle=MZ2) { }
-					}
-					W:Frame(angle=90, option=1) {
-						E:RudderF(angle=90) {
-							W:RudderF(angle=-GR) {
-								W:Wheel() { }
-							}
-						}
-					}
-				}
-			}
 			S:Trim(spring=1, damper=1) {
 				W:Frame(angle=-90, option=1) {
 					W:Trim(angle=R) { }
@@ -206,7 +141,6 @@ Body
 					}
 				}
 			}
-			N:Chip(angle=AB) { }
 			N:Trim(spring=1, damper=1) { }
 			N:Weight() {
 				N:Weight(option=2) {
@@ -215,7 +149,16 @@ Body
 					}
 				}
 			}
-			N:Chip(angle=-AB) { }
+			S:TrimF(angle=90, option=1) {
+				E:TrimF() {
+					E:Wheel(angle=GR) { }
+				}
+				W:TrimF() {
+					W:Wheel(angle=GR) { }
+				}
+			}
+			S:Chip(angle=-AB) { }
+			S:Chip(angle=AB) { }
 		}
 		N:Cowl(angle=-15) {
 			N:Cowl(angle=-150) {
@@ -532,32 +475,24 @@ Body
 				}
 			}
 		}
-		S:Frame(angle=-150) {
-			S:Frame(angle=150) {
-				E:Frame() {
-					N:Arm(power=VAR, option=5000) { }
-				}
-				W:Frame() {
-					N:Arm() { }
-				}
-			}
-		}
+		N:Weight() { }
 	}
 }
 Lua
 {
 require("daretoku_taka/xgui.lua")
-require("daretoku_taka/xhud.lua")
-require("daretoku_taka/libccvx2.lua")
+require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/libccvx3.lua")
+require("daretoku_taka/libresume.lua")
+require("daretoku_taka/libgun.lua")
+require("daretoku_taka/libweapon.lua")
 
-_mn = 2
-_mdl = {1,-1}
-_ntp = {0,0}
+_limitlist={1500,1800,2000,2200,2500,64512}
 
 _prvtbl = InitPRVTable()
 
-_prvtbl.p.limit = 200000
-_prvtbl.p.step  = 100000
+_prvtbl.p.limit = 400000
+_prvtbl.p.step  = 200000
 
 _prvtbl.r.tgt = 360
 _prvtbl.r.kp  = 12
@@ -566,80 +501,97 @@ _prvtbl.r.kd  = 4
 _prvtbl.r.il  = 20
 
 _prvtbl.v.tgt = 180
-_prvtbl.v.kp  = 32
-_prvtbl.v.ki  = 32
-_prvtbl.v.kd  = 16
-_prvtbl.v.il  = 40
+_prvtbl.v.kp  = 12
+_prvtbl.v.ki  = 16
+_prvtbl.v.kd  = 4
+_prvtbl.v.il  = 20
 
-JX_PID = XPID_new()
-JY_PID = XPID_new()
 WS_PID = XPID_new()
 RD_PID = XPID_new()
+SS_PID = XPID_new()
 
-_gf=90
-_gr=90
+RX_PID = XPID_new()
+VX_PID = XPID_new()
+
+local inited = false
+
+_mv=0
+_my=0
+_xy=0
+
+_gf=25
+_gr=80
+
+_vm=false
+_vmv=0
 
 function OnFrame()
-	CCVXOnFrame(false)
+	if not inited then
+		CCVXOnInit()
+		inited = true
+	end
 
+	CCVXOnFrame(true)
+	
+	out(0,string.format("%.3f km/h @ %.2f m", _mv*3.6, _my))
+	out(1,string.format("MAX %.2f m", _xy))
+	
+	if _mv < _VEL(0) then
+		_mv = _VEL(0)
+		_my = _Y(0)
+	end
+	
+	
+	if _xy < _Y(0) then
+		_xy = _Y(0)
+	end
+	
+	if _KEYDOWN(7) == 1 then
+		_vm = not _vm
+		_vmv = _VEL()
+	end
+	
 	ShowSplash("XF-1 Eagle")
 	
-	if not _inited then
-		InitAAM(AAM_Callback)
-		_inited = true
+	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
+	
+	if _vm then
+		local dif = _VEL() - _vmv
+		out(2,dif)
+		--p = SS_PID:PID(0,dif,100000,20000,20000,500000)
 	end
-	
-	if _KEYDOWN(1) == 1 then
-		EnableAAM()
-	end
-	
-	CalcNTP(1,_KEYDOWN(6)*_KEY(0),0)
-	CalcNTP(2,_KEYDOWN(7)*_KEY(0),0)
-	
-	_RAMIEL3D(_NPOS(_ntp[1]))
-	_RAMIEL3D(_NPOS(_ntp[2]))
-	
-	MoveAAM()
-	
-	local p,r,v = GetPRVAnalog(_prvtbl)
 	
 	P=p
 	R=r
 	V=v
+	AB=b
 	
 	local dv = math.rad(-_NORMANALOG(1)*180/30)
 	local dy = math.rad((_KEY(5)-_KEY(4))*60/30)
 	
+	RD = RD_PID:PID(dy,WY,16,12,4,20)
+	WS = WS_PID:PID(dy,WY,16,12,4,20)
+	
 	if _gf == 0 then dy = dy * 2 end
-	
-	JX = JX_PID:PID(dv,WX,24,16,2,40)
-	JY = JY_PID:PID(dy,WY,24,16,2,40)
-	RD = RD_PID:PID(dy,WY,24,16,2,40)
-	WS = WS_PID:PID(dy,WY,24,16,2,40)
-	
-	local ab = _NORMANALOG(5)
-	if ab > 0 then ab = 0 end
-	
-	AB=_LINER(AB,ab*60,30)
-	
-	VAR=_KEY(2)*1000000
 	
 	if _KEY(0) == 0 then
 		if _KEYDOWN(6) == 1 then
-			if _gf == 0 then _gf = 90
+			if _gf == 0 then _gf = 25
 			else _gf = 0 end
-			if _gr == 0 then _gr = 90
-			else _gr = 0 end
+			if _gr == 180 then _gr = 80
+			else _gr = 180 end
 		end
 		
 		--WB=_LINER(WB,_KEY(7)*100,50)
 	end
 	
-	GF=_LINER(GF,_gf,6)
-	GR=_LINER(GR,_gr,6)
+	GF=_LINER(GF,_gf,1)
+	GR=_LINER(GR,_gr,6.4)
 	
 	CheckLimit()
 	
 	XHUD.Draw()
+	
+	Weapon.Stat()
 end
 }

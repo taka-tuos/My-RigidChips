@@ -608,6 +608,9 @@ Body
 			S:Chip(angle=AB) { }
 			S:Chip(angle=-AB) { }
 		}
+		N:TrimF() {
+			N:Weight(option=2) { }
+		}
 	}
 }
 Lua
@@ -641,6 +644,9 @@ JX_PID = XPID_new()
 JY_PID = XPID_new()
 WS_PID = XPID_new()
 RD_PID = XPID_new()
+
+RX_PID = XPID_new()
+VX_PID = XPID_new()
 
 _gf=20
 _gr=70
@@ -678,6 +684,10 @@ function OnFrame()
 	local p,r,v = GetPRVAnalog(_prvtbl)
 	
 	P=p
+	
+	v = VX_PID:PID(0,WY,24,0,0,1000) + -_NORMANALOG(1) * 20
+	r = RX_PID:PID(0,WZ,24,0,0,1000) + _NORMANALOG(0) * 20
+	
 	R=r
 	V=v
 	

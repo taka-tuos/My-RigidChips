@@ -336,6 +336,9 @@ JY_PID = XPID_new()
 WS_PID = XPID_new()
 RD_PID = XPID_new()
 
+RX_PID = XPID_new()
+VX_PID = XPID_new()
+
 _gf=25
 _gr=70
 
@@ -352,6 +355,9 @@ function OnFrame()
 	ShowSplash("XF-18 Delta/Plus")
 	
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
+	
+	v = VX_PID:PID(0,WY,24,0,0,1000) + -_NORMANALOG(1) * 10
+	r = RX_PID:PID(0,WZ,24,0,0,1000) + _NORMANALOG(0) * 10
 	
 	P=p
 	R=r
