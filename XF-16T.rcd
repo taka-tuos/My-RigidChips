@@ -2,32 +2,14 @@
 Val
 {
 	AB(default=0, min=-90, max=90)
-	G0(default=0, max=10000000000)
-	G1(default=0, max=10000000000)
-	G2(default=0, max=10000000000)
-	G3(default=0, max=10000000000)
 	GF(default=0, min=-180, max=180)
 	GR(default=0, min=-180, max=180)
-	JX(default=0, min=-90, max=90)
-	JY(default=0, min=-90, max=90)
-	MA1(default=0, max=10000000000, step=10000000000)
-	MA2(default=0, max=10000000000, step=10000000000)
-	MP1(default=0, min=-10000000000, max=10000000000)
-	MP2(default=0, min=-10000000000, max=10000000000)
-	MX1(default=0, min=-90, max=90)
-	MX2(default=0, min=-90, max=90)
-	MY1(default=0, min=-90, max=90)
-	MY2(default=0, min=-90, max=90)
-	MZ1(default=0, min=-10000000000, max=10000000000)
-	MZ2(default=0, min=-10000000000, max=10000000000)
 	P(default=0, max=10000000000)
 	R(default=0, min=-90, max=90)
 	RD(default=0, min=-90, max=90)
 	V(default=0, min=-90, max=90)
-	V0(default=0, min=-90, max=90)
-	V1(default=0, min=-90, max=90)
-	V2(default=0, min=-90, max=90)
-	V3(default=0, min=-90, max=90)
+	WB(default=0, min=-10000000000, max=10000000000)
+	WS(default=0, min=-10000000000, max=10000000000)
 }
 Key
 {
@@ -409,13 +391,27 @@ Body
 				S:Chip(angle=R) {
 					E:Chip() { }
 				}
-				N:Chip() { }
+				N:Chip() {
+					N:Chip() { }
+				}
+				E:Chip() {
+					E:Chip() {
+						S:Chip() { }
+					}
+				}
 			}
 			E:Chip(angle=-90) {
 				S:Chip(angle=R) {
 					E:Chip() { }
 				}
-				N:Chip() { }
+				N:Chip() {
+					N:Chip() { }
+				}
+				E:Chip() {
+					E:Chip() {
+						S:Chip() { }
+					}
+				}
 			}
 			S:Chip() {
 				S:Chip() {
@@ -515,13 +511,23 @@ Body
 						}
 					}
 				}
+				N:Trim(angle=90) {
+					E:Frame() {
+						E:Wheel(angle=GR) { }
+					}
+					W:Frame() {
+						W:Wheel(angle=GR) { }
+					}
+				}
 			}
 			S:Chip(angle=AB) { }
 			S:Chip(angle=-AB) { }
 			N:Chip() {
 				N:Weight() {
-					N:RudderF() {
-						N:Wheel() { }
+					N:Weight() {
+						N:RudderF(angle=-GF) {
+							N:Wheel() { }
+						}
 					}
 				}
 			}
@@ -531,7 +537,7 @@ Body
 Lua
 {
 require("daretoku_taka/xgui.lua")
-require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/xhud-le.lua")
 require("daretoku_taka/libccvx3.lua")
 require("daretoku_taka/libresume.lua")
 require("daretoku_taka/libgun.lua")
@@ -554,23 +560,46 @@ _prvtbl.v.tgt = 180
 _prvtbl.v.kp  = 12
 _prvtbl.v.ki  = 24
 _prvtbl.v.kd  = 4
-_prvtbl.v.il  = 60
+_prvtbl.v.il  = 30
 
-function OnInit()
-	CCVXOnInit({ Missile={n=2,mdl={1,-1},func=_KEYDOWN,fire=1} , Gun={func=_KEY,fire=2,op=50000,an=4,ang=65} })
-end
+RX_PID = XPID_new()
+VX_PID = XPID_new()
+
+
+_gf=30
+_gr=70
 
 function OnFrame()
+	if not _inited then
+		CCVXOnInit()
+		_ini9ted = true
+	end
+	
 	CCVXOnFrame(true)
 
 	ShowSplash("XF-15 Raptor")
 	
 	local p,r,v,b = GetPRVBAnalog(_prvtbl,{p=P,b=AB})
 	
+	v = VX_PID:PID(0,WY,24,0,0,1000) + -_NORMANALOG(1) * 20
+	r = RX_PID:PID(0,WZ,24,0,0,1000) + _NORMANALOG(0) * 20
+	
 	P=p
 	R=r
 	V=v
 	AB=b
+	
+	if _KEYDOWN(6) == 1 then
+		if _gf == 0 then _gf = 30
+		else _gf = 0 end
+		if _gr == 70 then _gr = 180
+		else _gr = 70 end
+	end
+	
+	WB=_LINER(WB,_KEY(7)*100,50)
+	
+	GF=_LINER(GF,_gf,1)
+	GR=_LINER(GR,_gr,90/30)
 	
 	CheckLimit()
 	

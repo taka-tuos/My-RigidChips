@@ -578,7 +578,7 @@ Body
 Lua
 {
 require("daretoku_taka/xgui.lua")
-require("daretoku_taka/xhud2.lua")
+require("daretoku_taka/xhud-le.lua")
 require("daretoku_taka/libccvx3.lua")
 require("daretoku_taka/libresume.lua")
 require("daretoku_taka/libgun.lua")
