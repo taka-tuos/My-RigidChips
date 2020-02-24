@@ -673,8 +673,8 @@ function OnFrame()
 		EnableAAM()
 	end
 	
-	CalcNTP(1,_KEYDOWN(6)*_KEY(0),0)
-	CalcNTP(2,_KEYDOWN(7)*_KEY(0),0)
+	CalcNTP(1,_KEYDOWN(5)*_KEY(0),0)
+	CalcNTP(2,_KEYDOWN(5)*_KEY(0),0)
 	
 	_RAMIEL3D(_NPOS(_ntp[1]))
 	_RAMIEL3D(_NPOS(_ntp[2]))

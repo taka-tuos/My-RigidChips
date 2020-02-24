@@ -605,12 +605,12 @@ function OnFrame()
 	
 	XGUI.SetStringSize(16)
 	
-	XGUI.SetStringPosition(128,128+32)
-	XGUI.DrawVectorStringCenter("Žc”R—¿")
-	XGUI.SetStringPosition(128,128+32+16)
-	XGUI.DrawVectorStringCenter("x1 [%]")
+	--XGUI.SetStringPosition(128,128+32)
+	--XGUI.DrawVectorStringCenter("Žc”R—¿")
+	--XGUI.SetStringPosition(128,128+32+16)
+	--XGUI.DrawVectorStringCenter("x1 [%]")
 	
-	XMET.Draw(obj,128,128,128,90,360,27,10,_FUEL()/_FUELMAX(),1)
+	--XMET.Draw(obj,128,128,128,90,360,27,10,_FUEL()/_FUELMAX(),1)
 	
 	XGUI.SetDrawColorINT(16777215)
 	

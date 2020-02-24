@@ -329,7 +329,7 @@ _vmv=0
 
 function OnFrame()
 	if not inited then
-		CCVXOnInit({ Gun={func=_KEY,fire=7,op=50000,an=4,ang=45} })
+		CCVXOnInit({ Gun={func=_KEY,fire=0,op=50000,an=4,ang=45} })
 		inited = true
 	end
 
@@ -379,7 +379,7 @@ function OnFrame()
 	if _gf == 0 then ay = ay * 2 end
 	
 	if _KEY(0) == 0 then
-		if _KEYDOWN(6) == 1 then
+		if _KEYDOWN(2) == 1 then
 			if _gf == 0 then _gf = 25
 			else _gf = 0 end
 			if _gr == 70 then _gr = -90

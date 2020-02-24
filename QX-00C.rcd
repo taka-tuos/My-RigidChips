@@ -83,9 +83,10 @@ Body
 					}
 					S:Cowl(angle=-90) { }
 				}
-				S:Chip(spring=1, damper=1) {
-					E:Chip(angle=-100) { }
-					W:Chip(angle=-100) { }
+				N:Frame() {
+					N:Chip(angle=-165) { }
+				}
+				S:Weight(spring=1, damper=1) {
 					W:Cowl() {
 						W:Cowl(angle=-90) {
 							N:Cowl(angle=5) {
@@ -146,6 +147,7 @@ Body
 							}
 						}
 					}
+					S:TrimF(angle=90, option=1) { }
 					S:Chip() {
 						E:TrimF(spring=SP, damper=DM) {
 							S:Frame(angle=10, option=1, spring=1, damper=1) {
@@ -229,11 +231,11 @@ Body
 								}
 							}
 						}
-						N:Chip(angle=-170) { }
+						S:Chip(angle=-15) { }
 					}
-					S:TrimF(angle=90, option=1) { }
+					W:Chip(angle=-90) { }
+					E:Chip(angle=-90) { }
 				}
-				N:Chip(angle=-170) { }
 			}
 		}
 	}
@@ -482,8 +484,8 @@ function OnFrame()
 		_tecedge = true
 	end
 	
-	local key4 = -_NORMANALOG(5)
-	local key0 = _NORMANALOG(5)
+	local key4 = -_NORMANALOG(2)
+	local key0 = _NORMANALOG(2)
 	local key1 = 0
 	
 	if key0 < 0 then

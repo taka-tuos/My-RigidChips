@@ -91,7 +91,7 @@ _ld = false
 function _LIMIT(c,x,y,z)
 	x,y,z = x/_M(c),y/_M(c),z/_M(c)
 	local m = 1
-	local lm = _GETSPPEDLIM()/8*10
+	local lm = _GETSPEEDLIM()/8*10
 	if _LEN3(x,y,z) > lm then m = lm/_LEN3(x,y,z) end
 	x,y,z = x*m,y*m,z*m
 	return x*_M(c),y*_M(c),z*_M(c)
@@ -179,7 +179,7 @@ function OnFrame()
 	
 	local vx,vy,vz = _NORMAL3(lpx-_ax,lpy-_ay,lpz-_az)
 	
-	local v = _GETSPPEDLIM()/8*10
+	local v = _GETSPEEDLIM()/8*10
 	local h = lpy-_ay
 	local s = _LEN3(lpx-_ax,lpz-_az,0)
 	local g = 9.807

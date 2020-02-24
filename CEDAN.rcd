@@ -75,8 +75,8 @@ function OnFrame()
 	XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()-64)
 	XGUI.DrawVectorStringCenter(string.format("% 3d km/h",math.abs(_VEL(0))*3.6))
 	
-	local key4 = -_NORMANALOG(5)
-	local key0 = _NORMANALOG(5)
+	local key4 = -_NORMANALOG(2)
+	local key0 = _NORMANALOG(2)
 	local key1 = 0
 	
 	if key0 < 0 then

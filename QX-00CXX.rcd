@@ -408,7 +408,7 @@ function OnFrame()
 	
 	P=_LINER(P,key0*15000-key1*5000,15000)
 	
-	S=_LINER(S,_NORMANALOG(0)*30,15)
+	S=_LINER(S,_NORMANALOG(0)*-30,15)
 	
 	_ZOOM(_GETVIEWZOOM())
 	

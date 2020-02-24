@@ -305,8 +305,8 @@ function OnFrame()
 		_tp = -15 - _tp
 	end
 	
-	local key4 = -_NORMANALOG(5)
-	local key0 = _NORMANALOG(5)
+	local key4 = -_NORMANALOG(2)
+	local key0 = _NORMANALOG(2)
 	local key1 = 0
 	
 	if key0 < 0 then

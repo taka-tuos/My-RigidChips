@@ -584,8 +584,8 @@ function OnFrame()
 	
 	XGUI.RefreshWindowManager()
 	
-	key4 = -_NORMANALOG(5)
-	key0 = _NORMANALOG(5)
+	key4 = -_NORMANALOG(2)
+	key0 = _NORMANALOG(2)
 	key1 = 0
 	
 	if key0 < 0 then

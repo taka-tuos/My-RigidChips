@@ -13,8 +13,14 @@ Key
 Body
 {
 	Core() {
+		E:Cowl() {
+			E:Cowl(angle=90) { }
+		}
+		W:Cowl() {
+			W:Cowl(angle=90) { }
+		}
 		N:Frame(angle=90, option=1, spring=1, damper=1) {
-			N:Chip(angle=90, color=#202020, spring=1, damper=1) {
+			N:Frame(angle=90, color=#202020, spring=1, damper=1) {
 				E:Frame(option=1) {
 					E:Frame(angle=90, option=1, spring=1, damper=1) {
 						N:RudderF(angle=-10, option=1, spring=1, damper=1) {
@@ -182,16 +188,13 @@ Body
 						}
 					}
 				}
-				S:Chip(angle=160) { }
-				E:Chip(angle=100) { }
-				W:Chip(angle=100) { }
+				E:Chip(angle=90) { }
+				W:Chip(angle=90) { }
+				S:Chip(angle=165) { }
+				N:TrimF(angle=90, option=1) {
+					S:Rudder(angle=-90) { }
+				}
 			}
-		}
-		E:Cowl() {
-			E:Cowl(angle=90) { }
-		}
-		W:Cowl() {
-			W:Cowl(angle=90) { }
 		}
 	}
 }
@@ -423,8 +426,8 @@ function OnFrame()
 	
 	XGUI.RefreshWindowManager()
 	
-	local key4 = -_NORMANALOG(5)
-	local key0 = _NORMANALOG(5)
+	local key4 = -_NORMANALOG(2)
+	local key0 = _NORMANALOG(2)
 	local key1 = 0
 	
 	if key0 < 0 then

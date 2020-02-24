@@ -80,47 +80,51 @@ Body
 						}
 					}
 					S:Chip(option=1) {
-						S:Trim(color=0) {
-							E:Frame(angle=10, option=1) {
-								E:Wheel(angle=-100, power=-PWRR, brake=B2, option=0, effect=3, name=RRW) { }
-							}
-							W:Frame(angle=10, option=1) {
-								W:Wheel(angle=-100, power=PWRL, brake=B2, option=0, effect=3, name=RLW) { }
-							}
-							E:Cowl(angle=-90) {
-								S:Cowl(angle=92, option=1, color=BRKLNP, effect=#0FFB) {
-									E:Cowl(angle=90) {
-										E:Cowl(angle=5) {
-											S:Cowl(angle=90) { }
-										}
-									}
-								}
-							}
-							W:Cowl(angle=-90) {
-								S:Cowl(angle=92, option=1, color=BRKLNP, effect=#0FFB) {
-									W:Cowl(angle=90) {
-										W:Cowl(angle=5) {
-											S:Cowl(angle=90) { }
-										}
-									}
-								}
-							}
-							N:Frame(angle=-160) {
-								W:Chip() { }
-								E:Chip() { }
-							}
-							N:TrimF(angle=-90, option=1) {
-								S:Rudder(angle=-90) {
-									W:Chip(angle=AW) { }
-								}
-							}
-							S:Cowl(angle=-90) { }
-						}
 						E:Frame(option=1) {
 							E:Chip(angle=-90) { }
 						}
 						W:Frame(option=1) {
 							W:Chip(angle=-90) { }
+						}
+						S:Chip() {
+							S:Trim(color=0) {
+								E:Frame(angle=10, option=1) {
+									E:Wheel(angle=-100, power=-PWRR, brake=B2, option=0, effect=3, name=RRW) { }
+								}
+								W:Frame(angle=10, option=1) {
+									W:Wheel(angle=-100, power=PWRL, brake=B2, option=0, effect=3, name=RLW) { }
+								}
+								E:Cowl(angle=-90) {
+									S:Cowl(angle=92, option=1, color=BRKLNP, effect=#0FFB) {
+										E:Cowl(angle=90) {
+											E:Cowl(angle=5) {
+												S:Cowl(angle=90) { }
+												E:Cowl() { }
+											}
+										}
+									}
+								}
+								W:Cowl(angle=-90) {
+									S:Cowl(angle=92, option=1, color=BRKLNP, effect=#0FFB) {
+										W:Cowl(angle=90) {
+											W:Cowl(angle=5) {
+												S:Cowl(angle=90) { }
+												W:Cowl() { }
+											}
+										}
+									}
+								}
+								N:Frame(angle=-160) {
+									W:Chip() { }
+									E:Chip() { }
+								}
+								N:TrimF(angle=-90, option=1) {
+									S:Rudder(angle=-90) {
+										W:Chip(angle=AW) { }
+									}
+								}
+								S:Cowl(angle=-90) { }
+							}
 						}
 					}
 					W:Frame(angle=-90, option=1) {
@@ -652,4 +656,3 @@ function OnFrame()
 	--AWRL=((AHRL/10)*30)
 end
 }
-

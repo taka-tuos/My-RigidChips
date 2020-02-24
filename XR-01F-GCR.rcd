@@ -1,21 +1,13 @@
 // [RCD] 
 Val
 {
-	AW(default=0, min=-90, max=90)
-	BFL(default=0, max=10000000000)
-	BFR(default=0, max=10000000000)
+	B(default=0, max=10000000000)
+	B2(default=0, max=10000000000)
 	BL(default=0, max=16777216)
-	BRL(default=0, max=10000000000)
-	BRR(default=0, max=10000000000)
-	PROP(default=-90, min=-90, max=-45)
-	PWFL(default=0, min=-10000000000, max=10000000000)
-	PWFR(default=0, min=-10000000000, max=10000000000)
-	PWRL(default=0, min=-10000000000, max=10000000000)
-	PWRR(default=0, min=-10000000000, max=10000000000)
-	S2(default=0, min=-180, max=180)
-	SA(default=0, min=-180, max=180)
-	SB(default=0, min=-180, max=180)
-	VDS(default=90, min=-180, max=180)
+	DM(default=0, max=1)
+	P(default=0, min=-10000000000, max=10000000000)
+	S(default=0, min=-180, max=180)
+	SP(default=0, max=1)
 }
 Key
 {
@@ -23,38 +15,18 @@ Key
 Body
 {
 	Core() {
-		W:Cowl(option=1, effect=#F0FB, name=LS) { }
-		N:Cowl(option=1, effect=#F0FB, name=FS) { }
 		N:Frame(option=1) {
 			S:Frame(angle=90) {
-				W:Trim(angle=VDS) { }
-				E:Trim(angle=-VDS) { }
 				S:Chip(angle=-90, spring=1, damper=1) {
 					E:Frame(angle=-90, option=1) { }
-					W:Chip(angle=-90) { }
-					E:Chip(angle=-90) { }
 					S:Chip() {
-						S:Trim(option=1, spring=1, damper=1) {
-							S:Trim(color=0, spring=1, damper=1) {
-								E:Frame(angle=10, option=1) {
-									E:Wheel(angle=-100, power=-PWRR, brake=BRR, option=0, effect=4, name=RRW) { }
-								}
-								W:Frame(angle=10, option=1) {
-									W:Wheel(angle=-100, power=PWRL, brake=BRL, option=0, effect=4, name=RLW) { }
-								}
-								N:TrimF(angle=-90, option=1) {
-									S:Rudder(angle=-90) {
-										E:Chip() { }
-									}
-								}
-								N:Chip(angle=-160) { }
+						N:TrimF(angle=90, option=1) {
+							S:Rudder(angle=90) {
+								E:Chip() { }
+								W:Chip() { }
 							}
-							E:Frame(option=1) {
-								E:Chip(angle=-90) { }
-							}
-							W:Frame(option=1) {
-								W:Chip(angle=-90) { }
-							}
+						}
+						S:Weight(option=1, spring=1, damper=1) {
 							S:Cowl(angle=-90) {
 								S:Cowl(angle=85, color=#004080) {
 									E:Cowl(angle=110, option=1, color=#202020) {
@@ -125,6 +97,15 @@ Body
 									E:Cowl(color=#004080) { }
 								}
 							}
+							S:TrimF(option=1, color=0, spring=1, damper=1) {
+								E:Frame(angle=10, option=1, spring=SP, damper=DM) {
+									E:Wheel(angle=-100, power=-P, brake=B2, option=0, effect=4, name=RRW) { }
+								}
+								W:Frame(angle=10, option=1, spring=SP, damper=DM) {
+									W:Wheel(angle=-100, power=P, brake=B2, option=0, effect=4, name=RLW) { }
+								}
+								N:Chip(angle=-167.5) { }
+							}
 						}
 					}
 					W:Cowl() {
@@ -164,21 +145,15 @@ Body
 						}
 					}
 					N:Trim(option=1, spring=1, damper=1) {
-						N:Trim(spring=1, damper=1) {
-							W:Frame(angle=10, option=1) {
-								W:RudderF(angle=-SB, option=1) {
-									E:Wheel(angle=-80, power=-PWFL, brake=BFL, effect=4, name=FLW) { }
-								}
-								E:Chip(angle=-80) {
-									S:Chip(angle=S2) { }
+						N:TrimF(option=1, spring=1, damper=1) {
+							W:Frame(angle=10, option=1, spring=SP, damper=DM) {
+								W:RudderF(angle=-S, option=1) {
+									E:Wheel(angle=-80, power=-P, brake=B, effect=4, name=FLW) { }
 								}
 							}
-							E:Frame(angle=10, option=1) {
-								E:RudderF(angle=-SA, option=1) {
-									W:Wheel(angle=-80, power=PWFR, brake=BFR, effect=4, name=FRW) { }
-								}
-								W:Chip(angle=-80) {
-									S:Chip(angle=-S2) { }
+							E:Frame(angle=10, option=1, spring=SP, damper=DM) {
+								E:RudderF(angle=-S, option=1) {
+									W:Wheel(angle=-80, power=P, brake=B, effect=4, name=FRW) { }
 								}
 							}
 							S:Cowl() {
@@ -288,14 +263,12 @@ Body
 									}
 								}
 							}
-							N:Chip(angle=-160) { }
+							N:Chip(angle=-167.5) { }
 						}
 					}
 				}
 			}
 		}
-		E:Cowl(option=1, effect=#F0FB, name=RS) { }
-		S:Cowl(option=1, effect=#F0FB, name=TS) { }
 	}
 }
 Lua
@@ -308,107 +281,14 @@ function _LEN3(a,b,c)
 	return math.sqrt(a * a + b * b + c * c)
 end
 
-function _LVAL(v,t,s)
+function _LINER(v,t,s)
 	local r=v
 	if v<t then r=v+s end
 	if v>t then r=v-s end
-	if r<t and t<0 then r=t end
-	if r>t and t>0 then r=t end
-	if t-r<s and t-r>0 then r=t end
-	if r-t<s and r-t>0 then r=t end
+	if r>t and v<t then r=t end
+	if r<t and v>t then r=t end
 	return r
 end
-
-function XPID_new()
-	local obj = {
-		i = 0,
-		d = 0,
-		e_b = 0,
-
-		PID = function (self,now,tgt,kp,ki,kd,lim)
-			local e_n = now - tgt
-			local e_d = e_n - self.e_b
-			
-			local p = e_n * kp
-			
-			local i = self.i + e_n * ki
-			
-			local d = e_d * kd
-			
-			i=math.min(20,math.max(-20,i))
-			
-			self.i = i
-			
-			self.e_b = e_n
-			
-			local pid = p+i+d
-			
-			pid = math.min(lim,math.max(-lim,pid))
-			
-			return pid
-		end
-	}
-	
-	return obj
-end
-
-WL=0.6*math.pi
-
-MXPW=100000
-MXTCS=MXPW/200
-MXTCS2=MXPW*2
-
-MXB=200
-MXABS=MXB/2
-
-function r_pw(p)
-	return MXPW*key0+5500*-key1
-end
-
-S_PID = XPID_new()
-B_PID = XPID_new()
-H_PID = XPID_new()
-
-function r_tc(p,w,vz,pid)
-	--n=w/vz
-	--TCS=(n-3.5)*MXTCS2
-	
-	local TCS=pid:PID(w-vz,0,MXTCS,MXTCS/32,MXTCS/64,MXPW)
-	if TCS>0 and key0+key1>0 then p=p-TCS end
-	if p<0 and TCS>0 and key1 == 0 then p=0 end
-	return p
-end
-
-function r_ab(b,w,vz,pid)
-	--n=w/vz
-	--TCS=(n-3.5)*MXTCS2
-	
-	local ABS=pid:PID(vz-w,0,MXABS,MXABS/32,MXABS/64,MXB)
-	if ABS>0 and key4>0 then
-		b=b-ABS
-	end
-	if b<0 then b=0 end
-	return b
-end
-
-function r_g(p,w,vz,pid)
-	p=r_pw(p)
-	p=r_tc(p,w,vz,pid)
-	return p
-end
-
-_RATE2=0.2
-_RATE1=1-_RATE2
-
-FR_PID = XPID_new()
-FL_PID = XPID_new()
-RR_PID = XPID_new()
-RL_PID = XPID_new()
-
-FRB_PID = XPID_new()
-FLB_PID = XPID_new()
-RRB_PID = XPID_new()
-RLB_PID = XPID_new()
 
 function _NORMANALOG(n)
 	local v = _ANALOG(n)
@@ -416,21 +296,14 @@ function _NORMANALOG(n)
 	return v/1000
 end
 
-T=0.6*3
-W=0.6*5
-
---require("daretoku_taka/xgui.lua")
+_tecset=true
 
 function OnFrame()
-	--XGUI.SetStringSize(32)
+	if _KEYDOWN(6) == 1 then _tecset = not _tecset end
 	
-	--XGUI.SetStringPosition(_WIDTH()/2,_HEIGHT()-64)
-	--XGUI.DrawVectorStringCenter(string.format("% 3d km/h",math.abs(_VEL(0))*3.6))
-	
-	key4 = -_NORMANALOG(2)
-	
-	key0 = _NORMANALOG(2)
-	key1 = 0
+	local key4 = -_NORMANALOG(2)
+	local key0 = _NORMANALOG(2)
+	local key1 = 0
 	
 	if key0 < 0 then
 		if _KEY(14) == 1 then
@@ -439,71 +312,25 @@ function OnFrame()
 		key0 = 0
 	end
 	
-	
 	if key4 < 0 or key1 > 0 then key4 = 0 end
 	
-	local B=MXB*key4
-	local B2=MXB/2*_KEY(15)
+	BL = (math.floor(223*key4)+32)*65536
 	
-	local tr=math.rad(45*-_NORMANALOG(0))
+	B2=_LINER(B2,key4*100+_KEY(15)*200,100)
+	B=_LINER(B,key4*200,100)
 	
-	local S = _NORMANALOG(0) * 30
+	P=_LINER(P,key0*15000-key1*5000,15000)
 	
-	BL=math.floor(255*key4)*65536+2097152
-
-	--TJ=_KEY(6)*500000
+	S=_LINER(S,_NORMANALOG(0)*30,15)
 	
-	FLR=(-_WY(FLW)*30/360)*WL*2
-	FRR=(_WY(FRW)*30/360)*WL*2
-	RLR=(_WY(RLW)*30/360)*WL*2
-	RRR=(-_WY(RRW)*30/360)*WL*2
+	_ZOOM(_GETVIEWZOOM())
 	
-	WR=(FLR+FRR+RLR+RRR)/4
-	
-	_MOVE3D(a,b,c)
-	_LINE3D(x,y,z)
-	
-	PWFR=r_g(PWFR,FRR,math.abs(_VZ(FRC)),FR_PID)
-	PWFL=r_g(PWFL,FLR,math.abs(_VZ(FLC)),FL_PID)
-	PWRR=r_g(PWRR,RRR,math.abs(_VZ(RRC)),RR_PID)
-	PWRL=r_g(PWRL,RLR,math.abs(_VZ(RLC)),RL_PID)
-	
-	BFR=r_ab(B,FRR,math.abs(_VZ(FRC)),FRB_PID)
-	BFL=r_ab(B,FLR,math.abs(_VZ(FLC)),FLB_PID)
-	BRR=r_ab(B,RRR,math.abs(_VZ(RRC)),RRB_PID)+B2
-	BRL=r_ab(B,RLR,math.abs(_VZ(RLC)),RLB_PID)+B2
-
-	HDS=-H_PID:PID(_VX(0)/30,0,16,12,8,45)
-
-	--DRS=-150+_VZ(0)/140*25
-	
-	SS=0.35
-	SD=0.1
-	
-	local v = math.abs(_VEL()*3.6/500)+1
-	
-	S=S/v
-	
-	S2=S/1.5
-	
-	local RO=W/math.tan(math.rad(math.abs(S)))
-	
-	SA=math.rad(S)
-	SB=math.rad(S)
-	
-	if S>0 then
-		SA=math.atan(W/RO)
-		SB=math.atan(W/(RO-T))
+	if _tecset then
+		SP=0.15
+		DM=0.15
+	else
+		SP=1
+		DM=1
 	end
-	
-	if S<0 then
-		SA=-math.atan(W/RO)
-		SB=-math.atan(W/(RO-T))
-	end
-	
-	SA=math.deg(SA)
-	SB=math.deg(SB)
-	
-	VDS=_KEY(6)*45+90
 end
 }

@@ -10,6 +10,7 @@ Val
 	BL(default=2097152, min=2097152, max=16711680, step=16711680)
 	BRL(default=0, max=5000)
 	BRR(default=0, max=5000)
+	EFF(default=#70FB, max=65535)
 	DRS(default=0, min=-180, max=-90)
 	HDS(default=0, min=-90, max=90)
 	PWFL(default=0, min=-10000000000, max=10000000000)

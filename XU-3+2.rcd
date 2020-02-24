@@ -445,8 +445,8 @@ function OnFrame()
 	--JX = JX_PID:PID(dv,WX,24,24,16,90)
 	--JY = JY_PID:PID(dy,WY,24,24,16,90)
 	
-	--JX=V
-	--JY=RD
+	JX=V
+	JY=RD
 	
 	if _KEYDOWN(6) == 1 then
 		if _gf == 180 then _gf = 70
